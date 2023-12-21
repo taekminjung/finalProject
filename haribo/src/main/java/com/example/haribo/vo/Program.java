@@ -1,5 +1,8 @@
 package com.example.haribo.vo;
 
+import lombok.Data;
+
+@Data
 public class Program {
 	private int programNo;
 	private String employeeId;

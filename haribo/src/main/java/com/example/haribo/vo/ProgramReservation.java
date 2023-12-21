@@ -1,5 +1,8 @@
 package com.example.haribo.vo;
 
+import lombok.Data;
+
+@Data
 public class ProgramReservation {
 	private int programReservationNo;
 	private int paymentNo;

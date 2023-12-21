@@ -1,5 +1,8 @@
 package com.example.haribo.vo;
 
+import lombok.Data;
+
+@Data
 public class QuestionReply {
 	private int questionReplyNo;
 	private int questionNo;

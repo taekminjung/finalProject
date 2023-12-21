@@ -1,5 +1,8 @@
 package com.example.haribo.vo;
 
+import lombok.Data;
+
+@Data
 public class SportsEquipmentImg {
 	private int sportsEquipmentImg;
 	private int sportsEquipmentNo;
