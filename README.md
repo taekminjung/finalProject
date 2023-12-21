@@ -47,8 +47,5 @@
 > **TOOL**   
 > ```Spring Tools Suite 4``` ```HeidiSQL```   
 
-# 쇼핑몰 메인 화면
-<img src="/src/pic/home.png">
+# 홈페이지 메인 화면
 
-# 상품 목록
-<img src="/src/pic/goodslist.png">
