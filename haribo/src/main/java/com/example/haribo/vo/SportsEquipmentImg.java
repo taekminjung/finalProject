@@ -4,7 +4,7 @@ import lombok.Data;
 
 @Data
 public class SportsEquipmentImg {
-	private int sportsEquipmentImg;
+	private int sportsEquipmentImgNo;
 	private int sportsEquipmentNo;
 	private String sportsEquipmentImgOriginName;
 	private String sportsEquipmentImgFileName;

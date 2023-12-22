@@ -8,7 +8,7 @@ public class EmployeeImg {
 		private int employeeNo;
 		private String employeeImgOriginName;
 		private String employeeImgFileName;
-		private String employeeImgSize;
+		private int employeeImgSize;
 		private String employeeImgType;
 		private String createdate;
 		private String updatedate;

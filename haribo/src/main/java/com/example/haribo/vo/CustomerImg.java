@@ -8,7 +8,7 @@ public class CustomerImg {
 		private int customerNo;
 		private String customerImgOriginName;
 		private String customerImgFileName;
-		private String customerImgSize;
+		private int customerImgSize;
 		private String customerImgType;
 		private String createdate;
 		private String updatedate;
