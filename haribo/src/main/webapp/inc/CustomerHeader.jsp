@@ -1,5 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+	<!-- 로그인 세션 유무에 따라 버튼 분기 -->
+	<c:set var="loginBtn" value="Log In"></c:set>
+	<c:set var="loginUrl" value="${pageContext.request.contextPath}/login"></c:set>
+	<c:if test="${loginCustomer != null}">
+		<c:set var="loginBtn" value="Log Out"></c:set>
+		<c:set var="loginUrl" value="${pageContext.request.contextPath}/logout"></c:set>
+	</c:if>
 	<!-- start header Area -->
 	<header id="header">
 		<div class="header-top">
@@ -14,7 +22,7 @@
 						</ul>
 					</div>
 					<div class="col-lg-6 col-sm-6 col-4 header-top-right no-padding">
-						<a class="book-now" href="${pageContext.request.contextPath}/login">Log In</a>
+						<a class="book-now" href="${loginUrl}">${loginBtn}</a>
 					</div>
 				</div>
 			</div>

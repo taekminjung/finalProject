@@ -30,47 +30,79 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
 <body class="hold-transition login-page">
-<div class="login-box">
-  <div class="login-logo">
-    <a href="emp/index2.html"><b>Admin</b>LTE</a>
-  </div>
-  <!-- /.login-logo -->
-  <div class="login-box-body">
-    <p class="login-box-msg">Sign in to start your session</p>
-
-    <form action="emp/index2.html" method="post">
-      <div class="form-group has-feedback">
-        <input type="email" class="form-control" placeholder="Email">
-        <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
-      </div>
-      <div class="form-group has-feedback">
-        <input type="password" class="form-control" placeholder="Password">
-        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
-      </div>
-      <div class="row">
-        <div class="col-xs-8">
-          <div class="checkbox icheck">
-            <label>
-              <input type="checkbox"> Remember Me
-            </label>
-          </div>
-        </div>
-        <!-- /.col -->
-        <div class="col-xs-4">
-          <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
-        </div>
-        <!-- /.col -->
-      </div>
-    </form>
-
-    <a href="#">I forgot my password</a><br>
-    <a href="register.html" class="text-center">Register a new membership</a>
-
-  </div>
-  <!-- /.login-box-body -->
-</div>
-<!-- /.login-box -->
-
+	<div class="container">
+		<div class="login-box" style="float:left">
+		  <div class="login-logo">
+		    <b>Customer</b>
+		  </div>
+		  <!-- /.login-logo -->
+		  <div class="login-box-body">
+		    <form action="${pageContext.request.contextPath}/login" method="post">
+		      <div class="form-group has-feedback">
+		        <input type="text" class="form-control" placeholder="ID" name="customerId">
+		        <span class="glyphicon glyphicon-user form-control-feedback"></span>
+		      </div>
+		      <div class="form-group has-feedback">
+		        <input type="password" class="form-control" placeholder="Password" name="customerPw">
+		        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+		      </div>
+		      <div class="row">
+		        <div class="col-xs-8">
+		          <div class="checkbox icheck">
+		            <label>
+		              <input type="checkbox"> Remember Me
+		            </label>
+		          </div>
+		        </div>
+		        <!-- /.col -->
+		        <div class="col-xs-4">
+		          <button type="submit" class="btn btn-primary btn-block btn-flat">Log In</button>
+		        </div>
+		        <!-- /.col -->
+		      </div>
+		    </form>
+			<a href="#">Find Password</a><br>
+		    <a href="register.html" class="text-center">Register New Member</a>
+		  </div>
+		  <!-- /.login-box-body -->
+		</div>
+		<!-- /.login-box -->
+		
+		<div class="login-box" style="float:right">
+		  <div class="login-logo">
+		    <b>Employee</b>
+		  </div>
+		  <!-- /.login-logo -->
+		  <div class="login-box-body">
+		    <form action="emp/index2.html" method="post">
+		      <div class="form-group has-feedback">
+		        <input type="text" class="form-control" placeholder="ID">
+		        <span class="glyphicon glyphicon-user form-control-feedback"></span>
+		      </div>
+		      <div class="form-group has-feedback">
+		        <input type="password" class="form-control" placeholder="Password">
+		        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+		      </div>
+		      <div class="row">
+		        <div class="col-xs-8">
+		          <div class="checkbox icheck">
+		            <label>
+		              <input type="checkbox"> Remember Me
+		            </label>
+		          </div>
+		        </div>
+		        <!-- /.col -->
+		        <div class="col-xs-4">
+		          <button type="submit" class="btn btn-primary btn-block btn-flat">Log In</button>
+		        </div>
+		        <!-- /.col -->
+		      </div>
+		    </form>
+		  </div>
+		  <!-- /.login-box-body -->
+		</div>
+	<!-- /.login-box -->
+	</div>
 <!-- jQuery 3 -->
 <script src="emp/bower_components/jquery/dist/jquery.min.js"></script>
 <!-- Bootstrap 3.3.7 -->

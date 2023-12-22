@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.haribo.mapper.CustomerMapper">
+
+	<select id="loginCustomer" 
+			parameterType="com.example.haribo.vo.Customer" 
+			resultType="com.example.haribo.vo.Customer">
+		SELECT 
+			customer_no customerNo,
+			customer_id customerId
+		FROM customer
+		WHERE customer_id = #{customerId}
+		AND customer_pw = #{customerPw}	
+		AND customer_active = 'Y'	
+	</select>
+</mapper>
