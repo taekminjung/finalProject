@@ -39,7 +39,7 @@
   <header class="main-header">
 
     <!-- Logo -->
-    <a href="index2.html" class="logo">
+    <a href="adminTest.jsp" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>A</b>LT</span>
       <!-- logo for regular state and mobile devices -->
@@ -376,10 +376,10 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="emp/pages/charts/chartjs.html"><i class="fa fa-circle-o"></i> ChartJS</a></li>
-            <li><a href="emp/pages/charts/morris.html"><i class="fa fa-circle-o"></i> Morris</a></li>
-            <li><a href="emp/pages/charts/flot.html"><i class="fa fa-circle-o"></i> Flot</a></li>
-            <li><a href="emp/pages/charts/inline.html"><i class="fa fa-circle-o"></i> Inline charts</a></li>
+            <li><a href="pages/charts/chartjs.html"><i class="fa fa-circle-o"></i> ChartJS</a></li>
+            <li><a href="pages/charts/morris.html"><i class="fa fa-circle-o"></i> Morris</a></li>
+            <li><a href="pages/charts/flot.html"><i class="fa fa-circle-o"></i> Flot</a></li>
+            <li><a href="pages/charts/inline.html"><i class="fa fa-circle-o"></i> Inline charts</a></li>
           </ul>
         </li>
         <li class="treeview">
@@ -1549,15 +1549,15 @@
 <!-- ./wrapper -->
 
 <!-- jQuery 3 -->
-<script src="emp/bower_components/jquery/emp/dist/jquery.min.js"></script>
+<script src="emp/bower_components/jquery/dist/jquery.min.js"></script>
 <!-- Bootstrap 3.3.7 -->
-<script src="emp/bower_components/bootstrap/emp/dist/js/bootstrap.min.js"></script>
+<script src="emp/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <!-- FastClick -->
 <script src="emp/bower_components/fastclick/lib/fastclick.js"></script>
 <!-- AdminLTE App -->
 <script src="emp/dist/js/adminlte.min.js"></script>
 <!-- Sparkline -->
-<script src="emp/bower_components/jquery-sparkline/emp/dist/jquery.sparkline.min.js"></script>
+<script src="emp/bower_components/jquery-sparkline/dist/jquery.sparkline.min.js"></script>
 <!-- jvectormap  -->
 <script src="emp/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
 <script src="emp/plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
