@@ -13,5 +13,12 @@ public interface NoticeMapper {
 		
 		List<Notice> noticeList (Map<String, Object> param);
 		
+		int getTotalRow(int rowPerPage);
+		
+		Notice noticeOne(Notice notice);
+		
+		int deleteNotice(Notice notice);
+		
+		int updateNotice(Notice notice);
 		
 }

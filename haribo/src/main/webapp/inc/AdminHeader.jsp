@@ -5,7 +5,7 @@
     <header class="main-header">
 
     <!-- Logo -->
-    <a href="adminTest.jsp" class="logo">
+    <a href="${pageContext.request.contextPath}/adminTest" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>A</b>LT</span>
       <!-- logo for regular state and mobile devices -->
@@ -466,26 +466,3 @@
     </section>
     <!-- /.sidebar -->
   </aside>
-  
-  
-  <footer class="main-footer">
-    <div class="pull-right hidden-xs">
-      <b>Version</b> 2.4.13
-    </div>
-    <strong>Copyright &copy; 2014-2019 <a href="https://adminlte.io">AdminLTE</a>.</strong> All rights
-    reserved.
-  </footer>
-
-
-
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
