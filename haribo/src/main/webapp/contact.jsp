@@ -117,29 +117,48 @@
 		<div class="container">
 			<div class="row">
 			 
-				<div style="width:100%; height: 445px;" id= "map"></div>
+				<div  class="map-wrap" style="width:100%; height: 440px;" id= "map"></div><div><br></div>
 					<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=	139fe7eca596ff88f8b69da1ea0c9e18"></script>
 			<script>
 						var container = document.getElementById('map');
 						var options = {
 							center: new kakao.maps.LatLng(37.476502, 126.880176),
-							level: 3
-						};
-				
+							level: 4
+						};	
 						var map = new kakao.maps.Map(container, options);
-						// 마커가 표시될 위치입니다 
+						// 마커가 표시될 위치(본사위치)
 						var markerPosition  = new kakao.maps.LatLng(37.476502, 126.880176); 
-
-						// 마커를 생성합니다
+						// 마커 생성
 						var marker = new kakao.maps.Marker({
 						    position: markerPosition
 						});
-
-						// 마커가 지도 위에 표시되도록 설정합니다
+						// 마커가 지도 위에 표시되도록 설정
 						marker.setMap(map);
+
+						// 일반 지도와 스카이뷰로 지도 타입을 전환할 수 있는 지도타입 컨트롤을 생성
+						var mapTypeControl = new kakao.maps.MapTypeControl();
+
+						// 지도에 컨트롤을 추가해야 지도위에 표시
+						// kakao.maps.ControlPosition은 컨트롤이 표시될 위치를 정의(오른쪽 위)
+						map.addControl(mapTypeControl, kakao.maps.ControlPosition.TOPRIGHT);
+
+						// 지도 확대 축소를 제어할 수 있는  줌 컨트롤을 생성
+						var zoomControl = new kakao.maps.ZoomControl();
+						map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
+						
+						var iwContent = '<div style="padding:5px;">하리보팀 본사 <br><a href="https://map.kakao.com/link/map/Hello World!,33.450701,126.570667" style="color:blue" target="_blank">큰지도보기</a> <a href="https://map.kakao.com/link/to/Hello World!,37.476502, 126.880176" style="color:blue" target="_blank">길찾기</a></div>', // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+					    iwPosition = new kakao.maps.LatLng(37.476502, 126.880176); //인포윈도우 표시 위치
+
+					// 인포윈도우 생성
+					var infowindow = new kakao.maps.InfoWindow({
+					    position : iwPosition, 
+					    content : iwContent 
+					});
+					  
+					// 마커 위에 인포윈도우를 표시/ 두번째 파라미터인 marker를 넣어주지 않으면 지도 위에 표시
+					infowindow.open(map, marker); 
 			</script>
 			
-				<div><br></div>
 				<div class="col-lg-4 d-flex flex-column address-wrap">
 					<div class="single-contact-address d-flex flex-row">
 						<div class="icon">
@@ -262,7 +281,6 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 		</div>
 	</footer>
 	<!-- End footer Area -->
-
 
 	<script src="js/vendor/jquery-2.2.4.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
