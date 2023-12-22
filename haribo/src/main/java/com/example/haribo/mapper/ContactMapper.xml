@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.haribo.mapper.ContactMapper">
+<insert id="insertContact" parameterType="com.example.haribo.vo.Contact">
+INSERT INTO contact(
+	customer_birth,
+	customer_contact_date,
+	customer_name,
+	contact_content,
+	createdate
+	)VALUES(
+	#{customerBirth},#{customerContactDate},#{customerName},#{contactContent}, NOW() )
+</insert>
+</mapper>
