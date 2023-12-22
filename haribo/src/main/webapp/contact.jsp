@@ -4,10 +4,14 @@
 <html lang="zxx" class="no-js">
 
 <head>
+<!-- services 라이브러리 불러오기 -->
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=APIKEY&libraries=services"></script>
+<!-- services와 clusterer, drawing 라이브러리 불러오기 -->
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=APIKEY&libraries=services,clusterer,drawing"></script>
 	<!-- Mobile Specific Meta -->
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<!-- Favicon-->
-	<link rel="shortcut icon" href="img/fav.png">
+	<link rel="shortcut icon" href="customer/img/fav.png">
 	<!-- Author Meta -->
 	<meta name="author" content="colorlib">
 	<!-- Meta Description -->
@@ -23,15 +27,16 @@
 	<!--
 			CSS
 			============================================= -->
-	<link rel="stylesheet" href="css/linearicons.css">
-	<link rel="stylesheet" href="css/font-awesome.min.css">
-	<link rel="stylesheet" href="css/bootstrap.css">
-	<link rel="stylesheet" href="css/magnific-popup.css">
-	<link rel="stylesheet" href="css/nice-select.css">
-	<link rel="stylesheet" href="css/animate.min.css">
-	<link rel="stylesheet" href="css/owl.carousel.css">
-	<link rel="stylesheet" href="css/jquery-ui.css">
-	<link rel="stylesheet" href="css/main.css">
+	<link rel="stylesheet" href="customer/css/linearicons.css">
+	<link rel="stylesheet" href="customer/css/font-awesome.min.css">
+	<link rel="stylesheet" href="customer/css/bootstrap.css">
+	<link rel="stylesheet" href="customer/css/magnific-popup.css">
+	<link rel="stylesheet" href="customer/css/nice-select.css">
+	<link rel="stylesheet" href="customer/css/animate.min.css">
+	<link rel="stylesheet" href="customer/css/owl.carousel.css">
+	<link rel="stylesheet" href="customer/css/jquery-ui.css">
+	<link rel="stylesheet" href="customer/css/main.css">
+	
 </head>
 
 <body>
@@ -60,7 +65,7 @@
 		<div class="container main-menu">
 			<div class="row align-items-center justify-content-between d-flex">
 				<div id="logo">
-					<a href="index.html"><img src="img/logo.png" alt="" title="" /></a>
+					<a href="index.html"><img src="customer/img/logo.png" alt="" title="" /></a>
 				</div>
 				<nav id="nav-menu-container">
 					<ul class="nav-menu">
@@ -90,7 +95,7 @@
 
 	<!-- start banner Area -->
 	<section class="banner-area relative about-banner" id="home">
-		<img class="cta-img img-fluid" src="img/cta-img.png" alt="">
+		<img class="cta-img img-fluid" src="customer/img/cta-img.png" alt="">
 		<div class="overlay overlay-bg"></div>
 		<div class="container">
 			<div class="row d-flex align-items-center justify-content-center">
@@ -111,18 +116,30 @@
 	<section class="contact-page-area section-gap">
 		<div class="container">
 			<div class="row">
-			  <script>
-        var map = new naver.maps.Map('map', {
-            center: new naver.maps.LatLng(37.5112, 127.0981), // 잠실 롯데월드를 중심으로 하는 지도
-            zoom: 15
-        });
+			 
+				<div style="width:100%; height: 445px;" id= "map"></div>
+					<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=	139fe7eca596ff88f8b69da1ea0c9e18"></script>
+			<script>
+						var container = document.getElementById('map');
+						var options = {
+							center: new kakao.maps.LatLng(37.476502, 126.880176),
+							level: 3
+						};
+				
+						var map = new kakao.maps.Map(container, options);
+						// 마커가 표시될 위치입니다 
+						var markerPosition  = new kakao.maps.LatLng(37.476502, 126.880176); 
 
-        var marker = new naver.maps.Marker({
-            position: new naver.maps.LatLng(37.5112, 127.0981),
-            map: map
-        });
-    </script>
-				<div class="map" style="width:100%; height: 445px;" id="map"></div>
+						// 마커를 생성합니다
+						var marker = new kakao.maps.Marker({
+						    position: markerPosition
+						});
+
+						// 마커가 지도 위에 표시되도록 설정합니다
+						marker.setMap(map);
+			</script>
+			
+				<div><br></div>
 				<div class="col-lg-4 d-flex flex-column address-wrap">
 					<div class="single-contact-address d-flex flex-row">
 						<div class="icon">
@@ -251,8 +268,6 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
 	 crossorigin="anonymous"></script>
 	<script src="js/vendor/bootstrap.min.js"></script>
-	<script type="text/javascript" 
-	src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=ectpsru0d3"></script>
 	<script src="js/easing.min.js"></script>
 	<script src="js/hoverIntent.js"></script>
 	<script src="js/superfish.min.js"></script>
