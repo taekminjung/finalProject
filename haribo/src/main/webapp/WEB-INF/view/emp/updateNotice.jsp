@@ -50,6 +50,7 @@
               <h3 class="box-title">공지사항</h3>
             </div>
             <form id="updateNotice" method="post" action="${pageContext.request.contextPath}/updateNotice">
+              <input type="hidden" id="noticeNo" name="noticeNo" value="${resultNotice.noticeNo}">
               <div class="box-body">
                 <div class="form-group">
                   <label for="noticeTitle">제목</label>

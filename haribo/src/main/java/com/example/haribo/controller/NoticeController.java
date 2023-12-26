@@ -19,10 +19,10 @@ import com.example.haribo.vo.Notice;
 public class NoticeController {
 	@Autowired private NoticeService noticeService;
 	
-	@GetMapping("/adminTest")
-	public String adminTest() {
+	@GetMapping("/adminHome")
+	public String adminHome() {
 	
-		return "emp/adminTest";
+		return "emp/adminHome";
 	}
 	
 	@GetMapping("/insertNotice")
