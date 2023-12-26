@@ -4,7 +4,7 @@
   <header class="main-header">
 
     <!-- Logo -->
-    <a href="trainerTest.jsp" class="logo">
+    <a href="trainerHome" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>H</b></span>
       <!-- logo for regular state and mobile devices -->
@@ -70,16 +70,16 @@
           <img src="emp/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
-          <p>Alexander Pierce</p>
+          <p>트레이너 이름</p>
           <!-- Status -->
-          <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+          <a href="#"><i class="fa fa-circle text-success"></i> 출근중💼</a>
         </div>
       </div>
 
       <!-- search form (Optional) -->
       <form action="#" method="get" class="sidebar-form">
         <div class="input-group">
-          <input type="text" name="q" class="form-control" placeholder="Search...">
+          <input type="text" name="q" class="form-control" placeholder="검색하기...">
           <span class="input-group-btn">
               <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
               </button>
@@ -90,34 +90,35 @@
 
       <!-- Sidebar Menu -->
       <ul class="sidebar-menu" data-widget="tree">
-        <li class="header">HEADER</li>
+        <li class="header">메뉴</li>
         <!-- Optionally, you can add icons to the links -->
-        <li class="active"><a href="#"><i class="fa fa-files-o"></i> <span>공지사항</span></a></li>
-        <li><a href="#"><i class="fa fa-files-o"></i> <span>문의사항</span></a></li>
+        <li><a href="${pageContext.request.contextPath}/trainerNotice"><i class="fa fa-bullhorn"></i> <span>공지사항</span></a></li>
+        <li><a href="${pageContext.request.contextPath}/trainerQuestion"><i class="fa fa-question"></i> <span>문의사항</span></a></li>
+        <li><a href="${pageContext.request.contextPath}/trainerReview"><i class="fa fa-pencil"></i> <span>리뷰게시판</span></a></li>
         <li class="treeview">
-          <a href="#"><i class="fa fa-edit"></i> <span>리뷰게시판</span>
+          <a href="#"><i class="fa fa-cube"></i> <span>재고관리</span>
             <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
               </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="#">서울</a></li>
-            <li><a href="#">제주도</a></li>
+            <li><a href="${pageContext.request.contextPath}/trainerStockForm">발주 신청</a></li>
+            <li><a href="${pageContext.request.contextPath}/trainerExpireForm">폐기 신청</a></li>
           </ul>
         </li>
 
 		<li class="treeview">
-          <a href="#"><i class="fa fa-book"></i> <span>재고관리</span>
+          <a href="${pageContext.request.contextPath}/trainerProgram"><i class="fa fa-book"></i> <span>프로그램 목록</span>
             <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
               </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="#">발주 신청</a></li>
-            <li><a href="#">재고 현황</a></li>
+            <li><a href="#">A 클래스</a></li>
+            <li><a href="#">B 클래스</a></li>
+            <li><a href="#">C 클래스</a></li>
           </ul>
         </li>
-            <li><a href="#"><i class="fa fa-link"></i> <span>프로그램 목록</span></a></li>
       </ul>
       
       <!-- /.sidebar-menu -->

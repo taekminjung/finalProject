@@ -40,138 +40,15 @@ desired effect
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
 
-  <!-- Main Header -->
-  <header class="main-header">
-
-    <!-- Logo -->
-    <a href="trainerHome.jsp" class="logo">
-      <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini"><b>H</b></span>
-      <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg">TEAM <b>HARIBO</b></span>
-    </a>
-
-    <!-- Header Navbar -->
-    <nav class="navbar navbar-static-top" role="navigation">
-      <!-- Sidebar toggle button-->
-      <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
-        <span class="sr-only">Toggle navigation</span>
-      </a>
-      <!-- Navbar Right Menu -->
-      <div class="navbar-custom-menu">
-        <ul class="nav navbar-nav">
-         
-
-                    
-          <!-- User Account Menu -->
-          <li class="dropdown user user-menu">
-            <!-- Menu Toggle Button -->
-            <a href="" class="dropdown-toggle" data-toggle="dropdown">
-              <!-- The user image in the navbar-->
-              <img src="emp/dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
-              <!-- hidden-xs hides the username on small devices so only the image appears. -->
-              <span class="hidden-xs">트레이너 이름</span>
-            </a>
-            <ul class="dropdown-menu">
-              <!-- The user image in the menu -->
-              <li class="user-header">
-                <img src="emp/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
-                <p>
-                  트레이너 이름
-                  <small>일한 기간</small>
-                </p>
-              </li>
-              
-              <!-- Menu Footer-->
-              <li class="user-footer">
-                <div class="pull-left">
-                  <a href="#" class="btn btn-default btn-flat">마이페이지</a>
-                </div>
-                <div class="pull-right">
-                  <a href="#" class="btn btn-default btn-flat">로그아웃</a>
-                </div>
-              </li>
-            </ul>
-          </li>
-          
-        </ul>
-      </div>
-    </nav>
-  </header>
-  <!-- Left side column. contains the logo and sidebar -->
-  <aside class="main-sidebar">
-
-    <!-- sidebar: style can be found in sidebar.less -->
-    <section class="sidebar">
-
-      <!-- Sidebar user panel (optional) -->
-      <div class="user-panel">
-        <div class="pull-left image">
-          <img src="emp/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
-        </div>
-        <div class="pull-left info">
-          <p>트레이너 이름</p>
-          <!-- Status -->
-          <a href="#"><i class="fa fa-circle text-success"></i> 출근중💼</a>
-        </div>
-      </div>
-
-      <!-- search form (Optional) -->
-      <form action="#" method="get" class="sidebar-form">
-        <div class="input-group">
-          <input type="text" name="q" class="form-control" placeholder="검색하기...">
-          <span class="input-group-btn">
-              <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
-              </button>
-            </span>
-        </div>
-      </form>
-      <!-- /.search form -->
-
-      <!-- Sidebar Menu -->
-      <ul class="sidebar-menu" data-widget="tree">
-        <li class="header">메뉴</li>
-        <!-- Optionally, you can add icons to the links -->
-        <li><a href="noticeList.jsp"><i class="fa fa-bullhorn"></i> <span>공지사항</span></a></li>
-        <li><a href="#"><i class="fa fa-question"></i> <span>문의사항</span></a></li>
-        <li><a href="#"><i class="fa fa-pencil"></i> <span>리뷰게시판</span></a></li>
-        <li class="treeview">
-          <a href="#"><i class="fa fa-cube"></i> <span>재고관리</span>
-            <span class="pull-right-container">
-                <i class="fa fa-angle-left pull-right"></i>
-              </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="#">발주 신청</a></li>
-            <li><a href="#">폐기 신청</a></li>
-          </ul>
-        </li>
-
-		<li class="treeview">
-          <a href="#"><i class="fa fa-book"></i> <span>프로그램 목록</span>
-            <span class="pull-right-container">
-                <i class="fa fa-angle-left pull-right"></i>
-              </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="#">A 클래스</a></li>
-            <li><a href="#">B 클래스</a></li>
-            <li><a href="#">C 클래스</a></li>
-          </ul>
-        </li>
-      </ul>
-      
-      <!-- /.sidebar-menu -->
-    </section>
-    <!-- /.sidebar -->
-  </aside>
-
-
+  <!-- header 시작 부분 -->
+  <!-- inc 폴더의 TrainerNavi.jsp를 include -->
+  <jsp:include page="/inc/TrainerNavi.jsp"></jsp:include>
+  <!-- header 끝나는 부분 -->
 
   <!-- aside 작성 뒤 항상 이 부분이 메인 컨텐츠 부분이 됨 -->
-  <!-- Content Wrapper. Contains page content -->
+  <!-- 헤더 + 내용 wrapper 부분 시작 -->
   <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
+    <!-- 페이지 메인 헤더 -->
     <section class="content-header">
       <h1>
         안녕하세요, {userid}님😀
@@ -180,17 +57,17 @@ desired effect
       </h1>
     </section>
 
-    <!-- 페이지 메인 내용 -->
+    <!-- 페이지 메인 내용 시작 -->
     <section class="content container-fluid">
 	안뇽딱따구리 여기에 캘린더 들어옴
       <!--------------------------
-        | Your Page Content Here |
+        | 페이지 메인 내용 여기에 적기 |
         -------------------------->
 
     </section>
-    <!-- /.content -->
+    <!-- 페이지 메인 내용 끝 -->
   </div>
-  <!-- /.content-wrapper -->
+  <!-- 헤더 + 내용 wrapper 부분 끝 -->
 
   <!-- 메인 footer 항상 적을 것 -->
   <footer class="main-footer">
@@ -199,7 +76,7 @@ desired effect
       팀 하리보
     </div>
     <!-- 저작권 명시 -->
-    <strong>Copyright &copy; 2023-2024 <a href="trainerHome.jsp">TEAM HARIBO</a>.</strong> All rights reserved.
+    <strong>Copyright &copy; 2023-2024 <a href="trainerHome">TEAM HARIBO</a>.</strong> All rights reserved.
   </footer>
 
 
