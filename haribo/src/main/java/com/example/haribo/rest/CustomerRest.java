@@ -19,7 +19,7 @@ public class CustomerRest {
 		
 		log.debug(idCk);
 		int cnt = customerService.idCkCnt(idCk);
-		log.debug(""+cnt);
+		log.debug("아이디 중복체크 ->>"+cnt);
 		
 		return cnt;
 	}

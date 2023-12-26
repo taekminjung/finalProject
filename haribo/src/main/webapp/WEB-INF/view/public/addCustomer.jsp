@@ -1,9 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-  <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>AdminLTE 2 | Registration Page</title>
   <!-- Tell the browser to be responsive to screen width -->
@@ -28,6 +27,27 @@
 
   <!-- Google Font -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+<!-- 공공 데이터 활용 주소 검색 api -->
+<script language="javascript">
+// opener관련 오류가 발생하는 경우 아래 주석을 해지하고, 사용자의 도메인정보를 입력합니다. ("팝업API 호출 소스"도 동일하게 적용시켜야 합니다.)
+//document.domain = "abc.go.kr";
+
+function goPopup(){
+	// 주소검색을 수행할 팝업 페이지를 호출합니다.
+	// 호출된 페이지(jusopopup.jsp)에서 실제 주소검색URL(https://business.juso.go.kr/addrlink/addrLinkUrl.do)를 호출하게 됩니다.
+	var pop = window.open("/haribo/popup/jusoPopup.jsp","pop","width=570,height=420, scrollbars=yes, resizable=yes"); 
+	
+	// 모바일 웹인 경우, 호출된 페이지(jusopopup.jsp)에서 실제 주소검색URL(https://business.juso.go.kr/addrlink/addrMobileLinkUrl.do)를 호출하게 됩니다.
+    //var pop = window.open("/popup/jusoPopup.jsp","pop","scrollbars=yes, resizable=yes"); 
+}
+
+
+function jusoCallBack(roadFullAddr){
+		// 팝업페이지에서 주소입력한 정보를 받아서, 현 페이지에 정보를 등록합니다.
+		document.form.roadFullAddr.value = roadFullAddr;
+}
+
+</script>
 </head>
 <body class="hold-transition register-page">
 <div class="register-box">
@@ -47,7 +67,7 @@
     <div class="col-xs-4" style="float:right">
       <button id="idCkBtn" class="btn btn-primary btn-block btn-flat">ID Check</button>
     </div><br><br>
-    <form id="form" action="${pageContext.request.contextPath}/addCustomer" method="post">
+    <form name="form" id="form" action="${pageContext.request.contextPath}/addCustomer" method="post">
       <div class="form-group has-feedback">
 	    <input id="customerId" type="hidden" class="form-control" placeholder="ID" name="customerId">
 	    <span class="glyphicon glyphicon-star form-control-feedback"></span>
@@ -78,9 +98,12 @@
         <input id="customerEmail" type="email" class="form-control" placeholder="Email" name="customerEmail">
         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
       </div>
+      <div id="callBackDiv">
       <div class="form-group has-feedback">
-        <input id="customerAddress" type="text" class="form-control" placeholder="Address" name="customerAddress">
+        <input id="roadFullAddr" type="text" class="form-control" placeholder="Address" name="customerAddress" readonly>
         <span class="glyphicon glyphicon-home form-control-feedback"></span>
+      </div>
+      <input type="button" onClick="goPopup();" value="Find Addr"/>
       </div>
      </form>
      <div class="row">
@@ -90,7 +113,7 @@
         </div>
         <!-- /.col -->
       </div>
-    <a href="login.html" class="text-center">I already have a membership</a>
+    <a href="${pageContext.request.contextPath}/login" class="text-center">I already have a membership</a>
   </div>
   <!-- /.form-box -->
 </div>
@@ -152,7 +175,7 @@
 	  }else if($('#customerEmail').val().length < 1){
 		  alert('이메일을 입력 해주세요')
 		  $('#customerEmail').focus()
-	  }else if($('#customerAddress').val().length < 1){
+	  }else if($('#roadFullAddr').val().length < 1){
 		  alert('주소를 입력 해주세요')
 	  }else{
 		  $('#form').submit()
