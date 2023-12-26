@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import com.example.haribo.service.CustomerService;
 import com.example.haribo.vo.Customer;
+import com.example.haribo.vo.CustomerDetail;
 
 import jakarta.servlet.http.HttpSession;
 import lombok.extern.slf4j.Slf4j;
@@ -35,6 +36,7 @@ public class CustomerController {
 		//리턴
 		return "redirect:/home";
 	}
+	
 	//회원 로그아웃
 	@GetMapping("/logout")
 	public String logoutCustomer(HttpSession session) {
@@ -42,6 +44,23 @@ public class CustomerController {
 		session.invalidate();
 		
 		//리턴
+		return "redirect:/home";
+	}
+	
+	//회원가입
+	@GetMapping("/addCustomer")
+	public String addCustomer() {
+		
+		return "public/addCustomer";
+	}
+	@PostMapping("/addCustomer")
+	public String addCustomer(Customer customer, CustomerDetail customerDetail) {
+		
+		log.debug(customer.toString());
+		log.debug(customerDetail.toString());
+		
+		customerService.addCustomer(customer, customerDetail);
+		
 		return "redirect:/home";
 	}
 }

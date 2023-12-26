@@ -4,9 +4,13 @@
 	<!-- 로그인 세션 유무에 따라 버튼 분기 -->
 	<c:set var="loginBtn" value="Log In"></c:set>
 	<c:set var="loginUrl" value="${pageContext.request.contextPath}/login"></c:set>
+	<c:set var="registBtn" value="Register"></c:set>
+	<c:set var="registUrl" value="${pageContext.request.contextPath}/addCustomer"></c:set>
 	<c:if test="${loginCustomer != null}">
 		<c:set var="loginBtn" value="Log Out"></c:set>
 		<c:set var="loginUrl" value="${pageContext.request.contextPath}/logout"></c:set>
+		<c:set var="registBtn" value="My Page"></c:set>
+		<c:set var="registUrl" value="${pageContext.request.contextPath}/customerMyPage"></c:set>
 	</c:if>
 	<!-- start header Area -->
 	<header id="header">
@@ -16,9 +20,7 @@
 					<div class="col-lg-6 col-sm-6 col-8 header-top-left no-padding">
 					</div>
 					<div class="col-lg-6 col-sm-6 col-4 header-top-right no-padding">
-						<c:if test="${loginCustomer != null}">
-							<a class="book-now" href="${pageContext.request.contextPath}/customerMyPage">My Page</a>
-						</c:if>
+						<a class="book-now" href="${registUrl}">${registBtn}</a>
 						<a class="book-now" href="${loginUrl}">${loginBtn}</a>
 					</div>
 				</div>

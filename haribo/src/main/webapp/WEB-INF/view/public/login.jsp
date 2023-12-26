@@ -31,7 +31,7 @@
 </head>
 <body class="hold-transition login-page">
 	<div class="container">
-		<div class="login-box" style="float:left">
+		<div class="login-box">
 		  <div class="login-logo">
 		    <b>Customer</b>
 		  </div>
@@ -40,7 +40,7 @@
 		    <form action="${pageContext.request.contextPath}/login" method="post">
 		      <div class="form-group has-feedback">
 		        <input type="text" class="form-control" placeholder="ID" name="customerId">
-		        <span class="glyphicon glyphicon-user form-control-feedback"></span>
+		        <span class="glyphicon glyphicon-star form-control-feedback"></span>
 		      </div>
 		      <div class="form-group has-feedback">
 		        <input type="password" class="form-control" placeholder="Password" name="customerPw">
@@ -67,8 +67,8 @@
 		  <!-- /.login-box-body -->
 		</div>
 		<!-- /.login-box -->
-		
-		<div class="login-box" style="float:right">
+		<div align="center">ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ</div>
+		<div class="login-box">
 		  <div class="login-logo">
 		    <b>Employee</b>
 		  </div>

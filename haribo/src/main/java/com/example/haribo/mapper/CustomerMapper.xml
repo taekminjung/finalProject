@@ -13,4 +13,42 @@
 		AND customer_pw = #{customerPw}	
 		AND customer_active = 'Y'	
 	</select>
+	
+	<select id="idCkCnt" parameterType="String" resultType="Integer">
+		SELECT 
+			COUNT(customer_id)
+		FROM customer
+		WHERE customer_id = #{idCk}
+	</select>
+	
+	<insert id="insertCustomer" parameterType="com.example.haribo.vo.Customer">
+		<selectKey order="AFTER" resultType="Integer" keyProperty="customerNo">
+			SELECT last_insert_id();
+		</selectKey>
+		INSERT INTO customer(
+			customer_id,
+			customer_pw
+		)VALUES(
+			#{customerId},
+			#{customerPw}
+		)
+	</insert>
+	
+	<insert id="insertCustomerDetail" parameterType="com.example.haribo.vo.CustomerDetail">
+		INSERT INTO customer_detail(
+			customer_no,
+			customer_name,
+			customer_gender,
+			customer_phone,
+			customer_address,
+			customer_email
+		)VALUES(
+			#{customerNo},
+			#{customerName},
+			#{customerGender},
+			#{customerPhone},
+			#{customerAddress},
+			#{customerEmail}
+		)
+	</insert>
 </mapper>
