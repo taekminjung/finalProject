@@ -1,5 +1,9 @@
 package com.example.haribo.controller;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,28 +19,61 @@ import com.example.haribo.vo.Notice;
 public class NoticeController {
 	@Autowired private NoticeService noticeService;
 	
+	@GetMapping("/adminTest")
+	public String adminTest() {
+	
+		return "emp/adminTest";
+	}
+	
 	@GetMapping("/insertNotice")
 	public String insertNotice() {
 		
-		return "insertNotice";
+		return "emp/insertNotice";
 	}
 	
 	@PostMapping("/insertNotice")
 	public String insertNotice(Notice notice) {
 		// mapper 호출
 		noticeService.insertNotice(notice);
+		
 		return "redirect:/noticeList";
 	}
 	
-	@GetMapping("/adminTest")
-	public String adminTest() {
-		return "adminTest";
+	@GetMapping("/deleteNotice")
+	public String deleteNotice(Notice notice) {
+		noticeService.deleteNotice(notice);
+		
+		return "redirect:/noticeList";
+	}
+	
+	@GetMapping("/updateNotice")
+	public String updateNotice(Notice notice, Model model) {
+		Notice resultNotice = noticeService.noticeOne(notice);
+		model.addAttribute("resultNotice" , resultNotice);
+		return "emp/updateNotice";
+	}
+
+	@PostMapping("/updateNotice")
+	public String updateNotice(Notice notice) {
+		int row = noticeService.updateNotice(notice);
+		if(row==0) {
+			System.out.println("업데이트 실패");
+			return "redirect:/updateNotice?noticeNo="+notice.getNoticeNo();
+		} else {
+			System.out.println("업데이트 성공");
+		}
+			return "redirect:/noticeList";
 	}
 	
 	@GetMapping("/noticeList")
 	public String noticeList(Model model, @RequestParam(defaultValue ="1")int currentPage) {
+		List<Notice> list = noticeService.noticeList(currentPage);
+		int lastPage = noticeService.lastPage();
+		model.addAttribute("currentPage", currentPage);
+		model.addAttribute("list", list);
+		model.addAttribute("lastPage", lastPage);
 		
-		return noticeService.noticeList(model, currentPage);
+		return "emp/noticeList";
 	}
 	
 	@GetMapping("/noticeOne")
@@ -47,7 +84,7 @@ public class NoticeController {
 		System.out.println(resultNotice.getNoticeTitle()+"<----getNoticeTitle");
 		System.out.println(resultNotice.getNoticeContent()+"<----getNoticeContent");
 		
-		return "noticeOne";
+		return "emp/noticeOne";
 	}
 	
 }

@@ -33,8 +33,9 @@ public class NoticeService {
 		return noticeMapper.noticeOne(notice);
 	}
 	
-	public String noticeList(Model model, 
+	public List<Notice> noticeList( 
 				@RequestParam(defaultValue ="1") int currentPage) {
+	
 		int rowPerPage = 10;
 		int beginRow = (currentPage-1)*rowPerPage;
 		int totalRow = noticeMapper.getTotalRow(rowPerPage);
@@ -42,14 +43,16 @@ public class NoticeService {
 		if(totalRow % rowPerPage !=0) {
 			lastPage +=1;
 		}
-	Map<String, Object> param = new HashMap<>();
-	param.put("beginRow", beginRow);
-	param.put("rowPerPage", rowPerPage);
-	List<Notice> list = noticeMapper.noticeList(param);
-	model.addAttribute("currentPage", currentPage);
-	model.addAttribute("list", list);
-	model.addAttribute("lastPage", lastPage);
-	
-		return "noticeList";
+
+		List<Notice> list = noticeMapper.noticeList(beginRow, rowPerPage);
+		return list;
 	}
+
+	public int lastPage() {
+		int rowPerPage = 10;
+		int totalRow = noticeMapper.getTotalRow(rowPerPage);
+		int lastPage = totalRow/rowPerPage;
+		return lastPage;
+	}
+
 }
