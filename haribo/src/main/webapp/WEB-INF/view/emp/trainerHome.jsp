@@ -44,7 +44,7 @@ desired effect
   <header class="main-header">
 
     <!-- Logo -->
-    <a href="trainerTest.jsp" class="logo">
+    <a href="trainerHome.jsp" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>H</b></span>
       <!-- logo for regular state and mobile devices -->
@@ -132,7 +132,7 @@ desired effect
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">메뉴</li>
         <!-- Optionally, you can add icons to the links -->
-        <li><a href="#"><i class="fa fa-bullhorn"></i> <span>공지사항</span></a></li>
+        <li><a href="noticeList.jsp"><i class="fa fa-bullhorn"></i> <span>공지사항</span></a></li>
         <li><a href="#"><i class="fa fa-question"></i> <span>문의사항</span></a></li>
         <li><a href="#"><i class="fa fa-pencil"></i> <span>리뷰게시판</span></a></li>
         <li class="treeview">
@@ -199,7 +199,7 @@ desired effect
       팀 하리보
     </div>
     <!-- 저작권 명시 -->
-    <strong>Copyright &copy; 2023-2024 <a href="trainerTest.jsp">TEAM HARIBO</a>.</strong> All rights reserved.
+    <strong>Copyright &copy; 2023-2024 <a href="trainerHome.jsp">TEAM HARIBO</a>.</strong> All rights reserved.
   </footer>
 
 
