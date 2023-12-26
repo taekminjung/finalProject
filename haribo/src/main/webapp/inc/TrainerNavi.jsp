@@ -14,9 +14,7 @@
     <!-- Header Navbar -->
     <nav class="navbar navbar-static-top" role="navigation">
       <!-- Sidebar toggle button-->
-      <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
-        <span class="sr-only">Toggle navigation</span>
-      </a>
+      <a href="" class="sidebar-toggle" data-toggle="push-menu" role="button"></a>
       <!-- Navbar Right Menu -->
       <div class="navbar-custom-menu">
         <ul class="nav navbar-nav">
@@ -70,9 +68,9 @@
           <img src="emp/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
-          <p>트레이너 이름</p>
+          <p><a href="">트레이너 이름</a></p>
           <!-- Status -->
-          <a href="#"><i class="fa fa-circle text-success"></i> 출근중💼</a>
+          <a href=""><i class="fa fa-circle text-success"></i> 출근중💼</a>
         </div>
       </div>
 
