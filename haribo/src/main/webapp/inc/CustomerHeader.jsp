@@ -27,11 +27,11 @@
 		<div class="container main-menu">
 			<div class="row align-items-center justify-content-between d-flex">
 				<div id="logo">
-					<a href="index.html"><img src="customer/img/logo.png" alt="" title="" /></a>
+					<a href="${pageContext.request.contextPath}/home"><img src="customer/img/logo.png" alt="" title="" /></a>
 				</div>
 				<nav id="nav-menu-container">
 					<ul class="nav-menu">
-						<li><a class="active" href="index.html">Home</a></li>
+						<li><a class="active" href="${pageContext.request.contextPath}/home">Home</a></li>
 						<li><a href="about.html">About</a></li>
 						<li><a href="trainers.html">Trainers</a></li>
 						<li class="menu-has-children"><a href="">Blog</a>
@@ -42,12 +42,12 @@
 						</li>
 						<li class="menu-has-children"><a href="">Pages</a>
 							<ul>
-								<li><a href="schedule.html">Schedule</a></li>
+								<li><a href="${pageContext.request.contextPath}/customerNoticeList">Notice</a></li>
 								<li><a href="courses.html">Courses</a></li>
 								<li><a href="elements.html">Elements</a></li>
 							</ul>
 						</li>
-						<li><a href="contact.html">Contact</a></li>
+						<li><a href="${pageContext.request.contextPath}/contact">Contact</a></li>
 					</ul>
 				</nav><!-- #nav-menu-container -->
 			</div>

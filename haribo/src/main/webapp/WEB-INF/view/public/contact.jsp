@@ -41,56 +41,8 @@
 
 <body>
 	<!-- start header Area -->
-	<header id="header">
-		<div class="header-top">
-			<div class="container">
-				<div class="row">
-					<div class="col-lg-6 col-sm-6 col-8 header-top-left no-padding">
-						<ul>
-							<li><a href="#"><i class="fa fa-facebook"></i></a></li>
-							<li><a href="#"><i class="fa fa-twitter"></i></a></li>
-							<li><a href="#"><i class="fa fa-dribbble"></i></a></li>
-							<li><a href="#"><i class="fa fa-behance"></i></a></li>
-						</ul>
-					</div>
-					<div class="col-lg-6 col-sm-6 col-4 header-top-right no-padding">
-						<a href="tel:+880 1234 654 953">
-							<span class="text">+880 1234 654 953</span>
-						</a>
-						<a class="book-now" href="#">Book Now</a>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="container main-menu">
-			<div class="row align-items-center justify-content-between d-flex">
-				<div id="logo">
-					<a href="index.html"><img src="customer/img/logo.png" alt="" title="" /></a>
-				</div>
-				<nav id="nav-menu-container">
-					<ul class="nav-menu">
-						<li><a href="index.html">Home</a></li>
-						<li><a href="about.html">About</a></li>
-						<li><a href="trainers.html">Trainers</a></li>
-						<li class="menu-has-children"><a href="">Blog</a>
-							<ul>
-								<li><a href="blog-home.html">Blog Home</a></li>
-								<li><a href="blog-single.html">Blog Single</a></li>
-							</ul>
-						</li>
-						<li class="menu-has-children"><a href="">Pages</a>
-							<ul>
-								<li><a href="schedule.html">Schedule</a></li>
-								<li><a href="courses.html">Courses</a></li>
-								<li><a href="elements.html">Elements</a></li>
-							</ul>
-						</li>
-						<li><a class="active" href="contact.html">Contact</a></li>
-					</ul>
-				</nav><!-- #nav-menu-container -->
-			</div>
-		</div>
-	</header>
+	<!-- inc 폴더의 CustomerHeader.jsp를 include -->
+	<jsp:include page="/inc/CustomerHeader.jsp"></jsp:include>
 	<!-- end header Area -->
 
 	<!-- start banner Area -->
@@ -146,7 +98,8 @@
 						var zoomControl = new kakao.maps.ZoomControl();
 						map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
 						
-						var iwContent = '<div style="padding:5px;">하리보팀 본사 <br><a href="https://map.kakao.com/link/map/Hello World!,33.450701,126.570667" style="color:blue" target="_blank">큰지도보기</a> <a href="https://map.kakao.com/link/to/Hello World!,37.476502, 126.880176" style="color:blue" target="_blank">길찾기</a></div>', // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+						 // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+						var iwContent = '<div style="padding:5px;">하리보팀 본사 <br><a href="https://map.kakao.com/link/map/하리보팀 본사,37.476502, 126.880176" style="color:blue" target="_blank">큰지도보기</a> <a href="https://map.kakao.com/link/to/Hello World!,37.476502, 126.880176" style="color:blue" target="_blank">길찾기</a></div>',
 					    iwPosition = new kakao.maps.LatLng(37.476502, 126.880176); //인포윈도우 표시 위치
 
 					// 인포윈도우 생성
@@ -234,10 +187,10 @@
 					<div class="single-footer-widget">
 						<h4>Contact Us</h4>
 						<p>
-							56/8, rockybeach road, santa monica, Los angeles, California - 59620.
+							대한민국/서울, 금천구 가산디지털2로 95, KM타워,3층
 						</p>
 						<p class="number">
-							012-6532-568-9746 <br> 012-6532-569-9748
+							+82 02)818-7950<br> 012-6532-569-9748
 						</p>
 					</div>
 				</div>
@@ -280,20 +233,20 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 	</footer>
 	<!-- End footer Area -->
 
-	<script src="js/vendor/jquery-2.2.4.min.js"></script>
+	<script src="customer/js/vendor/jquery-2.2.4.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
 	 crossorigin="anonymous"></script>
-	<script src="js/vendor/bootstrap.min.js"></script>
-	<script src="js/easing.min.js"></script>
-	<script src="js/hoverIntent.js"></script>
-	<script src="js/superfish.min.js"></script>
-	<script src="js/jquery.ajaxchimp.min.js"></script>
-	<script src="js/jquery.magnific-popup.min.js"></script>
-	<script src="js/jquery.tabs.min.js"></script>
-	<script src="js/jquery.nice-select.min.js"></script>
-	<script src="js/owl.carousel.min.js"></script>
-	<script src="js/mail-script.js"></script>
-	<script src="js/main.js"></script>
+	<script src="customer/js/vendor/bootstrap.min.js"></script>
+	<script src="customer/js/easing.min.js"></script>
+	<script src="customer/js/hoverIntent.js"></script>
+	<script src="customer/js/superfish.min.js"></script>
+	<script src="customer/js/jquery.ajaxchimp.min.js"></script>
+	<script src="customer/js/jquery.magnific-popup.min.js"></script>
+	<script src="customer/js/jquery.tabs.min.js"></script>
+	<script src="customer/js/jquery.nice-select.min.js"></script>
+	<script src="customer/js/owl.carousel.min.js"></script>
+	<script src="customer/js/mail-script.js"></script>
+	<script src="customer/js/main.js"></script>
 </body>
 
 </html>

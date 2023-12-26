@@ -86,5 +86,25 @@ public class NoticeController {
 		
 		return "emp/noticeOne";
 	}
+	@GetMapping("/customerNoticeList")
+	public String publicNoticeList(Model model, @RequestParam(defaultValue ="1")int currentPage) {
+				List<Notice> list = noticeService.noticeList(currentPage);
+				int lastPage = noticeService.lastPage();
+				model.addAttribute("currentPage", currentPage);
+				model.addAttribute("list", list);
+				model.addAttribute("lastPage", lastPage);
+				
+		return "public/customerNoticeList";
+	}
+	@GetMapping("/customerNoticeOne")
+	public String customerNoticeOne(Model model, Notice notice) {
+
+		Notice resultNotice = noticeService.noticeOne(notice);
+		model.addAttribute("resultNotice", resultNotice);
+		System.out.println(resultNotice.getNoticeNo()+"<----getNoticeNo");
+		System.out.println(resultNotice.getNoticeTitle()+"<----getNoticeTitle");
+		System.out.println(resultNotice.getNoticeContent()+"<----getNoticeContent");
 	
+		return "public/customerNoticeOne";
+	}
 }
