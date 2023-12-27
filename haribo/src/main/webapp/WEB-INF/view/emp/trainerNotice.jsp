@@ -37,8 +37,8 @@
       <div class="row">
         <div class="col-xs-12">
           <div class="box">
-            <div class="box-body table-responsive no-padding">
-              <table class="table table-hover">
+            <div class="box-body table-responsive no-padding text-center">
+              <table class="table table-hover text-center">
                 <tr>
                   <th>번호</th>
                   <th>제목</th>

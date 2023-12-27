@@ -71,18 +71,22 @@
               <div class="box-body">
                 <div class="form-group">
                   <label for="noticeTitle">제목</label>
-                  <input type="text" class="form-control" id="noticeTitle" name="noticeTitle" disabled value="${resultNotice.noticeTitle}">
+                  <input type="text" class="form-control" id="noticeTitle" name="noticeTitle" readonly value="${resultNotice.noticeTitle}">
                 </div>
                 <div class="form-group">
                   <label for="noticeContent">내용</label>
-					<textarea class="form-control" id="noticeContent" name="noticeContent"  rows="20" cols="50" disabled>${resultNotice.noticeContent }</textarea>
+					<textarea class="form-control" id="noticeContent" name="noticeContent"  rows="20" cols="50" readonly>${resultNotice.noticeContent }</textarea>
                 </div>
                 <div class="box-footer">
                 	<a class="btn btn-primary" href="${pageContext.request.contextPath}/updateNotice?noticeNo=${resultNotice.noticeNo}">수정</a>
                     <a class="btn btn-danger" href="${pageContext.request.contextPath}/deleteNotice?noticeNo=${resultNotice.noticeNo}">삭제</a>
-              </div>
+                </div>
+               </div>
             </form>
           </div>
+          </div>
+          </div>
+          </section>
 
 
   <!-- /.content-wrapper -->
