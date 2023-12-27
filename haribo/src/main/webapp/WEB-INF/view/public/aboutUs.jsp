@@ -140,11 +140,11 @@
 				<c:forEach var="r" items="${list}">
 						<img class="mx-auto rounded-circle" src="customer/img/t1.png" alt="">	<!-- ${r.customerImgFileName} -->
 						<p class="desc">
-							${t.reviewContent}
+							${r.reviewContent}
 						</p>
 						<h4>${r.customerId }</h4>
 						<p>
-							${r.customerName}
+					
 						</p>
 				</c:forEach>
 					</div>

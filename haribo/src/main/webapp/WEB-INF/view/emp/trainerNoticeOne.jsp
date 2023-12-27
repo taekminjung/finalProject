@@ -37,21 +37,17 @@
       <div class="row">
         <div class="col-xs-12">
           <div class="box">
-            <div class="box-body table-responsive no-padding text-center">
-              <table class="table table-hover text-center">
-                <tr>
-                  <th>번호</th>
-                  <th>제목</th>
-                  <th>작성자</th>
-                  <th>작성일</th>
-                </tr>
-                
+            <div class="box-body">
+              <div><p>${resultNotice.noticeTitle}</p></div>
+              
+              <div class="form-group">
                
-              </table>
-            </div>
+                <textarea class="form-control" rows="3" readonly>${resultNotice.noticeContent}</textarea>
+              </div>
+            </div>   
             <!-- /.box-body -->
-          </div>
-          <!-- /.box -->
+          </div>  
+          <!-- /.box -->        
         </div>
       </div>
     </section>
