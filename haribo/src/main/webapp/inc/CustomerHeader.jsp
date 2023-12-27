@@ -35,7 +35,7 @@
 					<ul class="nav-menu">
 						<li><a class="active" href="${pageContext.request.contextPath}/home">Home</a></li>
 						<li><a href="${pageContext.request.contextPath}/aboutUs">About</a></li>
-						<li><a href="trainers.html">Trainers</a></li>
+						<li><a href="${pageContext.request.contextPath}/trainers">Trainers</a></li>
 						<li class="menu-has-children"><a href="">Blog</a>
 							<ul>
 								<li><a href="blog-home.html">Blog Home</a></li>
@@ -46,7 +46,7 @@
 							<ul>
 								<li><a href="${pageContext.request.contextPath}/customerNoticeList">Notice</a></li>
 								<li><a href="courses.html">Courses</a></li>
-								<li><a href="elements.html">Elements</a></li>
+								<li><a href="${pageContext.request.contextPath}/reviewList">Review</a></li>
 							</ul>
 						</li>
 						<li><a href="${pageContext.request.contextPath}/contact">Contact</a></li>

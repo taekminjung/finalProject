@@ -78,14 +78,29 @@
 							level: 4
 						};	
 						var map = new kakao.maps.Map(container, options);
-						// 마커가 표시될 위치(본사위치)
+						// 마커가 표시될 위치(본사,제주,부산)
 						var markerPosition  = new kakao.maps.LatLng(37.476502, 126.880176); 
-						// 마커 생성
+						var markerPosition1  = new kakao.maps.LatLng(33.496779, 126.531605);
+						var markerPosition2  = new kakao.maps.LatLng(35.141186, 129.059647); 
+						// 서울 본사 마커 생성
 						var marker = new kakao.maps.Marker({
 						    position: markerPosition
 						});
+						//제주지점
+						var marker1 = new kakao.maps.Marker({
+						    position: markerPosition1
+						});
+						//부산 지점
+						var marker2 = new kakao.maps.Marker({
+						    position: markerPosition2
+						});
 						// 마커가 지도 위에 표시되도록 설정
+						//서울본사
 						marker.setMap(map);
+						//제주지점
+						marker1.setMap(map);
+						//부산지점
+						marker2.setMap(map);
 
 						// 일반 지도와 스카이뷰로 지도 타입을 전환할 수 있는 지도타입 컨트롤을 생성
 						var mapTypeControl = new kakao.maps.MapTypeControl();
@@ -100,16 +115,30 @@
 						
 						 // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
 						var iwContent = '<div style="padding:5px;">하리보팀 본사 <br><a href="https://map.kakao.com/link/map/하리보팀 본사,37.476502, 126.880176" style="color:blue" target="_blank">큰지도보기</a> <a href="https://map.kakao.com/link/to/Hello World!,37.476502, 126.880176" style="color:blue" target="_blank">길찾기</a></div>',
-					    iwPosition = new kakao.maps.LatLng(37.476502, 126.880176); //인포윈도우 표시 위치
-
+					    iwPosition = new kakao.maps.LatLng(37.476502, 126.880176); 
+						//제주 인포윈도우
+						var iwContent1 = '<div style="padding:5px;">하리보팀 제주지점 <br><a href="https://map.kakao.com/link/map/하리보팀 제주지점,33.496779, 126.531605" style="color:blue" target="_blank">큰지도보기</a> <a href="https://map.kakao.com/link/to/Hello World!,33.496779, 126.531605" style="color:blue" target="_blank">길찾기</a></div>',
+					    iwPosition1 = new kakao.maps.LatLng(33.496779, 126.531605);
+						var iwContent2 = '<div style="padding:5px;">하리보팀 부산지점 <br><a href="https://map.kakao.com/link/map/하리보팀 제주지점,35.141186, 129.059647" style="color:blue" target="_blank">큰지도보기</a> <a href="https://map.kakao.com/link/to/Hello World!,35.141186, 129.059647" style="color:blue" target="_blank">길찾기</a></div>',
+					    iwPosition2 = new kakao.maps.LatLng(35.141186, 129.059647);
 					// 인포윈도우 생성
 					var infowindow = new kakao.maps.InfoWindow({
 					    position : iwPosition, 
 					    content : iwContent 
 					});
+					var infowindow1 = new kakao.maps.InfoWindow({
+					    position : iwPosition1, 
+					    content : iwContent1 
+					});
+					var infowindow2 = new kakao.maps.InfoWindow({
+					    position : iwPosition2, 
+					    content : iwContent2 
+					});
 					  
 					// 마커 위에 인포윈도우를 표시/ 두번째 파라미터인 marker를 넣어주지 않으면 지도 위에 표시
 					infowindow.open(map, marker); 
+					infowindow1.open(map, marker); 
+					infowindow2.open(map, marker); 
 			</script>
 			
 				<div class="col-lg-4 d-flex flex-column address-wrap">
@@ -147,7 +176,7 @@
 					<form class="form-area contact-form text-right" id="contact" action="${pageContext.request.contextPath}/contact" method="post">
 						<div class="row">
 							<div class="col-lg-6 form-group">
-								<label for="date">생년월일을 선택해주세요: <input type="date"  name="customerBirth" max="2077-06-20" min="1900-01-01"></label>
+								<label for="date">신청자의 생년월일을 선택해주세요: <input type="date"  name="customerBirth" max="2077-06-20" min="1900-01-01"></label>
 								<div><br></div>
 							<label for="datetime">원하시는 상담 날짜와 시간을 선택해주세요:
   							<input type="datetime-local" name="customerContactDate" max="2100-01-01T21:00" min="2077-06-05T12:30"></label>
@@ -160,7 +189,7 @@
 							</div>
 							<div class="col-lg-12">
 								<div class="alert-msg" style="text-align: left;"></div>
-								<button class="genric-btn primary" style="float: right;">Send Message</button>
+								<button class="genric-btn primary" style="float: right;">상담 신청</button>
 							</div>
 						</div>
 					</form>
