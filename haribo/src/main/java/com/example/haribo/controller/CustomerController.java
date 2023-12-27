@@ -1,7 +1,10 @@
 package com.example.haribo.controller;
 
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -59,8 +62,27 @@ public class CustomerController {
 		log.debug(customer.toString());
 		log.debug(customerDetail.toString());
 		
+		//서비스 호출
 		customerService.addCustomer(customer, customerDetail);
 		
+		//리턴
 		return "redirect:/home";
+	}
+	
+	//회원 상세 정보 출력
+	@GetMapping("/customerInfo")
+	public String customerInfo(HttpSession session, Customer customer, Model model) {
+		// 세션 검사
+		if(session.getAttribute("loginCustomer") == null) {
+			return "redirect:/login";
+		}
+		
+		//서비스 호출
+		Map<String,Object> custInfoMap = customerService.getCustomerInfo(customer);
+		log.debug(custInfoMap.toString());
+		model.addAttribute("custInfoMap", custInfoMap);
+		
+		//리턴
+		return "customerInfo";
 	}
 }

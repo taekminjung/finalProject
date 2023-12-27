@@ -51,4 +51,20 @@
 			#{customerEmail}
 		)
 	</insert>
+	
+	<select id="selectCustomerInfo" parameterType="com.example.haribo.vo.Customer" resultType="java.util.Map">
+		SELECT
+			c.customer_no customerNo,
+			c.customer_id customerId,
+			cd.customer_name customerName,
+			cd.customer_gender customerGenger,
+			cd.customer_height customerHeight,
+			cd.customer_weight customerWeight,
+			cd.customer_phone customerPhone,
+			cd.customer_address customerAddress,
+			cd.customer_email customerEmail
+		FROM customer c INNER JOIN customer_detail cd
+		ON c.customer_no = cd.customer_no
+		WHERE c.customer_no = #{customerNo}
+	</select>
 </mapper>

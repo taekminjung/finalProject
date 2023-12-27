@@ -1,5 +1,7 @@
 package com.example.haribo.mapper;
 
+import java.util.Map;
+
 import org.apache.ibatis.annotations.Mapper;
 
 import com.example.haribo.vo.Customer;
@@ -18,4 +20,7 @@ public interface CustomerMapper {
 	
 	// 회원가입(detail)
 	int insertCustomerDetail(CustomerDetail customerDetail);
+	
+	//회원 상세정보 출력
+	Map<String,Object> selectCustomerInfo(Customer customer);
 }
