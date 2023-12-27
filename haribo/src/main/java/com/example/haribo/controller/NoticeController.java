@@ -1,9 +1,6 @@
 package com.example.haribo.controller;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,7 +8,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.example.haribo.mapper.NoticeMapper;
 import com.example.haribo.service.NoticeService;
 import com.example.haribo.vo.Notice;
 
@@ -106,5 +102,27 @@ public class NoticeController {
 		System.out.println(resultNotice.getNoticeContent()+"<----getNoticeContent");
 	
 		return "public/customerNoticeOne";
+	}
+	
+	@GetMapping("/trainerNotice")
+	public String trainerNotice(Model model, @RequestParam(defaultValue ="1")int currentPage) {
+				List<Notice> list = noticeService.noticeList(currentPage);
+				int lastPage = noticeService.lastPage();
+				model.addAttribute("currentPage", currentPage);
+				model.addAttribute("list", list);
+				model.addAttribute("lastPage", lastPage);
+				
+		return "emp/trainerNotice";
+	}
+	@GetMapping("/trainerNoticeOne")
+	public String trainerNoticeOne(Model model, Notice notice) {
+
+		Notice resultNotice = noticeService.noticeOne(notice);
+		model.addAttribute("resultNotice", resultNotice);
+		System.out.println(resultNotice.getNoticeNo()+"<----getNoticeNo");
+		System.out.println(resultNotice.getNoticeTitle()+"<----getNoticeTitle");
+		System.out.println(resultNotice.getNoticeContent()+"<----getNoticeContent");
+	
+		return "emp/trainerNoticeOne";
 	}
 }
