@@ -32,9 +32,12 @@ public class CustomerService {
 	}
 	
 	//회원가입
-	public void addCustomer(Customer paramCustomer, CustomerDetail paramCustomerDetail) {
+	public void addCustomer(Customer paramCustomer, CustomerDetail paramCustomerDetail, String emailId, String emailDomain) {
 		log.debug(paramCustomer.toString());
 		log.debug(paramCustomerDetail.toString());
+		
+		String customerEmail = emailId + emailDomain;
+		log.debug(customerEmail);
 		int row = customerMapper.insertCustomer(paramCustomer);
 		if(row != 1) {
 			//실패 시 강제로 예외를 발생시켜 애노테이션 Transachional 작동
@@ -42,6 +45,7 @@ public class CustomerService {
 		}else {
 			log.debug(paramCustomer.getCustomerNo()+"");
 			paramCustomerDetail.setCustomerNo(paramCustomer.getCustomerNo());
+			paramCustomerDetail.setCustomerEmail(customerEmail);
 			int row2 = customerMapper.insertCustomerDetail(paramCustomerDetail);
 			if(row2 != 1) {
 				//실패 시 강제로 예외를 발생시켜 애노테이션 Transachional 작동
@@ -54,6 +58,14 @@ public class CustomerService {
 	public Map<String,Object> getCustomerInfo(Customer paramCustomer){
 		log.debug(paramCustomer.toString());
 		Map<String,Object> custInfoMap = customerMapper.selectCustomerInfo(paramCustomer);
+		
+		//DB에서 뽑아온 email을 아이디와 도메인으로 분리시켜 다시 맵에 넣기
+		String customerEmail = custInfoMap.get("customerEmail").toString();
+		String emailId = customerEmail.substring(0,customerEmail.indexOf("@"));
+		String emailDomain = customerEmail.substring(customerEmail.indexOf("@"));
+		log.debug(emailId+"//"+emailDomain);
+		custInfoMap.put("emailId", emailId);
+		custInfoMap.put("emailDomain", emailDomain);
 		log.debug(custInfoMap+"");
 		
 		return custInfoMap;

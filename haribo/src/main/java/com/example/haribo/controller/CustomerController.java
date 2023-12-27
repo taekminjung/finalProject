@@ -57,13 +57,14 @@ public class CustomerController {
 		return "public/addCustomer";
 	}
 	@PostMapping("/addCustomer")
-	public String addCustomer(Customer customer, CustomerDetail customerDetail) {
+	public String addCustomer(Customer customer, CustomerDetail customerDetail, String emailId, String emailDomain) {
 		
 		log.debug(customer.toString());
 		log.debug(customerDetail.toString());
+		log.debug(emailId+emailDomain);
 		
 		//서비스 호출
-		customerService.addCustomer(customer, customerDetail);
+		customerService.addCustomer(customer, customerDetail, emailId, emailDomain);
 		
 		//리턴
 		return "redirect:/home";

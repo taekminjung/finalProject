@@ -98,7 +98,6 @@
 							<li><a href="#"><i class="fa fa-behance"></i></a></li>
 						</ul>
 					</div>
-					
 				</div>
 			</div>
 			<div class="col-lg-7 comments-area">
@@ -107,7 +106,7 @@
 					<div class="row">
 						<div class="col-lg-6">
 							<p>이름</p>
-							<input type="text" name="customerName" value=${custInfoMap.customerName } class="single-input">
+							<input type="text" name="customerName" value="${custInfoMap.customerName }" class="single-input">
 						</div>
 						<div class="col-lg-6">
 							<p>성별</p>
@@ -128,13 +127,23 @@
 						<p>전화번호</p>
 						<input type="text" name="customerPhone" value=${custInfoMap.customerPhone } class="single-input">
 					</div><br><br>
-					<div>
-						<p>이메일</p>
-						<input type="text" name="customerEmail" value=${custInfoMap.customerEmail } class="single-input">
+					<div class="row">
+						<div class="col-lg-6">
+							<p>이메일 아이디</p>
+							<input type="text" name="emailId" value="${custInfoMap.emailId }" class="single-input">
+						</div>
+						<div class="default-select col-lg-6" id="default-select">
+							<p>이메일 도메인</p>
+							<select name="emailDomain">
+								<option value="${custInfoMap.emailDomain }" disabled selected>${custInfoMap.emailDomain }</option>
+								<option value="@naver.com">@naver.com</option>
+								<option value="@gmail.com">@gmail.com</option>
+							</select>
+						</div>
 					</div><br><br>
 					<div id="callBackDiv">
 						<p style="float:left">주소</p><input type="button" onClick="goPopup();" value="Find Addr" style="float:right"/>
-						<input id="roadFullAddr" type="text" name="customerAddress" value=${custInfoMap.customerAddress } class="single-input" readonly>
+						<input id="roadFullAddr" type="text" name="customerAddress" value="${custInfoMap.customerAddress }" class="single-input" readonly>
 					</div>
 				</form><br>
 				<div align="center">

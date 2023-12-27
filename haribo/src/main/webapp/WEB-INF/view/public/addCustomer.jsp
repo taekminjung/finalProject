@@ -95,9 +95,13 @@ function jusoCallBack(roadFullAddr){
         <span class="glyphicon glyphicon-phone form-control-feedback"></span>
       </div>
       <div class="form-group has-feedback">
-        <input id="customerEmail" type="email" class="form-control" placeholder="Email" name="customerEmail">
+      	<input id="emailId" type="text" class="form-control" placeholder="Email ID" name="emailId">
         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
-      </div>
+        <select class="form-control" name="emailDomain">
+        	<option value="@naver.com">@naver.com</option>
+        	<option value="@google.com">@gmail.com</option>
+        </select>
+	  </div>
       <div id="callBackDiv">
       <div class="form-group has-feedback">
         <input id="roadFullAddr" type="text" class="form-control" placeholder="Address" name="customerAddress" readonly>
@@ -172,9 +176,9 @@ function jusoCallBack(roadFullAddr){
 	  }else if($('#customerPhone').val().length < 1){
 		  alert('전화번호를 입력 해주세요')
 		  $('#customerPhone').focus()
-	  }else if($('#customerEmail').val().length < 1){
+	  }else if($('#emailId').val().length < 1){
 		  alert('이메일을 입력 해주세요')
-		  $('#customerEmail').focus()
+		  $('#emailId').focus()
 	  }else if($('#roadFullAddr').val().length < 1){
 		  alert('주소를 입력 해주세요')
 	  }else{
