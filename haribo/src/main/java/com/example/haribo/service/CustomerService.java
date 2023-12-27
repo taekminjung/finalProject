@@ -54,7 +54,7 @@ public class CustomerService {
 	public Map<String,Object> getCustomerInfo(Customer paramCustomer){
 		log.debug(paramCustomer.toString());
 		Map<String,Object> custInfoMap = customerMapper.selectCustomerInfo(paramCustomer);
-		log.debug(custInfoMap.toString());
+		log.debug(custInfoMap+"");
 		
 		return custInfoMap;
 	}

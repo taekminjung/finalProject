@@ -79,10 +79,10 @@ public class CustomerController {
 		
 		//서비스 호출
 		Map<String,Object> custInfoMap = customerService.getCustomerInfo(customer);
-		log.debug(custInfoMap.toString());
+		log.debug(custInfoMap+"");
 		model.addAttribute("custInfoMap", custInfoMap);
 		
 		//리턴
-		return "customerInfo";
+		return "customer/customerInfo";
 	}
 }

@@ -57,7 +57,7 @@
 			c.customer_no customerNo,
 			c.customer_id customerId,
 			cd.customer_name customerName,
-			cd.customer_gender customerGenger,
+			cd.customer_gender customerGender,
 			cd.customer_height customerHeight,
 			cd.customer_weight customerWeight,
 			cd.customer_phone customerPhone,
