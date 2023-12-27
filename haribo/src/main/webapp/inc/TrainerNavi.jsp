@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
+<!-- 로그인 했을 시 emp 정보 출력할 것 -->
+
+
+
+
 <!-- Main Header -->
   <header class="main-header">
 
@@ -18,9 +23,7 @@
       <!-- Navbar Right Menu -->
       <div class="navbar-custom-menu">
         <ul class="nav navbar-nav">
-         
-
-                    
+  
           <!-- User Account Menu -->
           <li class="dropdown user user-menu">
             <!-- Menu Toggle Button -->

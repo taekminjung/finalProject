@@ -11,12 +11,6 @@ public class TrainerController {
 		return "emp/trainerHome";
 	}
 	
-	@GetMapping("/trainerNotice")
-	// 트레이너 공지사항 페이지
-	public String trainerNotice() {
-		return "emp/trainerNotice";
-	}
-	
 	@GetMapping("/trainerQuestion")
 	// 트레이너 문의사항 페이지
 	public String trainerQuestion() {
