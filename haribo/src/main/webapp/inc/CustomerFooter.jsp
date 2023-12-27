@@ -8,8 +8,7 @@
 					<div class="single-footer-widget">
 						<h4>About Us</h4>
 						<p>
-							The state of Utah in the United States is home to lots of beautiful National Parks, & Bryce Canyon National Park ranks as
-							three of the magnificent & awe inspiring.
+							구디아카데미 72기 하리보팀 프로젝트
 						</p>
 					</div>
 				</div>
@@ -17,10 +16,10 @@
 					<div class="single-footer-widget">
 						<h4>Contact Us</h4>
 						<p>
-							56/8, rockybeach road, santa monica, Los angeles, California - 59620.
+							대한민국/서울, 금천구 가산디지털2로 95, KM타워,3층.
 						</p>
 						<p class="number">
-							012-6532-568-9746 <br> 012-6532-569-9748
+							+82 02)818-7950
 						</p>
 					</div>
 				</div>

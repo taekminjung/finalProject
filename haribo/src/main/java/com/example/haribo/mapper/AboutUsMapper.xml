@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.haribo.mapper.AboutUsMapper">
+<select id="reviewList" parameterType="java.util.Map" resultType="com.example.haribo.vo.Review" >
+	SELECT 
+	r.review_no reviewNo,
+	r.review_title reviewTitle,
+	r.review_content reviewContent,
+	r.createdate,
+	m.customer_id customerId,
+	d.customer_name customerName,
+	i.customer_img_file_name customerImgFileName
+	FROM review r INNER JOIN program_reservation p
+	ON r.program_reservation_no = p.program_reservation_no
+	INNER JOIN payment m 
+	ON p.payment_no = m.payment_no
+	INNER JOIN customer c 
+	ON m.customer_id = c.customer_id
+	INNER JOIN customer_detail d
+	ON c.customer_no = d.customer_no
+	INNER JOIN customer_img i 
+	ON d.customer_no = i.customer_no
+	ORDER BY review_no DESC
+	LIMIT #{beginRow}, #{rowPerPage}
+</select>
+
+	<select id="getTotalRow" parameterType="int" resultType="int">
+		SELECT COUNT(*)
+		FROM notice
+	</select>
+</mapper>
