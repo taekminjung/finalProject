@@ -6,8 +6,7 @@
 <head>
 <!-- services 라이브러리 불러오기 -->
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=APIKEY&libraries=services"></script>
-<!-- services와 clusterer, drawing 라이브러리 불러오기 -->
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=APIKEY&libraries=services,clusterer,drawing"></script>
+
 	<!-- Mobile Specific Meta -->
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<!-- Favicon-->
@@ -75,7 +74,7 @@
 						var container = document.getElementById('map');
 						var options = {
 							center: new kakao.maps.LatLng(37.476502, 126.880176),
-							level: 4
+							level: 14
 						};	
 						var map = new kakao.maps.Map(container, options);
 						// 마커가 표시될 위치(본사,제주,부산)
@@ -119,9 +118,9 @@
 						//제주 인포윈도우
 						var iwContent1 = '<div style="padding:5px;">하리보팀 제주지점 <br><a href="https://map.kakao.com/link/map/하리보팀 제주지점,33.496779, 126.531605" style="color:blue" target="_blank">큰지도보기</a> <a href="https://map.kakao.com/link/to/Hello World!,33.496779, 126.531605" style="color:blue" target="_blank">길찾기</a></div>',
 					    iwPosition1 = new kakao.maps.LatLng(33.496779, 126.531605);
-						var iwContent2 = '<div style="padding:5px;">하리보팀 부산지점 <br><a href="https://map.kakao.com/link/map/하리보팀 제주지점,35.141186, 129.059647" style="color:blue" target="_blank">큰지도보기</a> <a href="https://map.kakao.com/link/to/Hello World!,35.141186, 129.059647" style="color:blue" target="_blank">길찾기</a></div>',
+						var iwContent2 = '<div style="padding:5px;">하리보팀 부산지점 <br><a href="https://map.kakao.com/link/map/하리보팀 부산지점,35.141186, 129.059647" style="color:blue" target="_blank">큰지도보기</a> <a href="https://map.kakao.com/link/to/Hello World!,35.141186, 129.059647" style="color:blue" target="_blank">길찾기</a></div>',
 					    iwPosition2 = new kakao.maps.LatLng(35.141186, 129.059647);
-					// 인포윈도우 생성
+					// 인포윈도우 생성(서울,제주,부산)
 					var infowindow = new kakao.maps.InfoWindow({
 					    position : iwPosition, 
 					    content : iwContent 
@@ -136,9 +135,12 @@
 					});
 					  
 					// 마커 위에 인포윈도우를 표시/ 두번째 파라미터인 marker를 넣어주지 않으면 지도 위에 표시
-					infowindow.open(map, marker); 
-					infowindow1.open(map, marker); 
-					infowindow2.open(map, marker); 
+					//본사
+					infowindow.open(map, marker);
+					//제주
+					infowindow1.open(map, marker1);
+					//부산
+					infowindow2.open(map, marker2);
 			</script>
 			
 				<div class="col-lg-4 d-flex flex-column address-wrap">
