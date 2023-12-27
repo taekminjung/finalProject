@@ -137,7 +137,7 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="#"><i class="fa fa-users"></i>직원 리스트</a></li>
+            <li><a href="${pageContext.request.contextPath}/employeeList"><i class="fa fa-users"></i>직원 리스트</a></li>
             <li><a href="${pageContext.request.contextPath}/addEmployee"><i class="fa fa-user-plus"></i>직원 추가</a></li>
           </ul>
         </li>

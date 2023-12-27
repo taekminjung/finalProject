@@ -52,6 +52,9 @@ public class NoticeService {
 		int rowPerPage = 10;
 		int totalRow = noticeMapper.getTotalRow(rowPerPage);
 		int lastPage = totalRow/rowPerPage;
+		if(totalRow % rowPerPage !=0) {
+			lastPage +=1;
+		}
 		return lastPage;
 	}
 

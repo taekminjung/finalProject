@@ -1,5 +1,6 @@
 package com.example.haribo.mapper;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -14,11 +15,15 @@ public interface EmployeeMapper {
 		int insertEmployee(Employee employee);
 		
 		int insertEmployeeDetail(EmployeeDetail employeeDetail);
-
-		List<Employee> employeeList (Map<String, Object> param);
+		
+		List<HashMap<String, Object>> employeeList (int beginRow, int rowPerPage);
 		
 		int deleteEmployee(Employee employee);
 		
 		int updateEmployee(Employee employee);
+		
+		int idCkEmp(String idCk);
+		
+		int getTotalRow(int rowPerPage);
 		
 }

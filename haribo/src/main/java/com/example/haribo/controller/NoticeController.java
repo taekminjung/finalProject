@@ -68,6 +68,7 @@ public class NoticeController {
 		model.addAttribute("currentPage", currentPage);
 		model.addAttribute("list", list);
 		model.addAttribute("lastPage", lastPage);
+		System.out.println(lastPage+"<--lastPage");
 		
 		return "emp/noticeList";
 	}

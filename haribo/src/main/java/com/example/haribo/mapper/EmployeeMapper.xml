@@ -13,7 +13,7 @@
 	)	VALUES (
 		#{branchNo}, 
 		#{employeeId},
-		#{employeePw}
+		PASSWORD(#{employeePw})
 	)
 	</insert>
 	
@@ -31,6 +31,34 @@
 		#{employeePhone},
 		#{employeeEmail}
 	)
-	
 	</insert>
+	
+	<select id="idCkEmp" parameterType="String" resultType="Integer">
+		SELECT
+			COUNT(employee_id)
+		FROM employee
+		WHERE employee_id = #{idCk}
+	</select>
+	
+<select id="employeeList" parameterType="java.util.Map" resultType="java.util.Map">
+
+    SELECT
+      e.branch_no branchNo,
+      ed.employee_name employeeName,
+      ed.employee_phone employeePhone,
+      ed.employee_gender employeeGender,
+      ed.employee_email employeeEmail,
+      e.createdate
+    FROM employee e
+    INNER JOIN employee_detail ed ON e.employee_no = ed.employee_no
+
+</select>
+
+	
+	<select id="getTotalRow" resultType="int">
+		SELECT COUNT(*)
+		FROM employee e INNER JOIN employee_detail ed
+		ON e.employee_no = ed.employee_no
+	</select>
+	
 </mapper>

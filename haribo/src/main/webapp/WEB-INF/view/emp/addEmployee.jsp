@@ -44,11 +44,6 @@
         직원 관리 페이지
         <small>Preview</small>
       </h1>
-      <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li><a href="#">Forms</a></li>
-        <li class="active">General Elements</li>
-      </ol>
     </section>
 
     <!-- Main content -->
@@ -61,47 +56,56 @@
             <div class="box-header with-border">
               <h3 class="box-title">Quick Example</h3>
             </div>
-            <!-- /.box-header -->
-            <!-- form start -->
-            <form id="addEmployee" method="post" action="${pageContext.request.contextPath}/addEmployee">
               <div class="box-body">
-               <div class="form-group">
-			    <label for="Gender">지점</label>
-		        <select class="form-control" name="branchNo">
-		        	
-		        	<option value="1">A 지점</option>
-		        	<option value="2">B 지점</option>
-		        	<option value="3">C 지점</option>
-		        	
-		        </select>
-		      </div>
-              
                 <div class="form-group">
                   <label for="ID">ID</label>
-                  <input type="text" class="form-control" id="ID" name="employeeId" placeholder="Enter ID">
+                  <input type="text" class="form-control" id="idCk" placeholder="Enter ID">
+                </div>
+                <div class="col-xs-8" style="float:left">
+                	<span id="idCkMsg"></span>
+                </div>
+                <div class="col-xs-4" style="float:right">
+                	<button id="idCkBtn" class="btn btn-primary">ID Check</button>
+                </div>
+                <br><br>
+                
+                <form id="form" name="form" method="post" action="${pageContext.request.contextPath}/addEmployee">
+                <div class="form-group">
+                	<input type="hidden" id="employeeId" class="form-control" placeholder="ID" name="employeeId">
                 </div>
                 <div class="form-group">
                   <label for="Password">Password</label>
-                  <input type="password" class="form-control" id="Password" name="employeePw" placeholder="Enter Password">
+                  <input type="password" class="form-control" id="employeePw" name="employeePw" placeholder="Enter Password">
                 </div>
+
+               <div class="form-group">
+			    <label for="Gender">지점</label>
+		        <select class="form-control" id="branchNo" name="branchNo">
+		        	<option value="1">A 지점</option>
+		        	<option value="2">B 지점</option>
+		        	<option value="3">C 지점</option>
+		        </select>
+		      </div>
+              
+
               <div class="form-group">
                 <label for="Name">이름</label>
-                <input type="text" class="form-control" id="Name" name="employeeName" placeholder="Enter Name">
+                <input type="text" class="form-control" id="employeeName" name="employeeName" placeholder="Enter Name">
               </div>
               <div class="form-group">
                   <label for="Email">이메일</label>
-                  <input type="email" class="form-control" id="Email" name="employeeEmail" placeholder="Enter Email">
+                  <input type="email" class="form-control" id="employeeEmail" name="employeeEmail" placeholder="Enter Email">
 
 		      <div class="form-group">
 			    <label for="Gender">Gender</label>
-		        <select class="form-control" name="employeeGender">
+		        <select class="form-control" id="employeeGender" name="employeeGender">
 		        	<option value="남">male</option>
 		        	<option value="여">female</option>
 		        </select>
 		      </div>
             <div class="form-group">
                   <label for="Phone">전화번호</label>
-                  <input type="text" class="form-control" id="Phone" name="employeePhone" placeholder="Enter Phone">
+                  <input type="text" class="form-control" id="employeePhone" name="employeePhone" placeholder="Enter Phone">
             </div>
 
 
@@ -109,19 +113,11 @@
               <!-- /.box-body -->
 
               <div class="box-footer">
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" id="formBtn" class="btn btn-primary">Submit</button>
               </div>
             </form>
           </div>
-          <!-- /.box -->
-
-   
-        <!-- /.control-sidebar-menu -->
-
       </div>
-      <!-- /.tab-pane -->
-      <!-- Stats tab content -->
-  
   <div class="control-sidebar-bg"></div>
 </div>
 <!-- ./wrapper -->
@@ -141,11 +137,60 @@
 <script src="emp/plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
 <!-- SlimScroll -->
 <script src="emp/bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
-<!-- ChartJS -->
-<script src="emp/bower_components/chart.js/Chart.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="emp/dist/js/pages/dashboard2.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="emp/dist/js/demo.js"></script>
+
+<script>
+	$('#idCkBtn').click(function(){
+		$.ajax({
+			url:'/haribo/employeeIdCk',
+			method:'post',
+			data:{'idCk':$('#idCk').val()},
+			success:function(json){
+				if(json == 0){
+					$('#employeeId').val($('#idCk').val())
+					$('#idCkMsg').text('사용 가능한 아이디 입니다')
+					$('#idCkMsg').css("color","blue")
+				} else{
+					$('#employeeId').val('')
+					$('#idCkMsg').text('사용 불가능한 아이디 입니다')
+					$('#idCkMsg').css("color","red")
+				}
+			},
+			error:function(err){
+				console.log(err)
+			}
+		})
+	})
+	
+	$('#formBtn').click(function(){
+		if($('#employeeId').val().length<1){
+			alert('아이디 중복을 다시 확인 해주세요')
+			$('#employeeId').focus()
+		}  else if($('#employeePw').val().length<1){
+			alert('비밀번호를 입력해주세요')
+			$('#employeePw').focus()
+		}  else if ($('#branchNo').val() == null){
+			alert('지점을 선택해주세요')
+			$('#branchNo').focus()
+		}  else if ($('#employeeName').val().length<1){
+			alert('이름을 입력해주세요')
+			$('#employeeName').focus()
+		}  else if($('#employeeEmail').val().length<1){
+			alert('이메일을 입력해주세요')
+			$('#employeeEmail').focus()
+		}  else if($('#employeePhone').val().length<1){
+			alert('이메일을 입력해주세요')
+			$('#employeePhone').focus()
+		}  else if ($('#employeeGender').val() == null){
+			alert('지점을 선택해주세요')
+			$('#employeeGender').focus()
+		}  else{
+			$('#form').submit()
+		}
+	})
+</script>
 </body>
 </html>
