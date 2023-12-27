@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.haribo.mapper.EmployeeMapper">
+
+	<insert id="insertEmployee" parameterType="com.example.haribo.vo.Employee">
+		<selectKey order="AFTER" resultType="Integer" keyProperty="employeeNo">
+			SELECT last_insert_id();
+		</selectKey>
+	INSERT INTO employee( 
+		branch_no,
+		employee_id,
+		employee_pw
+	)	VALUES (
+		#{branchNo}, 
+		#{employeeId},
+		#{employeePw}
+	)
+	</insert>
+	
+	<insert id="insertEmployeeDetail" parameterType="com.example.haribo.vo.EmployeeDetail">
+	INSERT INTO employee_detail(
+		employee_no,
+		employee_name,
+		employee_gender,
+		employee_phone,
+		employee_email
+	)	VALUES	(
+		#{employeeNo},
+		#{employeeName},
+		#{employeeGender},
+		#{employeePhone},
+		#{employeeEmail}
+	)
+	
+	</insert>
+</mapper>

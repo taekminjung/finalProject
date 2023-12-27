@@ -1,0 +1,40 @@
+package com.example.haribo.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+
+import com.example.haribo.service.EmployeeService;
+import com.example.haribo.vo.Employee;
+import com.example.haribo.vo.EmployeeDetail;
+
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
+@Controller
+public class EmployeeController {
+	@Autowired private EmployeeService employeeService;
+	
+	@GetMapping("/addEmployee")
+	public String addEmployee() {
+		
+		return "emp/addEmployee";
+	}
+	
+	@PostMapping("/addEmployee")
+	public String addEmployee(Employee employee, EmployeeDetail employeeDetail) {
+	log.debug(employee.toString());
+	log.debug(employeeDetail.toString());
+	
+	employeeService.addEmployee(employee, employeeDetail);
+	
+	return "redirect:/employeeList";
+	}
+	
+	@GetMapping("/employeeList")
+	public String employeeList() {
+		return "emp/employeeList";
+	}
+	
+}
