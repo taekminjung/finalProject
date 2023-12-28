@@ -56,7 +56,8 @@
 	      ed.employee_phone employeePhone,
 	      ed.employee_gender employeeGender,
 	      ed.employee_email employeeEmail,
-	      e.createdate
+	      e.createdate,
+	      e.employee_active employeeActive
 	    FROM employee e
 	    INNER JOIN employee_detail ed ON e.employee_no = ed.employee_no
 	</select>
@@ -67,7 +68,7 @@
 		ON e.employee_no = ed.employee_no
 	</select>
 	
-	<select id="selectEmployeeInfo" parameterType="java.util.Map" resultType="java.util.Map">
+	<select id="selectEmployeeInfo" parameterType="com.example.haribo.vo.Employee" resultType="java.util.Map">
 		SELECT 
 			ed.employee_name employeeName,
 			e.employee_id employeeId,
@@ -77,5 +78,10 @@
 		ON e.employee_no = ed.employee_no
 		WHERE e.employee_no = #{employeeNo}
 	</select>
-		
+	
+	<update id="updateEmployeeStatus">
+		UPDATE employee
+		SET employee_active = #{employeeActive}
+		WHERE employee_id = #{employeeId}
+	</update>
 </mapper>

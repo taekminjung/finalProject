@@ -28,6 +28,8 @@ public interface EmployeeMapper {
 		
 		Employee loginEmployee(Employee employee);
 		
-		Map<String, Object> selectEmployeeInfo(Employee employee, EmployeeDetail employeeDetail);
+		Map<String, Object> selectEmployeeInfo(Employee employee);
+		
+		Employee updateEmployeeStatus(Employee employee);
 		
 }

@@ -27,11 +27,11 @@ public class EmployeeController {
 	public String loginEmployee(HttpSession session, Employee employee) {
 		Employee loginEmployee = employeeService.loginEmployee(employee);
 		
-//		if(loginEmployee != null) {
-//			session.setAttribute("loginEmployee", loginEmployee);
-//		} else {
-//			return "redirect:/login";
-//		}
+		if(loginEmployee != null) {
+			session.setAttribute("loginEmployee", loginEmployee);
+		} else {
+			return "redirect:/login";
+		}
 		//리턴
 		return "redirect:/adminHome";
 	}
@@ -65,14 +65,22 @@ public class EmployeeController {
 	}
 	
 	@GetMapping("/employeeInfo")
-	public String employeeInfo(Model model, HttpSession session, Employee employee, EmployeeDetail employeeDetail) {
-//		if(session.getAttribute("loginEmployee")==null) {
-//			return "redirect:/login";
-//		}
-		Map<String,Object> empInfo = employeeService.employeeInfo(employee, employeeDetail);
+	public String employeeInfo(Model model, HttpSession session, Employee employee) {
+		if(session.getAttribute("loginEmployee")==null) {
+			return "redirect:/login";
+		}
+		Map<String,Object> empInfo = employeeService.employeeInfo(employee);
 		model.addAttribute("empInfo", empInfo);
-		System.out.println(empInfo+"<--empInfo");
 	
 		return "emp/employeeInfo";
 	}
+	
+
+	@PostMapping("/updateEmployeeStatus")
+	public String updateEmployeeStatus(Model model, HttpSession session, Employee employee) {
+		employeeService.updateEmployeeStatus(employee);
+		return "emp/employeeList";
+	}
+	
+	
 }

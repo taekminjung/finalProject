@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.haribo.mapper.ProgramMapper">
+
+	<insert id="insertProgram" parameterType="com.example.haribo.vo.Program">
+	<selectKey order="AFTER" resultType="Integer" keyProperty="programNo">
+		SELECT LAST_INSERT_ID()
+	</selectKey>
+		INSERT INTO program(
+			employee_id,
+			program_name,
+			program_max_customer
+		)	VALUES (
+			'admin',
+			#{programName},
+			#{programMaxCustomer}
+		)
+	</insert>
+
+	<insert id="insertProgramDate" parameterType="com.example.haribo.vo.ProgramDate">
+		INSERT INTO program_date(
+			program_no,
+			program_date
+		)	 VALUES 	(
+			#{programNo},
+			#{programDate}
+		)
+	</insert>
+
+</mapper>

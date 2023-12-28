@@ -5,7 +5,7 @@
 	<c:set var="logoutBtn" value="로그아웃"></c:set>
 	<c:set var="logoutUrl" value="${pageContext.request.contextPath}/logout"></c:set>
   	<c:set var="mypageBtn" value="마이페이지"></c:set>
-  	<c:set var="mypageUrl" value="${pageContext.request.contextPath}/employeePage?employeeNo=${loginEmployee.employeeNo}"></c:set>
+  	<c:set var="mypageUrl" value="${pageContext.request.contextPath}/employeeInfo?employeeNo=${loginEmployee.employeeNo}"></c:set>
   	
   	
     <header class="main-header">
@@ -37,7 +37,7 @@
               <li class="user-header">
                 <img src="emp/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
                 <p>
-                  관리자 이름
+                  ${loginEmployee.employeeId}
                 </p>
               </li>
               
@@ -68,7 +68,13 @@
         </div>
         <div class="pull-left info">
           <p>관리자명</p>
-          <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+	<a href="#" id="statusLink"><i class="fa fa-circle text-success"></i> Online</a>
+
+
+
+
+
+
         </div>
       </div>
       
@@ -126,6 +132,7 @@
             </span>
           </a>
           <ul class="treeview-menu">
+            <li><a href="${pageContext.request.contextPath}/insertProgram"><i class="fa fa-circle-o"></i>프로그램 추가</a></li>
             <li><a href="#"><i class="fa fa-circle-o"></i>A 클래스</a></li>
             <li><a href="#"><i class="fa fa-circle-o"></i>B 클래스</a></li>
             <li><a href="#"><i class="fa fa-circle-o"></i>C 클래스</a></li>
@@ -150,3 +157,24 @@
     </section>
     <!-- /.sidebar -->
   </aside>
+  
+ <script>
+  document.getElementById("statusLink").addEventListener("click", function() {
+    var statusIcon = document.querySelector("#statusLink i.fa");
+    var statusText = document.querySelector("#statusLink");
+
+    if (statusIcon.classList.contains("text-success")) {
+      statusIcon.classList.remove("text-success");
+      statusIcon.classList.add("text-danger");
+  
+    } else if (statusIcon.classList.contains("text-danger")) {
+      statusIcon.classList.remove("text-danger");
+      statusIcon.classList.add("text-secondary"); 
+
+    } else {
+      statusIcon.classList.remove("text-secondary");
+      statusIcon.classList.add("text-success");
+ 
+    }
+  });
+</script>

@@ -75,6 +75,7 @@
 			            <th class="text-center">이메일</th>
 			            <th class="text-center">성별</th>
 			            <th class="text-center">입사일자</th>
+			      		<th class="text-center">활동여부</th>
 			        </tr>
 			
 			        <c:forEach var="e" items="${list}">
@@ -85,8 +86,11 @@
 			                <td class="text-center">${e.employeeEmail}</td>
 			                <td class="text-center">${e.employeeGender}</td>
 			                <td class="text-center"><fmt:formatDate value="${e.createdate}" pattern="yyyy-MM-dd"/></td>
+			                <td class="text-center">${e.employeeActive}</td>
+			                <td class="text-center"><button class="btn bg-navy" data-toggle="modal" data-target="#modifyModal${e.employeeId}">수정</button></td>
 			            </tr>
 			        </c:forEach>
+			        
 			    </table>
 			    <br><br>
 			<div class="text-center"> 

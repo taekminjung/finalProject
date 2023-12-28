@@ -65,9 +65,13 @@ public class EmployeeService {
 		return lastPage;
 	}
 	
-	public Map<String, Object> employeeInfo(Employee employee, EmployeeDetail employeeDetail){
-		Map<String,Object> empInfo = employeeMapper.selectEmployeeInfo(employee, employeeDetail);
+	public Map<String, Object> employeeInfo(Employee employee){
+		Map<String,Object> empInfo = employeeMapper.selectEmployeeInfo(employee);
 		
 		return empInfo;
+	}
+	
+	public Employee updateEmployeeStatus(Employee employee) {
+		return employeeMapper.updateEmployeeStatus(employee);
 	}
 }
