@@ -1,8 +1,6 @@
-trainers.jsp
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="zxx" class="no-js">
 
@@ -20,7 +18,7 @@ trainers.jsp
 	<!-- meta character set -->
 	<meta charset="UTF-8">
 	<!-- Site Title -->
-	<title>Trainers</title>
+	<title>하리보 지점</title>
 
 	<link href="https://fonts.googleapis.com/css?family=Roboto:100,200,300,400,500,700" rel="stylesheet">
 	<!--
@@ -44,31 +42,57 @@ trainers.jsp
 	<!-- end header Area -->
 
 	<!-- start banner Area -->
-	<section class="banner-area relative about-banner" id="home">
-		<img class="cta-img img-fluid" src="customer/img/cta-img.png" alt="">
+	<section class="banner-area relative blog-home-banner" id="home">
 		<div class="overlay overlay-bg"></div>
 		<div class="container">
 			<div class="row d-flex align-items-center justify-content-center">
-				<div class="about-content col-lg-12">
-					<h1>
-						트레이너
+				<div class="about-content blog-header-content col-lg-12">
+					<h1 class="text-uppercase text-white">
+						<span>YogaFlex</span> to <br> Shape your body
 					</h1>
-					<p class="link-nav"><a href="${pageContext.request.contextPath}/home">Home </a>
-						<span class="lnr lnr-arrow-right"></span> <a href="${pageContext.request.contextPath}/trainers">
-							Trainers</a></p>
+					<a href="#" class="primary-btn mt-40">Become a Member</a>
 				</div>
 			</div>
 		</div>
 	</section>
 	<!-- End banner Area -->
 
-	<!-- Start team Area -->
+	<!-- Start top-category-widget Area -->
+	<section class="top-category-widget-area pt-90 pb-90 ">
+		<div class="container">
+			<div class="row">
+			<c:forEach var="b" items="${blist}">
+				<div class="col-lg-4">
+					<div class="single-cat-widget">
+						<div class="content relative">
+							<div class="overlay overlay-bg"></div>
+							<a href="${pageContext.request.contextPath}/trainers?branchNo=${b.branchNo}&branchName=${b.branchName}" >
+								<div class="thumb">
+									<img class="content-image img-fluid d-block mx-auto" src="customer/img/blog/cat-widget1.jpg" alt="">
+								</div>
+								<div class="content-details">
+									<h4 class="content-title mx-auto text-uppercase">${b.branchName}지점</h4>
+									<span></span>
+									<p>${b.branchName}지점 트레이너</p>
+								</div>
+							</a>
+						</div>
+					</div>
+				</div>
+			</c:forEach>
+			
+			</div>
+		</div>
+	</section>
+	<!-- End top-category-widget Area -->
+
+	<!-- Start post-content Area -->
 	<section class="team-area section-gap">
 		<div class="container">
 			<div class="row d-flex justify-content-center">
 				<div class="col-lg-12">
 					<div class="section-title-wrap text-center">
-						<h1>${branch.branchName}지점 트레이너 소개</h1>
+						<h1>트레이너 소개</h1>
 						<p>저희와 함께하는 소중한 트레이너들을 소개합니다.</p>
 					</div>
 				</div>
@@ -85,10 +109,9 @@ trainers.jsp
 					</div>
 				</div>
 					</c:forEach>
-			</div>
-		</div>
-	</section>
-	<nav class="blog-pagination justify-content-center d-flex">
+			</section>	
+	<section class="post-content-area">
+					<nav class="blog-pagination justify-content-center d-flex">
 						<ul class="pagination">
 							<li class="page-item">
 								<a href="#" class="page-link" aria-label="Previous">
@@ -111,7 +134,9 @@ trainers.jsp
 							</li>
 						</ul>
 					</nav>
-	<!-- End team Area -->
+
+	</section>
+	<!-- End post-content Area -->
 
 	<!-- start footer Area -->
 	<!-- inc 폴더의 CustomerFooter.jsp를 include -->

@@ -35,7 +35,7 @@
 					<ul class="nav-menu">
 						<li><a class="active" href="${pageContext.request.contextPath}/home">Home</a></li>
 						<li><a href="${pageContext.request.contextPath}/aboutUs">About</a></li>
-						<li><a href="${pageContext.request.contextPath}/trainers">Trainers</a></li>
+						<li><a href="${pageContext.request.contextPath}/branch">Branch/Trainers</a></li>
 						<li class="menu-has-children"><a href="">Blog</a>
 							<ul>
 								<li><a href="blog-home.html">Blog Home</a></li>

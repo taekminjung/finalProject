@@ -43,8 +43,11 @@ public class NoticeService {
 		if(totalRow % rowPerPage !=0) {
 			lastPage +=1;
 		}
-
-		List<Notice> list = noticeMapper.noticeList(beginRow, rowPerPage);
+		HashMap<String, Object> param = new HashMap<>();
+		param.put("beginRow", beginRow);
+		param.put("rowPerPage", rowPerPage);
+		
+		List<Notice> list = noticeMapper.noticeList(param);
 		return list;
 	}
 

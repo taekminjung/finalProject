@@ -21,6 +21,5 @@ public interface NoticeMapper {
 		
 		int updateNotice(Notice notice);
 
-		List<Notice> noticeList(int beginRow, int rowPerPage);
 		
 }
