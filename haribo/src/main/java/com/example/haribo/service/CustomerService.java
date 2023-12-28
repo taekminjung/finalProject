@@ -32,7 +32,7 @@ public class CustomerService {
 	}
 	
 	//회원가입
-	public void addCustomer(Customer paramCustomer, CustomerDetail paramCustomerDetail, String emailId, String emailDomain) {
+	public void insertCustomer(Customer paramCustomer, CustomerDetail paramCustomerDetail, String emailId, String emailDomain) {
 		log.debug(paramCustomer.toString());
 		log.debug(paramCustomerDetail.toString());
 		
@@ -55,7 +55,7 @@ public class CustomerService {
 	}
 	
 	//회원 상세정보 출력
-	public Map<String,Object> getCustomerInfo(Customer paramCustomer){
+	public Map<String,Object> customerInfo(Customer paramCustomer){
 		log.debug(paramCustomer.toString());
 		Map<String,Object> custInfoMap = customerMapper.selectCustomerInfo(paramCustomer);
 		

@@ -5,7 +5,7 @@
 	<c:set var="loginBtn" value="로그인"></c:set>
 	<c:set var="loginUrl" value="${pageContext.request.contextPath}/login"></c:set>
 	<c:set var="registBtn" value="회원가입"></c:set>
-	<c:set var="registUrl" value="${pageContext.request.contextPath}/addCustomer"></c:set>
+	<c:set var="registUrl" value="${pageContext.request.contextPath}/insertCustomer"></c:set>
 	<c:if test="${loginCustomer != null}">
 		<c:set var="loginBtn" value="로그아웃"></c:set>
 		<c:set var="loginUrl" value="${pageContext.request.contextPath}/logout"></c:set>

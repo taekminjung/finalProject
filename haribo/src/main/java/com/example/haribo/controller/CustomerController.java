@@ -51,20 +51,20 @@ public class CustomerController {
 	}
 	
 	//회원가입
-	@GetMapping("/addCustomer")
-	public String addCustomer() {
+	@GetMapping("/insertCustomer")
+	public String insertCustomer() {
 		
-		return "public/addCustomer";
+		return "public/insertCustomer";
 	}
-	@PostMapping("/addCustomer")
-	public String addCustomer(Customer customer, CustomerDetail customerDetail, String emailId, String emailDomain) {
+	@PostMapping("/insertCustomer")
+	public String insertCustomer(Customer customer, CustomerDetail customerDetail, String emailId, String emailDomain) {
 		
 		log.debug(customer.toString());
 		log.debug(customerDetail.toString());
 		log.debug(emailId+emailDomain);
 		
 		//서비스 호출
-		customerService.addCustomer(customer, customerDetail, emailId, emailDomain);
+		customerService.insertCustomer(customer, customerDetail, emailId, emailDomain);
 		
 		//리턴
 		return "redirect:/home";
@@ -79,7 +79,7 @@ public class CustomerController {
 		}
 		
 		//서비스 호출
-		Map<String,Object> custInfoMap = customerService.getCustomerInfo(customer);
+		Map<String,Object> custInfoMap = customerService.customerInfo(customer);
 		log.debug(custInfoMap+"");
 		model.addAttribute("custInfoMap", custInfoMap);
 		

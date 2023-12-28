@@ -67,7 +67,7 @@ function jusoCallBack(roadFullAddr){
     <div class="col-xs-4" style="float:right">
       <button id="idCkBtn" class="btn btn-primary btn-block btn-flat">ID Check</button>
     </div><br><br>
-    <form name="form" id="form" action="${pageContext.request.contextPath}/addCustomer" method="post">
+    <form name="form" id="form" action="${pageContext.request.contextPath}/insertCustomer" method="post">
       <div class="form-group has-feedback">
 	    <input id="customerId" type="hidden" class="form-control" placeholder="ID" name="customerId">
 	    <span class="glyphicon glyphicon-star form-control-feedback"></span>
