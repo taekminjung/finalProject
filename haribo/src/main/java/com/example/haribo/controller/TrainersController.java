@@ -2,6 +2,7 @@ package com.example.haribo.controller;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,8 +22,12 @@ public class TrainersController {
 		
 		List<HashMap<String, Object>> list = trainersService.trainersList(currentPage, branch);
 		System.out.println(list+"<--con.trainersList");
+		
+		String BranchAddr = trainersService.selectBranchAddr(branch);
+		System.out.println(BranchAddr +"<--con.BranchAddr");
 		int lastPage = trainersService.lastPage();
 		
+		model.addAttribute("BranchAddr", BranchAddr);
 		model.addAttribute("branch", branch);
 		model.addAttribute("currentPage", currentPage);
 		model.addAttribute("list", list);

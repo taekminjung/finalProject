@@ -7,6 +7,8 @@ trainers.jsp
 <html lang="zxx" class="no-js">
 
 <head>
+<!-- services 라이브러리 불러오기 -->
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=139fe7eca596ff88f8b69da1ea0c9e18&libraries=services"></script>
 	<!-- Mobile Specific Meta -->
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<!-- Favicon-->
@@ -111,6 +113,63 @@ trainers.jsp
 							</li>
 						</ul>
 					</nav>
+			<section>
+			<h1 style="text-align: center;">${branch.branchName} 지점 지도</h1><br>
+			<h3 style="text-align: center;">주소 : ${BranchAddr}</h3><br>
+			<div class="container">
+			<div  class="map-wrap" style="width:100%; height: 440px;" id= "map"></div><div><br></div>
+				<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=	139fe7eca596ff88f8b69da1ea0c9e18&libraries=services"></script>
+				<script>
+				var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+				    mapOption = {
+				        center: new kakao.maps.LatLng(37.476502, 126.880176), // 지도의 중심좌표
+				        level: 3 // 지도의 확대 레벨
+				    };  
+				
+				// 지도를 생성  
+				var map = new kakao.maps.Map(mapContainer, mapOption); 
+				
+				// 일반 지도와 스카이뷰로 지도 타입을 전환할 수 있는 지도타입 컨트롤을 생성
+				var mapTypeControl = new kakao.maps.MapTypeControl();
+
+				// 지도에 컨트롤을 추가해야 지도위에 표시
+				// kakao.maps.ControlPosition은 컨트롤이 표시될 위치를 정의(오른쪽 위)
+				map.addControl(mapTypeControl, kakao.maps.ControlPosition.TOPRIGHT);
+
+				// 지도 확대 축소를 제어할 수 있는  줌 컨트롤을 생성
+				var zoomControl = new kakao.maps.ZoomControl();
+				map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
+				
+				// 주소-좌표 변환 객체를 생성
+				var geocoder = new kakao.maps.services.Geocoder();
+				
+				// DB에 저장된 지점 주소로 좌표를 검색
+				geocoder.addressSearch('${BranchAddr}', function(result, status) {
+				
+				    // 정상적으로 검색이 완료됐으면 
+				     if (status === kakao.maps.services.Status.OK) {
+				
+				        var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+				
+				        // 결과값으로 받은 위치를 마커로 표시
+				        var marker = new kakao.maps.Marker({
+				            map: map,
+				            position: coords
+				        });
+				
+				        // 인포윈도우로 장소에 대한 설명을 표시
+				        var infowindow = new kakao.maps.InfoWindow({
+				            content: '<div style="width:150px;text-align:center;padding:6px 0;">하리보팀 ${branch.branchName}</div> '
+				        });
+				        infowindow.open(map, marker);
+				
+				        // 지도의 중심을 결과값으로 받은 위치로 이동
+				        map.setCenter(coords);
+				    } 
+				});    
+				</script>
+			</div>
+			</section>
 	<!-- End team Area -->
 
 	<!-- start footer Area -->
@@ -123,7 +182,7 @@ trainers.jsp
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
 	 crossorigin="anonymous"></script>
 	<script src="customer/js/vendor/bootstrap.min.js"></script>
-	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhOdIF3Y9382fqJYt5I_sswSrEw5eihAA"></script>
+
 	<script src="customer/js/easing.min.js"></script>
 	<script src="customer/js/hoverIntent.js"></script>
 	<script src="customer/js/superfish.min.js"></script>

@@ -6,6 +6,5 @@
 	branch_no AS branchNo,
 	branch_name AS branchName
 	FROM branch
-	
 	</select>
 </mapper>

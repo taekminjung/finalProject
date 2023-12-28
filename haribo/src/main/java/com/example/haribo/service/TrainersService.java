@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.example.haribo.mapper.BranchMapper;
 import com.example.haribo.mapper.TrainersMapper;
 import com.example.haribo.vo.Branch;
 
@@ -37,5 +38,11 @@ public class TrainersService {
 			int totalRow = trainersMapper.getTotalRow(rowPerPage);
 			int lastPage = totalRow/rowPerPage;
 			return lastPage;
+		}
+		public String selectBranchAddr(Branch branch) {
+			String branchAddr = trainersMapper.selectBranchAddr(branch);
+			
+			return branchAddr;
+			
 		}
 }

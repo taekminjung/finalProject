@@ -5,7 +5,7 @@
 
 <head>
 <!-- services 라이브러리 불러오기 -->
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=APIKEY&libraries=services"></script>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=139fe7eca596ff88f8b69da1ea0c9e18&libraries=services"></script>
 
 	<!-- Mobile Specific Meta -->
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -65,6 +65,7 @@
 
 	<!-- Start contact-page Area -->
 	<section class="contact-page-area section-gap">
+	<h1 style="text-align: center;">지점별 위치</h1><br>
 		<div class="container">
 			<div class="row">
 			 
