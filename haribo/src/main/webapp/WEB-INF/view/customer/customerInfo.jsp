@@ -96,7 +96,7 @@
 				<div class="widget-wrap">
 					<div class="single-sidebar-widget user-info-widget">
 						<img src="customer/img/blog/user-info.png" alt="">
-						<a href="#"><h4>${custInfoMap.customerId }</h4></a>
+						<h4>${custInfoMap.customerId }</h4>
 						<p>${custInfoMap.customerName } 회원님</p>
 					</div>
 					<div class="single-sidebar-widget post-category-widget">
@@ -133,12 +133,12 @@
 				</div>
 			</div>
 			<div class="col-lg-9 comments-area">
-			<h3>개인 정보</h3><br><br>
-				<form name="form" id="form" method="post" action="">
+			<h3>개인 정보</h3><input type="hidden" id="customerId" value="${loginCustomer.customerId }"><br><br>
+				<form name="form" id="form" method="post" action="${pageContext.request.contextPath }/updateCustomerInfo?customerNo=${loginCustomer.customerNo}">
 					<div class="row">
 						<div class="col-lg-6">
 							<p>이름</p>
-							<input type="text" name="customerName" value="${custInfoMap.customerName }" class="single-input">
+							<input id="name" type="text" name="customerName" value="${custInfoMap.customerName }" class="single-input">
 						</div>
 						<div class="col-lg-6">
 							<p>성별</p>
@@ -157,17 +157,17 @@
 					</div><br><br>
 					<div>
 						<p>전화번호</p>
-						<input type="text" name="customerPhone" value=${custInfoMap.customerPhone } class="single-input">
+						<input id="phone" type="text" name="customerPhone" value=${custInfoMap.customerPhone } class="single-input">
 					</div><br><br>
 					<div class="row">
 						<div class="col-lg-6">
 							<p>이메일 아이디</p>
-							<input type="text" name="emailId" value="${custInfoMap.emailId }" class="single-input">
+							<input id="emailId" type="text" name="emailId" value="${custInfoMap.emailId }" class="single-input">
 						</div>
 						<div class="default-select col-lg-6" id="default-select">
 							<p>이메일 도메인</p>
 							<select name="emailDomain">
-								<option value="${custInfoMap.emailDomain }" disabled selected>${custInfoMap.emailDomain }</option>
+								<option value="${custInfoMap.emailDomain }" selected>${custInfoMap.emailDomain }</option>
 								<option value="@naver.com">@naver.com</option>
 								<option value="@gmail.com">@gmail.com</option>
 							</select>
@@ -181,11 +181,11 @@
 				<div class="row">
 					<div class="col-lg-8">
 						<p>비밀번호 확인</p>
-						<input type="text" name="customerPw" placeholder="비밀번호 입력 후 수정가능" class="single-input">
+						<input id="customerPw" type="password" name="customerPw" placeholder="비밀번호 입력 후 수정가능" class="single-input">
 					</div>
 					<div class="col-lg-4" align="center">
 						<p></p>
-						<button class="genric-btn primary circle e-large">수정</button>
+						<button id="formBtn" class="genric-btn primary circle e-large">수정</button>
 					</div>
 				</div>
 			</div>
@@ -213,6 +213,42 @@
 	<script src="customer/js/owl.carousel.min.js"></script>
 	<script src="customer/js/mail-script.js"></script>
 	<script src="customer/js/main.js"></script>
+	<script>
+		$('#formBtn').click(function(){
+			if($('#name').val().length < 1){
+				alert('이름을 확인해주세요');
+				$('#name').focus();
+			}else if($('#phone').val().length < 1){
+				alert('전화번호를 확인해주세요');
+				$('#phone').focus();
+			}else if($('#emailId').val().length < 1){
+				alert('이메일을 확인해주세요');
+				$('#emailId').focus();
+			}else if($('#roadFullAddr').val().length < 1){
+				alert('주소를 확인해주세요');
+				$('#roadFullAddr').focus();
+			}else if($('#customerPw').val().length < 1){
+				alert('비밀번호를 입력해주세요');
+			}else{
+				$.ajax({
+					url:'/haribo/customerPwCk',
+					method:'post',
+					data:{'customerPw':$('#customerPw').val(),'customerId':$('#customerId').val()},
+					success:function(json){
+						if(json != 1){
+							$('#customerPw').val('')
+							alert('비밀번호가 틀렸습니다')
+						}else{
+							$('#form').submit();
+						}
+					},
+					error:function(err){
+						console.log(err)
+					}
+				})
+			}
+		})
+	</script>
 </body>
 
 </html>

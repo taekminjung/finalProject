@@ -15,6 +15,9 @@ public interface CustomerMapper {
 	// 회원 아이디 중복 체크
 	int idCkCnt(String idCk);
 	
+	// 비밀번호 확인
+	int pwCkCnt(Customer customer);
+	
 	// 회원가입(id,pw)
 	int insertCustomer(Customer customer);
 	
@@ -23,4 +26,7 @@ public interface CustomerMapper {
 	
 	//회원 상세정보 출력
 	Map<String,Object> selectCustomerInfo(Customer customer);
+	
+	//회원 상세정보 수정
+	int updateCustomerDetail(CustomerDetail customerDetail);
 }

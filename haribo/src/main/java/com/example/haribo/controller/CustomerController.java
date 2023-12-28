@@ -115,4 +115,16 @@ public class CustomerController {
 		return "customer/customerSchedule";
 	}
 	
+	//회원 상세정보 수정
+	@PostMapping("/updateCustomerInfo")
+	public String updateCustomerInfo(CustomerDetail customerDetail, String emailId, String emailDomain) {
+		
+		log.debug("updateCon->"+customerDetail+emailId+emailDomain);
+		//CustomerService 호출
+		customerService.updateCustomerInfo(customerDetail, emailId, emailDomain);
+		
+		//리턴
+		String u = "redirect:/customerInfo?customerNo="+customerDetail.getCustomerNo();
+		return u;
+	}
 }

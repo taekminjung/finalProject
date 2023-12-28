@@ -7,8 +7,8 @@ public class CustomerDetail {
 		private int customerNo;
 		private String customerName;
 		private String customerGender;
-		private int customerHeight;
-		private int customerWeight;
+		private Integer customerHeight;
+		private Integer customerWeight;
 		private String customerPhone;
 		private String customerAddress;
 		private String customerEmail;

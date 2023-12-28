@@ -21,6 +21,14 @@
 		WHERE customer_id = #{idCk}
 	</select>
 	
+	<select id="pwCkCnt" parameterType="com.example.haribo.vo.Customer" resultType="Integer">
+		SELECT
+			COUNT(customer_id)
+		FROM customer
+		WHERE customer_id = #{customerId}
+		AND customer_pw = #{customerPw}
+	</select>
+	
 	<insert id="insertCustomer" parameterType="com.example.haribo.vo.Customer">
 		<selectKey order="AFTER" resultType="Integer" keyProperty="customerNo">
 			SELECT last_insert_id();
@@ -67,4 +75,16 @@
 		ON c.customer_no = cd.customer_no
 		WHERE c.customer_no = #{customerNo}
 	</select>
+	
+	<update id="updateCustomerDetail" parameterType="com.example.haribo.vo.CustomerDetail">
+		UPDATE customer_detail SET
+			customer_name = #{customerName},
+			customer_height = #{customerHeight},
+			customer_weight = #{customerWeight},
+			customer_phone = #{customerPhone},
+			customer_address = #{customerAddress},
+			customer_email = #{customerEmail},
+			updatedate = now()
+		WHERE customer_no = #{customerNo}
+	</update>
 </mapper>

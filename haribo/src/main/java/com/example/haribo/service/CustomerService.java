@@ -30,6 +30,11 @@ public class CustomerService {
 		
 		return customerMapper.idCkCnt(idCk);
 	}
+	//비밀번호 확인
+	public int pwCkCnt(Customer customer) {
+		
+		return customerMapper.pwCkCnt(customer);
+	}
 	
 	//회원가입
 	public void insertCustomer(Customer paramCustomer, CustomerDetail paramCustomerDetail, String emailId, String emailDomain) {
@@ -69,5 +74,20 @@ public class CustomerService {
 		log.debug(custInfoMap+"");
 		
 		return custInfoMap;
+	}
+	
+	//회원 상세정보 수정
+	public int updateCustomerInfo(CustomerDetail customerDetail, String emailId, String emailDomain) {
+		String customerEmail = emailId + emailDomain;
+		customerDetail.setCustomerEmail(customerEmail);
+		
+		if(customerDetail.getCustomerHeight() == null) {
+			customerDetail.setCustomerHeight(0);
+		}
+		if(customerDetail.getCustomerWeight() == null) {
+			customerDetail.setCustomerWeight(0);
+		}
+		
+		return customerMapper.updateCustomerDetail(customerDetail);
 	}
 }

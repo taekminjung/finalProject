@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.haribo.service.CustomerService;
+import com.example.haribo.vo.Customer;
 
 import lombok.extern.slf4j.Slf4j;
 @Slf4j
@@ -21,6 +22,16 @@ public class CustomerRest {
 		int cnt = customerService.idCkCnt(idCk);
 		log.debug("아이디 중복체크 ->>"+cnt);
 		
+		return cnt;
+	}
+	
+	//비밀번호 확인
+	@PostMapping("/customerPwCk")
+	public int customerPwCk(Customer customer) {
+		
+		log.debug(customer+"");
+		int cnt = customerService.pwCkCnt(customer);
+		log.debug("비밀번호 확인 ->>"+cnt);
 		return cnt;
 	}
 	
