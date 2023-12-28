@@ -26,4 +26,8 @@ public interface EmployeeMapper {
 		
 		int getTotalRow(int rowPerPage);
 		
+		Employee loginEmployee(Employee employee);
+		
+		Map<String, Object> selectEmployeeInfo(Employee employee, EmployeeDetail employeeDetail);
+		
 }

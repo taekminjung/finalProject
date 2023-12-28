@@ -1,7 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-  
-  
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
+	<c:set var="logoutBtn" value="로그아웃"></c:set>
+	<c:set var="logoutUrl" value="${pageContext.request.contextPath}/logout"></c:set>
+  	<c:set var="mypageBtn" value="마이페이지"></c:set>
+  	<c:set var="mypageUrl" value="${pageContext.request.contextPath}/employeePage?employeeNo=${loginEmployee.employeeNo}"></c:set>
+  	
+  	
     <header class="main-header">
 
     <!-- Logo -->
@@ -12,25 +18,19 @@
       <span class="logo-lg"><b>TEAM</b>HARIBO</span>
     </a>
 
-    <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top" role="navigation">
-      <!-- Sidebar toggle button-->
+
       <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
         <span class="sr-only">Toggle navigation</span>
       </a>
-      <!-- Navbar Right Menu -->
+
       <div class="navbar-custom-menu">
         <ul class="nav navbar-nav">
         
-        
-           <!-- User Account Menu -->
           <li class="dropdown user user-menu">
-            <!-- Menu Toggle Button -->
             <a href="" class="dropdown-toggle" data-toggle="dropdown">
-              <!-- The user image in the navbar-->
               <img src="emp/dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
-              <!-- hidden-xs hides the username on small devices so only the image appears. -->
-              <span class="hidden-xs">관리자 이름</span>
+              <span class="hidden-xs">${loginEmployee.employeeId}</span>
             </a>
             <ul class="dropdown-menu">
               <!-- The user image in the menu -->
@@ -44,10 +44,10 @@
               <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-left">
-                  <a href="#" class="btn btn-default btn-flat">마이페이지</a>
+                  <a href="${mypageUrl}" class="btn btn-default btn-flat">${myPageBtn}마이페이지</a>
                 </div>
                 <div class="pull-right">
-                  <a href="#" class="btn btn-default btn-flat">로그아웃</a>
+                  <a href="${logoutUrl}" class="btn btn-default btn-flat">로그아웃</a>
                 </div>
               </li>
             </ul>
@@ -104,16 +104,18 @@
           </a>
        </li>  
        
+
+    
         <li class="treeview">
-          <a href="#"><i class="fa fa-cube"></i> <span>재고관리</span>
+          <a href="#"><i class="fa fa-cube"></i> <span>지점별 재고현황</span>
             <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
               </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="${pageContext.request.contextPath}/sportsEquipmentManage"><i class="fa fa-circle-o"></i>A 지점</a></li>
-            <li><a href="${pageContext.request.contextPath}/sportsEquipmentManage"><i class="fa fa-circle-o"></i>B 지점</a></li>
-            <li><a href="${pageContext.request.contextPath}/sportsEquipmentManage"><i class="fa fa-circle-o"></i>C 지점</a></li>
+            <li><a href="${pageContext.request.contextPath}/sportsEquipmentA"><i class="fa fa-circle-o"></i>A 지점</a></li>
+            <li><a href="${pageContext.request.contextPath}/sportsEquipmentB"><i class="fa fa-circle-o"></i>B 지점</a></li>
+            <li><a href="${pageContext.request.contextPath}/sportsEquipmentC"><i class="fa fa-circle-o"></i>C 지점</a></li>
           </ul>
         </li>
 
@@ -138,7 +140,7 @@
           </a>
           <ul class="treeview-menu">
             <li><a href="${pageContext.request.contextPath}/employeeList"><i class="fa fa-users"></i>직원 리스트</a></li>
-            <li><a href="${pageContext.request.contextPath}/addEmployee"><i class="fa fa-user-plus"></i>직원 추가</a></li>
+            <li><a href="${pageContext.request.contextPath}/insertEmployee"><i class="fa fa-user-plus"></i>직원 추가</a></li>
           </ul>
         </li>
         

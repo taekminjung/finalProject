@@ -69,7 +69,7 @@
                 </div>
                 <br><br>
                 
-                <form id="form" name="form" method="post" action="${pageContext.request.contextPath}/addEmployee">
+                <form id="form" name="form" method="post" action="${pageContext.request.contextPath}/insertEmployee">
                 <div class="form-group">
                 	<input type="hidden" id="employeeId" class="form-control" placeholder="ID" name="employeeId">
                 </div>

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -83,7 +84,7 @@
 			                <td class="text-center">${e.employeePhone}</td>
 			                <td class="text-center">${e.employeeEmail}</td>
 			                <td class="text-center">${e.employeeGender}</td>
-			                <td class="text-center">${e.createdate} </td>
+			                <td class="text-center"><fmt:formatDate value="${e.createdate}" pattern="yyyy-MM-dd"/></td>
 			            </tr>
 			        </c:forEach>
 			    </table>

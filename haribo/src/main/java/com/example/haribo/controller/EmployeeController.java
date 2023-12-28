@@ -2,6 +2,7 @@ package com.example.haribo.controller;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,6 +15,7 @@ import com.example.haribo.service.EmployeeService;
 import com.example.haribo.vo.Employee;
 import com.example.haribo.vo.EmployeeDetail;
 
+import jakarta.servlet.http.HttpSession;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -21,13 +23,26 @@ import lombok.extern.slf4j.Slf4j;
 public class EmployeeController {
 	@Autowired private EmployeeService employeeService;
 	
-	@GetMapping("/addEmployee")
-	public String addEmployee() {
+	@PostMapping("/empLogin")
+	public String loginEmployee(HttpSession session, Employee employee) {
+		Employee loginEmployee = employeeService.loginEmployee(employee);
 		
-		return "emp/addEmployee";
+//		if(loginEmployee != null) {
+//			session.setAttribute("loginEmployee", loginEmployee);
+//		} else {
+//			return "redirect:/login";
+//		}
+		//리턴
+		return "redirect:/adminHome";
 	}
 	
-	@PostMapping("/addEmployee")
+	@GetMapping("/insertEmployee")
+	public String addEmployee() {
+		
+		return "emp/insertEmployee";
+	}
+	
+	@PostMapping("/insertEmployee")
 	public String addEmployee(Employee employee, EmployeeDetail employeeDetail) {
 	log.debug(employee.toString());
 	log.debug(employeeDetail.toString());
@@ -49,4 +64,15 @@ public class EmployeeController {
 		return "emp/employeeList";
 	}
 	
+	@GetMapping("/employeeInfo")
+	public String employeeInfo(Model model, HttpSession session, Employee employee, EmployeeDetail employeeDetail) {
+//		if(session.getAttribute("loginEmployee")==null) {
+//			return "redirect:/login";
+//		}
+		Map<String,Object> empInfo = employeeService.employeeInfo(employee, employeeDetail);
+		model.addAttribute("empInfo", empInfo);
+		System.out.println(empInfo+"<--empInfo");
+	
+		return "emp/employeeInfo";
+	}
 }

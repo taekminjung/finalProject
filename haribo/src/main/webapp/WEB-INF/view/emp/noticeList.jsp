@@ -56,7 +56,7 @@
                <a href="${pageContext.request.contextPath}/insertNotice" class="btn btn-primary mb-3">공지 추가</a>
                 <div class="input-group input-group-sm hidden-xs" style="width: 150px;">
       
-                  <input type="text" name="table_search" class="form-control pull-right" placeholder="Search">
+                  <input type="text" name="searchKeyword" class="form-control pull-right" placeholder="Search">
 
                   <div class="input-group-btn">
                     <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
@@ -64,7 +64,7 @@
                 </div>
               </div>
             </div>
-            
+            <br><br>
 			<div class="box-body table-responsive no-padding">
 			    <table class="table table-hover">
 			        <tr>

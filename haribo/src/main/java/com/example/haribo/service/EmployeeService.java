@@ -2,6 +2,7 @@ package com.example.haribo.service;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,6 +18,10 @@ import lombok.extern.slf4j.Slf4j;
 @Service
 public class EmployeeService {
 	@Autowired private EmployeeMapper employeeMapper;
+	
+	public Employee loginEmployee(Employee employee) {
+		return employeeMapper.loginEmployee(employee);
+	}
 	
 	public int idCkEmp(String idCk) {
 		return employeeMapper.idCkEmp(idCk);
@@ -58,5 +63,11 @@ public class EmployeeService {
 			lastPage +=1;
 		}
 		return lastPage;
+	}
+	
+	public Map<String, Object> employeeInfo(Employee employee, EmployeeDetail employeeDetail){
+		Map<String,Object> empInfo = employeeMapper.selectEmployeeInfo(employee, employeeDetail);
+		
+		return empInfo;
 	}
 }
