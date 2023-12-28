@@ -7,7 +7,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import com.example.haribo.service.CalendarService;
 import com.example.haribo.service.CustomerService;
 import com.example.haribo.vo.Customer;
 import com.example.haribo.vo.CustomerDetail;
@@ -19,7 +21,8 @@ import lombok.extern.slf4j.Slf4j;
 public class CustomerController {
 	@Autowired
 	private CustomerService customerService;
-	
+	@Autowired
+	private CalendarService calendarService;
 	//회원 로그인
 	@PostMapping("/login")
 	public String loginCustomer(HttpSession session, Customer paramCustomer) {
@@ -86,4 +89,24 @@ public class CustomerController {
 		//리턴
 		return "customer/customerInfo";
 	}
+	
+	//회원 일정 출력
+	@GetMapping("/customerSchedule")
+	public String customerSchedule(HttpSession session, Model model,
+									@RequestParam(required = false) Integer targetYear,
+									@RequestParam(required = false) Integer targetMonth) {
+		// 세션 검사
+		if(session.getAttribute("loginCustomer") == null) {
+			return "redirect:/login";
+		}
+		//CalendarService 호출
+		Map<String, Object> calMap = calendarService.calendar(targetYear, targetMonth);
+		
+		//model
+		model.addAttribute("calMap", calMap);
+		
+		//리턴
+		return "customer/customerSchedule";
+	}
+	
 }

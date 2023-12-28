@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="zxx" class="no-js">
 
@@ -32,27 +33,6 @@
 	<link rel="stylesheet" href="customer/css/owl.carousel.css">
 	<link rel="stylesheet" href="customer/css/jquery-ui.css">
 	<link rel="stylesheet" href="customer/css/main.css">
-	
-	<!-- 공공 데이터 활용 주소 검색 api -->
-	<script language="javascript">
-	// opener관련 오류가 발생하는 경우 아래 주석을 해지하고, 사용자의 도메인정보를 입력합니다. ("팝업API 호출 소스"도 동일하게 적용시켜야 합니다.)
-	//document.domain = "abc.go.kr";
-	
-	function goPopup(){
-		// 주소검색을 수행할 팝업 페이지를 호출합니다.
-		// 호출된 페이지(jusopopup.jsp)에서 실제 주소검색URL(https://business.juso.go.kr/addrlink/addrLinkUrl.do)를 호출하게 됩니다.
-		var pop = window.open("/haribo/popup/jusoPopup.jsp","pop","width=570,height=420, scrollbars=yes, resizable=yes"); 
-		
-		// 모바일 웹인 경우, 호출된 페이지(jusopopup.jsp)에서 실제 주소검색URL(https://business.juso.go.kr/addrlink/addrMobileLinkUrl.do)를 호출하게 됩니다.
-	    //var pop = window.open("/popup/jusoPopup.jsp","pop","scrollbars=yes, resizable=yes"); 
-	}
-	
-	
-	function jusoCallBack(roadFullAddr){
-			// 팝업페이지에서 주소입력한 정보를 받아서, 현 페이지에 정보를 등록합니다.
-			document.form.roadFullAddr.value = roadFullAddr;
-	}
-	</script>
 </head>
 
 <body>
@@ -80,8 +60,8 @@
 							My Page
 						</a>
 						<span class="lnr lnr-arrow-right"></span>
-						<a href="${pageContext.request.contextPath }/customerInfo?customerNo=${loginCustomer.customerNo}">
-							Info
+						<a href="${pageContext.request.contextPath }/customerSchedule?customerNo=${loginCustomer.customerNo}">
+							Schedule
 						</a>
 					</p>
 				</div>
@@ -134,53 +114,50 @@
 				</div>
 			</div>
 			<div class="col-lg-9 comments-area">
-			<h3>개인 정보</h3><br><br>
-				<form name="form" id="form" method="post" action="">
-					<div class="row">
-						<div class="col-lg-6">
-							<p>이름</p>
-							<input type="text" name="customerName" value="${custInfoMap.customerName }" class="single-input">
-						</div>
-						<div class="col-lg-6">
-							<p>성별</p>
-							<input type="text" name="customerGender" value="${custInfoMap.customerGender }자" class="single-input" readonly>
-						</div>
-					</div><br><br>
-					<div class="row">
-						<div class="col-lg-6">
-							<p>키</p>
-							<input type="text" name="customerHeight" value=${custInfoMap.customerHeight } class="single-input">
-						</div>
-						<div class="col-lg-6">
-							<p>몸무게</p>
-							<input type="text" name="customerWeight" value=${custInfoMap.customerWeight } class="single-input">
-						</div>
-					</div><br><br>
+				<div>
+					<h3>일정</h3><br><br>
 					<div>
-						<p>전화번호</p>
-						<input type="text" name="customerPhone" value=${custInfoMap.customerPhone } class="single-input">
+						<h4>${calMap.targetYear}년 ${calMap.targetMonth +1}월</h4>
+						<a style="float:left" class="btn btn-outline-secondary" 
+						href="${pageContext.request.contextPath }/customerSchedule?customerNo=${loginCustomer.customerNo}&targetYear=${calMap.targetYear}&targetMonth=${calMap.targetMonth -1}">
+							이전 달
+						</a>
+						<a style="float:right" class="btn btn-outline-secondary" 
+						href="${pageContext.request.contextPath }/customerSchedule?customerNo=${loginCustomer.customerNo}&targetYear=${calMap.targetYear}&targetMonth=${calMap.targetMonth +1}">
+							다음 달
+						</a>
 					</div><br><br>
-					<div class="row">
-						<div class="col-lg-6">
-							<p>이메일 아이디</p>
-							<input type="text" name="emailId" value="${custInfoMap.emailId }" class="single-input">
-						</div>
-						<div class="default-select col-lg-6" id="default-select">
-							<p>이메일 도메인</p>
-							<select name="emailDomain">
-								<option value="${custInfoMap.emailDomain }" disabled selected>${custInfoMap.emailDomain }</option>
-								<option value="@naver.com">@naver.com</option>
-								<option value="@gmail.com">@gmail.com</option>
-							</select>
-						</div>
-					</div><br><br>
-					<div id="callBackDiv">
-						<p style="float:left">주소</p><input type="button" onClick="goPopup();" value="Find Addr" style="float:right"/>
-						<input id="roadFullAddr" type="text" name="customerAddress" value="${custInfoMap.customerAddress }" class="single-input" readonly>
-					</div>
-				</form><br>
-				<div align="center">
-					<button class="genric-btn primary circle e-large">수정</button>
+					<table class="table table-bordered">
+						<tr>
+							<th>일</th>
+							<th>월</th>
+							<th>화</th>
+							<th>수</th>
+							<th>목</th>
+							<th>금</th>
+							<th>토</th>
+						</tr>
+						<tr style="height:100px">
+						<c:forEach var="i" begin="1" end="${calMap.totalTd}" step="1">
+							<c:set var="d" value="${i - calMap.beginBlank }"></c:set>
+							<c:if test="${i % 7 == 1 }">
+								<td style="color:red">
+							</c:if>
+							<c:if test="${!(i % 7 == 1)}">
+								<td>
+							</c:if>
+							<c:if test="${d < 1 || d > calMap.lastDate}">
+								&nbsp;
+							</c:if>
+							<c:if test="${!(d < 1 || d > calMap.lastDate)}">
+								${d }
+							</c:if>
+							</td>
+							<c:if test="${i < calMap.totalTd && i % 7 == 0}">
+								</tr><tr style="height:100px">	
+							</c:if>
+						</c:forEach>
+					</table>
 				</div>
 			</div>
 		</div>

@@ -10,7 +10,7 @@
 		<c:set var="loginBtn" value="로그아웃"></c:set>
 		<c:set var="loginUrl" value="${pageContext.request.contextPath}/logout"></c:set>
 		<c:set var="registBtn" value="마이페이지"></c:set>
-		<c:set var="registUrl" value="${pageContext.request.contextPath}/customerInfo?customerNo=${loginCustomer.customerNo }"></c:set>
+		<c:set var="registUrl" value="${pageContext.request.contextPath}/customerSchedule?customerNo=${loginCustomer.customerNo }"></c:set>
 	</c:if>
 	<!-- start header Area -->
 	<header id="header">
