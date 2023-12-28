@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper
+	namespace="com.example.haribo.mapper.ProgramReservationMapper">
+	
+	<select id="selectProgramReservationDateByCustomerNo" 
+								parameterType="java.util.Map" 
+								resultType="java.util.Map">
+		SELECT
+			p.program_name programName,
+			DAY(pd.program_date) programDate,
+			b.branch_name branchName
+		FROM customer c INNER JOIN payment pm 
+		ON c.customer_id = pm.customer_id INNER JOIN program_reservation pr
+		ON pm.payment_no = pr.payment_no INNER JOIN program_date pd
+		ON pr.program_date_no = pd.program_date_no INNER JOIN program p
+		ON pd.program_no = p.program_no INNER JOIN branch b
+		ON pr.branch_no = b.branch_no
+		WHERE c.customer_no = #{customerNo}
+		AND YEAR(pd.program_date) = #{targetYear}
+		AND MONTH(pd.program_date) = #{targetMonth}
+	</select>
+</mapper>

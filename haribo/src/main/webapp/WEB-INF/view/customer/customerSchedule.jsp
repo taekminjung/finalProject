@@ -76,7 +76,7 @@
 				<div class="widget-wrap">
 					<div class="single-sidebar-widget user-info-widget">
 						<img src="customer/img/blog/user-info.png" alt="">
-						<a href="#"><h4>${custInfoMap.customerId }</h4></a>
+						<a href="#"><h4>${loginCustomer.customerId }</h4></a>
 						<p>${custInfoMap.customerName } 회원님</p>
 					</div>
 					<div class="single-sidebar-widget post-category-widget">
@@ -106,7 +106,6 @@
 					<div class="d-grid">
  						<button type="button" class="btn btn-outline-secondary btn-block" disabled>
 							<br>
-							<p>멤버십 : 보유</p>
 							<p>멤버십 종료 날짜</p>
 							<P>0000년 00월 00일</P>
 						</button>
@@ -127,15 +126,15 @@
 							다음 달
 						</a>
 					</div><br><br>
-					<table class="table table-bordered">
+					<table class="table table-bordered" style="table-layout:fixed">
 						<tr>
-							<th>일</th>
-							<th>월</th>
-							<th>화</th>
-							<th>수</th>
-							<th>목</th>
-							<th>금</th>
-							<th>토</th>
+							<th class="col-lg-1" style="color:red">일</th>
+							<th class="col-lg-1">월</th>
+							<th class="col-lg-1">화</th>
+							<th class="col-lg-1">수</th>
+							<th class="col-lg-1">목</th>
+							<th class="col-lg-1">금</th>
+							<th class="col-lg-1">토</th>
 						</tr>
 						<tr style="height:100px">
 						<c:forEach var="i" begin="1" end="${calMap.totalTd}" step="1">
@@ -150,7 +149,13 @@
 								&nbsp;
 							</c:if>
 							<c:if test="${!(d < 1 || d > calMap.lastDate)}">
-								${d }
+								${d }<br>
+								<c:forEach var="p" items="${proList }">
+									<c:if test="${p.programDate == d }">
+										<h6>${p.branchName }<br>
+										: ${p.programName}</h6><br>
+									</c:if>
+								</c:forEach>
 							</c:if>
 							</td>
 							<c:if test="${i < calMap.totalTd && i % 7 == 0}">

@@ -1,5 +1,6 @@
 package com.example.haribo.controller;
 
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.haribo.service.CalendarService;
 import com.example.haribo.service.CustomerService;
+import com.example.haribo.service.ProgramReservationService;
 import com.example.haribo.vo.Customer;
 import com.example.haribo.vo.CustomerDetail;
 
@@ -23,6 +25,8 @@ public class CustomerController {
 	private CustomerService customerService;
 	@Autowired
 	private CalendarService calendarService;
+	@Autowired
+	private ProgramReservationService programReservationService;
 	//회원 로그인
 	@PostMapping("/login")
 	public String loginCustomer(HttpSession session, Customer paramCustomer) {
@@ -92,7 +96,7 @@ public class CustomerController {
 	
 	//회원 일정 출력
 	@GetMapping("/customerSchedule")
-	public String customerSchedule(HttpSession session, Model model,
+	public String customerSchedule(HttpSession session, Model model, Customer customer,
 									@RequestParam(required = false) Integer targetYear,
 									@RequestParam(required = false) Integer targetMonth) {
 		// 세션 검사
@@ -101,10 +105,12 @@ public class CustomerController {
 		}
 		//CalendarService 호출
 		Map<String, Object> calMap = calendarService.calendar(targetYear, targetMonth);
-		
+		//ProgramReservationService 호출
+		List<Map<String,Object>> proList = programReservationService.programReservationDateByCustomerNo(customer,(int)calMap.get("targetYear"),(int)calMap.get("targetMonth"));
+		log.debug(proList+"");
 		//model
 		model.addAttribute("calMap", calMap);
-		
+		model.addAttribute("proList", proList);
 		//리턴
 		return "customer/customerSchedule";
 	}

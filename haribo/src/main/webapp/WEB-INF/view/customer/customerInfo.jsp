@@ -126,7 +126,6 @@
 					<div class="d-grid">
  						<button type="button" class="btn btn-outline-secondary btn-block" disabled>
 							<br>
-							<p>멤버십 : 보유</p>
 							<p>멤버십 종료 날짜</p>
 							<P>0000년 00월 00일</P>
 						</button>
@@ -179,8 +178,15 @@
 						<input id="roadFullAddr" type="text" name="customerAddress" value="${custInfoMap.customerAddress }" class="single-input" readonly>
 					</div>
 				</form><br>
-				<div align="center">
-					<button class="genric-btn primary circle e-large">수정</button>
+				<div class="row">
+					<div class="col-lg-8">
+						<p>비밀번호 확인</p>
+						<input type="text" name="customerPw" placeholder="비밀번호 입력 후 수정가능" class="single-input">
+					</div>
+					<div class="col-lg-4" align="center">
+						<p></p>
+						<button class="genric-btn primary circle e-large">수정</button>
+					</div>
 				</div>
 			</div>
 		</div>
