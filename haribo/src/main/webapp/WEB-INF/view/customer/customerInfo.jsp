@@ -58,7 +58,7 @@
 <body>
 	<!-- start header Area -->
 	<!-- inc 폴더의 CustomerHeader.jsp를 include -->
-	<jsp:include page="/inc/CustomerHeader.jsp"></jsp:include>
+	<jsp:include page="/inc/customerHeader.jsp"></jsp:include>
 	<!-- End header Area -->
 	
 	<!-- start banner Area -->
@@ -92,46 +92,7 @@
 	
 	<div class="container">
 		<div class="row">
-			<div class="col-lg-3 sidebar-widgets"><br><br>
-				<div class="widget-wrap">
-					<div class="single-sidebar-widget user-info-widget">
-						<img src="customer/img/blog/user-info.png" alt="">
-						<h4>${custInfoMap.customerId }</h4>
-						<p>${custInfoMap.customerName } 회원님</p>
-					</div>
-					<div class="single-sidebar-widget post-category-widget">
-						<h4 class="category-title">My Page Navi</h4>
-						<ul class="cat-list">
-							<li></li>
-							<li>
-								<a href="${pageContext.request.contextPath }/customerSchedule?customerNo=${loginCustomer.customerNo}" class="d-flex justify-content-between">
-									<span class="lnr lnr-arrow-right"></span>
-									<p>일정</p>
-								</a>
-							</li>
-							<li>
-								<a href="${pageContext.request.contextPath }/customerInfo?customerNo=${loginCustomer.customerNo}" class="d-flex justify-content-between">
-									<span class="lnr lnr-arrow-right"></span>
-									<p>개인 정보</p>
-								</a>
-							</li>
-							<li>
-								<a href="" class="d-flex justify-content-between">
-									<span class="lnr lnr-arrow-right"></span>
-									<p>내 멤버십 정보</p>
-								</a>
-							</li>
-						</ul>
-					</div>
-					<div class="d-grid">
- 						<button type="button" class="btn btn-outline-secondary btn-block" disabled>
-							<br>
-							<p>멤버십 종료 날짜</p>
-							<P>0000년 00월 00일</P>
-						</button>
-					</div>
-				</div>
-			</div>
+			<jsp:include page="/inc/customerMyPageSidebar.jsp"></jsp:include>
 			<div class="col-lg-9 comments-area">
 			<h3>개인 정보</h3><input type="hidden" id="customerId" value="${loginCustomer.customerId }"><br><br>
 				<form name="form" id="form" method="post" action="${pageContext.request.contextPath }/updateCustomerInfo?customerNo=${loginCustomer.customerNo}">
@@ -195,7 +156,7 @@
 	
 	<!-- start footer Area -->
 	<!-- inc 폴더의 CustomerFooter.jsp를 include -->
-	<jsp:include page="/inc/CustomerFooter.jsp"></jsp:include>
+	<jsp:include page="/inc/customerFooter.jsp"></jsp:include>
 	<!-- End footer Area -->
 
 	<script src="customer/js/vendor/jquery-2.2.4.min.js"></script>
