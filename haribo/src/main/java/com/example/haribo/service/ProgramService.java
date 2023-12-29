@@ -62,4 +62,22 @@ public class ProgramService {
 		}
 		return lastPage;
 	}
+		//고객 홈페이지에서 프로그램리스트 출력
+		public List<Program> selectProgram(Program program){
+			List<Program> list = programMapper.selectProgram(program);
+			
+			return list;
+		}
+		//고객홈페이지에서 프로그램 상세보기 페이지
+		public List<Program> selectProgramDetail(Program program){
+			List<Program> dlist = programMapper.selectProgramDetail(program);
+			
+			return dlist;
+		}
+		//프로그램상세보기페이지에서 프로그램정보와 담당 직원정보 출력
+		public HashMap<String, Object> selectProgramEmp(Program program){
+			HashMap<String, Object> map = programMapper.selectProgramEmp(program);
+			
+			return map;
+		}
 }

@@ -136,8 +136,8 @@
 
 			<div class="row">
 				<div class="active-testimonial-carusel">
-					<div class="single-testimonial item">
 				<c:forEach var="r" items="${list}">
+					<div class="single-testimonial item">
 						<img class="mx-auto rounded-circle" src="customer/img/t1.png" alt="">	<!-- ${r.customerImgFileName} -->
 						<p class="desc">
 							${r.reviewContent}
@@ -146,96 +146,10 @@
 						<p>
 					
 						</p>
+					</div>
 				</c:forEach>
-					</div>
-					<div class="single-testimonial item">
-						<img class="mx-auto rounded-circle" src="customer/img/t2.png" alt="">
-						<p class="desc">
-							It won’t be a bigger problem to find one video game lover in your neighbor. Since the introduction of Virtual Game, it has
-							been achieving great heights so far as its.
-						</p>
-						<h4>Cordelia Barton</h4>
-						<p>
-							CEO at Twitter
-						</p>
-					</div>
-					<div class="single-testimonial item">
-						<img class="mx-auto rounded-circle" src="customer/img/t3.png" alt="">
-						<p class="desc">
-							About 64% of all on-line teens say that do things online that they wouldn’t want their parents to know about. 11% of all
-							adult internet users visit dating websites.
-						</p>
-						<h4>Carrie Reese</h4>
-						<p>
-							CEO at Google
-						</p>
-					</div>
-					<div class="single-testimonial item">
-						<img class="mx-auto rounded-circle" src="customer/img/t1.png" alt="">
-						<p class="desc">
-							Accessories Here you can find the best computer accessory for your laptop, monitor, printer, scanner, speaker, projector,
-							hardware and more. laptop accessory
-						</p>
-						<h4>Helena Phillips</h4>
-						<p>
-							CEO at Facebook
-						</p>
-					</div>
-					<div class="single-testimonial item">
-						<img class="mx-auto rounded-circle" src="customer/img/t2.png" alt="">
-						<p class="desc">
-							It won’t be a bigger problem to find one video game lover in your neighbor. Since the introduction of Virtual Game, it has
-							been achieving great heights so far as its.
-						</p>
-						<h4>Cordelia Barton</h4>
-						<p>
-							CEO at Twitter
-						</p>
-					</div>
-					<div class="single-testimonial item">
-						<img class="mx-auto rounded-circle" src="customer/img/t3.png" alt="">
-						<p class="desc">
-							About 64% of all on-line teens say that do things online that they wouldn’t want their parents to know about. 11% of all
-							adult internet users visit dating websites.
-						</p>
-						<h4>Carrie Reese</h4>
-						<p>
-							CEO at Google
-						</p>
-					</div>
-					<div class="single-testimonial item">
-						<img class="mx-auto rounded-circle" src="customer/img/t1.png" alt="">
-						<p class="desc">
-							Accessories Here you can find the best computer accessory for your laptop, monitor, printer, scanner, speaker, projector,
-							hardware and more. laptop accessory
-						</p>
-						<h4>Helena Phillips</h4>
-						<p>
-							CEO at Facebook
-						</p>
-					</div>
-					<div class="single-testimonial item">
-						<img class="mx-auto rounded-circle" src="customer/img/t2.png" alt="">
-						<p class="desc">
-							It won’t be a bigger problem to find one video game lover in your neighbor. Since the introduction of Virtual Game, it has
-							been achieving great heights so far as its.
-						</p>
-						<h4>Cordelia Barton</h4>
-						<p>
-							CEO at Twitter
-						</p>
-					</div>
-					<div class="single-testimonial item">
-						<img class="mx-auto rounded-circle" src="customer/img/t3.png" alt="">
-						<p class="desc">
-							About 64% of all on-line teens say that do things online that they wouldn’t want their parents to know about. 11% of all
-							adult internet users visit dating websites.
-						</p>
-						<h4>Carrie Reese</h4>
-						<p>
-							CEO at Google
-						</p>
-					</div>
+				
+					
 				</div>
 			</div>
 		</div>

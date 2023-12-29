@@ -27,4 +27,12 @@ public interface ProgramMapper {
 	int deleteProgram(Program program);
 	
 	int updateProgram(Program program);
+	
+	//프로그램 목록
+	List<Program> selectProgram(Program program);
+	//프로그램 상세보기
+	List<Program> selectProgramDetail(Program program);
+	//상세보기에서 담당직원정보
+	HashMap<String, Object> selectProgramEmp(Program program);
+	
 }

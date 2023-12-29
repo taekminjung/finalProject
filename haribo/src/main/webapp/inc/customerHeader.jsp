@@ -36,9 +36,9 @@
 						<li><a class="active" href="${pageContext.request.contextPath}/home">Home</a></li>
 						<li><a href="${pageContext.request.contextPath}/aboutUs">About</a></li>
 						<li><a href="${pageContext.request.contextPath}/branch">Branch/Trainers</a></li>
-						<li class="menu-has-children"><a href="">Blog</a>
+						<li class="menu-has-children"><a href="${pageContext.request.contextPath}/program">Program</a>
 							<ul>
-								<li><a href="blog-home.html">Blog Home</a></li>
+								<li><a href="${pageContext.request.contextPath}/program">Blog Home</a></li>
 								<li><a href="blog-single.html">Blog Single</a></li>
 							</ul>
 						</li>

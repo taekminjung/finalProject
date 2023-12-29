@@ -1,5 +1,3 @@
-trainers.jsp
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -93,23 +91,22 @@ trainers.jsp
 	<nav class="blog-pagination justify-content-center d-flex">
 						<ul class="pagination">
 							<li class="page-item">
-								<a href="#" class="page-link" aria-label="Previous">
+							  <c:if test="${currentPage > 1}">
+								<a href="${pageContext.request.contextPath}/trsiners?currentPage=${currentPage-1}" class="page-link" aria-label="Previous">
 									<span aria-hidden="true">
 										<span class="lnr lnr-chevron-left"></span>
 									</span>
 								</a>
+								</c:if>
 							</li>
-							<li class="page-item"><a href="#" class="page-link">01</a></li>
-							<li class="page-item active"><a href="#" class="page-link">02</a></li>
-							<li class="page-item"><a href="#" class="page-link">03</a></li>
-							<li class="page-item"><a href="#" class="page-link">04</a></li>
-							<li class="page-item"><a href="#" class="page-link">09</a></li>
 							<li class="page-item">
-								<a href="#" class="page-link" aria-label="Next">
+							<c:if test="${currentPage < lastPage}">
+								<a href="${pageContext.request.contextPath}/trsiners?currentPage=${currentPage+1}" class="page-link" aria-label="Next">
 									<span aria-hidden="true">
 										<span class="lnr lnr-chevron-right"></span>
 									</span>
 								</a>
+							</c:if>
 							</li>
 						</ul>
 					</nav>

@@ -10,4 +10,6 @@ public class Program {
 	private int programMaxCustomer;
 	private String createdate;
 	private String updatedate;
+	private String programMemo;
+	private String programDay;
 }

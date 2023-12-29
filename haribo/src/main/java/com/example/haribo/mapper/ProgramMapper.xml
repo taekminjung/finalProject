@@ -26,5 +26,47 @@
 			#{programDate}
 		)
 	</insert>
-
+		<select id="selectProgram">
+	SELECT 
+		program_no programNo,
+		employee_id employeeId,
+		program_name programName,
+		program_max_customer programMaxCustomer
+	FROM program
+		
+	</select>
+	<select id="selectProgramDetail">
+	SELECT 
+	program_no programNo,
+	employee_id employeeId,
+	program_name programName,
+	program_max_customer programMaxCustomer,
+	createdate
+	FROM program
+	WHERE program_no = #{programNo}
+		
+	</select>
+	<!--  프로그램 상세페이지 프로그램,담당직원정보 select -->
+	<select id="selectProgramEmp">
+		SELECT 
+			p.employee_id employeeId,
+			p.program_memo programMemo,
+			p.program_day programDay,
+			d.employee_name employeeName,
+			d.employee_phone employeePhone,
+			d.employee_email employeeEmail,
+			b.branch_name branchName,
+			i.employee_img_file_name
+			FROM  program p
+			INNER JOIN employee e
+			ON p.employee_id = e.employee_id
+			INNER JOIN branch b 
+			ON e.branch_no = b.branch_no
+			INNER JOIN employee_detail d
+			ON e.employee_no = d.employee_no
+			LEFT OUTER JOIN employee_img i
+			ON e.employee_no = i.employee_no
+			WHERE program_no = #{programNo}
+		
+	</select>
 </mapper>

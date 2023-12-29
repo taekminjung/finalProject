@@ -14,7 +14,7 @@ import com.example.haribo.vo.Branch;
 @Service
 public class TrainersService {
 		@Autowired TrainersMapper trainersMapper;
-		//트레이너 리스트
+		// 지점별 트레이너 리스트
 		public List<HashMap<String, Object>> trainersList(@RequestParam(defaultValue ="1") int currentPage, Branch branch){
 			int rowPerPage = 4;
 			int beginRow = (currentPage-1)*rowPerPage;

@@ -1,5 +1,6 @@
 package com.example.haribo.controller;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,5 +45,30 @@ public class ProgramController {
 		System.out.println(list+"<-- programList");
 		return "emp/programList";
 		
+	}
+	@GetMapping("/program")
+	public String program(Model model, Program program) {
+		
+		//프로그램 목록 출력
+		List<Program> list = programService.selectProgram(program);
+		
+		//모델에 담아 view로
+		model.addAttribute("list", list);
+		
+		return "public/program";
+		
+	}
+	@GetMapping("/programDetail")
+	public String programDetail(Model model, Program program) {
+		//프로그램 상세보기 내용 출력
+		List<Program> list = programService.selectProgramDetail(program);
+		//상세보기 페이지에서 담당 직원 사진 이름 출력
+		HashMap<String, Object> map = programService.selectProgramEmp(program);
+				
+		//모델에 담기
+		model.addAttribute("list", list);
+		model.addAttribute("map", map);
+		model.addAttribute("program", program);
+		return "public/programDetail";
 	}
 }

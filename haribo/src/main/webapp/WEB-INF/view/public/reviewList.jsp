@@ -97,6 +97,15 @@
 						</c:forEach>
 						</tbody>
 					</table>
+						<div class="text-center"> 
+				  <c:if test="${currentPage > 1}">
+				  	<a href="${pageContext.request.contextPath}/reviewList?currentPage=${currentPage-1}" class="btn btn-primary">이전</a>
+				  </c:if>
+				  <span class="badge bg-light">${currentPage}</span>
+				  <c:if test="${currentPage < lastPage}">
+				  	<a href="${pageContext.request.contextPath}/reviewList?currentPage=${currentPage+1}" class="btn btn-primary">다음</a>
+				  </c:if>
+			</div>
 				</div>
 			</div>
 		</div>

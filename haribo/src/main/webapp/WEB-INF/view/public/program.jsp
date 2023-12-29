@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="zxx" class="no-js">
 
@@ -8,7 +8,7 @@
 	<!-- Mobile Specific Meta -->
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<!-- Favicon-->
-	<link rel="shortcut icon" href="img/fav.png">
+	<link rel="shortcut icon" href="customer/img/fav.png">
 	<!-- Author Meta -->
 	<meta name="author" content="colorlib">
 	<!-- Meta Description -->
@@ -18,7 +18,7 @@
 	<!-- meta character set -->
 	<meta charset="UTF-8">
 	<!-- Site Title -->
-	<title>공지사항</title>
+	<title>하리보 지점</title>
 
 	<link href="https://fonts.googleapis.com/css?family=Roboto:100,200,300,400,500,700" rel="stylesheet">
 	<!--
@@ -42,73 +42,68 @@
 	<!-- end header Area -->
 
 	<!-- start banner Area -->
-	<section class="banner-area relative about-banner" id="home">
-		<img class="cta-img img-fluid" src="img/cta-img.png" alt="">
+	<section class="banner-area relative blog-home-banner" id="home">
 		<div class="overlay overlay-bg"></div>
 		<div class="container">
 			<div class="row d-flex align-items-center justify-content-center">
-				<div class="about-content col-lg-12">
-					<h1>
-						공지사항
+				<div class="about-content blog-header-content col-lg-12">
+					<h1 class="text-uppercase text-white">
+						<span>Haribo Team</span> 의 <br> 프로그램
 					</h1>
-					<p class="link-nav"><a href="${pageContext.request.contextPath}/home">Home </a>
-						<span class="lnr lnr-arrow-right"></span> <a href="${pageContext.request.contextPath}/noticeList">
-							Notice</a></p>
+					<a href="${pageContext.request.contextPath}/contact" class="primary-btn mt-40">Contact Us</a>
 				</div>
 			</div>
 		</div>
 	</section>
 	<!-- End banner Area -->
 
-	<!-- Start schedule Area -->
-	<section class="schedule-area section-gap">
-		<img class="featured-img img-fluid" src="img/featured-class/feature-img.png" alt="">
+	<!-- Start top-category-widget Area -->
+	<section class="top-category-widget-area pt-90 pb-90 ">
+		<div class="container">
+			<div class="row">
+			<c:forEach var="p" items="${list}">
+				<div class="col-lg-4">
+					<div class="single-cat-widget">
+						<div class="content relative">
+							<div class="overlay overlay-bg"></div>
+							<a href="${pageContext.request.contextPath}/programDetail?programNo=${p.programNo}&programName=${p.programName}" >
+								<div class="thumb">
+									<img class="content-image img-fluid d-block mx-auto" src="customer/img/blog/cat-widget1.jpg" alt="">
+								</div>
+								<div class="content-details">
+									<h4 class="content-title mx-auto text-uppercase">${p.programName}</h4>
+									<span></span>
+									<p>${p.programName} 상세보기</p>
+								</div>
+							</a>
+						</div>
+					</div>
+				</div>
+			</c:forEach>
+			
+			</div>
+		</div>
+	</section>
+	<!-- End top-category-widget Area -->
+
+	<!-- Start post-content Area -->
+	<section class="team-area section-gap">
 		<div class="container">
 			<div class="row d-flex justify-content-center">
 				<div class="col-lg-12">
 					<div class="section-title-wrap text-center">
-						<h1>공지사항 리스트</h1>
-						<p>본사/지점 전체 공지사항 리스트 입니다.</p>
+					
 					</div>
 				</div>
 			</div>
+			</div>
+			
+			</section>	
+	<section class="post-content-area">
+				
 
-			<div class="row justify-content-center">
-				<div class="table-wrap col-lg-10">
-					<table class="schdule-table table table-bordered">
-						<thead class="thead-light">
-							<tr>
-								<th class="head" scope="col">No</th>
-								<th class="head" scope="col">제목</th>
-								<th class="head" scope="col">작성자</th>
-								<th class="head" scope="col">등록일</th>
-							</tr>
-						</thead>
-						<tbody>
-						<c:forEach var="n"  items="${list}">
-							<tr>
-								<td>${n.noticeNo}</td>
-								<td class="name" scope="row"><a href="${pageContext.request.contextPath}/customerNoticeOne?noticeNo=${n.noticeNo}">${n.noticeTitle}</a></td>
-								<td>${n.employeeId}</td>
-								<td>${n.createdate}</td>
-							</tr>
-						</c:forEach>
-						</tbody>
-					</table>
-						<div class="text-center"> 
-				  <c:if test="${currentPage > 1}">
-				  	<a href="${pageContext.request.contextPath}/customerNoticeList?currentPage=${currentPage-1}" class="btn btn-primary">이전</a>
-				  </c:if>
-				  <span class="badge bg-light">${currentPage}</span>
-				  <c:if test="${currentPage < lastPage}">
-				  	<a href="${pageContext.request.contextPath}/customerNoticeList?currentPage=${currentPage+1}" class="btn btn-primary">다음</a>
-				  </c:if>
-			</div>
-				</div>
-			</div>
-		</div>
 	</section>
-	<!-- End schedule Area -->
+	<!-- End post-content Area -->
 
 	<!-- start footer Area -->
 	<!-- inc 폴더의 CustomerFooter.jsp를 include -->
