@@ -10,7 +10,7 @@ import com.example.haribo.vo.CustomerDetail;
 @Mapper
 public interface CustomerMapper {
 	// 회원 로그인
-	Customer loginCustomer(Customer customer);
+	Map<String,Object> loginCustomer(Customer customer);
 	
 	// 회원 아이디 중복 체크
 	int idCkCnt(String idCk);
@@ -29,4 +29,13 @@ public interface CustomerMapper {
 	
 	//회원 상세정보 수정
 	int updateCustomerDetail(CustomerDetail customerDetail);
+	
+	//회원 비밀번호 수정
+	int updateCustomerPw(Map<String, Object> map);
+	
+	//회원 탈퇴 (활성화 정보 수정)
+	int updateCustomerActive(Customer customer);
+	
+	//회원 탈퇴 (개인 정보 삭제)
+	int deleteCustomerDetail(Customer customer);
 }

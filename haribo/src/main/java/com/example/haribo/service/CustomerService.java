@@ -18,7 +18,7 @@ public class CustomerService {
 	private CustomerMapper customerMapper;
 	
 	//회원 로그인
-	public Customer loginCustomer(Customer paramCustomer) {
+	public Map<String,Object> loginCustomer(Customer paramCustomer) {
 		log.debug(paramCustomer.toString());
 		
 		return customerMapper.loginCustomer(paramCustomer);
@@ -89,5 +89,31 @@ public class CustomerService {
 		}
 		
 		return customerMapper.updateCustomerDetail(customerDetail);
+	}
+	
+	//회원 비밀번호 수정
+	public int updateCustomerPw(Customer customer, String newCustomerPw) {
+		
+		Map<String,Object> pwMap = new HashMap<>();
+		pwMap.put("newCustomerPw", newCustomerPw);
+		pwMap.put("customerId", customer.getCustomerId());
+		pwMap.put("customerPw", customer.getCustomerPw());
+		
+		log.debug(pwMap+"");
+		
+		return customerMapper.updateCustomerPw(pwMap);
+	}
+	
+	//회원 탈퇴 (active 수정, detail 삭제)
+	public void deleteCustomer(Customer cusotmer) {
+		int row = customerMapper.updateCustomerActive(cusotmer);
+		if(row != 1) {
+			throw new RuntimeException();
+		}else {
+			int row2 = customerMapper.deleteCustomerDetail(cusotmer);
+			if(row != 1) {
+				throw new RuntimeException();
+			}
+		}
 	}
 }

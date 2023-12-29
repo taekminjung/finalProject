@@ -146,7 +146,7 @@
 					</div>
 					<div class="col-lg-4" align="center">
 						<p></p>
-						<button id="formBtn" class="genric-btn primary circle e-large">수정</button>
+						<button id="formBtn" class="genric-btn primary-border circle e-large">수정</button>
 					</div>
 				</div>
 			</div>

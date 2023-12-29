@@ -4,8 +4,8 @@
 	<div class="widget-wrap">
 		<div class="single-sidebar-widget user-info-widget">
 			<img src="customer/img/blog/user-info.png" alt="">
-			<h4>${custInfoMap.customerId }</h4>
-			<p>${custInfoMap.customerName } 회원님</p>
+			<h4>${loginCustomer.customerId }</h4>
+			<p>${loginCustomer.customerName } 회원님</p>
 		</div>
 		<div class="single-sidebar-widget post-category-widget">
 			<h4 class="category-title">My Page Navi</h4>
@@ -24,9 +24,15 @@
 					</a>
 				</li>
 				<li>
-					<a href="" class="d-flex justify-content-between">
+					<a href="${pageContext.request.contextPath }/updateCustomerPw?customerNo=${loginCustomer.customerNo}" class="d-flex justify-content-between">
 						<span class="lnr lnr-arrow-right"></span>
-						<p>내 멤버십 정보</p>
+						<p>비밀번호 변경</p>
+					</a>
+				</li>
+				<li>
+					<a href="${pageContext.request.contextPath }/deleteCustomer?customerNo=${loginCustomer.customerNo}" class="d-flex justify-content-between">
+						<span class="lnr lnr-arrow-right"></span>
+						<p style="color: red">회원 탈퇴</p>
 					</a>
 				</li>
 			</ul>

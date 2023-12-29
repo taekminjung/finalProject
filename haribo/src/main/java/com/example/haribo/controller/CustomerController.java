@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.example.haribo.mapper.CustomerMapper;
 import com.example.haribo.service.CalendarService;
 import com.example.haribo.service.CustomerService;
 import com.example.haribo.service.ProgramReservationService;
@@ -33,7 +34,7 @@ public class CustomerController {
 		log.debug("\u001B[42m"+paramCustomer);
 		
 		//서비스 호출
-		Customer loginCustomer = customerService.loginCustomer(paramCustomer);
+		Map<String,Object> loginCustomer = customerService.loginCustomer(paramCustomer);
 		log.debug("\u001B[42m"+loginCustomer);
 		
 		//세션에 로그인 정보 넣기
@@ -126,5 +127,56 @@ public class CustomerController {
 		//리턴
 		String u = "redirect:/customerInfo?customerNo="+customerDetail.getCustomerNo();
 		return u;
+	}
+	
+	//회원 비밀번호 수정
+	@GetMapping("/updateCustomerPw")
+	public String updateCustomerPw(HttpSession session) {
+		// 세션 검사
+		if(session.getAttribute("loginCustomer") == null) {
+			return "redirect:/login";
+		}
+		
+		return "customer/updateCustomerPw";
+	}
+	
+	@PostMapping("/updateCustomerPw")
+	public String updateCustomerPw(HttpSession session, Customer customer, String newCustomerPw) {
+		
+		log.debug(customer+newCustomerPw);
+		
+		//customerService 호출
+		int row = customerService.updateCustomerPw(customer, newCustomerPw);
+		if(row != 1) {
+			String u = "redirect:/updateCustomerPw?customerNo="+customer.getCustomerNo();
+			return u;
+		}
+		session.invalidate();
+		
+		//리턴
+		return "redirect:/home";
+	}
+	
+	//회원탈퇴(active를 N으로 바꾸고 detail만 삭제)
+	@GetMapping("/deleteCustomer")
+	public String deleteCustomer(HttpSession session) {
+		// 세션 검사
+		if(session.getAttribute("loginCustomer") == null) {
+			return "redirect:/login";
+		}
+		
+		//리턴
+		return "customer/deleteCustomer";
+	}
+		
+	@PostMapping("/deleteCustomer")
+	public String deleteCustomer(HttpSession session,Customer customer) {
+		
+		//customerService 호출
+		customerService.deleteCustomer(customer);
+		session.invalidate();
+		
+		//리턴
+		return "redirect:/home";
 	}
 }

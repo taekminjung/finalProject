@@ -4,14 +4,16 @@
 
 	<select id="loginCustomer" 
 			parameterType="com.example.haribo.vo.Customer" 
-			resultType="com.example.haribo.vo.Customer">
+			resultType="java.util.Map">
 		SELECT 
-			customer_no customerNo,
-			customer_id customerId
-		FROM customer
-		WHERE customer_id = #{customerId}
-		AND customer_pw = #{customerPw}	
-		AND customer_active = 'Y'	
+			c.customer_no customerNo,
+			c.customer_id customerId,
+			cd.customer_name customerName
+		FROM customer c INNER JOIN customer_detail cd
+		ON c.customer_no = cd.customer_no
+		WHERE c.customer_id = #{customerId}
+		AND c.customer_pw = PASSWORD(#{customerPw})	
+		AND c.customer_active = 'Y'	
 	</select>
 	
 	<select id="idCkCnt" parameterType="String" resultType="Integer">
@@ -19,6 +21,7 @@
 			COUNT(customer_id)
 		FROM customer
 		WHERE customer_id = #{idCk}
+		AND customer_active = 'Y'
 	</select>
 	
 	<select id="pwCkCnt" parameterType="com.example.haribo.vo.Customer" resultType="Integer">
@@ -26,7 +29,7 @@
 			COUNT(customer_id)
 		FROM customer
 		WHERE customer_id = #{customerId}
-		AND customer_pw = #{customerPw}
+		AND customer_pw = PASSWORD(#{customerPw})
 	</select>
 	
 	<insert id="insertCustomer" parameterType="com.example.haribo.vo.Customer">
@@ -38,7 +41,7 @@
 			customer_pw
 		)VALUES(
 			#{customerId},
-			#{customerPw}
+			PASSWORD(#{customerPw})
 		)
 	</insert>
 	
@@ -87,4 +90,23 @@
 			updatedate = now()
 		WHERE customer_no = #{customerNo}
 	</update>
+	
+	<update id="updateCustomerPw" parameterType="java.util.Map">
+		UPDATE customer SET
+			customer_pw = PASSWORD(#{newCustomerPw}),
+			updatedate = now()
+		WHERE customer_id = #{customerId}
+		AND customer_pw = PASSWORD(#{customerPw})
+	</update>
+	
+	<update id="updateCustomerActive" parameterType="com.example.haribo.vo.Customer">
+		UPDATE customer SET
+			customer_active = 'N'
+		WHERE customer_no = #{customerNo}
+	</update>
+	
+	<delete id="deleteCustomerDetail" parameterType="com.example.haribo.vo.Customer">
+		DELETE FROM customer_detail
+		WHERE customer_no = #{customerNo}
+	</delete>
 </mapper>
