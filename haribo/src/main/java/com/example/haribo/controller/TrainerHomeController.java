@@ -4,7 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
-public class TrainerController {
+public class TrainerHomeController {
 	@GetMapping("/trainerHome")
 	// 트레이너 홈페이지
 	public String trainerHome() {

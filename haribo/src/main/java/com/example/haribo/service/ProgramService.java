@@ -1,8 +1,12 @@
 package com.example.haribo.service;
 
+import java.util.HashMap;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.haribo.mapper.ProgramMapper;
 import com.example.haribo.vo.Program;
@@ -30,5 +34,22 @@ public class ProgramService {
 			throw new RuntimeException();
 			}
 		}
+	}
+	
+	public List<Program> programList(@RequestParam(defaultValue = "1") int currentPage){
+		
+		int rowPerPage = 5;
+		int beginRow = (currentPage - 1) * rowPerPage;
+		int totalRow = programMapper.getTotalRow(rowPerPage);
+		int lastPage = totalRow / rowPerPage;
+		if(totalRow % rowPerPage != 0) {
+			lastPage +=1;
+		}
+		HashMap<String, Object> param = new HashMap<>();
+		param.put("beginRow", beginRow);
+		param.put("rowPerPage", rowPerPage);
+		
+		List<Program> list = programMapper.programList(param);
+		return list;
 	}
 }
