@@ -42,7 +42,7 @@ trainers.jsp
 <body>
 	<!-- start header Area -->
 	<!-- inc 폴더의 CustomerHeader.jsp를 include -->
-	<jsp:include page="/inc/CustomerHeader.jsp"></jsp:include>
+	<jsp:include page="/inc/customerHeader.jsp"></jsp:include>
 	<!-- end header Area -->
 
 	<!-- start banner Area -->
@@ -174,7 +174,7 @@ trainers.jsp
 
 	<!-- start footer Area -->
 	<!-- inc 폴더의 CustomerFooter.jsp를 include -->
-	<jsp:include page="/inc/CustomerFooter.jsp"></jsp:include>
+	<jsp:include page="/inc/customerFooter.jsp"></jsp:include>
 	<!-- End footer Area -->
 
 

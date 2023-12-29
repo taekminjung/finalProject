@@ -38,7 +38,7 @@
 <body>
 	<!-- start header Area -->
 	<!-- inc 폴더의 CustomerHeader.jsp를 include -->
-	<jsp:include page="/inc/CustomerHeader.jsp"></jsp:include>
+	<jsp:include page="/inc/customerHeader.jsp"></jsp:include>
 	<!-- end header Area -->
 
 	<!-- start banner Area -->
@@ -92,8 +92,7 @@
 			<div class="row d-flex justify-content-center">
 				<div class="col-lg-12">
 					<div class="section-title-wrap text-center">
-						<h1>트레이너 소개</h1>
-						<p>저희와 함께하는 소중한 트레이너들을 소개합니다.</p>
+					
 					</div>
 				</div>
 			</div>
@@ -111,36 +110,14 @@
 					</c:forEach>
 			</section>	
 	<section class="post-content-area">
-					<nav class="blog-pagination justify-content-center d-flex">
-						<ul class="pagination">
-							<li class="page-item">
-								<a href="#" class="page-link" aria-label="Previous">
-									<span aria-hidden="true">
-										<span class="lnr lnr-chevron-left"></span>
-									</span>
-								</a>
-							</li>
-							<li class="page-item"><a href="#" class="page-link">01</a></li>
-							<li class="page-item active"><a href="#" class="page-link">02</a></li>
-							<li class="page-item"><a href="#" class="page-link">03</a></li>
-							<li class="page-item"><a href="#" class="page-link">04</a></li>
-							<li class="page-item"><a href="#" class="page-link">09</a></li>
-							<li class="page-item">
-								<a href="#" class="page-link" aria-label="Next">
-									<span aria-hidden="true">
-										<span class="lnr lnr-chevron-right"></span>
-									</span>
-								</a>
-							</li>
-						</ul>
-					</nav>
+				
 
 	</section>
 	<!-- End post-content Area -->
 
 	<!-- start footer Area -->
 	<!-- inc 폴더의 CustomerFooter.jsp를 include -->
-	<jsp:include page="/inc/CustomerFooter.jsp"></jsp:include>
+	<jsp:include page="/inc/customerFooter.jsp"></jsp:include>
 	<!-- End footer Area -->
 
 

@@ -37,7 +37,7 @@
 <body>
 	<!-- start header Area -->
 	<!-- inc 폴더의 CustomerHeader.jsp를 include -->
-	<jsp:include page="/inc/CustomerHeader.jsp"></jsp:include>
+	<jsp:include page="/inc/customerHeader.jsp"></jsp:include>
 	<!-- End header Area -->
 	
 	<!-- start banner Area -->
@@ -477,7 +477,7 @@
 	
 	<!-- start footer Area -->
 	<!-- inc 폴더의 CustomerFooter.jsp를 include -->
-	<jsp:include page="/inc/CustomerFooter.jsp"></jsp:include>
+	<jsp:include page="/inc/customerFooter.jsp"></jsp:include>
 	<!-- End footer Area -->
 
 	<script src="customer/js/vendor/jquery-2.2.4.min.js"></script>
