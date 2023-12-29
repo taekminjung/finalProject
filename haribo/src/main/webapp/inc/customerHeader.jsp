@@ -36,6 +36,7 @@
 						<li><a class="active" href="${pageContext.request.contextPath}/home">Home</a></li>
 						<li><a href="${pageContext.request.contextPath}/aboutUs">About</a></li>
 						<li><a href="${pageContext.request.contextPath}/branch">Branch/Trainers</a></li>
+						<li><a href="${pageContext.request.contextPath}/membership">Membership</a></li>
 						<li><a href="${pageContext.request.contextPath}/program">Program</a></li>
 						<li class="menu-has-children"><a href="">Pages</a>
 							<ul>
