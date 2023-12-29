@@ -24,7 +24,7 @@
 
   <!-- header 시작 부분 -->
   <!-- inc 폴더의 TrainerNavi.jsp를 include -->
-  <jsp:include page="/inc/TrainerNavi.jsp"></jsp:include>
+  <jsp:include page="/inc/trainerNavi.jsp"></jsp:include>
   <!-- header 끝나는 부분 -->
 
   <!-- aside 작성 뒤 항상 이 부분이 메인 컨텐츠 부분이 됨 -->

@@ -31,7 +31,7 @@
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
   
-  <%@include file="/inc/AdminHeader.jsp" %>
+  <%@include file="/inc/adminHeader.jsp" %>
   
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">

@@ -39,7 +39,7 @@
 
 
   
-  <%@include file="/inc/AdminHeader.jsp" %>
+  <%@include file="/inc/adminHeader.jsp" %>
   
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
