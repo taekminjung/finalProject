@@ -52,4 +52,14 @@ public class ProgramService {
 		List<Program> list = programMapper.programList(param);
 		return list;
 	}
+
+	public int lastPage() {
+		int rowPerPage = 5;
+		int totalRow = programMapper.getTotalRow(rowPerPage);
+		int lastPage = totalRow / rowPerPage;
+		if(totalRow % rowPerPage != 0) {
+			lastPage +=1;
+		}
+		return lastPage;
+	}
 }
