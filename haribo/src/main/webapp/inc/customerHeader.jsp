@@ -36,16 +36,10 @@
 						<li><a class="active" href="${pageContext.request.contextPath}/home">Home</a></li>
 						<li><a href="${pageContext.request.contextPath}/aboutUs">About</a></li>
 						<li><a href="${pageContext.request.contextPath}/branch">Branch/Trainers</a></li>
-						<li class="menu-has-children"><a href="${pageContext.request.contextPath}/program">Program</a>
-							<ul>
-								<li><a href="${pageContext.request.contextPath}/program">Blog Home</a></li>
-								<li><a href="blog-single.html">Blog Single</a></li>
-							</ul>
-						</li>
+						<li><a href="${pageContext.request.contextPath}/program">Program</a></li>
 						<li class="menu-has-children"><a href="">Pages</a>
 							<ul>
 								<li><a href="${pageContext.request.contextPath}/customerNoticeList">Notice</a></li>
-								<li><a href="courses.html">Courses</a></li>
 								<li><a href="${pageContext.request.contextPath}/reviewList">Review</a></li>
 							</ul>
 						</li>

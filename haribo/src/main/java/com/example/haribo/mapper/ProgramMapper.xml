@@ -39,6 +39,7 @@
 	SELECT 
 	program_no programNo,
 	employee_id employeeId,
+	program_memo programMemo,
 	program_name programName,
 	program_max_customer programMaxCustomer,
 	createdate
@@ -68,5 +69,14 @@
 			ON e.employee_no = i.employee_no
 			WHERE program_no = #{programNo}
 		
+	</select>
+	<select id="searchByProgram" parameterType="com.example.haribo.vo.Program" resultType="com.example.haribo.vo.Program">
+		SELECT
+		program_no programNo,
+		employee_id employeeId,
+		program_name programName,
+		program_max_customer programMaxCustomer
+		FROM program
+		WHERE program_name LIKE CONCAT('%' , #{programName} , '%')
 	</select>
 </mapper>

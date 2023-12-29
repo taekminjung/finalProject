@@ -59,8 +59,21 @@
 
 	<!-- Start top-category-widget Area -->
 	<section class="top-category-widget-area pt-90 pb-90 ">
+	<div align="center">
+				<div class="col-lg-4 sidebar-widgets" >
+					<div class="widget-wrap">
+						<div class="single-sidebar-widget search-widget">
+						<h5 style="text-align: center;">프로그램 검색</h5>
+							<form class="search-form" action="${pageContext.request.contextPath}/program" method="post" id="searchProgram">
+								<input placeholder="검색어를 입력해주세요" name="programName" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = '검색어를 입력해주세요'">
+								<button type="submit"><i class="fa fa-search"></i></button>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
 		<div class="container">
-			<div class="row">
+			<div class="row" id="programList">
 			<c:forEach var="p" items="${list}">
 				<div class="col-lg-4">
 					<div class="single-cat-widget">
@@ -80,7 +93,6 @@
 					</div>
 				</div>
 			</c:forEach>
-			
 			</div>
 		</div>
 	</section>
@@ -110,7 +122,6 @@
 	<jsp:include page="/inc/customerFooter.jsp"></jsp:include>
 	<!-- End footer Area -->
 
-
 	<script src="customer/js/vendor/jquery-2.2.4.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
 	 crossorigin="anonymous"></script>
@@ -127,5 +138,4 @@
 	<script src="customer/js/mail-script.js"></script>
 	<script src="customer/js/main.js"></script>
 </body>
-
 </html>

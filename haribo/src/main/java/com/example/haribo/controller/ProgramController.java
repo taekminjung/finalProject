@@ -103,14 +103,25 @@ public class ProgramController {
 	@GetMapping("/programDetail")
 	public String programDetail(Model model, Program program) {
 		//프로그램 상세보기 내용 출력
-		List<Program> list = programService.selectProgramDetail(program);
-		//상세보기 페이지에서 담당 직원 사진 이름 출력
+		HashMap<String, Object> dmap = programService.selectProgramDetail(program);
+		System.out.println("\u001B[43m"+dmap+"<--con.dmap");	
+		//상세보기 페이지에서 프로그램 정보와 담당 직원 사진 이름 출력
 		HashMap<String, Object> map = programService.selectProgramEmp(program);
+		System.out.println("\u001B[43m"+map);		
 				
 		//모델에 담기
-		model.addAttribute("list", list);
+		model.addAttribute("dmap", dmap);
 		model.addAttribute("map", map);
 		model.addAttribute("program", program);
 		return "public/programDetail";
 	}
+	//프로그램 검색 기능
+		@PostMapping("/program")
+		public String searchByProgram(Model model, Program program) {
+			List<Program> list = programService.searchByProgram(program);
+			System.out.println("\u001B[43m"+list);
+			model.addAttribute("list", list);
+			
+			return "public/program";
+		}
 }

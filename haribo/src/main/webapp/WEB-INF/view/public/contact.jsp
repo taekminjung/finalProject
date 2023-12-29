@@ -65,7 +65,7 @@
 
 	<!-- Start contact-page Area -->
 	<section class="contact-page-area section-gap">
-	<h1 style="text-align: center;">지점별 위치</h1><br>
+	<h1 style="text-align: center;">지점 위치</h1><br>
 		<div class="container">
 			<div class="row">
 			 
@@ -175,7 +175,8 @@
 						</div>
 					</div>
 				</div>
-				<div class="col-lg-8">
+				<div class="col-lg-8 sidebar-widgets" >
+				<h3 style="text-align: center;">상담 신청하기</h3><br>
 					<form class="form-area contact-form text-right" id="contact" action="${pageContext.request.contextPath}/contact" method="post">
 						<div class="row">
 							<div class="col-lg-6 form-group">

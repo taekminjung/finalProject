@@ -82,8 +82,9 @@ public class ProgramService {
 		return list;
 	}
 	//고객홈페이지에서 프로그램 상세보기 페이지
-	public List<Program> selectProgramDetail(Program program){
-		List<Program> dlist = programMapper.selectProgramDetail(program);
+	public HashMap<String, Object> selectProgramDetail(Program program){
+		HashMap<String, Object> dlist = programMapper.selectProgramDetail(program);
+		System.out.println("\u001B[43m"+dlist+"<--ser.dlist");
 		
 		return dlist;
 	}
@@ -91,6 +92,13 @@ public class ProgramService {
 	public HashMap<String, Object> selectProgramEmp(Program program){
 		HashMap<String, Object> map = programMapper.selectProgramEmp(program);
 		
+		System.out.println("\u001B[43m"+map+"<--ser.map");
+		
 		return map;
+	}
+	public List<Program> searchByProgram(Program program){
+		List<Program> list = programMapper.searchByProgram(program);
+		System.out.println("\u001B[43m"+list+"<--ser.list");
+		return list;
 	}
 }
