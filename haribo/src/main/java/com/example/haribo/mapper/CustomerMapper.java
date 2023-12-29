@@ -38,4 +38,7 @@ public interface CustomerMapper {
 	
 	//회원 탈퇴 (개인 정보 삭제)
 	int deleteCustomerDetail(Customer customer);
+	
+	//회원 멤버십 종료일 수정
+	int updateCustomerMembershipEnd(CustomerDetail customerDetail);
 }

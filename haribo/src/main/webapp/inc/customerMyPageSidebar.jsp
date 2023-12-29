@@ -41,7 +41,7 @@
 			<button type="button" class="btn btn-outline-secondary btn-block" disabled>
 				<br>
 				<p>멤버십 종료 날짜</p>
-				<P>0000년 00월 00일</P>
+				<P>${loginCustomer.customerMembershipEnd}</P>
 			</button>
 		</div>
 	</div>

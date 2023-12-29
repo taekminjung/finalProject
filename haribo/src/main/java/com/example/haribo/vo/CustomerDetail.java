@@ -12,6 +12,7 @@ public class CustomerDetail {
 		private String customerPhone;
 		private String customerAddress;
 		private String customerEmail;
+		private String customerMembershipEnd;
 		private String createdate;
 		private String updatedate;
 		

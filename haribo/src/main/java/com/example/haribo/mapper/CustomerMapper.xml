@@ -8,7 +8,8 @@
 		SELECT 
 			c.customer_no customerNo,
 			c.customer_id customerId,
-			cd.customer_name customerName
+			cd.customer_name customerName,
+			cd.customer_membership_end customerMembershipEnd
 		FROM customer c INNER JOIN customer_detail cd
 		ON c.customer_no = cd.customer_no
 		WHERE c.customer_id = #{customerId}
@@ -73,7 +74,8 @@
 			cd.customer_weight customerWeight,
 			cd.customer_phone customerPhone,
 			cd.customer_address customerAddress,
-			cd.customer_email customerEmail
+			cd.customer_email customerEmail,
+			cd.customer_membership_end customerMembershipEnd
 		FROM customer c INNER JOIN customer_detail cd
 		ON c.customer_no = cd.customer_no
 		WHERE c.customer_no = #{customerNo}
@@ -109,4 +111,10 @@
 		DELETE FROM customer_detail
 		WHERE customer_no = #{customerNo}
 	</delete>
+	
+	<update id="updateCustomerMembershipEnd" parameterType="com.example.haribo.vo.CustomerDetail">
+		UPDATE customer_detail SET
+			customer_membership_end = #{customerMembershipEnd}
+		WHERE customer_no = #{customerNo}
+	</update>
 </mapper>

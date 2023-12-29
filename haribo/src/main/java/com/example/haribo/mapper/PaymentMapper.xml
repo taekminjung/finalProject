@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.haribo.mapper.PaymentMapper">
+	<insert id="insertPayment" parameterType="com.example.haribo.vo.Payment">
+		<selectKey order="AFTER" resultType="Integer" keyProperty="paymentNo">
+			SELECT last_insert_id();
+		</selectKey>
+		INSERT INTO payment(
+			customer_id,
+			payment_membership_no,
+			payment_price
+		)VALUES(
+			#{customerId},
+			#{paymentMembershipNo},
+			#{paymentPrice}
+			)
+	</insert>
+	
+	<select id="payMap" parameterType="com.example.haribo.vo.Payment" resultType="java.util.Map">
+		SELECT 
+			c.customer_no customerNo, 
+			p.payment_date paymentDate, 
+			m.membership_month membershipMonth
+		FROM customer c INNER JOIN payment p
+		ON c.customer_id = p.customer_id INNER JOIN membership m
+		ON p.payment_membership_no = m.membership_no
+		WHERE p.payment_no = #{paymentNo}
+	</select>
+</mapper>
