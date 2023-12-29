@@ -35,7 +35,36 @@ public class ProgramController {
 		return "redirect:/adminHome";
 	}
 	
-	@GetMapping ("/programList")
+	@GetMapping("/updateProgram")
+	public String updateProgram(Program program, Model model) {
+		// programService 호출
+		Program originProgram = programService.programOne(program);
+		// view로 보낼 값 넣기
+		model.addAttribute("originProgram", originProgram);
+		
+		return "emp/updateProgram";
+	}
+	
+	@PostMapping("/updateProgram")
+	public String updateProgram(Program program) {
+		int row = programService.updateProgram(program);
+		if(row==0) {
+			System.out.println("프로그램 업데이트 실패");
+			return "redirect:/updateProgram?programNo=" + program.getProgramNo();
+		} else {
+			System.out.println("프로그램 업데이트 성공");
+		}
+		return "redirect:/programList";
+	}
+	
+	@GetMapping("/deleteProgram")
+	public String deleteProgram(Program program) {
+		programService.deleteProgram(program);
+		
+		return "redirect:/programList";
+	}
+	
+	@GetMapping("/programList")
 	public String programList(Model model, @RequestParam(defaultValue = "1")int currentPage) {
 		List<Program> list = programService.programList(currentPage);
 		int lastPage = programService.lastPage();
@@ -43,9 +72,22 @@ public class ProgramController {
 		model.addAttribute("list", list);
 		model.addAttribute("lastPage", lastPage);
 		System.out.println(list+"<-- programList");
-		return "emp/programList";
 		
+		return "emp/programList";
 	}
+	
+	@GetMapping("/programOne")
+	public String programOne(Model model, Program program) {
+		Program resultProgram = programService.programOne(program);
+		model.addAttribute("resultProgram", resultProgram);
+		System.out.println(resultProgram.getProgramNo() + "<-- 프로그램 번호");
+		System.out.println(resultProgram.getProgramName() + "<-- 프로그램 이름");
+		System.out.println(resultProgram.getProgramMaxCustomer() + "<-- 프로그램 수용인원");
+		//System.out.println(resultProgram.getProgramMemo() + "<-- 프로그램 상세설명");
+	
+		return "emp/programOne";
+	}	
+	
 	@GetMapping("/program")
 	public String program(Model model, Program program) {
 		
