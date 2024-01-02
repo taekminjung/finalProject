@@ -1,6 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<c:set var="today" value="<%=new java.util.Date() %>"></c:set>
+<fmt:parseDate var="membership" value="${loginCustomer.customerMembershipEnd }" pattern="yyyy-MM-dd"/>
+<fmt:formatDate var="todayDate" value="${today }" pattern="yyyy-MM-dd"/>
 <!DOCTYPE html>
 <html lang="zxx" class="no-js">
 
@@ -83,7 +87,6 @@
 							<div class="quotes">
 							 해당 멤버십은 ${m.membershipMonth}개월 권 입니다
 							</div>
-			
 						</div>
 					</div>
 				</div>
@@ -95,17 +98,39 @@
 							<br>
 							<h4>결제 금액 : ${m.membershipPrice}원</h4>
 							<p>
-								<form action="${pageContext.request.contextPath}/insertPayment" method="post">
-								<input type="hidden" value="${loginCustomer.customerId}" name="customerId">
-								<input type="hidden" value="${m.membershipNo}" name="paymentMembershipNo">
-								<input type="hidden" value="${m.membershipPrice}" name="paymentPrice">
-								<button type="submit" class="primary-btn mt-40">결제</button>
+								<form id="form" action="${pageContext.request.contextPath}/insertPayment" method="post">
+									<input type="hidden" value="${loginCustomer.customerId}" name="customerId">
+									<input type="hidden" value="${loginCustomer.customerNo}" name="customerNo">
+									<input type="hidden" value="${m.membershipNo}" name="paymentMembershipNo">
+									<input type="hidden" value="${m.membershipPrice}" name="paymentPrice">
 								</form>
+								<c:if test="${loginCustomer != null }">
+									<button id="paymentBtn" class="primary-btn mt-40">결제</button>
+								</c:if>
+								<c:if test="${!(loginCustomer != null ) }">
+									로그인 후 결제 가능합니다
+								</c:if>
 							</p>
 							</c:forEach>
 							<p></p>
 						</div>
 					</div>
+					<c:if test="${loginCustomer != null }">
+						<div class="d-grid">
+							<button type="button" class="btn btn-outline-secondary btn-block" disabled>
+								<br>
+								<p>멤버십 종료 날짜</p>
+								<P>
+									<c:if test="${membership < today }">
+										멤버십을 보유 하지 않았습니다
+									</c:if>
+									<c:if test="${!(membership < today) }">
+										<fmt:formatDate value="${membership }" pattern="yyyy-MM-dd"/>
+									</c:if>
+								</P>
+							</button>
+						</div>
+					</c:if>
 				</div>
 			</div>
 		</div>
@@ -133,6 +158,16 @@
 	<script src="customer/js/owl.carousel.min.js"></script>
 	<script src="customer/js/mail-script.js"></script>
 	<script src="customer/js/main.js"></script>
+	<script>
+		$('#paymentBtn').click(function(){
+			var result = confirm('결제 후 바뀐 멤버십 기간은 재로그인 후 적용됩니다. \n결제하시겠습니까?');
+			if(result){
+				$('#form').submit()
+			}else{
+				
+			}
+		})
+	</script>
 </body>
-
+	
 </html>

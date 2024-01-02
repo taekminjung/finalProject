@@ -19,6 +19,9 @@
 			<h4 class="category-title">사진 변경</h4><br>
 			<ul class="cat-list">
 				<li>
+					<p>png 파일만 업로드 가능합니다.</p>
+				</li>
+				<li>
 					<form action="${pageContext.request.contextPath }/updateCustomerImg" method="post" enctype="multipart/form-data" id="imgForm">
 						<input id="cImg" type="file" name="cImg" accept=".png">
 						<input type="hidden" name="customerNo" value="${loginCustomer.customerNo }">
@@ -64,18 +67,20 @@
 			</ul>
 		</div>
 		<div class="d-grid">
-			<button type="button" class="btn btn-outline-secondary btn-block" disabled>
-				<br>
-				<p>멤버십 종료 날짜</p>
-				<P>
-					<c:if test="${membership < today }">
-						멤버십을 보유 하지 않았습니다
-					</c:if>
-					<c:if test="${!(membership < today) }">
-						<fmt:formatDate value="${membership }" pattern="yyyy-MM-dd"/>
-					</c:if>
-				</P>
-			</button>
+			<a href="${pageContext.request.contextPath }/membership">
+				<button type="button" class="btn btn-outline-secondary btn-block">
+					<br>
+					<p>멤버십 종료 날짜</p>
+					<P>
+						<c:if test="${membership < today }">
+							멤버십을 보유 하지 않았습니다
+						</c:if>
+						<c:if test="${!(membership < today) }">
+							<fmt:formatDate value="${membership }" pattern="yyyy-MM-dd"/>
+						</c:if>
+					</P>
+				</button>
+			</a>
 		</div>
 	</div>
 </div>
