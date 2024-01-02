@@ -50,10 +50,9 @@
 					<h1 class="text-uppercase text-white">
 						<span>Haribo Team</span> 의 <br> 멤버십
 					</h1>
-					<p class="link-nav"><a href="${pageContext.request.contextPath}/home">Home </a>
+					<p class="link-nav"><a href="${pageContext.request.contextPath}/home" >Home </a>
 						<span class="lnr lnr-arrow-right"></span> <a href="${pageContext.request.contextPath}/membership">
 							Membership</a></p>
-					<a href="${pageContext.request.contextPath}/contact" class="primary-btn mt-40">Contact Us</a>
 				</div>
 			</div>
 		</div>

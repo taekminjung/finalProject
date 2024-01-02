@@ -48,9 +48,9 @@
 			<div class="row d-flex align-items-center justify-content-center">
 				<div class="about-content blog-header-content col-lg-12">
 					<h1 class="text-uppercase text-white">
-						<span>YogaFlex</span> to <br> Shape your body
+						<span>Haribo Team</span> 의 <br>각 지점을 소개합니다.
 					</h1>
-					<a href="#" class="primary-btn mt-40">Become a Member</a>
+					
 				</div>
 			</div>
 		</div>

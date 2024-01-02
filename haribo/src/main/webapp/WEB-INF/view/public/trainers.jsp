@@ -82,6 +82,7 @@
 					<div class="meta-text mt-30 text-center">
 						<h4>${t.employeeName}</h4>
 						<p>${t.branchName} 지점</p>
+						<p>Email  : ${t.employeeEmail}</p>
 					</div>
 				</div>
 					</c:forEach>

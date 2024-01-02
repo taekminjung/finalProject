@@ -5,6 +5,7 @@
 	SELECT 
 	    e.employee_no AS employeeNo,
 	    e.employee_id AS employeeId,
+	    d.employee_email AS employeeEmail,
 	    e.branch_no AS branchNo,
 	    b.branch_name AS branchName,
 	    b.branch_tel AS branchTel,
@@ -24,6 +25,7 @@
 
 	<select id="getTotalRow" parameterType="int" resultType="int">
 		SELECT COUNT(*)
-		FROM notice
+		FROM employee
+		WHERE employee_id LIKE 't%'
 	</select>
 </mapper>
