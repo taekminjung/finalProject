@@ -46,7 +46,7 @@
 		<div class="container-fluid">
 			<div class="row fullscreen d-flex align-items-center justify-content-between">
 				<div class="col-lg-6 col-md-6 banner-img">
-					<img class="img-fluid" src="customer/img/banner-img.png" alt="">
+					<img class="img-fluid" src="customer/img/1.png" alt="">
 				</div>
 				<div class="banner-content col-lg-6 col-md-6">
 					<h1 class="text-uppercase">
@@ -203,12 +203,12 @@
 					<table class="schdule-table table table-bordered">
 						<thead class="thead-light">
 							<tr>
-								<th class="head" scope="col">Course name</th>
-								<th class="head" scope="col">mon</th>
-								<th class="head" scope="col">tue</th>
-								<th class="head" scope="col">wed</th>
-								<th class="head" scope="col">thu</th>
-								<th class="head" scope="col">fri</th>
+								<th class="head" scope="col">프로그램 이름</th>
+								<th class="head" scope="col">월</th>
+								<th class="head" scope="col">화</th>
+								<th class="head" scope="col">수</th>
+								<th class="head" scope="col">목</th>
+								<th class="head" scope="col">금</th>
 							</tr>
 						</thead>
 						<tbody>

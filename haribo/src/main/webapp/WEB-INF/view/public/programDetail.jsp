@@ -79,7 +79,7 @@
 						</div>
 						<div class="col-lg-12">
 							<div class="quotes">
-							${dmap.programMemo}
+							${dmap.programMemo}<br>
 							</div>
 							<div class="row mt-30 mb-30">
 								<div class="col-6">
@@ -106,7 +106,9 @@
 							<p>
 								${map.branchName}지점 트레이너
 							</p>
-							<p></p>
+							<p>
+							프로그램 예약 현황 :  /${dmap.programMaxCustomer}
+							</p>
 						</div>
 					</div>
 				</div>
