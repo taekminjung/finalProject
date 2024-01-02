@@ -59,58 +59,44 @@
 		</div>
 	</section>
 	<!-- End banner Area -->
-
-	<!-- Start schedule Area -->
-	<section class="schedule-area section-gap">
-		<img class="featured-img img-fluid" src="img/featured-class/feature-img.png" alt="">
+	<br><br>
+	<!-- Start testomial Area -->
+	<section class="testomial-area section-gap-bottom">
 		<div class="container">
 			<div class="row d-flex justify-content-center">
 				<div class="col-lg-12">
 					<div class="section-title-wrap text-center">
-						<h1>리뷰 리스트</h1>
-						<p>전체 리뷰 리스트입니다.</p>
+						<h1>고객 리뷰</h1>
+						<p>저희 프로그램을 수강하신 소중한 고객님들의 리뷰입니다.</p>
 					</div>
 				</div>
 			</div>
-
-			<div class="row justify-content-center">
-				<div class="table-wrap col-lg-10">
-					<table class="schdule-table table table-bordered">
-						<thead class="thead-light">
-							<tr>
-								<th class="head" scope="col">No</th>
-								<th class="head" scope="col">프로그램</th>
-								<th class="head" scope="col">제목</th>
-								<th class="head" scope="col">작성자</th>
-								<th class="head" scope="col">등록일</th>
-							</tr>
-						</thead>
-						<tbody>
-						<c:forEach var="r"  items="${list}">
-							<tr>
-								<td>${r.reviewNo}</td>
-								<td>${r.programName}</td>
-								<td class="name" scope="row"><a href="${pageContext.request.contextPath}/reviewOne?reviewNo=${r.reviewNo}">${r.reviewTitle}</a></td>
-								<td>${r.customerId}</td>
-								<td>${r.createdate}</td>
-							</tr>
+			<div class="row">
+				<div class="active-testimonial-carusel">
+				<c:forEach var="r" items="${list}">
+					<div class="single-testimonial item">
+						<img class="mx-auto rounded-circle" src="customer/img/t1.png" alt="">	<!-- ${r.customerImgFileName} -->
+						<p class="desc">
+							<h4>작성자 : ${r.customerId }</h4><br>
+							<h4>수강 프로그램 : ${r.programName}</h4><br>
+							리뷰 내용 : ${r.reviewContent}
+						</p>
+						<c:forEach var="rp" items="${rpList }">
+							<c:if test="${r.reviewNo == rp.reviewNo }">
+								
+								<p class="desc">
+									<h4>관리자 : ${rp.employeeId }</h4><br>
+									코멘트 : ${rp.reviewReplyContent}
+								</p>
+							</c:if>
 						</c:forEach>
-						</tbody>
-					</table>
-						<div class="text-center"> 
-				  <c:if test="${currentPage > 1}">
-				  	<a href="${pageContext.request.contextPath}/reviewList?currentPage=${currentPage-1}" class="btn btn-primary">이전</a>
-				  </c:if>
-				  <span class="badge bg-light">${currentPage}</span>
-				  <c:if test="${currentPage < lastPage}">
-				  	<a href="${pageContext.request.contextPath}/reviewList?currentPage=${currentPage+1}" class="btn btn-primary">다음</a>
-				  </c:if>
-			</div>
+					</div>
+				</c:forEach>
 				</div>
 			</div>
 		</div>
 	</section>
-	<!-- End schedule Area -->
+	<!-- End testomial Area -->
 
 	<!-- start footer Area -->
 	<!-- inc 폴더의 CustomerFooter.jsp를 include -->

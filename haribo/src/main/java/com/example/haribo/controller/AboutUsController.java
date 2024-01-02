@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.haribo.service.AboutUsService;
+import com.example.haribo.service.ReviewService;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -17,17 +18,15 @@ import lombok.extern.slf4j.Slf4j;
 @Controller
 public class AboutUsController {
 	
-		@Autowired  AboutUsService aboutUsService;
+		@Autowired  ReviewService reviewService;
 		
 		@GetMapping("/aboutUs")
-		public String reviewList(Model model,@RequestParam(defaultValue ="1") int currentPage){
-			List<HashMap<String, Object>> list = aboutUsService.reviewList(currentPage); 
-			System.out.println(list+"<--controller.reviewList");
-			int lastPage = aboutUsService.lastPage();
+		public String reviewList(Model model){
+			HashMap<String, Object> rMap = reviewService.reviewListMap();
 			
-			model.addAttribute("currentPage", currentPage);
-			model.addAttribute("list", list);
-			model.addAttribute("lastPage", lastPage);
+			
+			model.addAttribute("list", rMap.get("list"));
+			model.addAttribute("rpList", rMap.get("rpList"));
 			
 			return "public/aboutUs";
 		}

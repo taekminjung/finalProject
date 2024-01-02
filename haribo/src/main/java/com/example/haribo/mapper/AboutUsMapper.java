@@ -8,7 +8,5 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface AboutUsMapper {
 	
-	List<HashMap<String, Object>> reviewList(int beginRow, int rowPerPage);
 	
-	int getTotalRow(int rowPerPage);
 }

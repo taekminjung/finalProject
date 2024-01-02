@@ -133,23 +133,27 @@
 					</div>
 				</div>
 			</div>
-
 			<div class="row">
 				<div class="active-testimonial-carusel">
 				<c:forEach var="r" items="${list}">
 					<div class="single-testimonial item">
 						<img class="mx-auto rounded-circle" src="customer/img/t1.png" alt="">	<!-- ${r.customerImgFileName} -->
 						<p class="desc">
-							${r.reviewContent}
+							<h4>작성자 : ${r.customerId }</h4><br>
+							<h4>수강 프로그램 : ${r.programName}</h4><br>
+							리뷰 내용 : ${r.reviewContent}
 						</p>
-						<h4>${r.customerId }</h4>
-						<p>
-					
-						</p>
+						<c:forEach var="rp" items="${rpList }">
+							<c:if test="${r.reviewNo == rp.reviewNo }">
+								
+								<p class="desc">
+									<h4>관리자 : ${rp.employeeId }</h4><br>
+									코멘트 : ${rp.reviewReplyContent}
+								</p>
+							</c:if>
+						</c:forEach>
 					</div>
 				</c:forEach>
-				
-					
 				</div>
 			</div>
 		</div>

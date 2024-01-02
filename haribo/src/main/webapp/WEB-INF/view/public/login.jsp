@@ -93,6 +93,10 @@
 		</div>
 	<!-- /.login-box -->
 	</div>
+	<!-- 홈 화면 버튼 -->
+	<div align="center">
+		<a href="${pageContext.request.contextPath }/home"><span class="glyphicon glyphicon-chevron-right"></span>홈 화면으로</a>
+	</div>
 <!-- jQuery 3 -->
 <script src="emp/bower_components/jquery/dist/jquery.min.js"></script>
 <!-- Bootstrap 3.3.7 -->

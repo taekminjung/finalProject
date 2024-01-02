@@ -19,13 +19,12 @@ public class ReviewController {
 		@Autowired ReviewService reviewService;
 		
 		@GetMapping("/reviewList")
-		public String reviewList(Model model, @RequestParam(defaultValue ="1")int currentPage) {
-			List<HashMap<String, Object>> list = reviewService.reviewList(currentPage);
-			int lastPage = reviewService.lastPage();
+		public String reviewList(Model model) {
+			HashMap<String, Object> rMap = reviewService.reviewListMap();
 			
-			model.addAttribute("currentPage", currentPage);
-			model.addAttribute("list", list);
-			model.addAttribute("lastPage", lastPage);
+			
+			model.addAttribute("list", rMap.get("list"));
+			model.addAttribute("rpList", rMap.get("rpList"));
 			
 			return "public/reviewList";
 		}

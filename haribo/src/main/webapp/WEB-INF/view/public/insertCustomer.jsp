@@ -118,8 +118,12 @@ function jusoCallBack(roadFullAddr){
         <!-- /.col -->
       </div>
     <a href="${pageContext.request.contextPath}/login" class="text-center">I already have a membership</a>
-  </div>
+  </div><br>
   <!-- /.form-box -->
+  <!-- 홈 화면 버튼 -->
+  <div align="center">
+	<a href="${pageContext.request.contextPath }/home"><span class="glyphicon glyphicon-chevron-right"></span>홈 화면으로</a>
+  </div>
 </div>
 <!-- /.register-box -->
 

@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<c:set var="today" value="<%=new java.util.Date() %>"></c:set>
+<fmt:parseDate var="membership" value="${loginCustomer.customerMembershipEnd }" pattern="yyyy-MM-dd"/>
+<fmt:formatDate var="todayDate" value="${today }" pattern="yyyy-MM-dd"/>
 <div class="col-lg-3 sidebar-widgets"><br><br>
 	<div class="widget-wrap">
 		<div class="single-sidebar-widget user-info-widget">
@@ -41,7 +46,14 @@
 			<button type="button" class="btn btn-outline-secondary btn-block" disabled>
 				<br>
 				<p>멤버십 종료 날짜</p>
-				<P>${loginCustomer.customerMembershipEnd}</P>
+				<P>
+					<c:if test="${membership < today }">
+						멤버십을 보유 하지 않았습니다
+					</c:if>
+					<c:if test="${!(membership < today) }">
+						<fmt:formatDate value="${membership }" pattern="yyyy-MM-dd"/>
+					</c:if>
+				</P>
 			</button>
 		</div>
 	</div>
