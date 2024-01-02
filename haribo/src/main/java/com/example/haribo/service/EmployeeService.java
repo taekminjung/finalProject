@@ -27,6 +27,10 @@ public class EmployeeService {
 		return employeeMapper.idCkEmp(idCk);
 	}
 	
+	public int pwCkEmp(Employee employee) {
+		return employeeMapper.pwCkEmp(employee);
+	}
+	
 	public void addEmployee(Employee employee, EmployeeDetail employeeDetail) {
 		int row = employeeMapper.insertEmployee(employee);
 		if(row != 1) {
@@ -73,5 +77,15 @@ public class EmployeeService {
 	
 	public Employee updateEmployeeStatus(Employee employee) {
 		return employeeMapper.updateEmployeeStatus(employee);
+	}
+	
+	public int updateEmployeePw(Employee employee, String newEmployeePw) {
+		
+		Map<String, Object> param = new HashMap<>();
+		param.put("newEmployeePw", newEmployeePw);
+		param.put("employeeId", employee.getEmployeeId());
+		param.put("employeePw", employee.getEmployeePw());
+		
+		return employeeMapper.updateEmployeePw(param);
 	}
 }

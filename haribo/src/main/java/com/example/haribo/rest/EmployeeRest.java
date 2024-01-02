@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.haribo.service.EmployeeService;
+import com.example.haribo.vo.Employee;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -24,4 +25,11 @@ public class EmployeeRest {
 		return cnt;
 	}
 
+	// 비밀번호 확인
+	@PostMapping("/employeePwCk")
+	public int employeePwCk(Employee employee) {
+		
+		int cnt = employeeService.pwCkEmp(employee);
+		return cnt;
+	}
 }

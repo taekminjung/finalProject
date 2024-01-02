@@ -19,13 +19,6 @@
        folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="emp/dist/css/skins/_all-skins.min.css">
 
-  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-  <!--[if lt IE 9]>
-  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-  <![endif]-->
-
   <!-- Google Font -->
   <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
@@ -51,7 +44,11 @@
           <div class="box box-primary">
             <div class="box-header with-border">
               <h3 class="box-title">About Me</h3>
+              <a href="${pageContext.request.contextPath}/updateEmployeePw?employeeNo=${loginEmployee.employeeNo}" class="btn btn-primary mb-3">Change Pw</a>
             </div>
+            
+
+            
             <div class="box-body">
               <strong><i class="fa fa-user margin-r-5"></i>Employee Name</strong>
 
@@ -80,8 +77,6 @@
             </div>
           </div>
         </div>
-
-
     </section>
     <!-- /.content -->
   </div>
@@ -101,17 +96,13 @@
       <li><a href="#control-sidebar-home-tab" data-toggle="tab"><i class="fa fa-home"></i></a></li>
       <li><a href="#control-sidebar-settings-tab" data-toggle="tab"><i class="fa fa-gears"></i></a></li>
     </ul>
-    <!-- Tab panes -->
 
       </div>
     </div>
   </aside>
-  <!-- /.control-sidebar -->
-  <!-- Add the sidebar's background. This div must be placed
-       immediately after the control sidebar -->
+
   <div class="control-sidebar-bg"></div>
 </div>
-<!-- ./wrapper -->
 
 <!-- jQuery 3 -->
 <script src="emp/bower_components/jquery/dist/jquery.min.js"></script>

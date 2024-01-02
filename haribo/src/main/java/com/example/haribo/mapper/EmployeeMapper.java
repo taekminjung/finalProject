@@ -24,7 +24,11 @@ public interface EmployeeMapper {
 		
 		int idCkEmp(String idCk);
 		
+		int pwCkEmp (Employee employee);
+		
 		int getTotalRow(int rowPerPage);
+		
+		int updateEmployeePw(Map<String, Object> param);
 		
 		Employee loginEmployee(Employee employee);
 		

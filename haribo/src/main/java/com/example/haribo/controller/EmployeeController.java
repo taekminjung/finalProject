@@ -82,5 +82,24 @@ public class EmployeeController {
 		return "emp/employeeList";
 	}
 	
+	@GetMapping("/updateEmployeePw")
+	public String updateEmployeePw(HttpSession session) {
+		
+		if(session.getAttribute("loginEmployee") == null) {
+			return "redirect:/login";
+		}
+		return "emp/updateEmployeePw";
+	}
 	
+	@PostMapping("/updateEmployeePw")
+	public String updateEmployeePw(HttpSession session, Employee employee, String newEmployeePw) {
+		int row = employeeService.updateEmployeePw(employee, newEmployeePw);
+		if(row != 1) {
+		String url = "redirect:/updateEmployeePw?employeeNo="+employee.getEmployeeNo();
+		return url;
+		}
+		session.invalidate();
+		
+		return "redirect:/home";
+	}
 }
