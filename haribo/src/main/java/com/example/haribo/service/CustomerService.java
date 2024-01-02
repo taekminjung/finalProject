@@ -1,14 +1,18 @@
 package com.example.haribo.service;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.example.haribo.mapper.CustomerMapper;
 import com.example.haribo.vo.Customer;
 import com.example.haribo.vo.CustomerDetail;
+import com.example.haribo.vo.CustomerImg;
 
 import lombok.extern.slf4j.Slf4j;
 @Slf4j
@@ -104,15 +108,64 @@ public class CustomerService {
 		return customerMapper.updateCustomerPw(pwMap);
 	}
 	
-	//회원 탈퇴 (active 수정, detail 삭제)
-	public void deleteCustomer(Customer cusotmer) {
-		int row = customerMapper.updateCustomerActive(cusotmer);
+	//회원 탈퇴 (active 수정, detail 및 img 삭제)
+	public void deleteCustomer(Customer customer) {
+		int row = customerMapper.updateCustomerActive(customer);
 		if(row != 1) {
 			throw new RuntimeException();
 		}else {
-			int row2 = customerMapper.deleteCustomerDetail(cusotmer);
+			int row2 = customerMapper.deleteCustomerDetail(customer);
+			if(row2 != 1) {
+				throw new RuntimeException();
+			}else {
+				CustomerImg customerImg = new CustomerImg();
+				customerImg.setCustomerNo(customer.getCustomerNo());
+				int row3 = customerMapper.deleteCustomerImg(customerImg);
+				if(row3 != 1) {
+					throw new RuntimeException();
+				}
+			}
+		}
+	}
+	
+	//회원 사진 변경(추가,삭제)
+	public void updateCustomerImg(MultipartFile cImg, CustomerImg customerImg, String path, String customerId) {
+		String pathCust = path+"/customer";
+		String oName = cImg.getOriginalFilename();	//사진의 원래 이름
+		String type  = oName.substring(oName.lastIndexOf("."));	//사진 원래 이름에서 확장자명 잘라내기
+		String fName = customerId + type;	//유저 아이디와 확장자명으로 사진 저장명 생성
+		log.debug("\u001B[43m"+fName);
+		//db에 기존 사진이 있는지 확인
+		int cnt = customerMapper.customerImgCnt(customerImg);
+		if(cnt != 0) { // 있으면 데이터 삭제
+			int row = customerMapper.deleteCustomerImg(customerImg);
 			if(row != 1) {
 				throw new RuntimeException();
+			}else { // 저장된 파일도 삭제
+				File file = new File(pathCust+"/"+fName);
+				try {
+					file.delete();
+				}catch(IllegalStateException e){
+					throw new RuntimeException();
+				}
+			}
+		}
+		if(cImg.getSize() != 0) {
+			customerImg.setCustomerImgOriginName(oName);
+			customerImg.setCustomerImgFileName(fName);
+			customerImg.setCustomerImgSize((int)cImg.getSize());
+			customerImg.setCustomerImgType(cImg.getContentType());
+			
+			int row2 = customerMapper.insertCustomerImg(customerImg);
+			if(row2 != 1) {
+				throw new RuntimeException();
+			}else {
+				File file = new File(pathCust+"/"+fName);
+				try {
+					cImg.transferTo(file);
+				}catch(IllegalStateException | IOException e) {
+					throw new RuntimeException();
+				}
 			}
 		}
 	}

@@ -15,8 +15,8 @@ import com.example.haribo.vo.Question;
 
 @Controller
 public class QuestionController {
-	@Autowired private QuestionController questionController;
-	
+	@Autowired private QuestionService questionService;
+	/*
 	@GetMapping("/questionList")
 	public String questionList(Model model, @RequestParam(defaultValue ="1")int currentPage) {
 		List<Question> list = questionService.questionList(currentPage);
@@ -68,4 +68,5 @@ public class QuestionController {
 	
 		return "emp/trainerQuestionOne";
 	}
+	*/
 }

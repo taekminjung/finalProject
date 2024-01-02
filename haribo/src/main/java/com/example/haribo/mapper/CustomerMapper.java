@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Mapper;
 
 import com.example.haribo.vo.Customer;
 import com.example.haribo.vo.CustomerDetail;
+import com.example.haribo.vo.CustomerImg;
 
 @Mapper
 public interface CustomerMapper {
@@ -41,4 +42,13 @@ public interface CustomerMapper {
 	
 	//회원 멤버십 종료일 수정
 	int updateCustomerMembershipEnd(CustomerDetail customerDetail);
+	
+	//회원 사진 유무 확인
+	int customerImgCnt(CustomerImg customerImg);
+	
+	//회원 사진 삭제
+	int deleteCustomerImg(CustomerImg customerImg);
+	
+	//회원 사진 추가
+	int insertCustomerImg(CustomerImg customerImg);
 }

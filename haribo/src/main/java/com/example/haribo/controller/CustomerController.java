@@ -9,13 +9,14 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
-import com.example.haribo.mapper.CustomerMapper;
 import com.example.haribo.service.CalendarService;
 import com.example.haribo.service.CustomerService;
 import com.example.haribo.service.ProgramReservationService;
 import com.example.haribo.vo.Customer;
 import com.example.haribo.vo.CustomerDetail;
+import com.example.haribo.vo.CustomerImg;
 
 import jakarta.servlet.http.HttpSession;
 import lombok.extern.slf4j.Slf4j;
@@ -178,5 +179,21 @@ public class CustomerController {
 		
 		//리턴
 		return "redirect:/home";
+	}
+	
+	//회원사진 변경(추가,삭제)
+	@PostMapping("/updateCustomerImg")
+	public String updateCustomerImg(HttpSession session, MultipartFile cImg, CustomerImg customerImg, String customerId) {
+		log.debug("\u001B[43m"+cImg.getName());
+		log.debug("\u001B[43m"+cImg.getOriginalFilename());
+		log.debug("\u001B[43m"+cImg.getContentType());
+		log.debug("\u001B[43m"+cImg.getSize());
+		
+		String path = session.getServletContext().getRealPath("/upload");
+		log.debug("\u001B[43m"+path);
+		customerService.updateCustomerImg(cImg, customerImg, path, customerId);
+		
+		String u = "redirect:/customerSchedule?customerNo="+customerImg.getCustomerImgNo();
+		return u;
 	}
 }

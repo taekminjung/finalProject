@@ -117,4 +117,31 @@
 			customer_membership_end = #{customerMembershipEnd}
 		WHERE customer_no = #{customerNo}
 	</update>
+	
+	<select id="customerImgCnt" parameterType="com.example.haribo.vo.CustomerImg" resultType="Integer">
+		SELECT COUNT(customer_no)
+		FROM customer_img
+		WHERE customer_no = #{customerNo}
+	</select>
+	
+	<delete id="deleteCustomerImg" parameterType="com.example.haribo.vo.CustomerImg">
+		DELETE FROM customer_img
+		WHERE customer_no = #{customerNo}
+	</delete>
+	
+	<insert id="insertCustomerImg" parameterType="com.example.haribo.vo.CustomerImg">
+		INSERT INTO customer_img (
+			customer_no,
+			customer_img_origin_name,
+			customer_img_file_name,
+			customer_img_size,
+			customer_img_type
+		)VALUES(
+			#{customerNo},
+			#{customerImgOriginName},
+			#{customerImgFileName},
+			#{customerImgSize},
+			#{customerImgType}
+		)
+	</insert>
 </mapper>
