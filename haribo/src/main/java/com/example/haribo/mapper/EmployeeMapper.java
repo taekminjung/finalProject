@@ -22,6 +22,8 @@ public interface EmployeeMapper {
 		
 		int updateEmployee(Employee employee);
 		
+		Employee updateEmployeeStatus(Employee employee);
+		
 		int idCkEmp(String idCk);
 		
 		int pwCkEmp (Employee employee);
@@ -33,7 +35,7 @@ public interface EmployeeMapper {
 		Employee loginEmployee(Employee employee);
 		
 		Map<String, Object> selectEmployeeInfo(Employee employee);
+
 		
-		Employee updateEmployeeStatus(Employee employee);
 		
 }

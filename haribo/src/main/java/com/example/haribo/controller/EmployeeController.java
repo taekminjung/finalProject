@@ -77,9 +77,11 @@ public class EmployeeController {
 	
 
 	@PostMapping("/updateEmployeeStatus")
-	public String updateEmployeeStatus(Model model, HttpSession session, Employee employee) {
-		employeeService.updateEmployeeStatus(employee);
-		return "emp/employeeList";
+	public String updateEmployeeStatus(HttpSession session, 
+			@RequestParam("employeeId") String employeeId, 
+			@RequestParam("activeStatus") String activeStatus) {
+	    employeeService.updateEmployeeStatus(employeeId, activeStatus);
+	    return "emp/employeeList";
 	}
 	
 	@GetMapping("/updateEmployeePw")

@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
   <meta charset="utf-8">
@@ -26,7 +26,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        직원 관리 페이지
+        직원 추가 페이지
         <small>Preview</small>
       </h1>
     </section>
@@ -92,22 +92,25 @@
                   <label for="Phone">전화번호</label>
                   <input type="text" class="form-control" id="employeePhone" name="employeePhone" placeholder="Enter Phone">
             </div>
-
-
-              </div>
-              <!-- /.box-body -->
+            </div>
 
               <div class="box-footer">
-                <button type="submit" id="formBtn" class="btn btn-primary">Submit</button>
               </div>
             </form>
           </div>
       </div>
+           <div class="col-xs-4" style="float:right">
+          		<button type="submit" id="formBtn" class="btn btn-primary">Submit</button>
+          </div>
   <div class="control-sidebar-bg"></div>
 </div>
 <!-- ./wrapper -->
 
 <!-- jQuery 3 -->
+    <script
+  src="https://code.jquery.com/jquery-3.7.1.js"
+  integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+  crossorigin="anonymous"></script>
     <script src="emp/bower_components/jquery/dist/jquery.min.js"></script>
     <script src="emp/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="emp/bower_components/fastclick/lib/fastclick.js"></script>

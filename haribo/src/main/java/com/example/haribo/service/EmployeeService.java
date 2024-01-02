@@ -75,9 +75,12 @@ public class EmployeeService {
 		return empInfo;
 	}
 	
-	public Employee updateEmployeeStatus(Employee employee) {
-		return employeeMapper.updateEmployeeStatus(employee);
-	}
+    public void updateEmployeeStatus(String employeeId, String activeStatus) {
+        Employee employee = new Employee();
+        employee.setEmployeeId(employeeId);
+        employee.setEmployeeActive(activeStatus);
+        employeeMapper.updateEmployeeStatus(employee);
+    }
 	
 	public int updateEmployeePw(Employee employee, String newEmployeePw) {
 		

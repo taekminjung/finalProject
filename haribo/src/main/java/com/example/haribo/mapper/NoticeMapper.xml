@@ -53,4 +53,13 @@
 		WHERE notice_no = ${noticeNo}
 	</delete>
 	
+	<select id="searchByNotice" parameterType="com.example.haribo.vo.Notice">
+		SELECT
+			notice_no noticeNo,
+			notice_title noticeTitle,
+			employee_id employeeId,
+			createdate
+		FROM notice
+		WHERE notice_title LIKE CONCAT('%', #{programName}, '%')
+	</select>
 </mapper>

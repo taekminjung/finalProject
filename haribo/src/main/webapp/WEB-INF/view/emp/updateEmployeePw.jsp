@@ -35,7 +35,7 @@
             <div class="box-header with-border">
               <h3 class="box-title">Change Password</h3>
             </div>
-            <form name="form" id="form" method="post" action="${pageContext.request.contextPath}/updateEmployeePw">
+            <form id="form" method="post" action="${pageContext.request.contextPath}/updateEmployeePw">
               <div class="box-body">
                 <div class="form-group" class="col-sm-10">
                   <label for="pw" >Current Password</label>
@@ -55,20 +55,25 @@
                	<input type="hidden" id="employeeId" name="employeeId" value="${loginEmployee.employeeId}">
               	<input type="hidden" id="employeeNo" name="employeeNo" value="${loginEmployee.employeeNo}">
               </div>
-              <div class="box-footer">
-                <button type="submit" class="btn btn-default">Cancel</button>
-                <button type="submit" class="btn btn-info pull-right">Save Changes</button>
-              </div>
+ 
               <!-- /.box-footer -->
             </form>
           </div>
         </div>
+        
+        <div class="box-footer">
+        	<button type="submit" id="formBtn" class="btn btn-info pull-right">Save Changes</button>
+        </div>
+              
       </section>
       <!-- /.content -->
     </div>
     <!-- /.content-wrapper -->
     <!-- jQuery 3 -->
-    
+    <script
+  src="https://code.jquery.com/jquery-3.7.1.js"
+  integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+  crossorigin="anonymous"></script>
     <script src="emp/bower_components/jquery/dist/jquery.min.js"></script>
     <script src="emp/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="emp/bower_components/fastclick/lib/fastclick.js"></script>
@@ -81,43 +86,45 @@
     <script src="emp/dist/js/demo.js"></script>
   </div>
   	<script>
-  		$('formBtn').click(function()){
+  		$('#formBtn').click(function(){
   			if($('#pw').val().length < 1){
-  				alert('현재 비밀번호를 입력하세요')
-  				$('#pw').focus()
+  				alert('현재 비밀번호를 입력하세요');
+  				$('#pw').focus();
   			} else if ($('#newPw').val().length < 1){
-  				alert('새로운 비밀번호를 입력하세요')
-  				$('#newPw').focus()
+  				alert('새로운 비밀번호를 입력하세요');
+  				$('#newPw').focus();
   			} else if ($('#newPwCk').val().length < 1){
-  				alert('새로운 비밀번호 확인을 입력하세요')
-  				$('#newPwCk').focus()
-  			} else if ($('#newPw').val() != ($('#newPwCk').val(){
-  				alert('비밀번호 확인이 일치하지 않습니다')
-  				$('#newPwCk').focus()
+  				alert('새로운 비밀번호 확인을 입력하세요');
+  				$('#newPwCk').focus();
+  			} else if ($('#newPw').val() != $('#newPwCk').val()){
+  				alert('비밀번호 확인이 일치하지 않습니다');
+  				$('#newPwCk').focus();
   			} else{
   				$.ajax({
   					url:'/haribo/employeePwCk',
   					method:'post',
-  					data:{'employeePw':$('#pw').val(),'employeeId':$('#employeeId').val()},
+  					data:{
+  						'employeePw':$('#pw').val(),
+  						'employeeId':$('#employeeId').val()},
   					success:function(json){
   						if(json != 1){
-  							$('#pw').val('')
+  							$('#pw').val('');
   							alert('현재 비밀번호가 일치하지 않습니다')
   						} else{
   							if($('#pw').val() == $('#newPw').val()){
   								alert('기본 비밀번호와 같습니다. 다른 걸로 변경하세요')
-  								$('#newPw').focus()
+  								$('#newPw').focus();
   							} else{
   								$('#form').submit();
   							}
   						}
   					},
   					error:function(err){
-  						console.log(err)
+  						console.log(err);
   					}
-  			})
+  			});
   		}
-  	})
+  	});
   			
   	</script>
 </body>

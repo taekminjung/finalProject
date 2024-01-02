@@ -7,7 +7,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>AdminLTE 2 | Dashboard</title>
+  <title>하리보팀 파이널프로젝트</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
@@ -89,7 +89,29 @@
 			                <td class="text-center">${e.employeeActive}</td>
 			                <td class="text-center"><button class="btn bg-navy" data-toggle="modal" data-target="#modifyModal${e.employeeId}">수정</button></td>
 			            </tr>
-			        </c:forEach>
+			            
+
+				    <div class="modal fade" id="modifyModal${e.employeeId}" tabindex="-1" role="dialog" aria-labelledby="modifyModalLabel">
+				        <div class="modal-dialog" role="document">
+				            <div class="modal-content">
+				                <div class="modal-header">
+				                    <h4 class="modal-title" id="modifyModalLabel">수정 확인</h4>
+				                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				                        <span aria-hidden="true">&times;</span>
+				                    </button>
+				                </div>
+				                <div class="modal-body">
+				                    <p>활성/비활성을 선택하세요:</p>
+				                    <div class="btn-group" role="group" aria-label="Active/Inactive">
+				                        <button type="submit" class="btn btn-primary" onclick="updateEmployeeActive(${e.employeeId}, 'Y')">활성</button>
+				                        <button type="submit" class="btn btn-secondary" onclick="updateEmployeeActive(${e.employeeId}, 'N')">비활성</button>
+				                    </div>
+				                </div>
+				                <!-- No need for a footer in this case -->
+				            </div>
+				        </div>
+				    </div>
+				</c:forEach>
 			        
 			    </table>
 			    <br><br>
@@ -125,5 +147,22 @@
 
 <!-- AdminLTE for demo purposes -->
 <script src="emp/dist/js/demo.js"></script>
+
+<script>
+	function updateEmployeeActive(employeeId, activeStatus) {
+	    $.ajax({
+	        url: 'haribo/updateEmployeeActive',
+	        method: 'post',
+	        data: { 'employeeId': employeeId, 'activeStatus': activeStatus },
+	        success: function (json) {
+	            alert('활성/비활성이 업데이트되었습니다.');
+	            $('#modifyModal' + employeeId).modal('hide');
+	        },
+	        error: function (err) {
+	            console.log(err);
+	        }
+	    });
+	}
+</script>
 </body>
 </html>

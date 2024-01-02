@@ -21,5 +21,5 @@ public interface NoticeMapper {
 		
 		int updateNotice(Notice notice);
 
-		
+		List<Notice> searchByNotice (Notice notice);
 }

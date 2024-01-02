@@ -44,7 +44,9 @@
           <div class="box box-primary">
             <div class="box-header with-border">
               <h3 class="box-title">About Me</h3>
-              <a href="${pageContext.request.contextPath}/updateEmployeePw?employeeNo=${loginEmployee.employeeNo}" class="btn btn-primary mb-3">Change Pw</a>
+              <div class="col-xs-4" style="float:right">
+         	     <a href="${pageContext.request.contextPath}/updateEmployeePw?employeeNo=${loginEmployee.employeeNo}" class="btn btn-primary mb-3">Change Pw</a>
+              </div>
             </div>
             
 
