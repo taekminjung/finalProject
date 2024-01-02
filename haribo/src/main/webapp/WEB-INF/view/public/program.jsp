@@ -50,6 +50,9 @@
 					<h1 class="text-uppercase text-white">
 						<span>Haribo Team</span> 의 <br> 프로그램
 					</h1>
+					<p class="link-nav"><a href="${pageContext.request.contextPath}/home">Home </a>
+						<span class="lnr lnr-arrow-right"></span> <a href="${pageContext.request.contextPath}/program">
+							Program</a></p>
 					<a href="${pageContext.request.contextPath}/contact" class="primary-btn mt-40">Contact Us</a>
 				</div>
 			</div>

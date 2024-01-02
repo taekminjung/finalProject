@@ -10,4 +10,16 @@ membership_price membershipPrice,
 createdate
 FROM membership
 </select>
+
+<select id="selectMembershipDetail" parameterType="com.example.haribo.vo.Membership" resultType="com.example.haribo.vo.Membership">
+SELECT 
+membership_no membershipNo,
+membership_name membershipName,
+membership_month membershipMonth,
+membership_price membershipPrice,
+createdate
+FROM membership
+WHERE membership_no = #{membershipNo}
+</select>
+
 </mapper>

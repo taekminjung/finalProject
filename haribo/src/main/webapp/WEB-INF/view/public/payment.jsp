@@ -18,7 +18,7 @@
 	<!-- meta character set -->
 	<meta charset="UTF-8">
 	<!-- Site Title -->
-	<title>멤버십</title>
+	<title>멤버십 상세/결제</title>
 
 	<link href="https://fonts.googleapis.com/css?family=Roboto:100,200,300,400,500,700" rel="stylesheet">
 	<!--
@@ -38,71 +38,77 @@
 <body>
 	<!-- start header Area -->
 	<!-- inc 폴더의 CustomerHeader.jsp를 include -->
-	<jsp:include page="/inc/customerHeader.jsp"></jsp:include>
-	<!-- end header Area -->
+	<jsp:include page="/inc/customerHeader.jsp"></jsp:include>	<!-- end header Area -->
 
 	<!-- start banner Area -->
-	<section class="banner-area relative blog-home-banner" id="home">
+	<section class="banner-area relative about-banner" id="home">
+		<img class="cta-img img-fluid" src="customer/img/cta-img.png" alt="">
 		<div class="overlay overlay-bg"></div>
 		<div class="container">
 			<div class="row d-flex align-items-center justify-content-center">
-				<div class="about-content blog-header-content col-lg-12">
-					<h1 class="text-uppercase text-white">
-						<span>Haribo Team</span> 의 <br> 멤버십
+				<div class="about-content col-lg-12">
+					<h1>
+						
 					</h1>
 					<p class="link-nav"><a href="${pageContext.request.contextPath}/home">Home </a>
-						<span class="lnr lnr-arrow-right"></span> <a href="${pageContext.request.contextPath}/membership">
-							Membership</a></p>
-					<a href="${pageContext.request.contextPath}/contact" class="primary-btn mt-40">Contact Us</a>
+						<span class="lnr lnr-arrow-right"></span>
+						<a href="${pageContext.request.contextPath}/payment">
+							Payment
+						</a>
+						
+						<p class="link-nav">
+					</p>
 				</div>
 			</div>
 		</div>
 	</section>
 	<!-- End banner Area -->
 
-	<!-- Start top-category-widget Area -->
-	<section class="top-category-widget-area pt-90 pb-90 ">
+	<!-- Start post-content Area -->
+	<section class="post-content-area single-post-area">
 		<div class="container">
-			<div class="row" id="programList">
-			<c:forEach var="m" items="${list}">
-				<div class="col-lg-4">
-					<div class="single-cat-widget">
-						<div class="content relative">
-							<div class="overlay overlay-bg"></div>
-								<div class="thumb">
-									<img class="content-image img-fluid d-block mx-auto" src="customer/img/blog/cat-widget1.jpg" alt="">
-								</div>
-								<div class="content-details">
-									<h4 class="content-title mx-auto text-uppercase">${m.membershipName}권</h4>
-									<span></span>
-									<p><a href="${pageContext.request.contextPath}/payment?membershipNo=${m.membershipNo}" class="primary-btn mt-20">결제</a></p>
-								</div>
-							
+			<div class="row">
+				<div class="col-lg-8 posts-list">
+					<div class="single-post row">
+						<div class="col-lg-12">
+							<div class="feature-img">
+								<img class="customer/img-fluid" src="customer/img/blog/feature-img1.jpg" alt="">
+							</div>
+						</div>
+						<div class="col-lg-9 col-md-9">
+						<c:forEach var="m" items="${list}">
+							<h3 class="mt-20 mb-20">${m.membershipName}권</h3> 
+						</div>
+						<div class="col-lg-12">
+							<div class="quotes">
+							 해당 멤버십은 ${m.membershipMonth}개월 권 입니다
+							</div>
+			
 						</div>
 					</div>
 				</div>
-			</c:forEach>
-			</div>
-		</div>
-	</section>
-	<!-- End top-category-widget Area -->
+				<div class="col-lg-4 sidebar-widgets">
+					<div class="widget-wrap">
+						<div class="single-sidebar-widget user-info-widget">
 
-	<!-- Start post-content Area -->
-	<section class="team-area section-gap">
-		<div class="container">
-			<div class="row d-flex justify-content-center">
-				<div class="col-lg-12">
-					<div class="section-title-wrap text-center">
-					
+							<h3>${m.membershipName}권 결제하기</h3>
+							<br>
+							<h4>결제 금액 : ${m.membershipPrice}원</h4>
+							<p>
+								<form action="${pageContext.request.contextPath}/insertPayment" method="post">
+								<input type="hidden" value="${loginCustomer.customerId}" name="customerId">
+								<input type="hidden" value="${m.membershipNo}" name="paymentMembershipNo">
+								<input type="hidden" value="${m.membershipPrice}" name="paymentPrice">
+								<button type="submit" class="primary-btn mt-40">결제</button>
+								</form>
+							</p>
+							</c:forEach>
+							<p></p>
+						</div>
 					</div>
 				</div>
 			</div>
-			</div>
-			
-			</section>	
-	<section class="post-content-area">
-				
-
+		</div>
 	</section>
 	<!-- End post-content Area -->
 
@@ -110,6 +116,7 @@
 	<!-- inc 폴더의 CustomerFooter.jsp를 include -->
 	<jsp:include page="/inc/customerFooter.jsp"></jsp:include>
 	<!-- End footer Area -->
+
 
 	<script src="customer/js/vendor/jquery-2.2.4.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
@@ -127,4 +134,5 @@
 	<script src="customer/js/mail-script.js"></script>
 	<script src="customer/js/main.js"></script>
 </body>
+
 </html>

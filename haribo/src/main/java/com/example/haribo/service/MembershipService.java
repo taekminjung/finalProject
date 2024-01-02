@@ -16,4 +16,9 @@ public class MembershipService {
 			
 			return list;
 		}
+		public List<Membership> selectMembershipDetail(Membership membership){
+			List<Membership> list = membershipMapper.selectMembershipDetail(membership);
+			
+			return list;
+		}
 }

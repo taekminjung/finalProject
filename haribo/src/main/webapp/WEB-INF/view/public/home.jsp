@@ -52,7 +52,6 @@
 					<h1 class="text-uppercase">
 						<span>YogaFlex</span> to <br> Shape your body
 					</h1>
-					<a href="#" class="primary-btn mt-40">Become a Member</a>
 				</div>
 			</div>
 		</div>
