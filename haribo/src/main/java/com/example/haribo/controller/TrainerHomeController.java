@@ -10,16 +10,4 @@ public class TrainerHomeController {
 	public String trainerHome() {
 		return "emp/trainerHome";
 	}
-	
-	@GetMapping("/trainerQuestion")
-	// 트레이너 문의사항 페이지
-	public String trainerQuestion() {
-		return "emp/trainerQuestion";
-	}
-	
-	@GetMapping("/trainerReview")
-	// 트레이너 리뷰 페이지
-	public String trainerReview() {
-		return "emp/trainerReview";
-	}
 }
