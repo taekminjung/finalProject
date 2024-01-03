@@ -1,3 +1,66 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.example.haribo.mapper.QuestionMapper"></mapper>
+<mapper namespace="com.example.haribo.mapper.QuestionMapper">
+
+	<insert id="insertQuestion" parameterType="com.example.haribo.vo.Question">
+		INSERT INTO question(
+			customer_id,
+			question_title,
+			question_content
+		) VALUES (
+			#{customerId},
+			#{questionTitle},
+			#{questionContent}		
+		)
+	</insert>
+	
+	<update id="updateQuestion" parameterType="com.example.haribo.vo.Question">
+		UPDATE question SET
+			question_title = #{questionTitle},
+			question_content = #{questionContent}
+		WHERE question_no = #{questionNo}
+	</update>
+
+	<delete id="deleteQuestion" parameterType="com.example.haribo.vo.Question">
+		DELETE FROM question
+		WHERE question_no = #{questionNo}
+	</delete>
+	
+	<select id="questionList" parameterType="java.util.Map" resultType="com.example.haribo.vo.Question">
+		SELECT
+			question_no questionNo,
+			question_title questionTitle,
+			customer_id customerId,
+			createdate
+		FROM question
+		ORDER BY question_no DESC
+		LIMIT #{beginRow}, #{rowPerPage}
+	</select>
+	
+	<select id="questionOne" parameterType="com.example.haribo.vo.Question" resultType="com.example.haribo.vo.Question">
+		SELECT
+			question_no questionNo,
+			customer_id customerId,
+			question_title questionTitle,
+			question_content questionContent,
+			createdate
+		FROM question
+		WHERE question_no = #{questionNo}
+	</select>
+	
+	<select id="getTotalRow" parameterType="Integer" resultType="Integer">
+		SELECT
+			COUNT(*) Cnt
+		FROM question	
+	</select>
+	
+	<select id="searchByQuestion" parameterType="com.example.haribo.vo.Question">
+		SELECT
+			question_no questionNo,
+			question_title questionTitle,
+			question_content questionContent,
+			customer_id customerId
+		FROM question
+	</select>
+	
+</mapper>
