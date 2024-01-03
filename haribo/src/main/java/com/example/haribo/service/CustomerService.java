@@ -2,6 +2,8 @@ package com.example.haribo.service;
 
 import java.io.File;
 import java.io.IOException;
+import java.sql.Date;
+import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -168,5 +170,18 @@ public class CustomerService {
 				}
 			}
 		}
+	}
+	
+	//회원 상세 정보에서 멤버십 종료 날자만 출력(기간 만료일이 지났을 경우 메세지 출력)
+	public String membershipEnd(Customer customer) {
+		
+		Map<String, Object> customerInfo = customerMapper.selectCustomerInfo(customer);
+		String customerMembershipEnd =(customerInfo.get("customerMembershipEnd")).toString();
+		LocalDate endDate = ((Date)customerInfo.get("customerMembershipEnd")).toLocalDate();
+		LocalDate now = LocalDate.now();
+		if(endDate.compareTo(now) < 1) {
+			customerMembershipEnd = "보유 중인 멤버십이 없습니다.";
+		}
+		return customerMembershipEnd; 
 	}
 }

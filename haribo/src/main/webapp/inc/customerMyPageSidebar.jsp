@@ -1,10 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<c:set var="today" value="<%=new java.util.Date() %>"></c:set>
-<fmt:parseDate var="membership" value="${loginCustomer.customerMembershipEnd }" pattern="yyyy-MM-dd"/>
-<fmt:formatDate var="todayDate" value="${today }" pattern="yyyy-MM-dd"/>
 <div class="col-lg-3 sidebar-widgets"><br><br>
 	<div class="widget-wrap">
 		<div class="single-sidebar-widget user-info-widget">
@@ -71,14 +67,7 @@
 				<button type="button" class="btn btn-outline-secondary btn-block">
 					<br>
 					<p>멤버십 종료 날짜</p>
-					<P>
-						<c:if test="${membership < today }">
-							멤버십을 보유 하지 않았습니다
-						</c:if>
-						<c:if test="${!(membership < today) }">
-							<fmt:formatDate value="${membership }" pattern="yyyy-MM-dd"/>
-						</c:if>
-					</P>
+					<P><span id="membershipEnd"></span></P>
 				</button>
 			</a>
 		</div>
@@ -93,5 +82,19 @@
 		}else{
 			$('#imgForm').submit();
 		}
+	})
+	
+	$(document).ready(function(){
+		$.ajax({
+			url:'/haribo/membershipEnd',
+			method:'get',
+			data:{'customerNo':${loginCustomer.customerNo}},
+			success:function(json){
+				$('#membershipEnd').text(json);
+			},
+			error:function(err){
+				console.log(err);
+			}
+		})
 	})
 </script>

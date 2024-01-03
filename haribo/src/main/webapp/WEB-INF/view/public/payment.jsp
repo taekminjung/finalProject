@@ -1,11 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<c:set var="today" value="<%=new java.util.Date() %>"></c:set>
-<fmt:parseDate var="membership" value="${loginCustomer.customerMembershipEnd }" pattern="yyyy-MM-dd"/>
-<fmt:formatDate var="todayDate" value="${today }" pattern="yyyy-MM-dd"/>
-<!DOCTYPE html>
 <html lang="zxx" class="no-js">
 
 <head>
@@ -102,35 +97,22 @@
 									<input type="hidden" value="${loginCustomer.customerId}" name="customerId">
 									<input type="hidden" value="${loginCustomer.customerNo}" name="customerNo">
 									<input type="hidden" value="${m.membershipNo}" name="paymentMembershipNo">
-									<input type="hidden" value="${m.membershipPrice}" name="paymentPrice">
+									<input id="price"type="hidden" value="${m.membershipPrice}" name="paymentPrice">
 								</form>
-								<c:if test="${loginCustomer != null }">
 									<button id="paymentBtn" class="primary-btn mt-40">결제</button>
-								</c:if>
-								<c:if test="${!(loginCustomer != null ) }">
-									로그인 후 결제 가능합니다
-								</c:if>
 							</p>
 							</c:forEach>
 							<p></p>
 						</div>
 					</div>
-					<c:if test="${loginCustomer != null }">
-						<div class="d-grid">
-							<button type="button" class="btn btn-outline-secondary btn-block" disabled>
-								<br>
-								<p>멤버십 종료 날짜</p>
-								<P>
-									<c:if test="${membership < today }">
-										멤버십을 보유 하지 않았습니다
-									</c:if>
-									<c:if test="${!(membership < today) }">
-										<fmt:formatDate value="${membership }" pattern="yyyy-MM-dd"/>
-									</c:if>
-								</P>
-							</button>
-						</div>
-					</c:if>
+					<div class="d-grid">
+						<button type="button" class="btn btn-outline-secondary btn-block" disabled>
+							<br>
+							<p>멤버십 종료 날짜</p>
+							<P id="membershipEnd"></P>
+						</button>
+					</div>
+					
 				</div>
 			</div>
 		</div>
@@ -160,13 +142,27 @@
 	<script src="customer/js/main.js"></script>
 	<script>
 		$('#paymentBtn').click(function(){
-			var result = confirm('결제 후 바뀐 멤버십 기간은 재로그인 후 적용됩니다. \n결제하시겠습니까?');
+			var result = confirm($('#price').val()+'원이 결제됩니다. \n결제를 진행 하시겠습니까');
 			if(result){
 				$('#form').submit()
 			}else{
 				
 			}
 		})
+		
+		$(document).ready(function(){
+		$.ajax({
+			url:'/haribo/membershipEnd',
+			method:'get',
+			data:{'customerNo':${loginCustomer.customerNo}},
+			success:function(json){
+				$('#membershipEnd').text(json);
+			},
+			error:function(err){
+				console.log(err);
+			}
+		})
+	})
 	</script>
 </body>
 	

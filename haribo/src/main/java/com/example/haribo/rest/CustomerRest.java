@@ -1,6 +1,7 @@
 package com.example.haribo.rest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -32,7 +33,18 @@ public class CustomerRest {
 		log.debug(customer+"");
 		int cnt = customerService.pwCkCnt(customer);
 		log.debug("비밀번호 확인 ->>"+cnt);
+		
 		return cnt;
 	}
 	
+	//멤버십 종료 날자 출력
+	@GetMapping("/membershipEnd")
+	public String membershipEnd(Customer customer) {
+		
+		log.debug(customer+"");
+		String customerMembershipEnd = customerService.membershipEnd(customer);
+		log.debug(customerMembershipEnd);
+		
+		return customerMembershipEnd;
+	}
 }

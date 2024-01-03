@@ -8,8 +8,7 @@
 		SELECT 
 			c.customer_no customerNo,
 			c.customer_id customerId,
-			cd.customer_name customerName,
-			cd.customer_membership_end customerMembershipEnd
+			cd.customer_name customerName
 		FROM customer c INNER JOIN customer_detail cd
 		ON c.customer_no = cd.customer_no
 		WHERE c.customer_id = #{customerId}
