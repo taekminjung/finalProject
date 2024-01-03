@@ -150,6 +150,12 @@
           </ul>
         </li>
         
+        <li>
+          <a href="${pageContext.request.contextPath}/sportsEquipmentExpiredList">
+            <i class="fa fa-trash"></i> <span>폐기물 대장</span>
+          </a>
+       </li>  
+        
         
       </ul>
 

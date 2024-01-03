@@ -38,7 +38,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        공지사항
+        폐기물 대장 관리
         <small>관리자</small>
       </h1>
       <ol class="breadcrumb">
@@ -53,40 +53,19 @@
             <div class="box-header">
               <h3 class="box-title">현재 페이지: ${currentPage}</h3>
 
-              <div class="box-tools">
-               <a href="${pageContext.request.contextPath}/insertNotice" class="btn btn-primary mb-3">공지 추가</a>
-           
-                <div class="input-group input-group-sm hidden-xs" style="width: 150px;">
-      			<form class="search-form" id="searchNotice" method="post" action="${pageContext.request.contextPath}/noticeList">
-      			
-                  <div class="input-group-btn">
-                  <input type="text" name="noticeTitle" class="form-control pull-right" placeholder="제목을 입력해주세요" onfocus="this.placeholder=''" onblur="this.placeholder='제목을 입력하세요'">
-                  </div>
-                    <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
-      			</form>
-                </div>
-              </div>
             </div>
-            <br><br>
+            <br>
 			<div class="box-body table-responsive no-padding">
 			    <table class="table table-hover">
 			        <tr>
 			            <th class="text-center">번호</th>
-			            <th class="text-center">제목</th>
-			            <th class="text-center">작성자</th>
+			            <th class="text-center">지점</th>
+			            <th class="text-center">품목명</th>
+			            <th class="text-center">폐기 사유</th>
+			            <th class="text-center">수량</th>
 			            <th class="text-center">등록일</th>
 			        </tr>
 			
-			        <c:forEach var="n" items="${list}">
-			            <tr>
-			                <td class="text-center">${n.noticeNo}</td>
-			                <td class="text-center">
-			                    <a href="${pageContext.request.contextPath}/noticeOne?noticeNo=${n.noticeNo}">${n.noticeTitle}</a>
-			                </td>
-			                <td class="text-center">${n.employeeId}</td>
-			                <td class="text-center">${n.createdate}</td>
-			            </tr>
-			        </c:forEach>
 			    </table>
 			    <br><br>
 			<div class="text-center"> 

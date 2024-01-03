@@ -58,4 +58,11 @@ public class NoticeService {
 		return lastPage;
 	}
 
+	public List<Notice> searchByNotice(Notice notice){
+		List<Notice> list = noticeMapper.searchByNotice(notice);
+		System.out.println(list+"<--list");
+		return list;
+		
+	}
+	
 }

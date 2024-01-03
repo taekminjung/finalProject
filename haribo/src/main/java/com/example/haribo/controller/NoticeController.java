@@ -126,4 +126,14 @@ public class NoticeController {
 	
 		return "emp/trainerNoticeOne";
 	}
+	
+	// 공지사항 검색 기능
+	@PostMapping("/noticeList")
+	public String searchByNotice(Model model, Notice notice) {
+		List<Notice> list = noticeService.searchByNotice(notice);
+		System.out.println(list+"<--list");
+		model.addAttribute("list", list);
+		
+		return "emp/noticeList";
+	}
 }

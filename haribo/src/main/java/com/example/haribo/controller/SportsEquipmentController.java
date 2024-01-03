@@ -20,4 +20,9 @@ public class SportsEquipmentController {
 	public String sportsEquipmentC() {
 		return "emp/sportsEquipmentC";
 	}
+	
+	@GetMapping("/sportsEquipmentExpiredList")
+	public String sportsEquipmentExpiredList() {
+		return "emp/sportsEquipmentExpiredList";
+	}
 }

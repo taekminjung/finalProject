@@ -6,6 +6,7 @@ import lombok.Data;
 public class SportsEquipmentExpire {
 	private int sportsEquipmentExpireNo;
 	private int sportsEquipmentNo;
+	private int branchNo;
 	private String itemName;
 	private int quantity;
 	private String expireMemo;
