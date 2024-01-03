@@ -112,10 +112,10 @@
 								&nbsp;
 							</c:if>
 							<c:if test="${!(d < 1 || d > cMap.lastDate)}">
-								${d }<br>
+								${d }<p>예약현황 : </p><br>
 								<c:forEach var="p" items="${pList}">
 									<c:if test="${p.programDateDay == d}">
-										<p>현재 예약자 수 : </p>
+										
 										<span class="badge badge-danger">${p.programReservationCnt}/${p.programMaxCustomer}</span>
 									</c:if>
 								</c:forEach>
@@ -148,7 +148,7 @@
 								${map.branchName}지점 트레이너
 							</p>
 							<p>
-							프로그램 예약 현황 :  /${dmap.programMaxCustomer}
+							Email : ${map.employeeEmail}
 							</p>
 						</div>
 					</div>
