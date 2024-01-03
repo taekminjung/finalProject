@@ -51,23 +51,28 @@
                <form id="form" name="form" method="post" action="${pageContext.request.contextPath}/insertProgram">
                 <div class="form-group">
                   <label for="programName">프로그램명</label>
-                  <input type="text" class="form-control" id="programName" name="programName" placeholder="Enter programName">
+                  <input type="text" class="form-control" id="programName" name="programName" placeholder="프로그램명">
                 </div>
                 <div class="form-group">
                   <label for="programMaxCustomer">수용 인원</label>
-                  <input type="text" class="form-control" id="programMaxCustomer" name="programMaxCustomer" placeholder="Enter ">
+                  <input type="text" class="form-control" id="programMaxCustomer" name="programMaxCustomer" placeholder="최대 수용인원">
                 </div>
+		      
+		      <div class="form-group">
+                  <label for="programDate">프로그램 내용</label>
+                  <textarea style="height: 150px; width: 600px;" class="form-control" id="programDate" name="programDate" placeholder="프로그램 상세내용"></textarea>
 
-               <div class="form-group">
-                  <label for="programDate">프로그램 일자</label>
-                  <input type="date" class="form-control" id="programDate" name="programDate" placeholder="Enter programDate">
+	
 		      </div>
-<!-- 
-               <div class="form-group">
-                  <label for="programImg">프로그램 이미지</label>
-                  <input type="text" class="form-control" id="programImg" name="programImg">
+		      
+	          <div class="form-group">
+                  <label for="programDate">프로그램 일자 <br> 예시) 토 / 월, 수, 금 / 화, 목</label>
+                  <input type="text" class="form-control" id="programDate" name="programDate" placeholder="프로그램 개설 요일">
 		      </div>
- -->		      
+			  <form method="post" enctype="multipart/form-data" id="imgForm" action="${pageContext.request.contextPath}insertProgramImg">
+			  		<input id="pImg" type="file" name="pImg" accept=".png">			  		
+			  </form>
+	      
               </div>
               <!-- /.box-body -->
 

@@ -136,6 +136,11 @@ public class ProgramController {
 			
 			return "public/program";
 		}
-		 
+		
+		//프로그램 사진 추가
+//		@PostMapping("/insertProgramImg")
+//		public String insertProgramImg(HttpSession session, MultipartFile pImg, ProgramImg programImg) {
+//			return u;
+//		}
 		
 }

@@ -35,11 +35,7 @@ public class NoticeService {
 	
 		int rowPerPage = 10;
 		int beginRow = (currentPage-1)*rowPerPage;
-		int totalRow = noticeMapper.getTotalRow(rowPerPage);
-		int lastPage = totalRow / rowPerPage;
-		if(totalRow % rowPerPage !=0) {
-			lastPage +=1;
-		}
+
 		HashMap<String, Object> param = new HashMap<>();
 		param.put("beginRow", beginRow);
 		param.put("rowPerPage", rowPerPage);
@@ -58,11 +54,30 @@ public class NoticeService {
 		return lastPage;
 	}
 
-	public List<Notice> searchByNotice(Notice notice){
-		List<Notice> list = noticeMapper.searchByNotice(notice);
+	public List<Notice> searchByNotice(@RequestParam(defaultValue ="1") int currentPage){
+		
+		int rowPerPage = 10;
+		int beginRow = (currentPage-1)*10;
+		
+		HashMap<String, Object> param = new HashMap<>();
+		param.put("beginRow", beginRow);
+		param.put("rowPerPage", rowPerPage);
+		
+		List<Notice> list = noticeMapper.searchByNotice(param);
 		System.out.println(list+"<--list");
 		return list;
 		
 	}
+	
+	public int searchLastPage() {
+		int rowPerPage = 10;
+		int totalRow = noticeMapper.getTotalRow2(rowPerPage);
+		int lastPage = totalRow/rowPerPage;
+		if(totalRow % rowPerPage !=0) {
+			lastPage +=1;
+		}
+		return lastPage;
+	}
+	
 	
 }

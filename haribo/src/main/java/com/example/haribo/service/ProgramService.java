@@ -7,12 +7,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.example.haribo.mapper.ProgramMapper;
 import com.example.haribo.vo.Program;
 import com.example.haribo.vo.ProgramDate;
-import com.example.haribo.vo.Program;
-import com.example.haribo.vo.ProgramDate;
+import com.example.haribo.vo.ProgramImg;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -112,5 +112,20 @@ public class ProgramService {
 		
 		System.out.println("\u001B[43m"+pMap+"<--ser.list");
 		return pMap;
+	}
+	
+	// 회원 사진 추가
+	public void insertProgramImg(MultipartFile pImg, ProgramImg programImg, String path) {
+		String pathProgram = path+"/employee";
+		String oName = pImg.getOriginalFilename();
+		String type = oName.substring(oName.lastIndexOf("."));
+		String fName = type;
+		
+		programImg.setProgramImgOriginName(oName);
+		programImg.setProgramImgFileName(fName);
+		programImg.setProgramImgSize((int)pImg.getSize());
+		programImg.setProgramImgType(pImg.getContentType());
+		
+		int row = programMapper.insertProgramImg(programImg);
 	}
 }

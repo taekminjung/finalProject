@@ -129,10 +129,13 @@ public class NoticeController {
 	
 	// 공지사항 검색 기능
 	@PostMapping("/noticeList")
-	public String searchByNotice(Model model, Notice notice) {
-		List<Notice> list = noticeService.searchByNotice(notice);
+	public String searchByNotice(Model model, Notice notice, @RequestParam(defaultValue ="1")int currentPage) {
+		List<Notice> list = noticeService.searchByNotice(currentPage);
+		int searchLastPage = noticeService.searchLastPage();
 		System.out.println(list+"<--list");
+		model.addAttribute("currentPage", currentPage);
 		model.addAttribute("list", list);
+		model.addAttribute("searchLastPage", searchLastPage);
 		
 		return "emp/noticeList";
 	}

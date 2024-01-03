@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.haribo.mapper.SportsEquipmentMapper">
-<select id="SportsEquipmentExpiredList" parameterType="java.util.Map" resultType="java.util.Map">
+<select id="sportsEquipmentExpiredList" parameterType="java.util.Map" resultType="java.util.Map">
 	SELECT
-		sports_equipment_expire_no sportsEquipmentExpireNo,
-		branch_no branchNo,
-		item_name itemName,
-		expire_memo expireMemo,
-		quantity,
-		createdate
-	FROM sports_equipment_expire
+		seo.branch_no branchNo,
+		see.item_name itemName,
+		see.expire_memo expireMemo,
+		see.quantity,
+		see.createdate
+	FROM sports_equipment_expire see 
+	INNER JOIN sports_equipment_order seo
+	ON see.branch_no = seo.branch_no;
 </select>
 
 </mapper>
