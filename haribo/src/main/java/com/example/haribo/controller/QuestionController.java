@@ -25,9 +25,7 @@ public class QuestionController {
 	
 	@PostMapping("/insertQuestion")
 	public String insertQuestion(Question question) {
-		//mapper 호출하기
-		QuestionService.insertQuestion(question);
-		
+		questionService.insertQuestion(question);
 		return "redirect:/public/question";
 	}
 	
