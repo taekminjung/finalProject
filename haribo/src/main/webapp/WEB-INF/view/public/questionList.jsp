@@ -51,8 +51,8 @@
 						문의사항
 					</h1>
 					<p class="link-nav"><a href="${pageContext.request.contextPath}/home">Home </a>
-						<span class="lnr lnr-arrow-right"></span> <a href="${pageContext.request.contextPath}/noticeList">
-							Notice</a></p>
+						<span class="lnr lnr-arrow-right"></span> <a href="${pageContext.request.contextPath}/questionList">
+							Question</a></p>
 				</div>
 			</div>
 		</div>
@@ -84,23 +84,23 @@
 							</tr>
 						</thead>
 						<tbody>
-						<c:forEach var="n"  items="${list}">
+						<c:forEach var="q"  items="${list}">
 							<tr>
-								<td>${n.noticeNo}</td>
-								<td class="name" scope="row"><a href="${pageContext.request.contextPath}/customerNoticeOne?noticeNo=${n.noticeNo}">${n.noticeTitle}</a></td>
-								<td>${n.employeeId}</td>
-								<td>${n.createdate}</td>
+								<td>${q.questionNo}</td>
+								<td class="name" scope="row"><a href="${pageContext.request.contextPath}/questionOne?questionNo=${q.questionNo}">${q.questionTitle}</a></td>
+								<td>${q.customerId}</td>
+								<td>${q.createdate}</td>
 							</tr>
 						</c:forEach>
 						</tbody>
 					</table>
 						<div class="text-center"> 
 				  <c:if test="${currentPage > 1}">
-				  	<a href="${pageContext.request.contextPath}/customerNoticeList?currentPage=${currentPage-1}" class="btn btn-primary">이전</a>
+				  	<a href="${pageContext.request.contextPath}/questionList?currentPage=${currentPage-1}" class="btn btn-primary">이전</a>
 				  </c:if>
 				  <span class="badge bg-light">${currentPage}</span>
 				  <c:if test="${currentPage < lastPage}">
-				  	<a href="${pageContext.request.contextPath}/customerNoticeList?currentPage=${currentPage+1}" class="btn btn-primary">다음</a>
+				  	<a href="${pageContext.request.contextPath}/questionList?currentPage=${currentPage+1}" class="btn btn-primary">다음</a>
 				  </c:if>
 			</div>
 				</div>

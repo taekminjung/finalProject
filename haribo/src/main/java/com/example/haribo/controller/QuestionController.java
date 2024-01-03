@@ -77,9 +77,9 @@ public class QuestionController {
 	public String questionOne(Model model, Question question) {
 		Question resultQuestion = questionService.questionOne(question);
 		model.addAttribute("resultQuestion", resultQuestion);
-		System.out.println(resultQuestion.getQuestionNo()+"<----getNoticeNo");
-		System.out.println(resultQuestion.getQuestionTitle()+"<----getNoticeTitle");
-		System.out.println(resultQuestion.getQuestionContent()+"<----getNoticeContent");
+		System.out.println(resultQuestion.getQuestionNo()+"<----getQuestionNo");
+		System.out.println(resultQuestion.getQuestionTitle()+"<----getQuestionTitle");
+		System.out.println(resultQuestion.getQuestionContent()+"<----getQuestionContent");
 		System.out.println(resultQuestion.getCustomerId()+"<----getCustomerId");
 		System.out.println(resultQuestion.getCreatedate()+"<----getCreatedate");
 	
@@ -106,9 +106,9 @@ public class QuestionController {
 	public String questionOneEmp(Model model, Question question) {
 		Question resultQuestion = questionService.questionOne(question);
 		model.addAttribute("resultQuestion", resultQuestion);
-		System.out.println(resultQuestion.getQuestionNo()+"<----getNoticeNo");
-		System.out.println(resultQuestion.getQuestionTitle()+"<----getNoticeTitle");
-		System.out.println(resultQuestion.getQuestionContent()+"<----getNoticeContent");
+		System.out.println(resultQuestion.getQuestionNo()+"<----getQuestionNo");
+		System.out.println(resultQuestion.getQuestionTitle()+"<----getQuestionTitle");
+		System.out.println(resultQuestion.getQuestionContent()+"<----getQuestionContent");
 		System.out.println(resultQuestion.getCustomerId()+"<----getCustomerId");
 		System.out.println(resultQuestion.getCreatedate()+"<----getCreatedate");
 	
@@ -134,9 +134,9 @@ public class QuestionController {
 	public String trainerQuestionOne(Model model, Question question) {
 		Question resultQuestion = questionService.questionOne(question);
 		model.addAttribute("resultQuestion", resultQuestion);
-		System.out.println(resultQuestion.getQuestionNo()+"<----getNoticeNo");
-		System.out.println(resultQuestion.getQuestionTitle()+"<----getNoticeTitle");
-		System.out.println(resultQuestion.getQuestionContent()+"<----getNoticeContent");
+		System.out.println(resultQuestion.getQuestionNo()+"<----getQuestionNo");
+		System.out.println(resultQuestion.getQuestionTitle()+"<----getQuestionTitle");
+		System.out.println(resultQuestion.getQuestionContent()+"<----getQuestionContent");
 		System.out.println(resultQuestion.getCustomerId()+"<----getCustomerId");
 		System.out.println(resultQuestion.getCreatedate()+"<----getCreatedate");
 	
