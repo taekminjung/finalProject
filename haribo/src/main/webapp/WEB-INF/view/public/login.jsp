@@ -37,28 +37,28 @@
 		  </div>
 		  <!-- /.login-logo -->
 		  <div class="login-box-body">
-		    <form action="${pageContext.request.contextPath}/login" method="post">
+		    <form id="customerForm" action="${pageContext.request.contextPath}/login" method="post">
 		      <div class="form-group has-feedback">
 		        <input id="customerId" type="text" class="form-control" placeholder="ID" name="customerId">
 		        <span class="glyphicon glyphicon-star form-control-feedback"></span>
 		      </div>
 		      <div class="form-group has-feedback">
-		        <input type="password" class="form-control" placeholder="Password" name="customerPw">
+		        <input id="customerPw" type="password" class="form-control" placeholder="Password" name="customerPw">
 		        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
 		      </div>
+		     </form>
 		      <div class="row">
 		        <div class="col-xs-8">
 		          <a href="${pageContext.request.contextPath}/addCustomer" class="text-center">Register New Member</a>
 		        </div>
 		        <!-- /.col -->
 		        <div class="col-xs-4">
-		          <button type="submit" class="btn btn-primary btn-block btn-flat">Log In</button>
+		          <button id="customerBtn" class="btn btn-primary btn-block btn-flat">Log In</button>
 		        </div>
 		        <!-- /.col -->
 		      </div>
-		    </form>
-			
-		  </div>
+		      <div><input id="idSave" type="checkbox">Save ID</div>
+		   </div>
 		  <!-- /.login-box-body -->
 		</div>
 		<!-- /.login-box -->
@@ -98,19 +98,86 @@
 		<a href="${pageContext.request.contextPath }/home"><span class="glyphicon glyphicon-chevron-right"></span>홈 화면으로</a>
 	</div>
 <!-- jQuery 3 -->
-<script src="emp/bower_components/jquery/dist/jquery.min.js"></script>
+<script src="emp/bower_components/jquery/dist/jquery.min.js">
+	
+</script>
 <!-- Bootstrap 3.3.7 -->
 <script src="emp/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-<!-- iCheck -->
-<script src="emp/plugins/iCheck/icheck.min.js"></script>
+
 <script>
-  $(function () {
-    $('input').iCheck({
-      checkboxClass: 'icheckbox_square-blue',
-      radioClass: 'iradio_square-blue',
-      increaseArea: '20%' /* optional */
+
+$(document).ready(function(){
+	
+    // 저장된 쿠키값을 가져와서 ID 칸에 넣어준다. 쿠키값 없으면 공백.
+    var userLoginId = getCookie("userLoginId");
+    $('#customerId').val(userLoginId); 
+    
+    // ID가 있는경우 아이디 저장 체크박스 체크
+    if($('#customerId').val() != ""){
+    	$('#idSave').attr("checked", true);
+    }
+    
+    // 아이디 저장하기 체크박스 onchange
+    $('#idSave').change(function(){
+    	if($('#idSave').is(":checked")){  //checked true
+    		console.log('체크!');
+        	var userLoginId = $('#customerId').val();
+            setCookie("userLoginId", userLoginId, 30); // 30일 동안 쿠키 보관
+         }else{ //checked false
+        	console.log('체크해제!');
+         	deleteCookie("userLoginId");
+        }
     });
-  });
+     
+     
+     // 아이디 저장하기가  눌린상태에서, ID를 입력한 경우
+     $('#customerId').keyup(function(){
+     	if($('#idSave').is(":checked")){  //checked true
+            var userLoginId = $('#customerId').val();
+            setCookie("userLoginId", userLoginId, 30); // 30일 동안 쿠키 보관
+        }
+    });
+
+})
+//쿠키값 set
+function setCookie(cookieName, value, exdays){
+    let exdate = new Date();
+    exdate.setDate(exdate.getDate() + exdays);
+    let cookieValue = escape(value) + ((exdays == null) ? "" : "; expires=" + exdate.toGMTString());
+    document.cookie = cookieName + "=" + cookieValue;
+}
+
+//쿠키값 delete
+function deleteCookie(cookieName){
+    let expireDate = new Date();
+    expireDate.setDate(expireDate.getDate() -1);
+    document.cookie = cookieName + "= " + "; expires=" + expireDate.toGMTString();
+}
+
+//쿠키값 get
+function getCookie(cookieName){
+    cookieName = cookieName + "=";
+    let cookieData = document.cookie;
+    let start = cookieData.indexOf(cookieName);
+    let cookieValue = '';
+    if(start != -1){
+        start += cookieName.length;
+        let end = cookieData.indexOf(';', start);
+        if(end == -1)end = cookieData.length;
+        cookieValue = cookieData.substring(start, end);
+    }
+    return unescape(cookieValue); //unescape로 디코딩 후 값 리턴
+}
+  
+  $('#customerBtn').click(function(){
+		if($('#customerId').val().length < 1){
+			alert('아이디를 입력하세요')
+		}else if($('#customerPw').val().length < 1){
+			alert('비밀번호를 입력하세요')
+		}else{
+			$('#customerForm').submit();
+		}
+	})
 </script>
 </body>
 </html>

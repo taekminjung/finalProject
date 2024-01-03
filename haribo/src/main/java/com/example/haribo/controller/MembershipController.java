@@ -40,6 +40,6 @@ public class MembershipController {
 				
 				model.addAttribute("list", list);
 				
-				return "public/payment";
+				return "customer/payment";
 			}
 }
