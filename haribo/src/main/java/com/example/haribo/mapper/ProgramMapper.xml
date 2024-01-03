@@ -80,16 +80,24 @@
 		WHERE program_name LIKE CONCAT('%' , #{programName} , '%')
 	</select>
 	<select id="selectProgramDate" parameterType="Map" resultType="Map">
-		SELECT 
-		program_date_no programDateNo,
-		program_no programNo,
+			SELECT 
+		pd.program_date_no programDateNo,
+		p.program_no programNo,
+		pr.program_reservation_date programReservationDate,
+		p.program_max_customer programMaxCustomer,
 		YEAR(program_date) programDateYear,
 		MONTH(program_date) programDateMonth,
 		DAY(program_date) programDateDay,
-		createdate
-		FROM program_date
-		WHERE program_no = #{programNo}
+		COUNT(*) programReservationCnt,
+		p.createdate
+		FROM program_date pd
+		INNER JOIN program p 
+		ON pd.program_no = p.program_no
+		INNER JOIN program_reservation pr
+		ON pd.program_date_no = pr.program_date_no
+		WHERE p.program_no = #{programNo}
 		AND YEAR(program_date)= #{targetYear}
 		AND MONTH(program_date)= #{targetMonth}
+		GROUP BY DAY(pr.program_reservation_date)
 	</select>
 </mapper>

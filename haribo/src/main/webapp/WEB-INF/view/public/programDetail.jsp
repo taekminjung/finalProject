@@ -115,7 +115,8 @@
 								${d }<br>
 								<c:forEach var="p" items="${pList}">
 									<c:if test="${p.programDateDay == d}">
-										<span class="badge badge-danger">*</span>
+										<p>현재 예약자 수 : </p>
+										<span class="badge badge-danger">${p.programReservationCnt}/${p.programMaxCustomer}</span>
 									</c:if>
 								</c:forEach>
 							</c:if>
