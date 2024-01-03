@@ -34,6 +34,15 @@
     <!-- 페이지 메인 헤더 -->
     <section class="content-header">
     <h3>공지사항</h3>
+    <div class="box-tools">
+                <div class="input-group input-group-sm hidden-xs" style="width: 150px;">
+                  <input type="text" name="table_search" class="form-control pull-right" placeholder="Search">
+
+                  <div class="input-group-btn">
+                    <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+                  </div>
+                </div>
+              </div>
       <div class="row">
         <div class="col-xs-12">
           <div class="box">
@@ -56,6 +65,15 @@
                 </c:forEach>
               </table>
             </div>
+            <div>
+			  	<ul class="pagination">
+			    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+			    <li class="page-item"><a class="page-link" href="#">1</a></li>
+			    <li class="page-item active"><a class="page-link" href="#">2</a></li>
+			    <li class="page-item"><a class="page-link" href="#">3</a></li>
+			    <li class="page-item"><a class="page-link" href="#">Next</a></li>
+			  	</ul>
+			</div>
             <!-- /.box-body -->
           </div>
           <!-- /.box -->

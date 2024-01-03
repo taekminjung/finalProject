@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.haribo.service.CalendarService;
 import com.example.haribo.service.ProgramService;
+import com.example.haribo.vo.Branch;
 import com.example.haribo.vo.Program;
 import com.example.haribo.vo.ProgramDate;
 
@@ -103,7 +104,7 @@ public class ProgramController {
 		
 	}
 	@GetMapping("/programDetail")
-	public String programDetail(Model model, Program program, ProgramDate programDate, @RequestParam(required = false) Integer targetYear,
+	public String programDetail(Model model,Branch branch, Program program, ProgramDate programDate, @RequestParam(required = false) Integer targetYear,
 			@RequestParam(required = false) Integer targetMonth) {
 		//프로그램 상세보기 내용 출력
 		HashMap<String, Object> dmap = programService.selectProgramDetail(program);

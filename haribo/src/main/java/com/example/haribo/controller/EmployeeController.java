@@ -80,6 +80,7 @@ public class EmployeeController {
 	public String updateEmployeeStatus(HttpSession session, 
 			@RequestParam("employeeId") String employeeId, 
 			@RequestParam("activeStatus") String activeStatus) {
+		log.debug(employeeId+activeStatus);
 	    employeeService.updateEmployeeStatus(employeeId, activeStatus);
 	    return "emp/employeeList";
 	}

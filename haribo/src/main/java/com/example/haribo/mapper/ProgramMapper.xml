@@ -83,7 +83,7 @@
 			SELECT 
 		pd.program_date_no programDateNo,
 		p.program_no programNo,
-		pr.program_reservation_date programReservationDate,
+		pr.branch_no branchNo,
 		p.program_max_customer programMaxCustomer,
 		YEAR(program_date) programDateYear,
 		MONTH(program_date) programDateMonth,
@@ -95,9 +95,9 @@
 		ON pd.program_no = p.program_no
 		INNER JOIN program_reservation pr
 		ON pd.program_date_no = pr.program_date_no
-		WHERE p.program_no = #{programNo}
-		AND YEAR(program_date)= #{targetYear}
+		WHERE p.program_no = #{programNo} AND pr.branch_no= #{branchNo}
+		AND YEAR(program_date)= #{targetYear}	
 		AND MONTH(program_date)= #{targetMonth}
-		GROUP BY DAY(pr.program_reservation_date)
+		GROUP BY pr.program_date_no
 	</select>
 </mapper>

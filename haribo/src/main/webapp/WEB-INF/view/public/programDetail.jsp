@@ -115,7 +115,6 @@
 								${d }<p>예약현황 : </p><br>
 								<c:forEach var="p" items="${pList}">
 									<c:if test="${p.programDateDay == d}">
-										
 										<span class="badge badge-danger">${p.programReservationCnt}/${p.programMaxCustomer}</span>
 									</c:if>
 								</c:forEach>
