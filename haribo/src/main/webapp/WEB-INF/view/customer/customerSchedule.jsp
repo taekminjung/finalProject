@@ -97,7 +97,7 @@
 							<th class="col-lg-1">금</th>
 							<th class="col-lg-1">토</th>
 						</tr>
-						<tr style="height:100px">
+						<tr style="height:200px">
 						<c:forEach var="i" begin="1" end="${calMap.totalTd}" step="1">
 							<c:set var="d" value="${i - calMap.beginBlank }"></c:set>
 							<c:if test="${i % 7 == 1 }">
@@ -113,14 +113,22 @@
 								${d }<br>
 								<c:forEach var="p" items="${proList }">
 									<c:if test="${p.programDate == d }">
-										<h6>${p.branchName }<br>
-										: ${p.programName}</h6><br>
+										<a href="" data-bs-toggle="tooltip" title="리뷰 쓰기">
+											<h6>${p.branchName }<br>
+											: ${p.programName}</h6>
+										</a>
+										<a href="">
+											<span class="badge bg-primary text-light">입실</span>
+										</a>
+										<a href="">
+											<span class="badge bg-danger text-light"">퇴실</span>
+										</a><br><br>
 									</c:if>
 								</c:forEach>
 							</c:if>
 							</td>
 							<c:if test="${i < calMap.totalTd && i % 7 == 0}">
-								</tr><tr style="height:100px">	
+								</tr><tr style="height:200px">	
 							</c:if>
 						</c:forEach>
 					</table>

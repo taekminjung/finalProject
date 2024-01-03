@@ -49,7 +49,7 @@
 		     </form>
 		      <div class="row">
 		        <div class="col-xs-8">
-		          <a href="${pageContext.request.contextPath}/addCustomer" class="text-center">Register New Member</a>
+		          <a href="${pageContext.request.contextPath}/insertCustomer" class="text-center">Register New Member</a>
 		        </div>
 		        <!-- /.col -->
 		        <div class="col-xs-4">

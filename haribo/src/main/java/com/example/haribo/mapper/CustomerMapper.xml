@@ -143,4 +143,22 @@
 			#{customerImgType}
 		)
 	</insert>
+	
+	<insert id="insertAttendance" parameterType="com.example.haribo.vo.CustomerAttendance">
+		INSERT INTO customer_attendance(
+			program_reservation_no,
+			customer_attendance_date,
+			customer_attendance_enter_time
+		)VALUES(
+			#{programReservationNo},
+			#{customerAttendanceDate},
+			#{customerAttendanceEnterTime}
+		)
+	</insert>
+	
+	<update id="updateAttendance" parameterType="com.example.haribo.vo.CustomerAttendance">
+		UPDATE customer_attendance SET
+			customer_attendance_exit_time = #{customerAttendanceExitTime}
+		WHERE program_reservation_no = #{programReservationNo}
+	</update>
 </mapper>

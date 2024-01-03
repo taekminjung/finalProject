@@ -150,6 +150,7 @@ function jusoCallBack(roadFullAddr){
 		  success:function(json){
 			  if(json == 0){
 				  $('#customerId').val($('#idCk').val())
+				  $('#idCk').attr('readonly',true);
 				  $('#idCkMsg').text('사용 가능한 아이디 입니다')
 				  $('#idCkMsg').css("color","blue")
 			  }else{

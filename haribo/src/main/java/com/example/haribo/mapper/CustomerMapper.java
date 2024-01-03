@@ -5,6 +5,7 @@ import java.util.Map;
 import org.apache.ibatis.annotations.Mapper;
 
 import com.example.haribo.vo.Customer;
+import com.example.haribo.vo.CustomerAttendance;
 import com.example.haribo.vo.CustomerDetail;
 import com.example.haribo.vo.CustomerImg;
 
@@ -51,4 +52,10 @@ public interface CustomerMapper {
 	
 	//회원 사진 추가
 	int insertCustomerImg(CustomerImg customerImg);
+	
+	//회원 출결 (입실)
+	int insertAttendance(CustomerAttendance customerAttendance);
+	
+	//회원 출결 (퇴실)
+	int updateAttendance(CustomerAttendance customerAttendance);
 }

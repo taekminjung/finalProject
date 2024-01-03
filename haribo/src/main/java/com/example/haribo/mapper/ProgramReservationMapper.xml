@@ -9,7 +9,8 @@
 		SELECT
 			p.program_name programName,
 			DAY(pd.program_date) programDate,
-			b.branch_name branchName
+			b.branch_name branchName,
+			pr.program_reservation_no programReservationNo
 		FROM customer c INNER JOIN payment pm 
 		ON c.customer_id = pm.customer_id INNER JOIN program_reservation pr
 		ON pm.payment_no = pr.payment_no INNER JOIN program_date pd
