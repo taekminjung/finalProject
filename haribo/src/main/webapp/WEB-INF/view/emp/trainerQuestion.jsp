@@ -5,7 +5,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>트레이너 공지사항</title>
+  <title>트레이너 문의사항</title>
   <!-- 파비콘 코드 -->
   <link rel="icon" type="image/x-icon" href="emp/img/starfavi.png">
   
@@ -33,10 +33,10 @@
   <div class="content-wrapper">
     <!-- 페이지 메인 헤더 -->
     <section class="content-header">
-    <h3>공지사항</h3>
+    <h3>문의사항</h3>
     <div class="box-tools">
-                <div class="input-group input-group-sm hidden-xs" style="width: 150px;">
-                  <input type="text" name="table_search" class="form-control pull-right" placeholder="Search">
+                <div class="input-group input-group-sm hidden-xs" style="width: 300px;">
+                  <input type="text" name="table_search" class="form-control pull-right" placeholder="검색어를 입력하세요">
 
                   <div class="input-group-btn">
                     <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
@@ -55,16 +55,17 @@
                   <th>작성일</th>
                 </tr>
                 
-                <c:forEach var="n" items="${list}">
+                <c:forEach var="q" items="${list}">
                 <tr>
-                  <td>${n.noticeNo}</td>
-                  <td><a href="${pageContext.request.contextPath}/trainerNoticeOne?noticeNo=${n.noticeNo}">${n.noticeTitle}</a></td>
-                  <td>${n.employeeId}</td>
-                  <td>${n.createdate}</td>
+                  <td>${q.questionNo}</td>
+                  <td><a href="${pageContext.request.contextPath}/trainerQuestionOne?questionNo=${q.questionNo}">${q.questionTitle}</a></td>
+                  <td>${q.customerId}</td>
+                  <td>${q.createdate}</td>
                 </tr>
                 </c:forEach>
               </table>
             </div>
+            <!-- 페이지네이션 -->
             <div>
 			  	<ul class="pagination">
 			    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
