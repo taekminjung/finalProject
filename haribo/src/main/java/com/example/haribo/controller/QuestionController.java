@@ -70,7 +70,7 @@ public class QuestionController {
 		
 		System.out.println(lastPage+"<--lastPage");
 		
-		return "emp/questionList";
+		return "public/questionList";
 	}
 	// 문의사항 상세보기(고객)
 	@GetMapping("/questionOne")
@@ -83,7 +83,7 @@ public class QuestionController {
 		System.out.println(resultQuestion.getCustomerId()+"<----getCustomerId");
 		System.out.println(resultQuestion.getCreatedate()+"<----getCreatedate");
 	
-		return "emp/trainerQuestionOne";
+		return "public/questionOne";
 	}
 	
 	// 문의사항 리스트(직원)
@@ -112,7 +112,7 @@ public class QuestionController {
 		System.out.println(resultQuestion.getCustomerId()+"<----getCustomerId");
 		System.out.println(resultQuestion.getCreatedate()+"<----getCreatedate");
 	
-		return "emp/questionOne";
+		return "emp/questionOneEmp";
 	}
 	
 	// 문의글 리스트(트레이너)
