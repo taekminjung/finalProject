@@ -17,10 +17,7 @@ public class PaymentController {
 	//결제 내역 추가
 	@PostMapping("/insertPayment")
 	public String insertPayment(HttpSession session, Payment payment, int customerNo) {
-		// 세션 검사
-		if(session.getAttribute("loginCustomer") == null) {
-			return "redirect:/login";
-		}
+		
 		System.out.println("\u001B[32m"+payment+"<-- con.payment");
 		paymentService.insertPayment(payment);
 		

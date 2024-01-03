@@ -111,7 +111,8 @@ public class CustomerService {
 	}
 	
 	//회원 탈퇴 (active 수정, detail 및 img 삭제)
-	public void deleteCustomer(Customer customer) {
+	public void deleteCustomer(Customer customer, String path) {
+		String pathCust = path+"/customer";
 		int row = customerMapper.updateCustomerActive(customer);
 		if(row != 1) {
 			throw new RuntimeException();
@@ -125,6 +126,15 @@ public class CustomerService {
 				int row3 = customerMapper.deleteCustomerImg(customerImg);
 				if(row3 != 1) {
 					throw new RuntimeException();
+				}else {
+					Map<String, Object> customerInfo = customerMapper.selectCustomerInfo(customer);
+					String customerId = customerInfo.get("customerId").toString();
+					File file = new File(pathCust+"/"+customerId+".png");
+					try {
+						file.delete();
+					}catch(IllegalStateException e){
+						throw new RuntimeException();
+					}
 				}
 			}
 		}

@@ -172,9 +172,9 @@ public class CustomerController {
 		
 	@PostMapping("/deleteCustomer")
 	public String deleteCustomer(HttpSession session,Customer customer) {
-		
+		String path = session.getServletContext().getRealPath("/upload");
 		//customerService 호출
-		customerService.deleteCustomer(customer);
+		customerService.deleteCustomer(customer, path);
 		session.invalidate();
 		
 		//리턴
