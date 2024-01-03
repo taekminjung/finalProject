@@ -79,4 +79,17 @@
 		FROM program
 		WHERE program_name LIKE CONCAT('%' , #{programName} , '%')
 	</select>
+	<select id="selectProgramDate" parameterType="Map" resultType="Map">
+		SELECT 
+		program_date_no programDateNo,
+		program_no programNo,
+		YEAR(program_date) programDateYear,
+		MONTH(program_date) programDateMonth,
+		DAY(program_date) programDateDay,
+		createdate
+		FROM program_date
+		WHERE program_no = #{programNo}
+		AND YEAR(program_date)= #{targetYear}
+		AND MONTH(program_date)= #{targetMonth}
+	</select>
 </mapper>

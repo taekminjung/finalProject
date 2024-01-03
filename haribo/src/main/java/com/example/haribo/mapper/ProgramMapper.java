@@ -2,6 +2,7 @@ package com.example.haribo.mapper;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 
@@ -36,5 +37,6 @@ public interface ProgramMapper {
 	HashMap<String, Object> selectProgramEmp(Program program);
 	//상세보기에서 프로그램 검색 
 	List<Program> searchByProgram(Program program);
-	
+	//프로그램 일정 출력
+	List<HashMap<String, Object>> selectProgramDate(Map<String,Object> map);
 }

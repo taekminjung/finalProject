@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="zxx" class="no-js">
 
@@ -81,20 +82,59 @@
 							<div class="quotes">
 							${dmap.programMemo}<br>
 							</div>
-							<div class="row mt-30 mb-30">
-								<div class="col-6">
-									<img class="customer/img-fluid" src="customer/img/blog/post-img1.jpg" alt="">
-								</div>
-								<div class="col-6">
-									<img class="customer/img-fluid" src="customer/img/blog/post-img2.jpg" alt="">
-								</div>
-								<div class="col-lg-12 mt-30">
-									<p>
-									</p>
-									<p>	
-									</p>
-								</div>
-							</div>
+							<br><h4 style="text-align:center">프로그램 강의 일정</h4>
+							<h4 style="text-align:center">${cMap.targetYear}년 ${cMap.targetMonth +1}월</h4>
+									<div class="row justify-content-center">
+				<div class="table-wrap col-lg-10">
+					<table class="schdule-table table table-bordered">
+						<thead class="thead-light">
+							<tr>
+								<th class="head" scope="col" style="color:red">일</th>
+								<th class="head" scope="col">월</th>
+								<th class="head" scope="col">화</th>
+								<th class="head" scope="col">수</th>
+								<th class="head" scope="col">목</th>
+								<th class="head" scope="col">금</th>
+								<th class="head" scope="col">토</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+						<c:forEach var="i" begin="1" end="${cMap.totalTd}" step="1">
+						<c:set var="d" value="${i -cMap.beginBlank}"></c:set>	
+								<c:if test="${i % 7 == 1 }">
+								<td style="color:red">
+								</c:if>
+								<c:if test="${!(i % 7 == 1)}">
+								<td>
+							</c:if>
+							<c:if test="${d < 1 || d > cMap.lastDate}">
+								&nbsp;
+							</c:if>
+							<c:if test="${!(d < 1 || d > cMap.lastDate)}">
+								${d }<br>
+								<c:forEach var="p" items="${pList}">
+									<c:if test="${p.programDateDay == d}">
+										<span class="badge badge-danger">*</span>
+									</c:if>
+								</c:forEach>
+							</c:if>
+							</td>
+							<c:if test="${i < cMap.totalTd && i % 7 == 0}">
+								</tr><tr>	
+							</c:if>
+						</c:forEach>
+					</table>
+						<a style="float:left" class="btn btn-outline-secondary" 
+						href="${pageContext.request.contextPath }/programDetail?programNo=${program.programNo}&targetYear=${cMap.targetYear}&targetMonth=${cMap.targetMonth -1}">
+							이전 달
+						</a>
+						<a style="float:right" class="btn btn-outline-secondary" 
+						href="${pageContext.request.contextPath }/programDetail?programNo=${program.programNo}&targetYear=${cMap.targetYear}&targetMonth=${cMap.targetMonth +1}">
+							다음 달
+						</a>
+				</div>
+			</div>
 						</div>
 					</div>
 				</div>

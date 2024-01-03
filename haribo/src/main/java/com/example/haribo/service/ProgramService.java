@@ -101,4 +101,16 @@ public class ProgramService {
 		System.out.println("\u001B[43m"+list+"<--ser.list");
 		return list;
 	}
+	//프로그램별 일정 출력을 위한 날짜 출력
+	public List<HashMap<String, Object>> selectProgramDate(ProgramDate programDate,Integer targetYear, Integer targetMonth){
+		HashMap<String, Object> map = new HashMap<>();
+		map.put("programNo", programDate.getProgramNo());
+		map.put("targetYear", targetYear);
+		map.put("targetMonth", targetMonth+1);
+		
+		List<HashMap<String, Object>> pMap = programMapper.selectProgramDate(map);
+		
+		System.out.println("\u001B[43m"+pMap+"<--ser.list");
+		return pMap;
+	}
 }

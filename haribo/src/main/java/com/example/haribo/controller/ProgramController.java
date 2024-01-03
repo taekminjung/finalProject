@@ -2,6 +2,7 @@ package com.example.haribo.controller;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.example.haribo.service.CalendarService;
 import com.example.haribo.service.ProgramService;
 import com.example.haribo.vo.Program;
 import com.example.haribo.vo.ProgramDate;
@@ -20,7 +22,7 @@ import lombok.extern.slf4j.Slf4j;
 @Controller
 public class ProgramController {
 	@Autowired private ProgramService programService;
-	
+	@Autowired private CalendarService calendarService;
 	@GetMapping ("/insertProgram")
 	public String insertProgram() {
 		return "emp/insertProgram";
@@ -101,15 +103,23 @@ public class ProgramController {
 		
 	}
 	@GetMapping("/programDetail")
-	public String programDetail(Model model, Program program) {
+	public String programDetail(Model model, Program program, ProgramDate programDate, @RequestParam(required = false) Integer targetYear,
+			@RequestParam(required = false) Integer targetMonth) {
 		//프로그램 상세보기 내용 출력
 		HashMap<String, Object> dmap = programService.selectProgramDetail(program);
 		System.out.println("\u001B[43m"+dmap+"<--con.dmap");	
 		//상세보기 페이지에서 프로그램 정보와 담당 직원 사진 이름 출력
 		HashMap<String, Object> map = programService.selectProgramEmp(program);
-		System.out.println("\u001B[43m"+map);		
-				
+		System.out.println("\u001B[43m"+map);	
+		//프로그램디테일페이지에 해당 프로그램 일정 출력을위한 달력
+		Map<String, Object> cMap = calendarService.calendar(targetYear, targetMonth);
+		System.out.println("\u001B[43m"+cMap+"<--p/con.programDetail");
+		//달력에 프로그램 일정 program_date출력
+		List<HashMap<String, Object>> pList = programService.selectProgramDate(programDate, (int)cMap.get("targetYear"), (int)cMap.get("targetMonth"));
+		System.out.println("\u001B[43m"+pList+"<--p/con.programDetail/List");
 		//모델에 담기
+		model.addAttribute("pList",pList);
+		model.addAttribute("cMap",cMap);
 		model.addAttribute("dmap", dmap);
 		model.addAttribute("map", map);
 		model.addAttribute("program", program);
@@ -120,8 +130,11 @@ public class ProgramController {
 		public String searchByProgram(Model model, Program program) {
 			List<Program> list = programService.searchByProgram(program);
 			System.out.println("\u001B[43m"+list);
+			
 			model.addAttribute("list", list);
 			
 			return "public/program";
 		}
+		 
+		
 }
