@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="zxx" class="no-js">
 
@@ -121,64 +122,28 @@
 	<!-- End About Us Area -->
 
 	<!-- Start Features Area -->
-	<section class="feature-area section-gap">
-		<div class="container">
+<section class="testomial-area section-gap">
+			<div class="container">
 			<div class="row d-flex justify-content-center">
 				<div class="col-lg-12">
 					<div class="section-title-wrap text-center">
-						<h1>Our Featured Classes</h1>
-						<p>As you pour the first glass of your favorite Chianti or Chardonnay and settle into an intimate Friday evening.</p>
+						<h1>OUR Programs</h1>
+						<p>저희가 준비한 프로그램입니다.</p>
 					</div>
 				</div>
 			</div>
-			<div class="row justify-content-center d-flex align-items-center">
-				<div class="col-lg-6 col-md-6 single-feature">
-					<figure>
+			<div class="row">
+				<div class="active-testimonial-carusel">
+				<c:forEach var="p" items="${plist}">
+					<div class="single-testimonial item">
 						<img class="img-fluid" src="customer/img/featured-class/f1.jpg" alt="">
 						<div class="overlay overlay-bg"></div>
-					</figure>
-					<div class="text-center">
-						<h4 class="mb-10">Get into shape now</h4>
-						<p>
-							<a href="#">Book an appointment</a>
+						<p class="desc">
+							<h4>작성자 : ${p.programName }</h4><br>
+							<h6>상세보기는 상단 메뉴바를 이용해주세요</h6>
 						</p>
 					</div>
-				</div>
-				<div class="col-lg-6 col-md-6 single-feature">
-					<figure>
-						<img class="img-fluid" src="customer/img/featured-class/f2.jpg" alt="">
-						<div class="overlay overlay-bg"></div>
-					</figure>
-					<div class="text-center">
-						<h4 class="mb-10">Get into shape now</h4>
-						<p>
-							<a href="#">Book an appointment</a>
-						</p>
-					</div>
-				</div>
-				<div class="col-lg-6 col-md-6 single-feature">
-					<figure>
-						<img class="img-fluid" src="customer/img/featured-class/f3.jpg" alt="">
-						<div class="overlay overlay-bg"></div>
-					</figure>
-					<div class="text-center">
-						<h4 class="mb-10">Get into shape now</h4>
-						<p>
-							<a href="#">Book an appointment</a>
-						</p>
-					</div>
-				</div>
-				<div class="col-lg-6 col-md-6 single-feature">
-					<figure>
-						<img class="img-fluid" src="customer/img/featured-class/f4.jpg" alt="">
-						<div class="overlay overlay-bg"></div>
-					</figure>
-					<div class="text-center">
-						<h4 class="mb-10">Get into shape now</h4>
-						<p>
-							<a href="#">Book an appointment</a>
-						</p>
-					</div>
+				</c:forEach>
 				</div>
 			</div>
 		</div>
@@ -187,13 +152,33 @@
 
 	<!-- Start schedule Area -->
 	<section class="schedule-area section-gap">
-		<img class="featured-img img-fluid" src="customer/img/featured-class/feature-img.png" alt="">
+		<img class="featured-img img-fluid" src="customer/img/8.png" alt="">
 		<div class="container">
 			<div class="row d-flex justify-content-center">
 				<div class="col-lg-12">
 					<div class="section-title-wrap text-center">
-						<h1>Schedule your Fitness Process</h1>
-						<p>Who are in extremely love with eco friendly system.</p>
+						<h1>상담 신청하기</h1>
+						<p>
+						 <form class="form-area contact-form text-right" id="contact" action="${pageContext.request.contextPath}/contact" method="post">
+						<div class="row">
+							<div class="col-lg-6 form-group">
+								<label for="date">신청자의 생년월일을 선택해주세요: <input type="date"  name="customerBirth" max="2077-06-20" min="1900-01-01"></label>
+								<div><br></div>
+							<label for="datetime">원하시는 상담 날짜와 시간을 선택해주세요:
+  							<input type="datetime-local" name="customerContactDate" max="2100-01-01T21:00" min="2077-06-05T12:30"></label>
+							</div>
+							<div class="col-lg-6 form-group">
+								<input name="customerName" placeholder="상담 신청자명을 입력해주세요" onfocus="this.placeholder = ''" onblur="this.placeholder = '이름을 입력하세요'"
+								 class="common-input mb-20 form-control" required="" type="text">
+								<textarea class="common-textarea form-control" name="contactContent" placeholder="상담목적를 입력해주세요" onfocus="this.placeholder = ''"
+								 onblur="this.placeholder = 'Enter Messege'" required=""></textarea>
+							</div>
+							<div class="col-lg-12">
+								<div class="alert-msg" style="text-align: left;"></div>
+								<button class="genric-btn primary" style="float: right;">상담 신청</button>
+							</div>
+						</div>
+					</form></p>
 					</div>
 				</div>
 			</div>
@@ -205,117 +190,36 @@
 
 	<!-- Start testomial Area -->
 	<section class="testomial-area section-gap">
-		<div class="container">
+			<div class="container">
 			<div class="row d-flex justify-content-center">
 				<div class="col-lg-12">
 					<div class="section-title-wrap text-center">
-						<h1>Client’s Feedback</h1>
-						<p>As you pour the first glass of your favorite Chianti or Chardonnay and settle into an intimate Friday evening.</p>
+						<h1>고객 리뷰</h1>
+						<p>저희 프로그램을 수강하신 소중한 고객님들의 리뷰입니다.</p>
 					</div>
 				</div>
 			</div>
-
 			<div class="row">
 				<div class="active-testimonial-carusel">
+				<c:forEach var="r" items="${list}">
 					<div class="single-testimonial item">
-						<img class="mx-auto rounded-circle" src="customer/img/t1.png" alt="">
+						<img class="mx-auto rounded-circle"  width="150" height="150"  src="${pageContext.request.contextPath}/upload/customer/${r.customerId}.png" alt="">
 						<p class="desc">
-							Accessories Here you can find the best computer accessory for your laptop, monitor, printer, scanner, speaker, projector,
-							hardware and more. laptop accessory
+							<h4>작성자 : ${r.customerId }</h4><br>
+							<h4>수강 프로그램 : ${r.programName}</h4><br>
+							리뷰 내용 : ${r.reviewContent}
 						</p>
-						<h4>Helena Phillips</h4>
-						<p>
-							CEO at Facebook
-						</p>
+						<c:forEach var="rp" items="${rpList }">
+							<c:if test="${r.reviewNo == rp.reviewNo }">
+								
+								<p class="desc">
+									<h4>관리자 : ${rp.employeeId }</h4><br>
+									코멘트 : ${rp.reviewReplyContent}
+								</p>
+							</c:if>
+						</c:forEach>
 					</div>
-					<div class="single-testimonial item">
-						<img class="mx-auto rounded-circle" src="customer/img/t2.png" alt="">
-						<p class="desc">
-							It won’t be a bigger problem to find one video game lover in your neighbor. Since the introduction of Virtual Game, it has
-							been achieving great heights so far as its.
-						</p>
-						<h4>Cordelia Barton</h4>
-						<p>
-							CEO at Twitter
-						</p>
-					</div>
-					<div class="single-testimonial item">
-						<img class="mx-auto rounded-circle" src="customer/img/t3.png" alt="">
-						<p class="desc">
-							About 64% of all on-line teens say that do things online that they wouldn’t want their parents to know about. 11% of all
-							adult internet users visit dating websites.
-						</p>
-						<h4>Carrie Reese</h4>
-						<p>
-							CEO at Google
-						</p>
-					</div>
-					<div class="single-testimonial item">
-						<img class="mx-auto rounded-circle" src="customer/img/t1.png" alt="">
-						<p class="desc">
-							Accessories Here you can find the best computer accessory for your laptop, monitor, printer, scanner, speaker, projector,
-							hardware and more. laptop accessory
-						</p>
-						<h4>Helena Phillips</h4>
-						<p>
-							CEO at Facebook
-						</p>
-					</div>
-					<div class="single-testimonial item">
-						<img class="mx-auto rounded-circle" src="customer/img/t2.png" alt="">
-						<p class="desc">
-							It won’t be a bigger problem to find one video game lover in your neighbor. Since the introduction of Virtual Game, it has
-							been achieving great heights so far as its.
-						</p>
-						<h4>Cordelia Barton</h4>
-						<p>
-							CEO at Twitter
-						</p>
-					</div>
-					<div class="single-testimonial item">
-						<img class="mx-auto rounded-circle" src="customer/img/t3.png" alt="">
-						<p class="desc">
-							About 64% of all on-line teens say that do things online that they wouldn’t want their parents to know about. 11% of all
-							adult internet users visit dating websites.
-						</p>
-						<h4>Carrie Reese</h4>
-						<p>
-							CEO at Google
-						</p>
-					</div>
-					<div class="single-testimonial item">
-						<img class="mx-auto rounded-circle" src="customer/img/t1.png" alt="">
-						<p class="desc">
-							Accessories Here you can find the best computer accessory for your laptop, monitor, printer, scanner, speaker, projector,
-							hardware and more. laptop accessory
-						</p>
-						<h4>Helena Phillips</h4>
-						<p>
-							CEO at Facebook
-						</p>
-					</div>
-					<div class="single-testimonial item">
-						<img class="mx-auto rounded-circle" src="customer/img/t2.png" alt="">
-						<p class="desc">
-							It won’t be a bigger problem to find one video game lover in your neighbor. Since the introduction of Virtual Game, it has
-							been achieving great heights so far as its.
-						</p>
-						<h4>Cordelia Barton</h4>
-						<p>
-							CEO at Twitter
-						</p>
-					</div>
-					<div class="single-testimonial item">
-						<img class="mx-auto rounded-circle" src="customer/img/t3.png" alt="">
-						<p class="desc">
-							About 64% of all on-line teens say that do things online that they wouldn’t want their parents to know about. 11% of all
-							adult internet users visit dating websites.
-						</p>
-						<h4>Carrie Reese</h4>
-						<p>
-							CEO at Google
-						</p>
-					</div>
+				</c:forEach>
 				</div>
 			</div>
 		</div>

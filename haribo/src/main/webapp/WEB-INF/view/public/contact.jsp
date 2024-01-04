@@ -175,29 +175,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="col-lg-8 sidebar-widgets" >
-				<h3 style="text-align: center;">상담 신청하기</h3><br>
-					<form class="form-area contact-form text-right" id="contact" action="${pageContext.request.contextPath}/contact" method="post">
-						<div class="row">
-							<div class="col-lg-6 form-group">
-								<label for="date">신청자의 생년월일을 선택해주세요: <input type="date"  name="customerBirth" max="2077-06-20" min="1900-01-01"></label>
-								<div><br></div>
-							<label for="datetime">원하시는 상담 날짜와 시간을 선택해주세요:
-  							<input type="datetime-local" name="customerContactDate" max="2100-01-01T21:00" min="2077-06-05T12:30"></label>
-							</div>
-							<div class="col-lg-6 form-group">
-								<input name="customerName" placeholder="상담 신청자명을 입력해주세요" onfocus="this.placeholder = ''" onblur="this.placeholder = '이름을 입력하세요'"
-								 class="common-input mb-20 form-control" required="" type="text">
-								<textarea class="common-textarea form-control" name="contactContent" placeholder="상담목적를 입력해주세요" onfocus="this.placeholder = ''"
-								 onblur="this.placeholder = 'Enter Messege'" required=""></textarea>
-							</div>
-							<div class="col-lg-12">
-								<div class="alert-msg" style="text-align: left;"></div>
-								<button class="genric-btn primary" style="float: right;">상담 신청</button>
-							</div>
-						</div>
-					</form>
-				</div>
+		
 			</div>
 		</div>
 	</section>

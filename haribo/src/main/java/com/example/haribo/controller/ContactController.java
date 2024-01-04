@@ -18,14 +18,4 @@ public class ContactController {
 	public String contact(Contact contact) {
 		return "public/contact";
 	}
-	
-	
-	@PostMapping("/contact")
-	public String insertContact(Contact paramContact) {
-		log.debug("\u001B[42m"+paramContact);
-		//서비스 호출
-		int insertContact = contactService.insertContact(paramContact);
-		
-		return "public/contact";
-	}
 }
