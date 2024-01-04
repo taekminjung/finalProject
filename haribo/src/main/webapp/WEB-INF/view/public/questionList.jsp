@@ -66,8 +66,8 @@
 			<div class="row d-flex justify-content-center">
 				<div class="col-lg-12">
 					<div class="section-title-wrap text-center">
-						<h1>공지사항 리스트</h1>
-						<p>본사/지점 전체 공지사항 리스트 입니다.</p>
+						<h1>문의사항 리스트</h1>
+						<p>본사/지점 전체 문의사항 리스트 입니다.</p>
 					</div>
 				</div>
 			</div>

@@ -9,12 +9,18 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.example.haribo.service.QuestionReplyService;
 import com.example.haribo.service.QuestionService;
 import com.example.haribo.vo.Question;
+import com.example.haribo.vo.QuestionReply;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @Controller
 public class QuestionController {
 	@Autowired private QuestionService questionService;
+	@Autowired private QuestionReplyService questionReplyService;
 	
 	// 문의글 등록하기
 	@GetMapping("/insertQuestion")
@@ -77,15 +83,16 @@ public class QuestionController {
 	public String questionOne(Model model, Question question) {
 		Question resultQuestion = questionService.questionOne(question);
 		model.addAttribute("resultQuestion", resultQuestion);
-		System.out.println(resultQuestion.getQuestionNo()+"<----getQuestionNo");
-		System.out.println(resultQuestion.getQuestionTitle()+"<----getQuestionTitle");
-		System.out.println(resultQuestion.getQuestionContent()+"<----getQuestionContent");
-		System.out.println(resultQuestion.getCustomerId()+"<----getCustomerId");
-		System.out.println(resultQuestion.getCreatedate()+"<----getCreatedate");
+		System.out.println(resultQuestion+"<---con.questionOne");
+		List<QuestionReply> list = questionReplyService.selectquestionReply(question);
+		
+		System.out.println(list+"<--con.replyList");
+		model.addAttribute("list", list);
+		
 	
 		return "public/questionOne";
 	}
-	
+
 	// 문의사항 리스트(직원)
 	@GetMapping("/question")
 	public String question(Model model, @RequestParam(defaultValue ="1")int currentPage) {

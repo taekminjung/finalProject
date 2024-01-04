@@ -42,6 +42,7 @@
 							<ul>
 								<li><a href="${pageContext.request.contextPath}/customerNoticeList">Notice</a></li>
 								<li><a href="${pageContext.request.contextPath}/reviewList">Review</a></li>
+								<li><a href="${pageContext.request.contextPath}/questionList">Question</a></li>
 							</ul>
 						</li>
 						<li><a href="${pageContext.request.contextPath}/contact">Contact</a></li>

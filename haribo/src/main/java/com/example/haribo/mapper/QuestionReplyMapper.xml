@@ -1,4 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.haribo.mapper.QuestionReplyMapper">
+
+<select id="selectquestionReply"> 
+SELECT
+question_reply_no questionReplyNo,
+question_no questionNo,
+employee_id employeeId,
+question_reply_content questionReplyContent,
+createdate
+FROM question_reply
+WHERE question_no = #{questionNo}
+</select>
 </mapper>
