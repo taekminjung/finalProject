@@ -2,6 +2,8 @@ package com.example.haribo.service;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -54,23 +56,30 @@ public class NoticeService {
 		return lastPage;
 	}
 
-	public List<Notice> searchByNotice(Notice notice){
-		List<Notice> list = noticeMapper.searchByNotice(notice);
+	public List<Notice> searchByNotice(Notice notice, int currentPage){
+		int rowPerPage = 10;
+		int beginRow = (currentPage-1)*rowPerPage;
+		Map<String,Object> map = new HashMap<>();
+		map.put("beginRow", beginRow);
+		map.put("rowPerPage", rowPerPage);
+		map.put("noticeTitle", notice.getNoticeTitle());
+		
+		List<Notice> list = noticeMapper.searchByNotice(map);
 		System.out.println(list+"<--list");
 		return list;
 
 	}
-//	}
-//	
-//	public int searchLastPage() {
-//		int rowPerPage = 10;
-//		int totalRow = noticeMapper.getTotalRow2(rowPerPage);
-//		int lastPage = totalRow/rowPerPage;
-//		if(totalRow % rowPerPage !=0) {
-//			lastPage +=1;
-//		}
-//		return lastPage;
-//	}
+
+	
+	public int searchLastPage(Notice notice) {
+		int rowPerPage = 10;
+		int totalRow = noticeMapper.getTotalRow2(notice);
+		int lastPage = totalRow/rowPerPage;
+		if(totalRow % rowPerPage !=0) {
+			lastPage +=1;
+		}
+		return lastPage;
+	}
 	
 	
 }

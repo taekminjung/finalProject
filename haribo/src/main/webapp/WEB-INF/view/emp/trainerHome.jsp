@@ -33,7 +33,7 @@
     <!-- 페이지 메인 헤더 -->
     <section class="content-header">
       <h1>
-        안녕하세요, {로그인한 트레이너}님😀
+        안녕하세요, {loginEmployee.employeeName}님😀
         <br>
         <small>오늘도 힘찬 하루 되세요💪🏻</small>
       </h1>

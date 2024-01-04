@@ -1,10 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-<!-- 로그인 했을 시 emp 정보 출력할 것 -->
 
-
-
+	<!-- 로그인 했을 시 emp 정보 출력할 것 -->
+	<c:set var="logoutBtn" value="로그아웃"></c:set>
+	<c:set var="logoutUrl" value="${pageContext.request.contextPath}/logout"></c:set>
+  	<c:set var="mypageBtn" value="마이페이지"></c:set>
+  	<c:set var="mypageUrl" value="${pageContext.request.contextPath}/trainerOne?employeeNo=${loginEmployee.employeeNo}"></c:set>
 
 <!-- Main Header -->
   <header class="main-header">
@@ -47,10 +48,10 @@
               <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-left">
-                  <a href="#" class="btn btn-default btn-flat">마이페이지</a>
+                  <a href="${mypageUrl}" class="btn btn-default btn-flat">${myPageBtn}마이페이지</a>
                 </div>
                 <div class="pull-right">
-                  <a href="#" class="btn btn-default btn-flat">로그아웃</a>
+                  <a href="${logoutUrl}" class="btn btn-default btn-flat">로그아웃</a>
                 </div>
               </li>
             </ul>
@@ -72,7 +73,7 @@
           <img src="emp/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
-          <p><a href="">트레이너 이름</a></p>
+          <p><a href="">${loginEmployee.employeeId}</a></p>
           <!-- Status -->
           <a href="#" id="statusLink"><i class="fa fa-circle text-success"></i> 출근중💼</a>
         </div>

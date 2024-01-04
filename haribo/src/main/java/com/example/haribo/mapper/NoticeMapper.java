@@ -16,7 +16,7 @@ public interface NoticeMapper {
 		
 		int getTotalRow(int rowPerPage);
 		
-		int getTotalRow2(int rowPerPage);
+		int getTotalRow2(Notice notice);
 		
 		Notice noticeOne(Notice notice);
 		
@@ -26,6 +26,6 @@ public interface NoticeMapper {
 
 		List<Notice> noticeList (Map<String, Object> param);
 
-		List<Notice> searchByNotice(Notice notice);
+		List<Notice> searchByNotice(Map<String, Object> param);
 
 }

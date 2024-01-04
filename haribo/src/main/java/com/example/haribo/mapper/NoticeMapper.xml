@@ -53,7 +53,7 @@
 		FROM notice
 	</select>
  	
-		<select id="searchByNotice" parameterType="com.example.haribo.vo.Notice" resultType="com.example.haribo.vo.Notice">
+		<select id="searchByNotice" parameterType="java.util.Map" resultType="com.example.haribo.vo.Notice">
 		SELECT
 			notice_no noticeNo,
 			notice_title noticeTitle,
@@ -61,11 +61,13 @@
 			createdate
 		FROM notice
 		WHERE notice_title LIKE CONCAT('%', #{noticeTitle}, '%')
+		LIMIT #{beginRow}, #{rowPerPage}
 	</select>
-<!--	
-	<select id="getTotalRow2" parameterType="int" resultType="int">
+	
+	<select id="getTotalRow2" parameterType="com.example.haribo.vo.Notice" resultType="int">
 		SELECT COUNT(*)
 		FROM notice
+		WHERE notice_title LIKE CONCAT('%', #{noticeTitle}, '%')
 	</select>
- -->	
+ 
 </mapper>

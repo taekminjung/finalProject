@@ -40,7 +40,8 @@ public class ProgramController {
 		log.debug(program.toString());
 		log.debug(programImg.toString());
 		String path = session.getServletContext().getRealPath("/upload");
-		programService.insertProgram(program);
+		int programNo = programService.insertProgram(program);
+		programImg.setProgramNo(programNo);
 		programService.insertProgramImg(pImg, programImg, path);
 		return "redirect:/adminHome";
 	}
