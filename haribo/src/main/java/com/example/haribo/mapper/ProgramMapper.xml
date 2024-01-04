@@ -9,14 +9,18 @@
 		INSERT INTO program(
 			employee_id,
 			program_name,
-			program_max_customer
+			program_max_customer,
+			program_memo,
+			program_day
 		)	VALUES (
 			'admin',
 			#{programName},
-			#{programMaxCustomer}
+			#{programMaxCustomer},
+			#{programMemo},
+			#{programDay}
 		)
 	</insert>
-
+<!-- 
 	<insert id="insertProgramDate" parameterType="com.example.haribo.vo.ProgramDate">
 		INSERT INTO program_date(
 			program_no,
@@ -26,6 +30,7 @@
 			#{programDate}
 		)
 	</insert>
+ -->
 		<select id="selectProgram">
 	SELECT 
 		program_no programNo,

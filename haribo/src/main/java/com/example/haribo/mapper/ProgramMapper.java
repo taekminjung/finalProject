@@ -15,8 +15,6 @@ public interface ProgramMapper {
 	
 	int insertProgram(Program program);
 	
-	int insertProgramDate(ProgramDate programDate);
-	
 	int insertProgramImg (ProgramImg programImg);
 
 	List<Program> programList(HashMap<String, Object> param);

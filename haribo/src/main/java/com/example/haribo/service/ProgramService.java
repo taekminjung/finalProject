@@ -22,18 +22,11 @@ import lombok.extern.slf4j.Slf4j;
 public class ProgramService {
 	@Autowired private ProgramMapper programMapper;
 	
-	public void insertProgram(Program program, ProgramDate programDate) {
+	public void insertProgram(Program program) {
 		int row = programMapper.insertProgram(program);
 		if(row != 1) {
 			throw new RuntimeException();
-		} else {
-			log.debug(program.getProgramNo()+"<--");
-		programDate.setProgramNo(program.getProgramNo());
-		int row2 = programMapper.insertProgramDate(programDate);
-		if(row2 != 1) {
-			throw new RuntimeException();
-			}
-		}
+		} 
 	}
 	
 	public List<Program> programList(@RequestParam(defaultValue = "1") int currentPage){

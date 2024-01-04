@@ -3,14 +3,19 @@
 <mapper namespace="com.example.haribo.mapper.SportsEquipmentMapper">
 <select id="sportsEquipmentExpiredList" parameterType="java.util.Map" resultType="java.util.Map">
 	SELECT
-		seo.branch_no branchNo,
-		see.item_name itemName,
-		see.expire_memo expireMemo,
-		see.quantity,
-		see.createdate
-	FROM sports_equipment_expire see 
-	INNER JOIN sports_equipment_order seo
-	ON see.branch_no = seo.branch_no;
+		branch_no branchNo,
+		sports_equipment_no sportsEquipmentNo, 
+		item_name itemName,
+		expire_memo expireMemo,
+		quantity,
+		createdate
+	FROM sports_equipment_expire 
+</select>
+
+<select id="getTotalRow" parameterType="int" resultType="int">
+	SELECT
+		COUNT(*)
+	FROM sports_equipment_expire
 </select>
 
 </mapper>

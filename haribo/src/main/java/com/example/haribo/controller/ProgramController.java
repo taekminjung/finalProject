@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.example.haribo.service.BranchService;
 import com.example.haribo.service.CalendarService;
@@ -17,7 +18,9 @@ import com.example.haribo.service.ProgramService;
 import com.example.haribo.vo.Branch;
 import com.example.haribo.vo.Program;
 import com.example.haribo.vo.ProgramDate;
+import com.example.haribo.vo.ProgramImg;
 
+import jakarta.servlet.http.HttpSession;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -26,16 +29,16 @@ public class ProgramController {
 	@Autowired private ProgramService programService;
 	@Autowired private CalendarService calendarService;
 	@Autowired private BranchService branchService;
+
 	@GetMapping ("/insertProgram")
 	public String insertProgram() {
 		return "emp/insertProgram";
 	}
 	
 	@PostMapping ("/insertProgram")
-	public String insertEmployee(Program program, ProgramDate programDate) {
+	public String insertEmployee(Program program) {
 		log.debug(program.toString());
-		log.debug(programDate.toString());
-		programService.insertProgram(program, programDate);
+		programService.insertProgram(program);
 		
 		return "redirect:/adminHome";
 	}
@@ -145,10 +148,13 @@ public class ProgramController {
 		}
 		
 		//프로그램 사진 추가
-//		@PostMapping("/insertProgramImg")
-//		public String insertProgramImg(HttpSession session, MultipartFile pImg, ProgramImg programImg) {
-//			return u;
-//		}
+		@PostMapping("/insertProgramImg")
+		public String insertProgramImg(HttpSession session, MultipartFile pImg, ProgramImg programImg) {
+			String path = session.getServletContext().getRealPath("/upload");
+			programService.insertProgramImg(pImg, programImg, path);
+			return "emp/insertProgram";
+		}
+		
 		@GetMapping("/ScheduleByBranch")
 		public String ScheduleByBranch(Model model, Branch branch, Program program, ProgramDate programDate, @RequestParam(required = false) Integer targetYear,
 				@RequestParam(required = false) Integer targetMonth) {

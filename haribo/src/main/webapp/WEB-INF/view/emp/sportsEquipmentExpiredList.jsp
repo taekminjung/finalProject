@@ -58,14 +58,22 @@
 			<div class="box-body table-responsive no-padding">
 			    <table class="table table-hover">
 			        <tr>
-			            <th class="text-center">번호</th>
 			            <th class="text-center">지점</th>
+			            <th class="text-center">품목번호</th>
 			            <th class="text-center">품목명</th>
 			            <th class="text-center">폐기 사유</th>
 			            <th class="text-center">수량</th>
 			            <th class="text-center">등록일</th>
 			        </tr>
-			
+			        <c:forEach var="t" items="${list}">
+					<tr>
+						<td class="text-center">${t.branchNo}
+						<td class="text-center">${t.sportsEquipmentNo}
+						<td class="text-center">${t.itemName}
+						<td class="text-center">${t.expireMemo}
+						<td class="text-center">${t.quantity}
+						<td class="text-center">${t.createdate}						
+					</c:forEach>
 			    </table>
 			    <br><br>
 			<div class="text-center"> 

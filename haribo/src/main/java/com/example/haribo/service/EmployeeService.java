@@ -51,11 +51,7 @@ public class EmployeeService {
 		
 		int rowPerPage = 10;
 		int beginRow = (currentPage-1)*rowPerPage;
-		int totalRow = employeeMapper.getTotalRow(rowPerPage);
-		int lastPage = totalRow / rowPerPage;
-		if(totalRow % rowPerPage !=0) {
-			lastPage +=1;
-		}
+
 		List<HashMap<String, Object>> list = employeeMapper.employeeList(beginRow, rowPerPage);
 		return list;
 	}

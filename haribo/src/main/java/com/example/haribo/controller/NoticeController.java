@@ -61,18 +61,6 @@ public class NoticeController {
 			return "redirect:/noticeList";
 	}
 	
-	@GetMapping("/noticeList")
-	public String noticeList(Model model, @RequestParam(defaultValue ="1")int currentPage) {
-		List<Notice> list = noticeService.noticeList(currentPage);
-		int lastPage = noticeService.lastPage();
-		model.addAttribute("currentPage", currentPage);
-		model.addAttribute("list", list);
-		model.addAttribute("lastPage", lastPage);
-		System.out.println(lastPage+"<--lastPage");
-		
-		return "emp/noticeList";
-	}
-	
 	@GetMapping("/noticeOne")
 	public String noticeOne(Model model, Notice notice) {
 		Notice resultNotice = noticeService.noticeOne(notice);
@@ -127,16 +115,25 @@ public class NoticeController {
 		return "emp/trainerNoticeOne";
 	}
 	
-	// 공지사항 검색 기능
-	@PostMapping("/noticeList")
-	public String searchByNotice(Model model, Notice notice, @RequestParam(defaultValue ="1")int currentPage) {
-		List<Notice> list = noticeService.searchByNotice(currentPage);
-		int searchLastPage = noticeService.searchLastPage();
-		System.out.println(list+"<--list");
+	@GetMapping("/noticeList")
+	public String noticeList(Model model, @RequestParam(defaultValue ="1")int currentPage) {
+		List<Notice> list = noticeService.noticeList(currentPage);
+		int lastPage = noticeService.lastPage();
 		model.addAttribute("currentPage", currentPage);
 		model.addAttribute("list", list);
-		model.addAttribute("searchLastPage", searchLastPage);
+		model.addAttribute("lastPage", lastPage);
+		System.out.println(lastPage+"<--lastPage");
 		
+		return "emp/noticeList";
+	}
+	
+	// 공지사항 검색 기능
+	@PostMapping("/noticeList")
+	public String searchByNotice(Model model, Notice notice) {
+		List<Notice> list = noticeService.searchByNotice(notice);
+		System.out.println(list+"<--list");
+		model.addAttribute("list", list);
+
 		return "emp/noticeList";
 	}
 }

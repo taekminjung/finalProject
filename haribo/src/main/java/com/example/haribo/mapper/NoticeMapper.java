@@ -1,5 +1,6 @@
 package com.example.haribo.mapper;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -11,7 +12,7 @@ import com.example.haribo.vo.Notice;
 public interface NoticeMapper {
 		int insertNotice(Notice notice);
 		
-		List<Notice> noticeList (Map<String, Object> param);
+
 		
 		int getTotalRow(int rowPerPage);
 		
@@ -23,5 +24,8 @@ public interface NoticeMapper {
 		
 		int updateNotice(Notice notice);
 
-		List<Notice> searchByNotice (Map<String, Object> param);
+		List<Notice> noticeList (Map<String, Object> param);
+
+		List<Notice> searchByNotice(Notice notice);
+
 }

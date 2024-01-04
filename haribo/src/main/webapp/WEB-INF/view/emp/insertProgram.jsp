@@ -59,22 +59,23 @@
                 </div>
 		      
 		      <div class="form-group">
-                  <label for="programDate">프로그램 내용</label>
-                  <textarea style="height: 150px; width: 600px;" class="form-control" id="programDate" name="programDate" placeholder="프로그램 상세내용"></textarea>
-
-	
+                  <label for="programMemo">프로그램 내용</label>
+                  <textarea style="height: 150px; width: 600px;" class="form-control" id="programMemo" name="programMemo" placeholder="프로그램 상세내용"></textarea>
 		      </div>
 		      
 	          <div class="form-group">
-                  <label for="programDate">프로그램 일자 <br> 예시) 토 / 월, 수, 금 / 화, 목</label>
-                  <input type="text" class="form-control" id="programDate" name="programDate" placeholder="프로그램 개설 요일">
+                  <label for="programDay">프로그램 일자 <br> 예시) 토 / 월, 수, 금 / 화, 목</label>
+                  <input type="text" class="form-control" id="programDay" name="programDay" placeholder="프로그램 개설 요일">
 		      </div>
-			  <form method="post" enctype="multipart/form-data" id="imgForm" action="${pageContext.request.contextPath}insertProgramImg">
-			  		<input id="pImg" type="file" name="pImg" accept=".png">			  		
-			  </form>
-	      
-              </div>
-              <!-- /.box-body -->
+		      <!-- 
+				<form method="post" enctype="multipart/form-data" id="imgForm" name="imgForm" action="${pageContext.request.contextPath}/insertProgramImg">
+				  <div class="form-group">
+				    <label for="pImg">프로그램 이미지</label>
+				    <input type="file" id="pImg" name="pImg" accept=".png">
+				  </div>
+				  <button type="submit" class="btn btn-primary">이미지 제출</button>
+				</form>
+			-->
 
               <div class="box-footer">
                 <button type="submit" id="formBtn" class="btn btn-primary">Submit</button>
@@ -109,28 +110,23 @@
 <script>
 	
 	$('#formBtn').click(function(){
-		if($('#employeeId').val().length<1){
-			alert('아이디 중복을 다시 확인 해주세요')
-			$('#employeeId').focus()
-		}  else if($('#employeePw').val().length<1){
-			alert('비밀번호를 입력해주세요')
-			$('#employeePw').focus()
-		}  else if ($('#branchNo').val() == null){
-			alert('지점을 선택해주세요')
-			$('#branchNo').focus()
-		}  else if ($('#employeeName').val().length<1){
-			alert('이름을 입력해주세요')
-			$('#employeeName').focus()
-		}  else if($('#employeeEmail').val().length<1){
-			alert('이메일을 입력해주세요')
-			$('#employeeEmail').focus()
-		}  else if($('#employeePhone').val().length<1){
-			alert('이메일을 입력해주세요')
-			$('#employeePhone').focus()
-		}  else if ($('#employeeGender').val() == null){
-			alert('지점을 선택해주세요')
-			$('#employeeGender').focus()
-		}  else{
+		if($('#programName').val().length<1){
+			alert('프로그램명을 입력해주세요.')
+			$('#programName').focus()
+		}  else if($('#programMaxCustomer').val().length<1){
+			alert('최대 수용인원 입력해주세요')
+			$('#programMaxCustomer').focus()
+		}  else if ($('#programInfo').val().length<1){
+			alert('상세정보를 입력해주세요')
+			$('#programInfo').focus()
+		}  else if ($('#programDay').val().length<1){
+			alert('프로그램 개설요일을 입력해주세요')
+			$('#programDay').focus()
+		} // else if($('#imgForm').val().length<1){
+		//	alert('프로그램 이미지를 추가해주세요')
+		//	$('#imgForm').focus()
+	//	}  
+		else{
 			$('#form').submit()
 		}
 	})

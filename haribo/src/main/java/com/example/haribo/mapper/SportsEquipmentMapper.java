@@ -8,5 +8,7 @@ import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
 public interface SportsEquipmentMapper {
-	List<HashMap<String, Object>> sportsEquipmentExpiredList (Map<String, Object>map);
+	List<HashMap<String, Object>> sportsEquipmentExpiredList (int beginRow, int rowPerPage);
+	
+	int getTotalRow(int rowPerPage);
 }
