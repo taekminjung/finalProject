@@ -20,17 +20,24 @@
 			#{programDay}
 		)
 	</insert>
-<!-- 
-	<insert id="insertProgramDate" parameterType="com.example.haribo.vo.ProgramDate">
-		INSERT INTO program_date(
+
+	<insert id="insertProgramImg" parameterType="com.example.haribo.vo.ProgramImg">
+		INSERT INTO program_img (
 			program_no,
-			program_date
-		)	 VALUES 	(
+			program_img_origin_name,
+			program_img_file_name,
+			program_img_size,
+			program_img_type
+		)	VALUES (
 			#{programNo},
-			#{programDate}
+			#{programImgOriginName},
+			#{programImgFileName},
+			#{programImgSize},
+			#{programImgType}
 		)
+	
 	</insert>
- -->
+
 		<select id="selectProgram">
 	SELECT 
 		program_no programNo,
@@ -106,20 +113,5 @@
 		      GROUP BY pr.program_date_no
 	</select>
 	
-		<insert id="insertProgramImg" parameterType="com.example.haribo.vo.ProgramImg">
-		INSERT INTO program_img (
-			program_no,
-			program_img_origin_name,
-			program_img_file_name,
-			program_img_size,
-			program_img_type
-		)	VALUES (
-			#{programNo},
-			#{programImgOriginName},
-			#{programImgFileName},
-			#{programImgSize},
-			#{programImgType}
-		)
-	
-	</insert>
+
 </mapper>
