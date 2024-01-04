@@ -10,15 +10,26 @@
 			p.program_name programName,
 			DAY(pd.program_date) programDate,
 			b.branch_name branchName,
-			pr.program_reservation_no programReservationNo
+			pr.program_reservation_no programReservationNo,
+			COUNT(ca.program_reservation_no) cnt
 		FROM customer c INNER JOIN payment pm 
 		ON c.customer_id = pm.customer_id INNER JOIN program_reservation pr
 		ON pm.payment_no = pr.payment_no INNER JOIN program_date pd
 		ON pr.program_date_no = pd.program_date_no INNER JOIN program p
 		ON pd.program_no = p.program_no INNER JOIN branch b
-		ON pr.branch_no = b.branch_no
+		ON pr.branch_no = b.branch_no LEFT OUTER JOIN customer_attendance ca
+		ON pr.program_reservation_no = ca.program_reservation_no
 		WHERE c.customer_no = #{customerNo}
 		AND YEAR(pd.program_date) = #{targetYear}
 		AND MONTH(pd.program_date) = #{targetMonth}
+		GROUP BY pr.program_reservation_no
+	</select>
+	<select id="selectProgramDateByreservationNo" parameterType="com.example.haribo.vo.CustomerAttendance"
+													resultType="String">
+		SELECT
+			pd.program_date programDate
+		FROM program_reservation pr INNER JOIN program_date pd
+		ON pr.program_date_no = pd.program_date_no
+		WHERE pr.program_reservation_no = #{programReservationNo}							
 	</select>
 </mapper>

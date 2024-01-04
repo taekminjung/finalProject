@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.haribo.service.CustomerService;
 import com.example.haribo.vo.Customer;
+import com.example.haribo.vo.CustomerAttendance;
 
 import lombok.extern.slf4j.Slf4j;
 @Slf4j
@@ -47,4 +48,5 @@ public class CustomerRest {
 		
 		return customerMembershipEnd;
 	}
+	
 }

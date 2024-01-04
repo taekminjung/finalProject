@@ -15,6 +15,7 @@ import com.example.haribo.service.CalendarService;
 import com.example.haribo.service.CustomerService;
 import com.example.haribo.service.ProgramReservationService;
 import com.example.haribo.vo.Customer;
+import com.example.haribo.vo.CustomerAttendance;
 import com.example.haribo.vo.CustomerDetail;
 import com.example.haribo.vo.CustomerImg;
 
@@ -61,8 +62,11 @@ public class CustomerController {
 	
 	//회원가입
 	@GetMapping("/insertCustomer")
-	public String insertCustomer() {
-		
+	public String insertCustomer(HttpSession session) {
+		// 세션 검사
+		if(session.getAttribute("loginCustomer") != null) {
+			return "redirect:/home";
+		}
 		return "public/insertCustomer";
 	}
 	@PostMapping("/insertCustomer")
@@ -193,7 +197,16 @@ public class CustomerController {
 		log.debug("\u001B[43m"+path);
 		customerService.updateCustomerImg(cImg, customerImg, path, customerId);
 		
-		String u = "redirect:/customerSchedule?customerNo="+customerImg.getCustomerImgNo();
+		String u = "redirect:/customerSchedule?customerNo="+customerImg.getCustomerNo();
+		return u;
+	}
+	
+	//회원 출결(입실)
+	@GetMapping("/insertAttendance")
+	public String insertAttendance(CustomerAttendance customerAttendance, int customerNo) {
+		customerService.insertCustomerAttendanceEnter(customerAttendance);
+		
+		String u = "redirect:/customerSchedule?customerNo="+customerNo;
 		return u;
 	}
 }

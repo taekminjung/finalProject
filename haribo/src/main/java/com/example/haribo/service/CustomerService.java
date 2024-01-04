@@ -4,6 +4,8 @@ import java.io.File;
 import java.io.IOException;
 import java.sql.Date;
 import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -12,7 +14,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.example.haribo.mapper.CustomerMapper;
+import com.example.haribo.mapper.ProgramReservationMapper;
 import com.example.haribo.vo.Customer;
+import com.example.haribo.vo.CustomerAttendance;
 import com.example.haribo.vo.CustomerDetail;
 import com.example.haribo.vo.CustomerImg;
 
@@ -22,7 +26,8 @@ import lombok.extern.slf4j.Slf4j;
 public class CustomerService {
 	@Autowired
 	private CustomerMapper customerMapper;
-	
+	@Autowired
+	private ProgramReservationMapper programReservationMapper;
 	//회원 로그인
 	public Map<String,Object> loginCustomer(Customer paramCustomer) {
 		log.debug(paramCustomer.toString());
@@ -193,5 +198,24 @@ public class CustomerService {
 			customerMembershipEnd = "보유 중인 멤버십이 없습니다.";
 		}
 		return customerMembershipEnd; 
+	}
+	//출결 정보 유무 확인
+	public int attendanceCnt(CustomerAttendance customerAttendance) {
+		int cnt = customerMapper.attendanceCnt(customerAttendance);
+		log.debug(cnt+"");
+		return cnt;
+	}
+	//회원 출결(입실)
+	public void insertCustomerAttendanceEnter(CustomerAttendance customerAttendance) {
+		String programDate = programReservationMapper.selectProgramDateByreservationNo(customerAttendance);
+		
+		LocalTime nowTime = LocalTime.now();
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
+		String enterTime = nowTime.format(formatter);
+		
+		customerAttendance.setCustomerAttendanceDate(programDate);
+		customerAttendance.setCustomerAttendanceEnterTime(enterTime);
+		
+		customerMapper.insertAttendance(customerAttendance);
 	}
 }

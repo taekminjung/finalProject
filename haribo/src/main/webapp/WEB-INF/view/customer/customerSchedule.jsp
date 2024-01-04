@@ -116,13 +116,23 @@
 										<a href="" data-bs-toggle="tooltip" title="리뷰 쓰기">
 											<h6>${p.branchName }<br>
 											: ${p.programName}</h6>
+											<input type="hidden" id="reservationNo" value="${p.programReservationNo }">
 										</a>
-										<a href="">
-											<span class="badge bg-primary text-light">입실</span>
-										</a>
-										<a href="">
-											<span class="badge bg-danger text-light"">퇴실</span>
-										</a><br><br>
+										<c:if test="${p.cnt == 0}">
+											<span class="badge bg-primary text-light">
+												<a href="${pageContext.request.contextPath }/insertAttendance?programReservationNo=${p.programReservationNo }&customerNo=${loginCustomer.customerNo}">
+													입실하기
+												</a>
+											</span>
+										</c:if>
+										<c:if test="${!(p.cnt == 0)}">
+											<span class="badge bg-danger text-light">
+												<a href="">
+													퇴실하기
+												</a>
+											</span>
+										</c:if>
+										<br><br>
 									</c:if>
 								</c:forEach>
 							</c:if>
@@ -158,6 +168,9 @@
 	<script src="customer/js/owl.carousel.min.js"></script>
 	<script src="customer/js/mail-script.js"></script>
 	<script src="customer/js/main.js"></script>
+	<script>
+	
+	</script>
 </body>
 
 </html>
