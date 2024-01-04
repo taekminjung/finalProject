@@ -30,6 +30,11 @@ public class SportsEquipmentService {
 		}
 		return lastPage;
 	}
+	public void insertExpire(SportsEquipmentExpire sportsEquipmentExpire) {
+		// TODO Auto-generated method stub
+		
+	}
+
 
 	
 }

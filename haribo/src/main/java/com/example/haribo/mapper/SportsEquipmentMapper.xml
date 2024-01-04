@@ -1,21 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.haribo.mapper.SportsEquipmentMapper">
-<select id="sportsEquipmentExpiredList" parameterType="java.util.Map" resultType="java.util.Map">
-	SELECT
-		branch_no branchNo,
-		sports_equipment_no sportsEquipmentNo, 
-		item_name itemName,
-		expire_memo expireMemo,
-		quantity,
-		createdate
-	FROM sports_equipment_expire 
-</select>
-
-<select id="getTotalRow" parameterType="int" resultType="int">
-	SELECT
-		COUNT(*)
-	FROM sports_equipment_expire
-</select>
-
+	<select id="sportsEquipmentExpiredList" parameterType="java.util.Map" resultType="java.util.Map">
+		SELECT
+			branch_no branchNo,
+			sports_equipment_no sportsEquipmentNo, 
+			item_name itemName,
+			expire_memo expireMemo,
+			quantity,
+			createdate
+		FROM sports_equipment_expire 
+	</select>
+	
+	<select id="getTotalRow" parameterType="int" resultType="int">
+		SELECT
+			COUNT(*)
+		FROM sports_equipment_expire
+	</select>
+	
+	<insert id="insertExpire" parameterType="com.example.haribo.vo.SportsEquipmentExpire">
+		INSERT INTO sportsEquipmentExpire(
+			sports_equipment_no sportsEpuipmentNo,
+			branch_no branchNo,
+			item_name itemName,
+			quantity,
+			expire_memo expireMemo
+		) VALUES (
+			#{sportsEquipmentNo},
+			#{branchNo},
+			#{itemName},
+			#{quantity},
+			#{expireMemo}	
+		)
+	</insert>
+	
 </mapper>

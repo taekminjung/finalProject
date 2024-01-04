@@ -14,9 +14,6 @@ import com.example.haribo.service.QuestionService;
 import com.example.haribo.vo.Question;
 import com.example.haribo.vo.QuestionReply;
 
-import lombok.extern.slf4j.Slf4j;
-
-@Slf4j
 @Controller
 public class QuestionController {
 	@Autowired private QuestionService questionService;
