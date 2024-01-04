@@ -209,4 +209,12 @@ public class CustomerController {
 		String u = "redirect:/customerSchedule?customerNo="+customerNo;
 		return u;
 	}
+	//회원 출결(퇴실)
+	@GetMapping("/updateAttendance")
+	public String updateAttendance(CustomerAttendance customerAttendance, int customerNo) {
+		customerService.updateCustomerAttendanceExit(customerAttendance);
+		
+		String u = "redirect:/customerSchedule?customerNo="+customerNo;
+		return u;
+	}
 }

@@ -116,22 +116,33 @@
 										<a href="" data-bs-toggle="tooltip" title="리뷰 쓰기">
 											<h6>${p.branchName }<br>
 											: ${p.programName}</h6>
-											<input type="hidden" id="reservationNo" value="${p.programReservationNo }">
 										</a>
-										<c:if test="${p.cnt == 0}">
-											<span class="badge bg-primary text-light">
-												<a href="${pageContext.request.contextPath }/insertAttendance?programReservationNo=${p.programReservationNo }&customerNo=${loginCustomer.customerNo}">
-													입실하기
-												</a>
-											</span>
-										</c:if>
-										<c:if test="${!(p.cnt == 0)}">
-											<span class="badge bg-danger text-light">
-												<a href="">
-													퇴실하기
-												</a>
-											</span>
-										</c:if>
+										<div>
+											<c:if test="${p.cnt == 0 && p.enterTime == null}">
+												<span class="badge bg-primary text-light">
+													<a class="text-light" href="${pageContext.request.contextPath }/insertAttendance?programReservationNo=${p.programReservationNo }&customerNo=${loginCustomer.customerNo}">
+														입실하기
+													</a>
+												</span>
+											</c:if>
+											<c:if test="${p.enterTime != null}">
+												<span class="badge bg-primary text-light">
+													입실 시간 : ${p.enterTime }
+												</span>
+											</c:if>
+											<c:if test="${p.cnt != 0 && p.exitTime == null}">
+												<span class="badge bg-danger">
+													<a class="text-light" href="${pageContext.request.contextPath }/updateAttendance?programReservationNo=${p.programReservationNo }&customerNo=${loginCustomer.customerNo}">
+														퇴실하기
+													</a>
+												</span>
+											</c:if>
+											<c:if test="${p.cnt != 0 && p.exitTime != null}">
+												<span class="badge bg-danger text-light">
+													퇴실 시간 : ${p.exitTime }
+												</span>
+											</c:if>
+										</div>
 										<br><br>
 									</c:if>
 								</c:forEach>
@@ -168,9 +179,6 @@
 	<script src="customer/js/owl.carousel.min.js"></script>
 	<script src="customer/js/mail-script.js"></script>
 	<script src="customer/js/main.js"></script>
-	<script>
-	
-	</script>
 </body>
 
 </html>

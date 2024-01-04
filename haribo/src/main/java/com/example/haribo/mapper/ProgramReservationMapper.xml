@@ -11,7 +11,9 @@
 			DAY(pd.program_date) programDate,
 			b.branch_name branchName,
 			pr.program_reservation_no programReservationNo,
-			COUNT(ca.program_reservation_no) cnt
+			COUNT(ca.program_reservation_no) cnt,
+			ca.customer_attendance_enter_time enterTime,
+			ca.customer_attendance_exit_time exitTime
 		FROM customer c INNER JOIN payment pm 
 		ON c.customer_id = pm.customer_id INNER JOIN program_reservation pr
 		ON pm.payment_no = pr.payment_no INNER JOIN program_date pd

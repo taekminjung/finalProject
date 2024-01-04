@@ -199,12 +199,6 @@ public class CustomerService {
 		}
 		return customerMembershipEnd; 
 	}
-	//출결 정보 유무 확인
-	public int attendanceCnt(CustomerAttendance customerAttendance) {
-		int cnt = customerMapper.attendanceCnt(customerAttendance);
-		log.debug(cnt+"");
-		return cnt;
-	}
 	//회원 출결(입실)
 	public void insertCustomerAttendanceEnter(CustomerAttendance customerAttendance) {
 		String programDate = programReservationMapper.selectProgramDateByreservationNo(customerAttendance);
@@ -217,5 +211,15 @@ public class CustomerService {
 		customerAttendance.setCustomerAttendanceEnterTime(enterTime);
 		
 		customerMapper.insertAttendance(customerAttendance);
+	}
+	//회원 출결(퇴실)
+	public void updateCustomerAttendanceExit(CustomerAttendance customerAttendance) {
+		LocalTime nowTime = LocalTime.now();
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
+		String exitTime = nowTime.format(formatter);
+		
+		customerAttendance.setCustomerAttendanceExitTime(exitTime);
+		
+		customerMapper.updateAttendance(customerAttendance);
 	}
 }

@@ -162,10 +162,4 @@
 		WHERE program_reservation_no = #{programReservationNo}
 	</update>
 	
-	<select id="attendanceCnt" parameterType="com.example.haribo.vo.CustomerAttendance" resultType="Integer">
-		SELECT 
-			COUNT(customer_attendance_no)
-		FROM customer_attendance
-		WHERE program_reservation_no = #{programReservationNo}
-	</select>
 </mapper>
