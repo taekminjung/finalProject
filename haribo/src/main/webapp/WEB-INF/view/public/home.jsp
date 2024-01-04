@@ -114,7 +114,7 @@
 				</div>
 
 				<div class="col-lg-6 about-left">
-					<img class="img-fluid" src="customer/img/about-img.png" alt="">
+					<img class="img-fluid" src="customer/img/3.png" alt="">
 				</div>
 			</div>
 		</div>

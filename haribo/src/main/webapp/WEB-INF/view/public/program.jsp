@@ -84,27 +84,34 @@
 					</div>
 				</div>
 			</div>
+	</section>
+		<section class="testomial-area section-gap">
+			<div class="container">
+			<div class="row d-flex justify-content-center">
+				<div class="col-lg-12">
+					<div class="section-title-wrap text-center">
+						<h1>OUR Programs</h1>
+						<p>저희가 준비한 프로그램입니다.</p>
+					</div>
+				</div>
+			</div>
 			<div class="row">
 				<div class="active-testimonial-carusel">
 				<c:forEach var="p" items="${list}">
-				<a href="${pageContext.request.contextPath}/programDetail?programNo=${p.programNo}&programName=${p.programName}" >	
+				<a href="${pageContext.request.contextPath}/programDetail?programNo=${p.programNo}&programName=${p.programName}">
 					<div class="single-testimonial item">
-						<img class="content-image img-fluid d-block mx-auto" src="customer/img/blog/cat-widget1.jpg" alt="">	<!-- ${r.customerImgFileName} -->
+						<img class="img-fluid" src="customer/img/featured-class/f1.jpg" alt="">
+						<div class="overlay overlay-bg"></div>
 						<p class="desc">
-							${p.programName}
+							<h4>${p.programName }</h4><br>
+							<h6> 프로그램상세보기</h6>
 						</p>
-								<div class="content-details">
-									<h4 class="content-title mx-auto text-uppercase">${p.programName}</h4>
-									<span></span>
-									<p>${p.programName} 상세보기</p>
-								</div>
 					</div>
 					</a>
-				</c:forEach>	
+				</c:forEach>
 				</div>
 			</div>
 		</div>
-
 	</section>
 	<!-- End top-category-widget Area -->
 

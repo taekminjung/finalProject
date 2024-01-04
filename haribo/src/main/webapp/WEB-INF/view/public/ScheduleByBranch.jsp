@@ -121,11 +121,11 @@
 						</c:forEach>
 					</table>
 						<a style="float:left" class="btn btn-outline-secondary" 
-						href="${pageContext.request.contextPath }/ScheduleByBranch?programNo=${program.programNo}&targetYear=${cMap.targetYear}&targetMonth=${cMap.targetMonth -1}">
+						href="${pageContext.request.contextPath }/ScheduleByBranch?programNo=${program.programNo}&targetYear=${cMap.targetYear}&targetMonth=${cMap.targetMonth -1}&branchNo=${dmap.branchNo}">
 							이전 달
 						</a>
 						<a style="float:right" class="btn btn-outline-secondary" 
-						href="${pageContext.request.contextPath }/ScheduleByBranch?programNo=${program.programNo}&targetYear=${cMap.targetYear}&targetMonth=${cMap.targetMonth +1}">
+						href="${pageContext.request.contextPath }/ScheduleByBranch?programNo=${program.programNo}&targetYear=${cMap.targetYear}&targetMonth=${cMap.targetMonth +1}&branchNo=${dmap.branchNo}">
 							다음 달
 						</a>
 				</div>

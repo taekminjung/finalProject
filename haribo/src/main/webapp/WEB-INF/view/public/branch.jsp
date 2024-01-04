@@ -50,7 +50,9 @@
 					<h1 class="text-uppercase text-white">
 						<span>Haribo Team</span> 의 <br>각 지점을 소개합니다.
 					</h1>
-					
+					<p class="link-nav"><a href="${pageContext.request.contextPath}/home" >Home </a>
+						<span class="lnr lnr-arrow-right"></span> <a href="${pageContext.request.contextPath}/branch">
+							Branch</a></p>
 				</div>
 			</div>
 		</div>
@@ -58,29 +60,30 @@
 	<!-- End banner Area -->
 
 	<!-- Start top-category-widget Area -->
-	<section class="top-category-widget-area pt-90 pb-90 ">
-		<div class="container">
-			<div class="row">
-			<c:forEach var="b" items="${blist}">
-				<div class="col-lg-4">
-					<div class="single-cat-widget">
-						<div class="content relative">
-							<div class="overlay overlay-bg"></div>
-							<a href="${pageContext.request.contextPath}/trainers?branchNo=${b.branchNo}&branchName=${b.branchName}" >
-								<div class="thumb">
-									<img class="content-image img-fluid d-block mx-auto" src="customer/img/blog/cat-widget1.jpg" alt="">
-								</div>
-								<div class="content-details">
-									<h4 class="content-title mx-auto text-uppercase">${b.branchName}지점</h4>
-									<span></span>
-									<p>${b.branchName}지점 트레이너</p>
-								</div>
-							</a>
-						</div>
+<section class="testomial-area section-gap">
+			<div class="container">
+			<div class="row d-flex justify-content-center">
+				<div class="col-lg-12">
+					<div class="section-title-wrap text-center">
+						<h1>OUR Branch</h1>
 					</div>
 				</div>
-			</c:forEach>
-			
+			</div>
+			<div class="row">
+				<div class="active-testimonial-carusel">
+				<c:forEach var="b" items="${blist}">
+				<a href="${pageContext.request.contextPath}/trainers?branchNo=${b.branchNo}&branchName=${b.branchName}">
+					<div class="single-testimonial item">
+						<img class="img-fluid" src="customer/img/featured-class/f1.jpg" alt="">
+						<div class="overlay overlay-bg"></div>
+						<p class="desc">
+							<h4>${b.branchName }</h4><br>
+							<h6> 지점 트레이너 보기</h6>
+						</p>
+					</div>
+					</a>
+				</c:forEach>
+				</div>
 			</div>
 		</div>
 	</section>

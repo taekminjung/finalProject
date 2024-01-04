@@ -48,6 +48,7 @@
 		<div class="container">
 			<div class="row d-flex align-items-center justify-content-center">
 				<div class="about-content col-lg-12">
+				<br>
 					<h1>
 						문의사항 상세보기
 					</h1>

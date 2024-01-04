@@ -60,27 +60,29 @@
 	<!-- End banner Area -->
 
 	<!-- Start top-category-widget Area -->
-	<section class="top-category-widget-area pt-90 pb-90 ">
-		<div class="container">
-			<div class="row" id="programList">
-			<c:forEach var="m" items="${list}">
-				<div class="col-lg-4">
-					<div class="single-cat-widget">
-						<div class="content relative">
-							<div class="overlay overlay-bg"></div>
-								<div class="thumb">
-									<img class="content-image img-fluid d-block mx-auto" src="customer/img/blog/cat-widget1.jpg" alt="">
-								</div>
-								<div class="content-details">
-									<h4 class="content-title mx-auto text-uppercase">${m.membershipName}권</h4>
-									<span></span>
-									<p><a href="${pageContext.request.contextPath}/payment?membershipNo=${m.membershipNo}" class="primary-btn mt-20">결제</a></p>
-								</div>
-							
-						</div>
+<section class="testomial-area section-gap">
+			<div class="container">
+			<div class="row d-flex justify-content-center">
+				<div class="col-lg-12">
+					<div class="section-title-wrap text-center">
+						<h1>OUR Membership</h1>
+						<p>저희가 준비한 멤버십입니다.</p>
 					</div>
 				</div>
-			</c:forEach>
+			</div>
+			<div class="row">
+				<div class="active-testimonial-carusel">
+				<c:forEach var="m" items="${list}">
+					<div class="single-testimonial item">
+						<img class="img-fluid" src="customer/img/featured-class/f1.jpg" alt="">
+						<div class="overlay overlay-bg"></div>
+						<p class="desc">
+							<h4>${m.membershipName }</h4><br>
+							<p><a href="${pageContext.request.contextPath}/payment?membershipNo=${m.membershipNo}" class="primary-btn mt-20">결제</a></p>
+						</p>
+					</div>
+				</c:forEach>
+				</div>
 			</div>
 		</div>
 	</section>
