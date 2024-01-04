@@ -115,7 +115,7 @@ public class QuestionController {
 		return "emp/questionOneEmp";
 	}
 	
-	// 문의글 리스트(트레이너)
+	// 문의사항 리스트(트레이너)
 	@GetMapping("/trainerQuestion")
 	public String trainerQuestion(Model model, @RequestParam(defaultValue ="1")int currentPage) {
 		List<Question> list = questionService.questionList(currentPage);
@@ -129,7 +129,7 @@ public class QuestionController {
 		return "emp/trainerQuestion";
 	}
 	
-	// 문의 글 상세보기(트레이너)
+	// 문의사항 상세보기(트레이너)
 	@GetMapping("/trainerQuestionOne")
 	public String trainerQuestionOne(Model model, Question question) {
 		Question resultQuestion = questionService.questionOne(question);
