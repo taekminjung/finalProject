@@ -25,15 +25,25 @@ public class EmployeeController {
 	
 	@PostMapping("/empLogin")
 	public String loginEmployee(HttpSession session, Employee employee) {
-		Employee loginEmployee = employeeService.loginEmployee(employee);
-		
-		if(loginEmployee != null) {
-			session.setAttribute("loginEmployee", loginEmployee);
-		} else {
-			return "redirect:/login";
-		}
-		//리턴
-		return "redirect:/adminHome";
+	    Employee loginEmployee = employeeService.loginEmployee(employee);
+
+	    if (loginEmployee != null) {
+	        session.setAttribute("loginEmployee", loginEmployee);
+	        String employeeId = loginEmployee.getEmployeeId();
+
+	        // 첫 글자를 대문자로 통일하여 확인
+	        char firstCharacter = Character.toUpperCase(employeeId.charAt(0));
+
+	        // 첫 글자에 따라 리다이렉트
+	        if (firstCharacter == 'A') {
+	            return "redirect:/adminHome"; // A로 시작하는 경우 adminHome으로 리다이렉트
+	        } else if (firstCharacter == 'T') {
+	            return "redirect:/trainerHome"; // T로 시작하는 경우 trainerHome으로 리다이렉트
+	        }
+	    }
+
+	    // 로그인 실패나 기타 조건이 맞지 않을 경우 기본 로그인 페이지로 리다이렉트
+	    return "redirect:/login";
 	}
 	
 	@GetMapping("/insertEmployee")
