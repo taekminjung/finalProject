@@ -75,15 +75,61 @@
 								<img class="customer/img-fluid" src="customer/img/blog/feature-img1.jpg" alt="">
 							</div>
 						</div>
-						<div class="col-lg-9 col-md-9">
-							<h3 class="mt-20 mb-20">${program.programName}</h3> 
-						</div>
 						<div class="col-lg-12">
-						<h5 style="text-align:center">프로그램 소개</h5>
-							<div class="quotes">
-							${dmap.programMemo}<br>
-							</div>
-					
+							<br><h4 style="text-align:center">${map.branchName}지점 ${program.programName} 프로그램 강의 일정</h4>
+							<h4 style="text-align:center">${cMap.targetYear}년 ${cMap.targetMonth +1}월</h4>
+									<div class="row justify-content-center">
+				<div class="table-wrap col-lg-10">
+					<table class="schdule-table table table-bordered">
+						<thead class="thead-light">
+							<tr>
+								<th class="head" scope="col" style="color:red">일</th>
+								<th class="head" scope="col">월</th>
+								<th class="head" scope="col">화</th>
+								<th class="head" scope="col">수</th>
+								<th class="head" scope="col">목</th>
+								<th class="head" scope="col">금</th>
+								<th class="head" scope="col">토</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+						<c:forEach var="i" begin="1" end="${cMap.totalTd}" step="1">
+						<c:set var="d" value="${i -cMap.beginBlank}"></c:set>	
+								<c:if test="${i % 7 == 1 }">
+								<td style="color:red">
+								</c:if>
+								<c:if test="${!(i % 7 == 1)}">
+								<td>
+							</c:if>
+							<c:if test="${d < 1 || d > cMap.lastDate}">
+								&nbsp;
+							</c:if>
+							<c:if test="${!(d < 1 || d > cMap.lastDate)}">
+								${d }<p>예약현황 : </p><br>
+								<c:forEach var="p" items="${pList}">
+									<c:if test="${p.programDateDay == d}">
+										
+										<span class="badge badge-danger">${p.programReservationCnt}/${p.programMaxCustomer}</span>
+									</c:if>
+								</c:forEach>
+							</c:if>
+							</td>
+							<c:if test="${i < cMap.totalTd && i % 7 == 0}">
+								</tr><tr>	
+							</c:if>
+						</c:forEach>
+					</table>
+						<a style="float:left" class="btn btn-outline-secondary" 
+						href="${pageContext.request.contextPath }/ScheduleByBranch?programNo=${program.programNo}&targetYear=${cMap.targetYear}&targetMonth=${cMap.targetMonth -1}">
+							이전 달
+						</a>
+						<a style="float:right" class="btn btn-outline-secondary" 
+						href="${pageContext.request.contextPath }/ScheduleByBranch?programNo=${program.programNo}&targetYear=${cMap.targetYear}&targetMonth=${cMap.targetMonth +1}">
+							다음 달
+						</a>
+				</div>
+			</div>
 						</div>
 					</div>
 				</div>
@@ -98,7 +144,7 @@
 							<p>
 							Email : ${map.employeeEmail}
 							</p>
-							<p >
+								<p >
 							<h5>지점별 일정/예약현황 보기</h5><br>
 							<div style="margin: auto; text-align: center;">
 							<nav id="nav-menu-container" >
@@ -106,7 +152,7 @@
 						<li class="menu-has-children"><a href="">지점 선택</a>
 							<ul>
 							<c:forEach var="b" items="${list}">
-								<li><a href="${pageContext.request.contextPath}/ScheduleByBranch?branchNo=${b.branchNo}&programNo=${program.programNo}&programName=${program.programName}">${b.branchName}</a></li>
+								<li><a href="${pageContext.request.contextPath}/ScheduleByBranch?branchNo=${b.branchNo}&programNo=${program.programNo}&programName=${program.programName}">${b.branchName }</a></li>
 							</c:forEach>
 							</ul>
 						</li>
