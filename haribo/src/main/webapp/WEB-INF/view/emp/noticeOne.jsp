@@ -79,7 +79,7 @@
                 </div>
                 <div class="box-footer">
                 	<a class="btn btn-primary" href="${pageContext.request.contextPath}/updateNotice?noticeNo=${resultNotice.noticeNo}">수정</a>
-                    <a class="btn btn-danger" href="${pageContext.request.contextPath}/deleteNotice?noticeNo=${resultNotice.noticeNo}">삭제</a>
+                    <a class="btn btn-danger" id="deleteBtn" href="${pageContext.request.contextPath}/deleteNotice?noticeNo=${resultNotice.noticeNo}">삭제</a>
                 </div>
                </div>
             </form>
@@ -120,5 +120,33 @@
 <script src="emp/dist/js/pages/dashboard2.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="emp/dist/js/demo.js"></script>
+
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+<script>
+    $(document).ready(function() {
+        // 삭제 버튼 클릭 시 확인 대화상자 표시
+        $("#deleteBtn").click(function() {
+            if (confirm("정말로 삭제하시겠습니까?")) {
+                // 사용자가 확인을 누른 경우
+                $.ajax({
+                    type: "GET",
+                    url: "${pageContext.request.contextPath}/deleteNotice?noticeNo=${resultNotice.noticeNo}",
+                    success: function(response) {
+                        alert("삭제되었습니다.");
+                    },
+                });
+            } else {
+                // 사용자가 취소를 누른 경우
+                alert("삭제가 취소되었습니다.");
+            }
+        });
+    });
+</script>
+
+
+
+
 </body>
 </html>

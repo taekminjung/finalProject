@@ -109,8 +109,6 @@
           </a>
        </li>  
        
-
-    
         <li class="treeview">
           <a href="#"><i class="fa fa-cube"></i> <span>지점별 재고현황</span>
             <span class="pull-right-container">
@@ -149,12 +147,24 @@
             <li><a href="${pageContext.request.contextPath}/insertEmployee"><i class="fa fa-user-plus"></i>직원 추가</a></li>
           </ul>
         </li>
+
+        <li class="treeview">
+          <a href="${pageContext.request.contextPath}/trainerManagement"><i class="fa fa-user"></i> <span>운동기구 관리</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="${pageContext.request.contextPath}/sportsEquipmentList"><i class="fa fa-users"></i>운동기구 리스트</a></li>
+            <li><a href="${pageContext.request.contextPath}/insertSportsEquipment"><i class="fa fa-user-plus"></i>운동기구 추가</a></li>
+          </ul>
+        </li>
         
         <li>
           <a href="${pageContext.request.contextPath}/sportsEquipmentExpiredList">
             <i class="fa fa-trash"></i> <span>폐기물 대장</span>
           </a>
-       </li>  
+       </li>
         
         
       </ul>

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.haribo.mapper.SportsEquipmentMapper;
+import com.example.haribo.vo.SportsEquipment;
 import com.example.haribo.vo.SportsEquipmentExpire;
 
 @Service
@@ -33,6 +34,18 @@ public class SportsEquipmentService {
 	public void insertExpire(SportsEquipmentExpire sportsEquipmentExpire) {
 		// TODO Auto-generated method stub
 		
+	}
+	
+	public int insertSportsEquipment(SportsEquipment sportsEquipment) {
+		return sportsEquipmentMapper.insertSportsEquipment(sportsEquipment);
+	}
+	
+	public List<HashMap<String,Object>> sportsEquipmentList(@RequestParam(defaultValue="1") int currentPage){
+		int rowPerPage = 10;
+		int beginRow = (currentPage-1)*rowPerPage;
+		
+		List<HashMap<String, Object>> list = sportsEquipmentMapper.sportsEquipmentExpiredList(beginRow, rowPerPage);
+		return list;
 	}
 
 

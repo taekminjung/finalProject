@@ -12,6 +12,13 @@
 		FROM sports_equipment_expire 
 	</select>
 	
+	<select id="sportsEquipmentList" parameterType="java.util.Map" resultType="com.example.haribo.vo.SportsEquipment">
+		SELECT
+			item_name itemName,
+			item_price itemPrice
+		FROM sports_equipment
+	</select>
+	
 	<select id="getTotalRow" parameterType="int" resultType="int">
 		SELECT
 			COUNT(*)
@@ -32,6 +39,17 @@
 			#{quantity},
 			#{expireMemo}	
 		)
+	</insert>
+	
+	<insert id="insertSportsEquipment" parameterType="com.example.haribo.vo.SportsEquipment">
+		INSERT INTO sports_equipment(
+			item_name,
+			item_price
+			)	VALUES	(
+			#{itemName},
+			#{itemPrice}
+			)
+	
 	</insert>
 	
 </mapper>
