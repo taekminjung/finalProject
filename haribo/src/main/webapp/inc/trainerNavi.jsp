@@ -33,14 +33,14 @@
               <!-- The user image in the navbar-->
               <img src="emp/dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
               <!-- hidden-xs hides the username on small devices so only the image appears. -->
-              <span class="hidden-xs">${loginEmployee.employeeId}</span>
+              <span class="hidden-xs">${loginEmployee.employeeName}</span>
             </a>
             <ul class="dropdown-menu">
               <!-- The user image in the menu -->
               <li class="user-header">
                 <img src="emp/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
                 <p>
-          		  ${loginEmployee.employeeId}
+          		  ${loginEmployee.employeeName}
                   <small>일한 기간</small>
                 </p>
               </li>
@@ -73,7 +73,7 @@
           <img src="emp/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
-          <p><a href="">${loginEmployee.employeeId}</a></p>
+          <p><a href="">${loginEmployee.employeeName}</a></p>
           <!-- Status -->
           <a href="#" id="statusLink"><i class="fa fa-circle text-success"></i> 출근중💼</a>
         </div>
@@ -105,6 +105,7 @@
               </span>
           </a>
           <ul class="treeview-menu">
+          	<li><a href="${pageContext.request.contextPath}/trainerStock">재고 현황</a></li>
             <li><a href="${pageContext.request.contextPath}/trainerStockForm">발주 신청</a></li>
             <li><a href="${pageContext.request.contextPath}/trainerExpireForm">폐기 신청</a></li>
           </ul>
