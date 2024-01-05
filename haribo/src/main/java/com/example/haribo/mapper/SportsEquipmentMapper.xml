@@ -10,20 +10,30 @@
 			quantity,
 			createdate
 		FROM sports_equipment_expire 
+		LIMIT #{beginRow}, #{rowPerPage}
 	</select>
 	
-	<select id="sportsEquipmentList" parameterType="java.util.Map" resultType="com.example.haribo.vo.SportsEquipment">
+	<select id="sportsEquipmentList" parameterType="java.util.Map" resultType="java.util.Map">
 		SELECT
+			sports_equipment_no sportsEquipmentNo,
 			item_name itemName,
 			item_price itemPrice
 		FROM sports_equipment
+		LIMIT #{beginRow}, #{rowPerPage}
 	</select>
 	
 	<select id="getTotalRow" parameterType="int" resultType="int">
 		SELECT
 			COUNT(*)
+		FROM sports_equipment
+	</select>
+	
+	<select id="getTotalRowExpire" parameterType="int" resultType="int">
+		SELECT
+			COUNT(*)
 		FROM sports_equipment_expire
 	</select>
+	
 	
 	<insert id="insertExpire" parameterType="com.example.haribo.vo.SportsEquipmentExpire">
 		INSERT INTO sportsEquipmentExpire(
@@ -52,4 +62,15 @@
 	
 	</insert>
 	
+	<update id="updateSportsEquipment" parameterType="com.example.haribo.vo.SportsEquipment">
+		UPDATE sports_equipment SET
+			item_name = #{itemName},
+			item_price = #{itemPrice}
+		WHERE sports_equipment_no = #{sportsEquipmentNo}
+	</update>
+	
+	<delete id="deleteSportsEquipment" parameterType="com.example.haribo.vo.SportsEquipment">
+		DELETE FROM sports_equipment
+			WHERE sports_equipment_no = #{sportsEquipmentNo}
+	</delete>
 </mapper>

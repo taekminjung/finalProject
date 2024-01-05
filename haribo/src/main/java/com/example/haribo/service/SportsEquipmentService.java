@@ -15,11 +15,15 @@ import com.example.haribo.vo.SportsEquipmentExpire;
 public class SportsEquipmentService {
 	@Autowired private SportsEquipmentMapper sportsEquipmentMapper;
 	
-	public List<HashMap<String,Object>> sportsEquipmentExpiredList(@RequestParam(defaultValue="1") int currentPage){
+	public List<SportsEquipmentExpire> sportsEquipmentExpiredList(@RequestParam(defaultValue="1") int currentPage){
 		int rowPerPage = 10;
 		int beginRow = (currentPage-1)*rowPerPage;
 		
-		List<HashMap<String, Object>> list = sportsEquipmentMapper.sportsEquipmentExpiredList(beginRow, rowPerPage);
+		HashMap<String, Object> param = new HashMap<>();
+		param.put("rowPerPage", rowPerPage);
+		param.put("beginRow", beginRow);
+		
+		List<SportsEquipmentExpire> list = sportsEquipmentMapper.sportsEquipmentExpiredList(param);
 		return list;
 	}
 	public int lastPage() {
@@ -31,6 +35,16 @@ public class SportsEquipmentService {
 		}
 		return lastPage;
 	}
+	
+	public int lastPageExpire() {
+		int rowPerPage=10;
+		int totalRow = sportsEquipmentMapper.getTotalRowExpire(rowPerPage);
+		int lastPageExpire = totalRow/rowPerPage;
+		if(totalRow % rowPerPage !=0) {
+			lastPageExpire +=1;
+		}
+		return lastPageExpire;
+	}
 	public void insertExpire(SportsEquipmentExpire sportsEquipmentExpire) {
 		// TODO Auto-generated method stub
 		
@@ -40,14 +54,25 @@ public class SportsEquipmentService {
 		return sportsEquipmentMapper.insertSportsEquipment(sportsEquipment);
 	}
 	
-	public List<HashMap<String,Object>> sportsEquipmentList(@RequestParam(defaultValue="1") int currentPage){
+	public List<SportsEquipment> sportsEquipmentList(
+				@RequestParam(defaultValue="1") int currentPage){
+
 		int rowPerPage = 10;
 		int beginRow = (currentPage-1)*rowPerPage;
 		
-		List<HashMap<String, Object>> list = sportsEquipmentMapper.sportsEquipmentExpiredList(beginRow, rowPerPage);
+		HashMap<String, Object> param = new HashMap<>();
+		param.put("rowPerPage", rowPerPage);
+		param.put("beginRow", beginRow);
+		
+		List<SportsEquipment> list = sportsEquipmentMapper.sportsEquipmentList(param);
 		return list;
 	}
-
-
 	
+	public int updateSportsEquipment(SportsEquipment sportsEquipment) {
+		return sportsEquipmentMapper.updateSportsEquipment(sportsEquipment);	
+	}	
+	
+	public int deleteSportsEquipment(SportsEquipment sportsEquipment) {
+		return sportsEquipmentMapper.deleteSportsEquipment(sportsEquipment);
+	}
 }

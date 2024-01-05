@@ -78,10 +78,10 @@
 			    <br><br>
 			<div class="text-center"> 
 			  <c:if test="${currentPage > 1}">
-			  	<a href="${pageContext.request.contextPath}/noticeList?currentPage=${currentPage-1}" class="btn btn-primary">이전</a>
+			  	<a href="${pageContext.request.contextPath}/sportsEquipmentExpiredList?currentPage=${currentPage-1}" class="btn btn-primary">이전</a>
 			  </c:if>
-			  <c:if test="${currentPage < lastPage}">
-			  	<a href="${pageContext.request.contextPath}/noticeList?currentPage=${currentPage+1}" class="btn btn-primary">다음</a>
+			  <c:if test="${currentPage < lastPageExpire}">
+			  	<a href="${pageContext.request.contextPath}/sportsEquipmentExpiredList?currentPage=${currentPage+1}" class="btn btn-primary">다음</a>
 			  </c:if>
 			</div>
 

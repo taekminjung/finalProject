@@ -38,7 +38,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        공지사항
+        운동 기구 리스트
         <small>관리자</small>
       </h1>
       <ol class="breadcrumb">
@@ -52,50 +52,39 @@
           <div class="box">
             <div class="box-header">
               <h3 class="box-title">현재 페이지: ${currentPage}</h3>
-              
 
-              <div class="box-tools">
-               <a href="${pageContext.request.contextPath}/insertNotice" class="btn btn-primary mb-3">공지 추가</a>
-           
-                <div class="input-group input-group-sm hidden-xs" style="width: 150px;">
-      			<form class="search-form" id="searchNotice" method="post" action="${pageContext.request.contextPath}/noticeList">
-      			
-                  <div class="input-group-btn">
-                  <input type="text" name="noticeTitle" class="form-control pull-right" placeholder="제목을 입력해주세요" onfocus="this.placeholder=''" onblur="this.placeholder='제목을 입력하세요'">
-                  </div>
-                    <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
-      			</form>
-                </div>
-              </div>
             </div>
-            <br><br>
+            <br>
 			<div class="box-body table-responsive no-padding">
 			    <table class="table table-hover">
 			        <tr>
 			            <th class="text-center">번호</th>
-			            <th class="text-center">제목</th>
-			            <th class="text-center">작성자</th>
-			            <th class="text-center">등록일</th>
+			            <th class="text-center">운동기구명</th>
+			            <th class="text-center">가격</th>
+			            <th class="text-center">+</th>
+        		        <th class="text-center">-</th>
 			        </tr>
-			
-			        <c:forEach var="n" items="${list}">
-			            <tr>
-			                <td class="text-center">${n.noticeNo}</td>
-			                <td class="text-center">
-			                    <a href="${pageContext.request.contextPath}/noticeOne?noticeNo=${n.noticeNo}">${n.noticeTitle}</a>
-			                </td>
-			                <td class="text-center">${n.employeeId}</td>
-			                <td class="text-center">${n.createdate}</td>
-			            </tr>
-			        </c:forEach>
+			        <c:forEach var="se" items="${list}">
+					<tr>
+						<td class="text-center">${se.sportsEquipmentNo} </td>
+						<td class="text-center">${se.itemName} </td>
+						<td class="text-center">${se.itemPrice} </td>
+						<td class="text-center">
+						<a href="${pageContext.request.contextPath}/updateSportsEquipment?sportsEquipmentNo=${se.sportsEquipmentNo}">수정</a>
+						</td>
+						<td class="text-center">
+						<a href="${pageContext.request.contextPath}/deleteSportsEquipment?sportsEquipmentNo=${se.sportsEquipmentNo}">삭제</a>
+						</td>
+						
+					</c:forEach>
 			    </table>
 			    <br><br>
 			<div class="text-center"> 
 			  <c:if test="${currentPage > 1}">
-			  	<a href="${pageContext.request.contextPath}/noticeList?currentPage=${currentPage-1}" class="btn btn-primary">이전</a>
+			  	<a href="${pageContext.request.contextPath}/sportsEquipmentList?currentPage=${currentPage-1}" class="btn btn-primary">이전</a>
 			  </c:if>
 			  <c:if test="${currentPage < lastPage}">
-			  	<a href="${pageContext.request.contextPath}/noticeList?currentPage=${currentPage+1}" class="btn btn-primary">다음</a>
+			  	<a href="${pageContext.request.contextPath}/sportsEquipmentList?currentPage=${currentPage+1}" class="btn btn-primary">다음</a>
 			  </c:if>
 			</div>
 
