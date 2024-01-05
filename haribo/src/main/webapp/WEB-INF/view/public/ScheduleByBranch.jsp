@@ -161,6 +161,22 @@
 					</div>
 							</p>
 						</div>
+						<div class="d-grid">
+						<a href="${pageContext.request.contextPath }/insertProgramReservation">
+							<button type="button" class="btn btn-outline-secondary btn-block">
+								<br>
+								<p>예약하기</p>
+							</button>
+						</a>
+					</div><br>
+					<div class="d-grid">
+						<a href="${pageContext.request.contextPath }/membership">
+							<button type="button" class="btn btn-outline-secondary btn-block">
+								<br>
+								<p>멤버십 종료 날짜</p>
+								<P><span id="membershipEnd"></span></P>
+							</button>
+						</a>
 					</div>
 				</div>
 			</div>
@@ -189,6 +205,21 @@
 	<script src="customer/js/owl.carousel.min.js"></script>
 	<script src="customer/js/mail-script.js"></script>
 	<script src="customer/js/main.js"></script>
+	<script>
+	$(document).ready(function(){
+		$.ajax({
+			url:'/haribo/membershipEnd',
+			method:'get',
+			data:{'customerNo':${loginCustomer.customerNo}},
+			success:function(json){
+				$('#membershipEnd').text(json);
+			},
+			error:function(err){
+				console.log(err);
+			}
+		})
+	})
+	</script>
 </body>
 
 </html>

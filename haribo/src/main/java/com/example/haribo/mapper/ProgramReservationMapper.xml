@@ -46,4 +46,34 @@
 			#{branchNo}
 		)
 	</insert>
+	
+	<select id="selectProgramNameList" resultType="java.util.Map">
+		SELECT 
+			DISTINCT(program_name) programName
+		FROM program
+	</select>
+	
+	<select id="selectBranchNameByProgramName" parameterType="String" resultType="java.util.Map">
+		SELECT 
+			b.branch_name branchName
+		FROM program p INNER JOIN employee e
+		ON p.employee_id = e.employee_id INNER JOIN branch b
+		ON e.branch_no = b.branch_no
+		WHERE p.program_name = #{programName}
+	</select>
+	
+	<select id="selectProgramDateByProgramNameBranchName"
+													parameterType="java.util.Map"
+													resultType="java.util.Map">
+		SELECT 
+			pd.program_date programDate,
+			pd.program_date_no programDateNo
+		FROM branch b INNER JOIN employee e
+		ON b.branch_no = e.branch_no INNER JOIN program p
+		ON e.employee_id = p.employee_id INNER JOIN program_date pd
+		ON p.program_no = pd.program_no
+		WHERE b.branch_name = #{branchName}
+		AND p.program_name = #{programName}
+		ORDER BY programDate										
+	</select>
 </mapper>

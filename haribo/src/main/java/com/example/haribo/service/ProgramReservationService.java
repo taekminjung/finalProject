@@ -36,7 +36,8 @@ public class ProgramReservationService {
 	}
 	
 	//프로그램 예약하기
-	public void insertProgramReservation(Integer[] programDateNoList, ProgramReservation programReservation) {
+	public void insertProgramReservation(Integer[] programDateNoList, String customerId, String branchName) {
+		ProgramReservation programReservation = new ProgramReservation();
 		log.debug(programReservation+"");
 		for(int i = 0; i < programDateNoList.length; i++) {
 			log.debug(programDateNoList[i]+"");
@@ -47,5 +48,24 @@ public class ProgramReservationService {
 				programReservationMapper.insertProgramReservation(programReservation);
 			}
 		}
+	}
+	//프로그램 중복 제거 이름 출력
+	public List<Map<String,Object>> programNameList(){
+		List<Map<String,Object>> list = programReservationMapper.selectProgramNameList();
+		return list;
+	}
+	//프로그램의 지점 출력
+	public List<Map<String,Object>> branchNameListByProgramName(String programName){
+		List<Map<String,Object>> list = programReservationMapper.selectBranchNameByProgramName(programName);
+		return list;
+	}
+	//프로그램이 이름과 지점 이름으로 프로그램 날짜
+	public List<Map<String,Object>> ProgramDateByProgramNameBranchName(String programName, String branchName){
+		Map<String,Object> map = new HashMap<>();
+		map.put("branchName", branchName);
+		map.put("programName", programName);
+		
+		List<Map<String,Object>> list = programReservationMapper.selectProgramDateByProgramNameBranchName(map);
+		return list;
 	}
 }

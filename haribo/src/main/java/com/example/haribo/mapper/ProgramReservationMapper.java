@@ -16,4 +16,10 @@ public interface ProgramReservationMapper {
 	String selectProgramDateByreservationNo(CustomerAttendance customerAttendance);
 	
 	int insertProgramReservation(ProgramReservation programReservation);
+	
+	List<Map<String,Object>> selectProgramNameList();
+	
+	List<Map<String,Object>> selectBranchNameByProgramName(String programName);
+	
+	List<Map<String,Object>> selectProgramDateByProgramNameBranchName(Map<String,Object> map);
 }
