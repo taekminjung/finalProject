@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.example.haribo.service.CalendarService;
 import com.example.haribo.service.EmployeeService;
+import com.example.haribo.service.ProgramService;
 import com.example.haribo.vo.Employee;
 import com.example.haribo.vo.EmployeeDetail;
 
@@ -22,14 +24,21 @@ import lombok.extern.slf4j.Slf4j;
 @Controller
 public class EmployeeController {
 	@Autowired private EmployeeService employeeService;
+	@Autowired private CalendarService calendarService;
+	@Autowired private ProgramService programService;
 	
+	// 직원, 트레이너 로그인
 	@PostMapping("/empLogin")
 	public String loginEmployee(HttpSession session, Employee employee) {
-	    Employee loginEmployee = employeeService.loginEmployee(employee);
+	    
+	    Map<String, Object> loginEmployee = employeeService.loginEmployee(employee);
 
+	    // 세션에 로그인 정보 넣기 / 앞글자 : a-관리자, t-트레이너
 	    if (loginEmployee != null) {
 	        session.setAttribute("loginEmployee", loginEmployee);
-	        String employeeId = loginEmployee.getEmployeeId();
+	   
+	        // 로그인된 직원 또는 트레이너의 아이디 가져오기
+	        String employeeId = (String) loginEmployee.get("employeeId");
 
 	        // 첫 글자를 대문자로 통일하여 확인
 	        char firstCharacter = Character.toUpperCase(employeeId.charAt(0));
@@ -46,6 +55,7 @@ public class EmployeeController {
 	    return "redirect:/login";
 	}
 	
+	// 직원, 트레이너 추가
 	@GetMapping("/insertEmployee")
 	public String addEmployee() {
 		
@@ -62,6 +72,7 @@ public class EmployeeController {
 	return "redirect:/employeeList";
 	}
 	
+	// 직원 리스트 출력
 	@GetMapping("/employeeList")
 	public String employeeList(Model model, @RequestParam(defaultValue="1")int currentPage) {
 		List<HashMap<String, Object>> list = employeeService.employeeList(currentPage);
@@ -74,18 +85,21 @@ public class EmployeeController {
 		return "emp/employeeList";
 	}
 	
+	// 직원 상세정보
 	@GetMapping("/employeeInfo")
 	public String employeeInfo(Model model, HttpSession session, Employee employee) {
-		if(session.getAttribute("loginEmployee")==null) {
+		// 세션 검사
+		if(session.getAttribute("loginEmployee") == null) {
 			return "redirect:/login";
 		}
+		// 서비스 호출
 		Map<String,Object> empInfo = employeeService.employeeInfo(employee);
 		model.addAttribute("empInfo", empInfo);
 	
 		return "emp/employeeInfo";
 	}
 	
-
+	// 직원 상태(활성화/비활성화) 수정
 	@PostMapping("/updateEmployeeStatus")
 	public String updateEmployeeStatus(HttpSession session, 
 			@RequestParam("employeeId") String employeeId, 

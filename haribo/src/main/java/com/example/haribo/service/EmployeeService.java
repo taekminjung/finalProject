@@ -19,7 +19,7 @@ import lombok.extern.slf4j.Slf4j;
 public class EmployeeService {
 	@Autowired private EmployeeMapper employeeMapper;
 	
-	public Employee loginEmployee(Employee employee) {
+	public Map<String, Object> loginEmployee(Employee employee) {
 		return employeeMapper.loginEmployee(employee);
 	}
 	

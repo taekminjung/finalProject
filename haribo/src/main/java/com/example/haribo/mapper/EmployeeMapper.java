@@ -32,9 +32,9 @@ public interface EmployeeMapper {
 		
 		int updateEmployeePw(Map<String, Object> param);
 		
-		Employee loginEmployee(Employee employee);
+		Map<String,Object> loginEmployee(Employee employee);
 		
-		Map<String, Object> selectEmployeeInfo(Employee employee);
+		Map<String,Object> selectEmployeeInfo(Employee employee);
 
 		
 		
