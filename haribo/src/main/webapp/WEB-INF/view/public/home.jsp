@@ -159,7 +159,7 @@
 					<div class="section-title-wrap text-center">
 						<h1>상담 신청하기</h1><br>
 						<p>
-						 <form class="form-area contact-form text-right" id="contact" action="${pageContext.request.contextPath}/addcontact" method="post">
+						 <form class="form-area contact-form text-right" id="contact" action="${pageContext.request.contextPath}/contact" method="post">
 						<div class="row">
 							<div class="col-lg-6 form-group">
 								<label for="date">신청자의 생년월일을 선택해주세요: <input type="date"  name="customerBirth" max="2100-01-01" min="1950-01-01"></label>
@@ -169,6 +169,8 @@
 							</div>
 							<div class="col-lg-6 form-group">
 								<input name="customerName" placeholder="상담 신청자명을 입력해주세요" onfocus="this.placeholder = ''" onblur="this.placeholder = '이름을 입력하세요'"
+								 class="common-input mb-20 form-control" required="" type="text">
+								 <input name="customerPhone" placeholder="신청자 전화번호를 입력해주세요" onfocus="this.placeholder = ''" onblur="this.placeholder = '번호를 입력하세요'"
 								 class="common-input mb-20 form-control" required="" type="text">
 								<textarea class="common-textarea form-control" name="contactContent" placeholder="상담목적를 입력해주세요" onfocus="this.placeholder = ''"
 								 onblur="this.placeholder = 'Enter Messege'" required=""></textarea>

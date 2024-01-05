@@ -39,13 +39,6 @@ public class HomeController {
 	public String login() {
 		
 		return "public/login";
-	}@PostMapping("/addcontact")
-	public String insertContact(Contact paramContact) {
-		System.out.println("\u001B[42m"+paramContact);
-		//서비스 호출
-		int insertContact = contactService.insertContact(paramContact);
-		
-		return "public/home";
 	}
 	
 }

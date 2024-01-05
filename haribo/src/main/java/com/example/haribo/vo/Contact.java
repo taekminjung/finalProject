@@ -9,4 +9,5 @@ public class Contact {
 		private String customerName;
 		private String customerContactDate;
 		private String contactContent;
+		private String customerPhone;
 }

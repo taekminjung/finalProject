@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import com.example.haribo.service.BranchService;
 import com.example.haribo.service.ContactService;
@@ -25,5 +26,13 @@ public class ContactController {
 		
 		model.addAttribute("list", list);
 		return "public/contact";
+	}
+	@PostMapping("/contact")
+	public String insertContact(Contact paramContact) {
+		System.out.println("\u001B[42m"+paramContact);
+		//서비스 호출
+		int insertContact = contactService.insertContact(paramContact);
+		
+		return "redirect:/home";
 	}
 }

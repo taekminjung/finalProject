@@ -7,8 +7,9 @@ INSERT INTO contact(
 	customer_contact_date,
 	customer_name,
 	contact_content,
+	customer_phone,
 	createdate
 	)VALUES(
-	#{customerBirth},#{customerContactDate},#{customerName},#{contactContent}, NOW() )
+	#{customerBirth},#{customerContactDate},#{customerName},#{contactContent},#{customerPhone}, NOW() )
 </insert>
 </mapper>
