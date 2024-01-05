@@ -154,12 +154,13 @@ public class ProgramController {
 		@GetMapping("/ScheduleByBranch")
 		public String ScheduleByBranch(Model model, Branch branch, Program program, ProgramDate programDate, @RequestParam(required = false) Integer targetYear,
 				@RequestParam(required = false) Integer targetMonth) {
-			System.out.println(branch);
+			System.out.println(branch+"<--branch");
 			System.out.println(program.getProgramNo());
 			System.out.println(targetYear);
 			System.out.println(targetMonth);
 			//지점 리스트 출력
 			List<Branch> list = branchService.branchList();
+			System.out.println(list+"<===list");
 			//프로그램 상세보기 내용 출력
 			HashMap<String, Object> dmap = programService.selectProgramDetail(program, branch);
 			System.out.println("\u001B[43m"+dmap+"<--con.dmap");	
@@ -171,6 +172,7 @@ public class ProgramController {
 			System.out.println("\u001B[43m"+cMap+"<--p/con.programDetail");
 			//달력에 프로그램 일정 program_date출력 및 지점 예약현황 출력
 			HashMap<String, Object> pmap = new HashMap<>();
+			pmap.put("branchName", branch.getBranchName());
 			pmap.put("programDate", programDate);
 			pmap.put("programNo", program.getProgramNo());
 			pmap.put("branchNo", branch.getBranchNo());
@@ -180,6 +182,7 @@ public class ProgramController {
 			List<HashMap<String, Object>> pList = programService.selectProgramDate(pmap);
 			System.out.println("\u001B[43m"+pList+"<--p/con.programDetail/List");
 			//모델에 담기
+			model.addAttribute("pmap",pmap);
 			model.addAttribute("list", list);
 			model.addAttribute("pList",pList);
 			model.addAttribute("cMap",cMap);

@@ -157,7 +157,7 @@
 				
 				        // 인포윈도우로 장소에 대한 설명을 표시
 				        var infowindow = new kakao.maps.InfoWindow({
-				            content: '<div style="width:150px;text-align:center;padding:6px 0;">하리보팀 ${branch.branchName}</div> '
+				            content: '<div style="width:150px;text-align:center;padding:6px 0;">하리보팀 ${branch.branchName}<br><a href="https://map.kakao.com/link/search/ ${BranchAddr}" style="color:blue" target="_blank">큰지도보기</a></div> '
 				        });
 				        infowindow.open(map, marker);
 				

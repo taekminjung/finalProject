@@ -106,7 +106,7 @@
 						<li class="menu-has-children"><a href="">지점 선택</a>
 							<ul>
 							<c:forEach var="b" items="${list}">
-								<li><a href="${pageContext.request.contextPath}/ScheduleByBranch?branchNo=${b.branchNo}&programNo=${program.programNo}&programName=${program.programName}">${b.branchName}</a></li>
+								<li><a href="${pageContext.request.contextPath}/ScheduleByBranch?branchNo=${b.branchNo}&programNo=${program.programNo}&programName=${program.programName}&branchName=${b.branchName}">${b.branchName}</a></li>
 							</c:forEach>
 							</ul>
 						</li>

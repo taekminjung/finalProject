@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
+
 <html lang="zxx" class="no-js">
 
 <head>
@@ -116,7 +118,6 @@
 						 // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
 						var iwContent = '<div style="padding:5px;">하리보팀 본사 <br><a href="https://map.kakao.com/link/map/하리보팀 본사,37.476502, 126.880176" style="color:blue" target="_blank">큰지도보기</a> <a href="https://map.kakao.com/link/to/Hello World!,37.476502, 126.880176" style="color:blue" target="_blank">길찾기</a></div>',
 					    iwPosition = new kakao.maps.LatLng(37.476502, 126.880176); 
-						//제주 인포윈도우
 						var iwContent1 = '<div style="padding:5px;">하리보팀 제주지점 <br><a href="https://map.kakao.com/link/map/하리보팀 제주지점,33.496779, 126.531605" style="color:blue" target="_blank">큰지도보기</a> <a href="https://map.kakao.com/link/to/Hello World!,33.496779, 126.531605" style="color:blue" target="_blank">길찾기</a></div>',
 					    iwPosition1 = new kakao.maps.LatLng(33.496779, 126.531605);
 						var iwContent2 = '<div style="padding:5px;">하리보팀 부산지점 <br><a href="https://map.kakao.com/link/map/하리보팀 부산지점,35.141186, 129.059647" style="color:blue" target="_blank">큰지도보기</a> <a href="https://map.kakao.com/link/to/Hello World!,35.141186, 129.059647" style="color:blue" target="_blank">길찾기</a></div>',
@@ -143,16 +144,16 @@
 					//부산
 					infowindow2.open(map, marker2);
 			</script>
-			
+			<c:forEach var="b" items="${list}">
 				<div class="col-lg-4 d-flex flex-column address-wrap">
 					<div class="single-contact-address d-flex flex-row">
 						<div class="icon">
 							<span class="lnr lnr-home"></span>
 						</div>
 						<div class="contact-details">
-							<h5>대한민국/서울 </h5>
+							<h5>대한민국/${b.branchName } </h5>
 							<p>
-								서울시 금천구 가산디지털2로 95
+								${b.branchAddress}
 							</p>
 						</div>
 					</div>
@@ -161,7 +162,7 @@
 							<span class="lnr lnr-phone-handset"></span>
 						</div>
 						<div class="contact-details">
-							<h5>+82 02)818-7950</h5>
+							<h5>${b.branchTel}</h5>
 							<p>Mon to Fri 9am to 6 pm</p>
 						</div>
 					</div>
@@ -175,7 +176,7 @@
 						</div>
 					</div>
 				</div>
-		
+		</c:forEach>
 			</div>
 		</div>
 	</section>
