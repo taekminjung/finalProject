@@ -32,7 +32,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        프로그램 수정 페이지
+        프로그램 등록 페이지
         <small>Preview</small>
       </h1>
     </section>
@@ -48,7 +48,7 @@
               <h3 class="box-title">Quick Example</h3>
             </div>
               <div class="box-body">
-			<form id="form" name="form" method="post" action="${pageContext.request.contextPath}/updateProgram" enctype="multipart/form-data">
+			<form id="form" name="form" method="post" action="${pageContext.request.contextPath}/insertProgram" enctype="multipart/form-data">
 			  <div class="form-group">
 			    <label for="programName">프로그램명</label>
 			    <input type="text" class="form-control" id="programName" name="programName" placeholder="프로그램명">
@@ -69,8 +69,7 @@
 			    <label for="pImg">프로그램 이미지</label>
 			    <input type="file" id="pImg" name="pImg" accept=".png">
 			  </div>
-		       <button type="submit" id="formBtn" class="btn btn-primary">수정하기</button>
-		       <a class="btn bg-navy" href="${pageContext.request.contextPath}/programList">뒤로</a>
+		       <button type="submit" id="formBtn" class="btn btn-primary">Submit</button>
 			</form>
 	
 

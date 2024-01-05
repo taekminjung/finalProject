@@ -65,7 +65,8 @@
 	<update id="updateSportsEquipment" parameterType="com.example.haribo.vo.SportsEquipment">
 		UPDATE sports_equipment SET
 			item_name = #{itemName},
-			item_price = #{itemPrice}
+			item_price = #{itemPrice},
+			updatedate = NOW()
 		WHERE sports_equipment_no = #{sportsEquipmentNo}
 	</update>
 	

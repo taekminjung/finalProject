@@ -125,24 +125,26 @@
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
 <script>
+
+	$('#deleteBtn').click(function(){
+		var result = confirm($('#'))
+	})
     $(document).ready(function() {
         // 삭제 버튼 클릭 시 확인 대화상자 표시
         $("#deleteBtn").click(function() {
             if (confirm("정말로 삭제하시겠습니까?")) {
                 // 사용자가 확인을 누른 경우
                 $.ajax({
-                    type: "GET",
+                    type: "get",
                     url: "${pageContext.request.contextPath}/deleteNotice?noticeNo=${resultNotice.noticeNo}",
                     success: function(response) {
                         alert("삭제되었습니다.");
                     },
-                });
-            } else {
-                // 사용자가 취소를 누른 경우
-                alert("삭제가 취소되었습니다.");
-            }
-        });
-    });
+                    error:function(err){
+                    	console.log(err);
+                    }
+                })
+	    });
 </script>
 
 

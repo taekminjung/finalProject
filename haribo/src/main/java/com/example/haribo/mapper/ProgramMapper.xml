@@ -31,7 +31,23 @@
 		)
 	</insert>
  -->
-		<select id="selectProgram">
+ 
+ 	<select id="programList" parameterType="java.util.Map" resultType="java.util.Map">
+ 		SELECT
+ 			program_no	programNo,
+ 			program_name programName,
+ 			program_day programDay,
+ 			employee_id employeeId
+ 		FROM program
+ 		LIMIT ${beginRow}, ${rowPerPage}
+ 	</select> 
+ 	
+ 	<select id="getTotalRow" parameterType="int" resultType="int">
+ 		SELECT COUNT(*)
+ 			FROM program
+ 	</select>
+ 	 
+	<select id="selectProgram">
 	SELECT 
 		program_no programNo,
 		employee_id employeeId,
@@ -40,7 +56,8 @@
 	FROM program
 		
 	</select>
-	<select id="selectProgramDetail"   resultType="Map">
+	
+	<select id="selectProgramDetail" resultType="Map">
 		SELECT 
 		p.program_no programNo,
 		p.employee_id employeeId,
@@ -78,6 +95,19 @@
 			WHERE program_no = #{programNo}
 		
 	</select>
+	
+	<select id="programOne" parameterType="com.example.haribo.vo.Program" resultType="com.example.haribo.vo.Program">
+		SELECT 
+			p.program_name programName,
+			p.program_max_customer programMaxCustomer,
+			p.program_memo programMemo,
+			p.program_day programDay,
+			p.createdate
+		FROM program p INNER JOIN program_img pi
+		ON p.program_no = pi.program_no
+		WHERE p.program_no = #{programNo}
+	</select>
+	
 	<select id="searchByProgram" parameterType="com.example.haribo.vo.Program" resultType="com.example.haribo.vo.Program">
 		SELECT
 		program_no programNo,
@@ -87,7 +117,7 @@
 		FROM program
 		WHERE program_name LIKE CONCAT('%' , #{programName} , '%')
 	</select>
-<select id="selectProgramDate" parameterType="Map" resultType="Map">
+	<select id="selectProgramDate" parameterType="Map" resultType="Map">
 		      SELECT 
 			      pd.program_date_no programDateNo,
 			      p.program_no programNo,
@@ -123,6 +153,15 @@
 			#{programImgSize},
 			#{programImgType}
 		)
-	
 	</insert>
+	
+	<update id="updateProgram" parameterType="com.example.haribo.vo.Program">
+		UPDATE program SET
+			employee_id = #{employeeId},
+			program_name = #{programName},
+			program_max_customer = #{programMaxCustomer},
+			program_memo = #{programMemo},
+			program_day = #{programDay},
+			updatedate = NOW()
+	</update>
 </mapper>

@@ -65,15 +65,16 @@
         		        <th class="text-center">-</th>
 			        </tr>
 			        <c:forEach var="se" items="${list}">
+			        
 					<tr>
 						<td class="text-center">${se.sportsEquipmentNo} </td>
 						<td class="text-center">${se.itemName} </td>
 						<td class="text-center">${se.itemPrice} </td>
-						<td class="text-center">
-						<a href="${pageContext.request.contextPath}/updateSportsEquipment?sportsEquipmentNo=${se.sportsEquipmentNo}">수정</a>
+						<td class="text-center" >
+						<a class="btn btn-primary" href="${pageContext.request.contextPath}/updateSportsEquipment?sportsEquipmentNo=${se.sportsEquipmentNo}">수정</a>
 						</td>
-						<td class="text-center">
-						<a href="${pageContext.request.contextPath}/deleteSportsEquipment?sportsEquipmentNo=${se.sportsEquipmentNo}">삭제</a>
+						<td class="text-center" >
+						<a class="btn btn-danger" href="${pageContext.request.contextPath}/deleteSportsEquipment?sportsEquipmentNo=${se.sportsEquipmentNo}">삭제</a>
 						</td>
 						
 					</c:forEach>
@@ -111,5 +112,22 @@
 
 <!-- AdminLTE for demo purposes -->
 <script src="emp/dist/js/demo.js"></script>
+<script>
+
+
+
+	$('#deleteBtn').click(function(){
+		
+		var result = confirm($('#list.itemName').val()+'\n삭제하시겠습니까');
+		
+		if(result){
+			$('#deleteForm').submit();
+		} else{
+			
+		}
+	});
+
+</script>
+
 </body>
 </html>

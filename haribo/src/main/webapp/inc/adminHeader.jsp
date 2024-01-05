@@ -123,12 +123,13 @@
         </li>
 
 		<li class="treeview">
-          <a href="${pageContext.request.contextPath}/trainerProgram"><i class="fa fa-book"></i> <span>프로그램 목록</span>
+          <a href="${pageContext.request.contextPath}/trainerProgram"><i class="fa fa-book"></i> <span>프로그램 관리</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
+            <li><a href="${pageContext.request.contextPath}/programList"><i class="fa fa-circle-o"></i>프로그램 목록</a></li>
             <li><a href="${pageContext.request.contextPath}/insertProgram"><i class="fa fa-circle-o"></i>프로그램 추가</a></li>
             <li><a href="#"><i class="fa fa-circle-o"></i>A 클래스</a></li>
             <li><a href="#"><i class="fa fa-circle-o"></i>B 클래스</a></li>

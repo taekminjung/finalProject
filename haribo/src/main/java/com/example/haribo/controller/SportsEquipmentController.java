@@ -86,7 +86,7 @@ public class SportsEquipmentController {
 	
 	@GetMapping("/updateSportsEquipment")
 	public String updateSportsEquipment(Model model, SportsEquipment sportsEquipment) {
-		
+
 		return "emp/updateSportsEquipment";
 	}
 	

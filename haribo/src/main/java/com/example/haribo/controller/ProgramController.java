@@ -86,12 +86,12 @@ public class ProgramController {
 	
 	@GetMapping("/programOne")
 	public String programOne(Model model, Program program) {
-		Program resultProgram = programService.programOne(program);
-		model.addAttribute("resultProgram", resultProgram);
-		System.out.println(resultProgram.getProgramNo() + "<-- 프로그램 번호");
-		System.out.println(resultProgram.getProgramName() + "<-- 프로그램 이름");
-		System.out.println(resultProgram.getProgramMaxCustomer() + "<-- 프로그램 수용인원");
-		//System.out.println(resultProgram.getProgramMemo() + "<-- 프로그램 상세설명");
+//		Program resultProgram = programService.programOne(program);
+//		model.addAttribute("resultProgram", resultProgram);
+////		System.out.println(resultProgram.getProgramNo() + "<-- 프로그램 번호");
+////		System.out.println(resultProgram.getProgramName() + "<-- 프로그램 이름");
+////		System.out.println(resultProgram.getProgramMaxCustomer() + "<-- 프로그램 수용인원");
+//		//System.out.println(resultProgram.getProgramMemo() + "<-- 프로그램 상세설명");
 	
 		return "emp/programOne";
 	}	
