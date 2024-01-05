@@ -20,24 +20,17 @@
 			#{programDay}
 		)
 	</insert>
-
-	<insert id="insertProgramImg" parameterType="com.example.haribo.vo.ProgramImg">
-		INSERT INTO program_img (
+<!-- 
+	<insert id="insertProgramDate" parameterType="com.example.haribo.vo.ProgramDate">
+		INSERT INTO program_date(
 			program_no,
-			program_img_origin_name,
-			program_img_file_name,
-			program_img_size,
-			program_img_type
-		)	VALUES (
+			program_date
+		)	 VALUES 	(
 			#{programNo},
-			#{programImgOriginName},
-			#{programImgFileName},
-			#{programImgSize},
-			#{programImgType}
+			#{programDate}
 		)
-	
 	</insert>
-
+ -->
 		<select id="selectProgram">
 	SELECT 
 		program_no programNo,
@@ -47,16 +40,19 @@
 	FROM program
 		
 	</select>
-	<select id="selectProgramDetail">
-	SELECT 
-	program_no programNo,
-	employee_id employeeId,
-	program_memo programMemo,
-	program_name programName,
-	program_max_customer programMaxCustomer,
-	createdate
-	FROM program
-	WHERE program_no = #{programNo}
+	<select id="selectProgramDetail"   resultType="Map">
+		SELECT 
+		p.program_no programNo,
+		p.employee_id employeeId,
+		p.program_memo programMemo,
+		p.program_name programName,
+		p.program_max_customer programMaxCustomer,
+		p.createdate,
+		e.branch_no branchNo
+		FROM program p
+		INNER JOIN employee e 
+		ON p.employee_id = e.employee_id
+		WHERE program_no = #{programNo} 
 		
 	</select>
 	<!--  프로그램 상세페이지 프로그램,담당직원정보 select -->
@@ -108,10 +104,25 @@
 		      INNER JOIN program_reservation pr
 		      ON pd.program_date_no = pr.program_date_no
 		      WHERE p.program_no = #{programNo} AND pr.branch_no= #{branchNo}
-		      AND YEAR(program_date)= #{targerYear}  
-		      AND MONTH(program_date)= #{targerMonth}
+		      AND YEAR(pd.program_date)= #{targetYear}  
+		      AND MONTH(pd.program_date)= #{targetMonth}
 		      GROUP BY pr.program_date_no
 	</select>
 	
-
+		<insert id="insertProgramImg" parameterType="com.example.haribo.vo.ProgramImg">
+		INSERT INTO program_img (
+			program_no,
+			program_img_origin_name,
+			program_img_file_name,
+			program_img_size,
+			program_img_type
+		)	VALUES (
+			#{programNo},
+			#{programImgOriginName},
+			#{programImgFileName},
+			#{programImgSize},
+			#{programImgType}
+		)
+	
+	</insert>
 </mapper>

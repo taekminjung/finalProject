@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.example.haribo.mapper.ProgramMapper;
+import com.example.haribo.vo.Branch;
 import com.example.haribo.vo.Program;
 import com.example.haribo.vo.ProgramDate;
 import com.example.haribo.vo.ProgramImg;
@@ -22,13 +23,11 @@ import lombok.extern.slf4j.Slf4j;
 public class ProgramService {
 	@Autowired private ProgramMapper programMapper;
 	
-	public int insertProgram(Program program) {
+	public void insertProgram(Program program) {
 		int row = programMapper.insertProgram(program);
 		if(row != 1) {
 			throw new RuntimeException();
 		} 
-		int programNo = program.getProgramNo();
-		return programNo;
 	}
 	
 	public List<Program> programList(@RequestParam(defaultValue = "1") int currentPage){
@@ -77,7 +76,7 @@ public class ProgramService {
 		return list;
 	}
 	//고객홈페이지에서 프로그램 상세보기 페이지
-	public HashMap<String, Object> selectProgramDetail(Program program){
+	public HashMap<String, Object> selectProgramDetail(Program program, Branch branch){
 		HashMap<String, Object> dlist = programMapper.selectProgramDetail(program);
 		System.out.println("\u001B[43m"+dlist+"<--ser.dlist");
 		
@@ -97,12 +96,13 @@ public class ProgramService {
 		return list;
 	}
 	//프로그램별 일정 출력을 위한 날짜 출력
-	public List<HashMap<String, Object>> selectProgramDate(ProgramDate programDate,Integer targetYear, Integer targetMonth){
+	public List<HashMap<String, Object>> selectProgramDate(HashMap<String, Object> pmap){
 		HashMap<String, Object> map = new HashMap<>();
-		map.put("programNo", programDate.getProgramNo());
-		map.put("targetYear", targetYear);
-		map.put("targetMonth", targetMonth+1);
-		
+		map.put("branchNo", pmap.get("branchNo"));
+		map.put("programNo", ((ProgramDate)pmap.get("programDate")).getProgramNo());
+		map.put("targetYear",(int)pmap.get("targetYear"));
+		map.put("targetMonth", (int)pmap.get("targetMonth")+1);
+		System.out.println("\u001B[43m"+map+"<--ser.map");
 		List<HashMap<String, Object>> pMap = programMapper.selectProgramDate(map);
 		
 		System.out.println("\u001B[43m"+pMap+"<--ser.list");

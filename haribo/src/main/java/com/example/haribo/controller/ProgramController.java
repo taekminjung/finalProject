@@ -36,23 +36,12 @@ public class ProgramController {
 	}
 	
 	@PostMapping ("/insertProgram")
-	public String insertEmployee(HttpSession session, Program program, MultipartFile pImg, ProgramImg programImg) {
+	public String insertEmployee(Program program) {
 		log.debug(program.toString());
-		log.debug(programImg.toString());
-		String path = session.getServletContext().getRealPath("/upload");
-		int programNo = programService.insertProgram(program);
-		programImg.setProgramNo(programNo);
-		programService.insertProgramImg(pImg, programImg, path);
+		programService.insertProgram(program);
+		
 		return "redirect:/adminHome";
 	}
-	
-//	//프로그램 사진 추가
-//	@PostMapping("/insertProgramImg")
-//	public String insertProgramImg(HttpSession session, MultipartFile pImg, ProgramImg programImg) {
-//		String path = session.getServletContext().getRealPath("/upload");
-//		programService.insertProgramImg(pImg, programImg, path);
-//		return "emp/insertProgram";
-//	}
 	
 	@GetMapping("/updateProgram")
 	public String updateProgram(Program program, Model model) {
@@ -123,7 +112,7 @@ public class ProgramController {
 	public String programDetail(Model model,Branch branch, Program program, ProgramDate programDate, @RequestParam(required = false) Integer targetYear,
 			@RequestParam(required = false) Integer targetMonth) {
 		//프로그램 상세보기 내용 출력
-		HashMap<String, Object> dmap = programService.selectProgramDetail(program);
+		HashMap<String, Object> dmap = programService.selectProgramDetail(program, branch);
 		System.out.println("\u001B[43m"+dmap+"<--con.dmap");	
 		//상세보기 페이지에서 프로그램 정보와 담당 직원 사진 이름 출력
 		HashMap<String, Object> map = programService.selectProgramEmp(program);
@@ -131,16 +120,12 @@ public class ProgramController {
 		//프로그램디테일페이지에 해당 프로그램 일정 출력을위한 달력
 		Map<String, Object> cMap = calendarService.calendar(targetYear, targetMonth);
 		System.out.println("\u001B[43m"+cMap+"<--p/con.programDetail");
-		//달력에 프로그램 일정 program_date출력
-		List<HashMap<String, Object>> pList = programService.selectProgramDate(programDate, (int)cMap.get("targetYear"), (int)cMap.get("targetMonth"));
-		System.out.println("\u001B[43m"+pList+"<--p/con.programDetail/List");
 		//지점 리스트 출력
 		List<Branch> list = branchService.branchList();
 		
 		//모델에 담기
 		
 		model.addAttribute("list", list);
-		model.addAttribute("pList",pList);
 		model.addAttribute("cMap",cMap);
 		model.addAttribute("dmap", dmap);
 		model.addAttribute("map", map);
@@ -158,13 +143,25 @@ public class ProgramController {
 			return "public/program";
 		}
 		
+		//프로그램 사진 추가
+		@PostMapping("/insertProgramImg")
+		public String insertProgramImg(HttpSession session, MultipartFile pImg, ProgramImg programImg) {
+			String path = session.getServletContext().getRealPath("/upload");
+			programService.insertProgramImg(pImg, programImg, path);
+			return "emp/insertProgram";
+		}
+		
 		@GetMapping("/ScheduleByBranch")
 		public String ScheduleByBranch(Model model, Branch branch, Program program, ProgramDate programDate, @RequestParam(required = false) Integer targetYear,
 				@RequestParam(required = false) Integer targetMonth) {
+			System.out.println(branch);
+			System.out.println(program.getProgramNo());
+			System.out.println(targetYear);
+			System.out.println(targetMonth);
 			//지점 리스트 출력
 			List<Branch> list = branchService.branchList();
 			//프로그램 상세보기 내용 출력
-			HashMap<String, Object> dmap = programService.selectProgramDetail(program);
+			HashMap<String, Object> dmap = programService.selectProgramDetail(program, branch);
 			System.out.println("\u001B[43m"+dmap+"<--con.dmap");	
 			//상세보기 페이지에서 프로그램 정보와 담당 직원 사진 이름 출력
 			HashMap<String, Object> map = programService.selectProgramEmp(program);
@@ -173,7 +170,14 @@ public class ProgramController {
 			Map<String, Object> cMap = calendarService.calendar(targetYear, targetMonth);
 			System.out.println("\u001B[43m"+cMap+"<--p/con.programDetail");
 			//달력에 프로그램 일정 program_date출력 및 지점 예약현황 출력
-			List<HashMap<String, Object>> pList = programService.selectProgramDate(programDate, (int)cMap.get("targetYear"), (int)cMap.get("targetMonth"));
+			HashMap<String, Object> pmap = new HashMap<>();
+			pmap.put("programDate", programDate);
+			pmap.put("programNo", program.getProgramNo());
+			pmap.put("branchNo", branch.getBranchNo());
+			pmap.put("targetYear", (int)cMap.get("targetYear"));
+			pmap.put("targetMonth", (int)cMap.get("targetMonth"));
+			System.out.println("\u001B[43m"+pmap+"<--con.pmap");
+			List<HashMap<String, Object>> pList = programService.selectProgramDate(pmap);
 			System.out.println("\u001B[43m"+pList+"<--p/con.programDetail/List");
 			//모델에 담기
 			model.addAttribute("list", list);
@@ -181,6 +185,7 @@ public class ProgramController {
 			model.addAttribute("cMap",cMap);
 			model.addAttribute("dmap", dmap);
 			model.addAttribute("map", map);
+			model.addAttribute("branch", branch);
 			model.addAttribute("program", program);
 			return "public/ScheduleByBranch";
 		}
