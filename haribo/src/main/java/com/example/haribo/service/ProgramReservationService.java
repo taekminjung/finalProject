@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.example.haribo.mapper.ProgramReservationMapper;
 import com.example.haribo.vo.Customer;
+import com.example.haribo.vo.ProgramReservation;
 
 import lombok.extern.slf4j.Slf4j;
 @Slf4j
@@ -32,5 +33,19 @@ public class ProgramReservationService {
 		log.debug(proList+"");
 		
 		return proList;
+	}
+	
+	//프로그램 예약하기
+	public void insertProgramReservation(Integer[] programDateNoList, ProgramReservation programReservation) {
+		log.debug(programReservation+"");
+		for(int i = 0; i < programDateNoList.length; i++) {
+			log.debug(programDateNoList[i]+"");
+		}
+		if(programDateNoList.length > 0) {
+			for(int i = 0; i < programDateNoList.length; i++) {
+				programReservation.setProgramDateNo(programDateNoList[i]);
+				programReservationMapper.insertProgramReservation(programReservation);
+			}
+		}
 	}
 }

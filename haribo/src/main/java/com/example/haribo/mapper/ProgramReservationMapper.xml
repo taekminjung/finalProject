@@ -34,4 +34,16 @@
 		ON pr.program_date_no = pd.program_date_no
 		WHERE pr.program_reservation_no = #{programReservationNo}							
 	</select>
+	
+	<insert id="insertProgramReservation" parameterType="com.example.haribo.vo.ProgramReservation">
+		INSERT INTO program_reservation(
+			payment_no,
+			program_date_no,
+			branch_no
+		)VALUES(
+			#{paymentNo},
+			#{programDateNo},
+			#{branchNo}
+		)
+	</insert>
 </mapper>
