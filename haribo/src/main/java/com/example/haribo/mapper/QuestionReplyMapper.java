@@ -11,5 +11,7 @@ import com.example.haribo.vo.QuestionReply;
 public interface QuestionReplyMapper {
 
 			List<QuestionReply> selectquestionReply(Question question);
+
+			List<QuestionReply> questionReply(QuestionReply questionReply);
 			
 }
