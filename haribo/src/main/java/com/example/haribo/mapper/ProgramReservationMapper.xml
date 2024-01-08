@@ -69,14 +69,19 @@
 			pd.program_date programDate,
 			pd.program_date_no programDateNo,
 			p.program_name programName,
-			b.branch_name branchName
+			b.branch_name branchName,
+			p.program_max_customer programMax,
+			COUNT(*) programReservationCNT
 		FROM branch b INNER JOIN employee e
 		ON b.branch_no = e.branch_no INNER JOIN program p
 		ON e.employee_id = p.employee_id INNER JOIN program_date pd
-		ON p.program_no = pd.program_no
+		ON p.program_no = pd.program_no INNER JOIN program_reservation pr
+		ON pd.program_date_no = pr.program_date_no 
 		WHERE b.branch_name = #{branchName}
 		AND p.program_name = #{programName}
 		AND pd.program_date BETWEEN NOW() AND #{customerMembershipEnd}
+		GROUP BY pr.program_date_no
 		ORDER BY programDate										
 	</select>
+	
 </mapper>

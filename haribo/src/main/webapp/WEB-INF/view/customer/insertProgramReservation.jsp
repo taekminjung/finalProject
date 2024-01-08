@@ -157,7 +157,7 @@
 					$('.formDiv').html('')
 					$('#formBtn').attr("disabled", false);
 					$(json).each(function(index,item){	
-						$('.formDiv').append('<h3><input type="checkbox" id="ck" name="programDateNoList" value="'+item.programDateNo+'">&nbsp;&nbsp;&nbsp;'+item.programName+'&nbsp;('+item.branchName+')&nbsp;'+item.programDate+'</h3><br>');
+						$('.formDiv').append('<h3><input type="checkbox" id="ck" name="programDateNoList" value="'+item.programDateNo+'">&nbsp;&nbsp;&nbsp;'+item.programName+'&nbsp;('+item.branchName+')&nbsp;'+item.programDate+'&nbsp;('+item.programReservationCNT+'/'+item.programMax+')'+'</h3><br>');
 					})
 				}
 			})

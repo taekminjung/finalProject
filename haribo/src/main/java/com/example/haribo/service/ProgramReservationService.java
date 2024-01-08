@@ -15,6 +15,7 @@ import com.example.haribo.mapper.ProgramReservationMapper;
 import com.example.haribo.vo.Branch;
 import com.example.haribo.vo.Customer;
 import com.example.haribo.vo.Payment;
+import com.example.haribo.vo.Program;
 import com.example.haribo.vo.ProgramDate;
 import com.example.haribo.vo.ProgramReservation;
 
@@ -87,7 +88,6 @@ public class ProgramReservationService {
 		Customer customer = new Customer();
 		customer.setCustomerNo(customerNo);
 		String customerMembershipEnd = (customerMapper.selectCustomerInfo(customer)).get("customerMembershipEnd").toString();
-		
 		
 		Map<String,Object> map = new HashMap<>();
 		map.put("branchName", branchName);

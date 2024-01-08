@@ -8,11 +8,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.haribo.service.CalendarService;
 import com.example.haribo.service.ProgramReservationService;
-import com.example.haribo.vo.ProgramReservation;
+import com.example.haribo.vo.Customer;
 
 import jakarta.servlet.http.HttpSession;
 import lombok.extern.slf4j.Slf4j;
@@ -33,6 +32,7 @@ public class ProgramReservationContoller {
 		
 		//ProgramReservationService 호출
 		List<Map<String,Object>> proList = programReservationService.programNameList();
+		
 		//model에 담기
 		model.addAttribute("proList", proList);
 		
