@@ -127,7 +127,7 @@
 											</c:if>
 											<c:if test="${p.enterTime != null}">
 												<span class="badge bg-primary text-light">
-													입실 시간 : ${p.enterTime }
+													입실 시간 ${p.enterTime }
 												</span>
 											</c:if>
 											<c:if test="${p.cnt != 0 && p.exitTime == null}">
@@ -139,7 +139,7 @@
 											</c:if>
 											<c:if test="${p.cnt != 0 && p.exitTime != null}">
 												<span class="badge bg-danger text-light">
-													퇴실 시간 : ${p.exitTime }
+													퇴실 시간 ${p.exitTime }
 												</span>
 											</c:if>
 										</div>

@@ -67,7 +67,9 @@
 													resultType="java.util.Map">
 		SELECT 
 			pd.program_date programDate,
-			pd.program_date_no programDateNo
+			pd.program_date_no programDateNo,
+			p.program_name programName,
+			b.branch_name branchName
 		FROM branch b INNER JOIN employee e
 		ON b.branch_no = e.branch_no INNER JOIN program p
 		ON e.employee_id = p.employee_id INNER JOIN program_date pd

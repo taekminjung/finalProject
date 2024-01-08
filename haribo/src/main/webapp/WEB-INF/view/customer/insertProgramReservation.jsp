@@ -33,6 +33,13 @@
 	<link rel="stylesheet" href="customer/css/owl.carousel.css">
 	<link rel="stylesheet" href="customer/css/jquery-ui.css">
 	<link rel="stylesheet" href="customer/css/main.css">
+	<style>
+	input[type=checkbox] {
+
+	zoom: 2.0;
+
+	}
+	</style>
 </head>
 
 <body>
@@ -93,8 +100,9 @@
 							<form id="programDateForm" action="${pageContext.request.contextPath }/insertProgramReservation" method="post">
 								<input type="hidden" name="customerId" value="${loginCustomer.customerId }">
 								<input type="hidden" name="customerNo" value="${loginCustomer.customerNo }">
-								<br><br><br><div class="formDiv">
-									<h5 align="center">프로그램과 지점을 선택하시면 예약 가능 날짜가 출력되고 예약 버튼이 활성화 됩니다.</h5>
+								<br><div class="formDiv" align="center">
+									<br><br><h3>프로그램과 지점을 선택하시면 </h3>
+									<br><h3>예약 가능 날짜가 출력되고 예약 버튼이 활성화 됩니다.</h3>
 								</div>
 							</form>
 						</fieldset>
@@ -149,7 +157,7 @@
 					$('.formDiv').html('')
 					$('#formBtn').attr("disabled", false);
 					$(json).each(function(index,item){	
-						$('.formDiv').append('<p><input type="checkbox" id="ck" name="programDateNoList" value="'+item.programDateNo+'">&nbsp;&nbsp;&nbsp;'+item.programDate+'</p>');
+						$('.formDiv').append('<h3><input type="checkbox" id="ck" name="programDateNoList" value="'+item.programDateNo+'">&nbsp;&nbsp;&nbsp;'+item.programName+'&nbsp;('+item.branchName+')&nbsp;'+item.programDate+'</h3><br>');
 					})
 				}
 			})
