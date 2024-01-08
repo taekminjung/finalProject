@@ -13,29 +13,25 @@ import com.example.haribo.vo.QuestionReply;
 public class QuestionReplyService {
 	@Autowired QuestionReplyMapper questionReplyMapper;
 	
-	public void insertQuestionReply(QuestionReply questionReply) {
-		// TODO Auto-generated method stub
-		
+	// 문의사항 답글 입력
+	public String insertQuestionReply(QuestionReply questionReply) {
+		questionReplyMapper.insertQuestionReply(questionReply);
+		return "redirect:/trainerQuestionOne";
 	}
 
-	public void deleteQuestionReply(QuestionReply questionReply) {
-		// TODO Auto-generated method stub
-		
+	// 문의사항 답글 삭제
+	public int deleteQuestionReply(QuestionReply questionReply) {
+		return 0;		
 	}
 
-	public List<QuestionReply> questionReplyList(int currentPage) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
+	// 문의사항 답글 목록
 	public List<QuestionReply> questionReply(QuestionReply questionReply) {
 		List<QuestionReply> list = questionReplyMapper.questionReply(questionReply);
 		return list;
 	}
 	
 	public List<QuestionReply> selectquestionReply(Question question) {
-	List<QuestionReply> list = questionReplyMapper.selectquestionReply(question);
-			
-	return list;
+		List<QuestionReply> list = questionReplyMapper.selectquestionReply(question);
+		return list;
 }
 }

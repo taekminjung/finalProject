@@ -15,25 +15,25 @@ import com.example.haribo.vo.QuestionReply;
 public class QuestionReplyController {
 	@Autowired private QuestionReplyService questionreplyService;
 	
-	// 문의글 등록하기
+	// 문의답글 등록하기
 	@GetMapping("/insertQuestionReply")
 	public String insertQuestionReply() {
 		
-		return "public/";
+		return "emp/trainerQuestionOne";
 	}
 	
 	@PostMapping("/insertQuestionReply")
 	public String insertQuestionReply(QuestionReply questionReply) {
 		questionreplyService.insertQuestionReply(questionReply);
-		return "redirect:/";
+		return "redirect:/emp/trainerQuestionOne";
 	}
 	
-	// 문의 글 삭제하기
+	// 문의 답글 삭제하기
 	@GetMapping("/deleteQuestionReply")
 	public String deleteQuestionReply(QuestionReply questionReply) {
 		questionreplyService.deleteQuestionReply(questionReply);
 		
-		return "redirect:/";
+		return "redirect:/emp/trainerQuestionOne";
 	}
 
 	// 문의 답글 리스트
@@ -42,7 +42,7 @@ public class QuestionReplyController {
 		List <QuestionReply> list = questionreplyService.questionReply(questionReply);
 		model.addAttribute("list", list);
 		
-		return "public/questionList";
+		return "emp/trainerQuestionOne";
 	}
 
 }

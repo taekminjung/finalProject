@@ -2,14 +2,42 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.haribo.mapper.QuestionReplyMapper">
 
-<select id="selectquestionReply"> 
-SELECT
-question_reply_no questionReplyNo,
-question_no questionNo,
-employee_id employeeId,
-question_reply_content questionReplyContent,
-createdate
-FROM question_reply
-WHERE question_no = #{questionNo}
-</select>
+	<insert id="insertQuestionReply" parameterType="com.example.haribo.vo.QuestionReply">
+		INSERT INTO questionReply(
+			employee_id,
+			question_reply_content,
+			createdate
+		) VALUES (
+			#{employeeId}
+			#{questionReplyContent}
+			#{createdate}
+		)
+	</insert>
+	
+	<delete id="deleteQuestionReply" parameterType="com.example.haribo.vo.QuestionReply">
+		DELETE FROM questionReply
+		WHERE question_reply_no = #{questionReplyNo}
+	</delete>
+	
+	<select id="questionReply" parameterType="java.util.Map" resultType="com.example.haribo.vo.QuestionReply">
+		SELECT
+			question_reply_no questionReplyNo,
+			question_no questionNo,
+			employee_id employeeId,
+			question_reply_content questionReplyContent,
+			createdate
+		FROM question_reply
+		WHERE question_no = #{questionNo}
+	</select>
+	
+	<select id="selectquestionReply"> 
+		SELECT
+			question_reply_no questionReplyNo,
+			question_no questionNo,
+			employee_id employeeId,
+			question_reply_content questionReplyContent,
+			createdate
+		FROM question_reply
+		WHERE question_no = #{questionNo}
+	</select>
 </mapper>
