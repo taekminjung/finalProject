@@ -34,21 +34,15 @@
     <!-- 페이지 메인 헤더 -->
     <section class="content-header">
     <h3>공지사항</h3>
-      <div class="row">
-        <div class="col-xs-12">
-          <div class="box">
-            <div class="box-body">
-              <div><p>${resultNotice.noticeTitle}</p></div>
-              
-              <div class="form-group">
-               
-                <textarea class="form-control" rows="3" readonly>${resultNotice.noticeContent}</textarea>
-              </div>
-            </div>   
-            <!-- /.box-body -->
-          </div>  
-          <!-- /.box -->        
+      <!-- Default box -->
+      <div class="box">
+        <div class="box-header with-border">
+          <h3 class="box-title">${resultNotice.noticeTitle}</h3>
         </div>
+        <div class="box-body">
+          ${resultNotice.noticeContent}
+        </div>
+        <!-- /.box-body -->
       </div>
     </section>
   </div>
