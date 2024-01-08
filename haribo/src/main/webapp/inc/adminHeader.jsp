@@ -116,7 +116,7 @@
               </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="${pageContext.request.contextPath}/sportsEquipment"><i class="fa fa-circle-o"></i>발주 확인</a></li>
+            <li><a href="${pageContext.request.contextPath}/sportsEquipmentOrderCk"><i class="fa fa-circle-o"></i>발주 확인</a></li>
             <li><a href="${pageContext.request.contextPath}/branchStock"><i class="fa fa-circle-o"></i>지점별 재고현황</a></li>
           </ul>
         </li>

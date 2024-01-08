@@ -47,53 +47,51 @@
       </ol>
     </section>
 
-    <section class="testomial-area section-gap">
-    		<div class="container">
-    			<div class="row d-flex justify-content-center">
-    				<div class="col-lg-12">
-    					<div class="section-title-wrap text-center">
-    						<h1>지점별 재고</h1>
-    				</div>
-    			</div>
-    		</div>
-<div class="row">
-    <c:forEach var="b" items="${list}">
-        <div class="col-md-3 mb-4">
-            <div class="card">
-                <a href="${pageContext.request.contextPath}/branchStockList?branchNo=${b.branchNo}&branchName=${b.branchName}">
-                    <img class="card-img-top" src="customer/img/featured-class/f1.jpg" alt="">
-                    <div class="card-body">
-                        <h4 class="card-title">${b.branchName }</h4>
-                        <p class="card-text">지점 재고현황 보기</p>
-                    </div>
-                </a>
+     <div class="row">
+        <div class="col-xs-12">
+          <div class="box">
+            <div class="box-header">
+              <h3 class="box-title">현재 페이지: ${currentPage}</h3>
+
             </div>
-        </div>
-    </c:forEach>
-</div>
-
-
-		</div>
-	</div>
-
-    </section>
-	
-	<section class="team-area section-gap">
-		<div class="container">
-			<div class="row d-flex justify-content-center">
-				<div class="col-lg-12">
-					<div class="section-title-wrap text-center">		
-					</div>
-				</div>
-			</div>
-	</section>			
+            <br>
+			<div class="box-body table-responsive no-padding">
+			    <table class="table table-hover">
+			        <tr>
+			            <th class="text-center">지점 번호</th>
+			            <th class="text-center">운동기구 번호</th>
+			            <th class="text-center">운동기구명</th>
+			            <th class="text-center">가격</th>
+        		        <th class="text-center">수량</th>
+       		            <th class="text-center">총 가격</th>
+        		        <th class="text-center">주문일자</th>
+        		        <th class="text-center">주문 상태</th>
+        		        <th class="text-center">결재</th>
+			        </tr>
+			        <c:forEach var="seo" items="${list}">
+			        
+					<tr>
+						<td class="text-center">${seo.branchNo} </td>		
+						<td class="text-center">${seo.sportsEquipmentNo} </td>
+						<td class="text-center">${seo.itemName} </td>
+						<td class="text-center">${seo.itemPrice} </td>
+						<td class="text-center">${seo.quantity} </td>
+						<td class="text-center">${seo.totalPrice} </td>
+						<td class="text-center">${seo.createdate} </td>		
+						<td class="text-center">${seo.orderStatus} </td>							
+						<td class="text-center">
+							<button class="btn bg-navy">결재</a>
+						</td>			
+					
+					</c:forEach>
+			    </table>
 			    <br><br>
 			<div class="text-center"> 
 			  <c:if test="${currentPage > 1}">
-			  	<a href="${pageContext.request.contextPath}/sportsEquipmentList?currentPage=${currentPage-1}" class="btn btn-primary">이전</a>
+			  	<a href="${pageContext.request.contextPath}/sportsEquipmentOrderCk?currentPage=${currentPage-1}" class="btn btn-primary">이전</a>
 			  </c:if>
 			  <c:if test="${currentPage < lastPage}">
-			  	<a href="${pageContext.request.contextPath}/sportsEquipmentList?currentPage=${currentPage+1}" class="btn btn-primary">다음</a>
+			  	<a href="${pageContext.request.contextPath}/sportsEquipmentOrderCk?currentPage=${currentPage+1}" class="btn btn-primary">다음</a>
 			  </c:if>
 			</div>
 
@@ -120,6 +118,22 @@
 
 <!-- AdminLTE for demo purposes -->
 <script src="emp/dist/js/demo.js"></script>
+<script>
+
+
+
+	$('#deleteBtn').click(function(){
+		
+		var result = confirm('\n삭제하시겠습니까');
+		
+		if(result){
+			$('#deleteForm').submit();
+		} else{
+			
+		}
+	});
+
+</script>
 
 </body>
 </html>

@@ -22,6 +22,21 @@
 		LIMIT #{beginRow}, #{rowPerPage}
 	</select>
 	
+	<select id="sportsEquipmentOrderCk" parameterType="java.util.Map" resultType="java.util.Map">
+		SELECT
+			seo.branch_no branchNo,
+			seo.sports_equipment_no sportsEquipmentNo,
+			se.item_name itemName,
+			se.item_price itemPrice,
+			seo.quantity,
+			(se.item_price*seo.quantity) totalPrice,
+			seo.order_status orderStatus,
+			seo.createdate
+		FROM sports_equipment_order seo
+		INNER JOIN sports_equipment se
+		ON seo.sports_equipment_no = se.sports_equipment_no
+	</select>
+	
 	<select id="getTotalRow" parameterType="int" resultType="int">
 		SELECT
 			COUNT(*)
@@ -32,6 +47,12 @@
 		SELECT
 			COUNT(*)
 		FROM sports_equipment_expire
+	</select>
+	
+	<select id="getTotalRowOrder" parameterType="int" resultType="int">
+		SELECT
+			COUNT(*)
+		FROM sports_equipment_order
 	</select>
 	
 	

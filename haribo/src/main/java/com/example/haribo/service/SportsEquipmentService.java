@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.example.haribo.mapper.SportsEquipmentMapper;
 import com.example.haribo.vo.SportsEquipment;
 import com.example.haribo.vo.SportsEquipmentExpire;
+import com.example.haribo.vo.SportsEquipmentOrder;
 
 @Service
 public class SportsEquipmentService {
@@ -45,6 +46,17 @@ public class SportsEquipmentService {
 		}
 		return lastPageExpire;
 	}
+	
+	public int lastPageOrder() {
+		int rowPerPage = 10;
+		int totalRow = sportsEquipmentMapper.getTotalRowOrder(rowPerPage);
+		int lastPageOrder = totalRow/rowPerPage;
+		if(totalRow % rowPerPage !=0) {
+			lastPageOrder +=1;
+		}
+		return lastPageOrder;
+	}
+	
 	public void insertExpire(SportsEquipmentExpire sportsEquipmentExpire) {
 		// TODO Auto-generated method stub
 		
@@ -66,6 +78,19 @@ public class SportsEquipmentService {
 		
 		List<SportsEquipment> list = sportsEquipmentMapper.sportsEquipmentList(param);
 		return list;
+	}
+	
+	public List<SportsEquipmentOrder> sportsEquipmentOrderCk(
+				@RequestParam(defaultValue="1")int currentPage){
+			int rowPerPage = 10;
+			int beginRow = (currentPage-1)*rowPerPage;
+			
+			HashMap<String, Object> param = new HashMap<>();
+			param.put("rowPerPage", rowPerPage);
+			param.put("beginRow", beginRow);
+			
+			List<SportsEquipmentOrder> list = sportsEquipmentMapper.sportsEquipmentOrderCk(param);
+			return list;
 	}
 	
 	public int updateSportsEquipment(SportsEquipment sportsEquipment) {

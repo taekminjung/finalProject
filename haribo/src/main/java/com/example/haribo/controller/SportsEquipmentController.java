@@ -1,6 +1,4 @@
 package com.example.haribo.controller;
-import com.example.haribo.vo.SportsEquipment;
-
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,9 +8,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-
 import com.example.haribo.service.SportsEquipmentService;
+import com.example.haribo.vo.SportsEquipment;
 import com.example.haribo.vo.SportsEquipmentExpire;
+import com.example.haribo.vo.SportsEquipmentOrder;
 
 @Controller
 public class SportsEquipmentController {
@@ -39,6 +38,17 @@ public class SportsEquipmentController {
 		model.addAttribute("lastPage", lastPage);
 				
 		return "emp/sportsEquipmentList";
+	}
+	
+	@GetMapping("/sportsEquipmentOrderCk")
+	public String sportsEquipmentOrderCk(Model model, @RequestParam(defaultValue="1")int currentPage) {
+		List<SportsEquipmentOrder> list = sportsEquipmentService.sportsEquipmentOrderCk(currentPage);
+		int lastPageOrder = sportsEquipmentService.lastPageOrder();
+		
+		model.addAttribute("list", list);
+		model.addAttribute("lastPageOrder", lastPageOrder);
+		model.addAttribute("currentPage", currentPage);
+		return "emp/sportsEquipmentOrderCk";
 	}
 
 	@GetMapping("/sportsEquipmentExpiredList")

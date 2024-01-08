@@ -36,4 +36,9 @@ public class BranchController {
 			
 			return "emp/branchStock";
 		}
+		
+		@GetMapping("/branchStockList")
+		public String branchStockList() {
+			return "emp/branchStockList";
+		}
 }
