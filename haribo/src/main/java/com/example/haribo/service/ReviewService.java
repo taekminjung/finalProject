@@ -33,4 +33,10 @@ public class ReviewService {
 		 
 		 return row;
 	}
+	
+	public HashMap<String, Object> selectReservationInfo(Review review){
+		HashMap<String, Object> map = reviewMapper.selectReservationInfo(review);
+		
+		return map;
+	}
 }

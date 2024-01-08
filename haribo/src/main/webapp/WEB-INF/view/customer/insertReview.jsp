@@ -74,6 +74,23 @@
 			</div>
 			<div class="row justify-content-center">
 				<div class="table-wrap col-lg-10">
+					<table class="schdule-table table table-bordered">
+						<thead class="thead-light">
+							<tr>
+								<th class="head" scope="col">수강 지점</th>
+								<th class="head" scope="col">수강한 프로그램</th>
+								<th class="head" scope="col">프로그램 수강 날짜</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>${map.branchName}</td>
+								<td>${map.programName}</td>
+								<td>${map.programDate}</td>
+							</tr>
+						</tbody>
+					</table>
+				<div class="table-wrap col-lg-10">
 				<form action="${pageContext.request.contextPath}/insertReview" method="post">
 					<table class="schdule-table table table-bordered">
 						<thead class="thead-light">

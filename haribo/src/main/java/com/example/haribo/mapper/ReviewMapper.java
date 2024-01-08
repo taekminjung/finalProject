@@ -17,4 +17,6 @@ public interface ReviewMapper {
 	
 	//리뷰 작성
 	int insertReview(Review review);
+	//예약번호에 따른 프로그램정보
+	HashMap<String, Object> selectReservationInfo(Review review);
 }

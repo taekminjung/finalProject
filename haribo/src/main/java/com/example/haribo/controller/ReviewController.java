@@ -31,7 +31,9 @@ public class ReviewController {
 		}
 		@GetMapping("/insertReviewForm")
 		public String insertReviewForm(Model model, Review review) {
+			HashMap<String, Object> map = reviewService.selectReservationInfo(review);
 			
+			model.addAttribute("map", map);
 			model.addAttribute("review", review);
 			return "customer/insertReview";
 			
@@ -43,4 +45,5 @@ public class ReviewController {
 			
 			return "redirect:/reviewList";
 		}
+		
 }

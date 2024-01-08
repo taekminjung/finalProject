@@ -43,4 +43,18 @@
 		NOW()
 		) 
 	</insert>
+	<select id="selectReservationInfo">
+		SELECT 
+	p.program_name programName,
+	b.branch_name branchName,
+	pd.program_date programDate	
+FROM program_reservation pr
+INNER JOIN program_date pd
+ON pr.program_date_no = pd.program_date_no
+INNER JOIN program p
+ON pd.program_no = p.program_no
+INNER JOIN branch b
+ON pr.branch_no = b.branch_no 
+WHERE pr.program_reservation_no = #{programReservationNo}
+	</select>
 </mapper>
