@@ -47,38 +47,47 @@
       </ol>
     </section>
 
-     <div class="row">
-        <div class="col-xs-12">
-          <div class="box">
-            <div class="box-header">
-              <h3 class="box-title">현재 페이지: ${currentPage}</h3>
+    <section class="testomial-area section-gap">
+    		<div class="container">
+    			<div class="row d-flex justify-content-center">
+    				<div class="col-lg-12">
+    					<div class="section-title-wrap text-center">
+    						<h1>지점별 재고</h1>
+    				</div>
+    			</div>
+    		</div>
+    		<div class="row">
+<div class="active-testimonial-carusel row">
+    <c:forEach var="b" items="${list}">
+        <div class="col-md-3 mb-4">
+            <a href="${pageContext.request.contextPath}/branchStockList?branchNo=${b.branchNo}&branchName=${b.branchName}">
+                <div class="single-testimonial item">
+                    <img class="img-fluid" src="customer/img/featured-class/f1.jpg" alt="">
+                    <div class="overlay overlay-bg"></div>
+                    <p class="desc">
+                        <h4>${b.branchName }</h4><br>
+                        <h6> 지점 재고현황 보기</h6>
+                    </p>
+                </div>
+            </a>
+        </div>
+    </c:forEach>
+</div>
 
-            </div>
-            <br>
-			<div class="box-body table-responsive no-padding">
-			    <table class="table table-hover">
-			        <tr>
-			            <th class="text-center">번호</th>
-			            <th class="text-center">운동기구명</th>
-			            <th class="text-center">가격</th>
-			            <th class="text-center">+</th>
-        		        <th class="text-center">-</th>
-			        </tr>
-			        <c:forEach var="se" items="${list}">
-			        
-					<tr>
-						<td class="text-center">${se.sportsEquipmentNo} </td>
-						<td class="text-center">${se.itemName} </td>
-						<td class="text-center">${se.itemPrice} </td>
-						<td class="text-center" >
-						<a class="btn btn-primary" href="${pageContext.request.contextPath}/updateSportsEquipment?sportsEquipmentNo=${se.sportsEquipmentNo}">수정</a>
-						</td>
-						<td class="text-center" >
-						<a class="btn btn-danger" id="deleteBtn" href="${pageContext.request.contextPath}/deleteSportsEquipment?sportsEquipmentNo=${se.sportsEquipmentNo}">삭제</a>
-						</td>
-						
-					</c:forEach>
-			    </table>
+		</div>
+	</div>
+
+    </section>
+	
+	<section class="team-area section-gap">
+		<div class="container">
+			<div class="row d-flex justify-content-center">
+				<div class="col-lg-12">
+					<div class="section-title-wrap text-center">		
+					</div>
+				</div>
+			</div>
+	</section>			
 			    <br><br>
 			<div class="text-center"> 
 			  <c:if test="${currentPage > 1}">
@@ -112,22 +121,6 @@
 
 <!-- AdminLTE for demo purposes -->
 <script src="emp/dist/js/demo.js"></script>
-<script>
-
-
-
-	$('#deleteBtn').click(function(){
-		
-		var result = confirm('\n삭제하시겠습니까');
-		
-		if(result){
-			$('#deleteForm').submit();
-		} else{
-			
-		}
-	});
-
-</script>
 
 </body>
 </html>

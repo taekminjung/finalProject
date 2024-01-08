@@ -18,21 +18,6 @@ import com.example.haribo.vo.SportsEquipmentExpire;
 public class SportsEquipmentController {
 	@Autowired SportsEquipmentService sportsEquipmentService;
 	
-	@GetMapping("/sportsEquipmentA")
-	public String sportsEquipmentA() {
-		return "emp/sportsEquipmentA";
-	}
-	
-	@GetMapping("/sportsEquipmentB")
-	public String sportsEquipmentB() {
-		return "emp/sportsEquipmentB";
-	}
-	
-	@GetMapping("/sportsEquipmentC")
-	public String sportsEquipmentC() {
-		return "emp/sportsEquipmentC";
-	}
-	
 	@GetMapping("/insertSportsEquipment")
 	public String insertSportsEquipment() {
 		return "emp/insertSportsEquipment";

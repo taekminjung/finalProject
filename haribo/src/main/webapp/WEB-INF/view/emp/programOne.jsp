@@ -71,6 +71,7 @@
 			  </div>
 		       <button type="submit" id="formBtn" class="btn btn-primary">수정하기</button>
 		       <a class="btn bg-navy" href="${pageContext.request.contextPath}/programList">뒤로</a>
+		       <a class="btn btn-danger" id="deleteBtn" href="${pageContext.request.contextPath}/deleteProgram?programNo=${resultProgram.programNo}">삭제</a>
 			</form>
 	
 

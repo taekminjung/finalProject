@@ -10,4 +10,6 @@ import com.example.haribo.vo.Branch;
 public interface BranchMapper {
 
 	List<Branch> branchList();
+	
+	List<Branch> branchStock();
 }

@@ -17,4 +17,10 @@ public class BranchService {
 			System.out.println(blist+"<--branchList");
 			return blist;
 		}
+		
+		//지점 재고
+		public List<Branch> branchStock(){
+			List<Branch> list = branchMapper.branchStock();
+			return list;
+		}
 }

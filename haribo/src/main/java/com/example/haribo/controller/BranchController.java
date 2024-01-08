@@ -27,4 +27,13 @@ public class BranchController {
 			
 			return "public/branch";
 		}
+		
+		@GetMapping("/branchStock")
+		public String branchStock(Model model) {
+			
+			List<Branch> list = branchService.branchStock();
+			model.addAttribute("list", list);
+			
+			return "emp/branchStock";
+		}
 }

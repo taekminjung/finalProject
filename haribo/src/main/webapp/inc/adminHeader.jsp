@@ -110,15 +110,14 @@
        </li>  
        
         <li class="treeview">
-          <a href="#"><i class="fa fa-cube"></i> <span>지점별 재고현황</span>
+          <a href="#"><i class="fa fa-cube"></i> <span>재고관리</span>
             <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
               </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="${pageContext.request.contextPath}/sportsEquipmentA"><i class="fa fa-circle-o"></i>A 지점</a></li>
-            <li><a href="${pageContext.request.contextPath}/sportsEquipmentB"><i class="fa fa-circle-o"></i>B 지점</a></li>
-            <li><a href="${pageContext.request.contextPath}/sportsEquipmentC"><i class="fa fa-circle-o"></i>C 지점</a></li>
+            <li><a href="${pageContext.request.contextPath}/sportsEquipment"><i class="fa fa-circle-o"></i>발주 확인</a></li>
+            <li><a href="${pageContext.request.contextPath}/branchStock"><i class="fa fa-circle-o"></i>지점별 재고현황</a></li>
           </ul>
         </li>
 

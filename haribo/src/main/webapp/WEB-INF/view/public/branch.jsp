@@ -99,18 +99,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="row justify-content-center d-flex align-items-center">
-					<c:forEach var="t" items="${list}">
-				<div class="col-md-6 col-lg-3 single-team">
-					<div class="thumb">
-						<img class="customer/img-fluid" src="customer/img/t1.jpg" alt="">
-					</div>
-					<div class="meta-text mt-30 text-center">
-						<h4>${t.employeeName}</h4>
-						<p>${t.branchName} 지점</p>
-					</div>
-				</div>
-					</c:forEach>
+			
 			</section>	
 	<section class="post-content-area">
 				
