@@ -138,6 +138,10 @@ public class QuestionController {
 	public String trainerQuestionOne(Model model, Question question) {
 		Question resultQuestion = questionService.questionOne(question);
 		model.addAttribute("resultQuestion", resultQuestion);
+		List<QuestionReply> list = questionReplyService.selectquestionReply(question);
+		
+		System.out.println(list+"<--con.replyList");
+		model.addAttribute("list", list);
 		System.out.println(resultQuestion.getQuestionNo()+"<----getQuestionNo");
 		System.out.println(resultQuestion.getQuestionTitle()+"<----getQuestionTitle");
 		System.out.println(resultQuestion.getQuestionContent()+"<----getQuestionContent");

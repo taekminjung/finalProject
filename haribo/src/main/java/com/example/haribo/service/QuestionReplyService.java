@@ -25,10 +25,10 @@ public class QuestionReplyService {
 	}
 
 	// 문의사항 답글 목록
-	public List<QuestionReply> questionReply(QuestionReply questionReply) {
-		List<QuestionReply> list = questionReplyMapper.questionReply(questionReply);
-		return list;
-	}
+//	public List<QuestionReply> questionReply(QuestionReply questionReply) {
+//		List<QuestionReply> list = questionReplyMapper.questionReply(questionReply);
+//		return list;
+//	}
 	
 	public List<QuestionReply> selectquestionReply(Question question) {
 		List<QuestionReply> list = questionReplyMapper.selectquestionReply(question);

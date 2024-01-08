@@ -18,7 +18,7 @@
 		DELETE FROM questionReply
 		WHERE question_reply_no = #{questionReplyNo}
 	</delete>
-	
+	<!--
 	<select id="questionReply" parameterType="java.util.Map" resultType="com.example.haribo.vo.QuestionReply">
 		SELECT
 			question_reply_no questionReplyNo,
@@ -29,7 +29,7 @@
 		FROM question_reply
 		WHERE question_no = #{questionNo}
 	</select>
-	
+	-->
 	<select id="selectquestionReply"> 
 		SELECT
 			question_reply_no questionReplyNo,

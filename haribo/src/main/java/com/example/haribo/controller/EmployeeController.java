@@ -30,7 +30,7 @@ public class EmployeeController {
 	// 직원, 트레이너 로그인
 	@PostMapping("/empLogin")
 	public String loginEmployee(HttpSession session, Employee employee) {
-	    
+	    log.debug(employee+"");
 	    Map<String, Object> loginEmployee = employeeService.loginEmployee(employee);
 
 	    // 세션에 로그인 정보 넣기 / 앞글자 : a-관리자, t-트레이너

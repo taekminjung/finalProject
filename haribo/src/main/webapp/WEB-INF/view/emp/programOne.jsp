@@ -49,9 +49,11 @@
             </div>
               <div class="box-body">
 			<form id="form" name="form" method="post" action="${pageContext.request.contextPath}/updateProgram" enctype="multipart/form-data">
+			  <input type="text" name="employeeId" value="${loginEmployee.employeeId}">
+			  <input type="hidden" name="programNo" value="${resultProgram.programNo}">
 			  <div class="form-group">
 			    <label for="programName">프로그램명</label>
-			    <input type="text" class="form-control" id="programName" name="programName" placeholder="프로그램명">
+			    <input type="text" class="form-control" id="programName" name="programName" placeholder="${resultProgram.programName}">
 			  </div>
 			  <div class="form-group">
 			    <label for="programMaxCustomer">수용 인원</label>

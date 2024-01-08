@@ -99,12 +99,12 @@
 	<select id="programOne" parameterType="com.example.haribo.vo.Program" resultType="com.example.haribo.vo.Program">
 		SELECT 
 			p.program_name programName,
+			p.program_no programNo,
 			p.program_max_customer programMaxCustomer,
 			p.program_memo programMemo,
 			p.program_day programDay,
 			p.createdate
-		FROM program p INNER JOIN program_img pi
-		ON p.program_no = pi.program_no
+		FROM program p
 		WHERE p.program_no = #{programNo}
 	</select>
 	
@@ -117,6 +117,7 @@
 		FROM program
 		WHERE program_name LIKE CONCAT('%' , #{programName} , '%')
 	</select>
+	
 	<select id="selectProgramDate" parameterType="Map" resultType="Map">
 		      SELECT 
 			      pd.program_date_no programDateNo,
@@ -163,6 +164,7 @@
 			program_memo = #{programMemo},
 			program_day = #{programDay},
 			updatedate = NOW()
+		WHERE program_no = #{programNo}
 	</update>
-	
+
 </mapper>

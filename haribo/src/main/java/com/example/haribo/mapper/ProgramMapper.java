@@ -34,5 +34,6 @@ public interface ProgramMapper {
 	List<Program> searchByProgram(Program program);
 	//프로그램 일정 출력
 	List<HashMap<String, Object>> selectProgramDate(HashMap<String,Object> map);
+
 	
 }

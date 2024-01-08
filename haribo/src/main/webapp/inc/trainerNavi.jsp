@@ -112,23 +112,14 @@
         </li>
 
 		<li class="treeview">
-          <a href="${pageContext.request.contextPath}/trainerProgram"><i class="fa fa-book"></i> <span>프로그램 목록</span>
+          <a href="${pageContext.request.contextPath}/trainerProgram">
+          	<i class="fa fa-book"></i> <span>프로그램 목록</span>
             <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
-              </span>
+            </span>
           </a>
-          
-          <ul class="treeview-menu">
-        	<c:forEach var="p" items="${list}">
-            <li>
-                <a href="${pageContext.request.contextPath}/trainerProgramOne?programNo=${p.programNo}">
-                    ${p.programName}
-                </a>
-            </li>
-        	</c:forEach>
-    	  </ul>
         </li>
-        
+    
       </ul>
       
       <!-- /.sidebar-menu -->

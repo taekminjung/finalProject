@@ -20,6 +20,7 @@ public class EmployeeService {
 	@Autowired private EmployeeMapper employeeMapper;
 	
 	public Map<String, Object> loginEmployee(Employee employee) {
+		log.debug(employee+"");
 		return employeeMapper.loginEmployee(employee);
 	}
 	

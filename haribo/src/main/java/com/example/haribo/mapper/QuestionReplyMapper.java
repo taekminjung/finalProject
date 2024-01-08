@@ -16,6 +16,6 @@ public interface QuestionReplyMapper {
 
 	List<QuestionReply> selectquestionReply(Question question);
 
-	List<QuestionReply> questionReply(QuestionReply questionReply);
+//	List<QuestionReply> questionReply(QuestionReply questionReply);
 
 }
