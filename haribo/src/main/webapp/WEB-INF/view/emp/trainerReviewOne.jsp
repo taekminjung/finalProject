@@ -5,7 +5,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>트레이너 공지사항</title>
+  <title>리뷰 상세보기(트레이너)</title>
   <!-- 파비콘 코드 -->
   <link rel="icon" type="image/x-icon" href="emp/img/starfavi.png">
   
@@ -31,64 +31,40 @@
   <!-- aside 작성 뒤 항상 이 부분이 메인 컨텐츠 부분이 됨 -->
   <!-- 헤더 + 내용 wrapper 부분 시작 -->
   <div class="content-wrapper">
-    <!-- 페이지 메인 헤더 -->
-    <section class="content-header">
-    <h3>공지사항</h3>
-    <div class="box-tools">
-                <div class="input-group input-group-sm hidden-xs" style="width: 150px;">
-                  <input type="text" name="table_search" class="form-control pull-right" placeholder="Search">
-
-                  <div class="input-group-btn">
-                    <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
-                  </div>
-                </div>
-              </div>
-      <div class="row">
-        <div class="col-xs-12">
-          <div class="box">
-            <div class="box-body table-responsive no-padding text-center">
-              <table class="table table-hover text-center">
-                <tr>
-                  <th>번호</th>
-                  <th>제목</th>
-                  <th>작성자</th>
-                  <th>작성일</th>
-                </tr>
-                
-                <c:forEach var="n" items="${list}">
-                <tr>
-                  <td>${n.noticeNo}</td>
-                  <td><a href="${pageContext.request.contextPath}/trainerNoticeOne?noticeNo=${n.noticeNo}">${n.noticeTitle}</a></td>
-                  <td>${n.employeeId}</td>
-                  <td>${n.createdate}</td>
-                </tr>
-                </c:forEach>
-              </table>
-            </div>
-            <!-- /.box-body -->
-            <!-- 페이지네이션 -->
-            <div class="text-center">
-				<c:if test="${currentPage > 1}">
-					<a href="${pageContext.request.contextPath}/trainerNotice?currentPage=${currentPage-1}" class="btn btn-primary">이전</a>
-				</c:if>
-				
-				<c:if test="${currentPage < lastPage}">
-					<a href="${pageContext.request.contextPath}/trainerNotice?currentPage=${currentPage+1}" class="btn btn-primary">다음</a>
-				</c:if>
-			</div>
-          </div>
-          <!-- /.box -->
+    <!-- 페이지 메인 컨텐트 헤더 -->
+    <section class="content">
+	<h3>문의사항</h3>
+      <!-- Default box -->
+      <div class="box">
+        <div class="box-header with-border">
+          <h3 class="box-title">${resultQuestion.questionTitle}</h3>
         </div>
+        <div class="box-body">
+          ${resultQuestion.questionContent}
+        </div>
+        <!-- /.box-body -->
+        <div class="box-footer">
+        	<h4>답변</h4>
+        	<c:forEach var="qr" items="${list}">
+			<div> ┗ ${qr.questionReplyContent}</div>
+			</c:forEach>
+        </div>
+        <!-- /.box-footer-->
       </div>
+      <!-- /.box -->
     </section>
+    <!-- /.content -->
   </div>
   <!-- 헤더 + 내용 wrapper 부분 끝 -->
 
+  <!-- 문의 답글 다는 곳 -->
+  
+  
   <!-- 메인 footer 항상 적을 것 -->
   <footer class="main-footer">
     <!-- 맨 오른쪽 표시되는 것 -->
     <div class="pull-right hidden-xs">
-      팀 하리보
+      팀 하리보 | 택민 유정 유섭 회윤
     </div>
     <!-- 저작권 명시 -->
     <strong>Copyright &copy; 2023-2024 <a href="trainerHome">TEAM HARIBO</a>.</strong> All rights reserved.

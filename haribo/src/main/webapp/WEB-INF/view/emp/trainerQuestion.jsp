@@ -66,14 +66,14 @@
               </table>
             </div>
             <!-- 페이지네이션 -->
-            <div>
-			  	<ul class="pagination">
-			    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-			    <li class="page-item"><a class="page-link" href="#">1</a></li>
-			    <li class="page-item active"><a class="page-link" href="#">2</a></li>
-			    <li class="page-item"><a class="page-link" href="#">3</a></li>
-			    <li class="page-item"><a class="page-link" href="#">Next</a></li>
-			  	</ul>
+            <div class="text-center"> 
+				<c:if test="${currentPage > 1}">
+					<a href="${pageContext.request.contextPath}/trainerQuestion?currentPage=${currentPage-1}" class="btn btn-primary">이전</a>
+				</c:if>
+				
+				<c:if test="${currentPage < lastPage}">
+					<a href="${pageContext.request.contextPath}/trainerQuestion?currentPage=${currentPage+1}" class="btn btn-primary">다음</a>
+				</c:if>
 			</div>
             <!-- /.box-body -->
           </div>

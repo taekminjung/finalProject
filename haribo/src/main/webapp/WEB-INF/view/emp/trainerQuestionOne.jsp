@@ -46,9 +46,8 @@
         <div class="box-footer">
         	<h4>답변</h4>
         	<c:forEach var="qr" items="${list}">
-			<div>${qr.questionReplyContent}</div>
+			<div> ┗ ${qr.questionReplyContent}</div>
 			</c:forEach>
-          ┗ 여기에 답글 달기 (답글 출력)
         </div>
         <!-- /.box-footer-->
       </div>
