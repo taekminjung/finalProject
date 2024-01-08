@@ -7,12 +7,18 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.example.haribo.service.SportsEquipmentService;
 import com.example.haribo.vo.SportsEquipment;
 import com.example.haribo.vo.SportsEquipmentExpire;
+import com.example.haribo.vo.SportsEquipmentImg;
 import com.example.haribo.vo.SportsEquipmentOrder;
 
+import jakarta.servlet.http.HttpSession;
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @Controller
 public class SportsEquipmentController {
 	@Autowired SportsEquipmentService sportsEquipmentService;
@@ -23,11 +29,25 @@ public class SportsEquipmentController {
 	}
 	
 	@PostMapping("/insertSportsEquipment")
-	public String insertSportsEquipment(SportsEquipment sportsEquipment) {
-		sportsEquipmentService.insertSportsEquipment(sportsEquipment);
+	public String insertSportsEquipment(HttpSession session, MultipartFile seImg, SportsEquipment sportsEquipment, SportsEquipmentImg sportsEquipmentImg) {
+		String path = session.getServletContext().getRealPath("/upload");
+		int sportsEquipmentNo = sportsEquipmentService.insertSportsEquipment(sportsEquipment);
+		sportsEquipmentImg.setSportsEquipmentNo(sportsEquipmentNo);
+		sportsEquipmentService.insertSportsEquipmentImg(seImg, sportsEquipmentImg, path);
+		System.out.println(seImg+"<--seImg");
+		
 		return "redirect:/sportsEquipmentList";
 	}
 	
+	@PostMapping("/insertSportsEquipmentImg")
+	public String insertSportsEquipmentImg(HttpSession session, MultipartFile seImg, SportsEquipmentImg sportsEquipmentImg) {
+		String path = session.getServletContext().getRealPath("/upload");
+		sportsEquipmentService.insertSportsEquipmentImg(seImg, sportsEquipmentImg, path);
+		log.debug(seImg+"<--seImg");
+		log.debug(sportsEquipmentImg+"<--sportsEquipmentImg");
+		return "emp/insertProgram";
+	}
+			
 	@GetMapping("/sportsEquipmentList")
 	public String sportsEquipmentList(Model model, @RequestParam(defaultValue="1")int currentPage) {
 		List<SportsEquipment> list = sportsEquipmentService.sportsEquipmentList(currentPage);

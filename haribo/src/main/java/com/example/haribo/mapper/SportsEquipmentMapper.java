@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Mapper;
 
 import com.example.haribo.vo.SportsEquipment;
 import com.example.haribo.vo.SportsEquipmentExpire;
+import com.example.haribo.vo.SportsEquipmentImg;
 import com.example.haribo.vo.SportsEquipmentOrder;
 
 @Mapper
@@ -22,6 +23,8 @@ public interface SportsEquipmentMapper {
 	int insertExpire(SportsEquipmentExpire sportsEquipmentExpire);	
 	
 	int insertSportsEquipment(SportsEquipment sportsEquipment);
+	
+	int insertSportsEquipmentImg(SportsEquipmentImg sportsEquipmentImg);
 	
 	int deleteSportsEquipment(SportsEquipment sportsEquipment);
 	

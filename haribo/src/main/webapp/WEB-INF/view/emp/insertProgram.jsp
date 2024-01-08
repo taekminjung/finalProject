@@ -50,6 +50,10 @@
               <div class="box-body">
 			<form id="form" name="form" method="post" action="${pageContext.request.contextPath}/insertProgram" enctype="multipart/form-data">
 			  <div class="form-group">
+			    <label for="employeeId">트레이너명</label>
+			    <input type="text" class="form-control" id="employeeId" name="employeeId" placeholder="트레이너명">
+			  </div>
+			  <div class="form-group">
 			    <label for="programName">프로그램명</label>
 			    <input type="text" class="form-control" id="programName" name="programName" placeholder="프로그램명">
 			  </div>
@@ -76,7 +80,6 @@
               <div class="box-footer">
   
               </div>
-            </form>
           </div>
       </div>
   <div class="control-sidebar-bg"></div>
@@ -112,9 +115,9 @@
 		}  else if($('#programMaxCustomer').val().length<1){
 			alert('최대 수용인원 입력해주세요')
 			$('#programMaxCustomer').focus()
-		}  else if ($('#programInfo').val().length<1){
+		}  else if ($('#programMemo').val().length<1){
 			alert('상세정보를 입력해주세요')
-			$('#programInfo').focus()
+			$('#programMemo').focus()
 		}  else if ($('#programDay').val().length<1){
 			alert('프로그램 개설요일을 입력해주세요')
 			$('#programDay').focus()

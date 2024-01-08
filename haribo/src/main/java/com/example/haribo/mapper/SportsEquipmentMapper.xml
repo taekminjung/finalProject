@@ -80,7 +80,22 @@
 			#{itemName},
 			#{itemPrice}
 			)
+	</insert>
 	
+	<insert id="insertSportsEquipmentImg" parameterType="com.example.haribo.vo.SportsEquipmentImg">
+		INSERT INTO sports_equipment_img(
+			sports_equipment_no,
+			sports_equipment_img_origin_name,
+			sports_equipment_img_file_name,
+			sports_equipment_img_size,
+			sports_equipment_img_type
+		)	VALUES	(
+			#{sportsEquipmentNo},
+			#{sportsEquipmentImgOriginName},
+			#{sportsEquipmentImgFileName},
+			#{sportsEquipmentImgSize},
+			#{sportsEquipmentImgType}
+			)
 	</insert>
 	
 	<update id="updateSportsEquipment" parameterType="com.example.haribo.vo.SportsEquipment">

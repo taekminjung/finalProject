@@ -23,11 +23,13 @@ import lombok.extern.slf4j.Slf4j;
 public class ProgramService {
 	@Autowired private ProgramMapper programMapper;
 	
-	public void insertProgram(Program program) {
+	public int insertProgram(Program program) {
 		int row = programMapper.insertProgram(program);
 		if(row != 1) {
 			throw new RuntimeException();
 		} 
+			int programNo = program.getProgramNo();
+			return programNo;
 	}
 	
 	public List<Program> programList(@RequestParam(defaultValue = "1") int currentPage){
@@ -116,7 +118,7 @@ public class ProgramService {
 	public void insertProgramImg(MultipartFile pImg, ProgramImg programImg, String path) {
 		String pathProgram = path+"/employee";
 		String oName = pImg.getOriginalFilename();
-		String type = oName.substring(oName.lastIndexOf("."));
+		String type = oName;
 		String fName = type;
 		
 		programImg.setProgramImgOriginName(oName);

@@ -57,15 +57,15 @@
 			  </div>
 			  <div class="form-group">
 			    <label for="programMaxCustomer">수용 인원</label>
-			    <input type="text" class="form-control" id="programMaxCustomer" name="programMaxCustomer" placeholder="최대 수용인원">
+			    <input type="text" class="form-control" id="programMaxCustomer" name="programMaxCustomer" placeholder="${resultProgram.programMaxCustomer }">
 			  </div>
 			  <div class="form-group">
 			    <label for="programMemo">프로그램 내용</label>
-			    <textarea style="height: 150px; width: 600px;" class="form-control" id="programMemo" name="programMemo" placeholder="프로그램 상세내용"></textarea>
+			    <textarea style="height: 150px; width: 600px;" class="form-control" id="programMemo" name="programMemo" placeholder="${resultProgram.programMemo}"></textarea>
 			  </div>
 			  <div class="form-group">
 			    <label for="programDay">프로그램 일자 <br> 예시) 토 / 월, 수, 금 / 화, 목</label>
-			    <input type="text" class="form-control" id="programDay" name="programDay" placeholder="프로그램 개설 요일">
+			    <input type="text" class="form-control" id="programDay" name="programDay" placeholder="${resultProgram.programDay }">
 			  </div>
 			  <div class="form-group">
 			    <label for="pImg">프로그램 이미지</label>

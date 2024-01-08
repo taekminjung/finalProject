@@ -43,25 +43,30 @@
             </div>
               <div class="box-body">
 
-                <form id="form" name="form" method="post" action="${pageContext.request.contextPath}/insertSportsEquipment">
+              <form id="form" name="form" method="post" action="${pageContext.request.contextPath}/insertSportsEquipment">
                 <div class="form-group">
-                  <label for="itemName">운동 기구 제품명</label>
-                  <input type="text" class="form-control" id="itemName" name="itemName" placeholder="운동 기구 제품명을 입력하세요">
+                	<label for="itemName">운동 기구 제품명</label>
+                	<input type="text" class="form-control" id="itemName" name="itemName" placeholder="운동 기구 제품명을 입력하세요">
                 </div>
-              <div class="form-group">
-                <label for="itemPrice">가격</label>
-                <input type="text" class="form-control" id="itemPrice" name="itemPrice" placeholder="가격을 입력하세요">
-              </div>
-            </div>
-
+                <div class="form-group">
+                	<label for="itemPrice">가격</label>
+                	<input type="text" class="form-control" id="itemPrice" name="itemPrice" placeholder="가격을 입력하세요">
+                </div>
+                <div class="form-group">
+                	<label for="seImg">운동기구 이미지</label>
+                	<input type="file" id="seImg" name="seImg" accept=".png">
+        	    </div>
+           		
+           		<div class="col-xs-4" style="float:right">
+          			<button type="submit" id="formBtn" class="btn btn-primary">추가</button>
+          		</div>			
+			</form>
+              
               <div class="box-footer">
               </div>
-            </form>
           </div>
       </div>
-           <div class="col-xs-4" style="float:right">
-          		<button type="submit" id="formBtn" class="btn btn-primary">Submit</button>
-          </div>
+
   <div class="control-sidebar-bg"></div>
 </div>
 <!-- ./wrapper -->

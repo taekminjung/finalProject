@@ -130,9 +130,6 @@
           <ul class="treeview-menu">
             <li><a href="${pageContext.request.contextPath}/programList"><i class="fa fa-circle-o"></i>프로그램 목록</a></li>
             <li><a href="${pageContext.request.contextPath}/insertProgram"><i class="fa fa-circle-o"></i>프로그램 추가</a></li>
-            <li><a href="#"><i class="fa fa-circle-o"></i>A 클래스</a></li>
-            <li><a href="#"><i class="fa fa-circle-o"></i>B 클래스</a></li>
-            <li><a href="#"><i class="fa fa-circle-o"></i>C 클래스</a></li>
           </ul>
         </li>
         

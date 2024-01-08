@@ -6,10 +6,12 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.example.haribo.mapper.SportsEquipmentMapper;
 import com.example.haribo.vo.SportsEquipment;
 import com.example.haribo.vo.SportsEquipmentExpire;
+import com.example.haribo.vo.SportsEquipmentImg;
 import com.example.haribo.vo.SportsEquipmentOrder;
 
 @Service
@@ -64,6 +66,20 @@ public class SportsEquipmentService {
 	
 	public int insertSportsEquipment(SportsEquipment sportsEquipment) {
 		return sportsEquipmentMapper.insertSportsEquipment(sportsEquipment);
+	}
+	
+	public void insertSportsEquipmentImg(MultipartFile seImg, SportsEquipmentImg sportsEquipmengImg, String path) {
+		String pathSportsEquipment = path+"/employee";
+		String oName = seImg.getOriginalFilename();
+		String type = oName.substring(oName.lastIndexOf("."));
+		String fName = type;
+		
+		sportsEquipmengImg.setSportsEquipmentImgOriginName(oName);
+		sportsEquipmengImg.setSportsEquipmentImgFileName(fName);
+		sportsEquipmengImg.setSportsEquipmentImgSize((int)seImg.getSize());
+		sportsEquipmengImg.setSportsEquipmentImgType(seImg.getContentType());
+		
+		int row = sportsEquipmentMapper.insertSportsEquipmentImg(sportsEquipmengImg);
 	}
 	
 	public List<SportsEquipment> sportsEquipmentList(

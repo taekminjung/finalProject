@@ -37,9 +37,14 @@ public class ProgramController {
 	}
 	
 	@PostMapping ("/insertProgram")
-	public String insertEmployee(Program program) {
+	public String insertEmployee(HttpSession session, Program program, MultipartFile pImg, ProgramImg programImg) {
 		log.debug(program.toString());
-		programService.insertProgram(program);
+		log.debug(programImg.toString());
+
+		String path = session.getServletContext().getRealPath("/upload");
+		int programNo = programService.insertProgram(program);
+		programImg.setProgramNo(programNo);
+		programService.insertProgramImg(pImg, programImg, path);
 		
 		return "redirect:/adminHome";
 	}
@@ -151,14 +156,6 @@ public class ProgramController {
 		model.addAttribute("list", list);
 		
 		return "public/program";
-	}
-	
-	//프로그램 사진 추가
-	@PostMapping("/insertProgramImg")
-	public String insertProgramImg(HttpSession session, MultipartFile pImg, ProgramImg programImg) {
-		String path = session.getServletContext().getRealPath("/upload");
-		programService.insertProgramImg(pImg, programImg, path);
-		return "emp/insertProgram";
 	}
 	
 	@GetMapping("/ScheduleByBranch")

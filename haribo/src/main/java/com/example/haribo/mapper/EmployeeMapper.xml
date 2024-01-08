@@ -60,18 +60,19 @@
 	</select>
 	
 	<select id="employeeList" parameterType="java.util.Map" resultType="java.util.Map">
-
 	    SELECT
-	      e.branch_no branchNo,
-	      ed.employee_name employeeName,
-	      ed.employee_phone employeePhone,
-	      ed.employee_gender employeeGender,
-	      ed.employee_email employeeEmail,
-	      e.createdate,
-	      e.employee_active employeeActive
+	        e.branch_no branchNo,
+	        ed.employee_name employeeName,
+	        ed.employee_phone employeePhone,
+	        ed.employee_gender employeeGender,
+	        ed.employee_email employeeEmail,
+	        e.createdate,
+	        e.employee_active employeeActive
 	    FROM employee e
 	    INNER JOIN employee_detail ed ON e.employee_no = ed.employee_no
+	    ORDER BY e.branch_no DESC
 	</select>
+
 
 	<select id="getTotalRow" resultType="int">
 		SELECT COUNT(*)
