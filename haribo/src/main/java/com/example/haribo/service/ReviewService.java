@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.haribo.mapper.ReviewMapper;
+import com.example.haribo.vo.Review;
 import com.example.haribo.vo.ReviewReply;
 
 import lombok.extern.slf4j.Slf4j;
@@ -26,5 +27,10 @@ public class ReviewService {
 		
 		log.debug(rMap+"");
 		return rMap;
+	}
+	public int insertReview(Review review) {
+		 int row = reviewMapper.insertReview(review);
+		 
+		 return row;
 	}
 }

@@ -113,10 +113,16 @@
 								${d }<br>
 								<c:forEach var="p" items="${proList }">
 									<c:if test="${p.programDate == d }">
-										<a href="" data-bs-toggle="tooltip" title="리뷰 쓰기">
+									<c:if test="${p.exitTime != null }">
+										<a href="${pageContext.request.contextPath }/insertReviewForm?programReservationNo=${p.programReservationNo}" data-bs-toggle="tooltip" title="리뷰 쓰기">
 											<h6>${p.branchName }<br>
 											: ${p.programName}</h6>
 										</a>
+										</c:if>
+										<c:if test="${p.exitTime == null }">
+										<h6>${p.branchName }<br>
+											: ${p.programName}</h6>
+											</c:if>
 										<div>
 											<c:if test="${p.cnt == 0 && p.enterTime == null}">
 												<span class="badge bg-primary text-light">

@@ -18,7 +18,7 @@
 	<!-- meta character set -->
 	<meta charset="UTF-8">
 	<!-- Site Title -->
-	<title>리뷰</title>
+	<title>리뷰 작성하기</title>
 
 	<link href="https://fonts.googleapis.com/css?family=Roboto:100,200,300,400,500,700" rel="stylesheet">
 	<!--
@@ -49,54 +49,55 @@
 			<div class="row d-flex align-items-center justify-content-center">
 				<div class="about-content col-lg-12">
 					<h1>
-						리뷰
+						리뷰 작성하기 
 					</h1>
 					<p class="link-nav"><a href="${pageContext.request.contextPath}/home">Home </a>
-						<span class="lnr lnr-arrow-right"></span> <a href="${pageContext.request.contextPath}/reviewList">
-							Review</a></p>
+						<span class="lnr lnr-arrow-right"></span> <a href="${pageContext.request.contextPath}/insertReview">
+							</a>InsertReview</p>
 				</div>
 			</div>
 		</div>
 	</section>
 	<!-- End banner Area -->
-	<br><br>
-	<!-- Start testomial Area -->
-	<section class="testomial-area section-gap-bottom">
+
+	<!-- Start schedule Area -->
+	<section class="schedule-area section-gap">
+		<img class="featured-img img-fluid" src="img/featured-class/feature-img.png" alt="">
 		<div class="container">
 			<div class="row d-flex justify-content-center">
 				<div class="col-lg-12">
 					<div class="section-title-wrap text-center">
-						<h1>고객 리뷰</h1>
-						<p>저희 프로그램을 수강하신 소중한 고객님들의 리뷰입니다.</p>
+						<h1>리뷰 작성하기</h1>
+						<p>예약 에 대한 리뷰 작성하기 입니다.</p>
 					</div>
 				</div>
 			</div>
-			<div class="row">
-				<div class="active-testimonial-carusel">
-				<c:forEach var="r" items="${list}">
-					<div class="single-testimonial item">
-						<img class="mx-auto rounded-circle"  width="150" height="150"  src="${pageContext.request.contextPath}/upload/customer/${r.customerId}.png" alt="">
-						<p class="desc">
-							<h4>작성자 : ${r.customerId }</h4><br>
-							<h4>수강 프로그램 : ${r.programName}</h4><br>
-							리뷰 내용 : ${r.reviewContent}
-						</p>
-						<c:forEach var="rp" items="${rpList }">
-							<c:if test="${r.reviewNo == rp.reviewNo }">
-								
-								<p class="desc">
-									<h4>관리자 : ${rp.employeeId }</h4><br>
-									코멘트 : ${rp.reviewReplyContent}
-								</p>
-							</c:if>
-						</c:forEach>
-					</div>
-				</c:forEach>
+			<div class="row justify-content-center">
+				<div class="table-wrap col-lg-10">
+				<form action="${pageContext.request.contextPath}/insertReview" method="post">
+					<table class="schdule-table table table-bordered">
+						<thead class="thead-light">
+							<tr>
+								<th class="head" scope="col">제목</th>
+								<th class="head" scope="col">내용</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td><input type="text" name="reviewTitle"></td>
+								<td><textarea name="reviewContent"></textarea></td>
+								<input type="hidden" name="programReservationNo" value="${review.programReservationNo}">
+							</tr>
+							
+						</tbody>
+					</table>
+					<button>리뷰 작성하기</button>
+					</form>
 				</div>
 			</div>
 		</div>
 	</section>
-	<!-- End testomial Area -->
+	<!-- End schedule Area -->
 
 	<!-- start footer Area -->
 	<!-- inc 폴더의 CustomerFooter.jsp를 include -->

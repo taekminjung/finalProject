@@ -28,4 +28,19 @@
 			createdate
 		FROM review_reply
 	</select>
+	<insert id="insertReview" parameterType="com.example.haribo.vo.Review">
+	INSERT INTO review
+		(program_reservation_no,
+		 review_title,
+		 review_content,
+		 createdate,
+		 updatedate
+		)VALUES(
+		#{programReservationNo},
+		#{reviewTitle},
+		#{reviewContent},
+		NOW(),
+		NOW()
+		) 
+	</insert>
 </mapper>
