@@ -99,6 +99,7 @@ public class ProgramController {
 //		//System.out.println(resultProgram.getProgramMemo() + "<-- 프로그램 상세설명");
 		return "emp/programOne";
 	}	
+// 고객 홈페이지 부분 	
 	
 	// 프로그램 목록(홈페이지)
 	@GetMapping("/program")
@@ -121,8 +122,8 @@ public class ProgramController {
 		HashMap<String, Object> dmap = programService.selectProgramDetail(program, branch);
 		System.out.println("\u001B[43m"+dmap+"<--con.dmap");	
 		//상세보기 페이지에서 프로그램 정보와 담당 직원 사진 이름 출력
-		HashMap<String, Object> map = programService.selectProgramEmp(program);
-		System.out.println("\u001B[43m"+map);	
+		HashMap<String, Object> map = programService.selectProgramEmp(program, branch);
+		System.out.println("\u001B[43m"+map+"<--con.map");	
 		//프로그램디테일페이지에 해당 프로그램 일정 출력을위한 달력
 		Map<String, Object> cMap = calendarService.calendar(targetYear, targetMonth);
 		System.out.println("\u001B[43m"+cMap+"<--p/con.programDetail");
@@ -172,8 +173,8 @@ public class ProgramController {
 		HashMap<String, Object> dmap = programService.selectProgramDetail(program, branch);
 		System.out.println("\u001B[43m"+dmap+"<--con.dmap");	
 		//상세보기 페이지에서 프로그램 정보와 담당 직원 사진 이름 출력
-		HashMap<String, Object> map = programService.selectProgramEmp(program);
-		System.out.println("\u001B[43m"+map);	
+		HashMap<String, Object> map = programService.selectProgramEmp(program, branch);
+		System.out.println("\u001B[43m"+map+"<-- con.emp.map");	
 		//프로그램디테일페이지에 해당 프로그램 일정 출력을위한 달력
 		Map<String, Object> cMap = calendarService.calendar(targetYear, targetMonth);
 		System.out.println("\u001B[43m"+cMap+"<--p/con.programDetail");

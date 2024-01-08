@@ -76,7 +76,7 @@
 							</div>
 						</div>
 						<div class="col-lg-9 col-md-9">
-							<h3 class="mt-20 mb-20">${program.programName}</h3> 
+							<h3 class="mt-20 mb-20" >${program.programName}</h3> 
 						</div>
 						<div class="col-lg-12">
 						<h5 style="text-align:center">프로그램 소개</h5>
@@ -88,16 +88,7 @@
 					</div>
 				</div>
 				<div class="col-lg-4 sidebar-widgets">
-					<div class="widget-wrap">
-						<div class="single-sidebar-widget user-info-widget">
-							<img src="customer/img/blog/user-info.png" alt="">
-							<a href="#"><h4>${map.employeeName}</h4></a>
-							<p>
-								${map.branchName}지점 트레이너
-							</p>
-							<p>
-							Email : ${map.employeeEmail}
-							</p>
+					
 							<p >
 							<h5>지점별 일정/예약현황 보기</h5><br>
 							<div style="margin: auto; text-align: center;">

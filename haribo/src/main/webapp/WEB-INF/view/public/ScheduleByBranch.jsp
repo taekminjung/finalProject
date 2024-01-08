@@ -18,7 +18,7 @@
 	<!-- meta character set -->
 	<meta charset="UTF-8">
 	<!-- Site Title -->
-	<title>프로그램 상세보기</title>
+	<title>지점별 프로그램 예약현황</title>
 
 	<link href="https://fonts.googleapis.com/css?family=Roboto:100,200,300,400,500,700" rel="stylesheet">
 	<!--
@@ -121,11 +121,11 @@
 						</c:forEach>
 					</table>
 						<a style="float:left" class="btn btn-outline-secondary" 
-						href="${pageContext.request.contextPath }/ScheduleByBranch?programNo=${program.programNo}&targetYear=${cMap.targetYear}&targetMonth=${cMap.targetMonth -1}&branchNo=${branch.branchNo}&branchName=${pmap.branchName}">
+						href="${pageContext.request.contextPath }/ScheduleByBranch?programNo=${program.programNo}&programName=${program.programName}&targetYear=${cMap.targetYear}&targetMonth=${cMap.targetMonth -1}&branchNo=${branch.branchNo}&branchName=${pmap.branchName}">
 							이전 달
 						</a>
 						<a style="float:right" class="btn btn-outline-secondary" 
-						href="${pageContext.request.contextPath }/ScheduleByBranch?programNo=${program.programNo}&targetYear=${cMap.targetYear}&targetMonth=${cMap.targetMonth +1}&branchNo=${branch.branchNo}&branchName=${pmap.branchName}">
+						href="${pageContext.request.contextPath }/ScheduleByBranch?programNo=${program.programNo}&programName=${program.programName}&targetYear=${cMap.targetYear}&targetMonth=${cMap.targetMonth +1}&branchNo=${branch.branchNo}&branchName=${pmap.branchName}">
 							다음 달
 						</a>
 				</div>

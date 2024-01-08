@@ -32,7 +32,7 @@ public interface ProgramMapper {
 	//프로그램 상세보기
 	HashMap<String, Object> selectProgramDetail(Program program);
 	//상세보기에서 프로그램 정보담당직원정보
-	HashMap<String, Object> selectProgramEmp(Program program);
+	HashMap<String, Object> selectProgramEmp(HashMap<String, Object> map);
 	//상세보기에서 프로그램 검색 
 	List<Program> searchByProgram(Program program);
 	//프로그램 일정 출력
