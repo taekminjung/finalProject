@@ -117,12 +117,18 @@
                 <i class="fa fa-angle-left pull-right"></i>
               </span>
           </a>
+          
           <ul class="treeview-menu">
-            <li><a href="#">A 클래스</a></li>
-            <li><a href="#">B 클래스</a></li>
-            <li><a href="#">C 클래스</a></li>
-          </ul>
+        	<c:forEach var="p" items="${list}">
+            <li>
+                <a href="${pageContext.request.contextPath}/trainerProgramOne?programNo=${p.programNo}">
+                    ${p.programName}
+                </a>
+            </li>
+        	</c:forEach>
+    	  </ul>
         </li>
+        
       </ul>
       
       <!-- /.sidebar-menu -->

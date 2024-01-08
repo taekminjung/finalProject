@@ -164,4 +164,5 @@
 			program_day = #{programDay},
 			updatedate = NOW()
 	</update>
+	
 </mapper>
