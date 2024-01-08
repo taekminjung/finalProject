@@ -85,7 +85,7 @@ public class ProgramService {
 	//프로그램상세보기페이지에서 프로그램정보와 담당 직원정보 출력
 	public HashMap<String, Object> selectProgramEmp(Program program, Branch branch){
 		HashMap<String, Object> map = new HashMap<>();
-		map.put("programNo", program.getProgramNo());
+		map.put("programName", program.getProgramName());
 		map.put("branchNo", branch.getBranchNo());
 		HashMap<String, Object> dmap = programMapper.selectProgramEmp(map);
 		

@@ -48,7 +48,7 @@
 			<div class="row d-flex align-items-center justify-content-center">
 				<div class="about-content col-lg-12">
 					<h1>
-						${program.programName}
+						${pmap.branchName}지점 ${program.programName} 강의 일정
 					</h1>
 					<p class="link-nav"><a href="${pageContext.request.contextPath}/home">Home </a>
 						<span class="lnr lnr-arrow-right"></span>

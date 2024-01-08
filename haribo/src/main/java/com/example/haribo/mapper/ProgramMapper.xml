@@ -92,7 +92,7 @@
 			ON e.employee_no = d.employee_no
 			LEFT OUTER JOIN employee_img i
 			ON e.employee_no = i.employee_no
-			WHERE p.program_no = #{programNo} AND b.branch_no = #{branchNo}
+			WHERE p.program_name = #{programName} AND b.branch_no = #{branchNo}
 		
 	</select>
 	
