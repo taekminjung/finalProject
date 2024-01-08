@@ -41,9 +41,10 @@ public class ProgramReservationContoller {
 	}
 	
 	@PostMapping("/insertProgramReservation")
-	public String insertProgramReservation(String branchName,String customerId, Integer[] programDateNoList) {
+	public String insertProgramReservation(int customerNo, String customerId, Integer[] programDateNoList) {
 		
-		programReservationService.insertProgramReservation(programDateNoList,customerId,branchName);
-		return "";
+		programReservationService.insertProgramReservation(programDateNoList,customerId);
+		String u = "redirect:/customerSchedule?customerNo="+customerNo;
+		return u;
 	}
 }

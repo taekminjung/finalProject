@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.haribo.service.ProgramReservationService;
 
+import jakarta.servlet.http.HttpSession;
 import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @RestController
@@ -27,9 +28,9 @@ public class ProgramRest {
 	
 	//해당 프로그램,지점 이름으로 프로그램 날짜 출력
 	@GetMapping("/programDateByProgramNameBranchName")
-	public List<Map<String,Object>> programDateByProgramNameBranchName(String programName,String branchName){
-		
-		List<Map<String,Object>> programDateList = programReservationService.ProgramDateByProgramNameBranchName(programName, branchName);
+	public List<Map<String,Object>> programDateByProgramNameBranchName(HttpSession session, String programName,String branchName){
+		int customerNo = (int)(((Map)session.getAttribute("loginCustomer")).get("customerNo"));
+		List<Map<String,Object>> programDateList = programReservationService.ProgramDateByProgramNameBranchName(programName, branchName, customerNo);
 		return programDateList;
 	}
 }

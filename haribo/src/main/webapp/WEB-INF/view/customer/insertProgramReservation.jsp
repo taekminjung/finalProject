@@ -72,23 +72,32 @@
 		<div class="container">
 			<div class="row">
 				<jsp:include page="/inc/customerMyPageSidebar.jsp"></jsp:include>
-				<div class="col-lg-9 posts-list"><br><br>
-					<div class="col-lg-10 row">
-						<select id="program">
+				<div class="col-lg-9 posts-list">
+					<br><br><h4>프로그램 예약하기</h4>
+					<div class="col-lg-12"><br><br>
+						<select  class="form-select col-lg-5" id="program" style="float:left">
 							<option>프로그램</option>
 							<c:forEach var="p" items="${proList }">
 								<option value="${p.programName }">${p.programName }</option>
 							</c:forEach>
 						</select>
-						<select id="branch" style="float:left">
+						<select  class="form-select col-lg-5" id="branch" style="float:left">
 							<option>지점</option>
 						</select>
-						<button style="float:right">예약하기</button>
+					
+						<button class="col-lg-1 btn btn-outline-dark" id="formBtn" style="float:right" disabled>예약</button>
 					</div>
-					<div>
-						<form id="programDateForm" action="${pageContext.request.contextPath }/insertProgramReservation" method="post">
-							<input type="hidden" name="cutomerId" value="${loginCustomer.customerId }">
-						</form>
+					<div><br><br><br><br>
+						<fieldset style="background-color: #ffffff; border:5px groove; height:1000px">
+						<legend style="background-color: gray; color: white; padding: 5px 10px; width:200px">예약 가능 날짜</legend>
+							<form id="programDateForm" action="${pageContext.request.contextPath }/insertProgramReservation" method="post">
+								<input type="hidden" name="customerId" value="${loginCustomer.customerId }">
+								<input type="hidden" name="customerNo" value="${loginCustomer.customerNo }">
+								<br><br><br><div class="formDiv">
+									<h5 align="center">프로그램과 지점을 선택하시면 예약 가능 날짜가 출력되고 예약 버튼이 활성화 됩니다.</h5>
+								</div>
+							</form>
+						</fieldset>
 					</div>
 				</div>
 			</div>
@@ -137,14 +146,22 @@
 				method:'get',
 				data:{'branchName':$('#branch').val(),'programName':$('#program').val()},
 				success:function(json){
-					$('#programDateForm').html('');
+					$('.formDiv').html('')
+					$('#formBtn').attr("disabled", false);
 					$(json).each(function(index,item){	
-						$('#programDateForm').append('<p><input type="checkbox" name="programDateNoList" value="'+item.programDateNo+'">'+item.programDate+'</p>');
+						$('.formDiv').append('<p><input type="checkbox" id="ck" name="programDateNoList" value="'+item.programDateNo+'">&nbsp;&nbsp;&nbsp;'+item.programDate+'</p>');
 					})
 				}
 			})
 		})
 		
+		$('#formBtn').click(function(){
+			if($('input:checkbox[id=ck]:checked').length < 1){
+				alert('하나 이상의 날짜를 선택해주세요');
+			}else{
+				$('#programDateForm').submit();
+			}
+		});
 	</Script>
 </body>
 

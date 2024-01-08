@@ -74,6 +74,7 @@
 		ON p.program_no = pd.program_no
 		WHERE b.branch_name = #{branchName}
 		AND p.program_name = #{programName}
+		AND pd.program_date BETWEEN NOW() AND #{customerMembershipEnd}
 		ORDER BY programDate										
 	</select>
 </mapper>

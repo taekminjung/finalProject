@@ -49,6 +49,12 @@
 					</a>
 				</li>
 				<li>
+					<a href="${pageContext.request.contextPath }/insertProgramReservation" class="d-flex justify-content-between">
+						<span class="lnr lnr-arrow-right"></span>
+						<p>프로그램 예약</p>
+					</a>
+				</li>
+				<li>
 					<a href="${pageContext.request.contextPath }/updateCustomerPw?customerNo=${loginCustomer.customerNo}" class="d-flex justify-content-between">
 						<span class="lnr lnr-arrow-right"></span>
 						<p>비밀번호 변경</p>

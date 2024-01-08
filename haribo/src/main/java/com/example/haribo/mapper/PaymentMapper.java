@@ -13,4 +13,7 @@ public interface PaymentMapper {
 	
 	//결제번호로 결제날짜,멤버십 개월 수,결제 고객 번호 출력하기
 	Map<String, Object> payMap(Payment payment);
+	
+	//회원 아이디로 가장 최근 결제 내역의 paymentNo 출력
+	Payment activePayment(Payment payment);
 }

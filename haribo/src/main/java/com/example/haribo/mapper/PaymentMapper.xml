@@ -26,4 +26,15 @@
 		ON p.payment_membership_no = m.membership_no
 		WHERE p.payment_no = #{paymentNo}
 	</select>
+	
+	<select id="activePayment" parameterType="com.example.haribo.vo.Payment" 
+								resultType="com.example.haribo.vo.Payment">
+		SELECT 
+			Max(payment_no) paymentNo
+		FROM payment
+		WHERE customer_id = #{customerId}
+		AND payment_date = (SELECT MAX(payment_date)
+							FROM payment
+							WHERE customer_id = #{customerId})
+	</select>
 </mapper>

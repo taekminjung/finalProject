@@ -18,4 +18,15 @@
 		branch_tel AS branchTel
 	FROM branch
 	</select>
+	
+	<select id="branchNoByProgramDateNo" parameterType="com.example.haribo.vo.ProgramDate" 
+											resultType="com.example.haribo.vo.Branch">
+		SELECT 
+			b.branch_no branchNo
+		FROM branch b INNER JOIN employee e
+		ON b.branch_no = e.branch_no INNER JOIN program p
+		ON e.employee_id = p.employee_id INNER JOIN program_date pd
+		ON p.program_no = pd.program_no
+		WHERE program_date_no = #{programDateNo} 										
+	</select>
 </mapper>
