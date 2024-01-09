@@ -246,4 +246,9 @@ public class CustomerService {
 			customerMapper.deleteReview(review);
 		}
 	}
+	public int updateReview(Review review) {
+		int row = customerMapper.updateReview(review);
+	
+		return row;
+	}
 }

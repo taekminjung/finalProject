@@ -94,7 +94,7 @@
 								<td>${r.reviewContent}</td>
 								<td>${r.createdate}</td>
 								<td>
-								<a href="${pageContext.request.contextPath }">수정</a>
+								<a href="${pageContext.request.contextPath }/updateReview?reviewNo=${r.reviewNo}">수정</a>
 								<a href="${pageContext.request.contextPath }/deleteReview?reviewNo=${r.reviewNo}">삭제</a>
 								</td>
 							</tr>

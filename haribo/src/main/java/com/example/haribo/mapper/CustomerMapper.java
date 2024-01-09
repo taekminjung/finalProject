@@ -69,4 +69,6 @@ public interface CustomerMapper {
 	int deleteReviewReply(Review review);
 	//리뷰 삭제
 	int deleteReview(Review review);
+	//리뷰 수정
+	int updateReview(Review review);
 }

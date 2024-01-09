@@ -232,7 +232,10 @@ public class CustomerController {
 			return u;
 		}
 		//리뷰 수정
-		
+		@GetMapping("/updateReview")
+		public int updateReview(Review review) {
+			
+		}
 		//리뷰 삭제
 		@GetMapping("/deleteReview")
 		public String deleteReview(Review review) {
