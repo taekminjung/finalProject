@@ -37,10 +37,10 @@ public class ReviewController {
 	// 리뷰 리스트 (트레이너)
 	@GetMapping("/trainerReview")
 	public String trainerReview(Model model, @RequestParam(defaultValue = "1") int currentPage) {
-		List<Review> list = reviewService.empReviewList(currentPage);
+		List<Review> trainerlist = reviewService.empReviewList(currentPage);
 		int lastPage = reviewService.lastPage();
 		model.addAttribute("currentPage", currentPage);
-		model.addAttribute("list", list);
+		model.addAttribute("trainerlist", trainerlist);
 		model.addAttribute("lastPage", lastPage);
 		
 		return "emp/trainerReview";
@@ -52,8 +52,8 @@ public class ReviewController {
 	public String trainerReviewOne(Model model, Review review) {
 		Review resultReview = reviewService.reviewOne(review);
 		model.addAttribute("resultReview", resultReview);
-		List<ReviewReply> list = reviewReplyService.selectReviewReply(review);
-		model.addAttribute("list", list);
+		List<ReviewReply> rpList = reviewReplyService.selectReviewReply(review);
+		model.addAttribute("rpList", rpList);
 		
 		return "emp/trainerReviewOne";
 	}

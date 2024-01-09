@@ -57,8 +57,8 @@ public class ReviewService {
 		param.put("rowPerPage", rowPerPage);
 		param.put("lastPage", lastPage);
 		
-		List<Review> list = reviewMapper.empReviewList(param);
-		return list;
+		List<Review> trainerlist = reviewMapper.empReviewList(param);
+		return trainerlist;
 	}
 	
 	// 리뷰 상세보기(트레이너)

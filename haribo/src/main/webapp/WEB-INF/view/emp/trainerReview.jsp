@@ -51,16 +51,18 @@
                 <tr>
                   <th>번호</th>
                   <th>제목</th>
+                  <th>참여 프로그램 명</th>
                   <th>작성자</th>
                   <th>작성일</th>
                 </tr>
                 
-                <c:forEach var="q" items="${list}">
+                <c:forEach var="r" items="${trainerlist}">
                 <tr>
-                  <td>${q.questionNo}</td>
-                  <td><a href="${pageContext.request.contextPath}/trainerQuestionOne?questionNo=${q.questionNo}">${q.questionTitle}</a></td>
-                  <td>${q.customerId}</td>
-                  <td>${q.createdate}</td>
+                  <td>${r.reviewNo}</td>
+                  <td><a href="${pageContext.request.contextPath}/trainerReviewOne?reviewNo=${r.reviewNo}">${r.reviewTitle}</a></td>
+                  <td>${r.programName}</td>
+                  <td>${r.customerId}</td>
+                  <td>${r.createdate}</td>
                 </tr>
                 </c:forEach>
               </table>
@@ -68,11 +70,11 @@
             <!-- 페이지네이션 -->
             <div class="text-center"> 
 				<c:if test="${currentPage > 1}">
-					<a href="${pageContext.request.contextPath}/trainerQuestion?currentPage=${currentPage-1}" class="btn btn-primary">이전</a>
+					<a href="${pageContext.request.contextPath}/trainerReview?currentPage=${currentPage-1}" class="btn btn-primary">이전</a>
 				</c:if>
 				
 				<c:if test="${currentPage < lastPage}">
-					<a href="${pageContext.request.contextPath}/trainerQuestion?currentPage=${currentPage+1}" class="btn btn-primary">다음</a>
+					<a href="${pageContext.request.contextPath}/trainerReview?currentPage=${currentPage+1}" class="btn btn-primary">다음</a>
 				</c:if>
 			</div>
             <!-- /.box-body -->

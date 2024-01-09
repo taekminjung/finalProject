@@ -41,7 +41,7 @@
                 <img src="emp/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
                 <p>
           		  ${loginEmployee.employeeName}
-                  <small>일한 기간</small>
+                  <small>${loginEmployee.branchNo}호점 트레이너</small>
                 </p>
               </li>
               
@@ -118,10 +118,11 @@
                 <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
+          <ul class="treeview-menu">
+          	<li><a href="${pageContext.request.contextPath}/trainerStock">내가 맡은 프로그램 출력 상세정보</a></li>
+          </ul>
         </li>
-    
       </ul>
-      
       <!-- /.sidebar-menu -->
     </section>
     <!-- /.sidebar -->

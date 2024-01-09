@@ -60,11 +60,10 @@
 		WHERE pr.program_reservation_no = #{programReservationNo}
 	</select>
 	
-	<select id="empReviewList" parameterType="java.util.Map" resultType="com.example.haribo.vo.Review">
+	<select id="empReviewList" resultType="java.util.Map">
 		SELECT
 			r.review_no reviewNo,
 			r.review_title reviewTitle,
-			r.review_content reviewContent,
 			p.program_name programName,
 			pm.customer_id customerId,
 			r.createdate
