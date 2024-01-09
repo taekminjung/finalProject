@@ -53,9 +53,9 @@ public class ProgramController {
 	@GetMapping("/updateProgram")
 	public String updateProgram(Program program, Model model) {
 		// programService 호출
-		Program originProgram = programService.programOne(program);
+		Program list = programService.programOne(program);
 		// view로 보낼 값 넣기
-		model.addAttribute("originProgram", originProgram);
+		model.addAttribute("list", list);
 		
 		return "emp/updateProgram";
 	}

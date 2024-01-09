@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -60,23 +61,16 @@
 			        <tr>
 			            <th class="text-center">번호</th>
 			            <th class="text-center">운동기구명</th>
-			            <th class="text-center">가격</th>
-			            <th class="text-center">+</th>
-        		        <th class="text-center">-</th>
+			            <th class="text-center">등록일자</th>
 			        </tr>
 			        <c:forEach var="se" items="${list}">
 			        
 					<tr>
 						<td class="text-center">${se.sportsEquipmentNo} </td>
-						<td class="text-center">${se.itemName} </td>
-						<td class="text-center">${se.itemPrice} </td>
-						<td class="text-center" >
-						<a class="btn btn-primary" href="${pageContext.request.contextPath}/updateSportsEquipment?sportsEquipmentNo=${se.sportsEquipmentNo}">수정</a>
+						<td class="text-center">
+							<a href="${pageContext.request.contextPath}/sportsEquipmentOne?sportsEquipmentNo=${se.sportsEquipmentNo}">${se.itemName}</a> 
 						</td>
-						<td class="text-center" >
-						<a class="btn btn-danger" id="deleteBtn" href="${pageContext.request.contextPath}/deleteSportsEquipment?sportsEquipmentNo=${se.sportsEquipmentNo}">삭제</a>
-						</td>
-						
+						<td class="text-center"><fmt:formatDate value="${se.updatedate}" pattern="yyyy-MM-dd"/></td>
 					</c:forEach>
 			    </table>
 			    <br><br>

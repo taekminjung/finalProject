@@ -32,7 +32,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        프로그램 등록 페이지
+        프로그램 수정 페이지
         <small>Preview</small>
       </h1>
     </section>
@@ -48,28 +48,30 @@
               <h3 class="box-title">Quick Example</h3>
             </div>
               <div class="box-body">
-			<form id="form" name="form" method="post" action="${pageContext.request.contextPath}/insertProgram" enctype="multipart/form-data">
+			<form id="form" name="form" method="post" action="${pageContext.request.contextPath}/updateProgram" enctype="multipart/form-data">
 			  <div class="form-group">
+			  <input type="hidden" name="employeeId" id="employeeId" value="${list.employeeId}">
+			  	<input type="hidden" name="programNo" id="programNo" value="${list.programNo}">
 			    <label for="programName">프로그램명</label>
-			    <input type="text" class="form-control" id="programName" name="programName" placeholder="프로그램명">
+			    <input type="text" class="form-control" id="programName" name="programName" value="${list.programName}">
 			  </div>
 			  <div class="form-group">
 			    <label for="programMaxCustomer">수용 인원</label>
-			    <input type="text" class="form-control" id="programMaxCustomer" name="programMaxCustomer" placeholder="최대 수용인원">
+			    <input type="text" class="form-control" id="programMaxCustomer" name="programMaxCustomer" value="${list.programMaxCustomer}">
 			  </div>
 			  <div class="form-group">
 			    <label for="programMemo">프로그램 내용</label>
-			    <textarea style="height: 150px; width: 600px;" class="form-control" id="programMemo" name="programMemo" placeholder="프로그램 상세내용"></textarea>
+			    <textarea style="height: 150px; width: 600px;" class="form-control" id="programMemo" name="programMemo" value="${list.programMemo}"></textarea>
 			  </div>
 			  <div class="form-group">
 			    <label for="programDay">프로그램 일자 <br> 예시) 토 / 월, 수, 금 / 화, 목</label>
-			    <input type="text" class="form-control" id="programDay" name="programDay" placeholder="프로그램 개설 요일">
+			    <input type="text" class="form-control" id="programDay" name="programDay" value="${list.programDay}">
 			  </div>
 			  <div class="form-group">
 			    <label for="pImg">프로그램 이미지</label>
 			    <input type="file" id="pImg" name="pImg" accept=".png">
 			  </div>
-		       <button type="submit" id="formBtn" class="btn btn-primary">Submit</button>
+		       <button type="submit" id="formBtn" class="btn btn-primary">수정 완료</button>
 			</form>
 	
 

@@ -17,9 +17,20 @@
 		SELECT
 			sports_equipment_no sportsEquipmentNo,
 			item_name itemName,
-			item_price itemPrice
+			item_price itemPrice,
+			updatedate
 		FROM sports_equipment
 		LIMIT #{beginRow}, #{rowPerPage}
+	</select>
+	
+		<select id="sportsEquipmentOne" parameterType="com.example.haribo.vo.SportsEquipment" resultType="com.example.haribo.vo.SportsEquipment">
+		SELECT
+			sports_equipment_no sportsEquipmentNo,
+			item_name itemName,
+			item_price itemPrice
+		FROM sports_equipment
+		WHERE sports_equipment_no = #{sportsEquipmentNo}
+	
 	</select>
 	
 	<select id="sportsEquipmentOrderCk" parameterType="java.util.Map" resultType="java.util.Map">
@@ -117,6 +128,12 @@
 			item_price = #{itemPrice},
 			updatedate = NOW()
 		WHERE sports_equipment_no = #{sportsEquipmentNo}
+	</update>
+	
+	<update id="updateOrderStatus" parameterType="com.example.haribo.vo.SportsEquipmentOrder">
+	    UPDATE sports_equipment_order
+    	SET order_status = #{orderStatus}
+    	WHERE sports_equipment_no = #{sportsEquipmentNo}
 	</update>
 	
 	<delete id="deleteSportsEquipment" parameterType="com.example.haribo.vo.SportsEquipment">

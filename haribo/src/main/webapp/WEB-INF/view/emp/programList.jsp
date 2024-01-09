@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -60,7 +61,7 @@
 			        <th class="text-center">번호</th>
 			            <th class="text-center">프로그램명</th>
 			            <th class="text-center">프로그램 요일</th>
-			            <th class="text-center">작성자</th>
+			            <th class="text-center">생성일자</th>
 			        </tr>
 			
 			        <c:forEach var="p" items="${list}">
@@ -70,8 +71,8 @@
 			                	<a href="${pageContext.request.contextPath}/programOne?programNo=${p.programNo}">${p.programName}</a>
 			                </td>
 			                <td class="text-center">${p.programDay}</td>
-			                <td class="text-center">${p.employeeId}</td>
-
+			                <td class="text-center"><fmt:formatDate value="${p.createdate}" pattern="yyyy-MM-dd"/></td>
+			               
 			            </tr>
 			        </c:forEach>
 			    </table>

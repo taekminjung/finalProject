@@ -68,9 +68,11 @@
         		        <th class="text-center">주문 상태</th>
         		        <th class="text-center">결재</th>
 			        </tr>
+			        
 			        <c:forEach var="seo" items="${list}">
 			        
 					<tr>
+					<form id="form" name="form" action="${pageContext.request.contextPath}/updateOrderStatus" method="post">
 						<td class="text-center">${seo.branchNo} </td>		
 						<td class="text-center">${seo.sportsEquipmentNo} </td>
 						<td class="text-center">${seo.itemName} </td>
@@ -78,11 +80,29 @@
 						<td class="text-center">${seo.quantity} </td>
 						<td class="text-center">${seo.totalPrice} </td>
 						<td class="text-center">${seo.createdate} </td>		
-						<td class="text-center">${seo.orderStatus} </td>							
-						<td class="text-center">
-							<button class="btn bg-navy">결재</a>
-						</td>			
-					
+						 <td class="text-center">
+                                <c:choose>
+                                    <c:when test="${seo.orderStatus == '대기'}">
+                                        <select id="orderStatus" name="orderStatus">
+                                        	<option value="대기">대기</option>
+                                            <option value="승인">승인</option>
+                                            <option value="거절">거절</option>
+                                        </select>
+                                    </c:when>
+                                    <c:otherwise>
+                                        ${seo.orderStatus}
+                                    </c:otherwise>
+                                </c:choose>
+                            </td>							
+                            <c:choose>
+                                <c:when test="${seo.orderStatus != '승인' and seo.orderStatus != '거절'}">
+                                    <td class="text-center">
+                                        <button type="button" class="btn bg-navy" id="updateBtn">결재</button>
+                                    </td>
+                                </c:when>
+                            </c:choose>		
+					</form>
+					</tr>
 					</c:forEach>
 			    </table>
 			    <br><br>
@@ -118,22 +138,35 @@
 
 <!-- AdminLTE for demo purposes -->
 <script src="emp/dist/js/demo.js"></script>
+
 <script>
+  // Use a class for the form instead of an ID
+  $('#updateBtn').click(function () {
 
+    var result = confirm(formData);
+    
+    if (result) {
+        $('#form').submit();
+    } else {
+        // Handle cancellation
+    }
+  });
 
-
-	$('#deleteBtn').click(function(){
-		
-		var result = confirm('\n삭제하시겠습니까');
-		
-		if(result){
-			$('#deleteForm').submit();
-		} else{
-			
-		}
-	});
-
+  $(document).ready(function() {
+    $.ajax({
+      type: 'POST',
+      url: 'haribo/sportsEquipmentOrderCk',
+      data: { sportsEquipmentNo: sportsEquipmentNo, orderStatus: selectedValue },
+      success: function(response) {
+        // Handle the response if needed
+      },
+      error: function(error) {
+        console.error('Error:', error);
+      }
+    });
+  });
 </script>
+
 
 </body>
 </html>

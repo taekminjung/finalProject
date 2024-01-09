@@ -97,6 +97,14 @@ public class SportsEquipmentController {
 		return "redirect:/emp/sportsEquipmentOrder";
 	}
 	
+	@GetMapping("/sportsEquipmentOne")
+	public String sportsEquipmentOne(Model model, SportsEquipment sportsEquipment) {
+		SportsEquipment list = sportsEquipmentService.sportsEquipmentOne(sportsEquipment);
+		model.addAttribute("list", list);
+		
+		return "emp/sportsEquipmentOne";
+	}
+	
 	// 폐기할 물품 입력하기 (form+insert)
 	@GetMapping("/insertExpire")
 	public String insertExpire() {
@@ -111,7 +119,8 @@ public class SportsEquipmentController {
 	
 	@GetMapping("/updateSportsEquipment")
 	public String updateSportsEquipment(Model model, SportsEquipment sportsEquipment) {
-
+		SportsEquipment list = sportsEquipmentService.sportsEquipmentOne(sportsEquipment);
+		model.addAttribute("list", list);
 		return "emp/updateSportsEquipment";
 	}
 	
@@ -136,5 +145,15 @@ public class SportsEquipmentController {
 			System.out.println("삭제 성공");
 		}
 		return "redirect:/sportsEquipmentList";
+	}
+	
+	@PostMapping("/updateOrderStatus")
+	public String updateOrderStatus(
+			SportsEquipmentOrder sportsEquipmentorder,
+	        @RequestParam("orderStatus") String orderStatus) {
+
+	   int row = sportsEquipmentService.updateOrderStatus(sportsEquipmentorder);
+
+	    return "redirect:/sportsEquipmentOrderCk";
 	}
 }

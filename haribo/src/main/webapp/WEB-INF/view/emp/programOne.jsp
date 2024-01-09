@@ -32,7 +32,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        프로그램 수정 페이지
+        프로그램 상세페이지
         <small>Preview</small>
       </h1>
     </section>
@@ -48,33 +48,32 @@
               <h3 class="box-title">Quick Example</h3>
             </div>
               <div class="box-body">
-			<form id="form" name="form" method="post" action="${pageContext.request.contextPath}/updateProgram" enctype="multipart/form-data">
-			  <input type="text" name="employeeId" value="${loginEmployee.employeeId}">
+
+			  <input type="text" name="employeeId" value="${loginEmployee.employeeId}" readonly>
 			  <input type="hidden" name="programNo" value="${resultProgram.programNo}">
 			  <div class="form-group">
 			    <label for="programName">프로그램명</label>
-			    <input type="text" class="form-control" id="programName" name="programName" placeholder="${resultProgram.programName}">
+			    <input type="text" class="form-control" id="programName" name="programName" placeholder="${resultProgram.programName}" readonly>
 			  </div>
 			  <div class="form-group">
 			    <label for="programMaxCustomer">수용 인원</label>
-			    <input type="text" class="form-control" id="programMaxCustomer" name="programMaxCustomer" placeholder="${resultProgram.programMaxCustomer }">
+			    <input type="text" class="form-control" id="programMaxCustomer" name="programMaxCustomer" placeholder="${resultProgram.programMaxCustomer }" readonly>
 			  </div>
 			  <div class="form-group">
 			    <label for="programMemo">프로그램 내용</label>
-			    <textarea style="height: 150px; width: 600px;" class="form-control" id="programMemo" name="programMemo" placeholder="${resultProgram.programMemo}"></textarea>
+			    <textarea style="height: 150px; width: 600px;" class="form-control" id="programMemo" name="programMemo" placeholder="${resultProgram.programMemo}" readonly></textarea>
 			  </div>
 			  <div class="form-group">
 			    <label for="programDay">프로그램 일자 <br> 예시) 토 / 월, 수, 금 / 화, 목</label>
-			    <input type="text" class="form-control" id="programDay" name="programDay" placeholder="${resultProgram.programDay }">
+			    <input type="text" class="form-control" id="programDay" name="programDay" placeholder="${resultProgram.programDay }" readonly>
 			  </div>
 			  <div class="form-group">
 			    <label for="pImg">프로그램 이미지</label>
 			    <input type="file" id="pImg" name="pImg" accept=".png">
 			  </div>
-		       <button type="submit" id="formBtn" class="btn btn-primary">수정하기</button>
+   		       <a class="btn btn-primary" id="updateBtn" href="${pageContext.request.contextPath}/updateProgram?programNo=${resultProgram.programNo}">수정</a>
 		       <a class="btn bg-navy" href="${pageContext.request.contextPath}/programList">뒤로</a>
 		       <a class="btn btn-danger" id="deleteBtn" href="${pageContext.request.contextPath}/deleteProgram?programNo=${resultProgram.programNo}">삭제</a>
-			</form>
 	
 
               <div class="box-footer">
@@ -107,29 +106,5 @@
 <!-- AdminLTE for demo purposes -->
 <script src="emp/dist/js/demo.js"></script>
 
-<script>
-	
-	$('#formBtn').click(function(){
-		if($('#programName').val().length<1){
-			alert('프로그램명을 입력해주세요.')
-			$('#programName').focus()
-		}  else if($('#programMaxCustomer').val().length<1){
-			alert('최대 수용인원 입력해주세요')
-			$('#programMaxCustomer').focus()
-		}  else if ($('#programInfo').val().length<1){
-			alert('상세정보를 입력해주세요')
-			$('#programInfo').focus()
-		}  else if ($('#programDay').val().length<1){
-			alert('프로그램 개설요일을 입력해주세요')
-			$('#programDay').focus()
-		} // else if($('#imgForm').val().length<1){
-		//	alert('프로그램 이미지를 추가해주세요')
-		//	$('#imgForm').focus()
-	//	}  
-		else{
-			$('#form').submit()
-		}
-	})
-</script>
 </body>
 </html>

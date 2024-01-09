@@ -32,7 +32,11 @@ public interface SportsEquipmentMapper {
 	
 	int updateSportsEquipment(SportsEquipment sportsEquipment);
 	
+	SportsEquipment sportsEquipmentOne(SportsEquipment sportsEquipment);
+	
 	List<SportsEquipment> sportsEquipmentList (Map<String, Object>param);
 	
 	List<SportsEquipmentOrder> sportsEquipmentOrderCk (Map<String, Object>param);
+
+	int updateOrderStatus(SportsEquipmentOrder sportsEquipmentOrder);
 }

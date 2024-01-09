@@ -39,18 +39,18 @@
                             </div>
                             <div class="box-body">
                                 <form id="form" name="form" method="post" action="${pageContext.request.contextPath}/updateSportsEquipment">
-                                    <input type="hidden" name="sportsEquipmentNo" value="${param.sportsEquipmentNo}">
+                                    <input type="hidden" name="sportsEquipmentNo" value="${list.sportsEquipmentNo}">
                                     <div class="form-group">
                                         <label for="itemName">운동 기구 제품명</label>
-                                        <input type="text" class="form-control" id="itemName" name="itemName" value="${param.itemName}">
+                                        <input type="text" class="form-control" id="itemName" name="itemName" value="${list.itemName}">
                                     </div>
                                     <div class="form-group">
                                         <label for="itemPrice">가격</label>
-                                        <input type="text" class="form-control" id="itemPrice" name="itemPrice" value="${param.itemPrice}">
+                                        <input type="text" class="form-control" id="itemPrice" name="itemPrice" value="${list.itemPrice}">
                                     </div>
-                            </div>
+                            	</div>
                             <div class="box-footer">
-                                <button type="submit" class="btn btn-primary">Submit</button>
+                                <button type="submit" id="updateBtn" class="btn btn-primary">수정 완료</button>
                             </div>
                             </form>
                         </div>

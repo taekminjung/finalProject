@@ -114,9 +114,17 @@ public class SportsEquipmentService {
 			return list;
 	}
 	
+	public SportsEquipment sportsEquipmentOne(SportsEquipment sportsEquipment) {
+		return sportsEquipmentMapper.sportsEquipmentOne(sportsEquipment);
+	}
+	
 	public int updateSportsEquipment(SportsEquipment sportsEquipment) {
 		return sportsEquipmentMapper.updateSportsEquipment(sportsEquipment);	
 	}	
+	
+	public int updateOrderStatus(SportsEquipmentOrder sportsEquipmentOrder) {
+		return sportsEquipmentMapper.updateOrderStatus(sportsEquipmentOrder);
+	}
 	
 	public int deleteSportsEquipment(SportsEquipment sportsEquipment) {
 		return sportsEquipmentMapper.deleteSportsEquipment(sportsEquipment);
