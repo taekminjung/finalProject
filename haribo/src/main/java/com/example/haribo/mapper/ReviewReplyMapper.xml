@@ -1,4 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.haribo.mapper.ReviewReplyMapper">
+	<insert id="insertReviewReply" parameterType="com.example.haribo.vo.ReviewReply">
+		INSERT INTO reviewReply(
+			employee_id,
+			review_reply_content,
+			createdate
+		) VALUES (
+			#{employeeId}
+			#{reviewReplyContent}
+			#{createdate}
+		)
+	</insert>
+
+	<delete id="deleteReviewReply" parameterType="com.example.haribo.vo.ReviewReply">
+		DELETE FROM reviewReply
+		WHERE review_reply_no = #{reviewReplyNo}	
+	</delete>
+
+	<select id="selectReviewReply">
+		SELECT
+			review_reply_no reviewReplyNo,
+			review_no reviewNo,
+			employee_id employeeId,
+			review_reply_content reviewReplyContent,
+			createdate
+		FROM review_reply
+		WHERE review_no = #{reviewNo}
+	</select>
 </mapper>

@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.haribo.mapper.ReviewMapper;
-import com.example.haribo.vo.Question;
 import com.example.haribo.vo.Review;
 import com.example.haribo.vo.ReviewReply;
 

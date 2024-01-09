@@ -15,7 +15,4 @@ public interface QuestionReplyMapper {
 	int deleteQuestionReply(QuestionReply questionReply);
 
 	List<QuestionReply> selectquestionReply(Question question);
-
-//	List<QuestionReply> questionReply(QuestionReply questionReply);
-
 }

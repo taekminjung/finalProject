@@ -1,15 +1,11 @@
 package com.example.haribo.controller;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.example.haribo.service.QuestionReplyService;
-import com.example.haribo.vo.Question;
 import com.example.haribo.vo.QuestionReply;
 
 @Controller
@@ -36,5 +32,4 @@ public class QuestionReplyController {
 		
 		return "redirect:/emp/trainerQuestionOne";
 	}
-
 }
