@@ -13,7 +13,7 @@
 	<select id="branchStock" parameterType="java.util.Map" resultType="java.util.Map">
 	SELECT
 		branch_no branchNo,
-		branch_name branchName,
+		branch_name branchName
 	FROM branch
 	</select>
 	

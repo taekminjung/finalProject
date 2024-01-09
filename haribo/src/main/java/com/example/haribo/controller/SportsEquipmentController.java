@@ -32,7 +32,7 @@ public class SportsEquipmentController {
 	
 	@PostMapping("/insertSportsEquipment")
 	public String insertSportsEquipment(HttpSession session, MultipartFile seImg, SportsEquipment sportsEquipment, SportsEquipmentImg sportsEquipmentImg) {
-		String path = session.getServletContext().getRealPath("/inc/upload/emp/");
+		String path = session.getServletContext().getRealPath("/upload");
 		int sportsEquipmentNo = sportsEquipmentService.insertSportsEquipment(sportsEquipment);
 		sportsEquipmentImg.setSportsEquipmentNo(sportsEquipmentNo);
 		sportsEquipmentService.insertSportsEquipmentImg(seImg, sportsEquipmentImg, path);

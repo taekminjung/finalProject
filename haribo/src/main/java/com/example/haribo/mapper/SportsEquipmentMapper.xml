@@ -149,12 +149,12 @@
 			se.sports_equipment_no sportsEquipmentNo,
 			seo.branch_no branchNo, 
 			se.item_name itemName, 
-			sei.sports_equipment_img_file_name sportsEquipmentImgFileName,
+	<!--  		sei.sports_equipment_img_file_name sportsEquipmentImgFileName,-->
 			(SUM(seo.quantity) - SUM(see.quantity)) quantity
 		FROM sports_equipment_order seo 
 		INNER JOIN sports_equipment se ON seo.sports_equipment_no = se.sports_equipment_no
 		INNER JOIN sports_equipment_expire see ON se.sports_equipment_no = see.sports_equipment_no
-		INNER JOIN sports_equipment_img sei ON se.sports_equipment_no = sei.sports_equipment_no
+	<!-- 	INNER JOIN sports_equipment_img sei ON se.sports_equipment_no = sei.sports_equipment_no-->
 		INNER JOIN branch b ON seo.branch_no = b.branch_no
 		WHERE b.branch_no = #{branchNo} AND seo.order_status ='승인'
 		GROUP BY se.sports_equipment_no

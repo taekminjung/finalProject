@@ -1,5 +1,7 @@
 package com.example.haribo.service;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 
@@ -80,10 +82,10 @@ public class SportsEquipmentService {
 	}
 	
 	public void insertSportsEquipmentImg(MultipartFile seImg, SportsEquipmentImg sportsEquipmengImg, String path) {
-		String pathSportsEquipment = path+"/employee";
+		String pathSportsEquipment = path+"/emp";
 		String oName = seImg.getOriginalFilename();
 		String type = oName.substring(oName.lastIndexOf("."));
-		String fName = type;
+		String fName = "aa"+type;
 		
 		sportsEquipmengImg.setSportsEquipmentImgOriginName(oName);
 		sportsEquipmengImg.setSportsEquipmentImgFileName(fName);
@@ -91,6 +93,18 @@ public class SportsEquipmentService {
 		sportsEquipmengImg.setSportsEquipmentImgType(seImg.getContentType());
 		
 		int row = sportsEquipmentMapper.insertSportsEquipmentImg(sportsEquipmengImg);
+		
+		if(row != 1) {
+			throw new RuntimeException();
+		}else {
+			System.out.println("여기까진 돼");
+			File file = new File(pathSportsEquipment+"/"+fName);
+			try {
+				seImg.transferTo(file);
+			}catch(IllegalStateException | IOException e) {
+				throw new RuntimeException();
+			}
+		}
 	}
 	
 	public List<SportsEquipment> sportsEquipmentList(

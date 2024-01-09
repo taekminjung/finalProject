@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -62,7 +63,7 @@
                   <td><a href="${pageContext.request.contextPath}/trainerReviewOne?reviewNo=${r.reviewNo}">${r.reviewTitle}</a></td>
                   <td>${r.programName}</td>
                   <td>${r.customerId}</td>
-                  <td>${r.createdate}</td>
+                  <td><fmt:formatDate value="${r.createdate}" pattern="yyyy-MM-dd"/></td>
                 </tr>
                 </c:forEach>
               </table>

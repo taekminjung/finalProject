@@ -74,7 +74,7 @@
 					<tr>
 					<form id="form" name="form" action="${pageContext.request.contextPath}/updateOrderStatus" method="post">
 						<td class="text-center">${seo.branchNo} </td>		
-						<td class="text-center">${seo.sportsEquipmentNo} </td>
+						<td class="text-center"><input type="text" name="sportsEquipmentNo" value="${seo.sportsEquipmentNo}" readonly> </td>
 						<td class="text-center">${seo.itemName} </td>
 						<td class="text-center">${seo.itemPrice} </td>
 						<td class="text-center">${seo.quantity} </td>
@@ -143,7 +143,7 @@
   // Use a class for the form instead of an ID
   $('#updateBtn').click(function () {
 
-    var result = confirm(formData);
+    var result = confirm('formData');
     
     if (result) {
         $('#form').submit();
