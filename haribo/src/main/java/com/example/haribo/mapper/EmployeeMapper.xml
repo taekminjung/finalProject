@@ -5,6 +5,7 @@
 	<select id="loginEmployee" parameterType="com.example.haribo.vo.Employee" resultType="java.util.Map">
 		SELECT e.employee_no employeeNo,
 			   e.employee_id employeeId,
+			   e.branch_no branchNo,
 			   ed.employee_name employeeName
 		FROM employee e INNER JOIN employee_detail ed
 		ON e.employee_no = ed.employee_no
