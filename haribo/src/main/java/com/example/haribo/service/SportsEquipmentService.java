@@ -59,9 +59,14 @@ public class SportsEquipmentService {
 		return lastPageOrder;
 	}
 	
-	public void insertExpire(SportsEquipmentExpire sportsEquipmentExpire) {
-		// TODO Auto-generated method stub
-		
+	public String sportsEquipmentOrder(SportsEquipmentOrder sportsEquipmentOrder) {
+		sportsEquipmentMapper.sportsEquipmentOrder(sportsEquipmentOrder);
+		return "redirect:/sportsEquipmentOrder";		
+	}
+	
+	public String insertExpire(SportsEquipmentExpire sportsEquipmentExpire) {
+		sportsEquipmentMapper.insertExpire(sportsEquipmentExpire);
+		return "redirect:/trainerExpireForm";
 	}
 	
 	public int insertSportsEquipment(SportsEquipment sportsEquipment) {

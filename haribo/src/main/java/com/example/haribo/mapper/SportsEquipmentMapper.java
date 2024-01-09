@@ -20,6 +20,8 @@ public interface SportsEquipmentMapper {
 	
 	int getTotalRowOrder(int rowPerPage);
 	
+	int sportsEquipmentOrder(SportsEquipmentOrder sportsEquipmentOrder);
+	
 	int insertExpire(SportsEquipmentExpire sportsEquipmentExpire);	
 	
 	int insertSportsEquipment(SportsEquipment sportsEquipment);

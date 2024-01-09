@@ -55,20 +55,33 @@
 		FROM sports_equipment_order
 	</select>
 	
+	<insert id="sportsEquipmentOrder" parameterType="com.example.haribo.vo.SportsEquipmentOrder">
+		INSERT INTO sportsEquipmentOrder(
+			branch_no,
+			sports_equipment_no,
+			quantity,
+			total_price
+		) VALUES (
+			#{branchNo}
+			#{sportsEquipmentNo}
+			#{quantity}
+			#{totalPrice}
+		)
+	</insert>
 	
 	<insert id="insertExpire" parameterType="com.example.haribo.vo.SportsEquipmentExpire">
 		INSERT INTO sportsEquipmentExpire(
-			sports_equipment_no sportsEpuipmentNo,
-			branch_no branchNo,
-			item_name itemName,
+			sports_equipment_no,
+			branch_no,
+			item_name,
 			quantity,
-			expire_memo expireMemo
+			expire_memo
 		) VALUES (
 			#{sportsEquipmentNo},
 			#{branchNo},
 			#{itemName},
 			#{quantity},
-			#{expireMemo}	
+			#{expireMemo}
 		)
 	</insert>
 	
@@ -76,7 +89,7 @@
 		INSERT INTO sports_equipment(
 			item_name,
 			item_price
-			)	VALUES	(
+		) VALUES (
 			#{itemName},
 			#{itemPrice}
 			)
@@ -89,7 +102,7 @@
 			sports_equipment_img_file_name,
 			sports_equipment_img_size,
 			sports_equipment_img_type
-		)	VALUES	(
+		) VALUES (
 			#{sportsEquipmentNo},
 			#{sportsEquipmentImgOriginName},
 			#{sportsEquipmentImgFileName},

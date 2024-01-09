@@ -85,10 +85,21 @@ public class SportsEquipmentController {
 		return "emp/sportsEquipmentExpiredList";
 	}
 	
+	// 트레이너 물품 발주 입력하기(form+insert)
+	@GetMapping("/sportsEquipmentOrder")
+	public String sportsEquipmentOrder() {
+		return "emp/sportsEquipmentOrder";
+	}
+		
+	@PostMapping("/sportsEquipmentOrder")
+	public String sportsEquipmentOrder(SportsEquipmentOrder sportsEquipmentOrder) {
+		sportsEquipmentService.sportsEquipmentOrder(sportsEquipmentOrder);
+		return "redirect:/emp/sportsEquipmentOrder";
+	}
+	
 	// 폐기할 물품 입력하기 (form+insert)
 	@GetMapping("/insertExpire")
 	public String insertExpire() {
-		
 		return "emp/trainerExpireForm";
 	}
 	
