@@ -227,28 +227,5 @@ public class CustomerService {
 		
 		customerMapper.updateAttendance(customerAttendance);
 	}
-	//고객 별 작성한 리뷰 리스트
-	public List<HashMap<String, Object>> selectMyReview(int customerNo) {
-		List<HashMap<String, Object>> list = customerMapper.selectMyReview(customerNo);
-		
-		System.out.println(list+"<== ser.reviewList");
-		return list;
-	}
-	//리뷰 수정
 	
-	//리뷰 삭제
-	public void deleteReview(Review review) {
-		int selectReviewReplyCnt = customerMapper.selectReviewReplyCnt(review);
-		if(selectReviewReplyCnt == 0) {
-			customerMapper.deleteReview(review);
-		}else {
-			customerMapper.deleteReviewReply(review);
-			customerMapper.deleteReview(review);
-		}
-	}
-	public int updateReview(Review review) {
-		int row = customerMapper.updateReview(review);
-	
-		return row;
-	}
 }

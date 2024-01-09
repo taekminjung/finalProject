@@ -79,11 +79,11 @@
 					<table class="schdule-table table table-bordered">
 						<thead class="thead-light">
 							<tr>
-								<th class="head" scope="col">리뷰No</th>
-								<th class="head" scope="col">제목</th>
-								<th class="head" scope="col">내용</th>
-								<th class="head" scope="col">작성일</th>
-								<th class="head" scope="col">수정/삭제</th>
+								<th class="head col-lg-1" scope="col">No</th>
+								<th class="head col-lg-3" scope="col">제목</th>
+								<th class="head col-lg-2" scope="col">프로그램</th>
+								<th class="head col-lg-4" scope="col">작성일</th>
+								<th class="head col-lg-2" scope="col"></th>
 							</tr>
 						</thead>
 						<tbody>
@@ -91,11 +91,10 @@
 							<tr>
 								<td>${r.reviewNo}</td>
 								<td>${r.reviewTitle}</td>
-								<td>${r.reviewContent}</td>
+								<td>${r.programName}</td>
 								<td>${r.createdate}</td>
 								<td>
-								<a href="${pageContext.request.contextPath }/updateReview?reviewNo=${r.reviewNo}">수정</a>
-								<a href="${pageContext.request.contextPath }/deleteReview?reviewNo=${r.reviewNo}">삭제</a>
+									<a class="btn btn-outline-dark" href="${pageContext.request.contextPath}/myReviewOne?reviewNo=${r.reviewNo}">자세히</a>
 								</td>
 							</tr>
 						</c:forEach>

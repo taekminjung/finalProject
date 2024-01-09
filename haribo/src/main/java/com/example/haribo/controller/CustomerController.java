@@ -219,30 +219,5 @@ public class CustomerController {
 		String u = "redirect:/customerSchedule?customerNo="+customerNo;
 		return u;
 	}
-	//회원 별 작성한 리뷰 출력
-		@GetMapping("/myReviewList")
-		public String selectMyReview(HttpSession session , Model model, Customer customer) {
-			int customerNo = (int)((Map)session.getAttribute("loginCustomer")).get("customerNo");
-
-			List<HashMap<String, Object>> list  = customerService.selectMyReview(customerNo);
-			System.out.println(list+"<==con.reviewList");
-			model.addAttribute("list", list);
-			
-			String u = "customer/myReviewList";
-			return u;
-		}
-		//리뷰 수정
-		@GetMapping("/updateReview")
-		public int updateReview(Review review) {
-			
-		}
-		//리뷰 삭제
-		@GetMapping("/deleteReview")
-		public String deleteReview(Review review) {
-			customerService.deleteReview(review);
-			
-			return "redirect:/myReviewList";
-		}
-		
-		
+	
 }

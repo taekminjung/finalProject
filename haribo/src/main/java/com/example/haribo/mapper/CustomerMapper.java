@@ -61,14 +61,5 @@ public interface CustomerMapper {
 	
 	//회원 출결 (퇴실)
 	int updateAttendance(CustomerAttendance customerAttendance);
-	//회원별 작성한 리뷰리스트
-	List<HashMap<String, Object>> selectMyReview(int customerNo);
-	//리뷰 리플 여부 체크
-	int selectReviewReplyCnt(Review review);
-	//리뷰 리플 삭제
-	int deleteReviewReply(Review review);
-	//리뷰 삭제
-	int deleteReview(Review review);
-	//리뷰 수정
-	int updateReview(Review review);
+	
 }

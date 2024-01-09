@@ -186,10 +186,10 @@
 			console.log('클릭');
 			if($(this).is(":checked")){
 				console.log('체크');
-				$('input[type="checkbox"]').attr("checked",true);
+				$('input[type="checkbox"]').prop("checked",true);
 			}else{
 				console.log('해제');
-				$('input[type="checkbox"]').attr("checked",false);
+				$('input[type="checkbox"]').prop("checked",false);
 			}
 			
 		})

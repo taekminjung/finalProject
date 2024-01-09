@@ -2,6 +2,7 @@ package com.example.haribo.controller;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,9 +13,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.haribo.service.ReviewReplyService;
 import com.example.haribo.service.ReviewService;
+import com.example.haribo.vo.Customer;
 import com.example.haribo.vo.Review;
 import com.example.haribo.vo.ReviewReply;
 
+import jakarta.servlet.http.HttpSession;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -75,4 +78,40 @@ public class ReviewController {
 		
 		return "redirect:/reviewList";
 	}		
+	//회원 별 작성한 리뷰 출력
+	@GetMapping("/myReviewList")
+	public String selectMyReview(HttpSession session , Model model, Customer customer) {
+		if(session.getAttribute("loginCustomer") == null) {
+			return "redirect:/login";
+		}
+		List<HashMap<String, Object>> list  = reviewService.selectMyReview(customer);
+		
+		model.addAttribute("list", list);
+		
+		return "customer/myReviewList";
+	}
+	//리뷰 수정
+	@GetMapping("/updateReview")
+	public String updateReview(Review review) {
+		
+		return "";
+	}
+	
+	//리뷰 삭제
+	@GetMapping("/deleteReview")
+	public String deleteReview(Review review) {
+		reviewService.deleteReview(review);
+		
+		return "redirect:/myReviewList";
+	}
+	//내가 쓴 리뷰 상세
+	@GetMapping("/myReviewOne")
+	public String myReviewOne(Review review, Model model) {
+		//reviewService 호출
+		Map<String,Object> myReviewMap = reviewService.myReviewOne(review);
+		//모델에 값 넣기
+		model.addAttribute("rMap", myReviewMap);
+		//리턴
+		return "customer/myReviewOne";
+	}
 }

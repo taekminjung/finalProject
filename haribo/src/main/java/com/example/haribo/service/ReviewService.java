@@ -2,12 +2,14 @@ package com.example.haribo.service;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.haribo.mapper.ReviewMapper;
+import com.example.haribo.vo.Customer;
 import com.example.haribo.vo.Review;
 import com.example.haribo.vo.ReviewReply;
 
@@ -76,4 +78,33 @@ public class ReviewService {
 		}
 		return lastPage;
 	}
+	//고객 별 작성한 리뷰 리스트
+	public List<HashMap<String, Object>> selectMyReview(Customer customer) {
+		List<HashMap<String, Object>> list = reviewMapper.selectMyReview(customer);
+		
+		System.out.println(list+"<== ser.reviewList");
+		return list;
+	}
+	//리뷰 수정
+	public int updateReview(Review review) {
+		int row = reviewMapper.updateReview(review);
+	
+		return row;
+	}
+	//리뷰 삭제
+	public void deleteReview(Review review) {
+		int selectReviewReplyCnt = reviewMapper.selectReviewReplyCnt(review);
+		if(selectReviewReplyCnt == 0) {
+			reviewMapper.deleteReview(review);
+		}else {
+			reviewMapper.deleteReviewReply(review);
+			reviewMapper.deleteReview(review);
+		}
+	}
+	//내가 쓴 리뷰 상세
+	public Map<String,Object> myReviewOne(Review review){
+		
+		return reviewMapper.myReviewOne(review);
+	}
+		
 }
