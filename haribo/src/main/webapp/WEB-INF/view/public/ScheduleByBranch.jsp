@@ -71,15 +71,18 @@
 				<div class="col-lg-8 posts-list">
 					<div class="single-post row">
 						<div class="col-lg-12">
-							<div class="feature-img">
-								<img class="customer/img-fluid" src="customer/img/blog/feature-img1.jpg" alt="">
-							</div>
-						</div>
-						<div class="col-lg-12">
 							<br><h4 style="text-align:center">${pmap.branchName}지점 ${program.programName} 프로그램 강의 일정</h4>
 							<h4 style="text-align:center">${cMap.targetYear}년 ${cMap.targetMonth +1}월</h4>
 									<div class="row justify-content-center">
-				<div class="table-wrap col-lg-10">
+				<div class="table-wrap col-lg-12">
+					<a style="float:left" class="btn btn-outline-secondary" 
+						href="${pageContext.request.contextPath }/ScheduleByBranch?programNo=${program.programNo}&programName=${program.programName}&targetYear=${cMap.targetYear}&targetMonth=${cMap.targetMonth -1}&branchNo=${branch.branchNo}&branchName=${pmap.branchName}">
+							이전 달
+						</a>
+						<a style="float:right" class="btn btn-outline-secondary" 
+						href="${pageContext.request.contextPath }/ScheduleByBranch?programNo=${program.programNo}&programName=${program.programName}&targetYear=${cMap.targetYear}&targetMonth=${cMap.targetMonth +1}&branchNo=${branch.branchNo}&branchName=${pmap.branchName}">
+							다음 달
+						</a>
 					<table class="schdule-table table table-bordered">
 						<thead class="thead-light">
 							<tr>
@@ -120,14 +123,6 @@
 							</c:if>
 						</c:forEach>
 					</table>
-						<a style="float:left" class="btn btn-outline-secondary" 
-						href="${pageContext.request.contextPath }/ScheduleByBranch?programNo=${program.programNo}&programName=${program.programName}&targetYear=${cMap.targetYear}&targetMonth=${cMap.targetMonth -1}&branchNo=${branch.branchNo}&branchName=${pmap.branchName}">
-							이전 달
-						</a>
-						<a style="float:right" class="btn btn-outline-secondary" 
-						href="${pageContext.request.contextPath }/ScheduleByBranch?programNo=${program.programNo}&programName=${program.programName}&targetYear=${cMap.targetYear}&targetMonth=${cMap.targetMonth +1}&branchNo=${branch.branchNo}&branchName=${pmap.branchName}">
-							다음 달
-						</a>
 				</div>
 			</div>
 						</div>

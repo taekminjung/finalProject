@@ -49,28 +49,17 @@
  	</select>
  	 
 	<select id="selectProgram">
-	SELECT 
-		program_no programNo,
-		employee_id employeeId,
-		program_name programName,
-		program_max_customer programMaxCustomer
-	FROM program
+		SELECT 
+		DISTINCT(program_name) programName
+		FROM program
 		
 	</select>
 	
 	<select id="selectProgramDetail" resultType="Map">
-		SELECT 
-		p.program_no programNo,
-		p.employee_id employeeId,
-		p.program_memo programMemo,
-		p.program_name programName,
-		p.program_max_customer programMaxCustomer,
-		p.createdate,
-		e.branch_no branchNo
-		FROM program p
-		INNER JOIN employee e 
-		ON p.employee_id = e.employee_id
-		WHERE program_no = #{programNo} 
+					SELECT 
+				DISTINCT	(program_memo) programMemo
+				FROM program 
+				WHERE program_name = #{programName} 
 		
 	</select>
 	<!--  프로그램 상세페이지 프로그램,담당직원정보 select -->
@@ -135,7 +124,7 @@
 		      ON pd.program_no = p.program_no
 		      INNER JOIN program_reservation pr
 		      ON pd.program_date_no = pr.program_date_no
-		      WHERE p.program_no = #{programNo} AND pr.branch_no= #{branchNo}
+		      WHERE p.program_name = #{programName} AND pr.branch_no= #{branchNo}
 		      AND YEAR(pd.program_date)= #{targetYear}  
 		      AND MONTH(pd.program_date)= #{targetMonth}
 		      GROUP BY pr.program_date_no

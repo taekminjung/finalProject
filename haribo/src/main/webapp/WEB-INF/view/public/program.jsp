@@ -104,7 +104,7 @@
 			<div class="row">
 				<div class="active-testimonial-carusel">
 				<c:forEach var="p" items="${list}">
-				<a href="${pageContext.request.contextPath}/programDetail?programNo=${p.programNo}&programName=${p.programName}">
+				<a href="${pageContext.request.contextPath}/programDetail?programName=${p.programName}">
 					<div class="single-testimonial item">
 						<img class="img-fluid" src="customer/img/featured-class/f1.jpg" alt="">
 						<div class="overlay overlay-bg"></div>

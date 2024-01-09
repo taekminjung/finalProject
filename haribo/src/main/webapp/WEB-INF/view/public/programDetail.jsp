@@ -76,12 +76,12 @@
 							</div>
 						</div>
 						<div class="col-lg-9 col-md-9">
-							<h3 class="mt-20 mb-20" >${program.programName}</h3> 
+							<h3 class="mt-20 mb-20" >${pregram.programName}</h3> 
 						</div>
 						<div class="col-lg-12">
 						<h5 style="text-align:center">프로그램 소개</h5>
 							<div class="quotes">
-							${dmap.programMemo}<br>
+							${map.programMemo}<br>
 							</div>
 					
 						</div>
@@ -97,7 +97,7 @@
 						<li class="menu-has-children"><a href="">지점 선택</a>
 							<ul>
 							<c:forEach var="b" items="${list}">
-								<li><a href="${pageContext.request.contextPath}/ScheduleByBranch?branchNo=${b.branchNo}&programNo=${program.programNo}&programName=${program.programName}&branchName=${b.branchName}">${b.branchName}</a></li>
+								<li><a href="${pageContext.request.contextPath}/ScheduleByBranch?branchNo=${b.branchNo}&programName=${program.programName}&branchName=${b.branchName}">${b.branchName}</a></li>
 							</c:forEach>
 							</ul>
 						</li>

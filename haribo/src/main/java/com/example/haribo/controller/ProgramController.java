@@ -126,24 +126,15 @@ public class ProgramController {
 	public String programDetail(Model model,Branch branch, Program program, ProgramDate programDate, @RequestParam(required = false) Integer targetYear,
 			@RequestParam(required = false) Integer targetMonth) {
 		//프로그램 상세보기 내용 출력
-		HashMap<String, Object> dmap = programService.selectProgramDetail(program, branch);
-		System.out.println("\u001B[43m"+dmap+"<--con.dmap");	
-		//상세보기 페이지에서 프로그램 정보와 담당 직원 사진 이름 출력
-		HashMap<String, Object> map = programService.selectProgramEmp(program, branch);
-		System.out.println("\u001B[43m"+map+"<--con.map");	
-		//프로그램디테일페이지에 해당 프로그램 일정 출력을위한 달력
-		Map<String, Object> cMap = calendarService.calendar(targetYear, targetMonth);
-		System.out.println("\u001B[43m"+cMap+"<--p/con.programDetail");
+		HashMap<String, Object> map = programService.selectProgramDetail(program);
+		System.out.println("\u001B[43m"+map+"<--con.dmap");	
 		//지점 리스트 출력
 		List<Branch> list = branchService.branchList();
 		
 		//모델에 담기
-		
-		model.addAttribute("list", list);
-		model.addAttribute("cMap",cMap);
-		model.addAttribute("dmap", dmap);
 		model.addAttribute("map", map);
 		model.addAttribute("program", program);
+		model.addAttribute("list", list);
 		return "public/programDetail";
 	}
 	
@@ -169,8 +160,8 @@ public class ProgramController {
 		List<Branch> list = branchService.branchList();
 		System.out.println(list+"<===list");
 		//프로그램 상세보기 내용 출력
-		HashMap<String, Object> dmap = programService.selectProgramDetail(program, branch);
-		System.out.println("\u001B[43m"+dmap+"<--con.dmap");	
+//		HashMap<String, Object> dmap = programService.selectProgramDetail(program, branch);
+//		System.out.println("\u001B[43m"+dmap+"<--con.dmap");	
 		//상세보기 페이지에서 프로그램 정보와 담당 직원 사진 이름 출력
 		HashMap<String, Object> map = programService.selectProgramEmp(program, branch);
 		System.out.println("\u001B[43m"+map+"<-- con.emp.map");	
@@ -181,7 +172,7 @@ public class ProgramController {
 		HashMap<String, Object> pmap = new HashMap<>();
 		pmap.put("branchName", branch.getBranchName());
 		pmap.put("programDate", programDate);
-		pmap.put("programNo", program.getProgramNo());
+		pmap.put("programName", program.getProgramName());
 		pmap.put("branchNo", branch.getBranchNo());
 		pmap.put("targetYear", (int)cMap.get("targetYear"));
 		pmap.put("targetMonth", (int)cMap.get("targetMonth"));
@@ -193,7 +184,7 @@ public class ProgramController {
 		model.addAttribute("list", list);
 		model.addAttribute("pList",pList);
 		model.addAttribute("cMap",cMap);
-		model.addAttribute("dmap", dmap);
+//		model.addAttribute("dmap", dmap);
 		model.addAttribute("map", map);
 		model.addAttribute("branch", branch);
 		model.addAttribute("program", program);

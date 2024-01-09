@@ -78,11 +78,10 @@ public class ProgramService {
 		return list;
 	}
 	//고객홈페이지에서 프로그램 상세보기 페이지
-	public HashMap<String, Object> selectProgramDetail(Program program, Branch branch){
-		HashMap<String, Object> dlist = programMapper.selectProgramDetail(program);
-		System.out.println("\u001B[43m"+dlist+"<--ser.dlist");
+	public HashMap<String, Object> selectProgramDetail(Program program){
+		HashMap<String, Object> map = programMapper.selectProgramDetail(program);
 		
-		return dlist;
+		return map;
 	}
 	//프로그램상세보기페이지에서 프로그램정보와 담당 직원정보 출력
 	public HashMap<String, Object> selectProgramEmp(Program program, Branch branch){
@@ -104,7 +103,7 @@ public class ProgramService {
 	public List<HashMap<String, Object>> selectProgramDate(HashMap<String, Object> pmap){
 		HashMap<String, Object> map = new HashMap<>();
 		map.put("branchNo", pmap.get("branchNo"));
-		map.put("programNo", ((ProgramDate)pmap.get("programDate")).getProgramNo());
+		map.put("programName", pmap.get("programName"));
 		map.put("targetYear",(int)pmap.get("targetYear"));
 		map.put("targetMonth", (int)pmap.get("targetMonth")+1);
 		System.out.println("\u001B[43m"+map+"<--ser.map");
