@@ -1,5 +1,6 @@
 package com.example.haribo.controller;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -18,6 +19,7 @@ import com.example.haribo.vo.Customer;
 import com.example.haribo.vo.CustomerAttendance;
 import com.example.haribo.vo.CustomerDetail;
 import com.example.haribo.vo.CustomerImg;
+import com.example.haribo.vo.Review;
 
 import jakarta.servlet.http.HttpSession;
 import lombok.extern.slf4j.Slf4j;
@@ -217,4 +219,27 @@ public class CustomerController {
 		String u = "redirect:/customerSchedule?customerNo="+customerNo;
 		return u;
 	}
+	//회원 별 작성한 리뷰 출력
+		@GetMapping("/myReviewList")
+		public String selectMyReview(HttpSession session , Model model, Customer customer) {
+			int customerNo = (int)((Map)session.getAttribute("loginCustomer")).get("customerNo");
+
+			List<HashMap<String, Object>> list  = customerService.selectMyReview(customerNo);
+			System.out.println(list+"<==con.reviewList");
+			model.addAttribute("list", list);
+			
+			String u = "customer/myReviewList";
+			return u;
+		}
+		//리뷰 수정
+		
+		//리뷰 삭제
+		@GetMapping("/deleteReview")
+		public String deleteReview(Review review) {
+			customerService.deleteReview(review);
+			
+			return "redirect:/myReviewList";
+		}
+		
+		
 }

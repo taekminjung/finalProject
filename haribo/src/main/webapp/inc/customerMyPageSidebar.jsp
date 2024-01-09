@@ -59,6 +59,12 @@
 						<span class="lnr lnr-arrow-right"></span>
 						<p>비밀번호 변경</p>
 					</a>
+				</li> 
+				<li>
+					<a href="${pageContext.request.contextPath }/myReviewList?customerNo=${loginCustomer.customerNo}" class="d-flex justify-content-between">
+						<span class="lnr lnr-arrow-right"></span>
+						<p>내가 작성한 리뷰</p>
+					</a>
 				</li>
 				<li>
 					<a href="${pageContext.request.contextPath }/deleteCustomer?customerNo=${loginCustomer.customerNo}" class="d-flex justify-content-between">

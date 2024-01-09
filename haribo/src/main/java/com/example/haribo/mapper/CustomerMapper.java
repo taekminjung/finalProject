@@ -1,5 +1,7 @@
 package com.example.haribo.mapper;
 
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
@@ -8,6 +10,7 @@ import com.example.haribo.vo.Customer;
 import com.example.haribo.vo.CustomerAttendance;
 import com.example.haribo.vo.CustomerDetail;
 import com.example.haribo.vo.CustomerImg;
+import com.example.haribo.vo.Review;
 
 @Mapper
 public interface CustomerMapper {
@@ -58,4 +61,12 @@ public interface CustomerMapper {
 	
 	//회원 출결 (퇴실)
 	int updateAttendance(CustomerAttendance customerAttendance);
+	//회원별 작성한 리뷰리스트
+	List<HashMap<String, Object>> selectMyReview(int customerNo);
+	//리뷰 리플 여부 체크
+	int selectReviewReplyCnt(Review review);
+	//리뷰 리플 삭제
+	int deleteReviewReply(Review review);
+	//리뷰 삭제
+	int deleteReview(Review review);
 }

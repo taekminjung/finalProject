@@ -162,4 +162,34 @@
 		WHERE program_reservation_no = #{programReservationNo}
 	</update>
 	
+		<select id="selectMyReview">
+		SELECT r.review_no reviewNo,
+			r.review_title reviewTitle,
+			r.review_content reviewContent,
+			r.createdate,
+			pr.program_reservation_no programReservationNo
+			FROM review r
+			INNER JOIN program_reservation pr
+			ON r.program_reservation_no = pr.program_reservation_no
+			INNER JOIN payment p
+			ON pr.payment_no = p.payment_no
+			INNER JOIN customer c
+			ON p.customer_id = c.customer_id
+			WHERE c.customer_no = #{customerNo}
+		</select>
+		<delete id="deleteReviewReply">
+			DELETE 
+			FROM review_reply
+			WHERE review_no = #{reviewNo}
+		</delete>
+		<delete id="deleteReview">
+			DELETE 
+			FROM review
+			WHERE review_no = #{reviewNo}
+		</delete>
+		<select id="selectReviewReplyCnt">
+			SELECT COUNT(*)
+			FROM review_reply
+			WHERE review_no = #{reviewNo}
+		</select>
 </mapper>

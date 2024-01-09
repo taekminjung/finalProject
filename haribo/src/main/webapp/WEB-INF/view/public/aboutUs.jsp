@@ -43,7 +43,7 @@
 
 	<!-- start banner Area -->
 	<section class="banner-area relative about-banner" id="home">
-		<img class="cta-img img-fluid" src="customer/img/cta-img.png" alt="">
+		<img class="cta-img img-fluid" src="customer/img/10.png" alt="">
 		<div class="overlay overlay-bg"></div>
 		<div class="container">
 			<div class="row d-flex align-items-center justify-content-center">
@@ -115,7 +115,7 @@
 				</div>
 
 				<div class="col-lg-6 about-left">
-					<img class="customer/img-fluid" src="customer/img/about-img.png" alt="">
+					<img class="customer/img-fluid" src="customer/img/9.png" alt="">
 				</div>
 			</div>
 		</div>

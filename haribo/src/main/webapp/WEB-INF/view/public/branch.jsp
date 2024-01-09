@@ -74,7 +74,7 @@
 				<c:forEach var="b" items="${blist}">
 				<a href="${pageContext.request.contextPath}/trainers?branchNo=${b.branchNo}&branchName=${b.branchName}">
 					<div class="single-testimonial item">
-						<img class="img-fluid" src="customer/img/featured-class/f1.jpg" alt="">
+						<img class="img-fluid" src="upload/emp/${b.branchName}.png" alt="">
 						<div class="overlay overlay-bg"></div>
 						<p class="desc">
 							<h4>${b.branchName }</h4><br>
