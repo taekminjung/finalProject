@@ -1,5 +1,6 @@
 package com.example.haribo.mapper;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -20,6 +21,8 @@ public interface SportsEquipmentMapper {
 	
 	int getTotalRowOrder(int rowPerPage);
 	
+	int getTotalRowStock(int rowPerPage);
+	
 	int sportsEquipmentOrder(SportsEquipmentOrder sportsEquipmentOrder);
 	
 	int insertExpire(SportsEquipmentExpire sportsEquipmentExpire);	
@@ -37,6 +40,8 @@ public interface SportsEquipmentMapper {
 	List<SportsEquipment> sportsEquipmentList (Map<String, Object>param);
 	
 	List<SportsEquipmentOrder> sportsEquipmentOrderCk (Map<String, Object>param);
+	
+	List<HashMap<String,Object>> stockList (HashMap<String, Object> param);
 
 	int updateOrderStatus(SportsEquipmentOrder sportsEquipmentOrder);
 }

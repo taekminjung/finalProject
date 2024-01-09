@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.example.haribo.mapper.SportsEquipmentMapper;
+import com.example.haribo.vo.Branch;
 import com.example.haribo.vo.SportsEquipment;
 import com.example.haribo.vo.SportsEquipmentExpire;
 import com.example.haribo.vo.SportsEquipmentImg;
@@ -70,7 +71,12 @@ public class SportsEquipmentService {
 	}
 	
 	public int insertSportsEquipment(SportsEquipment sportsEquipment) {
-		return sportsEquipmentMapper.insertSportsEquipment(sportsEquipment);
+		int row = sportsEquipmentMapper.insertSportsEquipment(sportsEquipment);
+		if (row != 1) {
+			throw new RuntimeException();
+		}	
+			int sportsEquipmentNo = sportsEquipment.getSportsEquipmentNo();
+			return sportsEquipmentNo;
 	}
 	
 	public void insertSportsEquipmentImg(MultipartFile seImg, SportsEquipmentImg sportsEquipmengImg, String path) {
@@ -129,4 +135,28 @@ public class SportsEquipmentService {
 	public int deleteSportsEquipment(SportsEquipment sportsEquipment) {
 		return sportsEquipmentMapper.deleteSportsEquipment(sportsEquipment);
 	}
+	
+	public List<HashMap<String, Object>> stockList(@RequestParam(defaultValue="1")int currentPage, Branch branch){
+		int rowPerPage = 10;
+		int beginRow = (currentPage-1)*rowPerPage;
+		
+		HashMap<String, Object> param = new HashMap<>();
+		param.put("beginRow", beginRow);
+		param.put("rowPerPage", rowPerPage);
+		param.put("branchNo", branch.getBranchNo());
+		
+		List<HashMap<String, Object>> list = sportsEquipmentMapper.stockList(param);
+		return list;
+	}
+	public int lastPageStock() {
+		int rowPerPage = 10;
+		int totalRow = sportsEquipmentMapper.getTotalRowOrder(rowPerPage);
+		int lastPageStock = totalRow / rowPerPage;
+		if (totalRow % rowPerPage !=0) {
+			lastPageStock +=1;
+		}
+		
+		return lastPageStock;
+	}
+	
 }

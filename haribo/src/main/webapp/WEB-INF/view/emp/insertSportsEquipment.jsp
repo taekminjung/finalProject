@@ -43,7 +43,7 @@
             </div>
               <div class="box-body">
 
-              <form id="form" name="form" method="post" action="${pageContext.request.contextPath}/insertSportsEquipment">
+              <form id="form" name="form" method="post" action="${pageContext.request.contextPath}/insertSportsEquipment" enctype="multipart/form-data">
                 <div class="form-group">
                 	<label for="itemName">운동 기구 제품명</label>
                 	<input type="text" class="form-control" id="itemName" name="itemName" placeholder="운동 기구 제품명을 입력하세요">

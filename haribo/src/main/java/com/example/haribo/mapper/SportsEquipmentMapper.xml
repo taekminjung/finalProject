@@ -97,6 +97,9 @@
 	</insert>
 	
 	<insert id="insertSportsEquipment" parameterType="com.example.haribo.vo.SportsEquipment">
+	<selectKey order="AFTER" resultType="Integer" keyProperty="sportsEquipmentNo">
+		SELECT LAST_INSERT_ID()
+	</selectKey>
 		INSERT INTO sports_equipment(
 			item_name,
 			item_price
@@ -140,4 +143,25 @@
 		DELETE FROM sports_equipment
 			WHERE sports_equipment_no = #{sportsEquipmentNo}
 	</delete>
+	
+	<select id="stockList" parameterType="java.util.Map" resultType="java.util.Map">
+		SELECT 
+			se.sports_equipment_no sportsEquipmentNo,
+			seo.branch_no branchNo, 
+			se.item_name itemName, 
+			sei.sports_equipment_img_file_name sportsEquipmentImgFileName,
+			(SUM(seo.quantity) - SUM(see.quantity)) quantity
+		FROM sports_equipment_order seo 
+		INNER JOIN sports_equipment se ON seo.sports_equipment_no = se.sports_equipment_no
+		INNER JOIN sports_equipment_expire see ON se.sports_equipment_no = see.sports_equipment_no
+		INNER JOIN sports_equipment_img sei ON se.sports_equipment_no = sei.sports_equipment_no
+		INNER JOIN branch b ON seo.branch_no = b.branch_no
+		WHERE b.branch_no = #{branchNo} AND seo.order_status ='승인'
+		GROUP BY se.sports_equipment_no
+	</select>
+	
+	<select id="getTotalRowStock" parameterType="int" resultType="int">
+		SELECT COUNT(*)
+		FROM sports_equipment_order
+	</select>
 </mapper>

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -38,7 +39,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        운동 기구 리스트
+        지점별 기구 현황 ${branch.branchNo}
         <small>관리자</small>
       </h1>
       <ol class="breadcrumb">
@@ -47,37 +48,38 @@
       </ol>
     </section>
 
-    <section class="testomial-area section-gap">
-    		<div class="container">
-    			<div class="row d-flex justify-content-center">
-    				<div class="col-lg-12">
-    					<div class="section-title-wrap text-center">
-    						<h1>지점별 재고</h1>
-    				</div>
-    			</div>
-    		</div>
-<div class="row">
-    <c:forEach var="b" items="${list}">
-        <div class="col-md-3 mb-4">
-            <div class="card">
-                <a href="${pageContext.request.contextPath}/branchStockList?branchNo=${b.branchNo}">
-                    <img class="card-img-top" src="customer/img/featured-class/f1.jpg" alt="">
-                    <div class="card-body">
-                        <h4 class="card-title">${b.branchName}</h4>
-                        <p class="card-text">지점 재고현황 보기</p>
-                    </div>
-                </a>
+     <div class="row">
+        <div class="col-xs-12">
+          <div class="box">
+            <div class="box-header">
+              <h3 class="box-title">현재 페이지: ${currentPage}</h3>
+
             </div>
-        </div>
-    </c:forEach>
-</div>
-
-
-		</div>
-	</div>
-
-    </section>
-	
+            <br>
+			<div class="box-body table-responsive no-padding">
+			    <table class="table table-hover">
+			        <tr>
+			            <th class="text-center">번호</th>
+			            <th class="text-center">품목명</th>
+			            <th class="text-center">총수량</th>
+			        </tr>
+			        <c:forEach var="se" items="${list}">
+			        
+					<tr>
+						<td class="text-center">${se.sportsEquipmentNo} </td>
+						<td class="text-center">${se.itemName}</td>
+						<td class="text-center">${se.quantity}</td>
+					</c:forEach>
+			    </table>
+			    <br><br>
+			<div class="text-center"> 
+			  <c:if test="${currentPage > 1}">
+			  	<a href="${pageContext.request.contextPath}/branchStockList?currentPage=${currentPage-1}" class="btn btn-primary">이전</a>
+			  </c:if>
+			  <c:if test="${currentPage < lastPage}">
+			  	<a href="${pageContext.request.contextPath}/branchStockList?currentPage=${currentPage+1}" class="btn btn-primary">다음</a>
+			  </c:if>
+			</div>
 
   <div class="control-sidebar-bg"></div>
 

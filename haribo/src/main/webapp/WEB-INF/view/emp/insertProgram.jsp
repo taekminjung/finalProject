@@ -73,7 +73,7 @@
 			    <label for="pImg">프로그램 이미지</label>
 			    <input type="file" id="pImg" name="pImg" accept=".png">
 			  </div>
-		       <button type="submit" id="formBtn" class="btn btn-primary">Submit</button>
+		       <button type="submit" id="formBtn" class="btn btn-primary">추가</button>
 			</form>
 	
 
