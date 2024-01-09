@@ -100,9 +100,12 @@
 							<form id="programDateForm" action="${pageContext.request.contextPath }/insertProgramReservation" method="post">
 								<input type="hidden" name="customerId" value="${loginCustomer.customerId }">
 								<input type="hidden" name="customerNo" value="${loginCustomer.customerNo }">
-								<br><div class="formDiv" align="center">
-									<br><br><h3>프로그램과 지점을 선택하시면 </h3>
-									<br><h3>예약 가능 날짜가 출력되고 예약 버튼이 활성화 됩니다.</h3>
+								<br><div align="center">
+									<div class="textDiv">
+										<br><br><h3>프로그램과 지점을 선택하시면 </h3>
+										<br><h3>예약 가능 날짜가 출력되고 예약 버튼이 활성화 됩니다.</h3>
+									</div>
+									<div class="formDiv"></div>
 								</div>
 							</form>
 						</fieldset>
@@ -154,7 +157,7 @@
 				method:'get',
 				data:{'branchName':$('#branch').val(),'programName':$('#program').val()},
 				success:function(json){
-					$('.formDiv').html('')
+					$('.textDiv').html('')
 					$('#formBtn').attr("disabled", false);
 					$(json).each(function(index,item){	
 						$('.formDiv').append('<h3><input type="checkbox" id="ck" name="programDateNoList" value="'+item.programDateNo+'">&nbsp;&nbsp;&nbsp;'+item.programName+'&nbsp;('+item.branchName+')&nbsp;'+item.programDate+'&nbsp;('+item.programReservationCNT+'/'+item.programMax+')'+'</h3><br>');

@@ -80,6 +80,13 @@
 		WHERE b.branch_name = #{branchName}
 		AND p.program_name = #{programName}
 		AND pd.program_date BETWEEN NOW() AND #{customerMembershipEnd}
+		AND pd.program_date_no NOT IN (SELECT 
+											pd.program_date_no programDateNo
+										FROM program_date pd INNER JOIN program_reservation pr
+										ON pd.program_date_no = pr.program_date_no INNER JOIN payment p
+										ON pr.payment_no = p.payment_no INNER JOIN customer c
+										ON p.customer_id = c.customer_id
+										WHERE c.customer_no = #{customerNo})	
 		GROUP BY pr.program_date_no
 		ORDER BY programDate										
 	</select>

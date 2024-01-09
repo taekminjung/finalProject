@@ -1,6 +1,7 @@
 package com.example.haribo.service;
 
 import java.util.HashMap;
+
 import java.util.List;
 import java.util.Map;
 
@@ -15,7 +16,6 @@ import com.example.haribo.mapper.ProgramReservationMapper;
 import com.example.haribo.vo.Branch;
 import com.example.haribo.vo.Customer;
 import com.example.haribo.vo.Payment;
-import com.example.haribo.vo.Program;
 import com.example.haribo.vo.ProgramDate;
 import com.example.haribo.vo.ProgramReservation;
 
@@ -83,7 +83,7 @@ public class ProgramReservationService {
 		List<Map<String,Object>> list = programReservationMapper.selectBranchNameByProgramName(programName);
 		return list;
 	}
-	//프로그램이 이름과 지점 이름으로 프로그램 날짜(현재날짜와 멤버십 종료 날짜 사이)
+	//예약 가능한 프로그램 날짜 출력(현재 날짜와 멤버십 종료 날짜 사이의 해당 고객이 예약하지 않은 날짜)
 	public List<Map<String,Object>> ProgramDateByProgramNameBranchName(String programName, String branchName, int customerNo){
 		Customer customer = new Customer();
 		customer.setCustomerNo(customerNo);
@@ -93,6 +93,7 @@ public class ProgramReservationService {
 		map.put("branchName", branchName);
 		map.put("programName", programName);
 		map.put("customerMembershipEnd", customerMembershipEnd);
+		map.put("customerNo", customerNo);
 		
 		List<Map<String,Object>> list = programReservationMapper.selectProgramDateByProgramNameBranchName(map);
 		return list;

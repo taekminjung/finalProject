@@ -5,9 +5,7 @@ import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 
-import com.example.haribo.vo.Customer;
 import com.example.haribo.vo.CustomerAttendance;
-import com.example.haribo.vo.ProgramDate;
 import com.example.haribo.vo.ProgramReservation;
 
 @Mapper

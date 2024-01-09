@@ -49,7 +49,7 @@
 					</a>
 				</li>
 				<li>
-					<a href="${pageContext.request.contextPath }/insertProgramReservation" class="d-flex justify-content-between">
+					<a href="${pageContext.request.contextPath }/insertProgramReservation?customerNo=${loginCustomer.customerNo}" class="d-flex justify-content-between">
 						<span class="lnr lnr-arrow-right"></span>
 						<p>프로그램 예약</p>
 					</a>
