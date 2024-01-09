@@ -51,7 +51,7 @@
 	<select id="getTotalRow" parameterType="Integer" resultType="Integer">
 		SELECT
 			COUNT(*) Cnt
-		FROM question	
+		FROM question
 	</select>
 	
 	<select id="searchByQuestion" parameterType="com.example.haribo.vo.Question">

@@ -2,22 +2,22 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.haribo.mapper.ReviewMapper">
 	<select id="reviewList" resultType="java.util.Map" >
-			SELECT 
-				r.review_no AS reviewNo,
-				r.review_title AS reviewTitle,
-				r.review_content AS reviewContent,
-				p.program_name AS programName,
-				pm.customer_id AS customerId,
-				r.createdate
-				FROM review r
-				INNER JOIN program_reservation pr
-				ON r.program_reservation_no = pr.program_reservation_no
-				INNER JOIN payment pm
-				ON pr.payment_no = pm.payment_no
-				INNER JOIN program_date pd
-				ON pr.program_date_no = pd.program_date_no
-				INNER JOIN program p
-				ON pd.program_no = p.program_no
+		SELECT 
+			r.review_no AS reviewNo,
+			r.review_title AS reviewTitle,
+			r.review_content AS reviewContent,
+			p.program_name AS programName,
+			pm.customer_id AS customerId,
+			r.createdate
+		FROM review r
+		INNER JOIN program_reservation pr
+		ON r.program_reservation_no = pr.program_reservation_no
+		INNER JOIN payment pm
+		ON pr.payment_no = pm.payment_no
+		INNER JOIN program_date pd
+		ON pr.program_date_no = pd.program_date_no
+		INNER JOIN program p
+		ON pd.program_no = p.program_no
 	</select>
 	
 	<select id="reviewReplyList" resultType="com.example.haribo.vo.ReviewReply">
@@ -28,33 +28,76 @@
 			createdate
 		FROM review_reply
 	</select>
+	
 	<insert id="insertReview" parameterType="com.example.haribo.vo.Review">
-	INSERT INTO review
-		(program_reservation_no,
-		 review_title,
-		 review_content,
-		 createdate,
-		 updatedate
-		)VALUES(
-		#{programReservationNo},
-		#{reviewTitle},
-		#{reviewContent},
-		NOW(),
-		NOW()
+		INSERT INTO review(
+			program_reservation_no,
+		 	review_title,
+		 	review_content,
+		 	createdate,
+		 	updatedate
+		) VALUES (
+			#{programReservationNo},
+			#{reviewTitle},
+			#{reviewContent},
+			NOW(),
+			NOW()
 		) 
 	</insert>
+	
 	<select id="selectReservationInfo">
-		SELECT 
-	p.program_name programName,
-	b.branch_name branchName,
-	pd.program_date programDate	
-FROM program_reservation pr
-INNER JOIN program_date pd
-ON pr.program_date_no = pd.program_date_no
-INNER JOIN program p
-ON pd.program_no = p.program_no
-INNER JOIN branch b
-ON pr.branch_no = b.branch_no 
-WHERE pr.program_reservation_no = #{programReservationNo}
+		SELECT
+			p.program_name programName,
+			b.branch_name branchName,
+			pd.program_date programDate
+		FROM program_reservation pr
+		INNER JOIN program_date pd
+		ON pr.program_date_no = pd.program_date_no
+		INNER JOIN program p
+		ON pd.program_no = p.program_no
+		INNER JOIN branch b
+		ON pr.branch_no = b.branch_no
+		WHERE pr.program_reservation_no = #{programReservationNo}
+	</select>
+	
+	<select id="empReviewList" parameterType="java.util.Map" resultType="com.example.haribo.vo.Review">
+		SELECT
+			r.review_no reviewNo,
+			r.review_title reviewTitle,
+			r.review_content reviewContent,
+			p.program_name programName,
+			pm.customer_id customerId,
+			r.createdate
+		FROM review r
+		INNER JOIN program_reservation pr
+		ON r.program_reservation_no = pr.program_reservation_no
+		INNER JOIN payment pm
+		ON pr.payment_no = pm.payment_no
+		INNER JOIN program_date pd
+		ON pr.program_date_no = pd.program_date_no
+		INNER JOIN program p
+		ON pd.program_no = p.program_no
+		ORDER BY r.review_no DESC
+		LIMIT #{beginRow}, #{rowPerPage}
+	</select>
+	
+	<select id="reviewOne" parameterType="com.example.haribo.vo.Review" resultType="com.example.haribo.vo.Review">
+		SELECT
+			r.review_title reviewTitle,
+			r.review_content reviewContent,
+			r.createdate createdate,
+			p.customer_id customerId
+		FROM review r
+		INNER JOIN program_reservation pr
+		ON r.program_reservation_no = pr.program_reservation_no
+		INNER JOIN payment p 
+		ON pr.payment_no = p.payment_no
+		WHERE r.review_no = #{reviewNo}
+	</select>
+	
+	<select id="getTotalRow">
+		SELECT
+			COUNT(*) Cnt
+		FROM review
 	</select>
 </mapper>
