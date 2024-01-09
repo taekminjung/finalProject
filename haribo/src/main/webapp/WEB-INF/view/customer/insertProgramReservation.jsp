@@ -95,17 +95,20 @@
 						<button class="col-lg-1 btn btn-outline-dark" id="formBtn" style="float:right" disabled>예약</button>
 					</div>
 					<div><br><br><br><br>
-						<fieldset style="background-color: #ffffff; border:5px groove; height:1000px">
+						<fieldset style="background-color: #ffffff; border:5px groove; height:1000px; overflow:scroll;">
 						<legend style="background-color: gray; color: white; padding: 5px 10px; width:200px">예약 가능 날짜</legend>
 							<form id="programDateForm" action="${pageContext.request.contextPath }/insertProgramReservation" method="post">
 								<input type="hidden" name="customerId" value="${loginCustomer.customerId }">
 								<input type="hidden" name="customerNo" value="${loginCustomer.customerNo }">
-								<br><div align="center">
+								<div align="center">
 									<div class="textDiv">
 										<br><br><h3>프로그램과 지점을 선택하시면 </h3>
-										<br><h3>예약 가능 날짜가 출력되고 예약 버튼이 활성화 됩니다.</h3>
+										<br><h3>예약 가능 날짜가 출력되고 예약 버튼이 활성화 됩니다.</h3><br><br>
 									</div>
-									<div class="formDiv"></div>
+									<h3><input type="checkbox" id="ckCtrl">&nbsp;전체 선택</h3><br>
+									<div class="formDiv">
+										
+									</div>
 								</div>
 							</form>
 						</fieldset>
@@ -158,9 +161,14 @@
 				data:{'branchName':$('#branch').val(),'programName':$('#program').val()},
 				success:function(json){
 					$('.textDiv').html('')
+					$('.formDiv').html('')
 					$('#formBtn').attr("disabled", false);
-					$(json).each(function(index,item){	
-						$('.formDiv').append('<h3><input type="checkbox" id="ck" name="programDateNoList" value="'+item.programDateNo+'">&nbsp;&nbsp;&nbsp;'+item.programName+'&nbsp;('+item.branchName+')&nbsp;'+item.programDate+'&nbsp;('+item.programReservationCNT+'/'+item.programMax+')'+'</h3><br>');
+					$(json).each(function(index,item){
+						if($.trim(item.programReservationCNT) < $.trim(item.programMax)){
+							$('.formDiv').append('<h3><input type="checkbox" id="ck" name="programDateNoList" value="'+item.programDateNo+'">&nbsp;&nbsp;&nbsp;'+item.programName+'&nbsp;('+item.branchName+')&nbsp;'+item.programDate+'&nbsp;('+item.programReservationCNT+'/'+item.programMax+')'+'</h3><br>');
+						}else{
+							$('.formDiv').append('<h3><input disabled type="checkbox" id="ck" name="programDateNoList" value="'+item.programDateNo+'">&nbsp;&nbsp;&nbsp;'+item.programName+'&nbsp;('+item.branchName+')&nbsp;'+item.programDate+'&nbsp;('+item.programReservationCNT+'/'+item.programMax+')'+'</h3><br>');
+						}
 					})
 				}
 			})
@@ -173,6 +181,18 @@
 				$('#programDateForm').submit();
 			}
 		});
+		
+		$('#ckCtrl').on("change",function(){
+			console.log('클릭');
+			if($(this).is(":checked")){
+				console.log('체크');
+				$('input[type="checkbox"]').attr("checked",true);
+			}else{
+				console.log('해제');
+				$('input[type="checkbox"]').attr("checked",false);
+			}
+			
+		})
 	</Script>
 </body>
 
