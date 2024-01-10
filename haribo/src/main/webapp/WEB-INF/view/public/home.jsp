@@ -205,7 +205,7 @@
 				<div class="active-testimonial-carusel">
 				<c:forEach var="r" items="${list}">
 					<div class="single-testimonial item">
-						<img class="mx-auto rounded-circle"  width="150" height="150"  src="${pageContext.request.contextPath}/upload/customer/${r.customerId}.png" alt="">
+						<img class="mx-auto rounded-circle"  width="150" height="150"  src="${pageContext.request.contextPath}/upload/customer/${r.customerImgFileName}" alt=""  onerror="this.src='${pageContext.request.contextPath }/upload/customer/default.jpg'">
 						<p class="desc">
 							<h4>작성자 : ${r.customerId }</h4><br>
 							<h4>수강 프로그램 : ${r.programName}</h4><br>

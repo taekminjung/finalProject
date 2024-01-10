@@ -2,22 +2,27 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.haribo.mapper.ReviewMapper">
 	<select id="reviewList" resultType="java.util.Map" >
-		SELECT 
-			r.review_no AS reviewNo,
-			r.review_title AS reviewTitle,
-			r.review_content AS reviewContent,
-			p.program_name AS programName,
-			pm.customer_id AS customerId,
-			r.createdate
-		FROM review r
-		INNER JOIN program_reservation pr
-		ON r.program_reservation_no = pr.program_reservation_no
-		INNER JOIN payment pm
-		ON pr.payment_no = pm.payment_no
-		INNER JOIN program_date pd
-		ON pr.program_date_no = pd.program_date_no
-		INNER JOIN program p
-		ON pd.program_no = p.program_no
+	SELECT 
+         r.review_no AS reviewNo,
+         r.review_title AS reviewTitle,
+         r.review_content AS reviewContent,
+         p.program_name AS programName,
+         pm.customer_id AS customerId,
+         r.createdate,
+         ci.customer_img_file_name AS customerImgFileName
+      FROM review r
+      INNER JOIN program_reservation pr
+      ON r.program_reservation_no = pr.program_reservation_no
+      INNER JOIN payment pm
+      ON pr.payment_no = pm.payment_no
+      INNER JOIN program_date pd
+      ON pr.program_date_no = pd.program_date_no
+      INNER JOIN program p
+      ON pd.program_no = p.program_no
+      INNER JOIN customer c
+      ON pm.customer_id = c.customer_id
+      LEFT outer JOIN customer_img ci
+      ON c.customer_no = ci.customer_no
 	</select>
 	
 	<select id="reviewReplyList" resultType="com.example.haribo.vo.ReviewReply">
