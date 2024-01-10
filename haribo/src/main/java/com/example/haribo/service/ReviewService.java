@@ -103,8 +103,11 @@ public class ReviewService {
 	}
 	//내가 쓴 리뷰 상세
 	public Map<String,Object> myReviewOne(Review review){
+		Map<String,Object> myReviewMap = new HashMap<>();
+		myReviewMap.put("rMap", reviewMapper.myReviewOne(review));
+		myReviewMap.put("replyList",reviewMapper.reviewReplyList());
 		
-		return reviewMapper.myReviewOne(review);
+		return myReviewMap;
 	}
 		
 }
