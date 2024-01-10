@@ -130,8 +130,7 @@
 		WHERE review_no = #{reviewNo}
 	</select>
 	<update id="updateReview">
-		UPDATE review
-		SET
+		UPDATE review SET
 		review_title = #{reviewTitle},
 		review_content = #{reviewContent},
 		updatedate = NOW()

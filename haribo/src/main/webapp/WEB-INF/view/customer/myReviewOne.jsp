@@ -85,10 +85,10 @@
 							<td class="col-lg-1"></td>
 							<td class="col-lg-1"></td>
 						</tr>
-						<form action="" method="post">
+						<form id="form" action="${pageContext.request.contextPath }/updateReview" method="post">
 							<tr align="center" height="140px">
-								<td colspan="2"><h3>제목</h3></td>
-								<td colspan="4"><h3><input class="single-input" type="text" name="reviewTitle" placeholder="${rMap.reviewTitle}"></h3></td>
+								<td colspan="2"><h3>제목</h3><input id="reviewNo" type="hidden" name="reviewNo" value="${rMap.reviewNo }"></td>
+								<td colspan="4"><h3><input class="single-input" type="text" name="reviewTitle" value="${rMap.reviewTitle}"></h3></td>
 							</tr>
 							<tr align="right">
 								<td colspan="4">작성자<br><br><br>
@@ -105,7 +105,7 @@
 							</tr>
 							<tr align="center">
 								<td colspan="1"></td>
-								<td colspan="4" height="100px"><h3><textarea class="single-textarea" name="reviewContent" placeholder="${rMap.reviewContent }"></textarea></h3><br><br></td>
+								<td colspan="4" height="100px"><h3><textarea class="single-textarea" name="reviewContent">${rMap.reviewContent }</textarea></h3><br><br></td>
 								<td colspan="1"></td>
 							</tr>
 							<tr align="right">
@@ -115,12 +115,32 @@
 						</form>
 						<tr align="left">
 							<td colspan="6">
-								<button class="btn btn-outline-dark">수정</button>
-								<a  class="btn btn-outline-danger" href="">삭제</a>
+								<button id="updateBtn" class="btn btn-outline-dark">수정</button>
+								<button id="deleteBtn" class="btn btn-outline-danger">삭제</button>
 							</td>
 						</tr>
-						
 					</table>
+				</div><br><br>
+				<div>
+				<h3>Reply</h3><br><br>
+					<table class="table col-lg-11">
+						<tr align="center">
+							<td class="col-lg-7"><h3>내용</h3></td>
+							<td class="col-lg-2"><h3>작성자</h3></td>
+							<td class="col-lg-3"><h3>작성일</h3></td>
+						</tr>
+					</table>
+					<c:forEach var="rr" items="${rrList }">
+						<c:if test="${rr.reviewNo == rMap.reviewNo }">
+							<table class="table col-lg-11">
+								<tr align="center">
+									<td class="col-lg-7">${rr.reviewReplyContent }</td>
+									<td class="col-lg-2">${rr.employeeId }</td>
+									<td class="col-lg-3">${rr.createdate }</td>
+								</tr>
+							</table>
+						</c:if>
+					</c:forEach>
 				</div>
 			</div>
 		</div>
@@ -147,6 +167,25 @@
 	<script src="customer/js/owl.carousel.min.js"></script>
 	<script src="customer/js/mail-script.js"></script>
 	<script src="customer/js/main.js"></script>
+	<script>
+	$('#updateBtn').click(function(){
+		var result = confirm('수정하시겠습니까');
+		if(result){
+			$('#form').submit()
+		}else{
+			
+		}
+	})
+	
+	$('#deleteBtn').click(function(){
+		var result2 = confirm('삭제하시겠습니까');
+		if(result2){
+			location.replace('${pageContext.request.contextPath}/deleteReview?reviewNo=${rMap.reviewNo}&customerNo=${loginCustomer.customerNo}');
+		}else{
+			
+		}
+	})	
+	</script>
 </body>
 
 </html>
