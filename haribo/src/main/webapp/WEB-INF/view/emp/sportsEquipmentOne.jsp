@@ -100,6 +100,18 @@
 			$('#form').submit()
 		}
 	})
+	
+//		$('#deleteBtn').click(function() {
+//			var result = confirm($('#itemName').val() + ' 삭제하시겠습니까?');
+//			if (result) {
+
+//				alert('Item deleted successfully.');
+//			} else {
+	
+//			}
+//		});
+//	});
+	
 </script>
 </body>
 </html>
