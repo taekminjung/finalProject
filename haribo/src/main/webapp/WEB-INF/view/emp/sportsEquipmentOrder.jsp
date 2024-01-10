@@ -5,7 +5,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>리뷰 게시판(트레이너)</title>
+  <title>발주 신청(트레이너)</title>
   <!-- 파비콘 코드 -->
   <link rel="icon" type="image/x-icon" href="emp/img/starfavi.png">
   
@@ -33,48 +33,59 @@
   <div class="content-wrapper">
     <!-- 페이지 메인 헤더 -->
     <section class="content-header">
-<!-- Horizontal Form -->
-          <div class="box box-info">
-            <div class="box-header with-border">
-              <h3 class="box-title">Horizontal Form</h3>
+	<!-- 발주 신청 폼 -->
+    <div class="box box-info">
+      <div class="box-header with-border">
+        <h3 class="box-title">발주 신청</h3>
+      </div>
+      <!-- /.box-header -->
+      <!-- form start -->
+      <form class="form-horizontal" action="${pageContext.request.contextPath}/sportsEquipmentOrder" method="post">
+        <div class="box-body">
+          <div class="form-group">
+            <label for="branchNo" class="col-sm-2 control-label">지점</label>
+
+            <div class="col-sm-10">
+              <input type="email" class="form-control" id="branchNo" placeholder="${loginEmployee.branchNo} &nbsp; (${loginEmployee.branchName} 지점)">
             </div>
-            <!-- /.box-header -->
-            <!-- form start -->
-            <form class="form-horizontal">
-              <div class="box-body">
-                <div class="form-group">
-                  <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
-
-                  <div class="col-sm-10">
-                    <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
-
-                  <div class="col-sm-10">
-                    <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <div class="col-sm-offset-2 col-sm-10">
-                    <div class="checkbox">
-                      <label>
-                        <input type="checkbox"> Remember me
-                      </label>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <!-- /.box-body -->
-              <div class="box-footer">
-                <button type="submit" class="btn btn-default">Cancel</button>
-                <button type="submit" class="btn btn-info pull-right">Sign in</button>
-              </div>
-              <!-- /.box-footer -->
-            </form>
           </div>
-          <!-- /.box -->
+          
+          <div class="form-group">
+            <label class="col-sm-2 control-label">발주 물품</label>
+            <div class="col-sm-10">
+            <select class="form-control">
+            <option>여기에 옵션이 들어갑니다 선택해보시지</option>
+            <c:forEach var="seq" items="${list}">${seq.sportsEquipmentNo}</c:forEach>
+            </select>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label for="inputPassword3" class="col-sm-2 control-label">수량</label>
+
+            <div class="col-sm-10">
+              <input type="number" class="form-control" id="inputPassword3" placeholder="Password">
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label for="inputPassword3" class="col-sm-2 control-label">총 가격</label>
+
+            <div class="col-sm-10">
+              <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
+            </div>
+          </div>
+          
+        </div>
+        <!-- /.box-body -->
+        <div class="box-footer">
+          <a href="trainerHome" class="btn btn-default">신청 취소</a>
+          <button type="submit" class="btn btn-info pull-right">제출하기</button>
+        </div>
+        <!-- /.box-footer -->
+      </form>
+    </div>
+    <!-- /.box -->
     </section>
   </div>
   <!-- 헤더 + 내용 wrapper 부분 끝 -->

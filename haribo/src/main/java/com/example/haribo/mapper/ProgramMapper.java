@@ -40,5 +40,5 @@ public interface ProgramMapper {
 	
 	List<Map<String, Object>> selectBranchNameList();
 	
-	List<Map<String, Object>> employeeNameByBranchNo(String branchNo);
+	List<Map<String, Object>> selectEmployeeNameByBranchNo(int branchNo);
 }

@@ -13,7 +13,7 @@
 			program_memo,
 			program_day
 		)	VALUES (
-			'admin',
+			#{employeeId},
 			#{programName},
 			#{programMaxCustomer},
 			#{programMemo},
@@ -161,17 +161,21 @@
 
 	<select id="selectBranchNameList" parameterType="java.util.Map" resultType="java.util.Map">
 		SELECT
+			branch_no branchNo,
 			branch_name branchName
 		FROM branch
 	</select>
 	
 	<select id="selectEmployeeNameByBranchNo" parameterType="java.util.Map" resultType="java.util.Map">
 		SELECT
-			ed.employee_name employeeName
-		FROM employee e INNER JOIN employee ed
-		ON e.employee_no = ed.employeeNo
-		INNER JOIN branch b
-		ON e.branch_no = b.branch_no
-		WHERE b.branch_No = #{branchNo}
+			ed.employee_no AS employeeNo,
+			ed.employee_name AS employeeName,
+			e.employee_id AS employeeId
+		FROM branch b
+		INNER JOIN employee e
+		ON b.branch_no = e.branch_no
+		INNER JOIN employee_detail ed
+		ON e.employee_no = ed.employee_no
+		WHERE b.branch_No = #{branchNo} AND employee_id LIKE 't%'
 	</select>
 </mapper>

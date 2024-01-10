@@ -67,6 +67,8 @@
 	<select id="employeeList" parameterType="java.util.Map" resultType="java.util.Map">
 	    SELECT
 	        e.branch_no branchNo,
+	        e.employee_no employeeNo,
+	        e.employee_id employeeId,
 	        ed.employee_name employeeName,
 	        ed.employee_phone employeePhone,
 	        ed.employee_gender employeeGender,

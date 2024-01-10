@@ -45,27 +45,19 @@
               <div class="box-body">
 			<form id="form" name="form" method="post" action="${pageContext.request.contextPath}/insertProgram" enctype="multipart/form-data">
 			  
-			  
-			  
-			  
 			  <div class="form-group">
 			   <label for="employeeId">트레이너명</label><br>
 			    <select class="form-select col-lg-3" id="branch">
 			    	<option>지점</option>
 			    	<c:forEach var="t" items="${list}">
-			    		<option value="${t.branchName}">${t.branchName}</option>
+			    		<option value="${t.branchNo}">${t.branchName}</option>
 			    	</c:forEach>
 			    </select>
-			    <select class="form-select col-lg-5" id="employeeName">
+			    <select class="form-select col-lg-5" id="employeeId" name="employeeId">
 			    	<option value="">트레이너</option>
 			    </select>
 			  </div>
 			  <br>
-			  
-			  
-			  
-		
-			  
 			  
 			  <div class="form-group">
 			    <label for="programName">프로그램명</label>
@@ -130,14 +122,36 @@
 			method:'get',
 			data:{'branchNo': $('#branch').val()},
 			success:function(json){
-				$('#employeeName').html('<option>트레어니명</option>');
+				$('#employeeId').html('<option>트레이너명</option>');
 				$(json).each(function(index,item){
-					$('#employeeName').append('<option value="'+item.employeeName+'">'+item.employeeName+'</option>')
+					$('#employeeId').append('<option value="'+item.employeeId+'">'+item.employeeId+'</option>')
 				})
 			}
 		})
 	})
-
+	
+		$('#formBtn').click(function(){
+		if($('#programName').val().length<1){
+			alert('프로그램명을 입력해주세요.')
+			$('#programName').focus()
+		}  else if($('#programMaxCustomer').val().length<1){
+			alert('최대 수용인원 입력해주세요')
+			$('#programMaxCustomer').focus()
+		}  else if ($('#programMemo').val().length<1){
+			alert('상세정보를 입력해주세요')
+			$('#programMemo').focus()
+		}  else if ($('#programDay').val().length<1){
+			alert('프로그램 개설요일을 입력해주세요')
+			$('#programDay').focus()
+		} // else if($('#imgForm').val().length<1){
+		//	alert('프로그램 이미지를 추가해주세요')
+		//	$('#imgForm').focus()
+	//	}  
+		else{
+			$('#form').submit()
+		}
+	})
+	
 </script>
 </body>
 </html>

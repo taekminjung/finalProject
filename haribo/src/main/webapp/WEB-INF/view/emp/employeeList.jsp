@@ -81,7 +81,8 @@
 			        <c:forEach var="e" items="${list}">
 			            <tr>
 			            <form id="form" name="form" action="${pageContext.request.contextPath}/updateEmployeeStatus" method="post">
-			            <input type="hidden" name="employeeNo" id="employeeNo" value="${employeeNo}">
+			            <input type="hidden" name="employeeNo" id="employeeNo" value="${e.employeeNo}">
+			             <input type="hidden" name="employeeId" id="employeeId" value="${e.employeeId}">
 			                <td class="text-center">${e.branchNo}</td>
 			                <td class="text-center">${e.employeeName}</td>
 			                <td class="text-center">${e.employeePhone}</td>
@@ -97,7 +98,7 @@
 				                	</select>
 			                	</c:when>
 			                	<c:otherwise>
-                                     ${employeeActive}
+                                     ${e.employeeActive}
                                 </c:otherwise>
 			                </c:choose>
 			                </td>

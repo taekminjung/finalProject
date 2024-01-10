@@ -72,11 +72,11 @@ public class EmployeeService {
 		return empInfo;
 	}
 	
-    public int updateEmployeeStatus(String employeeId, String activeStatus) {
+    public int updateEmployeeStatus(int employeeNo, String activeStatus) {
         
     	Map<String, Object> param = new HashMap<>();
-        param.put("employeeId", employeeId);
-        param.put("activeStatus", activeStatus);
+        param.put("employeeNo", employeeNo);
+        param.put("employeeActive", activeStatus);
 
         return employeeMapper.updateEmployeeStatus(param);
     }

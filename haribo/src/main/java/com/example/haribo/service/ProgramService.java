@@ -129,13 +129,14 @@ public class ProgramService {
 	}
 
 	//지점 이름 출력
-	public List<Map<String, Object>> branchNameList(){
+	public List<Map<String, Object>> selectBranchNameList(){
 		List<Map<String, Object>> list = programMapper.selectBranchNameList();
 		return list;
 	}
 	
-	public List<Map<String, Object>> employeeNameByBranchNo(String branchNo){
-		List<Map<String, Object>> list = programMapper.employeeNameByBranchNo(branchNo);
+	public List<Map<String, Object>> selectEmployeeNameByBranchNo(int branchNo){
+		List<Map<String, Object>> list = programMapper.selectEmployeeNameByBranchNo(branchNo);
+		System.out.println(list+"<--ser.list");
 		return list;
 	}	
 }

@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -39,10 +40,11 @@ public class ProgramRest {
 
 	//해당 지점의 트레이너 출력
 	@GetMapping("/employeeNameByBranchNo")
-	public List<Map<String, Object>> employeeNameByBranchNo(String branchNo){
-		log.debug(branchNo);
-		List<Map<String, Object>> employeeNameList = programService.employeeNameByBranchNo(branchNo);
+	public List<Map<String, Object>> employeeNameByBranchNo(Model model, int branchNo){
+		System.out.println(branchNo+"<--restcon.no");
+		List<Map<String, Object>> employeeNameList = programService.selectEmployeeNameByBranchNo(branchNo);
 		log.debug(employeeNameList+"");
+		model.addAttribute("list",employeeNameList);
 		return employeeNameList;
 	}
 }

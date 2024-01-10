@@ -9,7 +9,7 @@
 			c.customer_no customerNo,
 			c.customer_id customerId,
 			cd.customer_name customerName
-		FROM customer c INNER JOIN customer_detail cd
+		FROM customer c LEFT OUTER JOIN customer_detail cd
 		ON c.customer_no = cd.customer_no
 		WHERE c.customer_id = #{customerId}
 		AND c.customer_pw = PASSWORD(#{customerPw})	

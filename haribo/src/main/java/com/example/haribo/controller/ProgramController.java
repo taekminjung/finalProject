@@ -38,7 +38,7 @@ public class ProgramController {
 			return "redirect:/login";
 		}
 		
-		List<Map<String, Object>> list = programService.branchNameList();
+		List<Map<String, Object>> list = programService.selectBranchNameList();
 		model.addAttribute("list", list);
 		
 		return "emp/insertProgram";

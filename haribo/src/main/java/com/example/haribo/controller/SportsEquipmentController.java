@@ -78,24 +78,28 @@ public class SportsEquipmentController {
 		return "emp/sportsEquipmentExpiredList";
 	}
 	
-	// 트레이너 물품 발주 입력하기(form+insert)
-	@GetMapping("/sportsEquipmentOrder")
-	public String sportsEquipmentOrder() {
-		return "emp/sportsEquipmentOrder";
-	}
-		
-	@PostMapping("/sportsEquipmentOrder")
-	public String sportsEquipmentOrder(SportsEquipmentOrder sportsEquipmentOrder) {
-		sportsEquipmentService.sportsEquipmentOrder(sportsEquipmentOrder);
-		return "redirect:/emp/sportsEquipmentOrder";
-	}
-	
 	@GetMapping("/sportsEquipmentOne")
 	public String sportsEquipmentOne(Model model, SportsEquipment sportsEquipment) {
 		SportsEquipment list = sportsEquipmentService.sportsEquipmentOne(sportsEquipment);
 		model.addAttribute("list", list);
 		
 		return "emp/sportsEquipmentOne";
+	}
+	
+	// 트레이너 물품 발주 입력하기(form+insert)
+	@GetMapping("/sportsEquipmentOrder")
+	public String sportsEquipmentOrder(Model model, SportsEquipment sportsEquipment) {
+		SportsEquipment list = sportsEquipmentService.sportsEquipmentOne(sportsEquipment);
+		model.addAttribute("list", list);
+		return "emp/sportsEquipmentOrder";
+	}
+		
+	@PostMapping("/sportsEquipmentOrder")
+	public String sportsEquipmentOrder(SportsEquipmentOrder sportsEquipmentOrder, Model model, SportsEquipment sportsEquipment) {
+		sportsEquipmentService.sportsEquipmentOrder(sportsEquipmentOrder);
+		SportsEquipment list = sportsEquipmentService.sportsEquipmentOne(sportsEquipment);
+		model.addAttribute("list", list);
+		return "redirect:/emp/sportsEquipmentOrder";
 	}
 	
 	// 폐기할 물품 입력하기 (form+insert)

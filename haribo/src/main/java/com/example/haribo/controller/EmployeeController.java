@@ -102,11 +102,9 @@ public class EmployeeController {
 	
 	// 직원 상태(활성화/비활성화) 수정
 	@PostMapping("/updateEmployeeStatus")
-	public String updateEmployeeStatus(HttpSession session, 
-			@RequestParam("employeeId") String employeeId, 
-			@RequestParam("activeStatus") String activeStatus) {
-		log.debug(employeeId+activeStatus);
-	    int row = employeeService.updateEmployeeStatus(employeeId, activeStatus);
+	public String updateEmployeeStatus(HttpSession session, int employeeNo, String activeStatus) {
+		log.debug(employeeNo+activeStatus);
+	    int row = employeeService.updateEmployeeStatus(employeeNo, activeStatus);
 	    return "redirect:/employeeList";
 	}
 	
