@@ -51,7 +51,7 @@
 				</div>
 				<div class="banner-content col-lg-6 col-md-6">
 					<h1 class="text-uppercase">
-						<span>YogaFlex</span> to <br> Shape your body
+						<span>Final Project</span> of <br> HariboTeam
 					</h1>
 				</div>
 			</div>
@@ -162,10 +162,10 @@
 						 <form class="form-area contact-form text-right" id="contact" action="${pageContext.request.contextPath}/contact" method="post">
 						<div class="row">
 							<div class="col-lg-6 form-group">
-								<label for="date">신청자의 생년월일을 선택해주세요: <input type="date"  name="customerBirth" max="2100-01-01" min="1950-01-01"></label>
+								<label for="date">신청자의 생년월일을 선택해주세요: <input type="date"  name="customerBirth" max="2100-01-01" min="1950-01-01"  style="border:none"></label>
 								<div><br></div>
 							<label for="datetime">원하시는 상담 날짜와 시간을 선택해주세요:
-  							<input type="datetime-local" name="customerContactDate" max="2100-01-01T21:00" min="1950-01-01T12:30"></label>
+  							<input type="datetime-local" name="customerContactDate" max="2100-01-01T21:00" min="1950-01-01T12:30" style="border:none"></label>
 							</div>
 							<div class="col-lg-6 form-group">
 								<input name="customerName" placeholder="상담 신청자명을 입력해주세요" onfocus="this.placeholder = ''" onblur="this.placeholder = '이름을 입력하세요'"

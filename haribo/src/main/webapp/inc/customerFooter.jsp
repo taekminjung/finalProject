@@ -26,7 +26,7 @@
 				<div class="col-lg-5  col-md-6 col-sm-6">
 					<div class="single-footer-widget">
 						<h4>하리보팀 소개</h4>
-						<p>GDJ 72기</p>
+						<p>GDJ 72기 정택민, 정회윤, 이유섭, 강유정</p>
 						<div class="d-flex flex-row" id="mc_embed_signup">
 						</div>
 					</div>

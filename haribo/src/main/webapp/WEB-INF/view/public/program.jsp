@@ -67,31 +67,21 @@
 	<!-- End banner Area -->
 
 	<!-- Start top-category-widget Area -->
-	<section class="top-category-widget-area pt-90 pb-90 ">
-		<div class="container">
-			<div class="row d-flex justify-content-center">
-				<div class="col-lg-12">
-					<div class="section-title-wrap text-center">
-						<h1>프로그램</h1>
-						<p>저희가 준비한 프로그램입니다.</p>
-					</div>
-				</div>
-			</div>
-	<div align="center">
+
+		<section class="testomial-area section-gap">
+			<div align="center">
 				<div class="col-lg-8 sidebar-widgets" >
 					<div class="widget-wrap">
 						<div class="single-sidebar-widget search-widget">
-						<h5 style="text-align: center;">프로그램 검색</h5>
+						<h4 style="text-align: center;">프로그램 검색</h4>
 							<form class="search-form" action="${pageContext.request.contextPath}/program" method="post" id="searchProgram">
-								<input placeholder="검색어를 입력해주세요" name="programName" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = '검색어를 입력해주세요'">
+								<input placeholder="프로그램명을 입력해주세요" name="programName" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = '검색어를 입력해주세요'">
 								<button type="submit"><i class="fa fa-search"></i></button>
 							</form>
 						</div>
 					</div>
 				</div>
 			</div>
-	</section>
-		<section class="testomial-area section-gap">
 			<div class="container">
 			<div class="row d-flex justify-content-center">
 				<div class="col-lg-12">
