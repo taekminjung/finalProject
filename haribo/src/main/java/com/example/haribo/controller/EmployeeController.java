@@ -35,6 +35,7 @@ public class EmployeeController {
 
 	    // 세션에 로그인 정보 넣기 / 앞글자 : a-관리자, t-트레이너
 	    if (loginEmployee != null) {
+	    	
 	        session.setAttribute("loginEmployee", loginEmployee);
 	   
 	        // 로그인된 직원 또는 트레이너의 아이디 가져오기

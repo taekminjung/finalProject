@@ -15,7 +15,7 @@
 		INNER JOIN employee_detail ed ON e.employee_no = ed.employee_no
 		WHERE e.employee_id = #{employeeId}
 		AND e.employee_pw = PASSWORD(#{employeePw})
-		And e.employee_active = 'Y'
+		AND e.employee_active = 'Y'
 	</select>
 
 	<insert id="insertEmployee" parameterType="com.example.haribo.vo.Employee">
