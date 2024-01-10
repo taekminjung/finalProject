@@ -22,7 +22,7 @@ public interface EmployeeMapper {
 	
 	int updateEmployee(Employee employee);
 	
-	Employee updateEmployeeStatus(Employee employee);
+	int updateEmployeeStatus(Map<String, Object> param);
 	
 	int idCkEmp(String idCk);
 	

@@ -80,18 +80,33 @@
 			
 			        <c:forEach var="e" items="${list}">
 			            <tr>
+			            <form id="form" name="form" action="${pageContext.request.contextPath}/updateEmployeeStatus" method="post">
+			            <input type="hidden" name="employeeNo" id="employeeNo" value="${employeeNo}">
 			                <td class="text-center">${e.branchNo}</td>
 			                <td class="text-center">${e.employeeName}</td>
 			                <td class="text-center">${e.employeePhone}</td>
 			                <td class="text-center">${e.employeeEmail}</td>
 			                <td class="text-center">${e.employeeGender}</td>
 			                <td class="text-center"><fmt:formatDate value="${e.createdate}" pattern="yyyy-MM-dd"/></td>
-			                <td class="text-center">${e.employeeActive}</td>
-		     <td class="text-center">
-            <button class="btn bg-navy" data-toggle="modal" data-target="#modifyModal${e.employeeId}">수정</button>
-        </td>
-    </tr>
-</c:forEach>
+			                <td class="text-center">
+			                <c:choose>
+			                	<c:when test="${e.employeeActive == 'Y'}">
+				                	<select id="activeStatus" name="activeStatus">
+				                		<option value="Y">활성</option>
+				                		<option value="N">비활성</option>
+				                	</select>
+			                	</c:when>
+			                	<c:otherwise>
+                                     ${employeeActive}
+                                </c:otherwise>
+			                </c:choose>
+			                </td>
+							<td class="text-center">
+							    <button class="btn bg-navy" id="updateBtn">수정</button>
+							</td>
+							</form>
+						    </tr>
+						</c:forEach>
 			        
 			    </table>
 			    <br><br>
@@ -129,20 +144,30 @@
 <script src="emp/dist/js/demo.js"></script>
 
 <script>
-	function updateEmployeeActive(employeeId, activeStatus) {
-	    $.ajax({
-	        url: 'haribo/updateEmployeeActive',
-	        method: 'post',
-	        data: { 'employeeId': employeeId, 'activeStatus': activeStatus },
-	        success: function (json) {
-	            alert('활성/비활성이 업데이트되었습니다.');
-	            $('#modifyModal' + employeeId).modal('hide');
-	        },
-	        error: function (err) {
-	            console.log(err);
-	        }
-	    });
-	}
+	$('#updateBtn').click(function () {
+	
+	    var result = confirm('formData');
+	    
+	    if (result) {
+	        $('#form').submit();
+	    } else {
+	        // Handle cancellation
+	    }
+	  });
+	
+	$(document).ready(function() {
+		$.ajax({
+			type: 'POST',
+			url: 'haribo/employeeList',
+			data: { employeeNo: employeeNo, activeStatus: selectedValue},
+			success: function(response) {
+				
+			},
+			error: function(error){
+				console.error('Error:', error);
+			}
+		});
+	});
 </script>
 </body>
 </html>

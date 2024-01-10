@@ -106,8 +106,8 @@ public class EmployeeController {
 			@RequestParam("employeeId") String employeeId, 
 			@RequestParam("activeStatus") String activeStatus) {
 		log.debug(employeeId+activeStatus);
-	    employeeService.updateEmployeeStatus(employeeId, activeStatus);
-	    return "emp/employeeList";
+	    int row = employeeService.updateEmployeeStatus(employeeId, activeStatus);
+	    return "redirect:/employeeList";
 	}
 	
 	@GetMapping("/updateEmployeePw")

@@ -159,4 +159,19 @@
 		WHERE program_no = #{programNo}
 	</delete>
 
+	<select id="selectBranchNameList" parameterType="java.util.Map" resultType="java.util.Map">
+		SELECT
+			branch_name branchName
+		FROM branch
+	</select>
+	
+	<select id="selectEmployeeNameByBranchNo" parameterType="java.util.Map" resultType="java.util.Map">
+		SELECT
+			ed.employee_name employeeName
+		FROM employee e INNER JOIN employee ed
+		ON e.employee_no = ed.employeeNo
+		INNER JOIN branch b
+		ON e.branch_no = b.branch_no
+		WHERE b.branch_No = #{branchNo}
+	</select>
 </mapper>

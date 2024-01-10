@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.haribo.service.ProgramReservationService;
+import com.example.haribo.service.ProgramService;
 
 import jakarta.servlet.http.HttpSession;
 import lombok.extern.slf4j.Slf4j;
@@ -16,6 +17,8 @@ import lombok.extern.slf4j.Slf4j;
 public class ProgramRest {
 	@Autowired
 	private ProgramReservationService programReservationService;
+	@Autowired
+	private ProgramService programService;
 	
 	//해당 프로그램의 지점 출력
 	@GetMapping("/branchNameByProgramName")
@@ -32,5 +35,14 @@ public class ProgramRest {
 		int customerNo = (int)(((Map)session.getAttribute("loginCustomer")).get("customerNo"));
 		List<Map<String,Object>> programDateList = programReservationService.ProgramDateByProgramNameBranchName(programName, branchName, customerNo);
 		return programDateList;
+	}
+
+	//해당 지점의 트레이너 출력
+	@GetMapping("/employeeNameByBranchNo")
+	public List<Map<String, Object>> employeeNameByBranchNo(String branchNo){
+		log.debug(branchNo);
+		List<Map<String, Object>> employeeNameList = programService.employeeNameByBranchNo(branchNo);
+		log.debug(employeeNameList+"");
+		return employeeNameList;
 	}
 }

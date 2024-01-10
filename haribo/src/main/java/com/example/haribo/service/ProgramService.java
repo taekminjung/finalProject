@@ -2,6 +2,7 @@ package com.example.haribo.service;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,7 +13,6 @@ import org.springframework.web.multipart.MultipartFile;
 import com.example.haribo.mapper.ProgramMapper;
 import com.example.haribo.vo.Branch;
 import com.example.haribo.vo.Program;
-import com.example.haribo.vo.ProgramDate;
 import com.example.haribo.vo.ProgramImg;
 
 import lombok.extern.slf4j.Slf4j;
@@ -128,5 +128,14 @@ public class ProgramService {
 		int row = programMapper.insertProgramImg(programImg);
 	}
 
-
+	//지점 이름 출력
+	public List<Map<String, Object>> branchNameList(){
+		List<Map<String, Object>> list = programMapper.selectBranchNameList();
+		return list;
+	}
+	
+	public List<Map<String, Object>> employeeNameByBranchNo(String branchNo){
+		List<Map<String, Object>> list = programMapper.employeeNameByBranchNo(branchNo);
+		return list;
+	}	
 }

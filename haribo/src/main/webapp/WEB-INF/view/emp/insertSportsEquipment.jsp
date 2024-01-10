@@ -56,12 +56,11 @@
                 	<label for="seImg">운동기구 이미지</label>
                 	<input type="file" id="seImg" name="seImg" accept=".png">
         	    </div>
-           		
-           		<div class="col-xs-4" style="float:right">
-          			<button type="submit" id="formBtn" class="btn btn-primary">추가</button>
-          		</div>			
+
 			</form>
-              
+                <div class="col-xs-4" style="float:right">
+          			<button type="submit" id="formBtn" class="btn btn-primary">추가</button>
+          		</div>		
               <div class="box-footer">
               </div>
           </div>

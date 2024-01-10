@@ -32,7 +32,15 @@ public class ProgramController {
 
 	// 프로그램 추가
 	@GetMapping ("/insertProgram")
-	public String insertProgram() {
+	public String insertProgram(HttpSession session, Model model) {
+		// 세션 검사
+		if(session.getAttribute("loginEmployee") == null) {
+			return "redirect:/login";
+		}
+		
+		List<Map<String, Object>> list = programService.branchNameList();
+		model.addAttribute("list", list);
+		
 		return "emp/insertProgram";
 	}
 	

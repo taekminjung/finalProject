@@ -40,19 +40,33 @@
     <!-- Main content -->
     <section class="content">
       <div class="row">
-        <!-- left column -->
         <div class="col-md-6">
-          <!-- general form elements -->
           <div class="box box-primary">
-            <div class="box-header with-border">
-              <h3 class="box-title">Quick Example</h3>
-            </div>
               <div class="box-body">
 			<form id="form" name="form" method="post" action="${pageContext.request.contextPath}/insertProgram" enctype="multipart/form-data">
+			  
+			  
+			  
+			  
 			  <div class="form-group">
-			    <label for="employeeId">트레이너명</label>
-			    <input type="text" class="form-control" id="employeeId" name="employeeId" placeholder="트레이너명">
+			   <label for="employeeId">트레이너명</label><br>
+			    <select class="form-select col-lg-3" id="branch">
+			    	<option>지점</option>
+			    	<c:forEach var="t" items="${list}">
+			    		<option value="${t.branchName}">${t.branchName}</option>
+			    	</c:forEach>
+			    </select>
+			    <select class="form-select col-lg-5" id="employeeName">
+			    	<option value="">트레이너</option>
+			    </select>
 			  </div>
+			  <br>
+			  
+			  
+			  
+		
+			  
+			  
 			  <div class="form-group">
 			    <label for="programName">프로그램명</label>
 			    <input type="text" class="form-control" id="programName" name="programName" placeholder="프로그램명">
@@ -73,9 +87,11 @@
 			    <label for="pImg">프로그램 이미지</label>
 			    <input type="file" id="pImg" name="pImg" accept=".png">
 			  </div>
-		       <button type="submit" id="formBtn" class="btn btn-primary">추가</button>
+
 			</form>
-	
+	         <div class="col-xs-4" style="float:right">
+			       <button type="submit" id="formBtn" class="btn btn-primary">추가</button>
+			 </div>
 
               <div class="box-footer">
   
@@ -108,27 +124,20 @@
 
 <script>
 	
-	$('#formBtn').click(function(){
-		if($('#programName').val().length<1){
-			alert('프로그램명을 입력해주세요.')
-			$('#programName').focus()
-		}  else if($('#programMaxCustomer').val().length<1){
-			alert('최대 수용인원 입력해주세요')
-			$('#programMaxCustomer').focus()
-		}  else if ($('#programMemo').val().length<1){
-			alert('상세정보를 입력해주세요')
-			$('#programMemo').focus()
-		}  else if ($('#programDay').val().length<1){
-			alert('프로그램 개설요일을 입력해주세요')
-			$('#programDay').focus()
-		} // else if($('#imgForm').val().length<1){
-		//	alert('프로그램 이미지를 추가해주세요')
-		//	$('#imgForm').focus()
-	//	}  
-		else{
-			$('#form').submit()
-		}
+	$('#branch').change(function(){
+		$.ajax({
+			url:'/haribo/employeeNameByBranchNo',
+			method:'get',
+			data:{'branchNo': $('#branch').val()},
+			success:function(json){
+				$('#employeeName').html('<option>트레어니명</option>');
+				$(json).each(function(index,item){
+					$('#employeeName').append('<option value="'+item.employeeName+'">'+item.employeeName+'</option>')
+				})
+			}
+		})
 	})
+
 </script>
 </body>
 </html>

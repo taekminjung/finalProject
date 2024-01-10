@@ -2,6 +2,8 @@ package com.example.haribo.mapper;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
 import org.apache.ibatis.annotations.Mapper;
 
 import com.example.haribo.vo.Program;
@@ -36,4 +38,7 @@ public interface ProgramMapper {
 	List<HashMap<String, Object>> selectProgramDate(HashMap<String,Object> map);
 
 	
+	List<Map<String, Object>> selectBranchNameList();
+	
+	List<Map<String, Object>> employeeNameByBranchNo(String branchNo);
 }
