@@ -3,12 +3,16 @@
 <mapper namespace="com.example.haribo.mapper.EmployeeMapper">
 
 	<select id="loginEmployee" parameterType="com.example.haribo.vo.Employee" resultType="java.util.Map">
-		SELECT e.employee_no employeeNo,
-			   e.employee_id employeeId,
-			   e.branch_no branchNo,
-			   ed.employee_name employeeName
-		FROM employee e INNER JOIN employee_detail ed
-		ON e.employee_no = ed.employee_no
+		SELECT
+			e.employee_no employeeNo,
+			e.employee_id employeeId,
+			e.branch_no branchNo,
+			ed.employee_name employeeName,
+			b.branch_no branchNo,
+			b.branch_name branchName
+		FROM branch b
+		INNER JOIN employee e ON b.branch_no = e.branch_no
+		INNER JOIN employee_detail ed ON e.employee_no = ed.employee_no
 		WHERE e.employee_id = #{employeeId}
 		AND e.employee_pw = PASSWORD(#{employeePw})
 		And e.employee_active = 'Y'
@@ -18,31 +22,31 @@
 		<selectKey order="AFTER" resultType="Integer" keyProperty="employeeNo">
 			SELECT last_insert_id();
 		</selectKey>
-	INSERT INTO employee( 
-		branch_no,
-		employee_id,
-		employee_pw
-	)	VALUES (
-		#{branchNo}, 
-		#{employeeId},
-		PASSWORD(#{employeePw})
-	)
+		INSERT INTO employee( 
+			branch_no,
+			employee_id,
+			employee_pw
+		) VALUES (
+			#{branchNo}, 
+			#{employeeId},
+			PASSWORD(#{employeePw})
+		)
 	</insert>
 	
 	<insert id="insertEmployeeDetail" parameterType="com.example.haribo.vo.EmployeeDetail">
-	INSERT INTO employee_detail(
-		employee_no,
-		employee_name,
-		employee_gender,
-		employee_phone,
-		employee_email
-	)	VALUES	(
-		#{employeeNo},
-		#{employeeName},
-		#{employeeGender},
-		#{employeePhone},
-		#{employeeEmail}
-	)
+		INSERT INTO employee_detail(
+			employee_no,
+			employee_name,
+			employee_gender,
+			employee_phone,
+			employee_email
+		) VALUES (
+			#{employeeNo},
+			#{employeeName},
+			#{employeeGender},
+			#{employeePhone},
+			#{employeeEmail}
+		)
 	</insert>
 	
 	<select id="idCkEmp" parameterType="String" resultType="Integer">
@@ -103,7 +107,7 @@
 			employee_pw = PASSWORD(#{newEmployeePw}),
 			updatedate = now()
 		WHERE employee_id = #{employeeId}
-		AND employee_pw = PASSWORD(#{employeePw})		  
+		AND employee_pw = PASSWORD(#{employeePw})
 	</update>
 	
 </mapper>

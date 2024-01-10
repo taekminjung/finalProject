@@ -41,7 +41,7 @@
                 <img src="emp/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
                 <p>
           		  ${loginEmployee.employeeName}
-                  <small>${loginEmployee.branchNo}호점 트레이너</small>
+                  <small>${loginEmployee.branchName}지점 트레이너</small>
                 </p>
               </li>
               
