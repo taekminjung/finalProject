@@ -2,12 +2,15 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.haribo.mapper.ReviewMapper">
 	<select id="reviewList" resultType="java.util.Map" >
-	SELECT 
+		SELECT 
          r.review_no AS reviewNo,
          r.review_title AS reviewTitle,
          r.review_content AS reviewContent,
+         p.employee_id AS employeeId,
          p.program_name AS programName,
          pm.customer_id AS customerId,
+         e.employee_id AS employeeId,
+         b.branch_name AS branchName,
          r.createdate,
          ci.customer_img_file_name AS customerImgFileName
       FROM review r
@@ -19,6 +22,10 @@
       ON pr.program_date_no = pd.program_date_no
       INNER JOIN program p
       ON pd.program_no = p.program_no
+      INNER JOIN employee e
+      ON p.employee_id = e.employee_id
+      INNER JOIN branch b
+      ON pr.branch_no = b.branch_no
       INNER JOIN customer c
       ON pm.customer_id = c.customer_id
       LEFT outer JOIN customer_img ci

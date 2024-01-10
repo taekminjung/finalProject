@@ -209,6 +209,8 @@
 						<p class="desc">
 							<h4>작성자 : ${r.customerId }</h4><br>
 							<h4>수강 프로그램 : ${r.programName}</h4><br>
+							<h5>수강 지점: ${r.branchName}</h5><br>
+							<h5>담당트레이너: ${r.employeeId}</h5><br>
 							리뷰 내용 : ${r.reviewContent}
 						</p>
 						<c:forEach var="rp" items="${rpList }">
