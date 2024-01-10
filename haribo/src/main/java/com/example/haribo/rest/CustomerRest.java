@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.haribo.service.CustomerService;
 import com.example.haribo.vo.Customer;
-import com.example.haribo.vo.CustomerAttendance;
+import com.example.haribo.vo.CustomerImg;
 
 import lombok.extern.slf4j.Slf4j;
 @Slf4j
@@ -49,4 +49,12 @@ public class CustomerRest {
 		return customerMembershipEnd;
 	}
 	
+	//사진 이름 가져오기
+	@GetMapping("/customerImg")
+	public String customerImg(CustomerImg customerImg) {
+		
+		String customerImgName = customerService.customerImgName(customerImg);
+		log.debug(customerImgName);
+		return customerImgName;
+	}
 }

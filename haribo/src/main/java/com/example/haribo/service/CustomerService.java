@@ -227,5 +227,9 @@ public class CustomerService {
 		
 		customerMapper.updateAttendance(customerAttendance);
 	}
-	
+	//회원 사진 이름 출력
+	public String customerImgName(CustomerImg customerImg) {
+		
+		return customerMapper.selectCustomerImgName(customerImg);
+	}
 }

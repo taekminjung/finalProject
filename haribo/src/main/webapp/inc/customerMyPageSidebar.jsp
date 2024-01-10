@@ -4,7 +4,7 @@
 <div class="col-lg-3 sidebar-widgets"><br><br>
 	<div class="widget-wrap">
 		<div class="single-sidebar-widget user-info-widget">
-			<img src="${pageContext.request.contextPath }/upload/customer/${loginCustomer.customerId}.png"
+			<img id="img" src="${pageContext.request.contextPath }/upload/customer/"
 			 class="rounded-circle" width="150" height="150" onerror="this.src='${pageContext.request.contextPath }/upload/customer/default.jpg'">
 			
 			<h4>${loginCustomer.customerId }</h4>
@@ -15,11 +15,8 @@
 			<h4 class="category-title">사진 변경</h4><br>
 			<ul class="cat-list">
 				<li>
-					<p>png 파일만 업로드 가능합니다.</p>
-				</li>
-				<li>
 					<form action="${pageContext.request.contextPath }/updateCustomerImg" method="post" enctype="multipart/form-data" id="imgForm">
-						<input id="cImg" type="file" name="cImg" accept=".png">
+						<input id="cImg" type="file" name="cImg" accept="image/*">
 						<input type="hidden" name="customerNo" value="${loginCustomer.customerNo }">
 						<input type="hidden" name="customerId" value="${loginCustomer.customerId }">
 					</form>
@@ -103,6 +100,19 @@
 			data:{'customerNo':${loginCustomer.customerNo}},
 			success:function(json){
 				$('#membershipEnd').text(json);
+			},
+			error:function(err){
+				console.log(err);
+			}
+		})
+		
+		
+		$.ajax({
+			url:'/haribo/customerImg',
+			method:'get',
+			data:{'customerNo':${loginCustomer.customerNo}},
+			success:function(json){
+				$('#img').attr('src','upload/customer/'+json);
 			},
 			error:function(err){
 				console.log(err);

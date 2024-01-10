@@ -162,4 +162,10 @@
 		WHERE program_reservation_no = #{programReservationNo}
 	</update>
 	
+	<select id="selectCustomerImgName" parameterType="com.example.haribo.vo.CustomerImg" resultType="String">
+		SELECT
+			customer_img_file_name customerImgFileName
+		FROM customer_img
+		WHERE customer_no = #{customerNo}
+	</select>
 </mapper>

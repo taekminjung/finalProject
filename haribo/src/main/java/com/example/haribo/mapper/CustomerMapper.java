@@ -62,4 +62,6 @@ public interface CustomerMapper {
 	//회원 출결 (퇴실)
 	int updateAttendance(CustomerAttendance customerAttendance);
 	
+	//회원 사진 이름 출력
+	String selectCustomerImgName(CustomerImg customerImg);
 }
