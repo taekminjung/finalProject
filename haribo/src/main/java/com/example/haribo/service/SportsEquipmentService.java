@@ -81,18 +81,19 @@ public class SportsEquipmentService {
 			return sportsEquipmentNo;
 	}
 	
-	public void insertSportsEquipmentImg(MultipartFile seImg, SportsEquipmentImg sportsEquipmengImg, String path) {
+	public void insertSportsEquipmentImg(MultipartFile seImg, SportsEquipmentImg sportsEquipmentImg, SportsEquipment sportsEquipment, String path) {
 		String pathSportsEquipment = path+"/emp";
 		String oName = seImg.getOriginalFilename();
 		String type = oName.substring(oName.lastIndexOf("."));
-		String fName = "aa"+type;
+		String itemName = sportsEquipment.getItemName();
+		String fName = itemName+type;
 		
-		sportsEquipmengImg.setSportsEquipmentImgOriginName(oName);
-		sportsEquipmengImg.setSportsEquipmentImgFileName(fName);
-		sportsEquipmengImg.setSportsEquipmentImgSize((int)seImg.getSize());
-		sportsEquipmengImg.setSportsEquipmentImgType(seImg.getContentType());
+		sportsEquipmentImg.setSportsEquipmentImgOriginName(oName);
+		sportsEquipmentImg.setSportsEquipmentImgFileName(fName);
+		sportsEquipmentImg.setSportsEquipmentImgSize((int)seImg.getSize());
+		sportsEquipmentImg.setSportsEquipmentImgType(seImg.getContentType());
 		
-		int row = sportsEquipmentMapper.insertSportsEquipmentImg(sportsEquipmengImg);
+		int row = sportsEquipmentMapper.insertSportsEquipmentImg(sportsEquipmentImg);
 		
 		if(row != 1) {
 			throw new RuntimeException();

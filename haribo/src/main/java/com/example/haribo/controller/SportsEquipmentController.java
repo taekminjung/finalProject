@@ -35,7 +35,7 @@ public class SportsEquipmentController {
 		String path = session.getServletContext().getRealPath("/upload");
 		int sportsEquipmentNo = sportsEquipmentService.insertSportsEquipment(sportsEquipment);
 		sportsEquipmentImg.setSportsEquipmentNo(sportsEquipmentNo);
-		sportsEquipmentService.insertSportsEquipmentImg(seImg, sportsEquipmentImg, path);
+		sportsEquipmentService.insertSportsEquipmentImg(seImg, sportsEquipmentImg, sportsEquipment, path);
 		System.out.println(seImg+"<--seImg");
 		
 		return "redirect:/sportsEquipmentList";
