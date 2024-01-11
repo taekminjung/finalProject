@@ -165,8 +165,8 @@ public class SportsEquipmentService {
 	}
 	
 	// sportsEquipmentOrderForm에 본사가 발주한 물품 리스트 출력
-	public List<SportsEquipmentOrder> sportsEquipmentOrderFormList(int branchNo) {
-		List<SportsEquipmentOrder> orderList = sportsEquipmentMapper.sportsEquipmentOrderFormList(branchNo);
+	public List<SportsEquipment> sportsEquipmentOrderFormList() {
+		List<SportsEquipment> orderList = sportsEquipmentMapper.sportsEquipmentOrderFormList();
 		return orderList;
 	}
 		

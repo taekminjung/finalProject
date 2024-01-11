@@ -42,7 +42,7 @@ public interface SportsEquipmentMapper {
 	int updateOrderStatus(SportsEquipmentOrder sportsEquipmentOrder);
 	
 	// 물품 발주, 폐기 폼
-	List<SportsEquipmentOrder> sportsEquipmentOrderFormList(int branchNo);
+	List<SportsEquipment> sportsEquipmentOrderFormList();
 
 	int sportsEquipmentOrderForm(SportsEquipmentOrder sportsEquipmentOrder);
 	

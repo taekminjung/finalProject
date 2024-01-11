@@ -1,11 +1,13 @@
 package com.example.haribo.rest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.haribo.service.EmployeeService;
 import com.example.haribo.vo.Employee;
+import com.example.haribo.vo.EmployeeImg;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -31,5 +33,14 @@ public class EmployeeRest {
 		
 		int cnt = employeeService.pwCkEmp(employee);
 		return cnt;
+	}
+	
+	// 사진 이름 가져오기
+	@GetMapping("/employeeImg")
+	public String employeeImg(EmployeeImg employeeImg) {
+		
+		String employeeImgName = employeeService.employeeImgName(employeeImg);
+		log.debug(employeeImgName);
+		return employeeImgName;
 	}
 }

@@ -73,7 +73,7 @@
 			d.employee_phone employeePhone,
 			d.employee_email employeeEmail,
 			b.branch_name branchName,
-			i.employee_img_file_name
+			i.employee_img_file_name employeeImgFileName
 			FROM  program p
 			INNER JOIN employee e
 			ON p.employee_id = e.employee_id

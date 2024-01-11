@@ -88,11 +88,8 @@ public class SportsEquipmentController {
 	
 	// 트레이너 물품 발주 입력하기(form+insert) + sportsEquipmentOrderForm에 본사가 발주한 물품 리스트 출력
 	@GetMapping("/sportsEquipmentOrderForm")
-	public String sportsEquipmentOrderFormList(Model model, int branchNo) {
-		 // 디버깅 로그 추가
-	    System.out.println("브랜치 번호 받아옹기: " + branchNo);
-	    
-		List<SportsEquipmentOrder> orderList = sportsEquipmentService.sportsEquipmentOrderFormList(branchNo);
+	public String sportsEquipmentOrderFormList(Model model) {
+		List<SportsEquipment> orderList = sportsEquipmentService.sportsEquipmentOrderFormList();
 		model.addAttribute("orderList", orderList);
 				
 		return "emp/sportsEquipmentOrderForm";
@@ -102,7 +99,7 @@ public class SportsEquipmentController {
 	public String sportsEquipmentOrderFormSubmit(SportsEquipmentOrder sportsEquipmentOrder) {
 		sportsEquipmentService.sportsEquipmentOrderForm(sportsEquipmentOrder);
 		
-		return "redirect:/emp/sportsEquipmentOrderForm";
+		return "emp/sportsEquipmentOrderForm";
 	}
 	
 	// 폐기할 물품 입력하기 (form+insert)

@@ -46,7 +46,7 @@
             <label for="branchNo" class="col-sm-2 control-label">지점</label>
 
             <div class="col-sm-10">
-              <input type="text" class="form-control" id="branchNo" placeholder="${loginEmployee.branchNo} &nbsp; (${loginEmployee.branchName} 지점)" readonly>
+              <input type="text" class="form-control" name="branchNo" value="${loginEmployee.branchNo}" placeholder="${loginEmployee.branchNo} &nbsp; (${loginEmployee.branchName} 지점)" readonly>
             </div>
           </div>
           
@@ -56,7 +56,7 @@
             <select class="form-control" id="sportsEquipmentNo" name="sportsEquipmentNo">
                 <option>발주할 물품을 선택해주세요</option>
                 <c:forEach var="o" items="${orderList}">
-                    <option value="${o.sportsEquipmentNo}">${o.sportsEquipmentNo}</option>
+                    <option value="${o.sportsEquipmentNo}">${o.itemName}</option>
                 </c:forEach>
             </select>
             </div>
@@ -69,14 +69,7 @@
             </div>
           </div>
           
-          <div class="form-group">
-            <label for="totalPrice" class="col-sm-2 control-label">총 가격</label>
-
-            <div class="col-sm-10">
-              <input type="number" class="form-control" id="totalPrice" name="totalPrice" value="" readonly>
-            </div>
-          </div>
-          
+        
         </div>
         <!-- /.box-body -->
         <div class="box-footer">
