@@ -62,11 +62,12 @@ public class QuestionController {
 	// 문의 글 삭제하기
 	@GetMapping("/deleteQuestion")
 	public String deleteQuestion(Question question) {
+		System.out.println(question+"<====qcon.question");
 		questionService.deleteQuestion(question);
 		
 		return "redirect:/questionList";
 	}
-
+	
 	// 문의사항 리스트(고객)
 	@GetMapping("/questionList")
 	public String questionList(Model model, @RequestParam(defaultValue ="1")int currentPage) {
@@ -83,16 +84,18 @@ public class QuestionController {
 	// 문의사항 상세보기(고객)
 	@GetMapping("/questionOne")
 	public String questionOne(Model model, Question question) {
-		model.addAttribute("question", question);
+		//문의 상세
 		Question resultQuestion = questionService.questionOne(question);
-		model.addAttribute("resultQuestion", resultQuestion);
+		
 		System.out.println(resultQuestion+"<---con.questionOne");
+		//문의 답변 리스트
 		List<QuestionReply> list = questionReplyService.selectquestionReply(question);
 		
 		System.out.println(list+"<--con.replyList");
 		
+		model.addAttribute("question", question);
 		model.addAttribute("list", list);
-		
+		model.addAttribute("resultQuestion", resultQuestion);
 	
 		return "public/questionOne";
 	}

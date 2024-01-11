@@ -98,8 +98,29 @@
 							</tr>
 						</tbody>
 					</table>
+					<h3 style="text-align:center">문의사항 답변</h3><br>
+					<table class="schdule-table table table-bordered">
+						<thead class="thead-light">
+							<tr>
+								<th class="head" scope="col">번호</th>
+								<th class="head" scope="col">답변내용</th>
+								<th class="head" scope="col">작성자</th>
+								<th class="head" scope="col">작성일자</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+							<c:forEach var="r" items="${list}">
+								<td>${r.questionReplyNo}</td>
+								<td>${r.questionReplyContent}</td>
+								<td>${r.employeeId}</td>
+								<td>${r.createdate}</td>
+								</c:forEach>
+							</tr>
+						</tbody>
+					</table>
 					<c:if test="${resultQuestion.customerId == loginCustomer.customerId}">
-					<div style="text-align:center"><a class="primary-btn mt-40" href="${pageContext.request.contextPath}/deleteQuestion?questionNo=${question.questionNo}">삭제</a></div>
+					<div style="text-align:center"><a class="primary-btn mt-40" href="${pageContext.request.contextPath}/deleteQuestion?questionNo=${question.questionNo}">문의 글 삭제</a></div>
 					</c:if>
 					<br>						
 					</section>

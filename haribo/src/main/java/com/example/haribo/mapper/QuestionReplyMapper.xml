@@ -14,11 +14,15 @@
 		)
 	</insert>
 	
-	<delete id="deleteQuestionReply" parameterType="com.example.haribo.vo.QuestionReply">
-		DELETE FROM questionReply
-		WHERE question_reply_no = #{questionReplyNo}
+	<delete id="deleteQuestionReply" parameterType="com.example.haribo.vo.Question">
+		DELETE FROM question_reply
+		WHERE question_no = #{questionNo}
 	</delete>
-
+	<select id="selectQuestionReply">
+		SELECT COUNT(*)
+		FROM question_reply
+		WHERE question_no = #{questionNo}
+	</select>
 	<select id="selectquestionReply"> 
 		SELECT
 			question_reply_no questionReplyNo,

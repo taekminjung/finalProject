@@ -158,6 +158,7 @@
 				<div class="col-lg-12">
 					<div class="section-title-wrap text-center">
 						<h1>상담 신청하기</h1><br>
+						<h5>신청서 작성해주시면 확인 후 개별로 연락 드리겠습니다.</h5><br>
 						<p>
 						 <form class="form-area contact-form text-right" id="contact" action="${pageContext.request.contextPath}/contact" method="post">
 						<div class="row">

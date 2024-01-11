@@ -9,13 +9,14 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.haribo.mapper.QuestionMapper;
+import com.example.haribo.mapper.QuestionReplyMapper;
 import com.example.haribo.vo.Question;
 
 @Transactional
 @Service
 public class QuestionService {
 	@Autowired private QuestionMapper questionMapper;
-	
+	@Autowired private QuestionReplyMapper questionReplyMapper;
 	// 문의사항 입력
 	public String insertQuestion(Question question) {
 		questionMapper.insertQuestion(question);
@@ -29,7 +30,16 @@ public class QuestionService {
 
 	// 문의사항 삭제
 	public int deleteQuestion(Question question) {
-		return questionMapper.deleteQuestion(question);
+		int row = questionReplyMapper.selectQuestionReply(question);
+				
+		if(row != 0) {
+				questionReplyMapper.deleteQuestionReply(question);
+				
+				questionMapper.deleteQuestion(question);
+		}else { 
+			questionMapper.deleteQuestion(question);		
+		}
+		return row;
 	}
 	
 	// 문의사항 리스트 페이징
