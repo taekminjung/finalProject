@@ -94,6 +94,7 @@ public class ProgramService {
 		
 		return dmap;
 	}
+	//프로그램 검색
 	public List<Program> searchByProgram(Program program){
 		List<Program> list = programMapper.searchByProgram(program);
 		System.out.println("\u001B[43m"+list+"<--ser.list");

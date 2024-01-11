@@ -57,7 +57,8 @@
 	
 	<select id="selectProgramDetail" resultType="Map">
 					SELECT 
-				DISTINCT	(program_memo) programMemo
+				DISTINCT	(program_memo) programMemo,
+				program_day programDay
 				FROM program 
 				WHERE program_name = #{programName} 
 		

@@ -82,6 +82,7 @@
 						<h5 style="text-align:center">프로그램 소개</h5>
 							<div class="quotes">
 							${map.programMemo}<br>
+							강의 요일 : ${map.programDay }
 							</div>
 					
 						</div>
