@@ -150,4 +150,16 @@
 		FROM employee_img
 		WHERE employee_no = #{employeeNo}
 	</select>
+	
+	<!-- 여기서부터 트레이너 관련 mapper xml -->
+	<select id="selectTrainerOne">
+		SELECT 
+			ed.employee_name employeeName,
+			e.employee_id employeeId,
+			ed.employee_email employeeEmail,
+	        ed.employee_phone employeePhone
+		FROM employee e INNER JOIN employee_detail ed
+		ON e.employee_no = ed.employee_no
+		WHERE e.employee_no = #{employeeNo}
+	</select>
 </mapper>

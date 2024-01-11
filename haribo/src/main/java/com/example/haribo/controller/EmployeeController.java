@@ -154,4 +154,13 @@ public class EmployeeController {
 		employeeService.deleteEmployee(employee, employeeDetail, employeeImg, path);
 		return "redirect:/employeeList";
 	}
+	
+	// 트레이너 상세정보
+	@GetMapping("/trainerOne")
+	public String trainerOne(Model model, Employee employee) {
+		// 서비스 호출
+		Map<String,Object> trainerOne = employeeService.trainerOne(employee);
+		model.addAttribute("trainerOne", trainerOne);
+		return "emp/trainerOne";
+	}
 }

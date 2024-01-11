@@ -46,7 +46,7 @@
             <label for="branchNo" class="col-sm-2 control-label">지점</label>
 
             <div class="col-sm-10">
-              <input type="text" class="form-control" name="branchNo" value="${loginEmployee.branchNo}" placeholder="${loginEmployee.branchNo} &nbsp; (${loginEmployee.branchName} 지점)" readonly>
+              <input type="text" class="form-control" name="branchNo" value="${loginEmployee.branchNo}" readonly>
             </div>
           </div>
           

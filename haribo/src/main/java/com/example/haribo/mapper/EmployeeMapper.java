@@ -52,4 +52,6 @@ public interface EmployeeMapper {
 	Map<String,Object> selectEmployeeInfo(Employee employee);
 
 	String selectEmployeeImgName(EmployeeImg employeeImg);
+
+	Map<String, Object> selectTrainerOne(Employee employee);
 }
