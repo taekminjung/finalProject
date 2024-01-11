@@ -8,7 +8,8 @@
 								resultType="java.util.Map">
 		SELECT
 			p.program_name programName,
-			DAY(pd.program_date) programDate,
+			DAY(pd.program_date) programDateDay,
+			pd.program_date programDate,
 			b.branch_name branchName,
 			pr.program_reservation_no programReservationNo,
 			COUNT(ca.program_reservation_no) cnt,
@@ -91,4 +92,23 @@
 		ORDER BY programDate										
 	</select>
 	
+	<select id="selectProgramReservationBycustomerId" parameterType="com.example.haribo.vo.Customer" resultType="java.util.Map">
+		SELECT 
+			pg.program_name programName,
+			b.branch_name branchName,
+			pd.program_date programDate,
+			pr.program_reservation_no programReservationNo
+		FROM payment p inner join program_reservation pr 
+		ON p.payment_no = pr.payment_no INNER JOIN program_date pd
+		ON pr.program_date_no = pd.program_date_no INNER JOIN program pg
+		ON pd.program_no = pg.program_no INNER JOIN branch b
+		ON pr.branch_no = b.branch_no
+		WHERE p.customer_id = #{customerId}
+		AND pd.program_date > NOW()
+	</select>
+	
+	<delete id="deleteProgramReservation" parameterType="com.example.haribo.vo.ProgramReservation">
+		DELETE FROM program_reservation
+		WHERE program_reservation_no = #{programReservationNo}
+	</delete>
 </mapper>

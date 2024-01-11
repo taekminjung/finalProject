@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<c:set var="now" value="<%=new java.util.Date()%>"/>
+<fmt:formatDate value="${now}" pattern="yyyy-MM-dd"/>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="zxx" class="no-js">
 
@@ -112,41 +115,43 @@
 							<c:if test="${!(d < 1 || d > calMap.lastDate)}">
 								${d }<br>
 								<c:forEach var="p" items="${proList }">
-									<c:if test="${p.programDate == d }">
-									<c:if test="${p.exitTime != null }">
-										<a href="${pageContext.request.contextPath }/insertReviewForm?programReservationNo=${p.programReservationNo}" data-bs-toggle="tooltip" title="리뷰 쓰기">
-											<h6>${p.branchName }<br>
-											: ${p.programName}</h6>
-										</a>
+									<c:if test="${p.programDateDay == d }">
+										<c:if test="${p.exitTime != null }">
+											<a href="${pageContext.request.contextPath }/insertReviewForm?programReservationNo=${p.programReservationNo}" data-bs-toggle="tooltip" title="리뷰 쓰기">
+												<h6>${p.branchName }<br>
+												: ${p.programName}</h6>
+											</a>
 										</c:if>
 										<c:if test="${p.exitTime == null }">
 										<h6>${p.branchName }<br>
 											: ${p.programName}</h6>
 											</c:if>
 										<div>
-											<c:if test="${p.cnt == 0 && p.enterTime == null}">
-												<span class="badge bg-primary text-light">
-													<a class="text-light" href="${pageContext.request.contextPath }/insertAttendance?programReservationNo=${p.programReservationNo }&customerNo=${loginCustomer.customerNo}">
-														입실하기
-													</a>
-												</span>
-											</c:if>
-											<c:if test="${p.enterTime != null}">
-												<span class="badge bg-primary text-light">
-													입실 시간 ${p.enterTime }
-												</span>
-											</c:if>
-											<c:if test="${p.cnt != 0 && p.exitTime == null}">
-												<span class="badge bg-danger">
-													<a class="text-light" href="${pageContext.request.contextPath }/updateAttendance?programReservationNo=${p.programReservationNo }&customerNo=${loginCustomer.customerNo}">
-														퇴실하기
-													</a>
-												</span>
-											</c:if>
-											<c:if test="${p.cnt != 0 && p.exitTime != null}">
-												<span class="badge bg-danger text-light">
-													퇴실 시간 ${p.exitTime }
-												</span>
+											<c:if test="${p.programDate <= now }">
+												<c:if test="${p.cnt == 0 && p.enterTime == null}">
+													<span class="badge bg-primary text-light">
+														<a class="text-light" href="${pageContext.request.contextPath }/insertAttendance?programReservationNo=${p.programReservationNo }&customerNo=${loginCustomer.customerNo}">
+															입실하기
+														</a>
+													</span>
+												</c:if>
+												<c:if test="${p.enterTime != null}">
+													<span class="badge bg-primary text-light">
+														입실 ${p.enterTime }
+													</span>
+												</c:if>
+												<c:if test="${p.cnt != 0 && p.exitTime == null}">
+													<span class="badge bg-danger">
+														<a class="text-light" href="${pageContext.request.contextPath }/updateAttendance?programReservationNo=${p.programReservationNo }&customerNo=${loginCustomer.customerNo}">
+															퇴실하기
+														</a>
+													</span>
+												</c:if>
+												<c:if test="${p.cnt != 0 && p.exitTime != null}">
+													<span class="badge bg-danger text-light">
+														퇴실 ${p.exitTime }
+													</span>
+												</c:if>
 											</c:if>
 										</div>
 										<br><br>

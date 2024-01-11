@@ -103,12 +103,12 @@
 							<tr>
 								<td><input type="text" name="reviewTitle"></td>
 								<td><textarea name="reviewContent"></textarea></td>
-								<input type="hidden" name="programReservationNo" value="${review.programReservationNo}">
 							</tr>
-							
 						</tbody>
 					</table>
 					<button>리뷰 작성하기</button>
+					<input type="hidden" name="programReservationNo" value="${review.programReservationNo}">
+					<input type="hidden" name="customerNo" value="${loginCustomer.customerNo }">
 					</form>
 				</div>
 			</div>

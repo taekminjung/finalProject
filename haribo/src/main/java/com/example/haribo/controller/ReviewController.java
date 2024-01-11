@@ -72,11 +72,12 @@ public class ReviewController {
 	}
 	
 	@PostMapping("/insertReview")
-	public String insertReview(Review review) {
+	public String insertReview(Review review,Customer customer) {
 		
 		int row = reviewService.insertReview(review);
 		
-		return "redirect:/reviewList";
+		String u = "redirect:/myReviewList?customerNo="+customer.getCustomerNo();
+		return u;
 	}		
 	//회원 별 작성한 리뷰 출력
 	@GetMapping("/myReviewList")

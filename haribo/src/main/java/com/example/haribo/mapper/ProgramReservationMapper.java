@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import com.example.haribo.vo.Customer;
 import com.example.haribo.vo.CustomerAttendance;
 import com.example.haribo.vo.ProgramReservation;
 
@@ -23,4 +24,7 @@ public interface ProgramReservationMapper {
 	
 	List<Map<String,Object>> selectProgramDateByProgramNameBranchName(Map<String,Object> map);
 	
+	List<Map<String,Object>> selectProgramReservationBycustomerId(Customer customer);
+	
+	int deleteProgramReservation(ProgramReservation programReservation);
 }

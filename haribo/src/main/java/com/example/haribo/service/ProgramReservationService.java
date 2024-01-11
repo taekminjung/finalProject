@@ -98,4 +98,19 @@ public class ProgramReservationService {
 		List<Map<String,Object>> list = programReservationMapper.selectProgramDateByProgramNameBranchName(map);
 		return list;
 	}
+	//예약 취소를 위한 예약 목록
+	public List<Map<String,Object>> programReservationByCustomerId(Customer customer){
+		
+		return programReservationMapper.selectProgramReservationBycustomerId(customer);
+	}
+	//예약 취소
+	public void deleteProgramReservation(Integer[] programReservationNoList) {
+		if(programReservationNoList.length > 0) {
+			for(int i = 0; i < programReservationNoList.length; i++) {
+				ProgramReservation programReservation = new ProgramReservation();
+				programReservation.setProgramReservationNo(programReservationNoList[i]);
+				programReservationMapper.deleteProgramReservation(programReservation);
+			}
+		}
+	}
 }
