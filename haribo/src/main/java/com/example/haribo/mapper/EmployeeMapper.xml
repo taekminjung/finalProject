@@ -122,6 +122,22 @@
 		DELETE FROM employee_detail
 		WHERE employee_no = #{employeeNo}
 	</delete>
+
+	<insert id="insertEmployeeImg" parameterType="com.example.haribo.vo.EmployeeImg">
+		INSERT INTO employee_img (
+			employee_no,
+			employee_img_origin_name,
+			employee_img_file_name,
+			employee_img_size,
+			employee_img_type
+		)VALUES(
+			#{employeeNo},
+			#{employeeImgOriginName},
+			#{employeeImgFileName},
+			#{employeeImgSize},
+			#{employeeImgType}
+		)
+	</insert>
 	
 	<delete id="deleteEmployeeImg" parameterType="com.example.haribo.vo.EmployeeImg">
 		DELETE FROM employee_img

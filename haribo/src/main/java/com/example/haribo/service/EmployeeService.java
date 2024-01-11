@@ -105,13 +105,13 @@ public class EmployeeService {
 		if(cnt != 0) {
 			int row = employeeMapper.deleteEmployeeImg(employeeImg);
 			if(row != 1) {
-				throw new RuntimeException();
+				throw new RuntimeException("사진 삭제 실패");
 			} else {
 				File file = new File (pathEmp+"/"+fName);
 				try {
 					file.delete();
 				} catch (IllegalStateException e) {
-					throw new RuntimeException();
+					throw new RuntimeException("사진 거의 삭제");
 				}
 			}
 		}

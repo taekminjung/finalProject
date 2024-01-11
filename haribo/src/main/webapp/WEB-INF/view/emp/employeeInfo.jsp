@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -45,15 +47,13 @@
             <div class="box-header with-border">
               <h3 class="box-title">About Me</h3>
               <div class="col-xs-4" style="float:right">
-         	     <a href="${pageContext.request.contextPath}/updateEmployeePw?employeeNo=${loginEmployee.employeeNo}" class="btn btn-primary mb-2">Change Pw</a>
-         	     <a href="${pageContext.request.contextPath}/updateEmployeeImg?employeeNo=${loginEmployee.employeeNo}" class="btn btn-success mb-3">사진 변경</a>
+         	     <a href="${pageContext.request.contextPath}/updateEmployeePw?employeeNo=${loginEmployee.employeeNo}" class="btn btn-primary mb-2">비밀번호 변경</a>
               </div>
             </div>
             
             <div class="box-body">
-              <form id="form" name="form" method="post" action="${pageContext.request.contextPath}/updateEmployeeImg?employeeNo=${loginEmployee.employeeNo}">
+             <form id="form" name="form" method="post" action="${pageContext.request.contextPath}/updateEmployeeImg" enctype="multipart/form-data">
               <strong><i class="fa fa-user margin-r-5"></i>Employee Name</strong>
-
               <p class="text-muted">
 					${empInfo.employeeName}
               </p>
@@ -70,9 +70,18 @@
               <p>
               	${empInfo.employeePhone}
               </p>
+              <hr>
+             
+                <div class="form-group">
+                	<label for="eImg">Image</label>
+                	<input type="file" id="eImg" name="eImg" accept=".png">
+                	<input type="hidden" name="employeeNo" value="${loginEmployee.employeeNo}">
+        	    </div>                    
               
-              </form>
-              
+              	<div class="col-xs-4">
+          			<button type="submit" id="form" class="btn btn-success">사진 변경</button>
+          		</div>		
+          		</form>
             </div>
           </div>
         </div>
