@@ -40,39 +40,40 @@
       </div>
       <!-- /.box-header -->
       <!-- form start -->
-      <form class="form-horizontal" action="${pageContext.request.contextPath}/sportsEquipmentOrder" method="post">
+      <form class="form-horizontal" action="${pageContext.request.contextPath}/sportsEquipmentOrderForm" method="post">
         <div class="box-body">
           <div class="form-group">
             <label for="branchNo" class="col-sm-2 control-label">지점</label>
 
             <div class="col-sm-10">
-              <input type="email" class="form-control" id="branchNo" placeholder="${loginEmployee.branchNo} &nbsp; (${loginEmployee.branchName} 지점)">
+              <input type="text" class="form-control" id="branchNo" placeholder="${loginEmployee.branchNo} &nbsp; (${loginEmployee.branchName} 지점)" readonly>
             </div>
           </div>
           
           <div class="form-group">
-            <label class="col-sm-2 control-label">발주 물품</label>
+            <label for="sportsEquipmentNo" class="col-sm-2 control-label">발주 물품</label>
             <div class="col-sm-10">
-            <select class="form-control">
-            <option>여기에 옵션이 들어갑니다 선택해보시지</option>
-            <c:forEach var="seq" items="${list}">${seq.sportsEquipmentNo}</c:forEach>
+            <select class="form-control" id="sportsEquipmentNo" name="sportsEquipmentNo">
+                <option>발주할 물품을 선택해주세요</option>
+                <c:forEach var="o" items="${orderList}">
+                    <option value="${o.sportsEquipmentNo}">${o.sportsEquipmentNo}</option>
+                </c:forEach>
             </select>
             </div>
           </div>
           
           <div class="form-group">
-            <label for="inputPassword3" class="col-sm-2 control-label">수량</label>
-
+            <label for="quantity" class="col-sm-2 control-label">수량</label>
             <div class="col-sm-10">
-              <input type="number" class="form-control" id="inputPassword3" placeholder="Password">
+              <input type="number" class="form-control" id="quantity" name="quantity" placeholder="수량을 입력하세요">
             </div>
           </div>
           
           <div class="form-group">
-            <label for="inputPassword3" class="col-sm-2 control-label">총 가격</label>
+            <label for="totalPrice" class="col-sm-2 control-label">총 가격</label>
 
             <div class="col-sm-10">
-              <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
+              <input type="number" class="form-control" id="totalPrice" name="totalPrice" value="" readonly>
             </div>
           </div>
           
