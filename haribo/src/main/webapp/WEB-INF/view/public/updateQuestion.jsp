@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="zxx" class="no-js">
@@ -17,7 +18,7 @@
 	<!-- meta character set -->
 	<meta charset="UTF-8">
 	<!-- Site Title -->
-	<title>문의사항</title>
+	<title>문의사항 상세보기</title>
 
 	<link href="https://fonts.googleapis.com/css?family=Roboto:100,200,300,400,500,700" rel="stylesheet">
 	<!--
@@ -47,8 +48,9 @@
 		<div class="container">
 			<div class="row d-flex align-items-center justify-content-center">
 				<div class="about-content col-lg-12">
+				<br>
 					<h1>
-						문의사항
+						문의사항 상세보기
 					</h1>
 					<p class="link-nav"><a href="${pageContext.request.contextPath}/home">Home </a>
 						<span class="lnr lnr-arrow-right"></span> <a href="${pageContext.request.contextPath}/questionList">
@@ -66,44 +68,62 @@
 			<div class="row d-flex justify-content-center">
 				<div class="col-lg-12">
 					<div class="section-title-wrap text-center">
-						<h1>문의사항 리스트</h1>
-						<p>본사/지점 전체 문의사항 리스트 입니다.</p>
-						<p><a href="${pageContext.request.contextPath}/insertQuestion" class="primary-btn mt-40">문의사항 작성</a></p>
+						<h1>문의사항 수정하기</h1>
+						<p>문의사항 수정 페이지 입니다.</p>
+					</div>
+					<div>
 					</div>
 				</div>
 			</div>
-
+<section>
 			<div class="row justify-content-center">
 				<div class="table-wrap col-lg-10">
 					<table class="schdule-table table table-bordered">
 						<thead class="thead-light">
 							<tr>
-								<th class="head" scope="col">No</th>
+								<th class="head" scope="col">번호</th>
 								<th class="head" scope="col">제목</th>
-								<th class="head" scope="col">작성자</th>
-								<th class="head" scope="col">등록일</th>
+								<th class="head" scope="col">내용</th>
 							</tr>
 						</thead>
 						<tbody>
-						<c:forEach var="q"  items="${list}">
 							<tr>
-								<td>${q.questionNo}</td>
-								<td class="name" scope="row"><a href="${pageContext.request.contextPath}/questionOne?questionNo=${q.questionNo}">${q.questionTitle}</a></td>
-								<td>${q.customerId}</td>
-								<td>${q.createdate}</td>
+								<td>${resultQuestion.questionNo}</td>
+								<td>${resultQuestion.questionTitle}</td>
+								<td>${resultQuestion.questionContent}</td>
 							</tr>
-						</c:forEach>
+							<c:if test="${resultQuestion.customerId == loginCustomer.customerId}">
+							<tr><a href="${pageContext.request.contextPath}/updateQuestion?questionNo=${resultQuestion.questionNo}">수정</a>
+									<a href="">삭제</a>
+						</tr>
+					</c:if>
 						</tbody>
 					</table>
-						<div class="text-center"> 
-				  <c:if test="${currentPage > 1}">
-				  	<a href="${pageContext.request.contextPath}/questionList?currentPage=${currentPage-1}" class="btn btn-primary">이전</a>
-				  </c:if>
-				  <span class="badge bg-light">${currentPage}</span>
-				  <c:if test="${currentPage < lastPage}">
-				  	<a href="${pageContext.request.contextPath}/questionList?currentPage=${currentPage+1}" class="btn btn-primary">다음</a>
-				  </c:if>
-			</div>
+					<br>						
+					</section>
+					<section>
+						<h3 style="text-align:center"> 수정</h3><br>
+						<table class="schdule-table table table-bordered">
+						<thead class="thead-light">
+							<tr>
+								<th class="head" scope="col">제목</th>
+								<th class="head" scope="col">내용</th>
+							</tr>
+						</thead>
+						<tbody>
+							<form action="${pageContext.request.contextPath}/updateQuestion" method="post">
+								<input type="hidden" value="${resultQuestion.questionNo}">
+							<tr>
+								<td><input type="text" name="questionTitle"></td>
+								<td><textarea name="questionContent"></textarea></td>
+							</tr>
+						</tbody>
+					</table>
+					<div style="text-align:center">
+							<button type="submit" >수정</button>
+					</div>
+							</form>
+					</section>
 				</div>
 			</div>
 		</div>

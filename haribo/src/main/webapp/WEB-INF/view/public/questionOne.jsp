@@ -71,6 +71,8 @@
 						<h1>문의사항 상세보기</h1>
 						<p>문의사항 상세보기 페이지 입니다.</p>
 					</div>
+					<div>
+					</div>
 				</div>
 			</div>
 <section>
@@ -81,7 +83,9 @@
 							<tr>
 								<th class="head" scope="col">번호</th>
 								<th class="head" scope="col">제목</th>
-								<th class="head" scope="col">내용</th>
+								<th class="head" scope="col">문의내용</th>
+								<th class="head" scope="col">작성자</th>
+								<th class="head" scope="col">작성일자</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -89,31 +93,41 @@
 								<td>${resultQuestion.questionNo}</td>
 								<td>${resultQuestion.questionTitle}</td>
 								<td>${resultQuestion.questionContent}</td>
+								<td>${resultQuestion.customerId}</td>
+								<td>${resultQuestion.createdate}</td>
 							</tr>
 						</tbody>
 					</table>
+					<c:if test="${resultQuestion.customerId == loginCustomer.customerId}">
+					<div style="text-align:center"><a class="primary-btn mt-40" href="${pageContext.request.contextPath}/deleteQuestion?questionNo=${question.questionNo}">삭제</a></div>
+					</c:if>
 					<br>						
 					</section>
 					<section>
-						<h3 style="text-align:center"> 댓글</h3><br>
+					<c:if test="${resultQuestion.customerId == loginCustomer.customerId}">
+						<h3 style="text-align:center"> 수정</h3><br>
 						<table class="schdule-table table table-bordered">
 						<thead class="thead-light">
 							<tr>
-								<th class="head" scope="col">댓글번호</th>
+								<th class="head" scope="col">제목</th>
 								<th class="head" scope="col">내용</th>
-								<th class="head" scope="col">작성자</th>
 							</tr>
 						</thead>
 						<tbody>
-							<c:forEach var="q" items="${list}">
+							<form action="${pageContext.request.contextPath}/updateQuestion" method="post">
+								<input type="hidden" value="${question.questionNo}" name="questionNo">
 							<tr>
-								<td>${q.questionReplyNo}</td>
-								<td>${q.questionReplyContent}</td>
-								<td>${q.employeeId}</td>
+								<td><input type="text" name="questionTitle"></td>
+								<td><textarea name="questionContent"></textarea></td>
 							</tr>
-							</c:forEach>
 						</tbody>
 					</table>
+					<div style="text-align:center">
+							<button type="submit"  class="primary-btn mt-40">수정</button>
+					</div>
+							</form>
+							<div style="text-align:center"></div>
+					</c:if>
 					</section>
 				</div>
 			</div>

@@ -11,8 +11,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.haribo.service.QuestionReplyService;
 import com.example.haribo.service.QuestionService;
+import com.example.haribo.vo.Customer;
 import com.example.haribo.vo.Question;
 import com.example.haribo.vo.QuestionReply;
+
+import jakarta.servlet.http.HttpSession;
 
 @Controller
 public class QuestionController {
@@ -27,9 +30,11 @@ public class QuestionController {
 	}
 	
 	@PostMapping("/insertQuestion")
-	public String insertQuestion(Question question) {
+	public String insertQuestion(HttpSession session, Question question ) {
+		System.out.println(question+"<--qcon.question");
+		
 		questionService.insertQuestion(question);
-		return "redirect:/public/question";
+		return "redirect:/questionList";
 	}
 	
 	// 문의 글 수정하기
@@ -43,14 +48,15 @@ public class QuestionController {
 
 	@PostMapping("/updateQuestion")
 	public String updateQuestion(Question question) {
+		System.out.println(question+"<===questionNO?");
 		int row = questionService.updateQuestion(question);
 		if(row == 0) {
 			System.out.println("업데이트 실패");
-			return "redirect:/updateQuestion?questionNo="+question.getQuestionNo();
+			return "redirect:/questionOne?questionNo="+question.getQuestionNo();
 		} else {
 			System.out.println("업데이트 성공");
 		}
-			return "redirect:/public/questionList";
+			return "redirect:/questionList";
 	}
 	
 	// 문의 글 삭제하기
@@ -58,9 +64,8 @@ public class QuestionController {
 	public String deleteQuestion(Question question) {
 		questionService.deleteQuestion(question);
 		
-		return "redirect:/public/questionList";
+		return "redirect:/questionList";
 	}
-	
 
 	// 문의사항 리스트(고객)
 	@GetMapping("/questionList")
@@ -78,12 +83,14 @@ public class QuestionController {
 	// 문의사항 상세보기(고객)
 	@GetMapping("/questionOne")
 	public String questionOne(Model model, Question question) {
+		model.addAttribute("question", question);
 		Question resultQuestion = questionService.questionOne(question);
 		model.addAttribute("resultQuestion", resultQuestion);
 		System.out.println(resultQuestion+"<---con.questionOne");
 		List<QuestionReply> list = questionReplyService.selectquestionReply(question);
 		
 		System.out.println(list+"<--con.replyList");
+		
 		model.addAttribute("list", list);
 		
 	
