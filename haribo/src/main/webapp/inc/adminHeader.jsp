@@ -28,13 +28,15 @@
         
           <li class="dropdown user user-menu">
             <a href="" class="dropdown-toggle" data-toggle="dropdown">
-              <img src="emp/dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
+              <img id="img" src="${pageContext.request.contextPath }/upload/customer/"
+			 class="rounded-circle" width="20" height="20" onerror="this.src='${pageContext.request.contextPath }/upload/customer/default.jpg'" alt="user Image">
               <span class="hidden-xs">${loginEmployee.employeeId}</span>
             </a>
             <ul class="dropdown-menu">
               <!-- The user image in the menu -->
               <li class="user-header">
-                <img src="emp/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                <img id="img" src="${pageContext.request.contextPath }/upload/customer/"
+			 class="rounded-circle" width="20" height="20" onerror="this.src='${pageContext.request.contextPath }/upload/customer/default.jpg'" alt="user Image">
                 <p>
                   ${loginEmployee.employeeId}
                 </p>
@@ -63,16 +65,12 @@
       <!-- Sidebar user panel -->
       <div class="user-panel">
         <div class="pull-left image">
-          <img src="emp/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+          <img id="img" src="${pageContext.request.contextPath }/upload/customer/"
+			 class="img-circle" width="20" height="20" onerror="this.src='${pageContext.request.contextPath }/upload/customer/default.jpg'" alt="user Image">
         </div>
         <div class="pull-left info">
           <p>관리자명</p>
 	<a href="#" id="statusLink"><i class="fa fa-circle text-success"></i> Online</a>
-
-
-
-
-
 
         </div>
       </div>

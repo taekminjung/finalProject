@@ -89,6 +89,7 @@
 	
 	<select id="programOne" parameterType="com.example.haribo.vo.Program" resultType="com.example.haribo.vo.Program">
 		SELECT 
+			p.employee_id employeeId,
 			p.program_name programName,
 			p.program_no programNo,
 			p.program_max_customer programMaxCustomer,
@@ -157,6 +158,11 @@
 	
 	<delete id="deleteProgram" parameterType="com.example.haribo.vo.Program">
 		DELETE FROM program
+		WHERE program_no = #{programNo}
+	</delete>
+	
+	<delete id="deleteProgramImg" parameterType="com.example.haribo.vo.ProgramImg">
+		DELETE FROM program_img
 		WHERE program_no = #{programNo}
 	</delete>
 

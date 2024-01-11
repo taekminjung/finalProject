@@ -31,14 +31,15 @@
             <!-- Menu Toggle Button -->
             <a href="" class="dropdown-toggle" data-toggle="dropdown">
               <!-- The user image in the navbar-->
-              <img src="emp/dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
+               <img id="img" src="${pageContext.request.contextPath }/upload/customer/"
+			 class="user-image" width="20" height="20" onerror="this.src='${pageContext.request.contextPath }/upload/customer/default.jpg'" alt="user Image">
               <!-- hidden-xs hides the username on small devices so only the image appears. -->
               <span class="hidden-xs">${loginEmployee.employeeName}</span>
             </a>
             <ul class="dropdown-menu">
               <!-- The user image in the menu -->
               <li class="user-header">
-                <img src="emp/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                <img src="${pageContext.request.contextPath}/upload/emp/" class="img-circle" onerror="this.src='${pageContext.request.contextPath }/upload/customer/default.jpg'">
                 <p>
           		  ${loginEmployee.employeeName}
                   <small>${loginEmployee.branchName}지점 트레이너</small>
@@ -70,7 +71,7 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel">
         <div class="pull-left image">
-          <img src="emp/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+          <img src="${pageContext.request.contextPath}/upload/emp/" class="img-circle" onerror="this.src='${pageContext.request.contextPath }/upload/customer/default.jpg'">
         </div>
         <div class="pull-left info">
           <p><a href="">${loginEmployee.employeeName}</a></p>

@@ -45,13 +45,13 @@
             <div class="box-header with-border">
               <h3 class="box-title">About Me</h3>
               <div class="col-xs-4" style="float:right">
-         	     <a href="${pageContext.request.contextPath}/updateEmployeePw?employeeNo=${loginEmployee.employeeNo}" class="btn btn-primary mb-3">Change Pw</a>
+         	     <a href="${pageContext.request.contextPath}/updateEmployeePw?employeeNo=${loginEmployee.employeeNo}" class="btn btn-primary mb-2">Change Pw</a>
+         	     <a href="${pageContext.request.contextPath}/updateEmployeeImg?employeeNo=${loginEmployee.employeeNo}" class="btn btn-success mb-3">사진 변경</a>
               </div>
             </div>
             
-
-            
             <div class="box-body">
+              <form id="form" name="form" method="post" action="${pageContext.request.contextPath}/updateEmployeeImg?employeeNo=${loginEmployee.employeeNo}">
               <strong><i class="fa fa-user margin-r-5"></i>Employee Name</strong>
 
               <p class="text-muted">
@@ -59,22 +59,19 @@
               </p>
               <hr>
               <strong><i class="fa fa-circle margin-r-5"></i> Employee ID</strong>
-
               <p class="text-muted">${empInfo.employeeId}</p>
               <hr>
               <strong><i class="fa fa-envelope margin-r-5"></i> Email</strong>
-
               <p>
      			${empInfo.employeeEmail}
               </p>
-
               <hr>
-
               <strong><i class="fa fa-mobile-phone margin-r-5"></i> Phone</strong>
-
               <p>
               	${empInfo.employeePhone}
               </p>
+              
+              </form>
               
             </div>
           </div>

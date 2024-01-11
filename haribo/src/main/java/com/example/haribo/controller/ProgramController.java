@@ -24,6 +24,7 @@ import jakarta.servlet.http.HttpSession;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
+
 @Controller
 public class ProgramController {
 	@Autowired private ProgramService programService;
@@ -52,9 +53,9 @@ public class ProgramController {
 		String path = session.getServletContext().getRealPath("/upload");
 		int programNo = programService.insertProgram(program);
 		programImg.setProgramNo(programNo);
-		programService.insertProgramImg(pImg, programImg, path);
+		programService.insertProgramImg(pImg, programImg, program, path);
 		
-		return "redirect:/adminHome";
+		return "redirect:/programList";
 	}
 	
 	// 프로그램 수정
@@ -82,8 +83,9 @@ public class ProgramController {
 	
 	// 프로그램 삭제
 	@GetMapping("/deleteProgram")
-	public String deleteProgram(Program program) {
-		programService.deleteProgram(program);
+	public String deleteProgram(Program program, ProgramImg programImg, HttpSession session) {
+		String path = session.getServletContext().getRealPath("/upload");
+		programService.deleteProgram(program, programImg, path);
 		
 		return "redirect:/programList";
 	}

@@ -24,6 +24,8 @@ public interface ProgramMapper {
 	
 	int deleteProgram(Program program);
 	
+	int deleteProgramImg(ProgramImg programImg);
+	
 	int updateProgram(Program program);
 	
 	//프로그램 목록

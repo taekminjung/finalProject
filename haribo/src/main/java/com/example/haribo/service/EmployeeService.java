@@ -1,20 +1,26 @@
 package com.example.haribo.service;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.example.haribo.mapper.EmployeeMapper;
 import com.example.haribo.vo.Employee;
 import com.example.haribo.vo.EmployeeDetail;
+import com.example.haribo.vo.EmployeeImg;
 
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
+@Transactional
 @Service
 public class EmployeeService {
 	@Autowired private EmployeeMapper employeeMapper;
@@ -72,13 +78,9 @@ public class EmployeeService {
 		return empInfo;
 	}
 	
-    public int updateEmployeeStatus(int employeeNo, String activeStatus) {
+    public int updateEmployeeActive(Employee employee) {
         
-    	Map<String, Object> param = new HashMap<>();
-        param.put("employeeNo", employeeNo);
-        param.put("employeeActive", activeStatus);
-
-        return employeeMapper.updateEmployeeStatus(param);
+        return employeeMapper.updateEmployeeActive(employee);
     }
 	
 	public int updateEmployeePw(Employee employee, String newEmployeePw) {
@@ -90,4 +92,76 @@ public class EmployeeService {
 		
 		return employeeMapper.updateEmployeePw(param);
 	}
+	
+	// 직원 사진 변경(추가, 삭제)
+	public void updateEmployeeImg(MultipartFile eImg, EmployeeImg employeeImg, String path, String employeeId) {
+		String pathEmp = path+"/emp";
+		String oName = eImg.getOriginalFilename();
+		String type = oName.substring(oName.lastIndexOf("."));
+		String fName = employeeId + type;
+		
+		//DB에 사진이 존재하는지 확인
+		int cnt = employeeMapper.employeeImgCnt(employeeImg);
+		if(cnt != 0) {
+			int row = employeeMapper.deleteEmployeeImg(employeeImg);
+			if(row != 1) {
+				throw new RuntimeException();
+			} else {
+				File file = new File (pathEmp+"/"+fName);
+				try {
+					file.delete();
+				} catch (IllegalStateException e) {
+					throw new RuntimeException();
+				}
+			}
+		}
+		
+		if(eImg.getSize() != 0) {
+			employeeImg.setEmployeeImgOriginName(oName);
+			employeeImg.setEmployeeImgFileName(fName);
+			employeeImg.setEmployeeImgSize((int)eImg.getSize());
+			employeeImg.setEmployeeImgType(eImg.getContentType());
+			
+			int row2 = employeeMapper.insertEmployeeImg(employeeImg);
+			if(row2 != 1) {
+				throw new RuntimeException();
+			} else {
+				File file = new File(pathEmp+"/"+fName);
+				try {
+					eImg.transferTo(file);
+				} catch(IllegalStateException | IOException e) {
+					throw new RuntimeException();
+				}
+			}
+		}
+	}
+	
+	public void deleteEmployee(Employee employee, EmployeeDetail employeeDetail, EmployeeImg employeeImg, String path) {
+		String pathEmp = path+"/emp";
+		int row1 = employeeMapper.updateEmployeeActive(employee);
+		if(row1 != 1) {
+			throw new RuntimeException();
+		} else { 
+			int row2 = employeeMapper.deleteEmployeeDetail(employeeDetail);
+			if(row2!=1) {
+				throw new RuntimeException();
+			} else {
+				employeeImg.setEmployeeNo(employee.getEmployeeNo());
+				int row3 = employeeMapper.deleteEmployeeImg(employeeImg);
+				if(row3 != 1) {
+					throw new RuntimeException();
+				} else {
+					Map<String, Object> employeeInfo = employeeMapper.selectEmployeeInfo(employee);
+					String employeeId = employeeInfo.get("employeeId").toString();
+					File file = new File(pathEmp+"/"+employeeId+".png");
+					try {
+						file.delete();
+					} catch ( IllegalStateException e) {
+						throw new RuntimeException();
+					}
+				}
+			}
+		}
+	}
 }
+	

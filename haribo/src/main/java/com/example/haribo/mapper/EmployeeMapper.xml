@@ -98,7 +98,13 @@
 		WHERE e.employee_no = #{employeeNo}
 	</select>
 	
-	<update id="updateEmployeeStatus" parameterType="java.util.Map">
+	<select id="employeeImgCnt" parameterType="com.example.haribo.vo.EmployeeImg">
+		SELECT COUNT(*)
+		FROM employee_img
+		WHERE employee_no = #{employeeNo}
+	</select>
+	
+	<update id="updateEmployeeActive" parameterType="com.example.haribo.vo.Employee">
 		UPDATE employee
 		SET employee_active = #{employeeActive}
 		WHERE employee_no = #{employeeNo}
@@ -112,4 +118,13 @@
 		AND employee_pw = PASSWORD(#{employeePw})
 	</update>
 	
+	<delete id="deleteEmployeeDetail" parameterType="com.example.haribo.vo.EmployeeDetail">
+		DELETE FROM employee_detail
+		WHERE employee_no = #{employeeNo}
+	</delete>
+	
+	<delete id="deleteEmployeeImg" parameterType="com.example.haribo.vo.EmployeeImg">
+		DELETE FROM employee_img
+		WHERE employee_no = #{employeeNo}
+	</delete>
 </mapper>
