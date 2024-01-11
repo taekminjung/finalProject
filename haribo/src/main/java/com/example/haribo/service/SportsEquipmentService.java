@@ -32,6 +32,7 @@ public class SportsEquipmentService {
 		List<SportsEquipmentExpire> list = sportsEquipmentMapper.sportsEquipmentExpiredList(param);
 		return list;
 	}
+	
 	public int lastPage() {
 		int rowPerPage = 10;
 		int totalRow = sportsEquipmentMapper.getTotalRow(rowPerPage);
@@ -153,6 +154,7 @@ public class SportsEquipmentService {
 		List<HashMap<String, Object>> list = sportsEquipmentMapper.stockList(param);
 		return list;
 	}
+	
 	public int lastPageStock() {
 		int rowPerPage = 10;
 		int totalRow = sportsEquipmentMapper.getTotalRowOrder(rowPerPage);
@@ -175,8 +177,37 @@ public class SportsEquipmentService {
 		return sportsEquipmentMapper.sportsEquipmentOrderForm(sportsEquipmentOrder);
 	}
 	
-	// sportsEquipmentExpire 물품 폐기 신청 폼
+	// trainerExpireForm에 폐기할 물품 리스트 출력(현재 본사가 발주해 놓은 물품 리스트)
+	public List<SportsEquipment> trainerExpireFormList(){
+		List<SportsEquipment> expireList = sportsEquipmentMapper.trainerExpireFormList();
+		return expireList;
+	}
+	
+	// trainerExpireForm 물품 폐기 신청 폼
 	public int insertExpire(SportsEquipmentExpire sportsEquipmentExpire) {
 		return sportsEquipmentMapper.insertExpire(sportsEquipmentExpire);
 	}
+	
+	// 지점 별 재고 현황 확인 리스트
+	public List<HashMap<String, Object>> trainerStock(@RequestParam(defaultValue="1") int currentPage) {
+		int rowPerPage = 10;
+		int beginRow = (currentPage-1)*rowPerPage;
+		
+		HashMap<String, Object> param = new HashMap<>();
+		param.put("beginRow", beginRow);
+		param.put("rowPerPage", rowPerPage);
+		
+		List<HashMap<String, Object>> stockList = sportsEquipmentMapper.trainerStockList(param);
+		return stockList;
+	}
+	
+	public int lastPageSp() {
+		int rowPerPage = 10;
+		int totalRow = sportsEquipmentMapper.getTotalRowStock(rowPerPage);
+		int lastPageSp = totalRow / rowPerPage;
+		if (totalRow % rowPerPage !=0) {
+			lastPageSp +=1;
+		}
+		return lastPageSp;
+	}	
 }

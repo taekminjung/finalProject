@@ -47,4 +47,8 @@ public interface SportsEquipmentMapper {
 	int sportsEquipmentOrderForm(SportsEquipmentOrder sportsEquipmentOrder);
 	
 	int insertExpire(SportsEquipmentExpire sportsEquipmentExpire);
+
+	List<HashMap<String, Object>> trainerStockList(HashMap<String, Object> param);
+
+	List<SportsEquipment> trainerExpireFormList();
 }

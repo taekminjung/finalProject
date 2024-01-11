@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 	<!-- 로그인 했을 시 emp 정보 출력할 것 -->
 	<c:set var="logoutBtn" value="로그아웃"></c:set>
 	<c:set var="logoutUrl" value="${pageContext.request.contextPath}/logout"></c:set>
@@ -31,15 +31,16 @@
             <!-- Menu Toggle Button -->
             <a href="" class="dropdown-toggle" data-toggle="dropdown">
               <!-- The user image in the navbar-->
-               <img id="img" src="${pageContext.request.contextPath }/upload/customer/"
-			 class="user-image" width="20" height="20" onerror="this.src='${pageContext.request.contextPath }/upload/customer/default.jpg'" alt="user Image">
+               <img id="img1" src="${pageContext.request.contextPath }/upload/emp/"
+			 class="rounded-circle" width="20" height="20" onerror="this.src='${pageContext.request.contextPath }/upload/emp/default.jpg'" alt="user Image">
               <!-- hidden-xs hides the username on small devices so only the image appears. -->
               <span class="hidden-xs">${loginEmployee.employeeName}</span>
             </a>
             <ul class="dropdown-menu">
               <!-- The user image in the menu -->
               <li class="user-header">
-                <img src="${pageContext.request.contextPath}/upload/emp/" class="img-circle" onerror="this.src='${pageContext.request.contextPath }/upload/customer/default.jpg'">
+                <img id="img2" src="${pageContext.request.contextPath }/upload/emp/"
+			 class="rounded-circle" width="20" height="20" onerror="this.src='${pageContext.request.contextPath }/upload/emp/default.jpg'" alt="user Image">
                 <p>
           		  ${loginEmployee.employeeName}
                   <small>${loginEmployee.branchName}지점 트레이너</small>
@@ -71,7 +72,8 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel">
         <div class="pull-left image">
-          <img src="${pageContext.request.contextPath}/upload/emp/" class="img-circle" onerror="this.src='${pageContext.request.contextPath }/upload/customer/default.jpg'">
+          <img id="img3" src="${pageContext.request.contextPath }/upload/emp/"
+			 class="img-circle" width="20" height="20" onerror="this.src='${pageContext.request.contextPath }/upload/emp/default.jpg'" alt="user Image">
         </div>
         <div class="pull-left info">
           <p><a href="">${loginEmployee.employeeName}</a></p>
@@ -80,7 +82,7 @@
         </div>
       </div>
 
-      <!-- search form (Optional) -->
+      <!-- 검색 하기 -->
       <form action="#" method="get" class="sidebar-form">
         <div class="input-group">
           <input type="text" name="q" class="form-control" placeholder="검색하기...">
@@ -106,21 +108,21 @@
               </span>
           </a>
           <ul class="treeview-menu">
-          	<li><a href="${pageContext.request.contextPath}/trainerStock">재고 현황</a></li>
+          	<li><a href="${pageContext.request.contextPath}/trainerStock?branchNo=${loginEmployee.branchNo}">재고 현황</a></li>
             <li><a href="${pageContext.request.contextPath}/sportsEquipmentOrderForm?branchNo=${loginEmployee.branchNo}">발주 신청</a></li>
-            <li><a href="${pageContext.request.contextPath}/trainerExpireForm">폐기 신청</a></li>
+            <li><a href="${pageContext.request.contextPath}/trainerExpireForm?branchNo=${loginEmployee.branchNo}">폐기 신청</a></li>
           </ul>
         </li>
 
 		<li class="treeview">
-          <a href="${pageContext.request.contextPath}/trainerProgram">
+          <a href="${pageContext.request.contextPath}/trainerProgram?employeeId=${loginEmployee.employeeId}">
           	<i class="fa fa-book"></i> <span>프로그램 목록</span>
             <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
-          	<li><a href="${pageContext.request.contextPath}/trainerStock">내가 맡은 프로그램 출력 상세정보</a></li>
+          	<li><a href="${pageContext.request.contextPath}/trainerProgram?employeeId=${loginEmployee.employeeId}">내가 맡은 프로그램 출력 상세정보</a></li>
           </ul>
         </li>
       </ul>
@@ -130,6 +132,23 @@
   </aside>
   
   <script>
+  $(document).ready(function(){
+  $.ajax({
+		url:'/haribo/employeeImg',
+		method:'get',
+		data:{'employeeNo':${loginEmployee.employeeNo}},
+		success:function(json){
+			console.log(json);
+			$('#img1').attr('src','upload/emp/'+json);
+			$('#img2').attr('src','upload/emp/'+json);
+			$('#img3').attr('src','upload/emp/'+json);
+		},
+		error:function(err){
+			console.log(err);
+		}
+			});
+	});
+  <!--
   document.getElementById("statusLink").addEventListener("click", function() {
     var statusIcon = document.querySelector("#statusLink i.fa");
     var statusText = document.getElementById("#statusLink");
@@ -148,4 +167,5 @@
       statusText.textContent = " 출근중💼";
     }
   });
+  -->
 </script>
