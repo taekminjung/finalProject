@@ -1,5 +1,7 @@
 package com.example.haribo.service;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -63,8 +65,32 @@ public class ProgramService {
 		return programMapper.updateProgram(program);
 	}
 	
-	public int deleteProgram(Program program) {
-		return programMapper.deleteProgram(program);
+	// 프로그램 삭제
+	public void deleteProgram(Program program, ProgramImg programImg, String path) {
+	    try {
+	        String programPath = path + "/emp";
+
+	        programImg.setProgramNo(program.getProgramNo());
+	        int row1 = programMapper.deleteProgramImg(programImg);
+	        if (row1 != 1) {
+	            throw new RuntimeException("Failed to delete program_img record.");
+	        }
+
+	        String programName = program.getProgramName();
+	        File file = new File(programPath + "/" + programName + ".png");
+	        if (!file.exists()) {
+	            log.warn("Program image file not found: " + file.getPath());
+	        } else if (!file.delete()) {
+	            log.warn("Failed to delete program image file: " + file.getPath());
+	        }
+
+	        int row2 = programMapper.deleteProgram(program);
+	        if (row2 != 1) {
+	            throw new RuntimeException("Failed to delete program record.");
+	        }
+	    } catch (Exception e) {
+	        throw new RuntimeException();
+	    }
 	}
 	
 	public Program programOne(Program program) {
@@ -115,11 +141,12 @@ public class ProgramService {
 	}
 	
 	// 회원 사진 추가
-	public void insertProgramImg(MultipartFile pImg, ProgramImg programImg, String path) {
-		String pathProgram = path+"/employee";
+	public void insertProgramImg(MultipartFile pImg, ProgramImg programImg, Program program, String path) {
+		String pathProgram = path+"/emp";
 		String oName = pImg.getOriginalFilename();
-		String type = oName;
-		String fName = type;
+		String type = oName.substring(oName.lastIndexOf("."));
+		String programName = program.getProgramName();
+		String fName = programName+type;
 		
 		programImg.setProgramImgOriginName(oName);
 		programImg.setProgramImgFileName(fName);
@@ -127,6 +154,19 @@ public class ProgramService {
 		programImg.setProgramImgType(pImg.getContentType());
 		
 		int row = programMapper.insertProgramImg(programImg);
+		
+		if(row!= 1) {
+			System.out.println("프로그램 추가 실패");
+			throw new RuntimeException();
+		} else {
+			File file = new File(pathProgram+"/"+fName);
+			System.out.println("프로그램 추가 완료");
+			try {
+				pImg.transferTo(file);
+			} catch(IllegalStateException | IOException e) {
+				throw new RuntimeException();
+			}
+		}
 	}
 
 	//지점 이름 출력

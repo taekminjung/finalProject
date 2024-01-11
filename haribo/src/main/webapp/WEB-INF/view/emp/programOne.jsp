@@ -48,8 +48,10 @@
               <h3 class="box-title">Quick Example</h3>
             </div>
               <div class="box-body">
-
-			  <input type="text" name="employeeId" value="${loginEmployee.employeeId}" readonly>
+ 			  <div class="form-group">
+			  <label for="trainerName">트레이너명</label>
+			  <input type="text" class="form-control" id="employeeId" name="employeeId" value="${resultProgram.employeeId}" readonly>
+			  </div>
 			  <input type="hidden" name="programNo" value="${resultProgram.programNo}">
 			  <div class="form-group">
 			    <label for="programName">프로그램명</label>
@@ -71,10 +73,12 @@
 			    <label for="pImg">프로그램 이미지</label>
 			    <input type="file" id="pImg" name="pImg" accept=".png">
 			  </div>
+			 
+			 
    		       <a class="btn btn-primary" id="updateBtn" href="${pageContext.request.contextPath}/updateProgram?programNo=${resultProgram.programNo}">수정</a>
 		       <a class="btn bg-navy" href="${pageContext.request.contextPath}/programList">뒤로</a>
 		       <a class="btn btn-danger" id="deleteBtn" href="${pageContext.request.contextPath}/deleteProgram?programNo=${resultProgram.programNo}">삭제</a>
-	
+	</div>
 
               <div class="box-footer">
   

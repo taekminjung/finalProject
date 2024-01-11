@@ -80,7 +80,7 @@
 			
 			        <c:forEach var="e" items="${list}">
 			            <tr>
-			            <form id="form" name="form" action="${pageContext.request.contextPath}/updateEmployeeStatus" method="post">
+			            <form id="form" name="form" action="${pageContext.request.contextPath}/deleteEmployee" method="post">
 			            <input type="hidden" name="employeeNo" id="employeeNo" value="${e.employeeNo}">
 			             <input type="hidden" name="employeeId" id="employeeId" value="${e.employeeId}">
 			                <td class="text-center">${e.branchNo}</td>
@@ -92,7 +92,7 @@
 			                <td class="text-center">
 			                <c:choose>
 			                	<c:when test="${e.employeeActive == 'Y'}">
-				                	<select id="activeStatus" name="activeStatus">
+				                	<select id="employeeActive" name="employeeActive">
 				                		<option value="Y">활성</option>
 				                		<option value="N">비활성</option>
 				                	</select>
@@ -160,7 +160,7 @@
 		$.ajax({
 			type: 'POST',
 			url: 'haribo/employeeList',
-			data: { employeeNo: employeeNo, activeStatus: selectedValue},
+			data: { employeeNo: employeeNo, employeeActive: selectedValue},
 			success: function(response) {
 				
 			},

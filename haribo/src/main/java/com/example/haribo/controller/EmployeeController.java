@@ -10,12 +10,14 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.example.haribo.service.CalendarService;
 import com.example.haribo.service.EmployeeService;
 import com.example.haribo.service.ProgramService;
 import com.example.haribo.vo.Employee;
 import com.example.haribo.vo.EmployeeDetail;
+import com.example.haribo.vo.EmployeeImg;
 
 import jakarta.servlet.http.HttpSession;
 import lombok.extern.slf4j.Slf4j;
@@ -100,14 +102,6 @@ public class EmployeeController {
 		return "emp/employeeInfo";
 	}
 	
-	// 직원 상태(활성화/비활성화) 수정
-	@PostMapping("/updateEmployeeStatus")
-	public String updateEmployeeStatus(HttpSession session, int employeeNo, String activeStatus) {
-		log.debug(employeeNo+activeStatus);
-	    int row = employeeService.updateEmployeeStatus(employeeNo, activeStatus);
-	    return "redirect:/employeeList";
-	}
-	
 	@GetMapping("/updateEmployeePw")
 	public String updateEmployeePw(HttpSession session) {
 		
@@ -127,5 +121,37 @@ public class EmployeeController {
 		session.invalidate();
 		
 		return "redirect:/home";
+	}
+	
+	@PostMapping("/updateEmployeeImg")
+	public String updateEmployeeImg(HttpSession session, MultipartFile eImg, EmployeeImg employeeImg, String employeeId) {
+		log.debug("\u001B[43m"+eImg.getName());
+		log.debug("\u001B[43m"+eImg.getOriginalFilename());
+		log.debug("\u001B[43m"+eImg.getContentType());
+		log.debug("\u001B[43m"+eImg.getSize());
+		
+		String path = session.getServletContext().getRealPath("/upload");
+		employeeService.updateEmployeeImg(eImg, employeeImg, employeeId, path);
+		
+		String u = "redirect:/employeeInfo?employeeNo="+employeeImg.getEmployeeNo();
+		return u;
+		
+	}
+	
+   	//직원탈퇴 (비활성화된 경우 detail 삭제)
+	@GetMapping("/deleteEmployee")
+	public String deleteEmployee(HttpSession session) {
+		if(session.getAttribute("loginEmployee")== null) {
+			return "redirect:/login";
+		}
+		return "emp/employeeList";
+	}
+	
+	@PostMapping("/deleteEmployee")
+	public String deleteEmployee(HttpSession session, Employee employee, EmployeeDetail employeeDetail, EmployeeImg employeeImg) {
+		String path = session.getServletContext().getRealPath("/upload");
+		//employeeService 호출
+		employeeService.deleteEmployee(employee, employeeDetail, employeeImg, path);
+		return "redirect:/employeeList";
 	}
 }
