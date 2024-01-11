@@ -77,7 +77,7 @@
 					<c:forEach var="t" items="${list}">
 				<div class="col-md-6 col-lg-3 single-team">
 					<div class="thumb">
-						<img class="customer/img-fluid" src="customer/img/t1.jpg" alt="">
+						<img class="customer/img-fluid" src="customer/emp/${t.employeeImgFileName}" alt="" onerror="this.src='${pageContext.request.contextPath }/upload/emp/default.jpg'">
 					</div>
 					<div class="meta-text mt-30 text-center">
 						<h4>${t.employeeName}</h4>

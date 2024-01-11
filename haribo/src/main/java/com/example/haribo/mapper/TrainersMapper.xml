@@ -9,10 +9,13 @@
 	    e.branch_no AS branchNo,
 	    b.branch_name AS branchName,
 	    b.branch_tel AS branchTel,
-	    d.employee_name AS employeeName
+	    d.employee_name AS employeeName,
+	    ei.employee_img_file_name
 	FROM employee e 
 	INNER JOIN branch b ON e.branch_no = b.branch_no
 	INNER JOIN employee_detail d ON e.employee_no = d.employee_no
+	LEFT OUTER JOIN employee_img ei
+	ON d.employee_no = ei.employee_no
 	WHERE e.employee_id LIKE 'T%' AND b.branch_no = #{branchNo}
 	LIMIT #{beginRow}, #{rowPerPage}
 	</select>

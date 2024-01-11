@@ -50,4 +50,6 @@ public interface EmployeeMapper {
 	Map<String,Object> loginEmployee(Employee employee);
 	
 	Map<String,Object> selectEmployeeInfo(Employee employee);
+
+	String selectEmployeeImgName(EmployeeImg employeeImg);
 }

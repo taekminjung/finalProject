@@ -86,20 +86,20 @@ public class SportsEquipmentController {
 		return "emp/sportsEquipmentOne";
 	}
 	
-	// 트레이너 물품 발주 입력하기(form+insert)
-	@GetMapping("/sportsEquipmentOrder")
-	public String sportsEquipmentOrder(Model model, SportsEquipment sportsEquipment) {
-		SportsEquipment list = sportsEquipmentService.sportsEquipmentOne(sportsEquipment);
-		model.addAttribute("list", list);
-		return "emp/sportsEquipmentOrder";
+	// 트레이너 물품 발주 입력하기(form+insert) + sportsEquipmentOrderForm에 본사가 발주한 물품 리스트 출력
+	@GetMapping("/sportsEquipmentOrderForm")
+	public String sportsEquipmentOrderFormList(Model model) {
+		List<SportsEquipment> orderList = sportsEquipmentService.sportsEquipmentOrderFormList();
+		model.addAttribute("orderList", orderList);
+				
+		return "emp/sportsEquipmentOrderForm";
 	}
+
+	@PostMapping("/sportsEquipmentOrderForm")
+	public String sportsEquipmentOrderFormSubmit(SportsEquipmentOrder sportsEquipmentOrder) {
+		sportsEquipmentService.sportsEquipmentOrderForm(sportsEquipmentOrder);
 		
-	@PostMapping("/sportsEquipmentOrder")
-	public String sportsEquipmentOrder(SportsEquipmentOrder sportsEquipmentOrder, Model model, SportsEquipment sportsEquipment) {
-		sportsEquipmentService.sportsEquipmentOrder(sportsEquipmentOrder);
-		SportsEquipment list = sportsEquipmentService.sportsEquipmentOne(sportsEquipment);
-		model.addAttribute("list", list);
-		return "redirect:/emp/sportsEquipmentOrder";
+		return "emp/sportsEquipmentOrderForm";
 	}
 	
 	// 폐기할 물품 입력하기 (form+insert)

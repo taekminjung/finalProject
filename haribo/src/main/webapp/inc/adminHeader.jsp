@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 
 	<c:set var="logoutBtn" value="로그아웃"></c:set>
 	<c:set var="logoutUrl" value="${pageContext.request.contextPath}/logout"></c:set>
@@ -28,15 +29,15 @@
         
           <li class="dropdown user user-menu">
             <a href="" class="dropdown-toggle" data-toggle="dropdown">
-              <img id="img" src="${pageContext.request.contextPath }/upload/customer/"
-			 class="rounded-circle" width="20" height="20" onerror="this.src='${pageContext.request.contextPath }/upload/customer/default.jpg'" alt="user Image">
+              <img id="img1" src="${pageContext.request.contextPath }/upload/emp/"
+			 class="rounded-circle" width="20" height="20" onerror="this.src='${pageContext.request.contextPath }/upload/emp/default.jpg'" alt="user Image">
               <span class="hidden-xs">${loginEmployee.employeeId}</span>
             </a>
             <ul class="dropdown-menu">
               <!-- The user image in the menu -->
               <li class="user-header">
-                <img id="img" src="${pageContext.request.contextPath }/upload/customer/"
-			 class="rounded-circle" width="20" height="20" onerror="this.src='${pageContext.request.contextPath }/upload/customer/default.jpg'" alt="user Image">
+                <img id="img2" src="${pageContext.request.contextPath }/upload/emp/"
+			 class="rounded-circle" width="20" height="20" onerror="this.src='${pageContext.request.contextPath }/upload/emp/default.jpg'" alt="user Image">
                 <p>
                   ${loginEmployee.employeeId}
                 </p>
@@ -65,8 +66,8 @@
       <!-- Sidebar user panel -->
       <div class="user-panel">
         <div class="pull-left image">
-          <img id="img" src="${pageContext.request.contextPath }/upload/customer/"
-			 class="img-circle" width="20" height="20" onerror="this.src='${pageContext.request.contextPath }/upload/customer/default.jpg'" alt="user Image">
+          <img id="img3" src="${pageContext.request.contextPath }/upload/emp/"
+			 class="img-circle" width="20" height="20" onerror="this.src='${pageContext.request.contextPath }/upload/emp/default.jpg'" alt="user Image">
         </div>
         <div class="pull-left info">
           <p>관리자명</p>
@@ -169,7 +170,8 @@
   </aside>
   
  <script>
-  document.getElementById("statusLink").addEventListener("click", function() {
+<!--
+document.getElementById("statusLink").addEventListener("click", function() {
     var statusIcon = document.querySelector("#statusLink i.fa");
     var statusText = document.querySelector("#statusLink");
 
@@ -187,4 +189,21 @@
  
     }
   });
+-->  
+	$(document).ready(function(){
+  $.ajax({
+	  url:'/haribo/employeeImg',
+		method:'get',
+		data:{'employeeNo':${loginEmployee.employeeNo}},
+		success:function(json){
+			console.log(json);
+			$('#img1').attr('src','upload/emp/'+json);
+			$('#img2').attr('src','upload/emp/'+json);
+			$('#img3').attr('src','upload/emp/'+json);
+		},
+		error:function(err){
+			console.log(err);
+		}
+	});
+	});
 </script>

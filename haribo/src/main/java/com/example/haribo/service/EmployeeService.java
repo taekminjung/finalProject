@@ -94,7 +94,7 @@ public class EmployeeService {
 	}
 	
 	// 직원 사진 변경(추가, 삭제)
-	public void updateEmployeeImg(MultipartFile eImg, EmployeeImg employeeImg, String path, String employeeId) {
+	public void updateEmployeeImg(MultipartFile eImg, EmployeeImg employeeImg, String employeeId, String path) {
 		String pathEmp = path+"/emp";
 		String oName = eImg.getOriginalFilename();
 		String type = oName.substring(oName.lastIndexOf("."));
@@ -105,13 +105,13 @@ public class EmployeeService {
 		if(cnt != 0) {
 			int row = employeeMapper.deleteEmployeeImg(employeeImg);
 			if(row != 1) {
-				throw new RuntimeException();
+				throw new RuntimeException("사진 삭제 실패");
 			} else {
 				File file = new File (pathEmp+"/"+fName);
 				try {
 					file.delete();
 				} catch (IllegalStateException e) {
-					throw new RuntimeException();
+					throw new RuntimeException("사진 거의 삭제");
 				}
 			}
 		}
@@ -130,6 +130,7 @@ public class EmployeeService {
 				try {
 					eImg.transferTo(file);
 				} catch(IllegalStateException | IOException e) {
+					log.debug(e+"");
 					throw new RuntimeException();
 				}
 			}
@@ -138,6 +139,10 @@ public class EmployeeService {
 	
 	public void deleteEmployee(Employee employee, EmployeeDetail employeeDetail, EmployeeImg employeeImg, String path) {
 		String pathEmp = path+"/emp";
+		
+		Map<String, Object> employeeInfo = employeeMapper.selectEmployeeInfo(employee);
+		String employeeId = employeeInfo.get("employeeId").toString();
+		
 		int row1 = employeeMapper.updateEmployeeActive(employee);
 		if(row1 != 1) {
 			throw new RuntimeException();
@@ -148,11 +153,10 @@ public class EmployeeService {
 			} else {
 				employeeImg.setEmployeeNo(employee.getEmployeeNo());
 				int row3 = employeeMapper.deleteEmployeeImg(employeeImg);
-				if(row3 != 1) {
+				if(row3 > 1) {
 					throw new RuntimeException();
 				} else {
-					Map<String, Object> employeeInfo = employeeMapper.selectEmployeeInfo(employee);
-					String employeeId = employeeInfo.get("employeeId").toString();
+
 					File file = new File(pathEmp+"/"+employeeId+".png");
 					try {
 						file.delete();
@@ -162,6 +166,11 @@ public class EmployeeService {
 				}
 			}
 		}
+	}
+
+	public String employeeImgName(EmployeeImg employeeImg) {
+		
+		return employeeMapper.selectEmployeeImgName(employeeImg);
 	}
 }
 	

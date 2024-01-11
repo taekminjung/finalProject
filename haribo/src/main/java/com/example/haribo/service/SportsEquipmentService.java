@@ -61,17 +61,7 @@ public class SportsEquipmentService {
 		}
 		return lastPageOrder;
 	}
-	
-	public String sportsEquipmentOrder(SportsEquipmentOrder sportsEquipmentOrder) {
-		sportsEquipmentMapper.sportsEquipmentOrder(sportsEquipmentOrder);
-		return "redirect:/sportsEquipmentOrder";		
-	}
-	
-	public String insertExpire(SportsEquipmentExpire sportsEquipmentExpire) {
-		sportsEquipmentMapper.insertExpire(sportsEquipmentExpire);
-		return "redirect:/trainerExpireForm";
-	}
-	
+		
 	public int insertSportsEquipment(SportsEquipment sportsEquipment) {
 		int row = sportsEquipmentMapper.insertSportsEquipment(sportsEquipment);
 		if (row != 1) {
@@ -174,4 +164,19 @@ public class SportsEquipmentService {
 		return lastPageStock;
 	}
 	
+	// sportsEquipmentOrderForm에 본사가 발주한 물품 리스트 출력
+	public List<SportsEquipment> sportsEquipmentOrderFormList() {
+		List<SportsEquipment> orderList = sportsEquipmentMapper.sportsEquipmentOrderFormList();
+		return orderList;
+	}
+		
+	// sportsEquipmentOrderForm에 트레이너가 발주해야 할 물건들 추가 입력
+	public int sportsEquipmentOrderForm(SportsEquipmentOrder sportsEquipmentOrder) {
+		return sportsEquipmentMapper.sportsEquipmentOrderForm(sportsEquipmentOrder);
+	}
+	
+	// sportsEquipmentExpire 물품 폐기 신청 폼
+	public int insertExpire(SportsEquipmentExpire sportsEquipmentExpire) {
+		return sportsEquipmentMapper.insertExpire(sportsEquipmentExpire);
+	}
 }

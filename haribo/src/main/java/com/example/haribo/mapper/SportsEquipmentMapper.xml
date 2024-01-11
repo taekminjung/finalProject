@@ -67,23 +67,31 @@
 	</select>
 	
 	<!-- 발주 신청 폼에 필요한 쿼리 -->
-	<insert id="sportsEquipmentOrder" parameterType="com.example.haribo.vo.SportsEquipmentOrder">
-		INSERT INTO sportsEquipmentOrder(
+	<insert id="sportsEquipmentOrderForm" parameterType="com.example.haribo.vo.SportsEquipmentOrder">
+		INSERT INTO sports_equipment_order(
 			branch_no,
 			sports_equipment_no,
-			quantity,
-			total_price
+			quantity
 		) VALUES (
-			#{branchNo}
-			#{sportsEquipmentNo}
+			#{branchNo},
+			#{sportsEquipmentNo},
 			#{quantity}
-			#{totalPrice}
 		)
 	</insert>
 	
+	<!-- 페이징 없는 sportsEquipment List -->
+	<select id="sportsEquipmentOrderFormList" resultType="com.example.haribo.vo.SportsEquipment">
+		SELECT
+			sports_equipment_no sportsEquipmentNo,
+			item_name itemName,
+			item_price itemPrice,
+			updatedate
+		FROM sports_equipment
+	</select>
+	
 	<!-- 폐기 신청 폼에 필요한 쿼리 -->
 	<insert id="insertExpire" parameterType="com.example.haribo.vo.SportsEquipmentExpire">
-		INSERT INTO sportsEquipmentExpire(
+		INSERT INTO sports_equipment_expire(
 			sports_equipment_no,
 			branch_no,
 			item_name,

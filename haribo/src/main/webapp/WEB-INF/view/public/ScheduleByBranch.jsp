@@ -131,7 +131,7 @@
 				<div class="col-lg-4 sidebar-widgets">
 					<div class="widget-wrap">
 						<div class="single-sidebar-widget user-info-widget">
-							<img src="customer/img/blog/user-info.png" alt="">
+							<img class="rounded-circle" src="${pageContext.request.contextPath }/upload/emp/${map.employeeImgFileName}" alt="" onerror="this.src='${pageContext.request.contextPath }/upload/emp/default.jpg'" width="150px" height="150px">
 							<a href="#"><h4>${map.employeeName}</h4></a>
 							<p>
 								${map.branchName}지점 트레이너

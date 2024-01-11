@@ -107,7 +107,7 @@
           </a>
           <ul class="treeview-menu">
           	<li><a href="${pageContext.request.contextPath}/trainerStock">재고 현황</a></li>
-            <li><a href="${pageContext.request.contextPath}/sportsEquipmentOrder?branchNo=${loginEmployee.branchNo}">발주 신청</a></li>
+            <li><a href="${pageContext.request.contextPath}/sportsEquipmentOrderForm?branchNo=${loginEmployee.branchNo}">발주 신청</a></li>
             <li><a href="${pageContext.request.contextPath}/trainerExpireForm">폐기 신청</a></li>
           </ul>
         </li>

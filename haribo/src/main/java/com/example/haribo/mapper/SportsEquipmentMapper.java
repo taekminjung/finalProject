@@ -23,10 +23,6 @@ public interface SportsEquipmentMapper {
 	
 	int getTotalRowStock(int rowPerPage);
 	
-	int sportsEquipmentOrder(SportsEquipmentOrder sportsEquipmentOrder);
-	
-	int insertExpire(SportsEquipmentExpire sportsEquipmentExpire);	
-	
 	int insertSportsEquipment(SportsEquipment sportsEquipment);
 	
 	int insertSportsEquipmentImg(SportsEquipmentImg sportsEquipmentImg);
@@ -44,4 +40,11 @@ public interface SportsEquipmentMapper {
 	List<HashMap<String,Object>> stockList (HashMap<String, Object> param);
 
 	int updateOrderStatus(SportsEquipmentOrder sportsEquipmentOrder);
+	
+	// 물품 발주, 폐기 폼
+	List<SportsEquipment> sportsEquipmentOrderFormList();
+
+	int sportsEquipmentOrderForm(SportsEquipmentOrder sportsEquipmentOrder);
+	
+	int insertExpire(SportsEquipmentExpire sportsEquipmentExpire);
 }

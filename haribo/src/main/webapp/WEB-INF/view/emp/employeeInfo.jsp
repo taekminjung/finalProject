@@ -1,3 +1,4 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,7 +18,7 @@
   <link rel="stylesheet" href="emp/dist/css/AdminLTE.min.css">
   <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
-  <link rel="stylesheet" href="emp/dist/css/skins/_all-skins.min.css">
+  <link rel="stylesheet" href="emp/dist/css/skins/skin-blue.min.css">
 
   <!-- Google Font -->
   <link rel="stylesheet"
@@ -45,36 +46,44 @@
             <div class="box-header with-border">
               <h3 class="box-title">About Me</h3>
               <div class="col-xs-4" style="float:right">
-         	     <a href="${pageContext.request.contextPath}/updateEmployeePw?employeeNo=${loginEmployee.employeeNo}" class="btn btn-primary mb-2">Change Pw</a>
-         	     <a href="${pageContext.request.contextPath}/updateEmployeeImg?employeeNo=${loginEmployee.employeeNo}" class="btn btn-success mb-3">사진 변경</a>
+         	     <a href="${pageContext.request.contextPath}/updateEmployeePw?employeeNo=${loginEmployee.employeeNo}" class="btn btn-primary mb-2">비밀번호 변경</a>
               </div>
             </div>
             
             <div class="box-body">
-              <form id="form" name="form" method="post" action="${pageContext.request.contextPath}/updateEmployeeImg?employeeNo=${loginEmployee.employeeNo}">
+             <form id="form" name="form" method="post" action="${pageContext.request.contextPath}/updateEmployeeImg" enctype="multipart/form-data">
               <strong><i class="fa fa-user margin-r-5"></i>Employee Name</strong>
-
               <p class="text-muted">
-					${empInfo.employeeName}
+					<input type="text" name="employeeName" value="${empInfo.employeeName}" readonly style="border:none">
               </p>
               <hr>
               <strong><i class="fa fa-circle margin-r-5"></i> Employee ID</strong>
-              <p class="text-muted">${empInfo.employeeId}</p>
+             		<input type="text" name="employeeId" value="${empInfo.employeeId}" readonly style="border:none">
               <hr>
               <strong><i class="fa fa-envelope margin-r-5"></i> Email</strong>
               <p>
-     			${empInfo.employeeEmail}
+     				<input type="text" name="employeeEmail" value="${empInfo.employeeEmail}" readonly style="border:none">
               </p>
               <hr>
               <strong><i class="fa fa-mobile-phone margin-r-5"></i> Phone</strong>
               <p>
-              	${empInfo.employeePhone}
+              		<input type="text" name="employeePhone" value="${empInfo.employeePhone}" readonly style="border:none">
               </p>
+              <hr>
+             
+                <div class="form-group">
+                	<label for="eImg">Image</label>
+                	<input type="file" id="eImg" name="eImg" accept=".png">
+                	<input type="hidden" name="employeeNo" value="${loginEmployee.employeeNo}">
+        	    </div>                    
               
-              </form>
-              
+              	<div class="col-xs-4">
+          			<button type="submit" id="form" class="btn btn-success">사진 변경</button>
+          		</div>		
+          		</form>
             </div>
           </div>
+        </div>
         </div>
     </section>
     <!-- /.content -->
@@ -95,9 +104,6 @@
       <li><a href="#control-sidebar-home-tab" data-toggle="tab"><i class="fa fa-home"></i></a></li>
       <li><a href="#control-sidebar-settings-tab" data-toggle="tab"><i class="fa fa-gears"></i></a></li>
     </ul>
-
-      </div>
-    </div>
   </aside>
 
   <div class="control-sidebar-bg"></div>

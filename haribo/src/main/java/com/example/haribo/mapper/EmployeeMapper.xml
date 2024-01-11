@@ -76,7 +76,7 @@
 	        e.createdate,
 	        e.employee_active employeeActive
 	    FROM employee e
-	    INNER JOIN employee_detail ed ON e.employee_no = ed.employee_no
+	    LEFT OUTER JOIN employee_detail ed ON e.employee_no = ed.employee_no
 	    ORDER BY e.branch_no DESC
 	</select>
 
@@ -122,9 +122,32 @@
 		DELETE FROM employee_detail
 		WHERE employee_no = #{employeeNo}
 	</delete>
+
+	<insert id="insertEmployeeImg" parameterType="com.example.haribo.vo.EmployeeImg">
+		INSERT INTO employee_img (
+			employee_no,
+			employee_img_origin_name,
+			employee_img_file_name,
+			employee_img_size,
+			employee_img_type
+		)VALUES(
+			#{employeeNo},
+			#{employeeImgOriginName},
+			#{employeeImgFileName},
+			#{employeeImgSize},
+			#{employeeImgType}
+		)
+	</insert>
 	
 	<delete id="deleteEmployeeImg" parameterType="com.example.haribo.vo.EmployeeImg">
 		DELETE FROM employee_img
 		WHERE employee_no = #{employeeNo}
 	</delete>
+	
+	<select id="selectEmployeeImgName" parameterType="com.example.haribo.vo.EmployeeImg" resultType="String">
+		SELECT
+			employee_img_file_name employeeImgFileName
+		FROM employee_img
+		WHERE employee_no = #{employeeNo}
+	</select>
 </mapper>
