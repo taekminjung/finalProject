@@ -38,7 +38,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        공지사항
+        직원 명단
         <small>관리자</small>
       </h1>
       <ol class="breadcrumb">
@@ -70,6 +70,7 @@
 			    <table class="table table-hover">
 			        <tr>
 			            <th class="text-center">지점 번호</th>
+			            <th class="text-center">직원 ID</th>
 			            <th class="text-center">직원명</th>
 			            <th class="text-center">전화번호</th>
 			            <th class="text-center">이메일</th>
@@ -84,6 +85,7 @@
 			            <input type="hidden" name="employeeNo" id="employeeNo" value="${e.employeeNo}">
 			             <input type="hidden" name="employeeId" id="employeeId" value="${e.employeeId}">
 			                <td class="text-center">${e.branchNo}</td>
+			                <td class="text-center">${e.employeeId}</td>
 			                <td class="text-center">${e.employeeName}</td>
 			                <td class="text-center">${e.employeePhone}</td>
 			                <td class="text-center">${e.employeeEmail}</td>

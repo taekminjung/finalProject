@@ -51,9 +51,9 @@
                 	<label for="itemPrice">가격</label>
                 	<input type="text" class="form-control" id="itemPrice" name="itemPrice" value="${list.itemPrice}" readonly>
                 </div>
-                <div class="form-group">
-                	<label for="seImg">운동기구 이미지</label>
-                	<input type="file" id="seImg" name="seImg" accept=".png">
+                <div class="form-group" style="text-align: center">
+                	<img id="img" src="${pageContext.request.contextPath}/upload/emp/" 
+			  		class="rounded-circle" onerror="this.src='${pageContext.request.contextPath}/upload/emp/equipmentdefault.png'" width="250" height="150">
         	    </div>
            		
                 <div class="box-footer">

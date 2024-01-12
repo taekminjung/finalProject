@@ -69,23 +69,24 @@
 			    <label for="programDay">프로그램 일자 <br> 예시) 토 / 월, 수, 금 / 화, 목</label>
 			    <input type="text" class="form-control" id="programDay" name="programDay" placeholder="${resultProgram.programDay }" readonly>
 			  </div>
-			  <div class="form-group">
-			    <label for="pImg">프로그램 이미지</label>
-			    <input type="file" id="pImg" name="pImg" accept=".png">
+			  <div style="text-align: center">
+			  	<img id="img" src="${pageContext.request.contextPath}/upload/emp/" 
+			  		class="rounded-circle" onerror="this.src='${pageContext.request.contextPath}/upload/emp/programdefault.png'" width="250" height="150">
 			  </div>
 			 
-			 
-   		       <a class="btn btn-primary" id="updateBtn" href="${pageContext.request.contextPath}/updateProgram?programNo=${resultProgram.programNo}">수정</a>
 		       <a class="btn bg-navy" href="${pageContext.request.contextPath}/programList">뒤로</a>
+   		       <a class="btn btn-primary" id="updateBtn" href="${pageContext.request.contextPath}/updateProgram?programNo=${resultProgram.programNo}">수정</a>
 		       <a class="btn btn-danger" id="deleteBtn" href="${pageContext.request.contextPath}/deleteProgram?programNo=${resultProgram.programNo}">삭제</a>
-	</div>
 
               <div class="box-footer">
   
               </div>
             </form>
           </div>
+        </div>
       </div>
+    </div>
+    </section>
   <div class="control-sidebar-bg"></div>
 </div>
 <!-- ./wrapper -->
@@ -109,6 +110,23 @@
 <script src="emp/dist/js/pages/dashboard2.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="emp/dist/js/demo.js"></script>
+
+<script>
+	$(document).ready(function(){
+		$.ajax({
+			url:'haribo/programImg',
+			method:'get',
+			data{'programNo': ${resultProgram.programNo},
+			success:function(json){
+				console.log(json);	
+				$('#img').attr('src','upload/emp/'+json);
+			},
+			error:function(err){
+				console.log(err);
+			}
+		})
+	})
+</script>
 
 </body>
 </html>

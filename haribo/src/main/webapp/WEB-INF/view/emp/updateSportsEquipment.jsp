@@ -48,6 +48,10 @@
                                         <label for="itemPrice">가격</label>
                                         <input type="text" class="form-control" id="itemPrice" name="itemPrice" value="${list.itemPrice}">
                                     </div>
+                                    <div class="form-group">
+					                	<label for="seImg">운동기구 이미지</label>
+					                	<input type="file" id="seImg" name="seImg" accept=".png">
+					        	    </div>
                             	</div>
                             <div class="box-footer">
                                 <button type="submit" id="updateBtn" class="btn btn-primary">수정 완료</button>

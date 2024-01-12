@@ -5,7 +5,6 @@
 		SELECT
 			branch_no branchNo,
 			sports_equipment_no sportsEquipmentNo, 
-			item_name itemName,
 			expire_memo expireMemo,
 			quantity,
 			createdate

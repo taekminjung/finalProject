@@ -74,7 +74,9 @@
 					<tr>
 					<form id="form" name="form" action="${pageContext.request.contextPath}/updateOrderStatus" method="post">
 						<td class="text-center">${seo.branchNo} </td>		
-						<td class="text-center"><input type="text" name="sportsEquipmentNo" value="${seo.sportsEquipmentNo}" readonly> </td>
+						<td class="text-center">
+							<input type="hidden" name="sportsEquipmentNo" value="${seo.sportsEquipmentNo}"> ${seo.sportsEquipmentNo}
+						</td>
 						<td class="text-center">${seo.itemName} </td>
 						<td class="text-center">${seo.itemPrice} </td>
 						<td class="text-center">${seo.quantity} </td>
@@ -114,7 +116,11 @@
 			  	<a href="${pageContext.request.contextPath}/sportsEquipmentOrderCk?currentPage=${currentPage+1}" class="btn btn-primary">다음</a>
 			  </c:if>
 			</div>
-
+		</div>
+	  </div>
+	</div>
+  </div>
+</div>
   <div class="control-sidebar-bg"></div>
 
 </div>
