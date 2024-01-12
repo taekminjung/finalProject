@@ -26,8 +26,6 @@ import lombok.extern.slf4j.Slf4j;
 @Controller
 public class EmployeeController {
 	@Autowired private EmployeeService employeeService;
-	@Autowired private CalendarService calendarService;
-	@Autowired private ProgramService programService;
 	
 	// 직원, 트레이너 로그인
 	@PostMapping("/empLogin")
@@ -153,14 +151,5 @@ public class EmployeeController {
 		//employeeService 호출
 		employeeService.deleteEmployee(employee, employeeDetail, employeeImg, path);
 		return "redirect:/employeeList";
-	}
-	
-	// 트레이너 상세정보
-	@GetMapping("/trainerOne")
-	public String trainerOne(Model model, Employee employee) {
-		// 서비스 호출
-		Map<String,Object> trainerOne = employeeService.trainerOne(employee);
-		model.addAttribute("trainerOne", trainerOne);
-		return "emp/trainerOne";
 	}
 }

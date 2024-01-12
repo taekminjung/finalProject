@@ -43,10 +43,96 @@
     <!-- 페이지 메인 내용 시작 -->
     <section class="content container-fluid">
 	안뇽딱따구리 여기에 캘린더 들어옴
-      <!--------------------------
-        | 페이지 메인 내용 여기에 적기 |
-        -------------------------->
-
+	<div>
+		<div>
+			<h4>${calMap.targetYear}년 ${calMap.targetMonth +1}월</h4>
+			<a style="float:left" class="btn btn-outline-secondary" 
+			href="${pageContext.request.contextPath }/customerSchedule?customerNo=${loginCustomer.customerNo}&targetYear=${calMap.targetYear}&targetMonth=${calMap.targetMonth -1}">
+				이전 달
+			</a>
+			<a style="float:right" class="btn btn-outline-secondary" 
+			href="${pageContext.request.contextPath }/customerSchedule?customerNo=${loginCustomer.customerNo}&targetYear=${calMap.targetYear}&targetMonth=${calMap.targetMonth +1}">
+				다음 달
+			</a>
+		</div>
+		<br>
+		<br>
+		
+		<table class="table table-bordered" style="table-layout:fixed">
+			<tr>
+				<th class="col-lg-1" style="color:red">일</th>
+				<th class="col-lg-1">월</th>
+				<th class="col-lg-1">화</th>
+				<th class="col-lg-1">수</th>
+				<th class="col-lg-1">목</th>
+				<th class="col-lg-1">금</th>
+				<th class="col-lg-1">토</th>
+			</tr>
+			<tr style="height:200px">
+			<c:forEach var="i" begin="1" end="${calMap.totalTd}" step="1">
+				<c:set var="d" value="${i - calMap.beginBlank }"></c:set>
+				<c:if test="${i % 7 == 1 }">
+					<td style="color:red">
+				</c:if>
+				<c:if test="${!(i % 7 == 1)}">
+					<td>
+				</c:if>
+				<c:if test="${d < 1 || d > calMap.lastDate}">
+					&nbsp;
+				</c:if>
+				<c:if test="${!(d < 1 || d > calMap.lastDate)}">
+					${d }<br>
+					<c:forEach var="p" items="${proList }">
+						<c:if test="${p.programDateDay == d }">
+							<c:if test="${p.exitTime != null }">
+								<a href="${pageContext.request.contextPath }/insertReviewForm?programReservationNo=${p.programReservationNo}" data-bs-toggle="tooltip" title="리뷰 쓰기">
+									<h6>${p.branchName }<br>
+									: ${p.programName}</h6>
+								</a>
+							</c:if>
+							<c:if test="${p.exitTime == null }">
+							<h6>${p.branchName }<br>
+								: ${p.programName}</h6>
+								</c:if>
+							<div>
+								<c:if test="${p.programDate <= now }">
+									<c:if test="${p.cnt == 0 && p.enterTime == null}">
+										<span class="badge bg-primary text-light">
+											<a class="text-light" href="${pageContext.request.contextPath }/insertAttendance?programReservationNo=${p.programReservationNo }&customerNo=${loginCustomer.customerNo}">
+												입실하기
+											</a>
+										</span>
+									</c:if>
+									<c:if test="${p.enterTime != null}">
+										<span class="badge bg-primary text-light">
+											입실 ${p.enterTime }
+										</span>
+									</c:if>
+									<c:if test="${p.cnt != 0 && p.exitTime == null}">
+										<span class="badge bg-danger">
+											<a class="text-light" href="${pageContext.request.contextPath }/updateAttendance?programReservationNo=${p.programReservationNo }&customerNo=${loginCustomer.customerNo}">
+												퇴실하기
+											</a>
+										</span>
+									</c:if>
+									<c:if test="${p.cnt != 0 && p.exitTime != null}">
+										<span class="badge bg-danger text-light">
+											퇴실 ${p.exitTime }
+										</span>
+									</c:if>
+								</c:if>
+							</div>
+							<br><br>
+						</c:if>
+					</c:forEach>
+				</c:if>
+				</td>
+				<c:if test="${i < calMap.totalTd && i % 7 == 0}">
+					</tr><tr style="height:200px">	
+				</c:if>
+			</c:forEach>
+		</table>
+	</div>
     </section>
     <!-- 페이지 메인 내용 끝 -->
   </div>
@@ -67,6 +153,9 @@
 </div>
 <!-- REQUIRED JS SCRIPTS -->
 
+<!-- fullCalendar -->
+<script src="../bower_components/moment/moment.js"></script>
+<script src="../bower_components/fullcalendar/dist/fullcalendar.min.js"></script>
 <!-- jQuery 3 -->
 <script src="emp/bower_components/jquery/dist/jquery.min.js"></script>
 <!-- Bootstrap 3.3.7 -->
