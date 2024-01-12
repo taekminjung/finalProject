@@ -31,6 +31,8 @@ public interface SportsEquipmentMapper {
 	
 	int updateSportsEquipment(SportsEquipment sportsEquipment);
 	
+	String selectSportsEquipmentImgName(SportsEquipmentImg sportsEquipmentImg);
+	
 	SportsEquipment sportsEquipmentOne(SportsEquipment sportsEquipment);
 	
 	List<SportsEquipment> sportsEquipmentList (Map<String, Object>param);

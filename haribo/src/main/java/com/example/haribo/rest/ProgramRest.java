@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.haribo.service.ProgramReservationService;
 import com.example.haribo.service.ProgramService;
+import com.example.haribo.vo.ProgramImg;
 
 import jakarta.servlet.http.HttpSession;
 import lombok.extern.slf4j.Slf4j;
@@ -46,5 +47,14 @@ public class ProgramRest {
 		log.debug(employeeNameList+"");
 		model.addAttribute("list",employeeNameList);
 		return employeeNameList;
+	}
+	
+	// 사진 가져오기
+	@GetMapping("/programImg")
+	public String programImg (ProgramImg programImg) {
+		System.out.println(programImg+"<======programImgR");
+		String programImgName = programService.selectProgramImgName(programImg);
+		System.out.println(programImgName+"<======programImgName");
+		return programImgName;
 	}
 }

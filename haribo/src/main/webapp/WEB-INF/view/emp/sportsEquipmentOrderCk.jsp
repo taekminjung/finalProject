@@ -50,10 +50,6 @@
      <div class="row">
         <div class="col-xs-12">
           <div class="box">
-            <div class="box-header">
-              <h3 class="box-title">현재 페이지: ${currentPage}</h3>
-
-            </div>
             <br>
 			<div class="box-body table-responsive no-padding">
 			    <table class="table table-hover">
@@ -107,11 +103,12 @@
 					</tr>
 					</c:forEach>
 			    </table>
-			    <br><br>
+			    <br>
 			<div class="text-center"> 
 			  <c:if test="${currentPage > 1}">
 			  	<a href="${pageContext.request.contextPath}/sportsEquipmentOrderCk?currentPage=${currentPage-1}" class="btn btn-primary">이전</a>
 			  </c:if>
+			  <h4>[${currentPage}]</h4>
 			  <c:if test="${currentPage < lastPage}">
 			  	<a href="${pageContext.request.contextPath}/sportsEquipmentOrderCk?currentPage=${currentPage+1}" class="btn btn-primary">다음</a>
 			  </c:if>

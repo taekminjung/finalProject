@@ -56,6 +56,7 @@ public class EmployeeController {
 	    return "redirect:/login";
 	}
 	
+	
 	// 직원, 트레이너 추가
 	@GetMapping("/insertEmployee")
 	public String addEmployee() {

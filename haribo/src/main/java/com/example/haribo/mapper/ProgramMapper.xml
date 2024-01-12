@@ -189,4 +189,10 @@
 		ON e.employee_no = ed.employee_no
 		WHERE b.branch_No = #{branchNo} AND employee_id LIKE 't%'
 	</select>
+	
+	<select id="selectProgramImgName" parameterType="com.example.haribo.vo.ProgramImg" resultType="String">
+		SELECT program_img_file_name programImgFileName
+		FROM program_img
+		WHERE program_no = #{programNo}
+	</select>
 </mapper>

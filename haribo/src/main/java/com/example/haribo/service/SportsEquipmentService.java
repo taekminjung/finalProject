@@ -210,4 +210,10 @@ public class SportsEquipmentService {
 		}
 		return lastPageSp;
 	}	
+	
+	public String selectSportsEquipmentImgName(SportsEquipmentImg sportsEquipmentImg) {
+
+		return sportsEquipmentMapper.selectSportsEquipmentImgName(sportsEquipmentImg);
+	}
+	
 }

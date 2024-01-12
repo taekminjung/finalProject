@@ -114,9 +114,9 @@
 <script>
 	$(document).ready(function(){
 		$.ajax({
-			url:'haribo/programImg',
+			url:'/haribo/programImg',
 			method:'get',
-			data{'programNo': ${resultProgram.programNo},
+			data:{'programNo': ${resultProgram.programNo}},
 			success:function(json){
 				console.log(json);	
 				$('#img').attr('src','upload/emp/'+json);

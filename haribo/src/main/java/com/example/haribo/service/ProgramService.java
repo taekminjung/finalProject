@@ -180,4 +180,11 @@ public class ProgramService {
 		System.out.println(list+"<--ser.list");
 		return list;
 	}	
+	
+	public String selectProgramImgName(ProgramImg programImg) {
+		System.out.println(programImg+"<=====programImgS");
+		String programImgName = programMapper.selectProgramImgName(programImg);
+		System.out.println(programImgName+"<=====programImgName");
+		return programImgName;
+	}
 }

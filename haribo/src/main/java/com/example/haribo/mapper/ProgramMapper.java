@@ -28,6 +28,8 @@ public interface ProgramMapper {
 	
 	int updateProgram(Program program);
 	
+	String selectProgramImgName(ProgramImg programImg);
+	
 	//프로그램 목록
 	List<Program> selectProgram(Program program);
 	//프로그램 상세보기

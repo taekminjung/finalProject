@@ -101,6 +101,21 @@
 		}
 	})
 	
+	$(document).ready(function(){
+		$.ajax({
+			url:'/haribo/selectSportsEquipmentImgName',
+			method:'get',
+			data:{'sportsEquipmentNo': ${list.sportsEquipmentNo}},
+			success:function(json){
+				console.log(json);
+				$('#img').attr('src', 'upload/emp/'+json);
+			},
+			error:function(err){
+				console.log(err);
+			}
+		})
+	})
+	
 //		$('#deleteBtn').click(function() {
 //			var result = confirm($('#itemName').val() + ' 삭제하시겠습니까?');
 //			if (result) {
