@@ -115,14 +115,14 @@
         </li>
 
 		<li class="treeview">
-          <a href="${pageContext.request.contextPath}/trainerProgram?employeeId=${loginEmployee.employeeId}">
+          <a href="${pageContext.request.contextPath}/trainerProgramOne?employeeId=${loginEmployee.employeeId}">
           	<i class="fa fa-book"></i> <span>프로그램 목록</span>
             <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
-          	<li><a href="${pageContext.request.contextPath}/trainerProgram?employeeId=${loginEmployee.employeeId}">내가 맡은 프로그램 출력 상세정보</a></li>
+          	<li><a href="${pageContext.request.contextPath}/trainerProgramOne?employeeId=${loginEmployee.employeeId}">내가 맡은 프로그램 출력 상세정보</a></li>
           </ul>
         </li>
       </ul>

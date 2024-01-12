@@ -8,16 +8,20 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.example.haribo.service.CalendarService;
 import com.example.haribo.service.EmployeeService;
 import com.example.haribo.service.ProgramService;
 import com.example.haribo.service.SportsEquipmentService;
 import com.example.haribo.vo.Employee;
+import com.example.haribo.vo.EmployeeImg;
+import com.example.haribo.vo.Program;
 import com.example.haribo.vo.SportsEquipment;
 import com.example.haribo.vo.SportsEquipmentExpire;
 import com.example.haribo.vo.SportsEquipmentOrder;
 
+import jakarta.servlet.http.HttpSession;
 import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @Controller
@@ -25,7 +29,11 @@ public class TrainerHomeController {
 	@Autowired private EmployeeService employeeService;
 	@Autowired private CalendarService calendarService;
 	@Autowired private ProgramService programService;
-	@Autowired SportsEquipmentService sportsEquipmentService;
+	@Autowired private SportsEquipmentService sportsEquipmentService;
+	
+	
+	// 잊지말고 로그인 세션 추가하기 
+	
 	
 	// 트레이너 홈페이지
 	@GetMapping("/trainerHome")
@@ -33,6 +41,7 @@ public class TrainerHomeController {
 		return "emp/trainerHome";
 	}
 	
+	// 트레이너 마이페이지 + 정보수정 (사진, 비밀번호)
 	// 트레이너 상세정보
 	@GetMapping("/trainerOne")
 	public String trainerOne(Model model, Employee employee) {
@@ -42,7 +51,52 @@ public class TrainerHomeController {
 		return "emp/trainerOne";
 	}
 	
-	// 트레이너 홈페이지 부분
+	// 트레이너 정보 수정
+	@GetMapping("/updateTrainerPw")
+	public String updateTrainerPw(HttpSession session) {
+		if(session.getAttribute("loginEmployee") == null) {
+			return "redirect:/login";
+		}
+		return "emp/updateTrainerPw";
+	}
+	
+	@PostMapping("/updateTrainerPw")
+	public String updateTrainerPw(HttpSession session, Employee employee, String newEmployeePw) {
+		int row = employeeService.updateEmployeePw(employee, newEmployeePw);
+		if(row != 1) {
+		String url = "redirect:/updateEmployeePw?employeeNo="+employee.getEmployeeNo();
+		return url;
+		}
+		session.invalidate();
+		
+		return "redirect:/login";
+	}
+	
+	@PostMapping("/updateTrainerImg")
+	public String updateTrainerImg(HttpSession session, MultipartFile eImg, EmployeeImg employeeImg, String employeeId) {
+		log.debug("\u001B[43m"+eImg.getName());
+		log.debug("\u001B[43m"+eImg.getOriginalFilename());
+		log.debug("\u001B[43m"+eImg.getContentType());
+		log.debug("\u001B[43m"+eImg.getSize());
+		
+		String path = session.getServletContext().getRealPath("/upload");
+		employeeService.updateEmployeeImg(eImg, employeeImg, employeeId, path);
+		
+		String u = "redirect:/employeeInfo?employeeNo="+employeeImg.getEmployeeNo();
+		return u;
+	}
+	
+	// 프로그램 정보 받아오기
+	// 프로그램 상세보기
+	@GetMapping("/trainerProgramOne")
+	public String trainerProgramOne(Model model, Program program) {	
+		Program resultProgram = programService.programOne(program);
+		model.addAttribute("resultProgram", resultProgram);
+
+		return "emp/trainerProgramOne";
+	}
+	
+	// 재고관리(트레이너)
 	
 //	// 트레이너 지점 별 재고 현황 확인하기
 //	@GetMapping("/trainerStock")

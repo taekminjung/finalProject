@@ -36,8 +36,9 @@
       <h1>${loginEmployee.employeeName}님의 마이페이지📅💙🤍💜❤️</h1>
       <br>
       <div class="callout callout-info">
-        <h4>공지사항</h4>
-		<p>처음 오신 트레이너 분들께서는 본인 프로필 사진 업데이트 부탁드립니다.</p>
+        <h4>팀 하리보 공지사항</h4>
+		<p>📢처음 오신 트레이너 분들께서는 본인 프로필 사진 업데이트 부탁드립니다.
+		<br>📢기존 트레이너 분들께서도 프로필 사진은 항상 최근 사진으로 수정 부탁드립니다.</p>
       </div>
     </section>
     
@@ -46,46 +47,45 @@
 	<!-- 발주 신청 폼 -->
     <div class="box box-info">
       <div class="box-header with-border">
-        <h3 class="box-title">발주 신청</h3>
+        <h3 class="box-title">🙂내 정보 수정하기🙂</h3>
       </div>
       <!-- /.box-header -->
-      <!-- form start -->
-      <form class="form-horizontal" action="${pageContext.request.contextPath}/sportsEquipmentOrderForm" method="post">
-        <div class="box-body">
-          <div class="form-group">
-            <label for="branchNo" class="col-sm-2 control-label">지점</label>
-
-            <div class="col-sm-10">
-              <input type="text" class="form-control" name="branchNo" value="${loginEmployee.branchNo}" readonly>
-            </div>
-          </div>
-          
-          <div class="form-group">
-            <label for="sportsEquipmentNo" class="col-sm-2 control-label">발주 물품</label>
-            <div class="col-sm-10">
-            <select class="form-control" id="sportsEquipmentNo" name="sportsEquipmentNo">
-                <option>발주할 물품을 선택해주세요</option>
-                <c:forEach var="o" items="${orderList}">
-                    <option value="${o.sportsEquipmentNo}">${o.itemName}</option>
-                </c:forEach>
-            </select>
-            </div>
-          </div>
-          
-          <div class="form-group">
-            <label for="quantity" class="col-sm-2 control-label">수량</label>
-            <div class="col-sm-10">
-              <input type="number" class="form-control" id="quantity" name="quantity" placeholder="수량을 입력하세요">
-            </div>
-          </div>
-          
-        </div>
-        <!-- /.box-body -->
-        <div class="box-footer">
-          <a href="trainerHome" class="btn btn-default">신청 취소</a>
-          <button type="submit" class="btn btn-info pull-right">제출하기</button>
-        </div>
-        <!-- /.box-footer -->
+      
+      <!-- 비밀번호 변경 버튼 -->
+      <div class="col-xs-4" style="float:right">
+      	<a href="${pageContext.request.contextPath}/updateTrainerPw?employeeNo=${loginEmployee.employeeNo}" class="btn btn-primary mb-2">비밀번호 변경</a>
+      </div>
+      
+      <!-- 이미지 변경 폼 -->
+      <form id="form" name="form" method="post" action="${pageContext.request.contextPath}/updateTrainerImg" enctype="multipart/form-data">
+	      <strong><i class="fa fa-user margin-r-5"></i>트레이너 이름</strong>
+	      <p class="text-muted">
+		<input type="text" name="employeeName" value="${empInfo.employeeName}" readonly style="border:none">
+	      </p>
+	      <hr>
+	      <strong><i class="fa fa-circle margin-r-5"></i> 트레이너 ID</strong>
+	     		<input type="text" name="employeeId" value="${empInfo.employeeId}" readonly style="border:none">
+	      <hr>
+	      <strong><i class="fa fa-envelope margin-r-5"></i>이메일</strong>
+	      <p>
+		<input type="text" name="employeeEmail" value="${empInfo.employeeEmail}" readonly style="border:none">
+	      </p>
+	      <hr>
+	      <strong><i class="fa fa-mobile-phone margin-r-5"></i>전화번호</strong>
+	      <p>
+	      		<input type="text" name="employeePhone" value="${empInfo.employeePhone}" readonly style="border:none">
+	      </p>
+	      <hr>
+	     
+	        <div class="form-group">
+	        	<label for="eImg">프로필 사진</label>
+	        	<input type="file" id="eImg" name="eImg" accept=".png">
+	        	<input type="hidden" name="employeeNo" value="${loginEmployee.employeeNo}">
+		    </div>                    
+	      
+	      	<div class="col-xs-4">
+	  			<button type="submit" id="form" class="btn btn-success">사진 변경</button>
+          	</div>		
       </form>
     </div>
     <!-- /.box -->
@@ -103,7 +103,6 @@
     <!-- 저작권 명시 -->
     <strong>Copyright &copy; 2023-2024 <a href="trainerHome">TEAM HARIBO</a>.</strong> All rights reserved.
   </footer>
-
 
   <div class="control-sidebar-bg"></div>
 </div>

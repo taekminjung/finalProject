@@ -23,7 +23,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @Controller
 public class SportsEquipmentController {
-	@Autowired SportsEquipmentService sportsEquipmentService;
+	@Autowired private SportsEquipmentService sportsEquipmentService;
 	
 	// 관리자 홈페이지 부분
 	@GetMapping("/insertSportsEquipment")

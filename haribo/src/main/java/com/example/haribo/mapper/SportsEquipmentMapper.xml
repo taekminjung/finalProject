@@ -91,12 +91,14 @@
 	
 	<!--  페이징 없는 trainerExpireFormList  -->
 	<select id="trainerExpireFormList" resultType="com.example.haribo.vo.SportsEquipment">
-		SELECT
-			sports_equipment_no sportsEquipmentNo,
-			item_name itemName,
-			item_price itemPrice,
-			updatedate
-		FROM sports_equipment
+		SELECT DISTINCT
+			seo.branch_no branchNo,
+			se.sports_equipment_no sportsEquipmentNo,
+			se.item_name itemName
+		FROM sports_equipment_order seo
+		LEFT OUTER JOIN sports_equipment se
+		ON seo.sports_equipment_no = se.sports_equipment_no
+		WHERE seo.order_status = '승인'
 	</select>
 	
 	<!-- 폐기 신청 폼에 필요한 쿼리 -->
