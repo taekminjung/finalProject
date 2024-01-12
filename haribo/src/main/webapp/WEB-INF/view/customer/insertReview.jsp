@@ -65,15 +65,12 @@
 		<img class="featured-img img-fluid" src="img/featured-class/feature-img.png" alt="">
 		<div class="container">
 			<div class="row d-flex justify-content-center">
-				<div class="col-lg-12">
+				<jsp:include page="/inc/customerMyPageSidebar.jsp"></jsp:include>
+				<div class="col-lg-9">
 					<div class="section-title-wrap text-center">
 						<h1>리뷰 작성하기</h1>
 						<p>예약 에 대한 리뷰 작성하기 입니다.</p>
 					</div>
-				</div>
-			</div>
-			<div class="row justify-content-center">
-				<div class="table-wrap col-lg-10">
 					<table class="schdule-table table table-bordered">
 						<thead class="thead-light">
 							<tr>
@@ -90,26 +87,22 @@
 							</tr>
 						</tbody>
 					</table>
-				<div class="table-wrap col-lg-10">
-				<form action="${pageContext.request.contextPath}/insertReview" method="post">
+				<div class="table-wrap">
+				<form id="form" action="${pageContext.request.contextPath}/insertReview" method="post">
 					<table class="schdule-table table table-bordered">
-						<thead class="thead-light">
-							<tr>
-								<th class="head" scope="col">제목</th>
-								<th class="head" scope="col">내용</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td><input type="text" name="reviewTitle"></td>
-								<td><textarea name="reviewContent"></textarea></td>
-							</tr>
-						</tbody>
+						<tr>
+							<th class="head col-lg-2" scope="col">제목</th>
+							<td><input id="title" class="single-input" type="text" name="reviewTitle"></td>
+						</tr>
+						<tr>
+							<th class="head" scope="col" align="center">내용</th>
+							<td><textarea id="content" name="reviewContent" cols="100" rows="5" style="border:none;"></textarea></td>
+						</tr>
 					</table>
-					<button>리뷰 작성하기</button>
 					<input type="hidden" name="programReservationNo" value="${review.programReservationNo}">
 					<input type="hidden" name="customerNo" value="${loginCustomer.customerNo }">
 					</form>
+					<button id="formBtn" class="btn btn-outline-dark">리뷰 작성하기</button>
 				</div>
 			</div>
 		</div>
@@ -137,6 +130,17 @@
 	<script src="customer/js/owl.carousel.min.js"></script>
 	<script src="customer/js/mail-script.js"></script>
 	<script src="customer/js/main.js"></script>
+	<script>
+		$('#formBtn').click(function(){
+			if($('#title').val().length < 1){
+				alert('제목을 입력하세요');
+			}else if($('#content').val().length < 1){
+				alert('내용을 입력하세요');
+			}else{
+				$('#form').submit();
+			}
+		})
+	</script>
 </body>
 
 </html>

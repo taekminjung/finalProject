@@ -6,10 +6,8 @@
 		<div class="single-sidebar-widget user-info-widget">
 			<img id="img" src="${pageContext.request.contextPath }/upload/customer/"
 			 class="rounded-circle" width="150" height="150" onerror="this.src='${pageContext.request.contextPath }/upload/customer/default.jpg'">
-			
 			<h4>${loginCustomer.customerId }</h4>
 			<p>${loginCustomer.customerName } 회원님</p>
-			
 		</div>
 		<div class="single-sidebar-widget post-category-widget">
 			<h4 class="category-title">사진 변경</h4><br>
