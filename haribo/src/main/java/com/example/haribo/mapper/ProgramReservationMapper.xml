@@ -25,6 +25,7 @@
 		WHERE c.customer_no = #{customerNo}
 		AND YEAR(pd.program_date) = #{targetYear}
 		AND MONTH(pd.program_date) = #{targetMonth}
+		AND p.program_active = 'Y'
 		GROUP BY pr.program_reservation_no
 	</select>
 	<select id="selectProgramDateByreservationNo" parameterType="com.example.haribo.vo.CustomerAttendance"
@@ -32,8 +33,10 @@
 		SELECT
 			pd.program_date programDate
 		FROM program_reservation pr INNER JOIN program_date pd
-		ON pr.program_date_no = pd.program_date_no
-		WHERE pr.program_reservation_no = #{programReservationNo}							
+		ON pr.program_date_no = pd.program_date_no INNER JOIN program p
+		ON pd.program_no = p.program_no
+		WHERE pr.program_reservation_no = #{programReservationNo}
+		AND p.program_active = 'Y'							
 	</select>
 	
 	<insert id="insertProgramReservation" parameterType="com.example.haribo.vo.ProgramReservation">
@@ -52,6 +55,7 @@
 		SELECT 
 			DISTINCT(program_name) programName
 		FROM program
+		AND program_active = 'Y'
 	</select>
 	
 	<select id="selectBranchNameByProgramName" parameterType="String" resultType="java.util.Map">
@@ -61,6 +65,7 @@
 		ON p.employee_id = e.employee_id INNER JOIN branch b
 		ON e.branch_no = b.branch_no
 		WHERE p.program_name = #{programName}
+		AND p.program_active = 'Y'
 	</select>
 	
 	<select id="selectProgramDateByProgramNameBranchName"
@@ -81,6 +86,7 @@
 		ON p.program_no = pd.program_no
 		WHERE b.branch_name = #{branchName}
 		AND p.program_name = #{programName}
+		AND p.program_active = 'Y'
 		AND pd.program_date BETWEEN NOW() AND #{customerMembershipEnd}
 		AND pd.program_date_no NOT IN (SELECT 
 											pd.program_date_no programDateNo
@@ -105,6 +111,7 @@
 		ON pr.branch_no = b.branch_no
 		WHERE p.customer_id = #{customerId}
 		AND pd.program_date > NOW()
+		AND pg.program_active = 'Y'
 	</select>
 	
 	<delete id="deleteProgramReservation" parameterType="com.example.haribo.vo.ProgramReservation">
