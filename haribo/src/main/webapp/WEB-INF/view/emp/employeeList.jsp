@@ -22,7 +22,7 @@
   <link rel="stylesheet" href="emp/dist/css/AdminLTE.min.css">
   <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
-  <link rel="stylesheet" href="emp/dist/css/skins/skin-blue.min.css">
+  <link rel="stylesheet" href="emp/dist/css/skins/_all-skins.min.css">
 
   <!-- Google Font -->
   <link rel="stylesheet"
@@ -65,6 +65,8 @@
               </div>
             </div>
             
+            <br>
+            
 			<div class="box-body table-responsive no-padding">
 			    <table class="table table-hover">
 			        <tr>
@@ -76,6 +78,7 @@
 			            <th class="text-center">성별</th>
 			            <th class="text-center">입사일자</th>
 			      		<th class="text-center">활동여부</th>
+			      		<th class="text-center"><i class="fa fa-pencil"></i></th>
 			        </tr>
 			
 			        <c:forEach var="e" items="${list}">
@@ -83,6 +86,11 @@
 			            <form id="form" name="form" action="${pageContext.request.contextPath}/deleteEmployee" method="post">
 			            <input type="hidden" name="employeeNo" id="employeeNo" value="${e.employeeNo}">
 			             <input type="hidden" name="employeeId" id="employeeId" value="${e.employeeId}">
+			             <input type="hidden" name="branchNo" id="branchNo" value="${e.branchNo}">
+			             <input type="hidden" name="employeeName" id="employeeName" value="${e.employeeName}">
+			             <input type="hidden" name="employeePhone" id="employeePhone" value="${e.employeePhone}">
+			             <input type="hidden" name="employeeEmail" id="employeeEmail" value="${e.employeeEmail}">
+			             <input type="hidden" name="employeeGender" id="employeeGender" value="${e.employeeGender}">
 			                <td class="text-center">${e.branchNo}</td>
 			                <td class="text-center">${e.employeeId}</td>
 			                <td class="text-center">${e.employeeName}</td>
@@ -104,8 +112,10 @@
 			                </c:choose>
 			                </td>
 							<td class="text-center">
-							    <button class="btn bg-navy" id="updateBtn">수정</button>
-							</td>
+				                <c:if test="${e.employeeActive == 'Y'}">
+				                    <button class="btn bg-navy" id="updateBtn">수정</button>
+				                </c:if>
+				            </td>
 							</form>
 						    </tr>
 						</c:forEach>

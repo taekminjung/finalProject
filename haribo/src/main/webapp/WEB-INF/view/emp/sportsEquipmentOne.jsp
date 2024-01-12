@@ -58,7 +58,6 @@
            		
                 <div class="box-footer">
                 	<a class="btn btn-primary" href="${pageContext.request.contextPath}/updateSportsEquipment?sportsEquipmentNo=${list.sportsEquipmentNo}">수정</a>
-                    <a class="btn btn-danger" id="deleteBtn" href="${pageContext.request.contextPath}/deleteSportsEquipment?sportsEquipmentNo=${list.sportsEquipmentNo}">삭제</a>
                 </div>		
 
               

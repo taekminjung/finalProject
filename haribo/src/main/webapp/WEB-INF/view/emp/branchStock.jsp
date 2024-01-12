@@ -56,12 +56,12 @@
     				</div>
     			</div>
     		</div>
-<div class="row">
+<div class="row text-center">
     <c:forEach var="b" items="${list}">
         <div class="col-md-3 mb-4">
             <div class="card">
                 <a href="${pageContext.request.contextPath}/branchStockList?branchNo=${b.branchNo}">
-                    <img class="card-img-top" src="customer/img/featured-class/f1.jpg" alt="">
+                    <img class="img-fluid" src="upload/emp/${b.branchName}.png" alt="" width="300px" height="200px">
                     <div class="card-body">
                         <h4 class="card-title">${b.branchName}</h4>
                         <p class="card-text">지점 재고현황 보기</p>

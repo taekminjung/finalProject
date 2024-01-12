@@ -59,17 +59,41 @@
 			            <th class="text-center">프로그램명</th>
 			            <th class="text-center">프로그램 요일</th>
 			            <th class="text-center">생성일자</th>
+			            <th class="text-center">활동여부</th>
+			            <th class="text-center"><i class="fa fa-pencil"></i></th>			            
 			        </tr>
 			
 			        <c:forEach var="p" items="${list}">
 			            <tr>
-			            <td class="text-center">${p.programNo}</td>
+			            <form id="form" name="form" action="${pageContext.request.contextPath}/updateProgramActive" method="post">
+			      			<input type="hidden" name="programNo" id="programNo" value="${p.programNo}">
+			      			<input type="hidden" name="programName" id="programName" value="${p.programName}">
+			      			<input type="hidden" name="programDay" id="programDay" value="${p.programDay}">
+			                <td class="text-center">${p.programNo}</td>
 			                <td class="text-center">
 			                	<a href="${pageContext.request.contextPath}/programOne?programNo=${p.programNo}">${p.programName}</a>
 			                </td>
 			                <td class="text-center">${p.programDay}</td>
 			                <td class="text-center"><fmt:formatDate value="${p.createdate}" pattern="yyyy-MM-dd"/></td>
-			               
+			                <td class="text-center">
+			                	<c:choose>
+			                		<c:when test="${p.programActive == 'Y'}">
+			                			<select id="programActive" name="programActive">
+			                				<option value="Y">활성</option>
+			                				<option value="N">비활성</option>
+			                			</select>
+			                		</c:when>
+			                		<c:otherwise>
+                                     ${p.programActive}
+                                	</c:otherwise>
+			                	</c:choose>
+			                </td>
+			                <td class="text-center">
+			                	<c:if test="${p.programActive == 'Y'}">
+				                	<button class="btn bg-navy" id="updateBtn">수정</button>
+								</c:if>
+			                </td>
+			            </form>
 			            </tr>
 			        </c:forEach>
 			    </table>
@@ -105,5 +129,29 @@
 
 <!-- AdminLTE for demo purposes -->
 <script src="emp/dist/js/demo.js"></script>
+<script>
+	$('#updateBtn').click(function (){
+		var result = confirm('수정하시겠습니까');
+		if (result){
+			$('#form').submit();
+		} else {
+			
+		}
+	});
+	
+	$(document).ready(function(){
+		$.ajax({
+			type: 'POST'
+			url: 'haribo/programList'
+			data: {programNo: programNo, programActive: selectedValue},
+			success: function(response){
+				
+			},
+			error: function(error){
+				console.log('Error:', error);
+			}
+		})
+	})
+</script>
 </body>
 </html>

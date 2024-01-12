@@ -81,6 +81,13 @@ public class ProgramController {
 		return "redirect:/programList";
 	}
 	
+	@PostMapping("/updateProgramActive")
+	public String updateProgramActive(Program program) {
+		int row = programService.updateProgramActive(program);
+	
+		return "redirect:/programList";
+	}
+	
 	// 프로그램 삭제
 	@GetMapping("/deleteProgram")
 	public String deleteProgram(Program program, ProgramImg programImg, HttpSession session) {

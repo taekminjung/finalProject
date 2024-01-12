@@ -65,6 +65,10 @@ public class ProgramService {
 		return programMapper.updateProgram(program);
 	}
 	
+	public int updateProgramActive(Program program) {
+		return programMapper.updateProgramActive(program);
+	}
+	
 	// 프로그램 삭제
 	public void deleteProgram(Program program, ProgramImg programImg, String path) {
 	    try {

@@ -38,6 +38,7 @@
  			program_name programName,
  			program_day programDay,
  			employee_id employeeId,
+ 			program_active programActive,
  			createdate
  		FROM program
  		WHERE program_active = 'Y'
@@ -160,6 +161,12 @@
 			program_memo = #{programMemo},
 			program_day = #{programDay},
 			updatedate = NOW()
+		WHERE program_no = #{programNo}
+	</update>
+	
+	<update id="updateProgramActive" parameterType="com.example.haribo.vo.Program">
+		UPDATE program SET
+			program_active = #{programActive}
 		WHERE program_no = #{programNo}
 	</update>
 		

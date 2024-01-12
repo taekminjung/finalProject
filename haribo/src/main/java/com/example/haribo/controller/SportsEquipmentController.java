@@ -106,17 +106,6 @@ public class SportsEquipmentController {
 		return "redirect:/sportsEquipmentList";
 	}
 	
-	@GetMapping("/deleteSportsEquipment")
-	public String deleteSportsEquipment(SportsEquipment sportsEquipment) {
-		int row = sportsEquipmentService.deleteSportsEquipment(sportsEquipment);
-		if(row==0) {
-			System.out.println("삭제 실패");
-		} else {
-			System.out.println("삭제 성공");
-		}
-		return "redirect:/sportsEquipmentList";
-	}
-	
 	@PostMapping("/updateOrderStatus")
 	public String updateOrderStatus(
 			SportsEquipmentOrder sportsEquipmentorder,

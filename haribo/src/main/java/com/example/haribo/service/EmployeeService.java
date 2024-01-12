@@ -142,31 +142,36 @@ public class EmployeeService {
 		
 		Map<String, Object> employeeInfo = employeeMapper.selectEmployeeInfo(employee);
 		String employeeId = employeeInfo.get("employeeId").toString();
-		
-		int row1 = employeeMapper.updateEmployeeActive(employee);
-		if(row1 != 1) {
-			throw new RuntimeException();
-		} else { 
-			int row2 = employeeMapper.deleteEmployeeDetail(employeeDetail);
-			if(row2!=1) {
+		if ("N".equals(employee.getEmployeeActive())) {
+		    
+			int row1 = employeeMapper.updateEmployeeActive(employee);
+			if(row1 != 1) {
 				throw new RuntimeException();
-			} else {
-				employeeImg.setEmployeeNo(employee.getEmployeeNo());
-				int row3 = employeeMapper.deleteEmployeeImg(employeeImg);
-				if(row3 > 1) {
+			} else { 
+				int row2 = employeeMapper.deleteEmployeeDetail(employeeDetail);
+				if(row2!=1) {
 					throw new RuntimeException();
 				} else {
-
-					File file = new File(pathEmp+"/"+employeeId+".png");
-					try {
-						file.delete();
-					} catch ( IllegalStateException e) {
+					employeeImg.setEmployeeNo(employee.getEmployeeNo());
+					int row3 = employeeMapper.deleteEmployeeImg(employeeImg);
+					if(row3 > 1) {
 						throw new RuntimeException();
+					} else {
+
+						File file = new File(pathEmp+"/"+employeeId+".png");
+						try {
+							file.delete();
+						} catch ( IllegalStateException e) {
+							throw new RuntimeException();
+						}
 					}
-				}
+				}	
+			}	
+		}
+			else {
+				return;
 			}
 		}
-	}
 
 	public String employeeImgName(EmployeeImg employeeImg) {
 		

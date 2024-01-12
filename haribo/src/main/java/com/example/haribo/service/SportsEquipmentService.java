@@ -138,10 +138,6 @@ public class SportsEquipmentService {
 		return sportsEquipmentMapper.updateOrderStatus(sportsEquipmentOrder);
 	}
 	
-	public int deleteSportsEquipment(SportsEquipment sportsEquipment) {
-		return sportsEquipmentMapper.deleteSportsEquipment(sportsEquipment);
-	}
-	
 	public List<HashMap<String, Object>> stockList(@RequestParam(defaultValue="1")int currentPage, Branch branch){
 		int rowPerPage = 10;
 		int beginRow = (currentPage-1)*rowPerPage;

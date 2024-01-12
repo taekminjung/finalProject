@@ -27,8 +27,6 @@ public interface SportsEquipmentMapper {
 	
 	int insertSportsEquipmentImg(SportsEquipmentImg sportsEquipmentImg);
 	
-	int deleteSportsEquipment(SportsEquipment sportsEquipment);
-	
 	int updateSportsEquipment(SportsEquipment sportsEquipment);
 	
 	String selectSportsEquipmentImgName(SportsEquipmentImg sportsEquipmentImg);
