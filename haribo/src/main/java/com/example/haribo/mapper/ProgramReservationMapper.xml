@@ -55,7 +55,7 @@
 		SELECT 
 			DISTINCT(program_name) programName
 		FROM program
-		AND program_active = 'Y'
+		WHERE program_active = 'Y'
 	</select>
 	
 	<select id="selectBranchNameByProgramName" parameterType="String" resultType="java.util.Map">
