@@ -111,22 +111,26 @@
 		      SELECT 
 			      pd.program_date_no programDateNo,
 			      p.program_no programNo,
-			      pr.branch_no branchNo,
+			      b.branch_no branchNo,
 			      p.program_max_customer programMaxCustomer,
 			      YEAR(program_date) programDateYear,
 			      MONTH(program_date) programDateMonth,
 			      DAY(program_date) programDateDay,
-			      COUNT(*) programReservationCnt,
+			      (SELECT COUNT(*) 
+					 FROM program_reservation pr
+					 WHERE pr.program_date_no = programDateNo) programReservationCnt,
 			      p.createdate
 		      FROM program_date pd
 		      INNER JOIN program p 
 		      ON pd.program_no = p.program_no
-		      INNER JOIN program_reservation pr
-		      ON pd.program_date_no = pr.program_date_no
-		      WHERE p.program_name = #{programName} AND pr.branch_no= #{branchNo}
+		    	INNER JOIN employee e
+		    	ON p.employee_id = e.employee_id
+		    	INNER JOIN branch b
+		    	ON e.branch_no = b.branch_no
+		      WHERE p.program_name = #{programName} AND b.branch_no= #{branchNo}
 		      AND YEAR(pd.program_date)= #{targetYear}  
 		      AND MONTH(pd.program_date)= #{targetMonth}
-		      GROUP BY pr.program_date_no
+		      GROUP BY pd.program_date_no
 	</select>
 	
 		<insert id="insertProgramImg" parameterType="com.example.haribo.vo.ProgramImg">
