@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.example.haribo.service.CalendarService;
@@ -33,11 +34,22 @@ public class TrainerHomeController {
 	
 	
 	// 잊지말고 로그인 세션 추가하기 
-	
-	
 	// 트레이너 홈페이지
 	@GetMapping("/trainerHome")
-	public String trainerHome() {
+	public String trainerHome(HttpSession session, Employee employee,
+								@RequestParam(required = false) Integer targetYear,
+								@RequestParam(required = false) Integer targetMonth) {
+		
+		Map<String, Object> loginEmployee = employeeService.loginEmployee(employee);
+		//세션에 로그인 정보 넣기
+		if(loginEmployee != null) {
+			session.setAttribute("loginEmployee", loginEmployee);
+		}else {
+			return "redirect:/login";
+		}
+		
+		//CalendarService 호출
+		Map<String, Object> calMap = calendarService.calendar(targetYear, targetMonth);
 		return "emp/trainerHome";
 	}
 	
@@ -46,8 +58,8 @@ public class TrainerHomeController {
 	@GetMapping("/trainerOne")
 	public String trainerOne(Model model, Employee employee) {
 		// 서비스 호출
-		Map<String,Object> trainerOne = employeeService.trainerOne(employee);
-		model.addAttribute("trainerOne", trainerOne);
+		Map<String,Object> empInfo = employeeService.employeeInfo(employee);
+		model.addAttribute("empInfo", empInfo);
 		return "emp/trainerOne";
 	}
 	
