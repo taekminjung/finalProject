@@ -74,7 +74,7 @@
 				<c:forEach var="b" items="${blist}">
 				<a href="${pageContext.request.contextPath}/trainers?branchNo=${b.branchNo}&branchName=${b.branchName}">
 					<div class="single-testimonial item">
-						<img class="img-fluid" src="upload/emp/${b.branchName}.png" alt="">
+						<img class="img-fluid" src="upload/emp/${b.branchName}.png" alt="" >
 						<div class="overlay overlay-bg"></div>
 						<p class="desc">
 							<h4>${b.branchName }</h4><br>
@@ -88,25 +88,6 @@
 		</div>
 	</section>
 	<!-- End top-category-widget Area -->
-
-	<!-- Start post-content Area -->
-	<section class="team-area section-gap">
-		<div class="container">
-			<div class="row d-flex justify-content-center">
-				<div class="col-lg-12">
-					<div class="section-title-wrap text-center">
-					
-					</div>
-				</div>
-			</div>
-			
-			</section>	
-	<section class="post-content-area">
-				
-
-	</section>
-	<!-- End post-content Area -->
-
 	<!-- start footer Area -->
 	<!-- inc 폴더의 CustomerFooter.jsp를 include -->
 	<jsp:include page="/inc/customerFooter.jsp"></jsp:include>

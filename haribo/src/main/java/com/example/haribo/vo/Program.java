@@ -12,4 +12,5 @@ public class Program {
 	private String updatedate;
 	private String programMemo;
 	private String programDay;
+	private String programActive;
 }

@@ -40,6 +40,7 @@
  			employee_id employeeId,
  			createdate
  		FROM program
+ 		WHERE program_active = 'Y'
  		LIMIT ${beginRow}, ${rowPerPage}
  	</select> 
  	
@@ -52,6 +53,7 @@
 		SELECT 
 		DISTINCT(program_name) programName
 		FROM program
+		WHERE program_active = 'Y'
 		
 	</select>
 	
@@ -60,7 +62,7 @@
 				DISTINCT	(program_memo) programMemo,
 				program_day programDay
 				FROM program 
-				WHERE program_name = #{programName} 
+				WHERE program_name = #{programName} AND program_active = 'Y'
 		
 	</select>
 	<!--  프로그램 상세페이지 프로그램,담당직원정보 select -->
@@ -83,7 +85,7 @@
 			ON e.employee_no = d.employee_no
 			LEFT OUTER JOIN employee_img i
 			ON e.employee_no = i.employee_no
-			WHERE p.program_name = #{programName} AND b.branch_no = #{branchNo}
+			WHERE p.program_name = #{programName} AND b.branch_no = #{branchNo} AND program_active = 'Y'
 		
 	</select>
 	
@@ -104,7 +106,7 @@
 		SELECT
 		 DISTINCT(program_name) programName
 		FROM program
-		WHERE program_name LIKE CONCAT('%' , #{programName} , '%')
+		WHERE program_name LIKE CONCAT('%' , #{programName} , '%') AND program_active = 'Y'
 	</select>
 	
 	<select id="selectProgramDate" parameterType="Map" resultType="Map">
@@ -128,6 +130,7 @@
 		    	INNER JOIN branch b
 		    	ON e.branch_no = b.branch_no
 		      WHERE p.program_name = #{programName} AND b.branch_no= #{branchNo}
+		      AND program_active = 'Y'
 		      AND YEAR(pd.program_date)= #{targetYear}  
 		      AND MONTH(pd.program_date)= #{targetMonth}
 		      GROUP BY pd.program_date_no
@@ -159,12 +162,7 @@
 			updatedate = NOW()
 		WHERE program_no = #{programNo}
 	</update>
-	
-	<delete id="deleteProgram" parameterType="com.example.haribo.vo.Program">
-		DELETE FROM program
-		WHERE program_no = #{programNo}
-	</delete>
-	
+		
 	<delete id="deleteProgramImg" parameterType="com.example.haribo.vo.ProgramImg">
 		DELETE FROM program_img
 		WHERE program_no = #{programNo}
@@ -175,6 +173,7 @@
 			branch_no branchNo,
 			branch_name branchName
 		FROM branch
+		
 	</select>
 	
 	<select id="selectEmployeeNameByBranchNo" parameterType="java.util.Map" resultType="java.util.Map">

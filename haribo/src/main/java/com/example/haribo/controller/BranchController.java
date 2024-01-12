@@ -16,7 +16,7 @@ import lombok.extern.slf4j.Slf4j;
 @Controller
 public class BranchController {
 		@Autowired BranchService branchService;
-		
+		//고객 홈페이지 지점 목록 출력
 		@GetMapping("/branch")
 		public String branchList(Model model) {
 		
