@@ -120,7 +120,7 @@
 						</tbody>
 					</table>
 					<c:if test="${resultQuestion.customerId == loginCustomer.customerId}">
-					<div style="text-align:center"><a class="primary-btn mt-40" href="${pageContext.request.contextPath}/deleteQuestion?questionNo=${question.questionNo}">문의 글 삭제</a></div>
+					<div style="text-align:center"><a class="primary-btn mt-10" href="${pageContext.request.contextPath}/deleteQuestion?questionNo=${question.questionNo}">문의 글 삭제</a></div>
 					</c:if>
 					<br>						
 					</section>
@@ -138,13 +138,13 @@
 							<form action="${pageContext.request.contextPath}/updateQuestion" method="post">
 								<input type="hidden" value="${question.questionNo}" name="questionNo">
 							<tr>
-								<td><input type="text" name="questionTitle"></td>
-								<td><textarea name="questionContent"></textarea></td>
+								<td><input type="text" name="questionTitle" style="border:0; border-radius:15px; outline: none;  background-color: rgb(204, 229, 255)"></td>
+								<td><textarea name="questionContent" style="border:0; border-radius:15px; outline: none;  background-color: rgb(204, 229, 255)"></textarea></td>
 							</tr>
 						</tbody>
 					</table>
 					<div style="text-align:center">
-							<button type="submit"  class="primary-btn mt-40">수정</button>
+							<button type="submit"  class="primary-btn mt-10">수정</button>
 					</div>
 							</form>
 							<div style="text-align:center"></div>

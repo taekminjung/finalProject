@@ -85,13 +85,13 @@
 						<tbody>
 							<tr>
 							<form action="${pageContext.request.contextPath}/insertQuestion" method="post">
-								<td><input type="text" name="questionTitle"></td>
-								<td><textarea name="questionContent"></textarea></td>
+								<td><input type="text" name="questionTitle" style="border:0; border-radius:15px; outline: none;  background-color: rgb(204, 229, 255)"></td>
+								<td><textarea name="questionContent" style="border:0; border-radius:15px; outline: none;  background-color: rgb(204, 229, 255)"></textarea></td>
 							</tr>
 							<input type="hidden" name="customerId" value="${loginCustomer.customerId}">
 					</tbody>
 					</table>
-					<div style="text-align:center"><button type="submit"> 작성하기</button></div>
+					<div style="text-align:center"><button type="submit"  class="primary-btn mt-10"> 작성하기</button></div>
 					</form>
 				</div>
 			</div>

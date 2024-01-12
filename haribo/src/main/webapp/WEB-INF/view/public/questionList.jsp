@@ -68,7 +68,7 @@
 					<div class="section-title-wrap text-center">
 						<h1>문의사항 리스트</h1>
 						<p>본사/지점 전체 문의사항 리스트 입니다.</p>
-						<p><a href="${pageContext.request.contextPath}/insertQuestion" class="primary-btn mt-40">문의사항 작성</a></p>
+						<p><a href="${pageContext.request.contextPath}/insertQuestion" class="primary-btn mt-10">문의사항 작성</a></p>
 					</div>
 				</div>
 			</div>
