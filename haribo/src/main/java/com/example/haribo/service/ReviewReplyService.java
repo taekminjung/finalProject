@@ -13,14 +13,15 @@ public class ReviewReplyService {
 	@Autowired ReviewReplyMapper reviewReplyMapper;
 
 	// 문의사항 댓글 입력
-	public String insertReviewReply(ReviewReply reviewReply) {
-		reviewReplyMapper.insertReviewReply(reviewReply);
-		return "redirect:/trainerReviewOne";		
+	public int insertReviewReply(ReviewReply reviewReply) {
+		int row = reviewReplyMapper.insertReviewReply(reviewReply);
+		return row;		
 	}
 
 	// 문의사항 댓글 삭제
 	public int deleteReviewReply(ReviewReply reviewReply) {
-		return 0;
+		int row = reviewReplyMapper.deleteReviewReply(reviewReply);
+		return row;
 	}
 	
 	// 문의사항 댓글 목록

@@ -30,9 +30,9 @@ public class QuestionReplyController {
 	
 	// 문의 답글 삭제하기
 	@GetMapping("/deleteQuestionReply")
-	public String deleteQuestionReply(Question question) {
-		questionReplyService.deleteQuestionReply(question);
+	public String deleteQuestionReply(QuestionReply questionReply) {
+		questionReplyService.deleteQuestionReply(questionReply);
 		
-		return "redirect:/trainerQuestionOne";
+		return "redirect:/trainerQuestionOne?questionNo="+questionReply.getQuestionNo();
 	}
 }

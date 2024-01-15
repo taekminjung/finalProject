@@ -61,9 +61,9 @@ public class QuestionController {
 	
 	// 문의 글 삭제하기
 	@GetMapping("/deleteQuestion")
-	public String deleteQuestion(Question question) {
+	public String deleteQuestion(Question question, QuestionReply questionReply) {
 		System.out.println(question+"<====qcon.question");
-		questionService.deleteQuestion(question);
+		questionService.deleteQuestion(question, questionReply);
 		
 		return "redirect:/questionList";
 	}

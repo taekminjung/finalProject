@@ -6,7 +6,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>리뷰 게시판(트레이너)</title>
+  <title>프로그램 후기(트레이너)</title>
   <!-- 파비콘 코드 -->
   <link rel="icon" type="image/x-icon" href="emp/img/starfavi.png">
   
@@ -34,7 +34,7 @@
   <div class="content-wrapper">
     <!-- 페이지 메인 헤더 -->
     <section class="content-header">
-    <h3>리뷰 게시판</h3>
+    <h3>프로그램 후기</h3>
     <div class="box-tools">
 		<div class="input-group input-group-sm hidden-xs" style="width: 300px;">
 		  <input type="text" name="table_search" class="form-control pull-right" placeholder="검색어를 입력하세요">
@@ -44,9 +44,11 @@
 		  </div>
 		</div>
      </div>
+     <br>
+     
       <div class="row">
         <div class="col-xs-12">
-          <div class="box">
+          <div class="box box-info">
             <div class="box-body table-responsive no-padding text-center">
               <table class="table table-hover text-center">
                 <tr>

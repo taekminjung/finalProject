@@ -20,9 +20,9 @@ public class QuestionReplyService {
 	}
 
 	// 문의사항 답글 삭제
-	public int deleteQuestionReply(Question question) {
-		questionReplyMapper.deleteQuestionReply(question);
-		return questionReplyMapper.deleteQuestionReply(question);
+	public int deleteQuestionReply(QuestionReply questionReply) {
+		questionReplyMapper.deleteQuestionReply(questionReply);
+		return questionReplyMapper.deleteQuestionReply(questionReply);
 	}
 
 	public List<QuestionReply> selectquestionReply(Question question) {
