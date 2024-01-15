@@ -114,7 +114,7 @@
 				<div class="active-testimonial-carusel">
 				<c:forEach var="p" items="${plist}">
 					<div class="single-testimonial item">
-						<img class="img-fluid" src="customer/img/featured-class/f1.jpg" alt="">
+						<img class="img-fluid" src="${pageContext.request.contextPath}/upload/emp/${p.programImgFileName}" onerror="this.src='${pageContext.request.contextPath }/upload/emp/programdefault.png'">
 						<div class="overlay overlay-bg"></div>
 						<p class="desc">
 							<h4>작성자 : ${p.programName }</h4><br>

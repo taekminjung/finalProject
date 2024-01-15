@@ -130,7 +130,7 @@ public class ProgramController {
 	public String program(Model model, Program program) {
 		
 		//프로그램 목록 출력
-		List<Program> list = programService.selectProgram(program);
+		List<HashMap<String,Object>> list = programService.selectProgram(program);
 		
 		//모델에 담아 view로
 		model.addAttribute("list", list);

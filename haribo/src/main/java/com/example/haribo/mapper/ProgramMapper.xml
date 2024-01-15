@@ -52,17 +52,23 @@
  	 
 	<select id="selectProgram">
 		SELECT 
-		DISTINCT(program_name) programName
-		FROM program
+		DISTINCT(p.program_name) programName,
+		pm.program_img_file_name programImgFileName
+		FROM program p
+		LEFT OUTER JOIN program_img pm
+		ON p.program_no = pm.program_no
 		WHERE program_active = 'Y'
 		
 	</select>
 	
 	<select id="selectProgramDetail" resultType="Map">
-					SELECT 
-				DISTINCT	(program_memo) programMemo,
-				program_day programDay
-				FROM program 
+				SELECT 
+				DISTINCT	(p.program_memo) programMemo,
+				p.program_day programDay,
+				pm.program_img_file_name programImgFileName
+				FROM program p 
+				LEFT OUTER JOIN program_img pm
+				ON p.program_no = pm.program_no 
 				WHERE program_name = #{programName} AND program_active = 'Y'
 		
 	</select>

@@ -72,11 +72,11 @@
 					<div class="single-post row">
 						<div class="col-lg-12">
 							<div class="feature-img">
-								<img class="customer/img-fluid" src="customer/img/blog/feature-img1.jpg" alt="">
+								<img class="customer/img-fluid" src="${pageContext.request.contextPath}/upload/emp/${map.programImgFileName}" onerror="this.src='${pageContext.request.contextPath}/upload/emp/programdefault.png'">
 							</div>
 						</div>
 						<div class="col-lg-9 col-md-9">
-							<h3 class="mt-20 mb-20" >${pregram.programName}</h3> 
+							<h3 class="mt-20 mb-20" >${program.programName}</h3> 
 						</div>
 						<div class="col-lg-12">
 						<h5 style="text-align:center">프로그램 소개</h5>

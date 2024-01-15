@@ -102,8 +102,8 @@ public class ProgramService {
 	}
 	
 	//고객 홈페이지에서 프로그램리스트 출력
-	public List<Program> selectProgram(Program program){
-		List<Program> list = programMapper.selectProgram(program);
+	public List<HashMap<String,Object>> selectProgram(Program program){
+		List<HashMap<String,Object>> list = programMapper.selectProgram(program);
 		
 		return list;
 	}

@@ -26,7 +26,7 @@ public class HomeController {
 		//리뷰 출력
 			HashMap<String, Object> rMap = reviewService.reviewListMap();
 		//프로그램 출력
-			List<Program> plist = programService.selectProgram(program);
+			List<HashMap<String, Object>> plist = programService.selectProgram(program);
 			System.out.println(rMap+"<-- home.rMap");
 			//view로 보낼 모델에 담기
 			model.addAttribute("plist", plist);
