@@ -14,14 +14,15 @@ public class QuestionReplyService {
 	@Autowired QuestionReplyMapper questionReplyMapper;
 	
 	// 문의사항 답글 입력
-	public String insertQuestionReply(QuestionReply questionReply) {
+	public int insertQuestionReply(QuestionReply questionReply) {
 		questionReplyMapper.insertQuestionReply(questionReply);
-		return "redirect:/trainerQuestionOne";
+		return questionReplyMapper.insertQuestionReply(questionReply);
 	}
 
 	// 문의사항 답글 삭제
-	public int deleteQuestionReply(QuestionReply questionReply) {
-		return 0;		
+	public int deleteQuestionReply(Question question) {
+		questionReplyMapper.deleteQuestionReply(question);
+		return questionReplyMapper.deleteQuestionReply(question);
 	}
 
 	public List<QuestionReply> selectquestionReply(Question question) {

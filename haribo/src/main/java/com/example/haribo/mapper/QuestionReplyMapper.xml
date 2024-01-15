@@ -3,26 +3,28 @@
 <mapper namespace="com.example.haribo.mapper.QuestionReplyMapper">
 
 	<insert id="insertQuestionReply" parameterType="com.example.haribo.vo.QuestionReply">
-		INSERT INTO questionReply(
+		INSERT INTO question_reply(
+			question_no,
 			employee_id,
-			question_reply_content,
-			createdate
+			question_reply_content
 		) VALUES (
-			#{employeeId}
+			#{questionNo},
+			#{employeeId},
 			#{questionReplyContent}
-			#{createdate}
 		)
 	</insert>
 	
-	<delete id="deleteQuestionReply" parameterType="com.example.haribo.vo.Question">
+	<delete id="deleteQuestionReply" parameterType="com.example.haribo.vo.QuestionReply">
 		DELETE FROM question_reply
 		WHERE question_no = #{questionNo}
 	</delete>
+	
 	<select id="selectQuestionReply">
 		SELECT COUNT(*)
 		FROM question_reply
 		WHERE question_no = #{questionNo}
 	</select>
+	
 	<select id="selectquestionReply"> 
 		SELECT
 			question_reply_no questionReplyNo,

@@ -35,7 +35,7 @@
     <section class="content">
 	<h3>문의사항</h3>
       <!-- Default box -->
-      <div class="box">
+      <div class="box box-info">
         <div class="box-header with-border">
           <h3 class="box-title">${resultQuestion.questionTitle}</h3>
         </div>
@@ -44,10 +44,25 @@
         </div>
         <!-- /.box-body -->
         <div class="box-footer">
-        	<h4>답변</h4>
-        	<c:forEach var="qr" items="${list}">
-			<div> ┗ ${qr.questionReplyContent}</div>
+	        <h4>답변</h4>
+	        <img class="direct-chat-img" src="emp/img/man.png">
+	        <c:forEach var="qr" items="${list}">
+			<div class="direct-chat-text"> ${qr.questionReplyContent} </div>
 			</c:forEach>
+			<br>
+			<!-- 문의 댓글 다는 곳 -->
+			<div>
+	          <form action="${pageContext.request.contextPath}/insertQuestionReply" method="post">
+	            <div class="input-group">
+	              <input type="text" name="questionReplyContent" id="questionReplyContent" placeholder="댓글을 입력하세요 ..." class="form-control">
+	              <input type="hidden" name="employeeId" id="employeeId" value="${loginEmployee.employeeId}"class="form-control">
+	              <input type="hidden" name="questionNo" id="questionNo" value="${question.questionNo}"class="form-control">
+	                  <span class="input-group-btn">
+	                    <button type="submit" class="btn btn-info btn-flat">입력하기</button>
+	                  </span>
+	            </div>
+	          </form>
+	        </div>
         </div>
         <!-- /.box-footer-->
       </div>
@@ -56,9 +71,6 @@
     <!-- /.content -->
   </div>
   <!-- 헤더 + 내용 wrapper 부분 끝 -->
-
-  <!-- 문의 답글 다는 곳 -->
-  
   
   <!-- 메인 footer 항상 적을 것 -->
   <footer class="main-footer">

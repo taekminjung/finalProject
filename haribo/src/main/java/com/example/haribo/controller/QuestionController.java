@@ -151,6 +151,7 @@ public class QuestionController {
 		List<QuestionReply> list = questionReplyService.selectquestionReply(question);
 		
 		System.out.println(list+"<--con.replyList");
+		model.addAttribute("question", question);
 		model.addAttribute("list", list);
 		System.out.println(resultQuestion.getQuestionNo()+"<----getQuestionNo");
 		System.out.println(resultQuestion.getQuestionTitle()+"<----getQuestionTitle");
