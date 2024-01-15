@@ -4,12 +4,12 @@
 	
 	<insert id="insertReviewReply" parameterType="com.example.haribo.vo.ReviewReply">
 		INSERT INTO review_reply(
-			employee_id,
 			review_no,
+			employee_id,
 			review_reply_content
 		) VALUES (
-			#{employeeId},
 			#{reviewNo},
+			#{employeeId},
 			#{reviewReplyContent}
 		)
 	</insert>

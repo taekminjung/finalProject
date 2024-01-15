@@ -46,8 +46,8 @@
         <div class="box-footer">
 	        <h4>답변</h4>
 	        <img class="direct-chat-img" src="emp/img/man.png">
-	        <c:forEach var="r" items="${list}">
-			<div class="direct-chat-text"> ${r.reviewReplyContent} </div>
+	        <c:forEach var="rr" items="${list}">
+			<div class="direct-chat-text"> ${rr.reviewReplyContent} </div>
 			</c:forEach>
 			<br>
 			<!-- 문의 댓글 다는 곳 -->

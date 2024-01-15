@@ -6,7 +6,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.example.haribo.service.QuestionReplyService;
-import com.example.haribo.vo.Question;
 import com.example.haribo.vo.QuestionReply;
 
 @Controller
