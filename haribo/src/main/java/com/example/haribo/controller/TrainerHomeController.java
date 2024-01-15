@@ -39,13 +39,9 @@ public class TrainerHomeController {
 	public String trainerHome(HttpSession session, Employee employee,
 								@RequestParam(required = false) Integer targetYear,
 								@RequestParam(required = false) Integer targetMonth) {
-		
-		Map<String, Object> loginEmployee = employeeService.loginEmployee(employee);
-		//세션에 로그인 정보 넣기
-		if(loginEmployee != null) {
-			session.setAttribute("loginEmployee", loginEmployee);
-		}else {
-			return "redirect:/login";
+		// 세션 검사
+		if(session.getAttribute("loginEmployee") == null) {
+					return "redirect:/login";
 		}
 		
 		//CalendarService 호출
