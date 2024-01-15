@@ -66,8 +66,8 @@
 			<div class="row d-flex justify-content-center">
 				<div class="col-lg-12">
 					<div class="section-title-wrap text-center">
-						<h1>How Yogaflex can change your life</h1>
-						<p>As you pour the first glass of your favorite Chianti or Chardonnay and settle into an intimate Friday evening.</p>
+						<h1>HARIBO TEAM FINAL PROJECT</h1>
+						<p>구디 아카데미 GDJ72기 FINAL PROJECT</p>
 					</div>
 				</div>
 			</div>
@@ -75,39 +75,47 @@
 			<div class="row justify-content-between align-items-center">
 				<div class="col-lg-6 about-right">
 					<div class="row">
-						<div class="col-lg-6">
+						<div class="col-lg-12">
+						<div class="col-lg-12">
 							<div class="single-about">
-								<h4>Why Choose Us</h4>
+								<h4>파이널 프로젝트</h4>
 								<p>
-									Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-									Ut enim ad minim veniam.
+									참여자 : 정택민,정회윤,이유섭,강유정<br>
+									프로젝트 기간 : 2023/12/04 ~ 2024/01/19
+								</p>
+							</div>
+						</div>
+							<div class="single-about">
+								<h4>프로젝트 목표</h4>
+								<p>
+									MVC 모델 방식으로 웹홈페이지 구현하기<br>
+									팀원들과 협업&소통<br>
+									CSS템플릿 적용으로 지점/고객 관리 웹홈페이지 구현
 								</p>
 							</div>
 						</div>
 						<div class="col-lg-6">
 							<div class="single-about">
-								<h4>Our Properties</h4>
+								<h4>개발 내용</h4>
 								<p>
-									Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-									Ut enim ad minim veniam.
+									PROJECT 요구사항 명세서에 정의한 기능 구현,<br>
+									지점/고객 관리 프로그램을 웹홈페이지 형태로 구현,<br>
+									고객/사원 접근 가능한 홈페이지를 나누어서 구현,<br>
+									관리 페이지를 따로 생성해 필요한 기능들 활성화
 								</p>
 							</div>
 						</div>
+						
 						<div class="col-lg-6">
 							<div class="single-about">
-								<h4>Legal Notice</h4>
+								<h4>개발 환경</h4>
 								<p>
-									Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-									Ut enim ad minim veniam.
-								</p>
-							</div>
-						</div>
-						<div class="col-lg-6">
-							<div class="single-about">
-								<h4>Legal Notice</h4>
-								<p>
-									Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-									Ut enim ad minim veniam.
+									language : JAVAscript, SQL<br>
+									LIBRARY : JQuery, BootStrap5<br>
+									Database : MariaDB<br>
+									WAS : Apache Tomcat9<br>
+									OS : Windows<br>
+									TOOL : Spring Tools Suite4, HeidiSQL
 								</p>
 							</div>
 						</div>

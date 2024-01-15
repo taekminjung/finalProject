@@ -58,98 +58,6 @@
 		</div>
 	</section>
 	<!-- End banner Area -->
-
-	<!-- Start About Us Area -->
-	<section class="about-area section-gap">
-		<div class="container">
-			<div class="row d-flex justify-content-center">
-				<div class="col-lg-12">
-					<div class="section-title-wrap text-center">
-						<h1>How Yogaflex can change your life</h1>
-						<p>As you pour the first glass of your favorite Chianti or Chardonnay and settle into an intimate Friday evening.</p>
-					</div>
-				</div>
-			</div>
-
-			<div class="row justify-content-between align-items-center">
-				<div class="col-lg-6 about-right">
-					<div class="row">
-						<div class="col-lg-6">
-							<div class="single-about">
-								<h4>Why Choose Us</h4>
-								<p>
-									Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-									Ut enim ad minim veniam.
-								</p>
-							</div>
-						</div>
-						<div class="col-lg-6">
-							<div class="single-about">
-								<h4>Our Properties</h4>
-								<p>
-									Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-									Ut enim ad minim veniam.
-								</p>
-							</div>
-						</div>
-						<div class="col-lg-6">
-							<div class="single-about">
-								<h4>Legal Notice</h4>
-								<p>
-									Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-									Ut enim ad minim veniam.
-								</p>
-							</div>
-						</div>
-						<div class="col-lg-6">
-							<div class="single-about">
-								<h4>Legal Notice</h4>
-								<p>
-									Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-									Ut enim ad minim veniam.
-								</p>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="col-lg-6 about-left">
-					<img class="img-fluid" src="customer/img/3.png" alt="">
-				</div>
-			</div>
-		</div>
-	</section>
-	<!-- End About Us Area -->
-
-	<!-- Start Features Area -->
-<section class="testomial-area section-gap">
-			<div class="container">
-			<div class="row d-flex justify-content-center">
-				<div class="col-lg-12">
-					<div class="section-title-wrap text-center">
-						<h1>OUR Programs</h1>
-						<p>저희가 준비한 프로그램입니다.</p>
-					</div>
-				</div>
-			</div>
-			<div class="row">
-				<div class="active-testimonial-carusel">
-				<c:forEach var="p" items="${plist}">
-					<div class="single-testimonial item">
-						<img class="img-fluid" src="customer/img/featured-class/f1.jpg" alt="">
-						<div class="overlay overlay-bg"></div>
-						<p class="desc">
-							<h4>작성자 : ${p.programName }</h4><br>
-							<h6>상세보기는 상단 메뉴바를 이용해주세요</h6>
-						</p>
-					</div>
-				</c:forEach>
-				</div>
-			</div>
-		</div>
-	</section>
-	<!-- End Features Area -->
-
 	<!-- Start schedule Area -->
 	<section class="schedule-area section-gap">
 		<img class="featured-img img-fluid" src="customer/img/8.png" alt="">
@@ -189,7 +97,36 @@
 	
 		</div>
 	</section>
-	<!-- End schedule Area -->
+<!-- End schedule Area -->
+
+<!-- Start Features Area -->
+	<section class="testomial-area section-gap">
+			<div class="container">
+			<div class="row d-flex justify-content-center">
+				<div class="col-lg-12">
+					<div class="section-title-wrap text-center">
+						<h1>OUR Programs</h1>
+						<p>저희가 준비한 프로그램입니다.</p>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="active-testimonial-carusel">
+				<c:forEach var="p" items="${plist}">
+					<div class="single-testimonial item">
+						<img class="img-fluid" src="customer/img/featured-class/f1.jpg" alt="">
+						<div class="overlay overlay-bg"></div>
+						<p class="desc">
+							<h4>작성자 : ${p.programName }</h4><br>
+							<h6>상세보기는 상단 메뉴바를 이용해주세요</h6>
+						</p>
+					</div>
+				</c:forEach>
+				</div>
+			</div>
+		</div>
+	</section>
+<!-- End Features Area -->
 
 	<!-- Start testomial Area -->
 	<section class="testomial-area section-gap">
