@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.haribo.mapper.ReviewMapper;
 import com.example.haribo.vo.Customer;
+import com.example.haribo.vo.Program;
 import com.example.haribo.vo.Review;
 import com.example.haribo.vo.ReviewReply;
 
@@ -49,7 +50,7 @@ public class ReviewService {
 	public List<Review> empReviewList(@RequestParam(defaultValue = "1") int currentPage) {
 		int rowPerPage = 10;
 		int beginRow = (currentPage -1) * rowPerPage;
-		int totalRow = reviewMapper.getTotalRow(rowPerPage);
+		int totalRow = reviewMapper.getTotalRow();
 		int lastPage = totalRow / rowPerPage;
 		if(totalRow % rowPerPage !=0) {
 			lastPage +=1;
@@ -71,7 +72,7 @@ public class ReviewService {
 	// 총 리뷰 수
 	public int lastPage() {
 		int rowPerPage = 10;
-		int totalRow = reviewMapper.getTotalRow(rowPerPage);
+		int totalRow = reviewMapper.getTotalRow();
 		int lastPage = totalRow / rowPerPage;
 		if(totalRow % rowPerPage !=0) {
 			lastPage +=1;
@@ -109,5 +110,28 @@ public class ReviewService {
 		
 		return myReviewMap;
 	}
+	
+	public List<Review> searchByReview(Review review, Program program, int currentPage){
+		int rowPerPage = 10;
+		int beginRow = (currentPage-1)*rowPerPage;
+		Map<String, Object>map = new HashMap<>();
+		map.put("rowPerPage", rowPerPage);
+		map.put("beginRow", beginRow);
+		map.put("programName", program.getProgramName());
 		
+		List<Review> list = reviewMapper.searchByReview(map);
+		
+		return list;
+	}
+	
+	public int searchLastPage(Review review) {
+		int rowPerPage = 10;
+		int totalRow = reviewMapper.getTotalRow2(review);
+		int lastPage = totalRow/rowPerPage;
+		if(totalRow/rowPerPage !=0) {
+			lastPage += 1;
+		}
+		return lastPage;
+	}
 }
+	

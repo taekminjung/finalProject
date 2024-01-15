@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.example.haribo.service.ReviewReplyService;
 import com.example.haribo.service.ReviewService;
 import com.example.haribo.vo.Customer;
+import com.example.haribo.vo.Program;
 import com.example.haribo.vo.Review;
 import com.example.haribo.vo.ReviewReply;
 
@@ -69,6 +70,19 @@ public class ReviewController {
 		model.addAttribute("list", list);
 		model.addAttribute("currentPage", currentPage);
 		model.addAttribute("lastPage", lastPage);
+		
+		return "emp/employeeReview";
+	}
+	
+	// 리뷰 검색 기능 (직원)
+	@PostMapping("/employeeReview")
+	public String employeeReview(Model model, Review review, Program program, @RequestParam(defaultValue="1")int currentPage) {
+		List<Review> list = reviewService.searchByReview(review, program, currentPage);
+		int lastPage = reviewService.searchLastPage(review);
+		
+		model.addAttribute("list", list);
+		model.addAttribute("lastPage", lastPage);
+		model.addAttribute("currentPage", currentPage);
 		
 		return "emp/employeeReview";
 	}

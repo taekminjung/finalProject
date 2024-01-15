@@ -62,6 +62,7 @@
 			customer_id customerId
 		FROM question
 		WHERE question_title LIKE CONCAT('%', #{questionTitle}, '%')
+		ORDER BY question_no DESC
 		LIMIT #{beginRow}, #{rowPerPage}
 	</select>
 	

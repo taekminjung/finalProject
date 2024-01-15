@@ -111,6 +111,26 @@
 			COUNT(*) Cnt
 		FROM review
 	</select>
+	
+	<select id="getTotalRow2">
+		SELECT
+			r.review_no reviewNo,
+			r.review_title reviewTitle,
+			p.program_name programName,
+			pm.customer_id customerId,
+			r.createdate
+		FROM review r
+		INNER JOIN program_reservation pr
+		ON r.program_reservation_no = pr.program_reservation_no
+		INNER JOIN payment pm
+		ON pr.payment_no = pm.payment_no
+		INNER JOIN program_date pd
+		ON pr.program_date_no = pd.program_date_no
+		INNER JOIN program p
+		ON pd.program_no = p.program_no
+		WHERE program_name LIKE CONCAT ('%', #{programName}, '%')
+	</select>
+	
 	<select id="selectMyReview">
 		SELECT 
 			r.review_no reviewNo,
@@ -166,5 +186,26 @@
 		ON pg.employee_id = e.employee_id INNER JOIN branch b
 		ON e.branch_no = b.branch_no
 		WHERE r.review_no = #{reviewNo}
+	</select>
+	
+	<select id="searchByReview" parameterType="java.util.Map" resultType="com.example.haribo.vo.Review">
+		SELECT
+			r.review_no reviewNo,
+			r.review_title reviewTitle,
+			p.program_name programName,
+			pm.customer_id customerId,
+			r.createdate
+		FROM review r
+		INNER JOIN program_reservation pr
+		ON r.program_reservation_no = pr.program_reservation_no
+		INNER JOIN payment pm
+		ON pr.payment_no = pm.payment_no
+		INNER JOIN program_date pd
+		ON pr.program_date_no = pd.program_date_no
+		INNER JOIN program p
+		ON pd.program_no = p.program_no
+		WHERE program_name LIKE CONCAT ('%', #{programName}, '%')
+		ORDER BY r.review_no DESC
+		LIMIT #{beginRow}, #{rowPerPage}
 	</select>
 </mapper>
