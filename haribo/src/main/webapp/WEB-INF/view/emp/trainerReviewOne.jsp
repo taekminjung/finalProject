@@ -48,6 +48,12 @@
 	        <img class="direct-chat-img" src="emp/img/man.png">
 	        <c:forEach var="rr" items="${list}">
 			<div class="direct-chat-text"> ${rr.reviewReplyContent} </div>
+			<!-- 각 댓글에 대한 삭제 버튼이 있는 폼 추가 -->
+			<div>
+				<form action="${pageContext.request.contextPath}/trainerReviewOne" method="get">
+				<button type="submit" class="btn btn-info btn-flat">삭제하기</button>
+				</form>
+			</div>
 			</c:forEach>
 			<br>
 			<!-- 문의 댓글 다는 곳 -->

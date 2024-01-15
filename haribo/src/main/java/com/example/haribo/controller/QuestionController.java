@@ -153,11 +153,6 @@ public class QuestionController {
 		System.out.println(list+"<--con.replyList");
 		model.addAttribute("question", question);
 		model.addAttribute("list", list);
-		System.out.println(resultQuestion.getQuestionNo()+"<----getQuestionNo");
-		System.out.println(resultQuestion.getQuestionTitle()+"<----getQuestionTitle");
-		System.out.println(resultQuestion.getQuestionContent()+"<----getQuestionContent");
-		System.out.println(resultQuestion.getCustomerId()+"<----getCustomerId");
-		System.out.println(resultQuestion.getCreatedate()+"<----getCreatedate");
 	
 		return "emp/trainerQuestionOne";
 	}

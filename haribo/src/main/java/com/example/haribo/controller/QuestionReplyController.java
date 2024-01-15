@@ -28,7 +28,7 @@ public class QuestionReplyController {
 	}
 	
 	// 문의 답글 삭제하기
-	@GetMapping("/deleteQuestionReply")
+	@PostMapping("/deleteQuestionReply")
 	public String deleteQuestionReply(QuestionReply questionReply) {
 		questionReplyService.deleteQuestionReply(questionReply);
 		
