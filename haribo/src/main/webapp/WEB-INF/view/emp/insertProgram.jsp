@@ -77,7 +77,7 @@
 			  </div>
 			  <div class="form-group">
 			    <label for="pImg">프로그램 이미지</label>
-			    <input type="file" id="pImg" name="pImg" accept=".png">
+			    <input type="file" id="pImg" name="pImg" accept=".jpg, .jpeg, .png">
 			  </div>
 
 			</form>

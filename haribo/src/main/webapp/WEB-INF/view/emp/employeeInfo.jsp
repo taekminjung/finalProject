@@ -18,7 +18,7 @@
   <link rel="stylesheet" href="emp/dist/css/AdminLTE.min.css">
   <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
-  <link rel="stylesheet" href="emp/dist/css/skins/skin-blue.min.css">
+  <link rel="stylesheet" href="emp/dist/css/skins/_all-skins.min.css">
 
   <!-- Google Font -->
   <link rel="stylesheet"
@@ -73,7 +73,7 @@
              
                 <div class="form-group">
                 	<label for="eImg">Image</label>
-                	<input type="file" id="eImg" name="eImg" accept=".png">
+                	<input type="file" id="eImg" name="eImg" accept=".jpg, .jpeg, .png">
                 	<input type="hidden" name="employeeNo" value="${loginEmployee.employeeNo}">
         	    </div>                    
               

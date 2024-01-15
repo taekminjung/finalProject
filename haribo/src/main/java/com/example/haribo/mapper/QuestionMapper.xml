@@ -50,17 +50,25 @@
 	
 	<select id="getTotalRow" parameterType="Integer" resultType="Integer">
 		SELECT
-			COUNT(*) Cnt
+			COUNT(*) cnt
 		FROM question
 	</select>
 	
-	<select id="searchByQuestion" parameterType="com.example.haribo.vo.Question">
+	<select id="searchByQuestion" parameterType="java.util.Map" resultType="com.example.haribo.vo.Question">
 		SELECT
 			question_no questionNo,
 			question_title questionTitle,
 			question_content questionContent,
 			customer_id customerId
 		FROM question
+		WHERE question_title LIKE CONCAT('%', #{questionTitle}, '%')
+		LIMIT #{beginRow}, #{rowPerPage}
+	</select>
+	
+	<select id="getTotalRow2" parameterType="com.example.haribo.vo.Question" resultType="int">
+		SELECT	COUNT(*)
+		FROM question
+		WHERE question_title LIKE CONCAT('%', #{questionTitle}, '%')
 	</select>
 	
 </mapper>

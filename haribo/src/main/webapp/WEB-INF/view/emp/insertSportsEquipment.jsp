@@ -54,7 +54,7 @@
                 </div>
                 <div class="form-group">
                 	<label for="seImg">운동기구 이미지</label>
-                	<input type="file" id="seImg" name="seImg" accept=".png">
+                	<input type="file" id="seImg" name="seImg" accept=".jpg, .jpeg, .png">
         	    </div>
 
 			</form>

@@ -2,6 +2,7 @@ package com.example.haribo.service;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -75,4 +76,29 @@ public class QuestionService {
 		}
 		return lastPage;
 	}
+	
+	public List<Question> searchByQuestion(Question question, int currentPage){
+		int rowPerPage = 10;
+		int beginRow = (currentPage-1)*rowPerPage;
+		Map<String, Object> map = new HashMap<>();
+		map.put("rowPerpage", rowPerPage);
+		map.put("beginRow", beginRow);
+		map.put("questionTitle", question.getQuestionTitle());
+		
+		List<Question> list = questionMapper.searchByQuestion(map);
+		System.out.println(list+"<--searchList");
+		
+		return list;
+	}
+	
+	public int searchLastPage(Question question) {
+		int rowPerPage = 10;
+		int totalRow = questionMapper.getTotalRow2(rowPerPage);
+		int lastPage = totalRow/rowPerPage;
+		if(totalRow/rowPerPage !=0) {
+			lastPage += 1;
+		}
+		return lastPage;
+	}
+	
 }

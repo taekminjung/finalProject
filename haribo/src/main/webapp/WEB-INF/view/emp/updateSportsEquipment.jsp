@@ -50,18 +50,20 @@
                                     </div>
                                     <div class="form-group">
 					                	<label for="seImg">운동기구 이미지</label>
-					                	<input type="file" id="seImg" name="seImg" accept=".png">
+					                	<input type="file" id="seImg" name="seImg" accept=".jpg, .jpeg, .png">
 					        	    </div>
                             	</div>
-                            <div class="box-footer">
+                            	<div class="box-footer">
                                 <button type="submit" id="updateBtn" class="btn btn-primary">수정 완료</button>
-                            </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </section>
+                            	</div>
+                            	</form>
+                        	</div>
+                    	</div>
+                	</div>
+            	</section>
+        	</div>
         </div>
+        	
         <!-- ./wrapper -->
         <!-- jQuery 3 -->
         <script src="https://code.jquery.com/jquery-3.7.1.js"

@@ -22,5 +22,7 @@ public interface QuestionMapper {
 		
 	int getTotalRow(int rowPerPage);
 	
-	List<Question> searchByQuestion(Question question);
+	int getTotalRow2(int rowPerPage);
+	
+	List<Question> searchByQuestion(Map<String, Object> param);
 }

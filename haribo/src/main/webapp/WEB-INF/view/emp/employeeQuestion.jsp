@@ -6,8 +6,6 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>직원 문의사항</title>
-  <!-- 파비콘 코드 -->
-  <link rel="icon" type="image/x-icon" href="emp/img/starfavi.png">
   
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <link rel="stylesheet" href="emp/bower_components/bootstrap/dist/css/bootstrap.min.css">
@@ -19,27 +17,23 @@
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
 
-
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
 
-  <!-- header 시작 부분 -->
-  <!-- inc 폴더의 TrainerNavi.jsp를 include -->
   <jsp:include page="/inc/adminHeader.jsp"></jsp:include>
-  <!-- header 끝나는 부분 -->
 
-  <!-- aside 작성 뒤 항상 이 부분이 메인 컨텐츠 부분이 됨 -->
-  <!-- 헤더 + 내용 wrapper 부분 시작 -->
   <div class="content-wrapper">
-    <!-- 페이지 메인 헤더 -->
     <section class="content-header">
     <h3>문의사항</h3>
     <div class="box-tools">
                 <div class="input-group input-group-sm hidden-xs" style="width: 300px;">
-                  <input type="text" name="table_search" class="form-control pull-right" placeholder="검색어를 입력하세요">
+                <form class="search-form" id="searchQuestion" method="post" action="${pageContext.request.contextPath}/employeeQuestion">
+                <div class="input-group-btn">
+                  <input type="text" name="questionTitle" class="form-control pull-right" placeholder="검색어를 입력하세요" onfocus="this.placeholder''" onblur="this.placeholder='검색어를 입력하세요'">
+                  
 
-                  <div class="input-group-btn">
                     <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+                   </form>
                   </div>
                 </div>
               </div>
@@ -77,14 +71,11 @@
 			</div>
             <!-- /.box-body -->
           </div>
-          <!-- /.box -->
+
         </div>
       </div>
     </section>
   </div>
-  <!-- 헤더 + 내용 wrapper 부분 끝 -->
-
-  <!-- 메인 footer 항상 적을 것 -->
   <footer class="main-footer">
     <!-- 맨 오른쪽 표시되는 것 -->
     <div class="pull-right hidden-xs">

@@ -107,10 +107,7 @@ public class SportsEquipmentController {
 	}
 	
 	@PostMapping("/updateOrderStatus")
-	public String updateOrderStatus(
-			SportsEquipmentOrder sportsEquipmentorder,
-	        @RequestParam("orderStatus") String orderStatus) {
-
+	public String updateOrderStatus(SportsEquipmentOrder sportsEquipmentorder) {
 	   int row = sportsEquipmentService.updateOrderStatus(sportsEquipmentorder);
 
 	    return "redirect:/sportsEquipmentOrderCk";
