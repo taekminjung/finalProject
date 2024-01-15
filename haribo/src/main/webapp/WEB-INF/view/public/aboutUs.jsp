@@ -43,7 +43,7 @@
 
 	<!-- start banner Area -->
 	<section class="banner-area relative about-banner" id="home">
-		<img class="cta-img img-fluid" src="customer/img/10.png" alt="">
+		<img class="cta-img img-fluid" src="customer/img/cta-img.png" alt="">
 		<div class="overlay overlay-bg"></div>
 		<div class="container">
 			<div class="row d-flex align-items-center justify-content-center">
@@ -51,9 +51,11 @@
 					<h1>
 						About Us
 					</h1>
-					<p class="link-nav"><a href="${pageContext.request.contextPath}/home">Home </a>
-						<span class="lnr lnr-arrow-right"></span> <a href="${pageContext.request.contextPath}/aboutUs">
-							About Us</a></p>
+					<p class="link-nav">
+					    <a href="${pageContext.request.contextPath}/home">Home</a>
+					    <span class="lnr lnr-arrow-right"></span>
+					    <a href="${pageContext.request.contextPath}/aboutUs">About Us</a>
+					</p>
 				</div>
 			</div>
 		</div>
@@ -178,7 +180,7 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
 	 crossorigin="anonymous"></script>
 	<script src="customer/js/vendor/bootstrap.min.js"></script>
-	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhOdIF3Y9382fqJYt5I_sswSrEw5eihAA"></script>
+	<script src="https://maps.googleapis.com/maps/api/js?key=A1IzaSyBhOdIF3Y9382fqJYt5I_sswSrEw5eihAA"></script>
 	<script src="customer/js/easing.min.js"></script>
 	<script src="customer/js/hoverIntent.js"></script>
 	<script src="customer/js/superfish.min.js"></script>

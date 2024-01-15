@@ -74,10 +74,11 @@
 				<div class="active-testimonial-carusel">
 				<c:forEach var="m" items="${list}">
 					<div class="single-testimonial item">
-						<img class="img-fluid" src="customer/img/featured-class/f1.jpg" alt="">
+						<img class="img-fluid" src="${pageContext.request.contextPath}/upload/emp/${m.membershipName}.png" alt="">
 						<div class="overlay overlay-bg"></div>
 						<p class="desc">
 							<h4>${m.membershipName }</h4><br>
+							<h5>금액:${m.membershipPrice}</h5>
 							<p><a href="${pageContext.request.contextPath}/payment?membershipNo=${m.membershipNo}" class="primary-btn mt-20">결제</a></p>
 						</p>
 					</div>

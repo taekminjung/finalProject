@@ -51,7 +51,7 @@
 				</div>
 				<div class="banner-content col-lg-6 col-md-6">
 					<h1 class="text-uppercase">
-						<span>Final Project</span> of <br> HariboTeam
+						<span>Final Project</span> of <br> Haribo Team
 					</h1>
 				</div>
 			</div>
