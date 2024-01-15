@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.example.haribo.mapper.QuestionMapper;
 import com.example.haribo.mapper.QuestionReplyMapper;
 import com.example.haribo.vo.Question;
+import com.example.haribo.vo.QuestionReply;
 
 @Transactional
 @Service
@@ -30,11 +31,11 @@ public class QuestionService {
 	}
 
 	// 문의사항 삭제
-	public int deleteQuestion(Question question) {
+	public int deleteQuestion(Question question, QuestionReply questionReply) {
 		int row = questionReplyMapper.selectQuestionReply(question);
 				
 		if(row != 0) {
-				questionReplyMapper.deleteQuestionReply(question);
+				questionReplyMapper.deleteQuestionReply(questionReply);
 				
 				questionMapper.deleteQuestion(question);
 		}else { 

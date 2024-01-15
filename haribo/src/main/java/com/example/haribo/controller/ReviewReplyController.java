@@ -15,19 +15,24 @@ public class ReviewReplyController {
 	// 리뷰 댓글 등록하기
 	@GetMapping("/insertReviewReply")
 	public String insertReviewReply() {
+		
 		return "emp/trainerReviewOne";
 	}
 	
-	@PostMapping("/insertReviewReply")
+	@PostMapping("/trainerReviewOne")
 	public String insertReviewReply(ReviewReply reviewReply) {
 		reviewReplyService.insertReviewReply(reviewReply);
-		return "redirect:/emp/trainerReviewOne";
+		
+		String a = "redirect:/trainerReviewOne?reviewNo="+reviewReply.getReviewNo();
+		return a;
+				
 	}
 	
 	// 리뷰 댓글 삭제하기
 	@GetMapping("/deleteReviewReply")
 	public String deleteReviewReply(ReviewReply reviewReply) {
 		reviewReplyService.deleteReviewReply(reviewReply);
-		return "redirect:/emp/trainerReviewOne";
+		
+		return "redirect:/trainerReviewOne?reviewNo="+reviewReply.getReviewNo();
 	}
 }

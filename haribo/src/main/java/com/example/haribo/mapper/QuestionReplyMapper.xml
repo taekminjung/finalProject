@@ -16,7 +16,7 @@
 	
 	<delete id="deleteQuestionReply" parameterType="com.example.haribo.vo.QuestionReply">
 		DELETE FROM question_reply
-		WHERE question_no = #{questionNo}
+		WHERE question_reply_no = #{questionReplyNo}
 	</delete>
 	
 	<select id="selectQuestionReply">

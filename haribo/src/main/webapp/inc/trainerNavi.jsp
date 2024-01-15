@@ -100,7 +100,7 @@
         <!-- Optionally, you can add icons to the links -->
         <li><a href="${pageContext.request.contextPath}/trainerNotice"><i class="fa fa-bullhorn"></i> <span>공지사항</span></a></li>
         <li><a href="${pageContext.request.contextPath}/trainerQuestion"><i class="fa fa-question"></i> <span>문의사항</span></a></li>
-        <li><a href="${pageContext.request.contextPath}/trainerReview"><i class="fa fa-pencil"></i> <span>리뷰게시판</span></a></li>
+        <li><a href="${pageContext.request.contextPath}/trainerReview"><i class="fa fa-pencil"></i> <span>프로그램 후기</span></a></li>
         <li class="treeview">
           <a href="#"><i class="fa fa-cube"></i> <span>재고관리</span>
             <span class="pull-right-container">

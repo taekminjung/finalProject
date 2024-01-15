@@ -6,7 +6,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.example.haribo.service.QuestionReplyService;
-import com.example.haribo.vo.Question;
 import com.example.haribo.vo.QuestionReply;
 
 @Controller
@@ -29,10 +28,10 @@ public class QuestionReplyController {
 	}
 	
 	// 문의 답글 삭제하기
-	@GetMapping("/deleteQuestionReply")
-	public String deleteQuestionReply(Question question) {
-		questionReplyService.deleteQuestionReply(question);
+	@PostMapping("/deleteQuestionReply")
+	public String deleteQuestionReply(QuestionReply questionReply) {
+		questionReplyService.deleteQuestionReply(questionReply);
 		
-		return "redirect:/trainerQuestionOne";
+		return "redirect:/trainerQuestionOne?questionNo="+questionReply.getQuestionNo();
 	}
 }

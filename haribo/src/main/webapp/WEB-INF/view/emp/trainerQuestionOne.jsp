@@ -48,6 +48,13 @@
 	        <img class="direct-chat-img" src="emp/img/man.png">
 	        <c:forEach var="qr" items="${list}">
 			<div class="direct-chat-text"> ${qr.questionReplyContent} </div>
+			<!-- 각 댓글에 대한 삭제 버튼이 있는 폼 추가 -->
+			<div>
+            	<form action="${pageContext.request.contextPath}/deleteQuestionReply" method="post">
+                <input type="hidden" name="questionReplyNo" value="${qr.questionReplyNo}">
+                <button type="submit" class="btn btn-danger btn-flat">삭제하기</button>
+            	</form>
+			</div>
 			</c:forEach>
 			<br>
 			<!-- 문의 댓글 다는 곳 -->
