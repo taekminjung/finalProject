@@ -61,7 +61,7 @@
 						<input type="hidden" name="itemPrice" id="itemPrice" value="${seo.itemPrice}">
 						<input type="hidden" name="quantity" id="quantity" value="${seo.quantity}">
 						<input type="hidden" name="totalPrice" id="totalPrice" value="${seo.totalPrice}">
-						<input type="hidden" name="createdate" id="createdate" value="${seo.createdate}">
+						<input type="hidden" name="orderNo" id="orderNo" value="${seo.orderNo}">
 						<td class="text-center">${seo.branchNo} </td>		
 						<td class="text-center">${seo.sportsEquipmentNo}</td>
 						<td class="text-center">${seo.itemName} </td>

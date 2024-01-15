@@ -52,6 +52,7 @@
 			<div>
             	<form action="${pageContext.request.contextPath}/deleteQuestionReply" method="post">
                 <input type="hidden" name="questionReplyNo" value="${qr.questionReplyNo}">
+                <input type="hidden" name="questionNo" value="${qr.questionNo}">
                 <button type="submit" class="btn btn-danger btn-flat">삭제하기</button>
             	</form>
 			</div>

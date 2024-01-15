@@ -34,6 +34,7 @@
 	
 	<select id="sportsEquipmentOrderCk" parameterType="java.util.Map" resultType="java.util.Map">
 		SELECT
+			seo.order_no orderNo,
 			seo.branch_no branchNo,
 			seo.sports_equipment_no sportsEquipmentNo,
 			se.item_name itemName,
@@ -156,7 +157,7 @@
 	<update id="updateOrderStatus" parameterType="com.example.haribo.vo.SportsEquipmentOrder">
 	    UPDATE sports_equipment_order
     	SET order_status = #{orderStatus}
-    	WHERE sports_equipment_no = #{sportsEquipmentNo}
+    	WHERE order_no = #{orderNo}
 	</update>
 	
 	<select id="stockList" parameterType="java.util.Map" resultType="java.util.Map">

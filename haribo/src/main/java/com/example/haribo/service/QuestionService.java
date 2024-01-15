@@ -48,7 +48,7 @@ public class QuestionService {
 	public List<Question> questionList(@RequestParam(defaultValue = "1") int currentPage) {
 		int rowPerPage = 10;
 		int beginRow = (currentPage -1) * rowPerPage;
-		int totalRow = questionMapper.getTotalRow(rowPerPage);
+		int totalRow = questionMapper.getTotalRow();
 		int lastPage = totalRow / rowPerPage;
 		if(totalRow % rowPerPage !=0) {
 			lastPage +=1;
@@ -70,7 +70,7 @@ public class QuestionService {
 	// 총 문의사항 수
 	public int lastPage() {
 		int rowPerPage = 10;
-		int totalRow = questionMapper.getTotalRow(rowPerPage);
+		int totalRow = questionMapper.getTotalRow();
 		int lastPage = totalRow / rowPerPage;
 		if(totalRow % rowPerPage !=0) {
 			lastPage +=1;
@@ -82,7 +82,7 @@ public class QuestionService {
 		int rowPerPage = 10;
 		int beginRow = (currentPage-1)*rowPerPage;
 		Map<String, Object> map = new HashMap<>();
-		map.put("rowPerpage", rowPerPage);
+		map.put("rowPerPage", rowPerPage);
 		map.put("beginRow", beginRow);
 		map.put("questionTitle", question.getQuestionTitle());
 		
@@ -94,7 +94,7 @@ public class QuestionService {
 	
 	public int searchLastPage(Question question) {
 		int rowPerPage = 10;
-		int totalRow = questionMapper.getTotalRow2(rowPerPage);
+		int totalRow = questionMapper.getTotalRow2(question);
 		int lastPage = totalRow/rowPerPage;
 		if(totalRow/rowPerPage !=0) {
 			lastPage += 1;

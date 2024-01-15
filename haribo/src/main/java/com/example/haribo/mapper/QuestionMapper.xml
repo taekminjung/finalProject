@@ -48,7 +48,7 @@
 		WHERE question_no = #{questionNo}
 	</select>
 	
-	<select id="getTotalRow" parameterType="Integer" resultType="Integer">
+	<select id="getTotalRow" resultType="Integer">
 		SELECT
 			COUNT(*) cnt
 		FROM question
