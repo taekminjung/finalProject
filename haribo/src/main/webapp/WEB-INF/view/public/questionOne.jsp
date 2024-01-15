@@ -109,14 +109,14 @@
 							</tr>
 						</thead>
 						<tbody>
-							<tr>
 							<c:forEach var="r" items="${list}">
+							<tr>
 								<td>${r.questionReplyNo}</td>
 								<td>${r.questionReplyContent}</td>
 								<td>${r.employeeId}</td>
 								<td>${r.createdate}</td>
-								</c:forEach>
 							</tr>
+								</c:forEach>
 						</tbody>
 					</table>
 					<c:if test="${resultQuestion.customerId == loginCustomer.customerId}">
