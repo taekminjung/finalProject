@@ -61,6 +61,30 @@ public class ReviewController {
 		return "emp/trainerReviewOne";
 	}
 	
+	// 리뷰 리스트 (직원)
+	@GetMapping("/employeeReview")
+	public String employeeReview(Model model, @RequestParam(defaultValue="1")int currentPage) {
+		List<Review> list = reviewService.empReviewList(currentPage);
+		int lastPage = reviewService.lastPage();
+		model.addAttribute("list", list);
+		model.addAttribute("currentPage", currentPage);
+		model.addAttribute("lastPage", lastPage);
+		
+		return "emp/employeeReview";
+	}
+	
+	// 리부 상세보기 (직원)
+	@GetMapping("/employeeReviewOne")
+	public String employeeReviewOne(Model model, Review review) {
+		Review resultReview = reviewService.reviewOne(review);
+		List<ReviewReply> rpList = reviewReplyService.selectReviewReply(resultReview);
+
+		model.addAttribute("resultReview", resultReview);
+		model.addAttribute("rpList", rpList);
+		
+		return "emp/employeeReviewOne";
+	}
+	
 	// 리뷰 작성하기
 	@GetMapping("/insertReviewForm")
 	public String insertReviewForm(Model model, Review review) {

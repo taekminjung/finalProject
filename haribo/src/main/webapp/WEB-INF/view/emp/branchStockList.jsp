@@ -42,10 +42,6 @@
         지점별 기구 현황 ${branch.branchNo}
         <small>관리자</small>
       </h1>
-      <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">Dashboard</li>
-      </ol>
     </section>
 
      <div class="row">
@@ -77,6 +73,12 @@
 			  	<a href="${pageContext.request.contextPath}/branchStockList?currentPage=${currentPage+1}" class="btn btn-primary">다음</a>
 			  </c:if>
 			</div>
+		</div>
+	</div>
+</div>
+</div>
+</div>
+		
 
   <div class="control-sidebar-bg"></div>
 

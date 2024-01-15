@@ -70,7 +70,7 @@
 			 class="img-circle" width="20" height="20" onerror="this.src='${pageContext.request.contextPath }/upload/emp/default.jpg'" alt="user Image">
         </div>
         <div class="pull-left info">
-          <p>관리자명</p>
+          <p>${loginEmployee.employeeName}님</p>
 	<a href="#" id="statusLink"><i class="fa fa-circle text-success"></i> Online</a>
 
         </div>
@@ -97,13 +97,13 @@
        </li>
        
         <li>
-          <a href="${pageContext.request.contextPath}/questionList">
+          <a href="${pageContext.request.contextPath}/employeeQuestion">
             <i class="fa fa-question"></i> <span>문의사항</span>
           </a>
        </li>
      
        <li>
-          <a href="${pageContext.request.contextPath}/reviewList">
+          <a href="${pageContext.request.contextPath}/employeeReview">
             <i class="fa fa-pencil"></i> <span>리뷰게시판</span>
           </a>
        </li>  
