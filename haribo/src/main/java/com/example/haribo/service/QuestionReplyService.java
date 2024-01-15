@@ -15,8 +15,8 @@ public class QuestionReplyService {
 	
 	// 문의사항 답글 입력
 	public int insertQuestionReply(QuestionReply questionReply) {
-		questionReplyMapper.insertQuestionReply(questionReply);
-		return questionReplyMapper.insertQuestionReply(questionReply);
+		int row = questionReplyMapper.insertQuestionReply(questionReply);
+		return row;
 	}
 
 	// 문의사항 답글 삭제

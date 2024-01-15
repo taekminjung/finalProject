@@ -52,7 +52,7 @@
 			<br>
 			<!-- 문의 댓글 다는 곳 -->
 			<div>
-	          <form action="${pageContext.request.contextPath}/insertQuestionReply" method="post">
+	          <form action="${pageContext.request.contextPath}/trainerQuestionOne" method="post">
 	            <div class="input-group">
 	              <input type="text" name="questionReplyContent" id="questionReplyContent" placeholder="댓글을 입력하세요 ..." class="form-control">
 	              <input type="hidden" name="employeeId" id="employeeId" value="${loginEmployee.employeeId}"class="form-control">

@@ -1,5 +1,6 @@
 package com.example.haribo.controller;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -108,8 +109,8 @@ public class TrainerHomeController {
 	
 //	// 트레이너 지점 별 재고 현황 확인하기
 //	@GetMapping("/trainerStock")
-//	public String trainerStockList(Model model, @RequestParam(defaultValue="1") int currentPage, SportsEquipment sportseEquipment) {
-//		List<HashMap<String, Object>> stockList = sportsEquipmentService.trainerStockList(currentPage, sportseEquipment);
+//	public String trainerStockList(Model model, @RequestParam(defaultValue="1") int currentPage, SportsEquipment sportsEquipment) {
+//		List<HashMap<String, Object>> stockList = sportsEquipmentService.trainerStockList(currentPage, sportsEquipment);
 //		
 //		int lastPageSp = sportsEquipmentService.lastPageSp();
 //	

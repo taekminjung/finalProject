@@ -20,7 +20,7 @@ public class QuestionReplyController {
 		return "emp/trainerQuestionOne";
 	}
 	
-	@PostMapping("/insertQuestionReply")
+	@PostMapping("/trainerQuestionOne")
 	public String insertQuestionReply(QuestionReply questionReply) {
 		questionReplyService.insertQuestionReply(questionReply);
 		
