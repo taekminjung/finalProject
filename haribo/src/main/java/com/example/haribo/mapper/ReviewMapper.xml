@@ -32,7 +32,6 @@
       ON c.customer_no = ci.customer_no
 	</select>
 	
-	<!--
 	<select id="reviewReplyList" resultType="com.example.haribo.vo.ReviewReply">
 		SELECT
 			review_no reviewNo,
@@ -41,7 +40,6 @@
 			createdate
 		FROM review_reply
 	</select>
-	  -->
 	  
 	<insert id="insertReview" parameterType="com.example.haribo.vo.Review">
 		INSERT INTO review(
