@@ -63,7 +63,7 @@
 
 	<!-- Start schedule Area -->
 	<section class="schedule-area section-gap">
-		<img class="featured-img img-fluid" src="img/featured-class/feature-img.png" alt="">
+		<img class="featured-img img-fluid" src="customer/img/featured-class/feature-img.png" alt="">
 		<div class="container">
 			<div class="row d-flex justify-content-center">
 				<div class="col-lg-12">

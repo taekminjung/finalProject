@@ -51,9 +51,11 @@
 					<h1>
 						공지사항 상세보기
 					</h1>
-					<p class="link-nav"><a href="${pageContext.request.contextPath}/home">Home </a>
+					<p class="link-nav">
+						<a href="${pageContext.request.contextPath}/home">Home </a>
 						<span class="lnr lnr-arrow-right"></span> <a href="${pageContext.request.contextPath}/customerNoticeList">
-							Notice</a></p>
+							Notice</a>
+					</p>
 				</div>
 			</div>
 		</div>
@@ -62,7 +64,7 @@
 
 	<!-- Start schedule Area -->
 	<section class="schedule-area section-gap">
-		<img class="featured-img img-fluid" src="img/featured-class/feature-img.png" alt="">
+		<img class="featured-img img-fluid" src="customer/img/featured-class/feature-img.png" alt="">
 		<div class="container">
 			<div class="row d-flex justify-content-center">
 				<div class="col-lg-12">
@@ -72,24 +74,37 @@
 					</div>
 				</div>
 			</div>
-
 			<div class="row justify-content-center">
-				<div class="table-wrap col-lg-10">
-					<table class="schdule-table table table-bordered">
+				<div class="table-wrap col-lg-6">
+					<table class="col-lg-12">
 						<thead class="thead-light">
-							<tr>
+							<tr align="center" height="50">
 								<th class="head" scope="col">제목</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr align="center" height="150">
+								<td><h4>${resultNotice.noticeTitle}</h4></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<div class="row justify-content-center">
+				<div class="table-wrap col-lg-6">
+					<table class="col-lg-12">
+						<thead class="thead-light">
+							<tr align="center" height="50">
 								<th class="head" scope="col">내용</th>
 							</tr>
 						</thead>
 						<tbody>
-							<tr>
-								<td>${resultNotice.noticeTitle}</td>
-								<td>${resultNotice.noticeContent}</td>
+							<tr align="center" height="150">
+								<td><h4>${resultNotice.noticeContent}</h4></td>
 							</tr>
-				
 						</tbody>
 					</table>
+					<a href="${pageContext.request.contextPath}/customerNoticeList" class="btn btn-outline-dark" style="float:right">목록</a>
 				</div>
 			</div>
 		</div>

@@ -73,58 +73,57 @@
 						<div class="col-lg-12">
 							<br><h4 style="text-align:center">${pmap.branchName}지점 ${program.programName} 프로그램 강의 일정</h4>
 							<h4 style="text-align:center">${cMap.targetYear}년 ${cMap.targetMonth +1}월</h4>
-									<div class="row justify-content-center">
-				<div class="table-wrap col-lg-12">
-					<a style="float:left" class="btn btn-outline-secondary" 
-						href="${pageContext.request.contextPath }/ScheduleByBranch?programNo=${program.programNo}&programName=${program.programName}&targetYear=${cMap.targetYear}&targetMonth=${cMap.targetMonth -1}&branchNo=${branch.branchNo}&branchName=${pmap.branchName}">
-							이전 달
-						</a>
-						<a style="float:right" class="btn btn-outline-secondary" 
-						href="${pageContext.request.contextPath }/ScheduleByBranch?programNo=${program.programNo}&programName=${program.programName}&targetYear=${cMap.targetYear}&targetMonth=${cMap.targetMonth +1}&branchNo=${branch.branchNo}&branchName=${pmap.branchName}">
-							다음 달
-						</a>
-					<table class="schdule-table table table-bordered">
-						<thead class="thead-light">
-							<tr>
-								<th class="head" scope="col" style="color:red">일</th>
-								<th class="head" scope="col">월</th>
-								<th class="head" scope="col">화</th>
-								<th class="head" scope="col">수</th>
-								<th class="head" scope="col">목</th>
-								<th class="head" scope="col">금</th>
-								<th class="head" scope="col">토</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-						<c:forEach var="i" begin="1" end="${cMap.totalTd}" step="1">
-						<c:set var="d" value="${i -cMap.beginBlank}"></c:set>	
-								<c:if test="${i % 7 == 1 }">
-								<td style="color:red">
-								</c:if>
-								<c:if test="${!(i % 7 == 1)}">
-								<td>
-							</c:if>
-							<c:if test="${d < 1 || d > cMap.lastDate}">
-								&nbsp;
-							</c:if>
-							<c:if test="${!(d < 1 || d > cMap.lastDate)}">
-								${d }<p>예약현황 : </p><br>
-								<c:forEach var="p" items="${pList}">
-									<c:if test="${p.programDateDay == d}">
-										
-										<span class="badge badge-danger">${p.programReservationCnt}/${p.programMaxCustomer}</span>
-									</c:if>
-								</c:forEach>
-							</c:if>
-							</td>
-							<c:if test="${i < cMap.totalTd && i % 7 == 0}">
-								</tr><tr>	
-							</c:if>
-						</c:forEach>
-					</table>
-				</div>
-			</div>
+							<div class="row justify-content-center">
+								<div class="table-wrap col-lg-12">
+									<a style="float:left" class="btn btn-outline-secondary" 
+										href="${pageContext.request.contextPath }/ScheduleByBranch?programNo=${program.programNo}&programName=${program.programName}&targetYear=${cMap.targetYear}&targetMonth=${cMap.targetMonth -1}&branchNo=${branch.branchNo}&branchName=${pmap.branchName}">
+											이전 달
+									</a>
+									<a style="float:right" class="btn btn-outline-secondary" 
+										href="${pageContext.request.contextPath }/ScheduleByBranch?programNo=${program.programNo}&programName=${program.programName}&targetYear=${cMap.targetYear}&targetMonth=${cMap.targetMonth +1}&branchNo=${branch.branchNo}&branchName=${pmap.branchName}">
+										다음 달
+									</a>
+									<table class="schdule-table table table-bordered">
+										<thead class="thead-light">
+											<tr>
+												<th class="head" scope="col" style="color:red">일</th>
+												<th class="head" scope="col">월</th>
+												<th class="head" scope="col">화</th>
+												<th class="head" scope="col">수</th>
+												<th class="head" scope="col">목</th>
+												<th class="head" scope="col">금</th>
+												<th class="head" scope="col">토</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr height="130">
+										<c:forEach var="i" begin="1" end="${cMap.totalTd}" step="1">
+										<c:set var="d" value="${i -cMap.beginBlank}"></c:set>	
+												<c:if test="${i % 7 == 1 }">
+												<td style="color:red">
+												</c:if>
+												<c:if test="${!(i % 7 == 1)}">
+												<td>
+											</c:if>
+											<c:if test="${d < 1 || d > cMap.lastDate}">
+												&nbsp;
+											</c:if>
+											<c:if test="${!(d < 1 || d > cMap.lastDate)}">
+												${d }<br> 예약현황 : <br><br>
+												<c:forEach var="p" items="${pList}">
+													<c:if test="${p.programDateDay == d}">
+														<button disabled class="btn btn-outline-primary btn-sm btn-block">${p.programReservationCnt}/${p.programMaxCustomer}</button>
+													</c:if>
+												</c:forEach>
+											</c:if>
+											</td>
+											<c:if test="${i < cMap.totalTd && i % 7 == 0}">
+												</tr><tr height="130">	
+											</c:if>
+										</c:forEach>
+									</table>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
