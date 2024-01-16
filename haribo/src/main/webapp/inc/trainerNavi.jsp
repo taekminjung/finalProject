@@ -78,7 +78,7 @@
         <div class="pull-left info">
           <p><a href="">${loginEmployee.employeeName}</a></p>
           <!-- Status -->
-          <a href="#" id="statusLink"><i class="fa fa-circle text-success"></i> 출근중💼</a>
+          <a id="statusLink"><i class="fa fa-circle text-success"></i> 출근중💼</a>
         </div>
       </div>
 
@@ -98,9 +98,9 @@
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">메뉴</li>
         <!-- Optionally, you can add icons to the links -->
-        <li><a href="${pageContext.request.contextPath}/trainerNotice"><i class="fa fa-bullhorn"></i> <span>공지사항</span></a></li>
-        <li><a href="${pageContext.request.contextPath}/trainerQuestion"><i class="fa fa-question"></i> <span>문의사항</span></a></li>
-        <li><a href="${pageContext.request.contextPath}/trainerReview"><i class="fa fa-pencil"></i> <span>프로그램 후기</span></a></li>
+        <li><a href="${pageContext.request.contextPath}/trainerNotice"><i class="fa fa-bullhorn"></i><span>공지사항</span></a></li>
+        <li><a href="${pageContext.request.contextPath}/trainerQuestion"><i class="fa fa-question"></i><span>문의사항</span></a></li>
+        <li><a href="${pageContext.request.contextPath}/trainerReview?employeeId=${loginEmployee.employeeId}&programNo="><i class="fa fa-pencil"></i><span>프로그램 후기</span></a></li>
         <li class="treeview">
           <a href="#"><i class="fa fa-cube"></i> <span>재고관리</span>
             <span class="pull-right-container">
@@ -115,14 +115,14 @@
         </li>
 
 		<li class="treeview">
-          <a href="${pageContext.request.contextPath}/trainerProgramOne?employeeId=${loginEmployee.employeeId}">
+          <a href="">
           	<i class="fa fa-book"></i> <span>프로그램 목록</span>
             <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
-          <ul class="treeview-menu">
-          	<li><a href="${pageContext.request.contextPath}/trainerProgramOne?employeeId=${loginEmployee.employeeId}">내가 맡은 프로그램 출력 상세정보</a></li>
+          <ul class="treeview-menu" id="tree">
+          	
           </ul>
         </li>
       </ul>
@@ -131,7 +131,7 @@
     <!-- /.sidebar -->
   </aside>
   
-  <script>
+<script>
   $(document).ready(function(){
   $.ajax({
 		url:'/haribo/employeeImg',
@@ -147,25 +147,24 @@
 			console.log(err);
 		}
 			});
+  
+  $.ajax({
+		url:'/haribo/selectProgramListByTrainer',
+		method:'get',
+		data:{'employeeId':"${loginEmployee.employeeId}"},
+		success:function(json){
+			console.log(json);
+			$(json).each(function(index,item){
+				$('#tree').append('<li><a href="${pageContext.request.contextPath}/trainerProgramOne?programNo='+item.programNo+'">'+item.programName+'</a></li>');
+			})
+		},
+		error:function(err){
+			console.log(err);
+		}
+			});
 	});
-  <!--
-  document.getElementById("statusLink").addEventListener("click", function() {
-    var statusIcon = document.querySelector("#statusLink i.fa");
-    var statusText = document.getElementById("#statusLink");
-
-    if (statusIcon.classList.contains("text-success")) {
-      statusIcon.classList.remove("text-success");
-      statusIcon.classList.add("text-danger");
-      statusText.textContent = "퇴근💼";
-    } else if (statusIcon.classList.contains("text-danger")) {
-      statusIcon.classList.remove("text-danger");
-      statusIcon.classList.add("text-info");
-      statusText.textContent = "휴가중💼";
-    } else {
-      statusIcon.classList.remove("text-info");
-      statusIcon.classList.add("text-success");
-      statusText.textContent = " 출근중💼";
-    }
-  });
-  -->
+  
+  
+	
+  
 </script>

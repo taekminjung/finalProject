@@ -31,6 +31,7 @@ public class ReviewReplyController {
 	// 리뷰 댓글 삭제하기
 	@PostMapping("/deleteReviewReply")
 	public String deleteReviewReply(ReviewReply reviewReply) {
+		System.out.println(reviewReply+"<<=====asdas");
 		reviewReplyService.deleteReviewReply(reviewReply);
 		
 		return "redirect:/trainerReviewOne?reviewNo="+reviewReply.getReviewNo();

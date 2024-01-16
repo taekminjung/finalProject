@@ -26,8 +26,9 @@ public class EmployeeService {
 	@Autowired private EmployeeMapper employeeMapper;
 	
 	public Map<String, Object> loginEmployee(Employee employee) {
+		Map<String, Object> map = employeeMapper.loginEmployee(employee);
 		log.debug(employee+"");
-		return employeeMapper.loginEmployee(employee);
+		return map;
 	}
 	
 	public int idCkEmp(String idCk) {

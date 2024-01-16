@@ -12,19 +12,19 @@ import com.example.haribo.vo.ReviewReply;
 public class ReviewReplyService {
 	@Autowired ReviewReplyMapper reviewReplyMapper;
 
-	// 문의사항 댓글 입력
+	// 프로그램 리뷰 댓글 입력
 	public int insertReviewReply(ReviewReply reviewReply) {
 		int row = reviewReplyMapper.insertReviewReply(reviewReply);
 		return row;		
 	}
 
-	// 문의사항 댓글 삭제
+	// 프로그램 리뷰 댓글 삭제
 	public int deleteReviewReply(ReviewReply reviewReply) {
-		int row = reviewReplyMapper.deleteReviewReply(reviewReply);
-		return row;
+		reviewReplyMapper.deleteReviewReply(reviewReply);
+		return reviewReplyMapper.deleteReviewReply(reviewReply);
 	}
 	
-	// 문의사항 댓글 목록
+	// 프로그램 리뷰 댓글 목록
 	public List<ReviewReply> selectReviewReply(Review review) {
 		List<ReviewReply> list = reviewReplyMapper.selectReviewReply(review);
 		return list;

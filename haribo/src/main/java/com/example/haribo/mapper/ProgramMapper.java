@@ -6,6 +6,7 @@ import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import com.example.haribo.vo.Employee;
 import com.example.haribo.vo.Program;
 import com.example.haribo.vo.ProgramImg;
 
@@ -47,4 +48,7 @@ public interface ProgramMapper {
 	List<Map<String, Object>> selectBranchNameList();
 	
 	List<Map<String, Object>> selectEmployeeNameByBranchNo(int branchNo);
+	
+	// 트레이너 프로그램 목록
+	List<Program> selectProgramListByTrainer(Employee employee);
 }

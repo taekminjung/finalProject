@@ -15,6 +15,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.example.haribo.mapper.ProgramMapper;
 import com.example.haribo.mapper.ReviewMapper;
 import com.example.haribo.vo.Branch;
+import com.example.haribo.vo.Employee;
 import com.example.haribo.vo.Program;
 import com.example.haribo.vo.ProgramImg;
 
@@ -197,5 +198,11 @@ public class ProgramService {
 		String programImgName = programMapper.selectProgramImgName(programImg);
 		System.out.println(programImgName+"<=====programImgName");
 		return programImgName;
+	}
+	
+	// 트레이너 프로그램 리스트
+	public List<Program> selectProgramListByTrainer(Employee employee){
+		log.debug(employee+"");
+		return programMapper.selectProgramListByTrainer(employee);
 	}
 }

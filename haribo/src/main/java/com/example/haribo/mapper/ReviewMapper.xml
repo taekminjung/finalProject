@@ -212,6 +212,7 @@
 		ORDER BY r.review_no DESC
 		LIMIT #{beginRow}, #{rowPerPage}
 	</select>
+	
 	<select id="selectReviewByProgram">
 			SELECT 
 		     r.review_no AS reviewNo,

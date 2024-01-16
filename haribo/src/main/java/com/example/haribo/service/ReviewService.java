@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.haribo.mapper.ReviewMapper;
+import com.example.haribo.mapper.ReviewReplyMapper;
 import com.example.haribo.vo.Customer;
 import com.example.haribo.vo.Program;
 import com.example.haribo.vo.Review;
@@ -18,7 +19,8 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @Service
 public class ReviewService {
-	@Autowired ReviewMapper reviewMapper;
+	@Autowired private ReviewMapper reviewMapper;
+	@Autowired private ReviewReplyMapper reviewReplyMapper;
 	
 	public HashMap<String, Object> reviewListMap(){
 		
@@ -92,16 +94,18 @@ public class ReviewService {
 	
 		return row;
 	}
+	
 	//리뷰 삭제
-	public void deleteReview(Review review) {
+	public void deleteReview(Review review, ReviewReply reviewReply) {
 		int selectReviewReplyCnt = reviewMapper.selectReviewReplyCnt(review);
 		if(selectReviewReplyCnt == 0) {
 			reviewMapper.deleteReview(review);
 		}else {
-			reviewMapper.deleteReviewReply(review);
+			reviewReplyMapper.deleteReviewReply(reviewReply);
 			reviewMapper.deleteReview(review);
 		}
 	}
+	
 	//내가 쓴 리뷰 상세
 	public Map<String,Object> myReviewOne(Review review){
 		Map<String,Object> myReviewMap = new HashMap<>();

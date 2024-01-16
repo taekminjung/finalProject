@@ -89,7 +89,7 @@ public class ReviewController {
 		return "emp/employeeReview";
 	}
 	
-	// 리부 상세보기 (직원)
+	// 리뷰 상세보기 (직원)
 	@GetMapping("/employeeReviewOne")
 	public String employeeReviewOne(Model model, Review review) {
 		Review resultReview = reviewService.reviewOne(review);
@@ -118,7 +118,8 @@ public class ReviewController {
 		
 		String u = "redirect:/myReviewList?customerNo="+customer.getCustomerNo();
 		return u;
-	}		
+	}
+	
 	//회원 별 작성한 리뷰 출력
 	@GetMapping("/myReviewList")
 	public String selectMyReview(HttpSession session , Model model, Customer customer) {
@@ -131,6 +132,7 @@ public class ReviewController {
 		
 		return "customer/myReviewList";
 	}
+	
 	//리뷰 수정
 	@PostMapping("/updateReview")
 	public String updateReview(Review review) {
@@ -142,12 +144,13 @@ public class ReviewController {
 	
 	//리뷰 삭제
 	@GetMapping("/deleteReview")
-	public String deleteReview(Review review,int customerNo) {
-		reviewService.deleteReview(review);
+	public String deleteReview(Review review, ReviewReply reviewReply, int customerNo) {
+		reviewService.deleteReview(review, reviewReply);
 		
 		String u = "redirect:/myReviewList?customerNo="+customerNo;
 		return u;
 	}
+	
 	//내가 쓴 리뷰 상세
 	@GetMapping("/myReviewOne")
 	public String myReviewOne(Review review, Model model) {

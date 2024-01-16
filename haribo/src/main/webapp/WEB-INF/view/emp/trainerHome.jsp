@@ -61,52 +61,37 @@
 		<br>
 		
 		<table class="table table-bordered" style="table-layout:fixed">
-			<tr>
-				<th class="col-lg-1" style="color:red">일</th>
-				<th class="col-lg-1">월</th>
-				<th class="col-lg-1">화</th>
-				<th class="col-lg-1">수</th>
-				<th class="col-lg-1">목</th>
-				<th class="col-lg-1">금</th>
-				<th class="col-lg-1">토</th>
-			</tr>
-			<tr style="height:150px">
-			<c:forEach var="i" begin="1" end="${calMap.totalTd}" step="1">
-				<c:set var="d" value="${i - calMap.beginBlank }"></c:set>
-				<c:if test="${i % 7 == 1 }">
-					<td style="color:red">
-				</c:if>
-				<c:if test="${!(i % 7 == 1)}">
-					<td>
-				</c:if>
-				<c:if test="${d < 1 || d > calMap.lastDate}">
-					&nbsp;
-				</c:if>
-				<c:if test="${!(d < 1 || d > calMap.lastDate)}">
-					${d }<br>
-					<c:forEach var="p" items="${proList }">
-						<c:if test="${p.programDateDay == d }">
-							<c:if test="${p.exitTime != null }">
-								<a href="${pageContext.request.contextPath }/insertReviewForm?programReservationNo=${p.programReservationNo}" data-bs-toggle="tooltip" title="리뷰 쓰기">
-									<h6>${p.branchName }<br>
-									: ${p.programName}</h6>
-								</a>
+						<tr>
+							<th class="col-lg-1" style="color:red">일</th>
+							<th class="col-lg-1">월</th>
+							<th class="col-lg-1">화</th>
+							<th class="col-lg-1">수</th>
+							<th class="col-lg-1">목</th>
+							<th class="col-lg-1">금</th>
+							<th class="col-lg-1">토</th>
+						</tr>
+						<tr style="height:200px">
+						<c:forEach var="i" begin="1" end="${calMap.totalTd}" step="1">
+							<c:set var="d" value="${i - calMap.beginBlank }"></c:set>
+							<c:if test="${i % 7 == 1 }">
+								<td style="color:red">
 							</c:if>
-							<c:if test="${p.exitTime == null }">
-							<h6>${p.branchName }<br>
-								: ${p.programName}</h6>
-								</c:if>
-							
-							<br><br>
-						</c:if>
-					</c:forEach>
-				</c:if>
-				</td>
-				<c:if test="${i < calMap.totalTd && i % 7 == 0}">
-					</tr><tr style="height:150px">	
-				</c:if>
-			</c:forEach>
-		</table>
+							<c:if test="${!(i % 7 == 1)}">
+								<td>
+							</c:if>
+							<c:if test="${d < 1 || d > calMap.lastDate}">
+								&nbsp;
+							</c:if>
+							<c:if test="${!(d < 1 || d > calMap.lastDate)}">
+								${d}<input type="checkbox"><br>
+								
+							</c:if>
+							</td>
+							<c:if test="${i < calMap.totalTd && i % 7 == 0}">
+								</tr><tr style="height:200px">	
+							</c:if>
+						</c:forEach>
+					</table>
 	</div>
     </section>
     <!-- 페이지 메인 내용 끝 -->

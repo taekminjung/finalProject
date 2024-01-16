@@ -35,10 +35,9 @@ public class QuestionService {
 		int row = questionReplyMapper.selectQuestionReply(question);
 				
 		if(row != 0) {
-				questionReplyMapper.deleteQuestionReply(questionReply);
-				
-				questionMapper.deleteQuestion(question);
-		}else { 
+			questionReplyMapper.deleteQuestionReply(questionReply);
+			questionMapper.deleteQuestion(question);
+		} else { 
 			questionMapper.deleteQuestion(question);		
 		}
 		return row;

@@ -6,7 +6,6 @@
 		SELECT
 			e.employee_no employeeNo,
 			e.employee_id employeeId,
-			e.branch_no branchNo,
 			ed.employee_name employeeName,
 			b.branch_no branchNo,
 			b.branch_name branchName
@@ -79,7 +78,6 @@
 	    LEFT OUTER JOIN employee_detail ed ON e.employee_no = ed.employee_no
 	    ORDER BY e.branch_no DESC
 	</select>
-
 
 	<select id="getTotalRow" resultType="int">
 		SELECT COUNT(*)
