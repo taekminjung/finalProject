@@ -12,4 +12,21 @@ INSERT INTO contact(
 	)VALUES(
 	#{customerBirth},#{customerContactDate},#{customerName},#{contactContent},#{customerPhone}, NOW() )
 </insert>
+
+	<select id="contactCustomer" parameterType="java.util.Map" resultType="java.util.Map">
+	SELECT
+		customer_birth customerBirth,
+		customer_contact_date customerContactDate,
+		customer_name customerName,
+		contact_content contactContent,
+		customer_phone customerPhone,
+		createdate
+	FROM contact
+	</select>
+	
+	<select id="getTotalRow" parameterType="int" resultType="int">
+		SELECT COUNT(*)
+		FROM contact
+	
+	</select>
 </mapper>

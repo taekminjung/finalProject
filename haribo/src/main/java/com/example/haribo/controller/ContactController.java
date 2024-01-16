@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.haribo.service.BranchService;
 import com.example.haribo.service.ContactService;
@@ -34,5 +35,16 @@ public class ContactController {
 		int insertContact = contactService.insertContact(paramContact);
 		
 		return "redirect:/home";
+	}
+	
+	@GetMapping("/contactCustomer")
+	public String contactCustomer(Model model, @RequestParam(defaultValue="1")int currentPage) {
+		List<Contact> list = contactService.contactCustomerList(currentPage);
+		int lastPage = contactService.lastPage();
+		
+		model.addAttribute("list", list);
+		model.addAttribute("lastPage", lastPage);
+		model.addAttribute("currentPage", currentPage);
+		return "emp/contactCustomer";
 	}
 }
