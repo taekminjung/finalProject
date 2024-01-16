@@ -50,9 +50,11 @@
 			<div class="direct-chat-text"> ${rr.reviewReplyContent} </div>
 			<!-- 각 댓글에 대한 삭제 버튼이 있는 폼 추가 -->
 			<div>
-				<form action="${pageContext.request.contextPath}/trainerReviewOne" method="get">
-				<button type="submit" class="btn btn-info btn-flat">삭제하기</button>
-				</form>
+            	<form action="${pageContext.request.contextPath}/deleteReviewReply" method="post">
+                <input type="hidden" name="reviewReplyNo" value="${qr.reviewReplyNo}">
+                <input type="hidden" name="reviewNo" value="${qr.reviewNo}">
+                <button type="submit" class="btn btn-danger btn-flat">삭제하기</button>
+            	</form>
 			</div>
 			</c:forEach>
 			<br>

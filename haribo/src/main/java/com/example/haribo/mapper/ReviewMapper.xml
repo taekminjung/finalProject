@@ -192,7 +192,7 @@
 		WHERE r.review_no = #{reviewNo}
 	</select>
 	
-	<select id="searchByReview" parameterType="java.util.Map" resultType="com.example.haribo.vo.Review">
+	<select id="searchByReview" parameterType="java.util.Map" resultType="java.util.Map">
 		SELECT
 			r.review_no reviewNo,
 			r.review_title reviewTitle,

@@ -29,7 +29,7 @@ public class ReviewReplyController {
 	}
 	
 	// 리뷰 댓글 삭제하기
-	@GetMapping("/deleteReviewReply")
+	@PostMapping("/deleteReviewReply")
 	public String deleteReviewReply(ReviewReply reviewReply) {
 		reviewReplyService.deleteReviewReply(reviewReply);
 		
