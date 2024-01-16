@@ -76,7 +76,7 @@
 			 class="img-circle" width="20" height="20" onerror="this.src='${pageContext.request.contextPath }/upload/emp/default.jpg'" alt="user Image">
         </div>
         <div class="pull-left info">
-          <p><a href="">${loginEmployee.employeeName}</a></p>
+          <p><a href="${mypageUrl}">${loginEmployee.employeeName}</a></p>
           <!-- Status -->
           <a id="statusLink"><i class="fa fa-circle text-success"></i> 출근중💼</a>
         </div>
@@ -100,9 +100,10 @@
         <!-- Optionally, you can add icons to the links -->
         <li><a href="${pageContext.request.contextPath}/trainerNotice"><i class="fa fa-bullhorn"></i><span>공지사항</span></a></li>
         <li><a href="${pageContext.request.contextPath}/trainerQuestion"><i class="fa fa-question"></i><span>문의사항</span></a></li>
+        <li><a href="${pageContext.request.contextPath}/"><i class="fa fa-question"></i><span>상담신청</span></a></li>
         <li><a href="${pageContext.request.contextPath}/trainerReview?employeeId=${loginEmployee.employeeId}&programNo="><i class="fa fa-pencil"></i><span>프로그램 후기</span></a></li>
         <li class="treeview">
-          <a href="#"><i class="fa fa-cube"></i> <span>재고관리</span>
+          <a href=""><i class="fa fa-cube"></i> <span>재고관리</span>
             <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
               </span>
@@ -121,9 +122,7 @@
                 <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
-          <ul class="treeview-menu" id="tree">
-          	
-          </ul>
+          <ul class="treeview-menu" id="tree"></ul>
         </li>
       </ul>
       <!-- /.sidebar-menu -->
@@ -155,7 +154,7 @@
 		success:function(json){
 			console.log(json);
 			$(json).each(function(index,item){
-				$('#tree').append('<li><a href="${pageContext.request.contextPath}/trainerProgramOne?programNo='+item.programNo+'">'+item.programName+'</a></li>');
+				$('#tree').append('<li><a href="${pageContext.request.contextPath}/trainerProgramDate?programNo='+item.programNo+'">'+item.programName+'</a></li>');
 			})
 		},
 		error:function(err){

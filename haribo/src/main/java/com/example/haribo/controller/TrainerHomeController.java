@@ -115,6 +115,30 @@ public class TrainerHomeController {
 		return "emp/trainerProgramOne";
 	}
 	
+	// 프로그램 예약 추가하기
+	@GetMapping("/trainerProgramDate")
+	public String trainerProgramDate(HttpSession session, Model model, Program program, Employee employee,
+						@RequestParam(required = false) Integer targetYear,
+						@RequestParam(required = false) Integer targetMonth,
+						@RequestParam(defaultValue = "1") int currentPage) {
+		// 세션 검사
+		if(session.getAttribute("loginEmployee") == null) {
+					return "redirect:/login";
+		}
+				
+		//Calendar Service 호출
+		Map<String, Object> calMap = calendarService.calendar(targetYear, targetMonth);
+		
+		// programList service 호출
+		List<Program> list = programService.programList(currentPage);
+		
+		// model 
+		model.addAttribute("calMap", calMap);
+		model.addAttribute("list", list);
+		
+		return "redirect:/trainerProgramDate?programNo="+program.getProgramNo();
+	}
+	
 	// 재고관리(트레이너)
 	
 	// 트레이너 지점 별 재고 현황 확인하기
