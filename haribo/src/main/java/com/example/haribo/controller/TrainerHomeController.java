@@ -38,16 +38,25 @@ public class TrainerHomeController {
 	// 잊지말고 로그인 세션 추가하기 
 	// 트레이너 홈페이지
 	@GetMapping("/trainerHome")
-	public String trainerHome(HttpSession session, Employee employee,
+	public String trainerHome(HttpSession session, Model model, Employee employee,
 								@RequestParam(required = false) Integer targetYear,
-								@RequestParam(required = false) Integer targetMonth) {
+								@RequestParam(required = false) Integer targetMonth,
+								@RequestParam(defaultValue = "1") int currentPage) {
 		// 세션 검사
 		if(session.getAttribute("loginEmployee") == null) {
 					return "redirect:/login";
 		}
 		
-		//CalendarService 호출
+		//Calendar Service 호출
 		Map<String, Object> calMap = calendarService.calendar(targetYear, targetMonth);
+		
+		// programList service 호출
+		List<Program> list = programService.programList(currentPage);
+		
+		// model 
+		model.addAttribute("calMap", calMap);
+		model.addAttribute("list", list);
+		
 		return "emp/trainerHome";
 	}
 	

@@ -34,24 +34,26 @@
     <!-- 페이지 메인 헤더 -->
     <section class="content-header">
       <h1>
-        안녕하세요, ${loginEmployee.employeeName}님😀
-        <br>
-        <small>오늘도 힘찬 하루 되세요💪🏻</small>
+        안녕하세요, ${loginEmployee.employeeName}님😀<small>오늘도 힘찬 하루 되세요💪🏻</small>
       </h1>
+      <br>
+      <div class="callout callout-info">
+        <h4>📢팀 하리보 공지사항📢</h4>
+		<p>한달치 스케줄 결재는 매달 19일에 이루어지니 미리 결재 올려주세요. 📅본인 프로그램 스케줄 확인 필수!!📅</p>
+      </div>
     </section>
 
     <!-- 페이지 메인 내용 시작 -->
     <section class="content container-fluid">
-	안뇽딱따구리 여기에 캘린더 들어옴
 	<div>
 		<div>
 			<h4>${calMap.targetYear}년 ${calMap.targetMonth +1}월</h4>
 			<a style="float:left" class="btn btn-outline-secondary" 
-			href="${pageContext.request.contextPath }/customerSchedule?customerNo=${loginCustomer.customerNo}&targetYear=${calMap.targetYear}&targetMonth=${calMap.targetMonth -1}">
+			href="${pageContext.request.contextPath }/trainerHome?employeeNo=${loginEmployee.employeeNo}&targetYear=${calMap.targetYear}&targetMonth=${calMap.targetMonth -1}">
 				이전 달
 			</a>
 			<a style="float:right" class="btn btn-outline-secondary" 
-			href="${pageContext.request.contextPath }/customerSchedule?customerNo=${loginCustomer.customerNo}&targetYear=${calMap.targetYear}&targetMonth=${calMap.targetMonth +1}">
+			href="${pageContext.request.contextPath }/trainerHome?employeeNo=${loginEmployee.employeeNo}&targetYear=${calMap.targetYear}&targetMonth=${calMap.targetMonth +1}">
 				다음 달
 			</a>
 		</div>
@@ -68,7 +70,7 @@
 				<th class="col-lg-1">금</th>
 				<th class="col-lg-1">토</th>
 			</tr>
-			<tr style="height:200px">
+			<tr style="height:150px">
 			<c:forEach var="i" begin="1" end="${calMap.totalTd}" step="1">
 				<c:set var="d" value="${i - calMap.beginBlank }"></c:set>
 				<c:if test="${i % 7 == 1 }">
@@ -101,7 +103,7 @@
 				</c:if>
 				</td>
 				<c:if test="${i < calMap.totalTd && i % 7 == 0}">
-					</tr><tr style="height:200px">	
+					</tr><tr style="height:150px">	
 				</c:if>
 			</c:forEach>
 		</table>
