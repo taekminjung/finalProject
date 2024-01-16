@@ -115,27 +115,5 @@ public class ReviewService {
 		return myReviewMap;
 	}
 	
-	public List<Review> searchByReview(Review review, Program program, int currentPage){
-		int rowPerPage = 10;
-		int beginRow = (currentPage-1)*rowPerPage;
-		Map<String, Object>map = new HashMap<>();
-		map.put("rowPerPage", rowPerPage);
-		map.put("beginRow", beginRow);
-		map.put("programName", program.getProgramName());
-		
-		List<Review> list = reviewMapper.searchByReview(map);
-		
-		return list;
-	}
-	
-	public int searchLastPage(Review review) {
-		int rowPerPage = 10;
-		int totalRow = reviewMapper.getTotalRow2(review);
-		int lastPage = totalRow/rowPerPage;
-		if(totalRow/rowPerPage !=0) {
-			lastPage += 1;
-		}
-		return lastPage;
-	}
 }
 	

@@ -14,11 +14,15 @@
 	
 	<select id="sportsEquipmentList" parameterType="java.util.Map" resultType="java.util.Map">
 		SELECT
-			sports_equipment_no sportsEquipmentNo,
-			item_name itemName,
-			item_price itemPrice,
-			updatedate
-		FROM sports_equipment
+			se.sports_equipment_no sportsEquipmentNo,
+			se.item_name itemName,
+			se.item_price itemPrice,
+			sei.sports_equipment_img_file_name sportsEquipmentImgFileName,
+			se.createdate
+		FROM sports_equipment se
+		LEFT OUTER JOIN sports_equipment_img sei
+		ON se.sports_equipment_no = sei.sports_equipment_no
+		ORDER BY se.sports_equipment_no DESC
 		LIMIT #{beginRow}, #{rowPerPage}
 	</select>
 	

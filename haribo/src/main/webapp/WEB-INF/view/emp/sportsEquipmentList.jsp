@@ -58,6 +58,7 @@
 			        <tr>
 			            <th class="text-center">번호</th>
 			            <th class="text-center">운동기구명</th>
+			            <th class="text-center">이미지</th>
 			            <th class="text-center">등록일자</th>
 			        </tr>
 			        <c:forEach var="se" items="${list}">
@@ -67,7 +68,11 @@
 						<td class="text-center">
 							<a href="${pageContext.request.contextPath}/sportsEquipmentOne?sportsEquipmentNo=${se.sportsEquipmentNo}">${se.itemName}</a> 
 						</td>
-						<td class="text-center"><fmt:formatDate value="${se.updatedate}" pattern="yyyy-MM-dd"/></td>
+						<td class="text-center" style="text-align: center">
+							<img id="img" src="${pageContext.request.contextPath}/upload/emp/${se.sportsEquipmentImgFileName}" class="rounded-circle" 
+							onerror="this.src='${pageContext.request.contextPath}/upload/emp/equipmentdefault.png'" width="150" height="100">
+						</td>
+						<td class="text-center"><fmt:formatDate value="${se.createdate}" pattern="yyyy-MM-dd"/></td>
 					</c:forEach>
 			    </table>
 			    <br>
@@ -104,22 +109,7 @@
 
 <!-- AdminLTE for demo purposes -->
 <script src="emp/dist/js/demo.js"></script>
-<script>
 
-
-
-	$('#deleteBtn').click(function(){
-		
-		var result = confirm('\n삭제하시겠습니까');
-		
-		if(result){
-			$('#deleteForm').submit();
-		} else{
-			
-		}
-	});
-
-</script>
 
 </body>
 </html>

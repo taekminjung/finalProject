@@ -76,19 +76,6 @@ public class ReviewController {
 		return "emp/employeeReview";
 	}
 	
-	// 리뷰 검색 기능 (직원)
-	@PostMapping("/employeeReview")
-	public String employeeReview(Model model, Review review, Program program, @RequestParam(defaultValue="1")int currentPage) {
-		List<Review> list = reviewService.searchByReview(review, program, currentPage);
-		int lastPage = reviewService.searchLastPage(review);
-		
-		model.addAttribute("list", list);
-		model.addAttribute("lastPage", lastPage);
-		model.addAttribute("currentPage", currentPage);
-		
-		return "emp/employeeReview";
-	}
-	
 	// 리뷰 상세보기 (직원)
 	@GetMapping("/employeeReviewOne")
 	public String employeeReviewOne(Model model, Review review) {

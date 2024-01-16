@@ -13,6 +13,7 @@
   <link rel="stylesheet" href="emp/bower_components/jvectormap/jquery-jvectormap.css">
   <link rel="stylesheet" href="emp/dist/css/AdminLTE.min.css">
   <link rel="stylesheet" href="emp/dist/css/skins/_all-skins.min.css">
+  
 
   <!-- Google Font -->
   <link rel="stylesheet"
@@ -78,12 +79,43 @@
           </div>
         </div>
       </div>
-	</section>
+      
+       <h1>
+        지점별 총매출
+        <small>Preview sample</small>
+      </h1>
+
+      <div class="row">
+        <div class="col-md-6">
+          <!-- Bar Chart -->
+          <div class="box box-success">
+            <div class="box-header with-border">
+              <h3 class="box-title">Branch Total Sales</h3>
+              <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+              </div>
+            </div>
+            <div class="box-body">
+              <canvas id="barChart"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <footer class="main-footer">
+    <div class="pull-right hidden-xs">
+      <b>Version</b> 2.4.13
+    </div>
+  </footer>
 </div>
 	<div class="control-sidebar-bg"></div>
 	</div>
 
 <!-- jQuery 3 -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="emp/bower_components/jquery/dist/jquery.min.js"></script>
 <script src="emp/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <script src="emp/bower_components/fastclick/lib/fastclick.js"></script>
@@ -92,8 +124,45 @@
 <script src="emp/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
 <script src="emp/plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
 <script src="emp/bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
-<script src="emp/bower_components/chart.js/Chart.js"></script>
 <script src="emp/dist/js/pages/dashboard2.js"></script>
 <script src="emp/dist/js/demo.js"></script>
+
+<script>
+	
+$(document).ready(function() {
+
+    var ctx = document.getElementById("barChart");
+//	var price1 = ${price}
+    
+    if (ctx) {
+
+        var chart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ["서울(본점)", "부산", "제주"],
+                datasets: [{
+                    label: '지점별 매출',
+                    data: [10, 20, 30],
+                    backgroundColor: [
+                    	'rgba(255,99,132,0.2)',
+                        'rgba(54,165,235,0.2)',
+                        'rgba(75,192,192,0.2)'
+                    	],
+                    borderColor: [
+                    	'rgba(255,99,132,1)',	
+                    	'rgba(54,165,235,1)',
+                    	'rgba(75,192,192,1)'
+                    	]
+                }]
+            }
+        });
+    }
+});
+
+
+
+
+</script>
+
 </body>
 </html>

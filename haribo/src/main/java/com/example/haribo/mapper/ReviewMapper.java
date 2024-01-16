@@ -24,8 +24,6 @@ public interface ReviewMapper {
 
 	int getTotalRow();
 	
-	int getTotalRow2(Review review);
-	
 	//리뷰 작성
 	int insertReview(Review review);
 	
@@ -46,6 +44,4 @@ public interface ReviewMapper {
 	int updateReview(Review review);
 	//내가 쓴 리뷰 상세
 	Map<String,Object> myReviewOne(Review review);
-	
-	List<Review> searchByReview(Map<String, Object> param);
 }

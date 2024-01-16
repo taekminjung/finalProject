@@ -59,7 +59,8 @@
 			question_no questionNo,
 			question_title questionTitle,
 			question_content questionContent,
-			customer_id customerId
+			customer_id customerId,
+			createdate
 		FROM question
 		WHERE question_title LIKE CONCAT('%', #{questionTitle}, '%')
 		ORDER BY question_no DESC
