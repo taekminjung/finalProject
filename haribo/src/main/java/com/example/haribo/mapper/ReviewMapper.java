@@ -7,6 +7,7 @@ import java.util.Map;
 import org.apache.ibatis.annotations.Mapper;
 
 import com.example.haribo.vo.Customer;
+import com.example.haribo.vo.Program;
 import com.example.haribo.vo.Review;
 import com.example.haribo.vo.ReviewReply;
 
@@ -33,6 +34,8 @@ public interface ReviewMapper {
 	
 	//회원별 작성한 리뷰리스트
 	List<HashMap<String, Object>> selectMyReview(Customer customer);
+	//프로그램 상세보기에 해당 프로그램 리뷰 출력
+		List<HashMap<String, Object>> selectReviewByProgram(Program program);
 	//리뷰 리플 여부 체크
 	int selectReviewReplyCnt(Review review);
 	//리뷰 리플 삭제

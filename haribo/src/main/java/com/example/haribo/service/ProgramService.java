@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.example.haribo.mapper.ProgramMapper;
+import com.example.haribo.mapper.ReviewMapper;
 import com.example.haribo.vo.Branch;
 import com.example.haribo.vo.Program;
 import com.example.haribo.vo.ProgramImg;
@@ -24,7 +25,7 @@ import lombok.extern.slf4j.Slf4j;
 @Service
 public class ProgramService {
 	@Autowired private ProgramMapper programMapper;
-	
+	@Autowired private ReviewMapper reviewMapper;
 	public int insertProgram(Program program) {
 		int row = programMapper.insertProgram(program);
 		if(row != 1) {
@@ -112,6 +113,12 @@ public class ProgramService {
 		HashMap<String, Object> map = programMapper.selectProgramDetail(program);
 		
 		return map;
+	}
+	//프로그램 상세보기 페이지에서 해당 프로그램 리뷰 출력
+	public List<HashMap<String, Object>> selectReviewByProgram(Program program){
+		List<HashMap<String, Object>> rlist = reviewMapper.selectReviewByProgram(program);
+		
+		return rlist;
 	}
 	//프로그램상세보기페이지에서 프로그램정보와 담당 직원정보 출력
 	public HashMap<String, Object> selectProgramEmp(Program program, Branch branch){

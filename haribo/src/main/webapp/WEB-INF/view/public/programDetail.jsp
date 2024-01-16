@@ -88,8 +88,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="col-lg-4 sidebar-widgets">
-					
+				<div class="col-lg-4 sidebar-widgets">	
 							<p >
 							<h5>지점별 일정/예약현황 보기</h5><br>
 							<div style="margin: auto; text-align: center;">
@@ -108,6 +107,33 @@
 							</p>
 						</div>
 					</div>
+				</div>
+			</div>
+		</div>
+		<div class="container">
+			<div class="row d-flex justify-content-center">
+				<div class="col-lg-12">
+					<div class="section-title-wrap text-center">
+						<h1>고객 리뷰</h1>
+						<p>해당 프로그램을 수강하신 소중한 고객님들의 리뷰입니다.</p>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="active-testimonial-carusel">
+				<c:forEach var="r" items="${rlist}">
+					<div class="single-testimonial item">
+						<img class="mx-auto rounded-circle"  width="150" height="150"  src="${pageContext.request.contextPath}/upload/customer/${r.customerImgFileName}" alt=""  onerror="this.src='${pageContext.request.contextPath }/upload/customer/default.jpg'">
+						<p class="desc">
+							<h4>작성자 : ${r.customerId }</h4><br>
+							<h4>수강 프로그램 : ${r.programName}</h4><br>
+							<h5>수강 지점: ${r.branchName}</h5><br>
+							<h5>담당트레이너: ${r.employeeId}</h5><br>
+							리뷰 제목:${r.reviewTitle}<br>
+							리뷰 내용 : ${r.reviewContent}
+						</p>
+					</div>
+				</c:forEach>
 				</div>
 			</div>
 		</div>

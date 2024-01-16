@@ -145,10 +145,13 @@ public class ProgramController {
 		//프로그램 상세보기 내용 출력
 		HashMap<String, Object> map = programService.selectProgramDetail(program);
 		System.out.println("\u001B[43m"+map+"<--con.dmap");	
+		//프로그램 별 리뷰 출력
+		List<HashMap<String, Object>> rlist = programService.selectReviewByProgram(program);
 		//지점 리스트 출력
 		List<Branch> list = branchService.branchList();
 		
 		//모델에 담기
+		model.addAttribute("rlist", rlist);
 		model.addAttribute("map", map);
 		model.addAttribute("program", program);
 		model.addAttribute("list", list);
