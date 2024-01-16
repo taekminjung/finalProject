@@ -46,7 +46,7 @@
         <div class="box-footer">
 	        <h4>답변</h4>
 	        <img class="direct-chat-img" src="emp/img/man.png">
-	        <c:forEach var="rr" items="${list}">
+	        <c:forEach var="rr" items="${rpList}">
 			<div class="direct-chat-text"> ${rr.reviewReplyContent} </div>
 			<!-- 각 댓글에 대한 삭제 버튼이 있는 폼 추가 -->
 			<div>

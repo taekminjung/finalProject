@@ -11,12 +11,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.haribo.service.QuestionReplyService;
 import com.example.haribo.service.QuestionService;
-import com.example.haribo.vo.Customer;
 import com.example.haribo.vo.Question;
 import com.example.haribo.vo.QuestionReply;
 
 import jakarta.servlet.http.HttpSession;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 @Controller
 public class QuestionController {
 	@Autowired private QuestionService questionService;
@@ -163,8 +164,8 @@ public class QuestionController {
 	public String trainerQuestionOne(Model model, Question question) {
 		Question resultQuestion = questionService.questionOne(question);
 		model.addAttribute("resultQuestion", resultQuestion);
-		List<QuestionReply> list = questionReplyService.selectquestionReply(question);
 		
+		List<QuestionReply> list = questionReplyService.selectquestionReply(question);
 		System.out.println(list+"<--con.replyList");
 		model.addAttribute("question", question);
 		model.addAttribute("list", list);

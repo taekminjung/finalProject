@@ -56,7 +56,9 @@ public class ReviewController {
 	public String trainerReviewOne(Model model, Review review) {
 		Review resultReview = reviewService.reviewOne(review);
 		model.addAttribute("resultReview", resultReview);
+		
 		List<ReviewReply> rpList = reviewReplyService.selectReviewReply(review);
+		model.addAttribute("review", review);
 		model.addAttribute("rpList", rpList);
 		
 		return "emp/trainerReviewOne";
