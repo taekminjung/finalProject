@@ -220,4 +220,16 @@ public class CustomerController {
 		return u;
 	}
 	
+	//회원 리스트
+	@GetMapping("/customerList")
+	public String customerList(Model model, @RequestParam(defaultValue="1")int currentPage) {
+		List<HashMap<String, Object>> list = customerService.customerList(currentPage);
+		int lastPage = customerService.lastPage();
+		
+		model.addAttribute("list", list);
+		model.addAttribute("lastPage", lastPage);
+		model.addAttribute("currentPage", currentPage);
+		
+		return "emp/customerList";
+	}
 }

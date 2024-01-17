@@ -13,16 +13,15 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.example.haribo.mapper.CustomerMapper;
 import com.example.haribo.mapper.ProgramReservationMapper;
-import com.example.haribo.mapper.ReviewMapper;
 import com.example.haribo.vo.Customer;
 import com.example.haribo.vo.CustomerAttendance;
 import com.example.haribo.vo.CustomerDetail;
 import com.example.haribo.vo.CustomerImg;
-import com.example.haribo.vo.Review;
 
 import lombok.extern.slf4j.Slf4j;
 @Slf4j
@@ -231,5 +230,25 @@ public class CustomerService {
 	public String customerImgName(CustomerImg customerImg) {
 		
 		return customerMapper.selectCustomerImgName(customerImg);
+	}
+	
+	//회원 리스트
+	public List<HashMap<String, Object>> customerList(@RequestParam(defaultValue="1")int currentPage) {
+		int rowPerPage = 10;
+		int beginRow = (currentPage-1)*rowPerPage;
+		
+		List<HashMap<String,Object>> list = customerMapper.customerList(beginRow, rowPerPage);
+
+		return list;
+	}
+	
+	public int lastPage() {
+		int rowPerPage = 10;
+		int totalRow = customerMapper.getTotalRow();
+		int lastPage = totalRow/rowPerPage;
+		if(totalRow % rowPerPage !=0) {
+			lastPage +=1;
+		}
+		return lastPage;
 	}
 }

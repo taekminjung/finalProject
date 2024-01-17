@@ -163,7 +163,7 @@
        </li>
         
        <li>
-          <a href="${pageContext.request.contextPath}/searchEmployee">
+          <a href="${pageContext.request.contextPath}/customerList">
             <i class="fa fa-pencil"></i> <span>회원 조회</span>
           </a>
        </li>  

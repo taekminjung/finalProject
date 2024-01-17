@@ -1,6 +1,7 @@
 package com.example.haribo.service;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Map;
 import java.sql.Date;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -69,5 +70,10 @@ public class PaymentService {
 			}
 		}
 		return row;
+	}
+	
+	// 월별 매출 내역
+	public List<Payment> monthlyRevenue(Payment payment) {
+		return paymentMapper.monthlyRevenue(payment);
 	}
 }

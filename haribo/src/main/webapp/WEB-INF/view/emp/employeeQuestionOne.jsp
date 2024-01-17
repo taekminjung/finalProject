@@ -43,11 +43,14 @@
           ${resultQuestion.questionContent}
         </div>
         <!-- /.box-body -->
-        <div class="box-footer">
+        <div class="box-body">
         	<h4>답변</h4>
         	<c:forEach var="qr" items="${list}">
 			<div> ┗ ${qr.questionReplyContent}</div>
 			</c:forEach>
+			<div class="box-footer">
+				<a class="btn btn-danger" id="deleteBtn" href="${pageContext.request.contextPath}/deleteQuestion?questionNo=${resultQuestion.questionNo}">삭제</a>
+			</div>
         </div>
         <!-- /.box-footer-->
       </div>

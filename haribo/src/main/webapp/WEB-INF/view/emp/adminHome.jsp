@@ -81,8 +81,7 @@
       </div>
       
        <h1>
-        지점별 총매출
-        <small>Preview sample</small>
+        월별 총매출
       </h1>
 
       <div class="row">
@@ -90,7 +89,7 @@
           <!-- Bar Chart -->
           <div class="box box-success">
             <div class="box-header with-border">
-              <h3 class="box-title">Branch Total Sales</h3>
+              <h3 class="box-title">Monthly Revenue</h3>
               <div class="box-tools pull-right">
                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
                 <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
@@ -139,10 +138,10 @@ $(document).ready(function() {
         var chart = new Chart(ctx, {
             type: 'bar',
             data: {
-                labels: ["서울(본점)", "부산", "제주"],
+                labels: ["1월", "2월"],
                 datasets: [{
-                    label: '지점별 매출',
-                    data: [10, 20, 30],
+                    label: '월별 매출',
+                    data: [],
                     backgroundColor: [
                     	'rgba(255,99,132,0.2)',
                         'rgba(54,165,235,0.2)',

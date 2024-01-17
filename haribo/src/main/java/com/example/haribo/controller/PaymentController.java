@@ -24,4 +24,15 @@ public class PaymentController {
 		String u = "redirect:/customerSchedule?customerNo="+customerNo;
 		return u;
 	}
+	
+	@GetMapping("/adminHome")
+	public String monthlyRevenue(HttpSession session, Payment payment) {
+		// 세션 검사
+		if(session.getAttribute("loginEmployee") == null) {
+			return "redirect:/login";
+		}
+		
+		paymentService.monthlyRevenue(payment);
+		return "emp/adminHome";
+	}
 }

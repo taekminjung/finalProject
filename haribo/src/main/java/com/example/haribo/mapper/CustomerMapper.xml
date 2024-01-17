@@ -168,4 +168,25 @@
 		FROM customer_img
 		WHERE customer_no = #{customerNo}
 	</select>
+	
+	<select id="customerList" parameterType="java.util.Map" resultType="java.util.Map">
+		SELECT 
+			c.customer_id customerId,
+			cd.customer_name customerName,
+			cd.customer_gender customerGender,
+			cd.customer_phone customerPhone,
+			cd.customer_email customerEmail,
+			cd.customer_address customerAddress,
+			cd.customer_membership_end customerMembershipEnd,
+			c.createdate
+		FROM customer c INNER JOIN customer_detail cd
+		ON c.customer_no = cd.customer_no
+	</select>
+	
+	<select id="getTotalRow" resultType="int">
+		SELECT
+			COUNT(*)
+		FROM customer c INNER JOIN customer_detail cd
+		ON c.customer_no = cd.customer_no
+	</select>
 </mapper>

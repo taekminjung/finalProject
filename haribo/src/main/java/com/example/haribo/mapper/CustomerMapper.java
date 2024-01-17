@@ -64,4 +64,9 @@ public interface CustomerMapper {
 	
 	//회원 사진 이름 출력
 	String selectCustomerImgName(CustomerImg customerImg);
+	
+	//회원 리스트 출력
+	List<HashMap<String,Object>> customerList (int beginRow, int rowPerPage);
+	
+	int getTotalRow();
 }
