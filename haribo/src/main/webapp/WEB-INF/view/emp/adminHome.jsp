@@ -70,9 +70,9 @@
             <div class="box-body">
               <strong><i class="fa fa-user margin-r-5"></i>재고관리</strong>
               <p class="text-muted">
-					<input type="text" name="" value="" readonly style="border:none">
+					<input type="hidden" name="notAccept" value="${notAccept}" readonly style="border:none">
 					<tr>
-						<td>현재 확인되지 않은 발주 건은 총 입니다.</td>
+						<td>현재 확인되지 않은 발주는 총 ${notAccept} 건 입니다.</td>
 					</tr>
               </p>
               <hr>

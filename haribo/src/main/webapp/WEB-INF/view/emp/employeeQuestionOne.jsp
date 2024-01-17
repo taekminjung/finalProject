@@ -37,20 +37,43 @@
       <!-- Default box -->
       <div class="box">
         <div class="box-header with-border">
-          <h3 class="box-title">${resultQuestion.questionTitle}</h3>
+          <h3 class="box-title">${Question.questionTitle}</h3>
         </div>
         <div class="box-body">
-          ${resultQuestion.questionContent}
+          ${Question.questionContent}
         </div>
         <!-- /.box-body -->
-        <div class="box-body">
-        	<h4>답변</h4>
-        	<c:forEach var="qr" items="${list}">
-			<div> ┗ ${qr.questionReplyContent}</div>
-			</c:forEach>
-			<div class="box-footer">
-				<a class="btn btn-danger" id="deleteBtn" href="${pageContext.request.contextPath}/deleteQuestion?questionNo=${resultQuestion.questionNo}">삭제</a>
+        <div class="box-footer">
+	        <h4>답변</h4>
+	        <img class="direct-chat-img" src="emp/img/man.png">
+	        <c:forEach var="qr" items="${list}">
+			<div class="direct-chat-text"> ${qr.questionReplyContent} </div>
+			<!-- 각 댓글에 대한 삭제 버튼이 있는 폼 추가 -->
+			<div>
+            	<form action="${pageContext.request.contextPath}/deleteQuestionReply" method="post">
+                <input type="hidden" name="questionReplyNo" value="${qr.questionReplyNo}">
+                <input type="hidden" name="questionNo" value="${qr.questionNo}">
+                <button type="submit" class="btn btn-danger btn-flat">삭제하기</button>
+            	</form>
 			</div>
+			</c:forEach>
+			<br>
+			<div>
+	          <form action="${pageContext.request.contextPath}/trainerQuestionOne" method="post">
+	            <div class="input-group">
+	              <input type="text" name="questionReplyContent" id="questionReplyContent" placeholder="댓글을 입력하세요 ..." class="form-control">
+	              <input type="hidden" name="employeeId" id="employeeId" value="${loginEmployee.employeeId}"class="form-control">
+	              <input type="hidden" name="questionNo" id="questionNo" value="${question.questionNo}"class="form-control">
+	                  <span class="input-group-btn">
+	                    <button type="submit" class="btn btn-info btn-flat">입력하기</button>
+	                  </span>
+	            </div>
+	          </form>
+
+	        </div>
+			
+			
+
         </div>
         <!-- /.box-footer-->
       </div>

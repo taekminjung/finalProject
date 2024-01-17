@@ -19,7 +19,7 @@ public interface QuestionMapper {
 	List<Question> questionList (Map<String, Object> param);
 
 	Question questionOne(Question question);
-		
+	
 	int getTotalRow();
 	
 	int getTotalRow2(Question question);

@@ -1,6 +1,5 @@
 package com.example.haribo.controller;
 
-import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,13 +9,16 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.example.haribo.service.PaymentService;
+import com.example.haribo.service.SportsEquipmentService;
 import com.example.haribo.vo.Payment;
+import com.example.haribo.vo.SportsEquipmentOrder;
 
 import jakarta.servlet.http.HttpSession;
 
 @Controller
 public class PaymentController {
 	@Autowired private PaymentService paymentService;
+	@Autowired private SportsEquipmentService sportsEquipmentService;
 	//결제 내역 추가
 	@PostMapping("/insertPayment")
 	public String insertPayment(HttpSession session, Payment payment, int customerNo) {
@@ -29,14 +31,16 @@ public class PaymentController {
 	}
 	
 	@GetMapping("/adminHome")
-	public String monthlyRevenue(HttpSession session, Model model, Payment payment) {
+	public String monthlyRevenue(HttpSession session, Model model, Payment payment, SportsEquipmentOrder sportsEquipmentOrder) {
 		// 세션 검사
 		if(session.getAttribute("loginEmployee") == null) {
 			return "redirect:/login";
 		}
 		
 		Map<String,Object> list = paymentService.monthlyRevenue();
-
+		
+		int notAccept = sportsEquipmentService.countSportsEquipment(sportsEquipmentOrder);
+		
 		model.addAttribute("jan", list.get("1월"));
 		model.addAttribute("feb", list.get("2월"));
 		model.addAttribute("mar", list.get("3월"));
@@ -49,6 +53,7 @@ public class PaymentController {
 		model.addAttribute("oct", list.get("10월"));
 		model.addAttribute("nov", list.get("11월"));
 		model.addAttribute("dec", list.get("12월"));
+		model.addAttribute("notAccept", notAccept);
 		System.out.println(list.get("1월") + "Dd");
 		
 		return "emp/adminHome";

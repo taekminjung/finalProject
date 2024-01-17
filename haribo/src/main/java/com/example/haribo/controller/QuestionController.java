@@ -133,29 +133,13 @@ public class QuestionController {
 	// 문의사항 상세보기(직원)
 	@GetMapping("/employeeQuestionOne")
 	public String questionOneEmp(Model model, Question question) {
-		Question resultQuestion = questionService.questionOne(question);
-		model.addAttribute("resultQuestion", resultQuestion);
-		System.out.println(resultQuestion.getQuestionNo()+"<----getQuestionNo");
-		System.out.println(resultQuestion.getQuestionTitle()+"<----getQuestionTitle");
-		System.out.println(resultQuestion.getQuestionContent()+"<----getQuestionContent");
-		System.out.println(resultQuestion.getCustomerId()+"<----getCustomerId");
-		System.out.println(resultQuestion.getCreatedate()+"<----getCreatedate");
-	
-		return "emp/employeeQuestionOne";
-	}
-	
-	// 문의사항 리스트(트레이너)
-	@GetMapping("/trainerQuestion")
-	public String trainerQuestion(Model model, @RequestParam(defaultValue ="1")int currentPage) {
-		List<Question> list = questionService.questionList(currentPage);
-		int lastPage = questionService.lastPage();
-		model.addAttribute("currentPage", currentPage);
-		model.addAttribute("list", list);
-		model.addAttribute("lastPage", lastPage);
+		Question Question = questionService.questionOne(question);
+		List<QuestionReply> list = questionReplyService.selectquestionReply(question);
 		
-		System.out.println(lastPage+"<--lastPage");
-				
-		return "emp/trainerQuestion";
+		model.addAttribute("Question", Question);
+		model.addAttribute("list", list);
+		
+		return "emp/employeeQuestionOne";
 	}
 	
 	// 문의사항 상세보기(트레이너)
@@ -170,5 +154,19 @@ public class QuestionController {
 		model.addAttribute("list", list);
 	
 		return "emp/trainerQuestionOne";
+	}
+	
+	// 문의사항 리스트(트레이너)
+	@GetMapping("/trainerQuestion")
+	public String trainerQuestion(Model model, @RequestParam(defaultValue ="1")int currentPage) {
+		List<Question> list = questionService.questionList(currentPage);
+		int lastPage = questionService.lastPage();
+		model.addAttribute("currentPage", currentPage);
+		model.addAttribute("list", list);
+		model.addAttribute("lastPage", lastPage);
+		
+		System.out.println(lastPage+"<--lastPage");
+				
+		return "emp/trainerQuestion";
 	}
 }

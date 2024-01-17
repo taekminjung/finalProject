@@ -213,4 +213,8 @@ public class SportsEquipmentService {
 		return sportsEquipmentMapper.selectSportsEquipmentImgName(sportsEquipmentImg);
 	}
 	
+	public int countSportsEquipment(SportsEquipmentOrder sportsEquipmentOrder) {
+		return sportsEquipmentMapper.countSportsEquipment(sportsEquipmentOrder);
+	}
+	
 }

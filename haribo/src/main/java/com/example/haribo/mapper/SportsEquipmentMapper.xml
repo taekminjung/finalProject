@@ -196,4 +196,11 @@
 		FROM sports_equipment_img
 		WHERE sports_equipment_no = #{sportsEquipmentNo}
 	</select>
+	
+	<select id="countSportsEquipment" parameterType="com.example.haribo.vo.SportsEquipmentOrder" resultType="int">
+		SELECT
+			COUNT(*)
+		FROM sports_equipment_order
+		WHERE order_status = "대기"
+	</select>
 </mapper>
