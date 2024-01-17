@@ -78,7 +78,7 @@
   							<label for="datetime">상담을 원하시는 지점을 선택해주세요:
   							<select name="branchNo">
   							<c:forEach var="b" items="${blist}">
-  							<option name="branchNo" value="${b.branchNo}">${b.branchName}</option>
+  							<option value="${b.branchNo}">${b.branchName}</option>
   							</c:forEach>
   							</select>
   							</label>
