@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.example.haribo.mapper.ReviewMapper;
 import com.example.haribo.mapper.ReviewReplyMapper;
 import com.example.haribo.vo.Customer;
-import com.example.haribo.vo.Program;
+import com.example.haribo.vo.Employee;
 import com.example.haribo.vo.Review;
 import com.example.haribo.vo.ReviewReply;
 
@@ -48,7 +48,7 @@ public class ReviewService {
 		return map;
 	}
 	// 트레이너가 맡은 프로그램별로 볼 수 있는 리뷰 리스트
-	public List<Review> trainerReviewList(@RequestParam(defaultValue = "1") int currentPage) {
+	public List<HashMap<String, Object>> trainerReviewList(Employee employee, @RequestParam(defaultValue = "1") int currentPage) {
 		int rowPerPage = 5;
 		int beginRow = (currentPage -1) * rowPerPage;
 		int totalRow = reviewMapper.getTotalRow();
@@ -60,8 +60,9 @@ public class ReviewService {
 		param.put("beginRow", beginRow);
 		param.put("rowPerPage", rowPerPage);
 		param.put("lastPage", lastPage);
+		param.put("employee", employee);
+		List<HashMap<String, Object>> trainerReviewList = reviewMapper.trainerReviewList(param);
 		
-		List<Review> trainerReviewList = reviewMapper.trainerReviewList(param);
 		return trainerReviewList;
 	}
 		

@@ -20,7 +20,7 @@ public interface ReviewMapper {
 
 	List<Review> empReviewList(Map<String,Object> param);
 	// 트레이너 리뷰 리스트
-	List<Review> trainerReviewList(HashMap<String, Object> param);
+	List<HashMap<String, Object>> trainerReviewList(HashMap<String, Object> param);
 	
 	Review reviewOne(Review review);
 

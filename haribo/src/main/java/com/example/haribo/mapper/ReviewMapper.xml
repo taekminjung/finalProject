@@ -73,12 +73,11 @@
 	
 	</select>
 	
-	<select id="trainerReviewList" resultType="java.util.Map">
+	<select id="trainerReviewList" parameterType="java.util.HashMap" resultType="java.util.HashMap">
 		SELECT 
 		     r.review_no reviewNo,
 		     r.review_title reviewTitle,
 		     r.review_content reviewContent,
-		     p.employee_id employeeId,
 		     p.program_name programName,
 		     pm.customer_id customerId,
 		     e.employee_id employeeId,
@@ -100,7 +99,6 @@
 		INNER JOIN customer c
 		ON pm.customer_id = c.customer_id
 		WHERE e.employee_id = #{employeeId}
-		AND p.program_name = #{programName}
 	</select>
 	
 	

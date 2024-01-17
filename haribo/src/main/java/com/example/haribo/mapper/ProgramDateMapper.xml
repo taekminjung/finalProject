@@ -13,8 +13,16 @@
 		)
 	</insert>
 	
-	<select id="">
-	
-	
+	<select id="selectProgramDate" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		SELECT p.program_no programNo,
+			   p.program_name programName,
+			   pd.program_date programDate,
+			   p.employee_id employeeId,
+			   DAY(pd.program_date) programDateDay
+		FROM program p INNER JOIN program_date pd
+		ON p.program_no = pd.program_no
+		WHERE p.employee_id = #{employeeId}
+		AND YEAR(pd.program_date) = #{targetYear}
+		AND MONTH(pd.program_date) = #{targetMonth}
 	</select>
 </mapper>

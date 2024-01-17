@@ -40,7 +40,7 @@ public class TrainerHomeController {
 	// 잊지말고 로그인 세션 추가하기 
 	// 트레이너 홈페이지
 	@GetMapping("/trainerHome")
-	public String trainerHome(HttpSession session, Model model, Employee employee, ProgramDate programDate,
+	public String trainerHome(HttpSession session, Model model,
 								@RequestParam(required = false) Integer targetYear,
 								@RequestParam(required = false) Integer targetMonth
 								) {
@@ -48,17 +48,16 @@ public class TrainerHomeController {
 		if(session.getAttribute("loginEmployee") == null) {
 					return "redirect:/login";
 		}
-		
+		String employeeId = ((Map)session.getAttribute("loginEmployee")).get("employeeId").toString();
 		//Calendar Service 호출
 		Map<String, Object> calMap = calendarService.calendar(targetYear, targetMonth);
 		
 		// programList service 호출
-		List<ProgramDate> pdList = programDateService.programDateList(programDate);
+		List<HashMap<String,Object>> pdList = programDateService.programDateList(employeeId,(int)calMap.get("targetYear"),(int)calMap.get("targetMonth"));
 		
 		// model 
 		model.addAttribute("calMap", calMap);
 		model.addAttribute("pdList", pdList);
-		
 		return "emp/trainerHome";
 	}
 	

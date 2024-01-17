@@ -49,7 +49,7 @@ public class ReviewController {
 					return "redirect:/login";
 		}
 		// trainerReviewList 호출
-		List<Review> trainerReviewList = reviewService.trainerReviewList(currentPage);
+		List<HashMap<String,Object>> trainerReviewList = reviewService.trainerReviewList(employee, currentPage);
 		
 		// model
 		model.addAttribute("currentPage", currentPage);

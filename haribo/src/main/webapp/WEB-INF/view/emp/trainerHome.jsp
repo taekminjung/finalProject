@@ -92,9 +92,10 @@
 					<!-- 스케줄 불러오기 -->
 					<c:if test="${!(d < 1 || d > calMap.lastDate)}">
 						${d}<br>
-						<c:forEach var="t" items="${list}">
-						${t.programName }
-						
+						<c:forEach var="pd" items="${pdList}">
+						<c:if test="${d == pd.programDateDay }">
+							${pd.programName}
+						</c:if>
 						</c:forEach>
 					</c:if>
 					</td>
