@@ -17,7 +17,6 @@ import com.example.haribo.mapper.ReviewMapper;
 import com.example.haribo.vo.Branch;
 import com.example.haribo.vo.Employee;
 import com.example.haribo.vo.Program;
-import com.example.haribo.vo.ProgramDate;
 import com.example.haribo.vo.ProgramImg;
 
 import lombok.extern.slf4j.Slf4j;
@@ -206,10 +205,5 @@ public class ProgramService {
 	public List<Program> selectProgramListByTrainer(Employee employee){
 		log.debug(employee+"");
 		return programMapper.selectProgramListByTrainer(employee);
-	}
-
-	// 트레이너 프로그램 날짜 추가
-	public int insertProgramDate(ProgramDate programDate) {
-		return programMapper.insertProgramDate(programDate);
 	}
 }

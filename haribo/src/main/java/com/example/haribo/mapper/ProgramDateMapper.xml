@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.haribo.mapper.ProgramDateMapper">
+	
+	<!-- 트레이너 programDate 추가하기 -->
+	<insert id="insertProgramDate" parameterType="com.example.haribo.vo.ProgramDate">
+		INSERT INTO program_date(
+			program_no,
+			program_date
+		) VALUES (
+			#{programNo},
+			#{programDate}
+		)
+	</insert>
+	
+	<select id="">
+	
+	
+	</select>
+</mapper>

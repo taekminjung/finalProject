@@ -14,6 +14,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.example.haribo.service.CalendarService;
 import com.example.haribo.service.EmployeeService;
+import com.example.haribo.service.ProgramDateService;
 import com.example.haribo.service.ProgramService;
 import com.example.haribo.service.SportsEquipmentService;
 import com.example.haribo.vo.Branch;
@@ -34,15 +35,15 @@ public class TrainerHomeController {
 	@Autowired private CalendarService calendarService;
 	@Autowired private ProgramService programService;
 	@Autowired private SportsEquipmentService sportsEquipmentService;
-	
+	@Autowired private ProgramDateService programDateService;
 	
 	// 잊지말고 로그인 세션 추가하기 
 	// 트레이너 홈페이지
 	@GetMapping("/trainerHome")
-	public String trainerHome(HttpSession session, Model model, Employee employee,
+	public String trainerHome(HttpSession session, Model model, Employee employee, ProgramDate programDate,
 								@RequestParam(required = false) Integer targetYear,
-								@RequestParam(required = false) Integer targetMonth,
-								@RequestParam(defaultValue = "1") int currentPage) {
+								@RequestParam(required = false) Integer targetMonth
+								) {
 		// 세션 검사
 		if(session.getAttribute("loginEmployee") == null) {
 					return "redirect:/login";
@@ -52,11 +53,11 @@ public class TrainerHomeController {
 		Map<String, Object> calMap = calendarService.calendar(targetYear, targetMonth);
 		
 		// programList service 호출
-		List<Program> list = programService.programList(currentPage);
+		List<ProgramDate> pdList = programDateService.programDateList(programDate);
 		
 		// model 
 		model.addAttribute("calMap", calMap);
-		model.addAttribute("list", list);
+		model.addAttribute("pdList", pdList);
 		
 		return "emp/trainerHome";
 	}
@@ -118,10 +119,10 @@ public class TrainerHomeController {
 	
 	// 프로그램 예약 추가하기
 	@GetMapping("/trainerProgramDate")
-	public String trainerProgramDate(HttpSession session, Model model, Program program, Employee employee,
+	public String trainerProgramDate(HttpSession session, Model model, Program program, Employee employee, ProgramDate programDate,
 						@RequestParam(required = false) Integer targetYear,
-						@RequestParam(required = false) Integer targetMonth,
-						@RequestParam(defaultValue = "1") int currentPage) {
+						@RequestParam(required = false) Integer targetMonth
+						) {
 		// 세션 검사
 		if(session.getAttribute("loginEmployee") == null) {
 					return "redirect:/login";
@@ -130,12 +131,12 @@ public class TrainerHomeController {
 		//Calendar Service 호출
 		Map<String, Object> calMap = calendarService.calendar(targetYear, targetMonth);
 		
-		// programList service 호출
-		List<Program> list = programService.programList(currentPage);
+//		// programList service 호출
+//		List<ProgramDate> pdList = programDateService.programDateList(programDate);
 		
 		// model 
 		model.addAttribute("calMap", calMap);
-		model.addAttribute("list", list);
+//		model.addAttribute("pdList", pdList);
 		
 		return "emp/trainerProgramDate";
 	}
@@ -143,7 +144,7 @@ public class TrainerHomeController {
 	@PostMapping("/trainerProgramDate")
 	public String trainerProgramDate(ProgramDate programDate) {
 		log.debug(programDate.toString());
-		programService.insertProgramDate(programDate);
+		programDateService.insertProgramDate(programDate);
 		
 		return "redirect:/trainerHome";
 	}
