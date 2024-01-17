@@ -102,8 +102,10 @@
 								<input type="hidden" name="customerNo" value="${loginCustomer.customerNo }">
 								<div align="center">
 									<div class="textDiv">
-										<br><br><h3>프로그램과 지점을 선택하시면 </h3>
-										<br><h3>예약 가능 날짜가 출력되고 예약 버튼이 활성화 됩니다.</h3><br><br>
+										<br><br><h3>원하시는 프로그램과 지점을 선택해주세요</h3>
+										<br><h3>예약 가능 일자가 출력되고 예약 버튼이 활성화 됩니다.</h3>
+										<br><h6 style="color:red;">*예약은 프로그램 실시 전날까지 가능합니다*</h6>
+										<br><h6 style="color:red;">*멤버십이 없으시면 날짜가 출력되지 않습니다.*</h6><br><br>
 									</div>
 									<h3><input type="checkbox" id="ckCtrl">&nbsp;전체 선택</h3><br>
 									<div class="formDiv">
