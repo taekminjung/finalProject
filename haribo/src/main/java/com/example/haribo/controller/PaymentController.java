@@ -1,10 +1,13 @@
 package com.example.haribo.controller;
 
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.haribo.service.PaymentService;
 import com.example.haribo.vo.Payment;
@@ -26,13 +29,15 @@ public class PaymentController {
 	}
 	
 	@GetMapping("/adminHome")
-	public String monthlyRevenue(HttpSession session, Payment payment) {
+	public String monthlyRevenue(HttpSession session, Model model, Payment payment) {
 		// 세션 검사
 		if(session.getAttribute("loginEmployee") == null) {
 			return "redirect:/login";
 		}
 		
-		paymentService.monthlyRevenue(payment);
+		List<Map<String,Object>> list = paymentService.monthlyRevenue(payment);
+		
+		model.addAttribute("list", list);
 		return "emp/adminHome";
 	}
 }

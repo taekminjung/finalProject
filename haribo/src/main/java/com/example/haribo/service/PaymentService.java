@@ -73,7 +73,8 @@ public class PaymentService {
 	}
 	
 	// 월별 매출 내역
-	public List<Payment> monthlyRevenue(Payment payment) {
+	public List<Map<String,Object>> monthlyRevenue(Payment payment) {
+		
 		return paymentMapper.monthlyRevenue(payment);
 	}
 }

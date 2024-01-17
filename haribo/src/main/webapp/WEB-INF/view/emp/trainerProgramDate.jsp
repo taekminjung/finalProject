@@ -61,6 +61,9 @@
 		<br><br>
 		<!-- 달력 부분 -->
 		<form action="${pageContext.request.contextPath}/trainerProgramDate" method="post">
+		<input type="hidden" name="targetYear" value="${calMap.targetYear}">
+		<input type="hidden" name="targetMonth" value="${calMap.targetMonth+1}">
+		<input type="hidden" name="programNo" value="${programDate.programNo}">
 		<table class="table table-bordered" style="font-size:15px;" >
 				<tr>
 					<th class="col-lg-1" style="color:red; text-align:center;">일</th>
@@ -92,8 +95,7 @@
 					
 					<c:if test="${!(d < 1 || d > calMap.lastDate)}">
 						${d}
-						<br><input type="checkbox" value="${programDate.programDate}" style="width: 30px; height: 30px;"><br>
-						<input type="hidden" value="${programDate.programNo}">
+						<br><input type="checkbox" name="d" value="${d}" style="width: 30px; height: 30px;"><br>					
 					</c:if>
 					</td>
 					<c:if test="${i < calMap.totalTd && i % 7 == 0}">

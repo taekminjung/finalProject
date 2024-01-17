@@ -119,7 +119,7 @@ public class TrainerHomeController {
 	
 	// 프로그램 예약 추가하기
 	@GetMapping("/trainerProgramDate")
-	public String trainerProgramDate(HttpSession session, Model model, Program program, Employee employee, ProgramDate programDate,
+	public String trainerProgramDate(HttpSession session, Model model, Employee employee, ProgramDate programDate,
 						@RequestParam(required = false) Integer targetYear,
 						@RequestParam(required = false) Integer targetMonth
 						) {
@@ -131,20 +131,19 @@ public class TrainerHomeController {
 		//Calendar Service 호출
 		Map<String, Object> calMap = calendarService.calendar(targetYear, targetMonth);
 		
-//		// programList service 호출
-//		List<ProgramDate> pdList = programDateService.programDateList(programDate);
-		
 		// model 
 		model.addAttribute("calMap", calMap);
-//		model.addAttribute("pdList", pdList);
 		
 		return "emp/trainerProgramDate";
 	}
 	
 	@PostMapping("/trainerProgramDate")
-	public String trainerProgramDate(ProgramDate programDate) {
-		log.debug(programDate.toString());
-		programDateService.insertProgramDate(programDate);
+	public String trainerProgramDate(ProgramDate programDate ,
+						@RequestParam(required = false) Integer targetYear,
+						@RequestParam(required = false) Integer targetMonth,
+						Integer[] d) {
+
+		programDateService.insertProgramDate(programDate, targetYear, targetMonth, d);
 		
 		return "redirect:/trainerHome";
 	}

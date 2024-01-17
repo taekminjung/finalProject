@@ -1,5 +1,6 @@
 package com.example.haribo.service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,8 +20,12 @@ public class ProgramDateService {
 	@Autowired private ProgramDateMapper programDateMapper;
 
 	// 프로그램 날짜 추가하기(트레이너)
-	public int insertProgramDate(ProgramDate programDate) {
-		return programDateMapper.insertProgramDate(programDate);
+	public void insertProgramDate(ProgramDate paramProgramDate, Integer targetYear, Integer targetMonth, Integer[] d) {
+		for(int i=0; i<d.length; i++) {
+			String programDate = LocalDate.of(targetYear, targetMonth, d[i]).toString();
+			paramProgramDate.setProgramDate(programDate);
+			programDateMapper.insertProgramDate(paramProgramDate);
+		}
 	}
 
 	// 프로그램 날짜 리스트

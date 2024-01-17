@@ -38,9 +38,10 @@
 							WHERE customer_id = #{customerId})
 	</select>
 	
-	<select id="monthlyRevenue" resultType="com.example.haribo.vo.Payment">
-		SELECT 
-			SUM(p.payment_price)
+	<select id="monthlyRevenue" resultType="java.util.Map">
+		SELECT
+			MONTH(p.payment_date) month,
+			SUM(p.payment_price) monthlyRevenue
 		FROM payment p
 		GROUP BY MONTH(p.payment_date)
 		ORDER BY MONTH(p.payment_date);
