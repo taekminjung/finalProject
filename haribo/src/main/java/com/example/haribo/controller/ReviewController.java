@@ -11,9 +11,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.example.haribo.service.ProgramService;
 import com.example.haribo.service.ReviewReplyService;
 import com.example.haribo.service.ReviewService;
 import com.example.haribo.vo.Customer;
+import com.example.haribo.vo.Employee;
 import com.example.haribo.vo.Program;
 import com.example.haribo.vo.Review;
 import com.example.haribo.vo.ReviewReply;
@@ -24,8 +26,8 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @Controller
 public class ReviewController {
-	@Autowired ReviewService reviewService;
-	@Autowired ReviewReplyService reviewReplyService;
+	@Autowired private ReviewService reviewService;
+	@Autowired private ReviewReplyService reviewReplyService;
 	
 	// 리뷰 리스트
 	@GetMapping("/reviewList")
@@ -40,12 +42,19 @@ public class ReviewController {
 	
 	// 리뷰 리스트 (트레이너)
 	@GetMapping("/trainerReview")
-	public String trainerReview(Model model, @RequestParam(defaultValue = "1") int currentPage) {
-		List<Review> trainerlist = reviewService.empReviewList(currentPage);
-		int lastPage = reviewService.lastPage();
+	public String trainerReview(HttpSession session, Model model, Employee employee, Review review,
+								@RequestParam(defaultValue = "1") int currentPage) {
+		// 세션 검사
+		if(session.getAttribute("loginEmployee") == null) {
+					return "redirect:/login";
+		}
+		// trainerReviewList 호출
+		List<Review> trainerReviewList = reviewService.trainerReviewList(currentPage);
+		
+		// model
 		model.addAttribute("currentPage", currentPage);
-		model.addAttribute("trainerlist", trainerlist);
-		model.addAttribute("lastPage", lastPage);
+		model.addAttribute("trainerReviewList", trainerReviewList);
+		model.addAttribute("review", review);
 		
 		return "emp/trainerReview";
 	}

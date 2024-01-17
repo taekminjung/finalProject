@@ -60,38 +60,49 @@
 		<br>
 		<br>
 		
-		<table class="table table-bordered" style="table-layout:fixed">
-						<tr>
-							<th class="col-lg-1" style="color:red">일</th>
-							<th class="col-lg-1">월</th>
-							<th class="col-lg-1">화</th>
-							<th class="col-lg-1">수</th>
-							<th class="col-lg-1">목</th>
-							<th class="col-lg-1">금</th>
-							<th class="col-lg-1">토</th>
-						</tr>
-						<tr style="height:200px">
-						<c:forEach var="i" begin="1" end="${calMap.totalTd}" step="1">
-							<c:set var="d" value="${i - calMap.beginBlank }"></c:set>
-							<c:if test="${i % 7 == 1 }">
-								<td style="color:red">
-							</c:if>
-							<c:if test="${!(i % 7 == 1)}">
-								<td>
-							</c:if>
-							<c:if test="${d < 1 || d > calMap.lastDate}">
-								&nbsp;
-							</c:if>
-							<c:if test="${!(d < 1 || d > calMap.lastDate)}">
-								${d}<input type="checkbox"><br>
-								
-							</c:if>
-							</td>
-							<c:if test="${i < calMap.totalTd && i % 7 == 0}">
-								</tr><tr style="height:200px">	
-							</c:if>
-						</c:forEach>
-					</table>
+		<form>
+		<table class="table table-bordered" style="table-layout:fixed; font-size:20px;">
+				<tr>
+					<th class="col-lg-1" style="color:red; text-align:center;">일</th>
+					<th class="col-lg-1" style="text-align:center;">월</th>
+					<th class="col-lg-1" style="text-align:center;">화</th>
+					<th class="col-lg-1" style="text-align:center;">수</th>
+					<th class="col-lg-1" style="text-align:center;">목</th>
+					<th class="col-lg-1" style="text-align:center;">금</th>
+					<th class="col-lg-1" style="text-align:center;">토</th>
+				</tr>
+				
+				<tr style="height:200px">
+				<c:forEach var="i" begin="1" end="${calMap.totalTd}" step="1">
+					<c:set var="d" value="${i - calMap.beginBlank }"></c:set>
+					
+					<!-- 첫번째 칸(일요일) -->
+					<c:if test="${i % 7 == 1 }">
+						<td style="color:red">
+					</c:if>
+					
+					<!-- 그 외 칸(월화수목금토) -->
+					<c:if test="${!(i % 7 == 1)}">
+						<td>
+					</c:if>
+					
+					<!-- 일요일 카 -->
+					<c:if test="${d < 1 || d > calMap.lastDate}">
+						&nbsp;
+					</c:if>
+					
+					<c:if test="${!(d < 1 || d > calMap.lastDate)}">
+						${d}
+						<br><input type="checkbox" style="width: 30px; height: 30px;"><br>
+					</c:if>
+					</td>
+					<c:if test="${i < calMap.totalTd && i % 7 == 0}">
+						</tr><tr style="height:200px">	
+					</c:if>
+				</c:forEach>
+		</table>
+		<div><button type="submit" class="btn btn-info pull-right btn-lg">스케줄 추가하기</button></div>
+		</form>
 	</div>
     </section>
     <!-- 페이지 메인 내용 끝 -->

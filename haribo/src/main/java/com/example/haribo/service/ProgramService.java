@@ -27,6 +27,7 @@ import lombok.extern.slf4j.Slf4j;
 public class ProgramService {
 	@Autowired private ProgramMapper programMapper;
 	@Autowired private ReviewMapper reviewMapper;
+	
 	public int insertProgram(Program program) {
 		int row = programMapper.insertProgram(program);
 		if(row != 1) {

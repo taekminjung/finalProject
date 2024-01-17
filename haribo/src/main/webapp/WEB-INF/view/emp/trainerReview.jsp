@@ -59,7 +59,7 @@
                   <th>작성일</th>
                 </tr>
                 
-                <c:forEach var="r" items="${trainerlist}">
+                <c:forEach var="r" items="${trainerReviewList}">
                 <tr>
                   <td>${r.reviewNo}</td>
                   <td><a href="${pageContext.request.contextPath}/trainerReviewOne?reviewNo=${r.reviewNo}">${r.reviewTitle}</a></td>

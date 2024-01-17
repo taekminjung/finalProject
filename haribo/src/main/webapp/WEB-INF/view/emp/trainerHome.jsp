@@ -83,8 +83,10 @@
 								&nbsp;
 							</c:if>
 							<c:if test="${!(d < 1 || d > calMap.lastDate)}">
-								${d}<input type="checkbox"><br>
+								${d}<br>
+								<c:forEach var="p" items="${list}">
 								
+								</c:forEach>
 							</c:if>
 							</td>
 							<c:if test="${i < calMap.totalTd && i % 7 == 0}">

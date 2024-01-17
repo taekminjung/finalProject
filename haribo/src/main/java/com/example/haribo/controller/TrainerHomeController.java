@@ -136,7 +136,7 @@ public class TrainerHomeController {
 		model.addAttribute("calMap", calMap);
 		model.addAttribute("list", list);
 		
-		return "redirect:/trainerProgramDate?programNo="+program.getProgramNo();
+		return "emp/trainerProgramDate";
 	}
 	
 	// 재고관리(트레이너)

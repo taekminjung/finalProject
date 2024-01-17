@@ -47,7 +47,24 @@ public class ReviewService {
 		
 		return map;
 	}
-	
+	// 트레이너가 맡은 프로그램별로 볼 수 있는 리뷰 리스트
+	public List<Review> trainerReviewList(@RequestParam(defaultValue = "1") int currentPage) {
+		int rowPerPage = 5;
+		int beginRow = (currentPage -1) * rowPerPage;
+		int totalRow = reviewMapper.getTotalRow();
+		int lastPage = totalRow / rowPerPage;
+		if(totalRow % rowPerPage !=0) {
+			lastPage +=1;
+		}
+		HashMap<String, Object> param = new HashMap<>();
+		param.put("beginRow", beginRow);
+		param.put("rowPerPage", rowPerPage);
+		param.put("lastPage", lastPage);
+		
+		List<Review> trainerReviewList = reviewMapper.trainerReviewList(param);
+		return trainerReviewList;
+	}
+		
 	// 리뷰리스트(트레이너) 페이징
 	public List<Review> empReviewList(@RequestParam(defaultValue = "1") int currentPage) {
 		int rowPerPage = 10;
@@ -62,8 +79,8 @@ public class ReviewService {
 		param.put("rowPerPage", rowPerPage);
 		param.put("lastPage", lastPage);
 		
-		List<Review> trainerlist = reviewMapper.empReviewList(param);
-		return trainerlist;
+		List<Review> empReviewList = reviewMapper.empReviewList(param);
+		return empReviewList;
 	}
 	
 	// 리뷰 상세보기(트레이너)
@@ -113,7 +130,5 @@ public class ReviewService {
 		myReviewMap.put("replyList",reviewMapper.reviewReplyList());
 		
 		return myReviewMap;
-	}
-	
+	}	
 }
-	

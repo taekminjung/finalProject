@@ -19,6 +19,8 @@ public interface ReviewMapper {
 	List<ReviewReply> reviewReplyList();
 
 	List<Review> empReviewList(Map<String,Object> param);
+	// 트레이너 리뷰 리스트
+	List<Review> trainerReviewList(HashMap<String, Object> param);
 	
 	Review reviewOne(Review review);
 

@@ -70,7 +70,39 @@
 		INNER JOIN branch b
 		ON pr.branch_no = b.branch_no
 		WHERE pr.program_reservation_no = #{programReservationNo}
+	
 	</select>
+	
+	<select id="trainerReviewList" resultType="java.util.Map">
+		SELECT 
+		     r.review_no reviewNo,
+		     r.review_title reviewTitle,
+		     r.review_content reviewContent,
+		     p.employee_id employeeId,
+		     p.program_name programName,
+		     pm.customer_id customerId,
+		     e.employee_id employeeId,
+		     b.branch_name branchName,
+		     r.createdate
+		FROM review r
+		INNER JOIN program_reservation pr
+		ON r.program_reservation_no = pr.program_reservation_no
+		INNER JOIN payment pm
+		ON pr.payment_no = pm.payment_no
+		INNER JOIN program_date pd
+		ON pr.program_date_no = pd.program_date_no
+		INNER JOIN program p
+		ON pd.program_no = p.program_no
+		INNER JOIN employee e
+		ON p.employee_id = e.employee_id
+		INNER JOIN branch b
+		ON pr.branch_no = b.branch_no
+		INNER JOIN customer c
+		ON pm.customer_id = c.customer_id
+		WHERE e.employee_id = #{employeeId}
+		AND p.program_name = #{programName}
+	</select>
+	
 	
 	<select id="empReviewList" resultType="java.util.Map">
 		SELECT
