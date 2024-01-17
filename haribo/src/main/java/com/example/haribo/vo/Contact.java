@@ -10,4 +10,5 @@ public class Contact {
 		private String customerContactDate;
 		private String contactContent;
 		private String customerPhone;
+		private int branchNo;
 }

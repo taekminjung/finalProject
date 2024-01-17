@@ -75,6 +75,13 @@
 								<div><br></div>
 							<label for="datetime">원하시는 상담 날짜와 시간을 선택해주세요:
   							<input type="datetime-local" name="customerContactDate" max="2100-01-01T21:00" min="1950-01-01T12:30" style="border:none"></label>
+  							<label for="datetime">상담을 원하시는 지점을 선택해주세요:
+  							<select name="branchNo">
+  							<c:forEach var="b" items="${blist}">
+  							<option name="branchNo" value="${b.branchNo}">${b.branchName}</option>
+  							</c:forEach>
+  							</select>
+  							</label>
 							</div>
 							<div class="col-lg-6 form-group">
 								<input name="customerName" placeholder="상담 신청자명을 입력해주세요" onfocus="this.placeholder = ''" onblur="this.placeholder = '이름을 입력하세요'"
