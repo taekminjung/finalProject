@@ -16,6 +16,7 @@ INSERT INTO contact(
 
 	<select id="contactCustomer" parameterType="java.util.Map" resultType="java.util.Map">
 	SELECT
+		branch_no branchNo,
 		customer_birth customerBirth,
 		customer_contact_date customerContactDate,
 		customer_name customerName,
