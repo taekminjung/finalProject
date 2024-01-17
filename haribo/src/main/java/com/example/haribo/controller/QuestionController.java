@@ -53,11 +53,10 @@ public class QuestionController {
 		int row = questionService.updateQuestion(question);
 		if(row == 0) {
 			System.out.println("업데이트 실패");
-			return "redirect:/questionOne?questionNo="+question.getQuestionNo();
 		} else {
 			System.out.println("업데이트 성공");
 		}
-			return "redirect:/questionList";
+		return "redirect:/questionOne?questionNo="+question.getQuestionNo();
 	}
 	
 	// 문의 글 삭제하기

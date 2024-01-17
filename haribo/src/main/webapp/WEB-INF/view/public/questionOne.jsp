@@ -43,7 +43,7 @@
 
 	<!-- start banner Area -->
 	<section class="banner-area relative about-banner" id="home">
-		<img class="cta-img img-fluid" src="img/cta-img.png" alt="">
+		<img class="cta-img img-fluid" src="customer/img/cta-img.png" alt="">
 		<div class="overlay overlay-bg"></div>
 		<div class="container">
 			<div class="row d-flex align-items-center justify-content-center">
@@ -78,26 +78,32 @@
 <section>
 			<div class="row justify-content-center">
 				<div class="table-wrap col-lg-10">
+					<h3 style="text-align:center">문의사항</h3><br>
 					<table class="schdule-table table table-bordered">
 						<thead class="thead-light">
 							<tr>
-								<th class="head" scope="col">번호</th>
-								<th class="head" scope="col">제목</th>
-								<th class="head" scope="col">문의내용</th>
-								<th class="head" scope="col">작성자</th>
-								<th class="head" scope="col">작성일자</th>
+								<th class="head" scope="col" colspan="5">고객 문의</th>
 							</tr>
 						</thead>
 						<tbody>
 							<tr>
-								<td>${resultQuestion.questionNo}</td>
-								<td>${resultQuestion.questionTitle}</td>
-								<td>${resultQuestion.questionContent}</td>
-								<td>${resultQuestion.customerId}</td>
-								<td>${resultQuestion.createdate}</td>
+								<td>제목</td>
+								<td colspan="3">${resultQuestion.questionTitle}</td>
+							</tr>
+							<tr>
+								<td>문의내용</td>
+								<td colspan="3">${resultQuestion.questionContent}</td>
+							</tr>
+							<tr>
+								<td>번호 : ${resultQuestion.questionNo}</td>
+								<td>작성자 : ${resultQuestion.customerId}</td>
+								<td>작성일자 : ${resultQuestion.createdate}</td>
 							</tr>
 						</tbody>
 					</table>
+					<c:if test="${resultQuestion.customerId == loginCustomer.customerId}">
+						<div style="text-align:right"><a class=" btn btn-outline-danger mt-10" href="${pageContext.request.contextPath}/deleteQuestion?questionNo=${question.questionNo}">문의 글 삭제</a></div>
+					</c:if><br>
 					<h3 style="text-align:center">문의사항 답변</h3><br>
 					<table class="schdule-table table table-bordered">
 						<thead class="thead-light">
@@ -116,38 +122,37 @@
 								<td>${r.employeeId}</td>
 								<td>${r.createdate}</td>
 							</tr>
-								</c:forEach>
+							</c:forEach>
 						</tbody>
 					</table>
-					<c:if test="${resultQuestion.customerId == loginCustomer.customerId}">
-					<div style="text-align:center"><a class="primary-btn mt-10" href="${pageContext.request.contextPath}/deleteQuestion?questionNo=${question.questionNo}">문의 글 삭제</a></div>
-					</c:if>
 					<br>						
 					</section>
 					<section>
 					<c:if test="${resultQuestion.customerId == loginCustomer.customerId}">
 						<h3 style="text-align:center"> 수정</h3><br>
 						<table class="schdule-table table table-bordered">
-						<thead class="thead-light">
-							<tr>
-								<th class="head" scope="col">제목</th>
-								<th class="head" scope="col">내용</th>
-							</tr>
-						</thead>
-						<tbody>
-							<form action="${pageContext.request.contextPath}/updateQuestion" method="post">
-								<input type="hidden" value="${question.questionNo}" name="questionNo">
-							<tr>
-								<td><input type="text" name="questionTitle" style="border:0; border-radius:15px; outline: none;  background-color: rgb(204, 229, 255)"></td>
-								<td><textarea name="questionContent" style="border:0; border-radius:15px; outline: none;  background-color: rgb(204, 229, 255)"></textarea></td>
-							</tr>
-						</tbody>
-					</table>
+							<thead class="thead-light">
+								<tr>
+									<th class="head" scope="col" colspan="2">수정하기</th>
+								</tr>
+							</thead>
+							<tbody>
+								<form action="${pageContext.request.contextPath}/updateQuestion" method="post">
+									<input type="hidden" value="${resultQuestion.questionNo}" name="questionNo">
+								<tr>
+									<th class="head" scope="col">제목</th>
+									<td><input class="single-input" type="text" name="questionTitle" value="${resultQuestion.questionTitle}" style="border:0; border-radius:15px; outline: none;"></td>
+								</tr>
+								<tr>
+									<th class="head" scope="col">내용</th>
+									<td><textarea class="single-textarea" name="questionContent"  style="border:0; border-radius:15px; outline: none;">${resultQuestion.questionContent}</textarea></td>
+								</tr>
+							</tbody>
+						</table>
 					<div style="text-align:center">
-							<button type="submit"  class="primary-btn mt-10">수정</button>
+							<button type="submit"  class="btn btn-outline-dark mt-10">수정</button>
 					</div>
 							</form>
-							<div style="text-align:center"></div>
 					</c:if>
 					</section>
 				</div>
