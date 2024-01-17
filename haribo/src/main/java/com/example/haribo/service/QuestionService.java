@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.management.RuntimeErrorException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -31,16 +33,14 @@ public class QuestionService {
 	}
 
 	// 문의사항 삭제
-	public int deleteQuestion(Question question, QuestionReply questionReply) {
-		int row = questionReplyMapper.selectQuestionReply(question);
+	public void deleteQuestion(Question question, QuestionReply questionReply) {
+		int row = questionReplyMapper.deleteQuestionReply(questionReply);
 				
-		if(row != 0) {
-			questionReplyMapper.deleteQuestionReply(questionReply);
-			questionMapper.deleteQuestion(question);
+		if(row != 1) {
+			throw new RuntimeErrorException(null);
 		} else { 
-			questionMapper.deleteQuestion(question);		
+			int row2 = questionMapper.deleteQuestion(question);		
 		}
-		return row;
 	}
 	
 	// 문의사항 리스트 페이징

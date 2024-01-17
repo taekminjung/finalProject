@@ -35,9 +35,22 @@ public class PaymentController {
 			return "redirect:/login";
 		}
 		
-		List<Map<String,Object>> list = paymentService.monthlyRevenue(payment);
+		Map<String,Object> list = paymentService.monthlyRevenue();
+
+		model.addAttribute("jan", list.get("1월"));
+		model.addAttribute("feb", list.get("2월"));
+		model.addAttribute("mar", list.get("3월"));
+		model.addAttribute("apr", list.get("4월"));
+		model.addAttribute("may", list.get("5월"));
+		model.addAttribute("jun", list.get("6월"));
+		model.addAttribute("jul", list.get("7월"));
+		model.addAttribute("aug", list.get("8월"));
+		model.addAttribute("sep", list.get("9월"));
+		model.addAttribute("oct", list.get("10월"));
+		model.addAttribute("nov", list.get("11월"));
+		model.addAttribute("dec", list.get("12월"));
+		System.out.println(list.get("1월") + "Dd");
 		
-		model.addAttribute("list", list);
 		return "emp/adminHome";
 	}
 }

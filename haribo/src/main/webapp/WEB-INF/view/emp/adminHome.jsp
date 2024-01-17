@@ -34,11 +34,9 @@
 
     <!-- Main content -->
     <section class="content">
-
-      
-       <h1>
+      <h3>
         월별 총매출
-      </h1>
+      </h3>
 
       <div class="row">
         <div class="col-md-6">
@@ -48,7 +46,6 @@
               <h3 class="box-title">Monthly Revenue</h3>
               <div class="box-tools pull-right">
                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
-                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
               </div>
             </div>
             <div class="box-body">
@@ -58,8 +55,46 @@
         </div>
       </div>
     </section>
-  </div>
 
+   <section class="content">
+
+      <div class="row">
+        <div class="col-md-5">
+          <!-- About Me Box -->
+          <div class="box box-primary">
+            <div class="box-header with-border">
+              <h3 class="box-title">발주 알림</h3>
+
+            </div>
+            
+            <div class="box-body">
+              <strong><i class="fa fa-user margin-r-5"></i>재고관리</strong>
+              <p class="text-muted">
+					<input type="text" name="" value="" readonly style="border:none">
+					<tr>
+						<td>현재 확인되지 않은 발주 건은 총 입니다.</td>
+					</tr>
+              </p>
+              <hr>
+
+             
+
+            </div>
+          </div>
+        </div>
+        </div>
+    </section>
+
+
+
+
+
+
+
+
+
+
+  </div>
   <footer class="main-footer">
     <div class="pull-right hidden-xs">
       <b>Version</b> 2.4.13
@@ -82,19 +117,24 @@
 
 <script>
 $(document).ready(function() {
-
     var ctx = document.getElementById("barChart");
-    var dataFromServer = ${list};
     
     if (ctx) {
+        var months = [];
+        var datasum = [];
+        
+        for (var i = 1; i <= 12; i++) {
+            months.push(i + "월");
+        }
 
         var chart = new Chart(ctx, {
             type: 'bar',
             data: {
-                labels: ["1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월", "11월", "12월"],
+                labels: months,
                 datasets: [{
                     label: '월별 매출',
-                    data: dataFromServer,
+                    data: [${jan}, ${feb}, ${mar}, ${apr}, ${may}, ${jun}, ${jul}, ${aug}
+                    , ${sep}, ${oct}, ${nov}, ${dec}],
                     backgroundColor: [
                         'rgba(255,99,132,0.2)',
                         'rgba(54,165,235,0.2)',
@@ -129,8 +169,6 @@ $(document).ready(function() {
     }
 });
 </script>
-
-
 
 </body>
 </html>
