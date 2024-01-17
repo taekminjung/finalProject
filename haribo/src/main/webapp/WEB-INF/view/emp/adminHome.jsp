@@ -5,7 +5,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>AdminLTE 2 | Dashboard</title>
+  <title>홈페이지</title>
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <link rel="stylesheet" href="emp/bower_components/bootstrap/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="emp/bower_components/font-awesome/css/font-awesome.min.css">
@@ -34,51 +34,7 @@
 
     <!-- Main content -->
     <section class="content">
-      <div class="row">
-        <div class="col-md-3 col-sm-6 col-xs-12">
-          <div class="info-box">
-            <span class="info-box-icon bg-aqua"><i class="ion ion-ios-gear-outline"></i></span>
 
-            <div class="info-box-content">
-              <span class="info-box-text">CPU Traffic</span>
-              <span class="info-box-number">90<small>%</small></span>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-3 col-sm-6 col-xs-12">
-          <div class="info-box">
-            <span class="info-box-icon bg-red"><i class="fa fa-google-plus"></i></span>
-
-            <div class="info-box-content">
-              <span class="info-box-text">Likes</span>
-              <span class="info-box-number">41,410</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="clearfix visible-sm-block"></div>
-
-        <div class="col-md-3 col-sm-6 col-xs-12">
-          <div class="info-box">
-            <span class="info-box-icon bg-green"><i class="ion ion-ios-cart-outline"></i></span>
-
-            <div class="info-box-content">
-              <span class="info-box-text">Sales</span>
-              <span class="info-box-number">760</span>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-3 col-sm-6 col-xs-12">
-          <div class="info-box">
-            <span class="info-box-icon bg-yellow"><i class="ion ion-ios-people-outline"></i></span>
-
-            <div class="info-box-content">
-              <span class="info-box-text">New Members</span>
-              <span class="info-box-number">2,000</span>
-            </div>
-          </div>
-        </div>
-      </div>
       
        <h1>
         월별 총매출
@@ -110,8 +66,6 @@
     </div>
   </footer>
 </div>
-	<div class="control-sidebar-bg"></div>
-	</div>
 
 <!-- jQuery 3 -->
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -127,43 +81,56 @@
 <script src="emp/dist/js/demo.js"></script>
 
 <script>
-	
 $(document).ready(function() {
 
     var ctx = document.getElementById("barChart");
-//	var price1 = ${price}
+    var dataFromServer = ${list};
     
     if (ctx) {
 
         var chart = new Chart(ctx, {
             type: 'bar',
             data: {
-                labels: ["1월", "2월", "3월", "4월", "5월" , "6월" , "7월" , "8월" , "9월" , "10월" , "11월" , "12월"],
+                labels: ["1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월", "11월", "12월"],
                 datasets: [{
                     label: '월별 매출',
-                    data: [for(var i = 1, i<13; i++){
-                    	document.write(i);
-                    }],
+                    data: dataFromServer,
                     backgroundColor: [
-                    	'rgba(255,99,132,0.2)',
+                        'rgba(255,99,132,0.2)',
+                        'rgba(54,165,235,0.2)',
+                        'rgba(75,192,192,0.2)',
+                        'rgba(255,99,132,0.2)',
+                        'rgba(54,165,235,0.2)',
+                        'rgba(75,192,192,0.2)',
+                        'rgba(255,99,132,0.2)',
+                        'rgba(54,165,235,0.2)',
+                        'rgba(75,192,192,0.2)',
+                        'rgba(255,99,132,0.2)',
                         'rgba(54,165,235,0.2)',
                         'rgba(75,192,192,0.2)'
-                    	],
+                    ],
                     borderColor: [
-                    	'rgba(255,99,132,1)',	
-                    	'rgba(54,165,235,1)',
-                    	'rgba(75,192,192,1)'
-                    	]
+                        'rgba(255,99,132,1)',
+                        'rgba(54,165,235,1)',
+                        'rgba(75,192,192,1)',
+                        'rgba(255,99,132,1)',
+                        'rgba(54,165,235,1)',
+                        'rgba(75,192,192,1)',
+                        'rgba(255,99,132,1)',
+                        'rgba(54,165,235,1)',
+                        'rgba(75,192,192,1)',
+                        'rgba(255,99,132,1)',
+                        'rgba(54,165,235,1)',
+                        'rgba(75,192,192,1)'
+                    ]
                 }]
             }
         });
     }
 });
-
-
-
-
 </script>
+
+
 
 </body>
 </html>

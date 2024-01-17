@@ -74,7 +74,7 @@ public class PaymentService {
 	
 	// 월별 매출 내역
 	public List<Map<String,Object>> monthlyRevenue(Payment payment) {
-		
+		log.debug("payment"+"<-----paymentS");
 		return paymentMapper.monthlyRevenue(payment);
 	}
 }
