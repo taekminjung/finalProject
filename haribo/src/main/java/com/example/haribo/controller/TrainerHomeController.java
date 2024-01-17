@@ -20,6 +20,7 @@ import com.example.haribo.vo.Branch;
 import com.example.haribo.vo.Employee;
 import com.example.haribo.vo.EmployeeImg;
 import com.example.haribo.vo.Program;
+import com.example.haribo.vo.ProgramDate;
 import com.example.haribo.vo.SportsEquipment;
 import com.example.haribo.vo.SportsEquipmentExpire;
 import com.example.haribo.vo.SportsEquipmentOrder;
@@ -139,8 +140,15 @@ public class TrainerHomeController {
 		return "emp/trainerProgramDate";
 	}
 	
-	// 재고관리(트레이너)
+	@PostMapping("/trainerProgramDate")
+	public String trainerProgramDate(ProgramDate programDate) {
+		log.debug(programDate.toString());
+		programService.insertProgramDate(programDate);
+		
+		return "redirect:/trainerHome";
+	}
 	
+	// 재고관리(트레이너)
 	// 트레이너 지점 별 재고 현황 확인하기
 	@GetMapping("/trainerStock")
 	public String trainerStockList(Model model, @RequestParam(defaultValue="1") int currentPage, Branch branch) {

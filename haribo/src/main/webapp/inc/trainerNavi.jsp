@@ -103,7 +103,7 @@
         <li><a href="${pageContext.request.contextPath}/contactCustomer"><i class="fa fa-question"></i><span>상담신청</span></a></li>
         <li><a href="${pageContext.request.contextPath}/trainerReview?employeeId=${loginEmployee.employeeId}"><i class="fa fa-pencil"></i><span>프로그램 후기</span></a></li>
         <li class="treeview">
-          <a href=""><i class="fa fa-cube"></i> <span>재고관리</span>
+          <a href=""><i class="fa fa-cube"></i><span>재고관리</span>
             <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
               </span>

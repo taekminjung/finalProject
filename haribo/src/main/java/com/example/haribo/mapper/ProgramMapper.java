@@ -8,6 +8,7 @@ import org.apache.ibatis.annotations.Mapper;
 
 import com.example.haribo.vo.Employee;
 import com.example.haribo.vo.Program;
+import com.example.haribo.vo.ProgramDate;
 import com.example.haribo.vo.ProgramImg;
 
 @Mapper
@@ -51,4 +52,7 @@ public interface ProgramMapper {
 	
 	// 트레이너 프로그램 목록
 	List<Program> selectProgramListByTrainer(Employee employee);
+	
+	// 트레이너 프로그램 날짜 추가하기
+	int insertProgramDate(ProgramDate programDate);
 }

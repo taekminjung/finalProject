@@ -45,9 +45,10 @@
 
     <!-- 페이지 메인 내용 시작 -->
     <section class="content container-fluid">
-	<div>
-		<div>
-			<h4>${calMap.targetYear}년 ${calMap.targetMonth +1}월</h4>
+	<div style="width:90%;">
+		<div style="text-align: center;">
+			<h2>${calMap.targetYear}년 ${calMap.targetMonth +1}월</h2>
+			
 			<a style="float:left" class="btn btn-outline-secondary" 
 			href="${pageContext.request.contextPath }/trainerProgramDate?employeeNo=${loginEmployee.employeeNo}&targetYear=${calMap.targetYear}&targetMonth=${calMap.targetMonth -1}">
 				이전 달
@@ -57,11 +58,10 @@
 				다음 달
 			</a>
 		</div>
-		<br>
-		<br>
-		
-		<form>
-		<table class="table table-bordered" style="table-layout:fixed; font-size:20px;">
+		<br><br>
+		<!-- 달력 부분 -->
+		<form action="${pageContext.request.contextPath}/trainerProgramDate" method="post">
+		<table class="table table-bordered" style="font-size:15px;" >
 				<tr>
 					<th class="col-lg-1" style="color:red; text-align:center;">일</th>
 					<th class="col-lg-1" style="text-align:center;">월</th>
@@ -71,8 +71,7 @@
 					<th class="col-lg-1" style="text-align:center;">금</th>
 					<th class="col-lg-1" style="text-align:center;">토</th>
 				</tr>
-				
-				<tr style="height:200px">
+				<tr style="height:130px;">
 				<c:forEach var="i" begin="1" end="${calMap.totalTd}" step="1">
 					<c:set var="d" value="${i - calMap.beginBlank }"></c:set>
 					
@@ -86,22 +85,24 @@
 						<td>
 					</c:if>
 					
-					<!-- 일요일 카 -->
+					<!-- 날짜 추가하기 -->
 					<c:if test="${d < 1 || d > calMap.lastDate}">
 						&nbsp;
 					</c:if>
 					
 					<c:if test="${!(d < 1 || d > calMap.lastDate)}">
 						${d}
-						<br><input type="checkbox" style="width: 30px; height: 30px;"><br>
+						<br><input type="checkbox" value="${programDate.programDate}" style="width: 30px; height: 30px;"><br>
+						<input type="hidden" value="${programDate.programNo}">
 					</c:if>
 					</td>
 					<c:if test="${i < calMap.totalTd && i % 7 == 0}">
-						</tr><tr style="height:200px">	
+						</tr><tr style="height:130px;">	
 					</c:if>
 				</c:forEach>
 		</table>
-		<div><button type="submit" class="btn btn-info pull-right btn-lg">스케줄 추가하기</button></div>
+		<div>
+		<button type="submit" class="btn btn-info pull-right btn-lg">스케줄 추가하기</button></div>
 		</form>
 	</div>
     </section>
@@ -124,9 +125,6 @@
 </div>
 <!-- REQUIRED JS SCRIPTS -->
 
-<!-- fullCalendar -->
-<script src="../bower_components/moment/moment.js"></script>
-<script src="../bower_components/fullcalendar/dist/fullcalendar.min.js"></script>
 <!-- jQuery 3 -->
 <script src="emp/bower_components/jquery/dist/jquery.min.js"></script>
 <!-- Bootstrap 3.3.7 -->

@@ -12,7 +12,7 @@
 			program_max_customer,
 			program_memo,
 			program_day
-		)	VALUES (
+		) VALUES (
 			#{employeeId},
 			#{programName},
 			#{programMaxCustomer},
@@ -21,11 +21,12 @@
 		)
 	</insert>
 
+	<!-- 트레이너 programDate 추가하기 -->
 	<insert id="insertProgramDate" parameterType="com.example.haribo.vo.ProgramDate">
 		INSERT INTO program_date(
 			program_no,
 			program_date
-		)	 VALUES 	(
+		) VALUES (
 			#{programNo},
 			#{programDate}
 		)
@@ -142,7 +143,7 @@
 		GROUP BY pd.program_date_no
 	</select>
 	
-		<insert id="insertProgramImg" parameterType="com.example.haribo.vo.ProgramImg">
+	<insert id="insertProgramImg" parameterType="com.example.haribo.vo.ProgramImg">
 		INSERT INTO program_img (
 			program_no,
 			program_img_origin_name,
@@ -213,5 +214,5 @@
 			program_name programName
 		FROM program
 		WHERE employee_id = #{employeeId}
-	</select>
+	</select>	
 </mapper>
