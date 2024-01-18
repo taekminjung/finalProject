@@ -72,6 +72,8 @@ public class HomeController {
 		int countCustomer = homeService.countEmployee(employee);
 		int notAccept = sportsEquipmentService.countSportsEquipment(sportsEquipmentOrder);
 		
+		model.addAttribute("emp",countEmployee);
+		model.addAttribute("cus",countCustomer);
 		model.addAttribute("jan", list.get("1월"));
 		model.addAttribute("feb", list.get("2월"));
 		model.addAttribute("mar", list.get("3월"));
@@ -86,6 +88,8 @@ public class HomeController {
 		model.addAttribute("dec", list.get("12월"));
 		model.addAttribute("notAccept", notAccept);
 		System.out.println(list.get("1월") + "Dd");
+	System.out.println(list.get("1월")+"<-----");
+System.out.println(countEmployee+"countEmployeesdfsd");
 		
 		return "emp/adminHome";
 	}
