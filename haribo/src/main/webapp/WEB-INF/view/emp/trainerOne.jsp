@@ -44,8 +44,37 @@
     </section>
     
     <!-- 페이지 메인 내용 시작 -->
-    <section class="content container-fluid">
+    <section class="content-body">
+    <div class="col-md-5">
+    <!-- 트레이너 마이페이지 -->
+          <div class="box box-primary">
+            <div class="box-body box-profile">
+              <img class="profile-user-img img-responsive img-circle" src="../../dist/img/user4-128x128.jpg" alt="User profile picture">
+
+              <h3 class="profile-username text-center">Nina Mcintire</h3>
+
+              <p class="text-muted text-center">Software Engineer</p>
+
+              <ul class="list-group list-group-unbordered">
+                <li class="list-group-item">
+                  <b>Followers</b> <a class="pull-right">1,322</a>
+                </li>
+                <li class="list-group-item">
+                  <b>Following</b> <a class="pull-right">543</a>
+                </li>
+                <li class="list-group-item">
+                  <b>Friends</b> <a class="pull-right">13,287</a>
+                </li>
+              </ul>
+
+              <a href="#" class="btn btn-primary btn-block"><b>Follow</b></a>
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+          </div>
 	<!-- 발주 신청 폼 -->
+	<div class="col-md-8">
     <div class="box box-info">
       <div class="box-header with-border">
         <h3 class="box-title">🙂내 정보 수정하기🙂</h3>
@@ -90,6 +119,7 @@
       </form>
     </div>
     <!-- /.box -->
+    </div>
     </section>
   <!-- 페이지 메인 내용 끝 -->
   </div>

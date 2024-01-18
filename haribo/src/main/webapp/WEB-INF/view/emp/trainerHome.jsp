@@ -47,7 +47,7 @@
 
     <!-- 페이지 메인 내용 시작 -->
     <section class="content container-fluid">
-	<div>
+	<div class="box box-info">
 		<div style="text-align: center;">
 			<h2>${calMap.targetYear}년 ${calMap.targetMonth +1}월</h2>
 			

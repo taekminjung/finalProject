@@ -115,16 +115,16 @@ public class SportsEquipmentService {
 	}
 	
 	public List<SportsEquipmentOrder> sportsEquipmentOrderCk(
-				@RequestParam(defaultValue="1")int currentPage){
-			int rowPerPage = 10;
-			int beginRow = (currentPage-1)*rowPerPage;
-			
-			HashMap<String, Object> param = new HashMap<>();
-			param.put("rowPerPage", rowPerPage);
-			param.put("beginRow", beginRow);
-			
-			List<SportsEquipmentOrder> list = sportsEquipmentMapper.sportsEquipmentOrderCk(param);
-			return list;
+			@RequestParam(defaultValue="1")int currentPage){
+		int rowPerPage = 10;
+		int beginRow = (currentPage-1)*rowPerPage;
+		
+		HashMap<String, Object> param = new HashMap<>();
+		param.put("rowPerPage", rowPerPage);
+		param.put("beginRow", beginRow);
+		
+		List<SportsEquipmentOrder> list = sportsEquipmentMapper.sportsEquipmentOrderCk(param);
+		return list;
 	}
 	
 	public SportsEquipment sportsEquipmentOne(SportsEquipment sportsEquipment) {

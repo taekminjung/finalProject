@@ -50,11 +50,11 @@
 			<div style="text-align: center;">
 				<h2>${calMap.targetYear}년 ${calMap.targetMonth +1}월</h2>
 				
-				<a style="float:left" class="btn btn-outline-secondary" 
+				<a style="float:left" class="btn" 
 				href="${pageContext.request.contextPath}/trainerProgramDate?employeeNo=${loginEmployee.employeeNo}&targetYear=${calMap.targetYear}&targetMonth=${calMap.targetMonth -1}">
 					이전 달
 				</a>
-				<a style="float:right" class="btn btn-outline-secondary" 
+				<a style="float:right" class="btn" 
 				href="${pageContext.request.contextPath}/trainerProgramDate?employeeNo=${loginEmployee.employeeNo}&targetYear=${calMap.targetYear}&targetMonth=${calMap.targetMonth +1}">
 					다음 달
 				</a>
@@ -115,35 +115,38 @@
 	    <!-- 프로그램 정보에 대한 내용 추가 -->
 		<section class="content container-fluid">
 		<div>
-		<br><br><br><br><br>
 		<div class="box box-info">
-            <div class="box-body box-profile">
-              <h3 class="text-center">${resultProgram.programName}</h3>
+          <div class="box-header">
+            <h3 class="text-center">${resultProgram.programName}</h3>
 
-              <p class="text-center">${resultProgram.employeeName}</p>
-              <br>
-              <div style ="text-align:center;">
-              <img class="img-square" src="${pageContext.request.contextPath}/upload/emp/admin.png" width="50%">
-			  </div>
-              
-              <ul class="list-group list-group-unbordered">
-                <li class="list-group-item">
-                  <b>프로그램 설명</b> <a class="pull-right">${resultProgram.programMemo}</a>
-                </li>
-                <li class="list-group-item">
-                  <b>프로그램 정원</b><br><a>${resultProgram.programMaxCustomer}</a>
-                </li>
-                <li class="list-group-item">
-                  <b>프로그램 진행 요일</b> <a class="pull-right">13,287</a>
-                </li>
-              </ul>
-
-              <a href="#" class="btn btn-primary btn-block"><b>Follow</b></a>
-            </div>
-            <!-- /.box-body -->
+            <p class="text-center">${resultProgram.employeeName}</p>
+        
+            <div style ="text-align:center;">
+            <img class="img-square" src="${pageContext.request.contextPath}/upload/emp/admin.png" width="50%">
+		    </div>
           </div>
+           
+          <div class="box-body">
+             <ul class="list-group list-group-unbordered">
+               <li class="list-group-item">
+               <strong><i class="fa fa-book margin-r-5"></i> 프로그램 설명</strong>
+               <p class="text-muted">${resultProgram.programMemo}</p>
+               </li>
+               <li class="list-group-item">
+               <strong><i class="fa fa-pencil margin-r-5"></i> 프로그램 진행 요일</strong>
+               <p class="text-muted"> ${resultProgram.programDay}</p>
+               </li>
+               <li class="list-group-item">
+               <strong><i class="fa fa-book margin-r-5"></i> 프로그램 정원</strong>
+               <p class="text-muted"> ${resultProgram.programMaxCustomer}</p>
+               </li>              
+             </ul>
+             <strong><i class="fa fa-thumbs-o-up margin-r-5"></i> 많은 이용 바랍니다 헤헤 항상 친절하게 모시겟습미다</strong>
+          </div>
+            <!-- /.box-body -->
+        </div>
 		</div>
-		
+
 		</section>
 	    </div>
 	    <!-- 페이지 메인 내용 끝 -->

@@ -82,20 +82,6 @@ public class QuestionController {
 		return "public/questionList";
 	}
 	
-	// 문의사항 검색 기능 (직원)
-	@PostMapping("/employeeQuestion")
-	public String searchByQuestion(Model model, Question question, @RequestParam(defaultValue="1")int currentPage) {
-		List<Question> list = questionService.searchByQuestion(question, currentPage);
-		int lastPage = questionService.searchLastPage(question);
-		model.addAttribute("list", list);
-		model.addAttribute("lastPage", lastPage);
-		model.addAttribute("currentPage", currentPage);
-		System.out.println(list+"<---list");
-		System.out.println(lastPage+"<---lastPaaagggee");
-		
-		return "emp/employeeQuestion";
-	}
-	
 	// 문의사항 상세보기(고객)
 	@GetMapping("/questionOne")
 	public String questionOne(Model model, Question question) {
@@ -129,6 +115,19 @@ public class QuestionController {
 		return "emp/employeeQuestion";
 	}
 	
+	// 문의사항 검색 기능 (직원)
+	@PostMapping("/employeeQuestion")
+	public String searchByQuestion(Model model, Question question, @RequestParam(defaultValue="1")int currentPage) {
+		List<Question> list = questionService.searchByQuestion(question, currentPage);
+		int lastPage = questionService.searchLastPage(question);
+		model.addAttribute("list", list);
+		model.addAttribute("lastPage", lastPage);
+		model.addAttribute("currentPage", currentPage);
+		System.out.println(list+"<---list");
+		System.out.println(lastPage+"<---lastPaaagggee");
+		
+		return "emp/employeeQuestion";
+	}
 	
 	// 문의사항 상세보기(직원)
 	@GetMapping("/employeeQuestionOne")
@@ -140,20 +139,6 @@ public class QuestionController {
 		model.addAttribute("list", list);
 		
 		return "emp/employeeQuestionOne";
-	}
-	
-	// 문의사항 상세보기(트레이너)
-	@GetMapping("/trainerQuestionOne")
-	public String trainerQuestionOne(Model model, Question question) {
-		Question resultQuestion = questionService.questionOne(question);
-		model.addAttribute("resultQuestion", resultQuestion);
-		
-		List<QuestionReply> list = questionReplyService.selectquestionReply(question);
-		System.out.println(list+"<--con.replyList");
-		model.addAttribute("question", question);
-		model.addAttribute("list", list);
-	
-		return "emp/trainerQuestionOne";
 	}
 	
 	// 문의사항 리스트(트레이너)
@@ -168,5 +153,33 @@ public class QuestionController {
 		System.out.println(lastPage+"<--lastPage");
 				
 		return "emp/trainerQuestion";
+	}
+	
+	// 문의사항 검색 기능 (트레이너)
+	@PostMapping("/trainerQuestion")
+	public String searchQuestionTrainer(Model model, Question question, @RequestParam(defaultValue="1")int currentPage) {
+		List<Question> list = questionService.searchByQuestion(question, currentPage);
+		int lastPage = questionService.searchLastPage(question);
+		model.addAttribute("list", list);
+		model.addAttribute("lastPage", lastPage);
+		model.addAttribute("currentPage", currentPage);
+		System.out.println(list+"<---list");
+		System.out.println(lastPage+"<---lastPagee");
+		
+		return "emp/trainerQuestion";
+	}
+	
+	// 문의사항 상세보기(트레이너)
+	@GetMapping("/trainerQuestionOne")
+	public String trainerQuestionOne(Model model, Question question) {
+		Question resultQuestion = questionService.questionOne(question);
+		model.addAttribute("resultQuestion", resultQuestion);
+		
+		List<QuestionReply> list = questionReplyService.selectquestionReply(question);
+		System.out.println(list+"<--con.replyList");
+		model.addAttribute("question", question);
+		model.addAttribute("list", list);
+	
+		return "emp/trainerQuestionOne";
 	}
 }

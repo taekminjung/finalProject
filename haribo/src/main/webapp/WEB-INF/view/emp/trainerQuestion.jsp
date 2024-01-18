@@ -35,15 +35,20 @@
     <!-- 페이지 메인 헤더 -->
     <section class="content-header">
     <h3>문의사항</h3>
+    
     <div class="box-tools">
       <div class="input-group input-group-sm hidden-xs" style="width: 300px;">
-        <input type="text" name="table_search" class="form-control pull-right" placeholder="검색어를 입력하세요">
-
-        <div class="input-group-btn">
-          <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
-        </div>
+        <form class="search-form" id="searchQuestion" method="post" action="${pageContext.request.contextPath}/trainerQuestion">
+	      <div class="input-group input-group-sm hidden-xs" style="width: 300px;"> 
+	        <input type="text" name="table_search" class="form-control pull-right" placeholder="검색어를 입력하세요"  onfocus="this.placeholder''" onblur="this.placeholder='검색어를 입력하세요'">
+	        <span class="input-group-btn">
+	          <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+	        </span>
+	      </div>
+	    </form>
       </div>
     </div>
+    
     <br>
     
       <div class="row">

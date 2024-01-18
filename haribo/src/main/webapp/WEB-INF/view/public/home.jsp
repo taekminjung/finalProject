@@ -5,6 +5,8 @@
 <html lang="zxx" class="no-js">
 
 <head>
+	<!-- 공통 스타일 폰트 -->
+  	<link rel="stylesheet" href="common/css/main.css">
 	<!-- Mobile Specific Meta -->
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<!-- Favicon-->
