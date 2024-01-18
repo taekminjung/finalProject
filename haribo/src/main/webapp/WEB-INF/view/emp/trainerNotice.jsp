@@ -8,7 +8,8 @@
   <title>트레이너 공지사항</title>
   <!-- 파비콘 코드 -->
   <link rel="icon" type="image/x-icon" href="emp/img/starfavi.png">
-  
+  <!-- 공통 스타일 폰트 -->
+  <link rel="stylesheet" href="common/css/main.css">
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <link rel="stylesheet" href="emp/bower_components/bootstrap/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="emp/bower_components/font-awesome/css/font-awesome.min.css">
