@@ -96,7 +96,6 @@
     <strong>Copyright &copy; 2023-2024 <a href="trainerHome">TEAM HARIBO</a>.</strong> All rights reserved.
   </footer>
   
-  
   <div class="control-sidebar-bg"></div>
 </div>
 <!-- REQUIRED JS SCRIPTS -->
@@ -107,6 +106,5 @@
 <script src="emp/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <!-- AdminLTE App -->
 <script src="emp/dist/js/adminlte.min.js"></script>
-
 </body>
 </html>

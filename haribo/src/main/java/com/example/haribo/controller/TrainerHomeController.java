@@ -176,7 +176,22 @@ public class TrainerHomeController {
 	public String sportsEquipmentOrderFormSubmit(SportsEquipmentOrder sportsEquipmentOrder) {
 		sportsEquipmentService.sportsEquipmentOrderForm(sportsEquipmentOrder);
 		
-		return "redirect:/trainerStock";
+		return "redirect:/sportsEquipmentOrderState";
+	}
+	
+	// 트레이너 물품 발주 상태 확인하기
+	@GetMapping("/sportsEquipmentOrderState")
+	public String sportsEquipmentOrderState(Model model, @RequestParam(defaultValue="1") int currentPage, Branch branch) {
+		List<HashMap<String, Object>> stockList = sportsEquipmentService.stockList(currentPage, branch);
+		
+		int lastPageStock = sportsEquipmentService.lastPageStock();
+		
+		model.addAttribute("stockList", stockList);
+		model.addAttribute("branch", branch);
+		model.addAttribute("currentPage", currentPage);
+		model.addAttribute("lastPageStock", lastPageStock);
+		
+		return "emp/sportsEquipmentOrderState";
 	}
 	
 	// 폐기할 물품 입력하기 (form+insert)
