@@ -29,41 +29,30 @@
 	<h3>발주 현황</h3>
 	<p>📢 발주 승인 처리가 지연될 수 있습니다. 급한 건은 본사에 직접 연락 바랍니다.</p>
 	<div class="box box-info">
-	  <div class="box-header">
-	    <h3 class="box-title">Hover Data Table</h3>
-	  </div>
 	  <!-- /.box-header -->
 	  <div class="box-body">
 	      <table id="example2" class="table table-bordered table-hover">
 	        <thead>
 	        <tr>
-	          <th>Rendering engine</th>
-	          <th>Browser</th>
-	          <th>Platform(s)</th>
-	          <th>Engine version</th>
-	          <th>CSS grade</th>
+	          <th>주문번호</th>
+	          <th>물품 번호</th>
+	          <th>수 량</th>
+	          <th>발주 상태</th>
+	          <th>발주 신청일</th>
 	        </tr>
 	        </thead>
 	        
 	        <tbody>
+	        <c:forEach var="seq" items="${seqsList}">
 	        <tr>
-	          <td>Other browsers</td>
-	          <td>All others</td>
-	          <td>-</td>
-	          <td>-</td>
-	          <td>U</td>
+	          <td>${seq.orderNo}</td>
+	          <td>${seq.sportsEquipmentNo}</td>
+	          <td>${seq.quantity}</td>
+	          <td>${seq.orderStatus}</td>
+	          <td>${seq.createdate}</td>
 	        </tr>
+	        </c:forEach>
 	        </tbody>
-	        
-	        <tfoot>
-	        <tr>
-	          <th>Rendering engine</th>
-	          <th>Browser</th>
-	          <th>Platform(s)</th>
-	          <th>Engine version</th>
-	          <th>CSS grade</th>
-	        </tr>
-	        </tfoot>
 	      </table>
 	      <!-- 페이지네이션 -->
 	      <div class="btn-group">

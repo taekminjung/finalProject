@@ -70,6 +70,13 @@
 		FROM sports_equipment_order
 	</select>
 	
+	<!-- 발주 신청 현황 확인 페이징 -->
+	<select id="getTotalRowseqState" parameterType="int" resultType="int">
+		SELECT
+			COUNT(*)
+		FROM sports_equipment_order
+	</select>
+	
 	<!-- 발주 신청 폼에 필요한 쿼리 -->
 	<insert id="sportsEquipmentOrderForm" parameterType="com.example.haribo.vo.SportsEquipmentOrder">
 		INSERT INTO sports_equipment_order(
@@ -92,7 +99,6 @@
 			updatedate
 		FROM sports_equipment
 	</select>
-	
 	
 	<!--  페이징 없는 trainerExpireFormList  -->
 	<select id="trainerExpireFormList" resultType="com.example.haribo.vo.SportsEquipment">
@@ -120,6 +126,18 @@
 			#{expireMemo}
 		)
 	</insert>
+	
+	<!-- 트레이너 물품 발주 신청 현황 확인하기 -->
+	<select id="seqStateList" >
+		SELECT 
+			order_no orderNo,
+			sports_equipment_no sportsEquipmentNo,
+			quantity,
+			order_status orderStatus,
+			createdate
+		FROM sports_equipment_order
+		WHERE branch_no = #{branchNo}
+	</select>
 	
 	<insert id="insertSportsEquipment" parameterType="com.example.haribo.vo.SportsEquipment">
 	<selectKey order="AFTER" resultType="Integer" keyProperty="sportsEquipmentNo">

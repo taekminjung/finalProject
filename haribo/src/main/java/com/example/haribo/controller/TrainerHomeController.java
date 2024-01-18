@@ -107,18 +107,9 @@ public class TrainerHomeController {
 	}
 	
 	// 프로그램 정보 받아오기
-	// 프로그램 상세보기
-	@GetMapping("/trainerProgramOne")
-	public String trainerProgramOne(Model model, Program program) {	
-		Program resultProgram = programService.programOne(program);
-		model.addAttribute("resultProgram", resultProgram);
-
-		return "emp/trainerProgramOne";
-	}
-	
-	// 프로그램 예약 추가하기
+	// 프로그램 예약 추가하기 + 프로그램 상세보기
 	@GetMapping("/trainerProgramDate")
-	public String trainerProgramDate(HttpSession session, Model model, Employee employee, ProgramDate programDate,
+	public String trainerProgramDate(HttpSession session, Model model, Employee employee, ProgramDate programDate, Program program,
 						@RequestParam(required = false) Integer targetYear,
 						@RequestParam(required = false) Integer targetMonth
 						) {
@@ -127,11 +118,13 @@ public class TrainerHomeController {
 					return "redirect:/login";
 		}
 				
-		//Calendar Service 호출
+		//Calendar Service , Program Service 호출
 		Map<String, Object> calMap = calendarService.calendar(targetYear, targetMonth);
+		Program resultProgram = programService.programOne(program);
 		
 		// model 
 		model.addAttribute("calMap", calMap);
+		model.addAttribute("resultProgram", resultProgram);
 		
 		return "emp/trainerProgramDate";
 	}
@@ -182,14 +175,15 @@ public class TrainerHomeController {
 	// 트레이너 물품 발주 상태 확인하기
 	@GetMapping("/sportsEquipmentOrderState")
 	public String sportsEquipmentOrderState(Model model, @RequestParam(defaultValue="1") int currentPage, Branch branch) {
-		List<HashMap<String, Object>> stockList = sportsEquipmentService.stockList(currentPage, branch);
+		// 서비스에서 불러오기
+		List<HashMap<String, Object>> seqsList = sportsEquipmentService.seqState(currentPage, branch);
 		
-		int lastPageStock = sportsEquipmentService.lastPageStock();
+		int lastPageseqState = sportsEquipmentService.lastPageseqState();
 		
-		model.addAttribute("stockList", stockList);
+		model.addAttribute("seqsList", seqsList);
 		model.addAttribute("branch", branch);
 		model.addAttribute("currentPage", currentPage);
-		model.addAttribute("lastPageStock", lastPageStock);
+		model.addAttribute("lastPageseqState", lastPageseqState);
 		
 		return "emp/sportsEquipmentOrderState";
 	}

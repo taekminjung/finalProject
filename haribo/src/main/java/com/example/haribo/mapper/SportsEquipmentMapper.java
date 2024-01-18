@@ -53,4 +53,8 @@ public interface SportsEquipmentMapper {
 	List<HashMap<String, Object>> trainerStockList(HashMap<String, Object> param);
 
 	List<SportsEquipment> trainerExpireFormList();
+
+	List<HashMap<String, Object>> seqStateList(HashMap<String, Object> map);
+
+	int getTotalRowseqState(int rowPerPage);
 }

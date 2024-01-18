@@ -109,9 +109,9 @@
               </span>
           </a>
           <ul class="treeview-menu">
-          	<li><a href="${pageContext.request.contextPath}/trainerStock">재고 현황</a></li>
+          	<li><a href="${pageContext.request.contextPath}/trainerStock?branchNo=${loginEmployee.branchNo}">재고 현황</a></li>
             <li><a href="${pageContext.request.contextPath}/sportsEquipmentOrderForm">발주 신청</a></li>
-            <li><a href="${pageContext.request.contextPath}/sportsEquipmentOrderState">발주 현황</a></li>
+            <li><a href="${pageContext.request.contextPath}/sportsEquipmentOrderState?branchNo=${loginEmployee.branchNo}">발주 현황</a></li>
             <li><a href="${pageContext.request.contextPath}/trainerExpireForm">폐기 신청</a></li>
           </ul>
         </li>
