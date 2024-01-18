@@ -143,10 +143,10 @@
 		}  else if ($('#programDay').val().length<1){
 			alert('프로그램 개설요일을 입력해주세요')
 			$('#programDay').focus()
-		} // else if($('#imgForm').val().length<1){
-		//	alert('프로그램 이미지를 추가해주세요')
-		//	$('#imgForm').focus()
-	//	}  
+		} else if($('#pImg').val().length<1){
+			alert('프로그램 이미지를 추가해주세요')
+			$('#pImg').focus()
+		}  
 		else{
 			$('#form').submit()
 		}

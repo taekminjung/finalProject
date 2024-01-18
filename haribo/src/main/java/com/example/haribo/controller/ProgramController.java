@@ -52,6 +52,7 @@ public class ProgramController {
 
 		String path = session.getServletContext().getRealPath("/upload");
 		int programNo = programService.insertProgram(program);
+		
 		programImg.setProgramNo(programNo);
 		programService.insertProgramImg(pImg, programImg, program, path);
 		

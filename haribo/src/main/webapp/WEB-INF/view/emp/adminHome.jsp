@@ -76,11 +76,11 @@
               <h3 class="box-title">발주 알림</h3>
             </div>
             <div class="box-body">
-              <strong><i class="fa fa-user margin-r-5"></i>재고관리</strong>
+              <strong><i class="fa fa-cube margin-r-5"></i>재고관리</strong>
               <p class="text-muted">
 					<input type="hidden" name="notAccept" value="${notAccept}" readonly style="border:none">
 					<tr>
-						<td>현재 확인되지 않은 발주는 총 ${notAccept} 건 입니다.</td>
+						<td>현재 확인되지 않은 발주는 총 <strong>${notAccept}</strong> 건 입니다.</td>
 					</tr>
               </p>
               <hr>
@@ -164,7 +164,30 @@ $(document).ready(function() {
             }
         });
     }
-});
+})
+    
+    var cnt = document.getElementById("barChartMember")
+    
+    var chart1 = new Chart(cnt, {
+        type: 'bar',
+        data: {
+            labels: ['직원', '회원'],
+            datasets: [{
+                label: '총 인원',
+                data: [${emp}, ${cus}],
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)', // 직원의 배경색
+                    'rgba(54, 162, 235, 0.2)'  // 회원의 배경색
+                ],
+                borderColor: [
+                    'rgba(255,99,132,1)', // 직원의 테두리색
+                    'rgba(54, 162, 235, 1)' // 회원의 테두리색
+                ],
+                borderWidth: 1
+            }]
+        },
+    });
+
 </script>
 
 </body>
