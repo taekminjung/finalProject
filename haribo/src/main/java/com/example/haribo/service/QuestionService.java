@@ -35,11 +35,9 @@ public class QuestionService {
 	// 문의사항 삭제
 	public void deleteQuestion(Question question, QuestionReply questionReply) {
 		int row = questionReplyMapper.deleteQuestionReply(questionReply);
-				
-		if(row != 1) {
-			throw new RuntimeErrorException(null);
-		} else { 
-			int row2 = questionMapper.deleteQuestion(question);		
+		int row2 = questionMapper.deleteQuestion(question);
+			if(row2 !=1) {
+				throw new RuntimeException();
 		}
 	}
 	

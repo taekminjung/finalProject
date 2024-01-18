@@ -65,7 +65,7 @@ public class QuestionController {
 		System.out.println(question+"<====qcon.question");
 		questionService.deleteQuestion(question, questionReply);
 		
-		return "redirect:/questionList";
+		return "redirect:/employeeQuestion";
 	}
 	
 	// 문의사항 리스트(고객)

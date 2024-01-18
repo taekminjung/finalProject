@@ -2,6 +2,7 @@ package com.example.haribo.controller;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,10 +11,19 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import com.example.haribo.service.BranchService;
 import com.example.haribo.service.ContactService;
+import com.example.haribo.service.HomeService;
+import com.example.haribo.service.PaymentService;
 import com.example.haribo.service.ProgramService;
 import com.example.haribo.service.ReviewService;
+import com.example.haribo.service.SportsEquipmentService;
 import com.example.haribo.vo.Branch;
+import com.example.haribo.vo.Customer;
+import com.example.haribo.vo.Employee;
+import com.example.haribo.vo.Payment;
 import com.example.haribo.vo.Program;
+import com.example.haribo.vo.SportsEquipmentOrder;
+
+import jakarta.servlet.http.HttpSession;
 
 @Controller
 public class HomeController {
@@ -21,6 +31,9 @@ public class HomeController {
 	@Autowired private ReviewService reviewService;
 	@Autowired private ProgramService programService;
 	@Autowired private BranchService branchService;
+	@Autowired private PaymentService paymentService;
+	@Autowired private SportsEquipmentService sportsEquipmentService;
+	@Autowired private HomeService homeService;
 	
 	@GetMapping("/home")
 	public String home(Model model, Program program) {
@@ -44,6 +57,37 @@ public class HomeController {
 	public String login() {
 		
 		return "public/login";
+	}
+	
+	
+	@GetMapping("/adminHome")
+	public String monthlyRevenue(HttpSession session, Model model, Payment payment, SportsEquipmentOrder sportsEquipmentOrder, Customer customer, Employee employee) {
+		// 세션 검사
+		if(session.getAttribute("loginEmployee") == null) {
+			return "redirect:/login";
+		}
+		
+		Map<String,Object> list = paymentService.monthlyRevenue();
+		int countEmployee = homeService.countCustomer(customer);
+		int countCustomer = homeService.countEmployee(employee);
+		int notAccept = sportsEquipmentService.countSportsEquipment(sportsEquipmentOrder);
+		
+		model.addAttribute("jan", list.get("1월"));
+		model.addAttribute("feb", list.get("2월"));
+		model.addAttribute("mar", list.get("3월"));
+		model.addAttribute("apr", list.get("4월"));
+		model.addAttribute("may", list.get("5월"));
+		model.addAttribute("jun", list.get("6월"));
+		model.addAttribute("jul", list.get("7월"));
+		model.addAttribute("aug", list.get("8월"));
+		model.addAttribute("sep", list.get("9월"));
+		model.addAttribute("oct", list.get("10월"));
+		model.addAttribute("nov", list.get("11월"));
+		model.addAttribute("dec", list.get("12월"));
+		model.addAttribute("notAccept", notAccept);
+		System.out.println(list.get("1월") + "Dd");
+		
+		return "emp/adminHome";
 	}
 	
 }
