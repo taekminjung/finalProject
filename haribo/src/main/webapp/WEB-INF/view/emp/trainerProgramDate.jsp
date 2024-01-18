@@ -8,6 +8,8 @@
   <title>트레이너 프로그램 날짜 추가</title>
   <!-- 파비콘 코드 -->
   <link rel="icon" type="image/x-icon" href="emp/img/starfavi.png">
+  <!-- 공통 스타일 폰트 -->
+  <link rel="stylesheet" href="common/css/main.css">
   
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <link rel="stylesheet" href="emp/bower_components/bootstrap/dist/css/bootstrap.min.css">
@@ -33,10 +35,6 @@
   <div class="content-wrapper">
     <!-- 페이지 메인 헤더 -->
     <section class="content-header">
-      <h1>
-        안녕하세요, ${loginEmployee.employeeName}님😀<small>오늘도 힘찬 하루 되세요💪🏻</small>
-      </h1>
-      <br>
       <div class="callout callout-info">
         <h4>📢팀 하리보 공지사항📢</h4>
 		<p>한달치 스케줄 결재는 매달 19일에 이루어지니 미리 결재 올려주세요. 📅본인 프로그램 스케줄 확인 필수!!📅</p>
@@ -48,16 +46,16 @@
 	    <div class="col-md-8">
 	    <!-- 첫번째 섹션 달력 -->
 	    <section class="content container-fluid">
-		<div>
+		<div class="box box-info">
 			<div style="text-align: center;">
 				<h2>${calMap.targetYear}년 ${calMap.targetMonth +1}월</h2>
 				
 				<a style="float:left" class="btn btn-outline-secondary" 
-				href="${pageContext.request.contextPath }/trainerProgramDate?employeeNo=${loginEmployee.employeeNo}&targetYear=${calMap.targetYear}&targetMonth=${calMap.targetMonth -1}">
+				href="${pageContext.request.contextPath}/trainerProgramDate?employeeNo=${loginEmployee.employeeNo}&targetYear=${calMap.targetYear}&targetMonth=${calMap.targetMonth -1}">
 					이전 달
 				</a>
 				<a style="float:right" class="btn btn-outline-secondary" 
-				href="${pageContext.request.contextPath }/trainerProgramDate?employeeNo=${loginEmployee.employeeNo}&targetYear=${calMap.targetYear}&targetMonth=${calMap.targetMonth +1}">
+				href="${pageContext.request.contextPath}/trainerProgramDate?employeeNo=${loginEmployee.employeeNo}&targetYear=${calMap.targetYear}&targetMonth=${calMap.targetMonth +1}">
 					다음 달
 				</a>
 			</div>
@@ -98,7 +96,7 @@
 					
 					<c:if test="${!(d < 1 || d > calMap.lastDate)}">
 						${d}
-						<br><input type="checkbox" name="d" value="${d}" style="width: 30px; height: 30px;"><br>					
+						<br><input type="checkbox" name="d" value="${d}" style="width: 25px; height: 30px;"><br>					
 					</c:if>
 					</td>
 					<c:if test="${i < calMap.totalTd && i % 7 == 0}">
@@ -106,8 +104,7 @@
 					</c:if>
 				</c:forEach>
 			</table>
-			<div>
-			<button type="submit" class="btn btn-info pull-right btn-lg">스케줄 추가하기</button></div>
+			<button type="submit" class="btn btn-info pull-right btn-lg">스케줄 추가하기</button>
 			</form>
 		</div>
 	    </section>
@@ -118,23 +115,26 @@
 	    <!-- 프로그램 정보에 대한 내용 추가 -->
 		<section class="content container-fluid">
 		<div>
+		<br><br><br><br><br>
 		<div class="box box-info">
             <div class="box-body box-profile">
-              <img class="img-square" src="upload/emp/trainer.png">
+              <h3 class="text-center">${resultProgram.programName}</h3>
 
-              <h3 class="profile-username text-center">${resultProgram.programName}</h3>
-
-              <p class="text-muted text-center">${resultProgram.employeeId}</p>
-
+              <p class="text-center">${resultProgram.employeeName}</p>
+              <br>
+              <div style ="text-align:center;">
+              <img class="img-square" src="${pageContext.request.contextPath}/upload/emp/admin.png" width="50%">
+			  </div>
+              
               <ul class="list-group list-group-unbordered">
                 <li class="list-group-item">
-                  <b>Followers</b> <a class="pull-right">1,322</a>
+                  <b>프로그램 설명</b> <a class="pull-right">${resultProgram.programMemo}</a>
                 </li>
                 <li class="list-group-item">
-                  <b>Following</b> <a class="pull-right">543</a>
+                  <b>프로그램 정원</b><br><a>${resultProgram.programMaxCustomer}</a>
                 </li>
                 <li class="list-group-item">
-                  <b>Friends</b> <a class="pull-right">13,287</a>
+                  <b>프로그램 진행 요일</b> <a class="pull-right">13,287</a>
                 </li>
               </ul>
 
@@ -157,7 +157,7 @@
       팀 하리보
     </div>
     <!-- 저작권 명시 -->
-    <strong>Copyright &copy; 2023-2024 <a href="trainerHome">TEAM HARIBO</a>.</strong> All rights reserved.
+    <strong>Copyright &copy; 2023-2024 <a href="${pageContext.request.contextPath}/trainerHome">TEAM HARIBO</a>.</strong> All rights reserved.
   </footer>
 
 

@@ -120,7 +120,7 @@ public class TrainerHomeController {
 				
 		//Calendar Service , Program Service 호출
 		Map<String, Object> calMap = calendarService.calendar(targetYear, targetMonth);
-		Program resultProgram = programService.programOne(program);
+		HashMap<String, Object> resultProgram = programService.programOne(program);
 		
 		// model 
 		model.addAttribute("calMap", calMap);
@@ -176,12 +176,12 @@ public class TrainerHomeController {
 	@GetMapping("/sportsEquipmentOrderState")
 	public String sportsEquipmentOrderState(Model model, @RequestParam(defaultValue="1") int currentPage, Branch branch) {
 		// 서비스에서 불러오기
-		List<HashMap<String, Object>> seqsList = sportsEquipmentService.seqState(currentPage, branch);
+		List<SportsEquipmentOrder> seqsList = sportsEquipmentService.seqState(currentPage, branch);
 		
 		int lastPageseqState = sportsEquipmentService.lastPageseqState();
 		
 		model.addAttribute("seqsList", seqsList);
-		model.addAttribute("branch", branch);
+		model.addAttribute("branchNo", branch.getBranchNo());
 		model.addAttribute("currentPage", currentPage);
 		model.addAttribute("lastPageseqState", lastPageseqState);
 		

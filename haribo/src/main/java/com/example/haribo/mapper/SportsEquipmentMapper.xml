@@ -128,7 +128,7 @@
 	</insert>
 	
 	<!-- 트레이너 물품 발주 신청 현황 확인하기 -->
-	<select id="seqStateList" >
+	<select id="seqStateList" parameterType="java.util.Map" resultType="com.example.haribo.vo.SportsEquipmentOrder">
 		SELECT 
 			order_no orderNo,
 			sports_equipment_no sportsEquipmentNo,
@@ -137,6 +137,7 @@
 			createdate
 		FROM sports_equipment_order
 		WHERE branch_no = #{branchNo}
+		LIMIT #{beginRow}, #{rowPerPage}
 	</select>
 	
 	<insert id="insertSportsEquipment" parameterType="com.example.haribo.vo.SportsEquipment">

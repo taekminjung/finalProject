@@ -146,7 +146,7 @@ public class ProgramService {
 	    }
 	}
 	
-	public Program programOne(Program program) {
+	public HashMap<String, Object> programOne(Program program) {
 		return programMapper.programOne(program);
 	}
 	

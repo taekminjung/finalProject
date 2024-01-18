@@ -85,16 +85,23 @@
 		
 	</select>
 	
-	<select id="programOne" parameterType="com.example.haribo.vo.Program" resultType="com.example.haribo.vo.Program">
+	<select id="programOne" parameterType="com.example.haribo.vo.Program" resultType="java.util.Map">
 		SELECT 
 			p.employee_id employeeId,
 			p.program_name programName,
+			ed.employee_name employeeName,
 			p.program_no programNo,
 			p.program_max_customer programMaxCustomer,
 			p.program_memo programMemo,
 			p.program_day programDay,
+			pimg.program_img_file_name programImgFileName,
 			p.createdate
-		FROM program p
+		FROM program p INNER JOIN employee e
+		ON p.employee_id = e.employee_id
+		INNER JOIN employee_detail ed
+		ON e.employee_no = ed.employee_no
+		INNER JOIN program_img pimg
+		ON p.program_no = pimg.program_no
 		WHERE p.program_no = #{programNo}
 	</select>
 	

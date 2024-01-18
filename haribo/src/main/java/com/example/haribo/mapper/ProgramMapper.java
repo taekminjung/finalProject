@@ -21,7 +21,7 @@ public interface ProgramMapper {
 	
 	int getTotalRow(int rowPerPage);
 	
-	Program programOne(Program program);
+	HashMap<String,Object> programOne(Program program);
 	
 	int programImgCnt(ProgramImg programImg);
 	

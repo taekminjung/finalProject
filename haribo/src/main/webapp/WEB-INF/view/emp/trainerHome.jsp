@@ -45,7 +45,7 @@
 
     <!-- 페이지 메인 내용 시작 -->
     <section class="content container-fluid">
-	<div style="width:90%;">
+	<div>
 		<div style="text-align: center;">
 			<h2>${calMap.targetYear}년 ${calMap.targetMonth +1}월</h2>
 			
@@ -105,6 +105,7 @@
 					</c:if>
 				</c:forEach>
 		</table>
+    </div>
     </section>
     <!-- 페이지 메인 내용 끝 -->
   </div>
@@ -119,15 +120,10 @@
     <!-- 저작권 명시 -->
     <strong>Copyright &copy; 2023-2024 <a href="trainerHome">TEAM HARIBO</a>.</strong> All rights reserved.
   </footer>
-
-
   <div class="control-sidebar-bg"></div>
+
 </div>
 <!-- REQUIRED JS SCRIPTS -->
-
-<!-- fullCalendar -->
-<script src="../bower_components/moment/moment.js"></script>
-<script src="../bower_components/fullcalendar/dist/fullcalendar.min.js"></script>
 <!-- jQuery 3 -->
 <script src="emp/bower_components/jquery/dist/jquery.min.js"></script>
 <!-- Bootstrap 3.3.7 -->
