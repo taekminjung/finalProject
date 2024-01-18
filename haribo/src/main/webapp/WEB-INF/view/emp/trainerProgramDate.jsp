@@ -43,28 +43,31 @@
       </div>
     </section>
 
-    <!-- 페이지 메인 내용 시작 -->
-    <section class="content container-fluid">
-	<div style="width:90%;">
-		<div style="text-align: center;">
-			<h2>${calMap.targetYear}년 ${calMap.targetMonth +1}월</h2>
-			
-			<a style="float:left" class="btn btn-outline-secondary" 
-			href="${pageContext.request.contextPath }/trainerProgramDate?employeeNo=${loginEmployee.employeeNo}&targetYear=${calMap.targetYear}&targetMonth=${calMap.targetMonth -1}">
-				이전 달
-			</a>
-			<a style="float:right" class="btn btn-outline-secondary" 
-			href="${pageContext.request.contextPath }/trainerProgramDate?employeeNo=${loginEmployee.employeeNo}&targetYear=${calMap.targetYear}&targetMonth=${calMap.targetMonth +1}">
-				다음 달
-			</a>
-		</div>
-		<br><br>
-		<!-- 달력 부분 -->
-		<form action="${pageContext.request.contextPath}/trainerProgramDate" method="post">
-		<input type="hidden" name="targetYear" value="${calMap.targetYear}">
-		<input type="hidden" name="targetMonth" value="${calMap.targetMonth+1}">
-		<input type="hidden" name="programNo" value="${programDate.programNo}">
-		<table class="table table-bordered" style="font-size:15px;" >
+	<!-- 왼쪽에는 프로그램 일정 추가 달력, 오른쪽에는 프로그램 상세 정보 출력 -->
+	<div class="row">
+	    <div class="col-md-9">
+	    <!-- 첫번째 섹션 달력 -->
+	    <section class="content container-fluid">
+		<div>
+			<div style="text-align: center;">
+				<h2>${calMap.targetYear}년 ${calMap.targetMonth +1}월</h2>
+				
+				<a style="float:left" class="btn btn-outline-secondary" 
+				href="${pageContext.request.contextPath }/trainerProgramDate?employeeNo=${loginEmployee.employeeNo}&targetYear=${calMap.targetYear}&targetMonth=${calMap.targetMonth -1}">
+					이전 달
+				</a>
+				<a style="float:right" class="btn btn-outline-secondary" 
+				href="${pageContext.request.contextPath }/trainerProgramDate?employeeNo=${loginEmployee.employeeNo}&targetYear=${calMap.targetYear}&targetMonth=${calMap.targetMonth +1}">
+					다음 달
+				</a>
+			</div>
+			<br><br>
+			<!-- 달력 부분 -->
+			<form action="${pageContext.request.contextPath}/trainerProgramDate" method="post">
+			<input type="hidden" name="targetYear" value="${calMap.targetYear}">
+			<input type="hidden" name="targetMonth" value="${calMap.targetMonth+1}">
+			<input type="hidden" name="programNo" value="${programDate.programNo}">
+			<table class="table table-bordered" style="font-size:15px;" >
 				<tr>
 					<th class="col-lg-1" style="color:red; text-align:center;">일</th>
 					<th class="col-lg-1" style="text-align:center;">월</th>
@@ -102,16 +105,28 @@
 						</tr><tr style="height:130px;">	
 					</c:if>
 				</c:forEach>
-		</table>
+			</table>
+			<div>
+			<button type="submit" class="btn btn-info pull-right btn-lg">스케줄 추가하기</button></div>
+			</form>
+		</div>
+	    </section>
+	    </div>
+	    
+	    <!-- 두 번째 섹션 (프로그램 정보) -->
+	    <div class="col-md-3">
+	    <!-- 프로그램 정보에 대한 내용 추가 -->
+		<section class="content container-fluid">
 		<div>
-		<button type="submit" class="btn btn-info pull-right btn-lg">스케줄 추가하기</button></div>
-		</form>
-	</div>
-    </section>
-    <!-- 페이지 메인 내용 끝 -->
+		<h2></h2>
+		</div>
+		
+		</section>
+	    </div>
+	    <!-- 페이지 메인 내용 끝 -->
   </div>
   <!-- 헤더 + 내용 wrapper 부분 끝 -->
-
+</div>
   <!-- 메인 footer 항상 적을 것 -->
   <footer class="main-footer">
     <!-- 맨 오른쪽 표시되는 것 -->

@@ -5,7 +5,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>상담내역</title>
+  <title>상담 신청 내역</title>
   <!-- 파비콘 코드 -->
   <link rel="icon" type="image/x-icon" href="emp/img/starfavi.png">
   
@@ -33,16 +33,7 @@
   <div class="content-wrapper">
     <!-- 페이지 메인 헤더 -->
     <section class="content-header">
-    <h3>상담내역</h3>
-    <div class="box-tools">
-      <div class="input-group input-group-sm hidden-xs" style="width: 150px;">
-        <input type="text" name="table_search" class="form-control pull-right" placeholder="Search">
-    
-        <div class="input-group-btn">
-          <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
-        </div>
-      </div>
-    </div>
+    <h3>${loginEmployee.branchName} 지점 상담 신청 내역</h3>
     <br>
       <div class="row">
         <div class="col-xs-12">
@@ -50,24 +41,20 @@
             <div class="box-body table-responsive no-padding text-center">
               <table class="table table-hover text-center">
                 <tr>
-                  <th>희망지</th>
                   <th>신청자명</th>
                   <th>생년월일</th>
-                  <th>신청일자</th>
+                  <th>상담 예약 날짜</th>
                   <th>상담 내용</th>
                   <th>전화번호</th>
-                  <th>상담일자</th>
                 </tr>
                 
                 <c:forEach var="c" items="${list}">
                 <tr>
-                  <td>${c.branchNo}</td>
                   <td>${c.customerName}</td>
                   <td>${c.customerBirth}</td>
                   <td>${c.customerContactDate}</td>
                   <td>${c.contactContent}</td>
                   <td>${c.customerPhone}</td>
-                  <td>${c.createdate}</td>
                 </tr>
                 </c:forEach>
               </table>
@@ -76,11 +63,11 @@
             <!-- 페이지네이션 -->
             <div class="text-center">
 				<c:if test="${currentPage > 1}">
-					<a href="${pageContext.request.contextPath}/trainerNotice?currentPage=${currentPage-1}" class="btn btn-primary">이전</a>
+					<a href="${pageContext.request.contextPath}/contactCustomer?currentPage=${currentPage-1}" class="btn btn-primary">이전</a>
 				</c:if>
 				
 				<c:if test="${currentPage < lastPage}">
-					<a href="${pageContext.request.contextPath}/trainerNotice?currentPage=${currentPage+1}" class="btn btn-primary">다음</a>
+					<a href="${pageContext.request.contextPath}/contactCustomer?currentPage=${currentPage+1}" class="btn btn-primary">다음</a>
 				</c:if>
 			</div>
           </div>
@@ -89,28 +76,28 @@
       </div>
     </section>
   </div>
-  <!— 헤더 + 내용 wrapper 부분 끝 —>
+  <!-- 헤더 + 내용 wrapper 부분 끝 -->
 
-  <!— 메인 footer 항상 적을 것 —>
+  <!-- 메인 footer 항상 적을 것 -->
   <footer class="main-footer">
-    <!— 맨 오른쪽 표시되는 것 —>
+    <!-- 맨 오른쪽 표시되는 것 -->
     <div class="pull-right hidden-xs">
       팀 하리보
     </div>
-    <!— 저작권 명시 —>
+    <!-- 저작권 명시 -->
     <strong>Copyright &copy; 2023-2024 <a href="trainerHome">TEAM HARIBO</a>.</strong> All rights reserved.
   </footer>
   
   
   <div class="control-sidebar-bg"></div>
 </div>
-<!— REQUIRED JS SCRIPTS —>
+<!-- REQUIRED JS SCRIPTS -->
 
-<!— jQuery 3 —>
+<!-- jQuery 3 -->
 <script src="emp/bower_components/jquery/dist/jquery.min.js"></script>
-<!— Bootstrap 3.3.7 —>
+<!-- Bootstrap 3.3.7 -->
 <script src="emp/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-<!— AdminLTE App —>
+<!-- AdminLTE App -->
 <script src="emp/dist/js/adminlte.min.js"></script>
 
 </body>

@@ -45,6 +45,7 @@ public class ContactController {
 		model.addAttribute("list", list);
 		model.addAttribute("lastPage", lastPage);
 		model.addAttribute("currentPage", currentPage);
+		
 		return "emp/contactCustomer";
 	}
 }

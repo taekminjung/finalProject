@@ -198,6 +198,30 @@ public class SportsEquipmentService {
 		return stockList;
 	}
 	
+	// 트레이너 물품 발주 상태 확인
+	public List<HashMap<String, Object>> seqState(@RequestParam(defaultValue="1") int currentPage, Branch branch) {
+		int rowPerPage = 5;
+		int beginRow = (currentPage-1) * rowPerPage;
+		
+		HashMap<String, Object> map = new HashMap<>();
+		map.put("beginRow", beginRow);
+		map.put("rowPerPage", rowPerPage);
+		
+		List<HashMap<String, Object>> seqsList = sportsEquipmentMapper.seqStateList(map);
+		return seqsList;
+	}
+	
+	// 트레이너 물품 발주 상태 페이징 
+	public int lastPageseqState() {
+		int rowPerPage = 5;
+		int totalRow = sportsEquipmentMapper.getTotalRowseqState(rowPerPage);
+		int lastPageseState = totalRow / rowPerPage;
+		if (totalRow % rowPerPage !=0) {
+			lastPageseState +=1;
+		}
+		return lastPageseState;
+	}
+	
 	public int lastPageSp() {
 		int rowPerPage = 10;
 		int totalRow = sportsEquipmentMapper.getTotalRowStock(rowPerPage);
@@ -206,7 +230,7 @@ public class SportsEquipmentService {
 			lastPageSp +=1;
 		}
 		return lastPageSp;
-	}	
+	}
 	
 	public String selectSportsEquipmentImgName(SportsEquipmentImg sportsEquipmentImg) {
 
@@ -216,5 +240,4 @@ public class SportsEquipmentService {
 	public int countSportsEquipment(SportsEquipmentOrder sportsEquipmentOrder) {
 		return sportsEquipmentMapper.countSportsEquipment(sportsEquipmentOrder);
 	}
-	
 }

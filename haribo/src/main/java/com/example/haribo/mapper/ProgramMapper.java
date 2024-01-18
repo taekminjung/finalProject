@@ -23,6 +23,8 @@ public interface ProgramMapper {
 	
 	Program programOne(Program program);
 	
+	int programImgCnt(ProgramImg programImg);
+	
 	int deleteProgram(Program program);
 	
 	int deleteProgramImg(ProgramImg programImg);

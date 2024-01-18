@@ -33,40 +33,48 @@
     </section>
 
     <!-- Main content -->
-    <section class="content">
-      <h3>
-        월별 총매출
-      </h3>
+  <section class="content">
 
-      <div class="row">
-        <div class="col-md-6">
-          <!-- Bar Chart -->
-          <div class="box box-success">
-            <div class="box-header with-border">
-              <h3 class="box-title">Monthly Revenue</h3>
-              <div class="box-tools pull-right">
-                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
-              </div>
-            </div>
-            <div class="box-body">
-              <canvas id="barChart"></canvas>
-            </div>
+  <div class="row">
+    <div class="col-md-6">
+      <!-- Bar Chart -->
+      <div class="box box-success">
+        <div class="box-header with-border">
+          <h3 class="box-title">Monthly Revenue</h3>
+          <div class="box-tools pull-right">
+            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
           </div>
         </div>
+        <div class="box-body">
+          <canvas id="barChart"></canvas>
+        </div>
       </div>
-    </section>
+    </div>
 
+    <div class="col-md-6">
+      <!-- Pie Chart for Employees and Members -->
+      <div class="box box-success">
+        <div class="box-header with-border">
+          <h3 class="box-title">직원 및 회원 수</h3>
+          <div class="box-tools pull-right">
+            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+          </div>
+        </div>
+        <div class="box-body">
+          <canvas id="barChartMember"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
    <section class="content">
-
       <div class="row">
         <div class="col-md-5">
           <!-- About Me Box -->
           <div class="box box-primary">
             <div class="box-header with-border">
               <h3 class="box-title">발주 알림</h3>
-
             </div>
-            
             <div class="box-body">
               <strong><i class="fa fa-user margin-r-5"></i>재고관리</strong>
               <p class="text-muted">
@@ -77,22 +85,11 @@
               </p>
               <hr>
 
-             
-
             </div>
           </div>
         </div>
         </div>
     </section>
-
-
-
-
-
-
-
-
-
 
   </div>
   <footer class="main-footer">

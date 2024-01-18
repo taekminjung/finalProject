@@ -204,4 +204,10 @@
 		FROM program
 		WHERE employee_id = #{employeeId}
 	</select>	
+	
+	<select id="programImgCnt" parameterType="com.example.haribo.vo.ProgramImg" resultType="Integer">
+		SELECT COUNT(program_no)
+		FROM program_img
+		WHERE program_no = #{programNo}
+	</select>
 </mapper>

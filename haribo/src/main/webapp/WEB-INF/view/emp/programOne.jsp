@@ -73,11 +73,8 @@
 			  	<img id="img" src="${pageContext.request.contextPath}/upload/emp/" 
 			  		class="rounded-circle" onerror="this.src='${pageContext.request.contextPath}/upload/emp/programdefault.png'" width="250" height="150">
 			  </div>
-			 
 		       <a class="btn bg-navy" href="${pageContext.request.contextPath}/programList">뒤로</a>
    		       <a class="btn btn-primary" id="updateBtn" href="${pageContext.request.contextPath}/updateProgram?programNo=${resultProgram.programNo}">수정</a>
-		       <a class="btn btn-danger" id="deleteBtn" href="${pageContext.request.contextPath}/deleteProgram?programNo=${resultProgram.programNo}">삭제</a>
-
               <div class="box-footer">
   
               </div>

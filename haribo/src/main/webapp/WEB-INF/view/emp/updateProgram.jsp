@@ -61,7 +61,7 @@
 			  </div>
 			  <div class="form-group">
 			    <label for="programMemo">프로그램 내용</label>
-			    <textarea style="height: 150px; width: 600px;" class="form-control" id="programMemo" name="programMemo" value="${list.programMemo}"></textarea>
+				<textarea style="height: 150px; width: 600px;" class="form-control" id="programMemo" name="programMemo">${list.programMemo}</textarea>
 			  </div>
 			  <div class="form-group">
 			    <label for="programDay">프로그램 일자 <br> 예시) 토 / 월, 수, 금 / 화, 목</label>
@@ -69,7 +69,7 @@
 			  </div>
 			  <div class="form-group">
 			    <label for="pImg">프로그램 이미지</label>
-			    <input type="file" id="pImg" name="pImg" accept=".png">
+			    <input type="file" id="pImg" name="pImg" accept="image/*">
 			  </div>
 		       <button type="submit" id="formBtn" class="btn btn-primary">수정 완료</button>
 			</form>
@@ -120,7 +120,8 @@
 		}  else if ($('#programDay').val().length<1){
 			alert('프로그램 개설요일을 입력해주세요')
 			$('#programDay').focus()
-		} // else if($('#imgForm').val().length<1){
+		} 
+		// else if($('#imgForm').val().length<1){
 		//	alert('프로그램 이미지를 추가해주세요')
 		//	$('#imgForm').focus()
 	//	}  

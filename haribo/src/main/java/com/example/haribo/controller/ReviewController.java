@@ -87,10 +87,11 @@ public class ReviewController {
 	@GetMapping("/employeeReviewOne")
 	public String employeeReviewOne(Model model, Review review) {
 		Review resultReview = reviewService.reviewOne(review);
-		List<ReviewReply> rpList = reviewReplyService.selectReviewReply(resultReview);
+		List<ReviewReply> rpList = reviewReplyService.selectReviewReply(review);
 
 		model.addAttribute("resultReview", resultReview);
 		model.addAttribute("rpList", rpList);
+		model.addAttribute("review", review);
 		
 		return "emp/employeeReviewOne";
 	}
