@@ -121,7 +121,6 @@ public class ProgramController {
 //		//System.out.println(resultProgram.getProgramMemo() + "<-- 프로그램 상세설명");
 		return "emp/programOne";
 	}
-	
 
 // 고객 홈페이지 부분 	
 	
