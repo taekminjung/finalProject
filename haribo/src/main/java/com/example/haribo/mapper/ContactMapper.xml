@@ -1,35 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.haribo.mapper.ContactMapper">
-<insert id="insertContact" parameterType="com.example.haribo.vo.Contact">
-INSERT INTO contact(
-	customer_birth,
-	customer_contact_date,
-	customer_name,
-	contact_content,
-	customer_phone,
-	branch_no,
-	createdate
-	)VALUES(
-	#{customerBirth},#{customerContactDate},#{customerName},#{contactContent},#{customerPhone},#{branchNo}, NOW() )
-</insert>
+	<insert id="insertContact" parameterType="com.example.haribo.vo.Contact">
+	INSERT INTO contact(
+			customer_birth,
+			customer_contact_date,
+			customer_name,
+			contact_content,
+			customer_phone,
+			branch_no,
+		createdate
+		) VALUES (
+			#{customerBirth},
+			#{customerContactDate},
+			#{customerName},
+			#{contactContent},
+			#{customerPhone},
+			#{branchNo},
+			NOW()
+		)
+	</insert>
 
 	<select id="contactCustomer" parameterType="java.util.Map" resultType="java.util.Map">
-	SELECT
-		branch_no branchNo,
-		customer_birth customerBirth,
-		customer_contact_date customerContactDate,
-		customer_name customerName,
-		contact_content contactContent,
-		customer_phone customerPhone,
-		branch_no,
-		createdate
-	FROM contact
+		SELECT
+			branch_no branchNo,
+			customer_birth customerBirth,
+			customer_contact_date customerContactDate,
+			customer_name customerName,
+			contact_content contactContent,
+			customer_phone customerPhone,
+			createdate
+		FROM contact
+		WHERE branch_no = #{branchNo}
 	</select>
 	
 	<select id="getTotalRow" parameterType="int" resultType="int">
 		SELECT COUNT(*)
 		FROM contact
-	
 	</select>
 </mapper>
