@@ -12,7 +12,7 @@ import com.example.haribo.vo.ReviewReply;
 public class ReviewReplyController {
 	@Autowired private ReviewReplyService reviewReplyService;
 	
-	// 리뷰 댓글 등록하기
+	// 리뷰 댓글 등록하기(트레이너)
 	@GetMapping("/insertReviewReply")
 	public String insertReviewReply() {
 		
@@ -28,12 +28,35 @@ public class ReviewReplyController {
 				
 	}
 	
-	// 리뷰 댓글 삭제하기
+	// 리뷰 댓글 삭제하기 (트레이너)
 	@PostMapping("/deleteReviewReply")
 	public String deleteReviewReply(ReviewReply reviewReply) {
 		System.out.println(reviewReply+"<<=====asdas");
 		reviewReplyService.deleteReviewReply(reviewReply);
-		
+			
 		return "redirect:/trainerReviewOne?reviewNo="+reviewReply.getReviewNo();
+	}
+	
+	// 리뷰 댓글 등록하기(직원)
+	@GetMapping("/insertReviewReplyEmp")
+	public String insertReviewReplyEmp() {
+		
+		return "emp/employeeReviewOne";
+	}
+	
+	@PostMapping("/insertReviewReplyEmp")
+	public String insertReviewReplyEmp(ReviewReply reviewReply) {
+		reviewReplyService.insertReviewReply(reviewReply);
+		
+		String a = "redirect:/employeeReviewOne?reviewNo="+reviewReply.getReviewNo();
+		return a;
+	}
+	
+	// 리뷰 댓글 삭제하기(직원)
+	@PostMapping("/deleteReviewReplyEmp")
+	public String deleteReviewReplyEmp(ReviewReply reviewReply) {
+		reviewReplyService.deleteReviewReply(reviewReply);
+		
+		return "redirect:/employeeReviewOne?reviewNo="+reviewReply.getReviewNo();
 	}
 }

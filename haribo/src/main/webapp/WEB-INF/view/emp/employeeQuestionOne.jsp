@@ -50,7 +50,7 @@
 			<div class="direct-chat-text"> ${qr.questionReplyContent} </div>
 			<!-- 각 댓글에 대한 삭제 버튼이 있는 폼 추가 -->
 			<div>
-            	<form action="${pageContext.request.contextPath}/deleteQuestionReply" method="post">
+            	<form action="${pageContext.request.contextPath}/deleteQuestionReplyEmp" method="post">
                 <input type="hidden" name="questionReplyNo" value="${qr.questionReplyNo}">
                 <input type="hidden" name="questionNo" value="${qr.questionNo}">
                 <button type="submit" class="btn btn-danger btn-flat">삭제하기</button>
@@ -59,11 +59,12 @@
 			</c:forEach>
 			<br>
 			<div>
-	          <form action="${pageContext.request.contextPath}/trainerQuestionOne" method="post">
+	          <form action="${pageContext.request.contextPath}/insertQuestionReplyEmp" method="post">
 	            <div class="input-group">
 	              <input type="text" name="questionReplyContent" id="questionReplyContent" placeholder="댓글을 입력하세요 ..." class="form-control">
 	              <input type="hidden" name="employeeId" id="employeeId" value="${loginEmployee.employeeId}"class="form-control">
 	              <input type="hidden" name="questionNo" id="questionNo" value="${question.questionNo}"class="form-control">
+	              <input type="hidden" name="customerId" id="customerId" value="${question.customerId}"class="form-control">
 	                  <span class="input-group-btn">
 	                    <button type="submit" class="btn btn-info btn-flat">입력하기</button>
 	                  </span>
@@ -79,7 +80,9 @@
       </div>
       <!-- /.box -->
     </section>
-    <!-- /.content -->
+  <div>
+  		<a class="btn bg-maroon-active color-palette" id="deleteBtn" name="deleteBtn" href="${pageContext.request.contextPath}/deleteQuestion?questionNo=${question.questionNo}">글 삭제</a>
+  </div>
   </div>
   <!-- 헤더 + 내용 wrapper 부분 끝 -->
 

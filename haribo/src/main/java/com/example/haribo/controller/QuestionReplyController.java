@@ -27,11 +27,33 @@ public class QuestionReplyController {
 		return a;
 	}
 	
-	// 문의 답글 삭제하기
+	// 문의 답글 삭제하기 (트레이너)
 	@PostMapping("/deleteQuestionReply")
 	public String deleteQuestionReply(QuestionReply questionReply) {
 		questionReplyService.deleteQuestionReply(questionReply);
 		
 		return "redirect:/trainerQuestionOne?questionNo="+questionReply.getQuestionNo();
+	}
+	
+	// 문의답글 등록하기(직원)
+	@GetMapping("/insertQuestionReplyEmp")
+	public String insertQuestionReplyEmp() {
+		return "emp/employeeQuestionOne";
+	}
+	
+	@PostMapping("/insertQuestionReplyEmp")
+	public String insertQuestionReplyEmp(QuestionReply questionReply) {
+		questionReplyService.insertQuestionReply(questionReply);
+		
+		String a = "redirect:/employeeQuestionOne?questionNo="+questionReply.getQuestionNo();
+		return a;
+	}
+	
+	// 문의 답글 삭제하기 (직원)
+	@PostMapping("/deleteQuestionReplyEmp")
+	public String deleteQuestionReplyEmp(QuestionReply questionReply) {
+		questionReplyService.deleteQuestionReply(questionReply);
+		
+		return "redirect:/employeeQuestionOne?questionNo="+questionReply.getQuestionNo();
 	}
 }

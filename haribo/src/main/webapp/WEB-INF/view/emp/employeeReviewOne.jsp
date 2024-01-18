@@ -33,21 +33,32 @@
   <div class="content-wrapper">
     <!-- 페이지 메인 컨텐트 헤더 -->
     <section class="content">
-	<h3>문의사항</h3>
+	<h3>프로그램 후기</h3>
       <!-- Default box -->
-      <div class="box">
+      <div class="box box-info">
         <div class="box-header with-border">
-          <h3 class="box-title">${resultQuestion.questionTitle}</h3>
+          <h3 class="box-title">${resultReview.reviewTitle}</h3>
         </div>
         <div class="box-body">
-          ${resultQuestion.questionContent}
+          ${resultReview.reviewContent}
         </div>
         <!-- /.box-body -->
         <div class="box-footer">
-        	<h4>답변</h4>
-        	<c:forEach var="qr" items="${list}">
-			<div> ┗ ${qr.questionReplyContent}</div>
+	        <h4>답변</h4>
+	        <img class="direct-chat-img" src="emp/img/man.png">
+	        <c:forEach var="rr" items="${rpList}">
+			<div class="direct-chat-text"> ${rr.reviewReplyContent} </div>
+			<!-- 각 댓글에 대한 삭제 버튼이 있는 폼 추가 -->
+			<div>
+            	<form action="${pageContext.request.contextPath}/deleteReviewReplyEmp" method="post">
+                <input type="hidden" name="reviewReplyNo" value="${rr.reviewReplyNo}">
+                <input type="hidden" name="reviewNo" value="${rr.reviewNo}">
+                <button type="submit" class="btn btn-danger btn-flat">삭제하기</button>
+            	</form>
+			</div>
 			</c:forEach>
+			<br>
+
         </div>
         <!-- /.box-footer-->
       </div>
