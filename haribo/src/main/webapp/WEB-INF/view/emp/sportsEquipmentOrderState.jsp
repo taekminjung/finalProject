@@ -36,7 +36,7 @@
 	        <thead>
 	        <tr>
 	          <th>주문번호</th>
-	          <th>물품 번호</th>
+	          <th>물품명</th>
 	          <th>수 량</th>
 	          <th>발주 상태</th>
 	          <th>발주 신청일</th>
@@ -47,7 +47,7 @@
 	        <c:forEach var="seq" items="${seqsList}">
 	        <tr>
 	          <td>${seq.orderNo}</td>
-	          <td>${seq.sportsEquipmentNo}</td>
+	          <td>${seq.itemName}</td>
 	          <td>${seq.quantity}</td>
 	          <td>${seq.orderStatus}</td>
 	          <td>${seq.createdate}</td>

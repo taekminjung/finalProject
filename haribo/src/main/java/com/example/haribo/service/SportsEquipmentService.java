@@ -199,7 +199,7 @@ public class SportsEquipmentService {
 	}
 	
 	// 트레이너 물품 발주 상태 확인
-	public List<SportsEquipmentOrder> seqState(@RequestParam(defaultValue="1") int currentPage, Branch branch) {
+	public List<HashMap<String, Object>> seqState(@RequestParam(defaultValue="1") int currentPage, Branch branch) {
 		int rowPerPage = 5;
 		int beginRow = (currentPage-1) * rowPerPage;
 		
@@ -208,7 +208,7 @@ public class SportsEquipmentService {
 		map.put("rowPerPage", rowPerPage);
 		map.put("branchNo", branch.getBranchNo());
 		
-		List<SportsEquipmentOrder> seqsList = sportsEquipmentMapper.seqStateList(map);
+		List<HashMap<String, Object>> seqsList = sportsEquipmentMapper.seqStateList(map);
 		return seqsList;
 	}
 	

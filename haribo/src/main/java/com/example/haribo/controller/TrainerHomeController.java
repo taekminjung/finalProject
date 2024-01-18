@@ -176,7 +176,7 @@ public class TrainerHomeController {
 	@GetMapping("/sportsEquipmentOrderState")
 	public String sportsEquipmentOrderState(Model model, @RequestParam(defaultValue="1") int currentPage, Branch branch) {
 		// 서비스에서 불러오기
-		List<SportsEquipmentOrder> seqsList = sportsEquipmentService.seqState(currentPage, branch);
+		List<HashMap<String, Object>> seqsList = sportsEquipmentService.seqState(currentPage, branch);
 		
 		int lastPageseqState = sportsEquipmentService.lastPageseqState();
 		

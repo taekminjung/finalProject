@@ -128,14 +128,16 @@
 	</insert>
 	
 	<!-- 트레이너 물품 발주 신청 현황 확인하기 -->
-	<select id="seqStateList" parameterType="java.util.Map" resultType="com.example.haribo.vo.SportsEquipmentOrder">
+	<select id="seqStateList" parameterType="java.util.Map" resultType="java.util.Map">
 		SELECT 
-			order_no orderNo,
-			sports_equipment_no sportsEquipmentNo,
-			quantity,
-			order_status orderStatus,
-			createdate
-		FROM sports_equipment_order
+			seo.order_no orderNo,
+			se.item_name itemName,
+			seo.quantity quantity,
+			seo.order_status orderStatus,
+			seo.createdate createdate
+		FROM sports_equipment_order seo
+		INNER JOIN sports_equipment se
+		ON seo.sports_equipment_no = se.sports_equipment_no
 		WHERE branch_no = #{branchNo}
 		LIMIT #{beginRow}, #{rowPerPage}
 	</select>
