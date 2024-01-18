@@ -38,8 +38,8 @@ public class ContactController {
 	}
 	
 	@GetMapping("/contactCustomer")
-	public String contactCustomer(Model model, @RequestParam(defaultValue="1")int currentPage) {
-		List<Contact> list = contactService.contactCustomerList(currentPage);
+	public String contactCustomer(Model model, @RequestParam(defaultValue="1")int currentPage, Branch branch) {
+		List<Contact> list = contactService.contactCustomerList(currentPage, branch);
 		int lastPage = contactService.lastPage();
 		
 		model.addAttribute("list", list);

@@ -8,8 +8,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.haribo.mapper.ContactMapper;
+import com.example.haribo.vo.Branch;
 import com.example.haribo.vo.Contact;
-import com.example.haribo.vo.Notice;
 
 @Service
 public class ContactService {
@@ -20,13 +20,14 @@ public class ContactService {
 			return row;
 		}
 		
-		public List<Contact> contactCustomerList(@RequestParam(defaultValue ="1") int currentPage){
+		public List<Contact> contactCustomerList(@RequestParam(defaultValue ="1") int currentPage, Branch branch){
 			int rowPerPage = 10;
 			int beginRow = (currentPage-1)*rowPerPage;
 
 			HashMap<String, Object> param = new HashMap<>();
 			param.put("beginRow", beginRow);
 			param.put("rowPerPage", rowPerPage);
+			param.put("branchNo", branch.getBranchNo());
 			
 			List<Contact> list = contactMapper.contactCustomer(param);
 			return list;

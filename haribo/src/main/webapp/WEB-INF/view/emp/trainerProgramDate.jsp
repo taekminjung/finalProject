@@ -45,7 +45,7 @@
 
 	<!-- 왼쪽에는 프로그램 일정 추가 달력, 오른쪽에는 프로그램 상세 정보 출력 -->
 	<div class="row">
-	    <div class="col-md-9">
+	    <div class="col-md-8">
 	    <!-- 첫번째 섹션 달력 -->
 	    <section class="content container-fluid">
 		<div>
@@ -61,7 +61,7 @@
 					다음 달
 				</a>
 			</div>
-			<br><br>
+			
 			<!-- 달력 부분 -->
 			<form action="${pageContext.request.contextPath}/trainerProgramDate" method="post">
 			<input type="hidden" name="targetYear" value="${calMap.targetYear}">
@@ -114,11 +114,34 @@
 	    </div>
 	    
 	    <!-- 두 번째 섹션 (프로그램 정보) -->
-	    <div class="col-md-3">
+	    <div class="col-md-4">
 	    <!-- 프로그램 정보에 대한 내용 추가 -->
 		<section class="content container-fluid">
 		<div>
-		<h2></h2>
+		<div class="box box-info">
+            <div class="box-body box-profile">
+              <img class="img-square" src="upload/emp/trainer.png">
+
+              <h3 class="profile-username text-center">${resultProgram.programName}</h3>
+
+              <p class="text-muted text-center">${resultProgram.employeeId}</p>
+
+              <ul class="list-group list-group-unbordered">
+                <li class="list-group-item">
+                  <b>Followers</b> <a class="pull-right">1,322</a>
+                </li>
+                <li class="list-group-item">
+                  <b>Following</b> <a class="pull-right">543</a>
+                </li>
+                <li class="list-group-item">
+                  <b>Friends</b> <a class="pull-right">13,287</a>
+                </li>
+              </ul>
+
+              <a href="#" class="btn btn-primary btn-block"><b>Follow</b></a>
+            </div>
+            <!-- /.box-body -->
+          </div>
 		</div>
 		
 		</section>

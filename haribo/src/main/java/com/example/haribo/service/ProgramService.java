@@ -80,10 +80,12 @@ public class ProgramService {
 		// db에 사진 있는지 확인여부
 		int cnt = programMapper.programImgCnt(programImg);
 		if(cnt != 0) { // 사진이 있다면, 삭제
+			log.debug("디비삭제");
 			int row1 = programMapper.deleteProgramImg(programImg);
 			if(row1 != 1) {
 				throw new RuntimeException();
 			} else { // 저장된 파일도 삭제
+				log.debug("파일삭제");
 				File file = new File(pathEmp+"/"+fName);
 				try {
 					file.delete();
@@ -99,7 +101,7 @@ public class ProgramService {
 			programImg.setProgramImgType(pImg.getContentType());
 			
 			int row2 = programMapper.insertProgramImg(programImg);
-			if(row2 !=0) {
+			if(row2 !=1) {
 				throw new RuntimeException();
 			} else {
 				File file = new File (pathEmp+'/'+fName);
