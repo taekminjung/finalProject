@@ -6,6 +6,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.management.RuntimeErrorException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -66,6 +68,48 @@ public class ProgramService {
 	
 	public int updateProgram(Program program) {
 		return programMapper.updateProgram(program);
+	}
+	
+	public void updateProgramImg(MultipartFile pImg, ProgramImg programImg, Program program, String path) {
+		String pathEmp = path+"/emp";
+		String oName = pImg.getOriginalFilename();  //사진의 원래 이름
+		String type = oName.substring(oName.lastIndexOf(".")); // 사진 원래이름 파일 확장자명
+		String fName = program.getProgramName()+type;
+		log.debug(fName);
+		
+		// db에 사진 있는지 확인여부
+		int cnt = programMapper.programImgCnt(programImg);
+		if(cnt != 0) { // 사진이 있다면, 삭제
+			int row1 = programMapper.deleteProgramImg(programImg);
+			if(row1 != 1) {
+				throw new RuntimeException();
+			} else { // 저장된 파일도 삭제
+				File file = new File(pathEmp+"/"+fName);
+				try {
+					file.delete();
+				} catch(IllegalStateException e) {
+					throw new RuntimeException();
+				}
+			}
+		}
+		if(pImg.getSize() != 0) {
+			programImg.setProgramImgOriginName(oName);
+			programImg.setProgramImgFileName(fName);
+			programImg.setProgramImgSize((int)pImg.getSize());
+			programImg.setProgramImgType(pImg.getContentType());
+			
+			int row2 = programMapper.insertProgramImg(programImg);
+			if(row2 !=0) {
+				throw new RuntimeException();
+			} else {
+				File file = new File (pathEmp+'/'+fName);
+				try {
+					pImg.transferTo(file);
+				} catch(IllegalStateException | IOException e) {
+					throw new RuntimeException();
+				}
+			}
+		}
 	}
 	
 	public int updateProgramActive(Program program) {

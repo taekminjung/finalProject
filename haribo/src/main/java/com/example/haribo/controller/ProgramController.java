@@ -70,13 +70,13 @@ public class ProgramController {
 	}
 	
 	@PostMapping("/updateProgram")
-	public String updateProgram(Program program) {
+	public String updateProgram(HttpSession session, Program program, MultipartFile pImg, ProgramImg programImg) {
+		
+		String path = session.getServletContext().getRealPath("/upload");
+		log.debug(path);
 		int row = programService.updateProgram(program);
-		if(row==0) {
-			System.out.println("프로그램 업데이트 실패");
-			return "redirect:/updateProgram?programNo=" + program.getProgramNo();
-		} else {
-			System.out.println("프로그램 업데이트 성공");
+		if(pImg.getSize()>0) {
+			programService.updateProgramImg(pImg, programImg, program, path);
 		}
 		return "redirect:/programList";
 	}

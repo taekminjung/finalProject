@@ -76,11 +76,10 @@
                 	<input type="file" id="eImg" name="eImg" accept=".jpg, .jpeg, .png">
                 	<input type="hidden" name="employeeNo" value="${loginEmployee.employeeNo}">
         	    </div>                    
-              
-              	<div class="col-xs-4">
-          			<button type="submit" id="form" class="btn btn-success">사진 변경</button>
-          		</div>		
           		</form>
+          		<div class="col-xs-4">
+          			<button type="submit" id="formImg" class="btn btn-success">사진 변경</button>
+          		</div>	
             </div>
           </div>
         </div>
@@ -128,5 +127,16 @@
 <script src="emp/dist/js/pages/dashboard2.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="emp/dist/js/demo.js"></script>
+
+<script>
+	$('#formImg').click(function(){
+		if($('#eImg').val().length<1){
+			alert('변경할 사진을 추가해주세요')
+			$('#eimg').focus()
+		} else{
+			$('#form').submit()
+		}
+	})
+</script>
 </body>
 </html>
