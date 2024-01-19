@@ -80,7 +80,7 @@
 						<p class="desc">
 							<h4>${m.membershipName }</h4><br>
 							<h5>금액:${m.membershipPrice}</h5>
-							<p><a href="${pageContext.request.contextPath}/payment?membershipNo=${m.membershipNo}" class="primary-btn mt-20">결제</a></p>
+							<p><a href="${pageContext.request.contextPath}/payment?membershipNo=${m.membershipNo}&membershipName=${m.membershipName}" class="primary-btn mt-20">결제</a></p>
 						</p>
 					</div>
 				</c:forEach>

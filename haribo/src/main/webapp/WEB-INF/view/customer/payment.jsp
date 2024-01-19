@@ -72,7 +72,7 @@
 					<div class="single-post row">
 						<div class="col-lg-12">
 							<div class="feature-img">
-								<img class="customer/img-fluid" src="customer/img/blog/feature-img1.jpg" alt="">
+								<img class="customer/img-fluid" src="${pageContext.request.contextPath}/upload/emp/${membership.membershipName}.png" alt="">
 							</div>
 						</div>
 						<div class="col-lg-9 col-md-9">

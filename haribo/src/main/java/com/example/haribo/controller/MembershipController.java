@@ -39,7 +39,7 @@ public class MembershipController {
 				System.out.println(list+"<--con.membershipDetail");
 				
 				model.addAttribute("list", list);
-				
+				model.addAttribute("membership", membership);
 				return "customer/payment";
 			}
 }
