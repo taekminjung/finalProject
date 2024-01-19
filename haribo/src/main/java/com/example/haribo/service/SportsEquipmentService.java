@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,6 +18,9 @@ import com.example.haribo.vo.SportsEquipmentExpire;
 import com.example.haribo.vo.SportsEquipmentImg;
 import com.example.haribo.vo.SportsEquipmentOrder;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @Service
 public class SportsEquipmentService {
 	@Autowired private SportsEquipmentMapper sportsEquipmentMapper;
@@ -175,13 +179,16 @@ public class SportsEquipmentService {
 	}
 	
 	// trainerExpireForm에 폐기할 물품 리스트 출력(현재 본사가 발주해 놓은 물품 리스트)
-	public List<SportsEquipment> trainerExpireFormList(){
-		List<SportsEquipment> expireList = sportsEquipmentMapper.trainerExpireFormList();
+	public List<Map<String, Object>> trainerExpireFormList(SportsEquipmentOrder sportsEquipmentOrder){
+		List<Map<String, Object>> expireList = sportsEquipmentMapper.trainerExpireFormList(sportsEquipmentOrder);
 		return expireList;
 	}
 	
 	// trainerExpireForm 물품 폐기 신청 폼
-	public int insertExpire(SportsEquipmentExpire sportsEquipmentExpire) {
+	public int insertExpire(SportsEquipmentExpire sportsEquipmentExpire, Branch branch) {
+		HashMap<String, Object> map = new HashMap<>();
+		map.put("branchNo", branch.getBranchNo());
+		
 		return sportsEquipmentMapper.insertExpire(sportsEquipmentExpire);
 	}
 	
@@ -213,13 +220,14 @@ public class SportsEquipmentService {
 	}
 	
 	// 트레이너 물품 발주 상태 페이징 
-	public int lastPageseqState() {
+	public int lastPageseqState(int branchNo) {
 		int rowPerPage = 5;
-		int totalRow = sportsEquipmentMapper.getTotalRowseqState(rowPerPage);
+		int totalRow = sportsEquipmentMapper.getTotalRowseqState(branchNo);
 		int lastPageseState = totalRow / rowPerPage;
 		if (totalRow % rowPerPage !=0) {
 			lastPageseState +=1;
 		}
+		log.debug(lastPageseState+"dd");
 		return lastPageseState;
 	}
 	

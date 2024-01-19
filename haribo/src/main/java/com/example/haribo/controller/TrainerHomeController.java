@@ -178,27 +178,27 @@ public class TrainerHomeController {
 		// 서비스에서 불러오기
 		List<HashMap<String, Object>> seqsList = sportsEquipmentService.seqState(currentPage, branch);
 		
-		int lastPageseqState = sportsEquipmentService.lastPageseqState();
+		int lastPageseqState = sportsEquipmentService.lastPageseqState(branch.getBranchNo());
 		
 		model.addAttribute("seqsList", seqsList);
 		model.addAttribute("branchNo", branch.getBranchNo());
 		model.addAttribute("currentPage", currentPage);
-		model.addAttribute("lastPageseqState", lastPageseqState);
+		model.addAttribute("lastPage", lastPageseqState);
 		
 		return "emp/sportsEquipmentOrderState";
 	}
 	
 	// 폐기할 물품 입력하기 (form+insert)
 	@GetMapping("/trainerExpireForm")
-	public String insertExpire(Model model) {
-		List<SportsEquipment> expireList = sportsEquipmentService.trainerExpireFormList();
+	public String insertExpire(Model model, SportsEquipmentOrder sportsEquipmentOrder) {
+		List<Map<String, Object>> expireList = sportsEquipmentService.trainerExpireFormList(sportsEquipmentOrder);
 		model.addAttribute("expireList", expireList);
 		return "emp/trainerExpireForm";
 	}
 	
 	@PostMapping("/trainerExpireForm")
-	public String insertExpire(SportsEquipmentExpire sportsEquipmentExpire) {
-		sportsEquipmentService.insertExpire(sportsEquipmentExpire);
+	public String insertExpire(SportsEquipmentExpire sportsEquipmentExpire, Branch branch) {
+		sportsEquipmentService.insertExpire(sportsEquipmentExpire, branch);
 		return "redirect:/trainerStock";
 	}
 }

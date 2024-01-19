@@ -44,7 +44,7 @@
       <form class="form-horizontal" action="${pageContext.request.contextPath}/trainerExpireForm" method="post">
         <div class="box-body">
           <div class="form-group">
-            <label for="branchNo" class="col-sm-2 control-label">지점</label>
+            <label for="branchNo" class="col-sm-1 control-label">지점</label>
 
             <div class="col-sm-10">
               <input type="text" class="form-control" name="branchNo" value="${loginEmployee.branchNo}" readonly>
@@ -57,7 +57,7 @@
             <select class="form-control" id="sportsEquipmentNo" name="sportsEquipmentNo">
                 <option>폐기할 물품을 선택해주세요</option>
                 <c:forEach var="e" items="${expireList}">
-                    <option value="${e.sportsEquipmentNo}">${e.itemName}</option>
+                    <option value="${e.sportsEquipmentNo}">${e.itemName}(${e.quantity} )개</option>
                 </c:forEach>
             </select>
             </div>
@@ -112,6 +112,15 @@
 <script src="emp/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <!-- AdminLTE App -->
 <script src="emp/dist/js/adminlte.min.js"></script>
+<script>
+	$('#quantity').blur(function(){
+		if($('#quantity').val() > $('#qt').val()){
+			alert('안돼');
+			$('#quantity').val('');
+			$('#quantity').focus();
+		}
+	})
 
+</script>
 </body>
 </html>

@@ -51,11 +51,11 @@
 				<h2>${calMap.targetYear}년 ${calMap.targetMonth +1}월</h2>
 				
 				<a style="float:left" class="btn" 
-				href="${pageContext.request.contextPath}/trainerProgramDate?employeeNo=${loginEmployee.employeeNo}&targetYear=${calMap.targetYear}&targetMonth=${calMap.targetMonth -1}">
+				href="${pageContext.request.contextPath}/trainerProgramDate?employeeNo=${loginEmployee.employeeNo}&programNo=${programDate.programNo}&targetYear=${calMap.targetYear}&targetMonth=${calMap.targetMonth -1}">
 					이전 달
 				</a>
 				<a style="float:right" class="btn" 
-				href="${pageContext.request.contextPath}/trainerProgramDate?employeeNo=${loginEmployee.employeeNo}&targetYear=${calMap.targetYear}&targetMonth=${calMap.targetMonth +1}">
+				href="${pageContext.request.contextPath}/trainerProgramDate?employeeNo=${loginEmployee.employeeNo}&programNo=${programDate.programNo}&targetYear=${calMap.targetYear}&targetMonth=${calMap.targetMonth +1}">
 					다음 달
 				</a>
 			</div>

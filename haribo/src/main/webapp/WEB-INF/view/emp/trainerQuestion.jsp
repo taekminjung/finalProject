@@ -40,7 +40,7 @@
       <div class="input-group input-group-sm hidden-xs" style="width: 300px;">
         <form class="search-form" id="searchQuestion" method="post" action="${pageContext.request.contextPath}/trainerQuestion">
 	      <div class="input-group input-group-sm hidden-xs" style="width: 300px;"> 
-	        <input type="text" name="table_search" class="form-control pull-right" placeholder="검색어를 입력하세요"  onfocus="this.placeholder''" onblur="this.placeholder='검색어를 입력하세요'">
+	        <input type="text" name="questionTitle" class="form-control pull-right" placeholder="검색어를 입력하세요"  onfocus="this.placeholder''" onblur="this.placeholder='검색어를 입력하세요'">
 	        <span class="input-group-btn">
 	          <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
 	        </span>

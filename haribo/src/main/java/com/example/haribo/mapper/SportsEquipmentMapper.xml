@@ -75,6 +75,7 @@
 		SELECT
 			COUNT(*)
 		FROM sports_equipment_order
+		WHERE branch_no = #{branchNo}
 	</select>
 	
 	<!-- 발주 신청 폼에 필요한 쿼리 -->
@@ -101,15 +102,26 @@
 	</select>
 	
 	<!--  페이징 없는 trainerExpireFormList  -->
-	<select id="trainerExpireFormList" resultType="com.example.haribo.vo.SportsEquipment">
-		SELECT DISTINCT
-			seo.branch_no branchNo,
+	<select id="trainerExpireFormList" parameterType="com.example.haribo.vo.SportsEquipmentOrder" resultType="java.util.Map">
+		SELECT 
 			se.sports_equipment_no sportsEquipmentNo,
-			se.item_name itemName
+			se.item_name itemName,
+			((select SUM(seo.quantity) 
+			   FROM sports_equipment_order seo 
+		      WHERE seo.branch_no = #{branchNo}
+				AND seo.order_status ='승인' 
+				AND seo.sports_equipment_no = sportsEquipmentNo) 
+					-
+				    nvl((select SUM(see.quantity) 
+			    FROM sports_equipment_expire see
+			    WHERE see.branch_no = #{branchNo} 
+				AND see.sports_equipment_no = sportsEquipmentNo),0)) quantity
 		FROM sports_equipment_order seo
 		LEFT OUTER JOIN sports_equipment se
 		ON seo.sports_equipment_no = se.sports_equipment_no
 		WHERE seo.order_status = '승인'
+		AND seo.branch_no = #{branchNo}
+		GROUP BY se.sports_equipment_no
 	</select>
 	
 	<!-- 폐기 신청 폼에 필요한 쿼리 -->

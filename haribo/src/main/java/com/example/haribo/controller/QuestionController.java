@@ -68,6 +68,14 @@ public class QuestionController {
 		return "redirect:/employeeQuestion";
 	}
 	
+	@GetMapping("/deleteQuestionCustomer")
+	public String deleteQuestionCustomer(Question question, QuestionReply questionReply) {
+		System.out.println(question+"<====qcon.question");
+		questionService.deleteQuestion(question, questionReply);
+		
+		return "redirect:/questionList";
+	}
+	
 	// 문의사항 리스트(고객)
 	@GetMapping("/questionList")
 	public String questionList(Model model, @RequestParam(defaultValue ="1")int currentPage) {
@@ -143,9 +151,9 @@ public class QuestionController {
 	
 	// 문의사항 리스트(트레이너)
 	@GetMapping("/trainerQuestion")
-	public String trainerQuestion(Model model, @RequestParam(defaultValue ="1")int currentPage) {
+	public String trainerQuestion(Model model, Question question, @RequestParam(defaultValue ="1")int currentPage) {
 		List<Question> list = questionService.questionList(currentPage);
-		int lastPage = questionService.lastPage();
+		int lastPage = questionService.searchLastPage(question);
 		model.addAttribute("currentPage", currentPage);
 		model.addAttribute("list", list);
 		model.addAttribute("lastPage", lastPage);

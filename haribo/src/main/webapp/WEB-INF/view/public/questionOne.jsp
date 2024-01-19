@@ -102,7 +102,7 @@
 						</tbody>
 					</table>
 					<c:if test="${resultQuestion.customerId == loginCustomer.customerId}">
-						<div style="text-align:right"><a class=" btn btn-outline-danger mt-10" href="${pageContext.request.contextPath}/deleteQuestion?questionNo=${question.questionNo}">문의 글 삭제</a></div>
+						<div style="text-align:right"><a class=" btn btn-outline-danger mt-10" href="${pageContext.request.contextPath}/deleteQuestionCustomer?questionNo=${question.questionNo}">문의 글 삭제</a></div>
 					</c:if><br>
 					<h3 style="text-align:center">문의사항 답변</h3><br>
 					<table class="schdule-table table table-bordered">

@@ -105,10 +105,13 @@
 		WHERE p.program_no = #{programNo}
 	</select>
 	
-	<select id="searchByProgram" parameterType="com.example.haribo.vo.Program" resultType="com.example.haribo.vo.Program">
+	<select id="searchByProgram" parameterType="com.example.haribo.vo.Program" resultType="Map">
 		SELECT
-		 DISTINCT(program_name) programName
-		FROM program
+		 DISTINCT(p.program_name) programName,
+		 pm.program_img_file_name programImgFileName
+		FROM program p
+		LEFT OUTER JOIN program_img pm
+		ON p.program_no = pm.program_no
 		WHERE program_name LIKE CONCAT('%' , #{programName} , '%') AND program_active = 'Y'
 	</select>
 	

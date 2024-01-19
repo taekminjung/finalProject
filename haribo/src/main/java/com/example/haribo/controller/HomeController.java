@@ -36,11 +36,11 @@ public class HomeController {
 	@Autowired private HomeService homeService;
 	
 	@GetMapping("/home")
-	public String home(Model model, Program program) {
+	public String home(Model model) {
 		//리뷰 출력
 			HashMap<String, Object> rMap = reviewService.reviewListMap();
 		//프로그램 출력
-			List<HashMap<String, Object>> plist = programService.selectProgram(program);
+			List<HashMap<String, Object>> plist = programService.selectProgram();
 			//상담폼에 지점출력
 			List<Branch> blist = branchService.branchList();
 			System.out.println(blist+"<==homcon.blist");

@@ -123,10 +123,10 @@ public class ProgramController {
 	
 	// 프로그램 목록(홈페이지)
 	@GetMapping("/program")
-	public String program(Model model, Program program) {
+	public String program(Model model) {
 		
 		//프로그램 목록 출력
-		List<HashMap<String,Object>> list = programService.selectProgram(program);
+		List<HashMap<String,Object>> list = programService.selectProgram();
 		
 		//모델에 담아 view로
 		model.addAttribute("list", list);
@@ -157,7 +157,7 @@ public class ProgramController {
 	//프로그램 검색 기능
 	@PostMapping("/program")
 	public String searchByProgram(Model model, Program program) {
-		List<Program> list = programService.searchByProgram(program);
+		List<HashMap<String,Object>> list = programService.searchByProgram(program);
 		System.out.println("\u001B[43m"+list);
 		
 		model.addAttribute("list", list);

@@ -151,8 +151,8 @@ public class ProgramService {
 	}
 	
 	//고객 홈페이지에서 프로그램리스트 출력
-	public List<HashMap<String,Object>> selectProgram(Program program){
-		List<HashMap<String,Object>> list = programMapper.selectProgram(program);
+	public List<HashMap<String,Object>> selectProgram(){
+		List<HashMap<String,Object>> list = programMapper.selectProgram();
 		
 		return list;
 	}
@@ -180,8 +180,8 @@ public class ProgramService {
 		return dmap;
 	}
 	//프로그램 검색
-	public List<Program> searchByProgram(Program program){
-		List<Program> list = programMapper.searchByProgram(program);
+	public List<HashMap<String,Object>> searchByProgram(Program program){
+		List<HashMap<String,Object>> list = programMapper.searchByProgram(program);
 		System.out.println("\u001B[43m"+list+"<--ser.list");
 		return list;
 	}
