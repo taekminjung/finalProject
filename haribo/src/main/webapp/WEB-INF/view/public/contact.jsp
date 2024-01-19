@@ -1,14 +1,14 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 
 <html lang="zxx" class="no-js">
 
 <head>
-<!-- services 라이브러리 불러오기 -->
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=139fe7eca596ff88f8b69da1ea0c9e18&libraries=services"></script>
-
+	<!-- 공통 스타일 폰트 -->
+  	<link rel="stylesheet" href="common/css/main.css">
+	<!-- services 라이브러리 불러오기 -->
+	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=139fe7eca596ff88f8b69da1ea0c9e18&libraries=services"></script>
 	<!-- Mobile Specific Meta -->
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<!-- Favicon-->
@@ -25,9 +25,6 @@
 	<title>Contact</title>
 
 	<link href="https://fonts.googleapis.com/css?family=Roboto:100,200,300,400,500,700" rel="stylesheet">
-	<!--
-			CSS
-			============================================= -->
 	<link rel="stylesheet" href="customer/css/linearicons.css">
 	<link rel="stylesheet" href="customer/css/font-awesome.min.css">
 	<link rel="stylesheet" href="customer/css/bootstrap.css">

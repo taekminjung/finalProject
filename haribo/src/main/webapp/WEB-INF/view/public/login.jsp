@@ -1,8 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
+<!-- 공통 스타일 폰트 -->
+  <link rel="stylesheet" href="common/css/main.css">
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>하리보팀 파이널프로젝트</title>
@@ -33,31 +34,31 @@
 	<div class="container">
 		<div class="login-box">
 		  <div class="login-logo">
-		    <b>Customer</b>
+		    <b>고객 로그인</b>
 		  </div>
 		  <!-- /.login-logo -->
 		  <div class="login-box-body">
 		    <form id="customerForm" action="${pageContext.request.contextPath}/login" method="post">
 		      <div class="form-group has-feedback">
-		        <input id="customerId" type="text" class="form-control" placeholder="ID" name="customerId">
+		        <input id="customerId" type="text" class="form-control" placeholder="아이디" name="customerId">
 		        <span class="glyphicon glyphicon-star form-control-feedback"></span>
 		      </div>
 		      <div class="form-group has-feedback">
-		        <input id="customerPw" type="password" class="form-control" placeholder="Password" name="customerPw">
+		        <input id="customerPw" type="password" class="form-control" placeholder="비밀번호" name="customerPw">
 		        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
 		      </div>
 		     </form>
 		      <div class="row">
 		        <div class="col-xs-8">
-		          <a href="${pageContext.request.contextPath}/insertCustomer" class="text-center">Register New Member</a>
+		          <a href="${pageContext.request.contextPath}/insertCustomer" class="text-center">회원 가입하기</a>
 		        </div>
 		        <!-- /.col -->
 		        <div class="col-xs-4">
-		          <button id="customerBtn" class="btn btn-primary btn-block btn-flat">Log In</button>
+		          <button id="customerBtn" class="btn btn-primary btn-block btn-flat">로그인</button>
 		        </div>
 		        <!-- /.col -->
 		      </div>
-		      <div><input id="idSave" type="checkbox">Save ID</div>
+		      <div><input id="idSave" type="checkbox">아이디 기억하기</div>
 		   </div>
 		  <!-- /.login-box-body -->
 		</div>
@@ -65,17 +66,17 @@
 		<div align="center">ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ</div>
 		<div class="login-box">
 		  <div class="login-logo">
-		    <b>Employee</b>
+		    <b>직원 로그인</b>
 		  </div>
 		  <!-- /.login-logo -->
 		  <div class="login-box-body">
 		    <form action="${pageContext.request.contextPath}/empLogin" method="post">
 		      <div class="form-group has-feedback">
-		        <input type="text" id="employeeId" name="employeeId" class="form-control" placeholder="ID">
+		        <input type="text" id="employeeId" name="employeeId" class="form-control" placeholder="아이디">
 		        <span class="glyphicon glyphicon-user form-control-feedback"></span>
 		      </div>
 		      <div class="form-group has-feedback">
-		        <input type="password" id="employeePw" name="employeePw" class="form-control" placeholder="Password">
+		        <input type="password" id="employeePw" name="employeePw" class="form-control" placeholder="비밀번호">
 		        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
 		      </div>
 		      <div class="row">
@@ -83,7 +84,7 @@
 		        </div>
 		        <!-- /.col -->
 		        <div class="col-xs-4">
-		          <button type="submit" class="btn btn-primary btn-block btn-flat">Log In</button>
+		          <button type="submit" class="btn btn-primary btn-block btn-flat">로그인</button>
 		        </div>
 		        <!-- /.col -->
 		      </div>
