@@ -48,6 +48,14 @@
 		)
 	</insert>
 	
+	<select id="insertEmployeeBranch" resultType="com.example.haribo.vo.Branch">
+		SELECT
+			branch_no branchNo,
+			branch_name branchName
+		FROM branch	
+	
+	</select>
+	
 	<select id="idCkEmp" parameterType="String" resultType="Integer">
 		SELECT
 			COUNT(employee_id)

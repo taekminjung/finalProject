@@ -12,9 +12,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.example.haribo.service.CalendarService;
+import com.example.haribo.service.BranchService;
 import com.example.haribo.service.EmployeeService;
-import com.example.haribo.service.ProgramService;
+import com.example.haribo.vo.Branch;
 import com.example.haribo.vo.Employee;
 import com.example.haribo.vo.EmployeeDetail;
 import com.example.haribo.vo.EmployeeImg;
@@ -26,6 +26,7 @@ import lombok.extern.slf4j.Slf4j;
 @Controller
 public class EmployeeController {
 	@Autowired private EmployeeService employeeService;
+	@Autowired private BranchService branchService;
 	
 	// 직원, 트레이너 로그인
 	@PostMapping("/empLogin")
@@ -59,13 +60,15 @@ public class EmployeeController {
 	
 	// 직원, 트레이너 추가
 	@GetMapping("/insertEmployee")
-	public String addEmployee() {
+	public String addEmployee(Model model) {
+		List<Branch> branchList = employeeService.insertEmployeebranch();
+		model.addAttribute("branchList", branchList);
 		
 		return "emp/insertEmployee";
 	}
 	
 	@PostMapping("/insertEmployee")
-	public String addEmployee(Employee employee, EmployeeDetail employeeDetail) {
+	public String addEmployee(Employee employee, EmployeeDetail employeeDetail, Branch branch) {
 	log.debug(employee.toString());
 	log.debug(employeeDetail.toString());
 	

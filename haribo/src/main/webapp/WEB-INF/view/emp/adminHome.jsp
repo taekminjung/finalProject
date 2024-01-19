@@ -48,7 +48,7 @@
       <!-- Bar Chart -->
       <div class="box box-success">
         <div class="box-header with-border">
-          <h3 class="box-title">Monthly Revenue</h3>
+          <h3 class="box-title">월별 매</h3>
           <div class="box-tools pull-right">
             <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
           </div>
@@ -193,7 +193,16 @@ $(document).ready(function() {
                 borderWidth: 1
             }]
         },
+        options: {
+        	scales: {
+        		y: {
+        			suggestedMin: 1, // Set the default y-axis value to 1
+        			stepSize: 1
+        		}
+        	}
+        }
     });
+    
 
 </script>
 

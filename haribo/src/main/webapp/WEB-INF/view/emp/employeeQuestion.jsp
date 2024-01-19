@@ -8,18 +8,27 @@
   <title>직원 문의사항</title>
   
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <link rel="icon" type="image/x-icon" href="emp/img/starfavi.png">
+  <!-- 공통 스타일 폰트 -->
+  <link rel="stylesheet" href="common/css/main.css">
+  
   <link rel="stylesheet" href="emp/bower_components/bootstrap/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="emp/bower_components/font-awesome/css/font-awesome.min.css">
   <link rel="stylesheet" href="emp/bower_components/Ionicons/css/ionicons.min.css">
+  <link rel="stylesheet" href="emp/bower_components/jvectormap/jquery-jvectormap.css">
   <link rel="stylesheet" href="emp/dist/css/AdminLTE.min.css">
-  <link rel="stylesheet" href="emp/dist/css/skins/_all-skins.min.css">
+  <link rel="stylesheet" href="emp/dist/css/skins/skin-yellow.min.css">
+  
+
+  <!-- Google Font -->
   <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
 
-<body class="hold-transition skin-blue sidebar-mini">
-<div class="wrapper">
+<body class="hold-transition skin-yellow sidebar-mini">
 
+<div class="wrapper">
+  <!-- 헤더 -->
   <jsp:include page="/inc/adminHeader.jsp"></jsp:include>
 
   <div class="content-wrapper">
@@ -65,7 +74,7 @@
 				<c:if test="${currentPage > 1}">
 					<a href="${pageContext.request.contextPath}/employeeQuestion?currentPage=${currentPage-1}" class="btn btn-primary">이전</a>
 				</c:if>
-				
+							  [${currentPage}]
 				<c:if test="${currentPage < lastPage}">
 					<a href="${pageContext.request.contextPath}/employeeQuestion?currentPage=${currentPage+1}" class="btn btn-primary">다음</a>
 				</c:if>

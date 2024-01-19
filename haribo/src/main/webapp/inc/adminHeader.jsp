@@ -70,23 +70,11 @@
 			 class="img-circle" width="20" height="20" onerror="this.src='${pageContext.request.contextPath }/upload/emp/default.jpg'" alt="user Image">
         </div>
         <div class="pull-left info">
-          <p>${loginEmployee.employeeName}님</p>
+          <a href="${pageContext.request.contextPath}/employeeInfo"><p><strong>${loginEmployee.employeeName}님</strong></p></a>
 	<a href="#" id="statusLink"><i class="fa fa-circle text-success"></i> Online</a>
 
         </div>
       </div>
-      
-      <!-- search form -->
-      <form action="#" method="get" class="sidebar-form">
-        <div class="input-group">
-          <input type="text" name="q" class="form-control" placeholder="Search...">
-          <span class="input-group-btn">
-                <button type="submit" name="search" id="search-btn" class="btn btn-flat">
-                  <i class="fa fa-search"></i>
-                </button>
-              </span>
-        </div>
-      </form>
       
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">메뉴</li>

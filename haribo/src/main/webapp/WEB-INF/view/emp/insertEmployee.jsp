@@ -5,21 +5,31 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>하리보팀 파이널프로젝트</title>
+  <title>직원 추가 페이지</title>
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <!-- 파비콘 코드 -->
+  <link rel="icon" type="image/x-icon" href="emp/img/starfavi.png">
+  <!-- 공통 스타일 폰트 -->
+  <link rel="stylesheet" href="common/css/main.css">
+  
   <link rel="stylesheet" href="emp/bower_components/bootstrap/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="emp/bower_components/font-awesome/css/font-awesome.min.css">
   <link rel="stylesheet" href="emp/bower_components/Ionicons/css/ionicons.min.css">
   <link rel="stylesheet" href="emp/bower_components/jvectormap/jquery-jvectormap.css">
   <link rel="stylesheet" href="emp/dist/css/AdminLTE.min.css">
-  <link rel="stylesheet" href="emp/dist/css/skins/_all-skins.min.css">
+  <link rel="stylesheet" href="emp/dist/css/skins/skin-yellow.min.css">
+  
 
   <!-- Google Font -->
   <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
-<body class="hold-transition skin-blue sidebar-mini">
-  <%@include file="/inc/adminHeader.jsp" %>
+
+<body class="hold-transition skin-yellow sidebar-mini">
+
+<div class="wrapper">
+  <!-- 헤더 -->
+  <jsp:include page="/inc/adminHeader.jsp"></jsp:include>
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
@@ -27,7 +37,6 @@
     <section class="content-header">
       <h1>
         직원 추가 페이지
-        <small>Preview</small>
       </h1>
     </section>
 
@@ -38,9 +47,7 @@
         <div class="col-md-6">
           <!-- general form elements -->
           <div class="box box-primary">
-            <div class="box-header with-border">
-              <h3 class="box-title">Quick Example</h3>
-            </div>
+
               <div class="box-body">
                 <div class="form-group">
                   <label for="ID">ID</label>
@@ -52,8 +59,7 @@
                 <div class="col-xs-4" style="float:right">
                 	<button id="idCkBtn" class="btn btn-primary">ID Check</button>
                 </div>
-                <br><br>
-                
+                <br>
                 <form id="form" name="form" method="post" action="${pageContext.request.contextPath}/insertEmployee">
                 <div class="form-group">
                 	<input type="hidden" id="employeeId" class="form-control" placeholder="ID" name="employeeId">
@@ -66,9 +72,10 @@
                <div class="form-group">
 			    <label for="Gender">지점</label>
 		        <select class="form-control" id="branchNo" name="branchNo">
-		        	<option value="1">A 지점</option>
-		        	<option value="2">B 지점</option>
-		        	<option value="3">C 지점</option>
+		        	<option> 지점을 선택하세요 </option>
+		        	<c:forEach var="b" items="${branchList}">
+			        	<option value="${b.branchNo}">${b.branchName}</option>
+		        	</c:forEach>
 		        </select>
 		      </div>
               
@@ -102,8 +109,12 @@
            <div class="col-xs-4" style="float:right">
           		<button type="submit" id="formBtn" class="btn btn-primary">Submit</button>
           </div>
-  <div class="control-sidebar-bg"></div>
 </div>
+</div>
+</section>
+</div>
+</div>
+
 <!-- ./wrapper -->
 
 <!-- jQuery 3 -->

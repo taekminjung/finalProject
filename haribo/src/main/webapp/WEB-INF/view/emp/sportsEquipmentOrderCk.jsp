@@ -6,30 +6,36 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>AdminLTE 2 | Dashboard</title>
+  <title>운동기구 목록</title>
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <!-- 파비콘 코드 -->
+  <link rel="icon" type="image/x-icon" href="emp/img/starfavi.png">
+  <!-- 공통 스타일 폰트 -->
+  <link rel="stylesheet" href="common/css/main.css">
+  
   <link rel="stylesheet" href="emp/bower_components/bootstrap/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="emp/bower_components/font-awesome/css/font-awesome.min.css">
   <link rel="stylesheet" href="emp/bower_components/Ionicons/css/ionicons.min.css">
   <link rel="stylesheet" href="emp/bower_components/jvectormap/jquery-jvectormap.css">
   <link rel="stylesheet" href="emp/dist/css/AdminLTE.min.css">
-  <link rel="stylesheet" href="emp/dist/css/skins/_all-skins.min.css">
+  <link rel="stylesheet" href="emp/dist/css/skins/skin-yellow.min.css">
+  
 
   <!-- Google Font -->
   <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
 
-<body class="hold-transition skin-blue sidebar-mini">
+<body class="hold-transition skin-yellow sidebar-mini">
+
 <div class="wrapper">
-  
-  <%@include file="/inc/adminHeader.jsp" %>
+  <!-- 헤더 -->
+  <jsp:include page="/inc/adminHeader.jsp"></jsp:include>
   
   <div class="content-wrapper">
     <section class="content-header">
       <h1>
-        운동 기구 리스트
-        <small>관리자</small>
+        운동	기구 목록
       </h1>
     </section>
 

@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.example.haribo.mapper.EmployeeMapper;
+import com.example.haribo.vo.Branch;
 import com.example.haribo.vo.Employee;
 import com.example.haribo.vo.EmployeeDetail;
 import com.example.haribo.vo.EmployeeImg;
@@ -53,6 +54,11 @@ public class EmployeeService {
 				throw new RuntimeException();
 			}
 		}
+	}
+	
+	public List<Branch> insertEmployeebranch(){
+		List<Branch> branchList = employeeMapper.insertEmployeeBranch();
+		return branchList;
 	}
 	
 	public List<HashMap<String, Object>> employeeList(@RequestParam(defaultValue ="1") int currentPage){

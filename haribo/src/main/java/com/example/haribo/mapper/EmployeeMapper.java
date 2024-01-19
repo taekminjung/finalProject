@@ -6,6 +6,7 @@ import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import com.example.haribo.vo.Branch;
 import com.example.haribo.vo.Employee;
 import com.example.haribo.vo.EmployeeDetail;
 import com.example.haribo.vo.EmployeeImg;
@@ -18,6 +19,9 @@ public interface EmployeeMapper {
 	
 	// 직원 상세정보 추가
 	int insertEmployeeDetail(EmployeeDetail employeeDetail);
+	
+	// 트레이너 가입 지점번호
+	List<Branch> insertEmployeeBranch();
 	
 	// 직원 이미지 추가
 	int insertEmployeeImg(EmployeeImg employeeImg);
