@@ -65,7 +65,7 @@
 			<input type="hidden" name="targetYear" value="${calMap.targetYear}">
 			<input type="hidden" name="targetMonth" value="${calMap.targetMonth+1}">
 			<input type="hidden" name="programNo" value="${programDate.programNo}">
-			<table class="table table-bordered" style="font-size:15px;" >
+			<table class="table table-bordered" style="font-size:15px;">
 				<tr>
 					<th class="col-lg-1" style="color:red; text-align:center;">일</th>
 					<th class="col-lg-1" style="text-align:center;">월</th>

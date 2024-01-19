@@ -46,70 +46,119 @@
     </section>
 
     <!-- 페이지 메인 내용 시작 -->
-    <section class="content container-fluid">
-	<div class="box box-info">
-		<div style="text-align: center;">
-			<h2>${calMap.targetYear}년 ${calMap.targetMonth +1}월</h2>
-			
-			<a style="float:left" class="btn btn-outline-secondary" 
-			href="${pageContext.request.contextPath }/trainerHome?employeeNo=${loginEmployee.employeeNo}&targetYear=${calMap.targetYear}&targetMonth=${calMap.targetMonth -1}">
-				이전 달
-			</a>
-			<a style="float:right" class="btn btn-outline-secondary" 
-			href="${pageContext.request.contextPath }/trainerHome?employeeNo=${loginEmployee.employeeNo}&targetYear=${calMap.targetYear}&targetMonth=${calMap.targetMonth +1}">
-				다음 달
-			</a>
-		</div>
-		<br><br>
-		<!-- 달력 부분 -->
-		<table class="table table-bordered" style="font-size:15px;" >
-				<tr>
-					<th class="col-lg-1" style="color:red; text-align:center;">일</th>
-					<th class="col-lg-1" style="text-align:center;">월</th>
-					<th class="col-lg-1" style="text-align:center;">화</th>
-					<th class="col-lg-1" style="text-align:center;">수</th>
-					<th class="col-lg-1" style="text-align:center;">목</th>
-					<th class="col-lg-1" style="text-align:center;">금</th>
-					<th class="col-lg-1" style="text-align:center;">토</th>
-				</tr>
-				<tr style="height:130px;">
-				<c:forEach var="i" begin="1" end="${calMap.totalTd}" step="1">
-					<c:set var="d" value="${i - calMap.beginBlank }"></c:set>
-					
-					<!-- 첫번째 칸(일요일) -->
-					<c:if test="${i % 7 == 1 }">
-						<td style="color:red">
-					</c:if>
-					
-					<!-- 그 외 칸(월화수목금토) -->
-					<c:if test="${!(i % 7 == 1)}">
-						<td>
-					</c:if>
-					
-					<!-- 날짜 추가하기 -->
-					<c:if test="${d < 1 || d > calMap.lastDate}">
-						&nbsp;
-					</c:if>
-					
-					<!-- 스케줄 불러오기 -->
-					<c:if test="${!(d < 1 || d > calMap.lastDate)}">
-						${d}<br>
-						<c:forEach var="pd" items="${pdList}">
-						<c:if test="${d == pd.programDateDay }">
-							${pd.programName}
+    <div class="row">
+    	<!-- 달력 시작 -->
+	    <div class="col-md-8">
+	    <section class="content container-fluid">
+		<div class="box box-info">
+			<div style="text-align: center;">
+				<h2>${calMap.targetYear}년 ${calMap.targetMonth +1}월</h2>
+				
+				<a style="float:left" class="btn btn-outline-secondary" 
+				href="${pageContext.request.contextPath }/trainerHome?employeeNo=${loginEmployee.employeeNo}&targetYear=${calMap.targetYear}&targetMonth=${calMap.targetMonth -1}">
+					이전 달
+				</a>
+				<a style="float:right" class="btn btn-outline-secondary" 
+				href="${pageContext.request.contextPath }/trainerHome?employeeNo=${loginEmployee.employeeNo}&targetYear=${calMap.targetYear}&targetMonth=${calMap.targetMonth +1}">
+					다음 달
+				</a>
+			</div>
+			<br><br>
+			<!-- 달력 부분 -->
+			<table class="table table-bordered" style="font-size:15px;" >
+					<tr>
+						<th class="col-lg-1" style="color:red; text-align:center;">일</th>
+						<th class="col-lg-1" style="text-align:center;">월</th>
+						<th class="col-lg-1" style="text-align:center;">화</th>
+						<th class="col-lg-1" style="text-align:center;">수</th>
+						<th class="col-lg-1" style="text-align:center;">목</th>
+						<th class="col-lg-1" style="text-align:center;">금</th>
+						<th class="col-lg-1" style="text-align:center;">토</th>
+					</tr>
+					<tr style="height:130px;">
+					<c:forEach var="i" begin="1" end="${calMap.totalTd}" step="1">
+						<c:set var="d" value="${i - calMap.beginBlank }"></c:set>
+						
+						<!-- 첫번째 칸(일요일) -->
+						<c:if test="${i % 7 == 1 }">
+							<td style="color:red">
 						</c:if>
-						</c:forEach>
-					</c:if>
-					</td>
-					
-					<c:if test="${i < calMap.totalTd && i % 7 == 0}">
-						</tr><tr style="height:130px;">	
-					</c:if>
-				</c:forEach>
-		</table>
-    </div>
-    </section>
-    <!-- 페이지 메인 내용 끝 -->
+						
+						<!-- 그 외 칸(월화수목금토) -->
+						<c:if test="${!(i % 7 == 1)}">
+							<td>
+						</c:if>
+						
+						<!-- 날짜 추가하기 -->
+						<c:if test="${d < 1 || d > calMap.lastDate}">
+							&nbsp;
+						</c:if>
+						
+						<!-- 스케줄 불러오기 -->
+						<c:if test="${!(d < 1 || d > calMap.lastDate)}">
+							${d}<br>
+							<c:forEach var="pd" items="${pdList}">
+							<c:if test="${d == pd.programDateDay}">
+							<span class="badge" style="background-color: #FAFA96; color: black;">
+    						${pd.programName}
+							</span>
+							</c:if>
+							</c:forEach>
+						</c:if>
+						</td>
+						
+						<c:if test="${i < calMap.totalTd && i % 7 == 0}">
+							</tr><tr style="height:130px;">	
+						</c:if>
+					</c:forEach>
+			</table>
+	    </div>
+	    </section>
+	    <!-- 페이지 메인 내용 끝 -->
+	    </div>
+	    
+	    <!-- 뭔가 알림창? 정보 시작 -->
+	    <div class="col-md-4">
+	    <section class="content container-fluid">
+        <!-- 하리보 팀 트레이너 목록 -->
+        <div class="box box-info">
+         <div class="box-header with-border">
+           <h3 class="box-title">팀 하리보 트레이너</h3>
+           <div class="box-tools pull-right">
+             <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+           </div>
+         </div>
+         <!-- 트레이너 정보 -->
+         <div class="box-body no-padding">
+           <ul class="users-list clearfix">
+             <li>
+               <img src="upload/emp/man.png">
+               <strong>김망곰</strong>
+               <span class="users-list-date">여기에 지점</span>
+             </li>
+           </ul>
+         </div>
+         <!-- /.box-body -->
+         <div class="box-footer text-center">
+          <a href="javascript:void(0)" class="uppercase">View All Users</a>
+         </div>
+         <!-- /.box-footer -->
+         </div>
+         <!--/.box -->
+        </section>
+       </div>
+       
+       <div class="col-md-4">
+		   <section class="content container-fluid">
+			   <div class="box box-info">
+			   rsfdasdasfd
+			   </div>
+		   </section>
+	   </div>
+     </div>
+     </div>
+  
+   
   </div>
   <!-- 헤더 + 내용 wrapper 부분 끝 -->
 
