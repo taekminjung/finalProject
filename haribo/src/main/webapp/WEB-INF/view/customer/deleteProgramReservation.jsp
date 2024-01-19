@@ -19,7 +19,7 @@
 	<!-- meta character set -->
 	<meta charset="UTF-8">
 	<!-- Site Title -->
-	<title>하리보팀 파이널프로젝트</title>
+	<title>프로그램 예약 취소</title>
 
 	<link href="https://fonts.googleapis.com/css?family=Roboto:100,200,300,400,500,700" rel="stylesheet">
 	<!--

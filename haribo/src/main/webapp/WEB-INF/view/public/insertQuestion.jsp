@@ -19,7 +19,7 @@
 	<!-- meta character set -->
 	<meta charset="UTF-8">
 	<!-- Site Title -->
-	<title>공지사항 상세보기</title>
+	<title>문의하기</title>
 
 	<link href="https://fonts.googleapis.com/css?family=Roboto:100,200,300,400,500,700" rel="stylesheet">
 	<!--

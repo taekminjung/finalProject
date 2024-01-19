@@ -39,14 +39,6 @@ public class QuestionController {
 	}
 	
 	// 문의 글 수정하기
-	@GetMapping("/updateQuestion")
-	public String updateQuestion(Question question, Model model) {
-		Question resultQuestion = questionService.questionOne(question);
-		model.addAttribute("resultQuestion" , resultQuestion);
-		
-		return "public/updateQuestion";
-	}
-
 	@PostMapping("/updateQuestion")
 	public String updateQuestion(Question question) {
 		System.out.println(question+"<===questionNO?");
