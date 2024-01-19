@@ -112,7 +112,7 @@
 				AND seo.order_status ='승인' 
 				AND seo.sports_equipment_no = sportsEquipmentNo) 
 					-
-				    nvl((select SUM(see.quantity) 
+			nvl((select SUM(see.quantity) 
 			    FROM sports_equipment_expire see
 			    WHERE see.branch_no = #{branchNo} 
 				AND see.sports_equipment_no = sportsEquipmentNo),0)) quantity

@@ -57,7 +57,7 @@
             <select class="form-control" id="sportsEquipmentNo" name="sportsEquipmentNo">
                 <option>폐기할 물품을 선택해주세요</option>
                 <c:forEach var="e" items="${expireList}">
-                    <option value="${e.sportsEquipmentNo}">${e.itemName}(${e.quantity} )개</option>
+                    <option value="${e.sportsEquipmentNo}">${e.itemName}(${e.quantity})개</option>
                 </c:forEach>
             </select>
             </div>
@@ -66,7 +66,8 @@
           <div class="form-group">
             <label for="quantity" class="col-sm-2 control-label">수량</label>
             <div class="col-sm-10">
-              <input type="number" class="form-control" id="quantity" name="quantity" placeholder="수량을 입력하세요">
+            	<input type="hidden" id="currentQ">
+              <input type="number" class="form-control" id="quant" name="quantity" placeholder="수량을 입력하세요">
             </div>
           </div>
           
@@ -113,14 +114,20 @@
 <!-- AdminLTE App -->
 <script src="emp/dist/js/adminlte.min.js"></script>
 <script>
-	$('#quantity').blur(function(){
-		if($('#quantity').val() > $('#qt').val()){
-			alert('안돼');
-			$('#quantity').val('');
-			$('#quantity').focus();
+	
+	$('#sportsEquipmentNo').on("change",function(){
+		var str = $('#sportsEquipmentNo option:selected').text();
+		var strNum1 = str.indexOf('(');
+		var strNum2 = str.indexOf(')');
+		var str2 = str.substring(strNum1+1,strNum2);
+		$('#currentQ').val(str2);
+	});
+	
+	$('#quant').blur(function(){
+		if($('#quant').val() > $('#currentQ').val()){
+			alert('tlqkf');
 		}
 	})
-
 </script>
 </body>
 </html>

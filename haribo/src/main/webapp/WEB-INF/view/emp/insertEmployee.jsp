@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>   
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -50,23 +50,23 @@
 
               <div class="box-body">
                 <div class="form-group">
-                  <label for="ID">ID</label>
-                  <input type="text" class="form-control" id="idCk" placeholder="Enter ID">
+                  <label for="ID">아이디</label>
+                  <input type="text" class="form-control" id="idCk" placeholder="아이디를 입력하세요">
                 </div>
                 <div class="col-xs-8" style="float:left">
                 	<span id="idCkMsg"></span>
                 </div>
                 <div class="col-xs-4" style="float:right">
-                	<button id="idCkBtn" class="btn btn-primary">ID Check</button>
+                	<button id="idCkBtn" class="btn btn-primary">아이디 확인</button>
                 </div>
                 <br>
                 <form id="form" name="form" method="post" action="${pageContext.request.contextPath}/insertEmployee">
                 <div class="form-group">
-                	<input type="hidden" id="employeeId" class="form-control" placeholder="ID" name="employeeId">
+                	<input type="hidden" id="employeeId" class="form-control" name="employeeId">
                 </div>
                 <div class="form-group">
-                  <label for="Password">Password</label>
-                  <input type="password" class="form-control" id="employeePw" name="employeePw" placeholder="Enter Password">
+                  <label for="Password">비밀번호</label>
+                  <input type="password" class="form-control" id="employeePw" name="employeePw" placeholder="비밀번호를 입력하세요">
                 </div>
 
                <div class="form-group">
@@ -82,22 +82,22 @@
 
               <div class="form-group">
                 <label for="Name">이름</label>
-                <input type="text" class="form-control" id="employeeName" name="employeeName" placeholder="Enter Name">
+                <input type="text" class="form-control" id="employeeName" name="employeeName" placeholder="이름을 입력하세요">
               </div>
               <div class="form-group">
                   <label for="Email">이메일</label>
-                  <input type="email" class="form-control" id="employeeEmail" name="employeeEmail" placeholder="Enter Email">
+                  <input type="email" class="form-control" id="employeeEmail" name="employeeEmail" placeholder="이메일을 입력하세요">
 
 		      <div class="form-group">
-			    <label for="Gender">Gender</label>
+			    <label for="Gender">성별</label>
 		        <select class="form-control" id="employeeGender" name="employeeGender">
-		        	<option value="남">male</option>
-		        	<option value="여">female</option>
+		        	<option value="남">남자</option>
+		        	<option value="여">여자</option>
 		        </select>
 		      </div>
             <div class="form-group">
                   <label for="Phone">전화번호</label>
-                  <input type="text" class="form-control" id="employeePhone" name="employeePhone" placeholder="Enter Phone">
+                  <input type="text" class="form-control" id="employeePhone" name="employeePhone" placeholder="전화번호를 입력하세요">
             </div>
             </div>
 
@@ -107,7 +107,7 @@
           </div>
       </div>
            <div class="col-xs-4" style="float:right">
-          		<button type="submit" id="formBtn" class="btn btn-primary">Submit</button>
+          		<button type="submit" id="formBtn" class="btn btn-primary">추가하기</button>
           </div>
 </div>
 </div>

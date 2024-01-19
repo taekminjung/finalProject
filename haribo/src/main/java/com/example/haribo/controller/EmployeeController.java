@@ -69,12 +69,12 @@ public class EmployeeController {
 	
 	@PostMapping("/insertEmployee")
 	public String addEmployee(Employee employee, EmployeeDetail employeeDetail, Branch branch) {
-	log.debug(employee.toString());
-	log.debug(employeeDetail.toString());
-	
-	employeeService.addEmployee(employee, employeeDetail);
-	
-	return "redirect:/employeeList";
+		log.debug(employee.toString());
+		log.debug(employeeDetail.toString());
+		
+		employeeService.addEmployee(employee, employeeDetail);
+		
+		return "redirect:/employeeList";
 	}
 	
 	// 직원 리스트 출력

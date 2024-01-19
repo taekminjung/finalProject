@@ -88,7 +88,7 @@
               <p class="text-muted">
 					<input type="hidden" name="notAccept" value="${notAccept}" readonly style="border:none">
 					<tr>
-						<td>현재 확인되지 않은 발주는 총 <strong>${notAccept}</strong> 건 입니다.</td>
+						<td>현재 확인되지 않은 발주는 총 <a href="${pageContext.request.contextPath}/sportsEquipmentOrderCk"><span class="badge" style="background-color: #FF1493;"> ${notAccept}</span></a> 건 입니다.</td>
 					</tr>
               </p>
               <hr>

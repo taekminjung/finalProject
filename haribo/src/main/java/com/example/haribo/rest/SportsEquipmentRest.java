@@ -19,4 +19,7 @@ public class SportsEquipmentRest {
 			String equipmentImgName =sportsEquipmentService.selectSportsEquipmentImgName(sportsEquipmentImg);
 			return equipmentImgName;
 	}
+	
+	
+	
 }

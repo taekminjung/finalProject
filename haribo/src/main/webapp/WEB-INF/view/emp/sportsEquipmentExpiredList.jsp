@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
@@ -21,14 +20,12 @@
   <link rel="stylesheet" href="emp/dist/css/AdminLTE.min.css">
   <link rel="stylesheet" href="emp/dist/css/skins/skin-yellow.min.css">
   
-
   <!-- Google Font -->
   <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
 
 <body class="hold-transition skin-yellow sidebar-mini">
-
 <div class="wrapper">
   <!-- 헤더 -->
   <jsp:include page="/inc/adminHeader.jsp"></jsp:include>
@@ -37,16 +34,13 @@
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
-      <h1>
-        폐기물 대장 관리
-      </h1>
-    </section>
+      <h1>폐기물 대장 관리</h1>
 
      <div class="row">
         <div class="col-xs-12">
-          <div class="box">
+          <div class="box box-warning">
 
-            <br>
+
 			<div class="box-body table-responsive no-padding">
 			    <table class="table table-hover">
 			        <tr>
@@ -58,13 +52,16 @@
 			        </tr>
 			        <c:forEach var="t" items="${list}">
 					<tr>
-						<td class="text-center">${t.branchNo}
-						<td class="text-center">${t.sportsEquipmentNo}
-						<td class="text-center">${t.expireMemo}
-						<td class="text-center">${t.quantity}
-						<td class="text-center">${t.createdate}						
+						<td class="text-center">${t.branchNo}</td>
+						<td class="text-center">${t.sportsEquipmentNo}</td>
+						<td class="text-center">${t.expireMemo}</td>
+						<td class="text-center">${t.quantity}</td>
+						<td class="text-center">${t.createdate}</td>
+					</tr>
 					</c:forEach>
+
 			    </table>
+			</div>
 			    <br>
 			<div class="text-center"> 
 			  <c:if test="${currentPage > 1}">
@@ -75,10 +72,15 @@
 			  	<a href="${pageContext.request.contextPath}/sportsEquipmentExpiredList?currentPage=${currentPage+1}" class="btn btn-primary">다음</a>
 			  </c:if>
 			</div>
-
+	</div>
+</div>
+</div>
+</section>
+</div>
+</div>
   <div class="control-sidebar-bg"></div>
 
-</div>
+
 <!-- ./wrapper -->
 
 <!-- jQuery 3 -->
@@ -99,5 +101,6 @@
 
 <!-- AdminLTE for demo purposes -->
 <script src="emp/dist/js/demo.js"></script>
+
 </body>
 </html>

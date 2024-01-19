@@ -70,7 +70,7 @@
 			 class="img-circle" width="20" height="20" onerror="this.src='${pageContext.request.contextPath }/upload/emp/default.jpg'" alt="user Image">
         </div>
         <div class="pull-left info">
-          <a href="${pageContext.request.contextPath}/employeeInfo"><p><strong>${loginEmployee.employeeName}님</strong></p></a>
+          <a href="${pageContext.request.contextPath}/employeeInfo?employeeNo=${loginEmployee.employeeNo}"><p><strong>${loginEmployee.employeeName}님</strong></p></a>
 	<a href="#" id="statusLink"><i class="fa fa-circle text-success"></i> Online</a>
 
         </div>
