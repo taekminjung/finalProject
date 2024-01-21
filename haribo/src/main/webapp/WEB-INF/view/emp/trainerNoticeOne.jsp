@@ -36,12 +36,15 @@
     <section class="content-header">
     <h3>공지사항</h3>
       <!-- Default box -->
-      <div class="box">
+      <div class="box box-info">
         <div class="box-header with-border">
           <h3 class="box-title">${resultNotice.noticeTitle}</h3>
         </div>
         <div class="box-body">
           ${resultNotice.noticeContent}
+        </div>
+        <div class="box-footer">
+        <a href="${pageContext.request.contextPath}/trainerNotice" class="btn btn-info">목록으로</a>
         </div>
         <!-- /.box-body -->
       </div>

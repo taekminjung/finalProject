@@ -184,11 +184,4 @@ public class EmployeeService {
 		
 		return employeeMapper.selectEmployeeImgName(employeeImg);
 	}
-
-	// 트레이너 상세정보
-	public Map<String, Object> trainerOne(Employee employee) {
-		Map<String,Object> trainerOne = employeeMapper.selectTrainerOne(employee);
-		return trainerOne;
-	}
 }
-	

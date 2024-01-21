@@ -57,7 +57,7 @@
             <select class="form-control" id="sportsEquipmentNo" name="sportsEquipmentNo">
                 <option>폐기할 물품을 선택해주세요</option>
                 <c:forEach var="e" items="${expireList}">
-                    <option value="${e.sportsEquipmentNo}">${e.itemName}(${e.quantity})개</option>
+                    <option value="${e.sportsEquipmentNo}">${e.itemName}(${e.quantity}개)</option>
                 </c:forEach>
             </select>
             </div>

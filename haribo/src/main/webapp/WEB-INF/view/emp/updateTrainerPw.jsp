@@ -34,26 +34,21 @@
   <div class="content-wrapper">
     <!-- 페이지 메인 헤더 -->
     <section class="content-header">
-      <h1>${loginEmployee.employeeName}님의 마이페이지📅💙🤍💜❤️</h1>
-      <br>
-      <div class="callout callout-info">
-        <h4>팀 하리보 공지사항</h4>
-		<p>📢처음 오신 트레이너 분들께서는 본인 프로필 사진 업데이트 부탁드립니다.
-		<br>📢기존 트레이너 분들께서도 프로필 사진은 항상 최근 사진으로 수정 부탁드립니다.</p>
-      </div>
+	  <h1>📅${loginEmployee.employeeName}님의 마이페이지📅</h1>
     </section>
-    
+    <br>
     <!-- 페이지 메인 내용 시작 -->
-    <section class="content">
-        <div class="col-md-6">
+    <section class="content-body">
+        <div class="col-md-4">
           <!-- Horizontal Form -->
           <div class="box box-info">
             <div class="box-header with-border">
               <h3 class="box-title">🔑비밀번호 변경🔑</h3>
             </div>
-            <form id="form" method="post" action="${pageContext.request.contextPath}/updateEmployeePw">
-              <div class="box-body">
-                <div class="form-group" class="col-sm-10">
+            <div class="box-body">
+            <form id="form" method="post" action="${pageContext.request.contextPath}/updateTrainerPw">
+              
+                <div class="form-group" class="col-sm-2">
                   <label for="pw" >현재 비밀번호</label>
                     <input type="password" class="form-control" id="pw" name="employeePw" placeholder="현재 비밀번호를 입력하세요 ...">
                 </div>
@@ -63,22 +58,17 @@
                     <input type="password" class="form-control" id="newPw" name="newEmployeePw" placeholder="새 비밀번호를 입력하세요 ...">
                 </div>
                 <div class="form-group" class="col-sm-10">
-                  <label for="newPwCk" >새 비밀번호 확인</label>
-                <input type="password" class="form-control" id="newPwCk" placeholder="새 비밀번호 일치 여부를 위해 새 비밀번호를 입력하세요 ...">
+                  <label for="newPwCk" >새 비밀번호 일치 확인</label>
+                <input type="password" class="form-control" id="newPwCk" placeholder="새 비밀번호 일치 여부 확인 ...">
                 </div>
-              </div>
               <div>
                	<input type="hidden" id="employeeId" name="employeeId" value="${loginEmployee.employeeId}">
               	<input type="hidden" id="employeeNo" name="employeeNo" value="${loginEmployee.employeeNo}">
               </div>
- 
-              <!-- /.box-footer -->
             </form>
+        	<button type="submit" id="formBtn" class="btn btn-info pull-right">비밀번호 변경하기</button>
+            </div>
           </div>
-        </div>
-        
-        <div class="box-footer">
-        	<button type="submit" id="formBtn" class="btn btn-info pull-right">Save Changes</button>
         </div>
               
       </section>
@@ -95,7 +85,6 @@
     <!-- 저작권 명시 -->
     <strong>Copyright &copy; 2023-2024 <a href="trainerHome">TEAM HARIBO</a>.</strong> All rights reserved.
   </footer>
-
   <div class="control-sidebar-bg"></div>
 </div>
 <!-- REQUIRED JS SCRIPTS -->
@@ -106,6 +95,46 @@
 <script src="emp/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <!-- AdminLTE App -->
 <script src="emp/dist/js/adminlte.min.js"></script>
-
+<script>
+	$('#formBtn').click(function(){
+		if($('#pw').val().length < 1){
+			alert('현재 비밀번호를 입력하세요');
+			$('#pw').focus();
+		} else if ($('#newPw').val().length < 1){
+			alert('새로운 비밀번호를 입력하세요');
+			$('#newPw').focus();
+		} else if ($('#newPwCk').val().length < 1){
+			alert('새로운 비밀번호 확인을 입력하세요');
+			$('#newPwCk').focus();
+		} else if ($('#newPw').val() != $('#newPwCk').val()){
+			alert('비밀번호 확인이 일치하지 않습니다');
+			$('#newPwCk').focus();
+		} else{
+			$.ajax({
+				url:'/haribo/employeePwCk',
+				method:'post',
+				data:{
+					'employeePw':$('#pw').val(),
+					'employeeId':$('#employeeId').val()},
+				success:function(json){
+					if(json != 1){
+						$('#pw').val('');
+						alert('현재 비밀번호가 일치하지 않습니다')
+					} else{
+						if($('#pw').val() == $('#newPw').val()){
+							alert('기존 비밀번호와 같습니다. 다른 비밀번호를 입력하세요')
+							$('#newPw').focus();
+						} else{
+							$('#form').submit();
+						}
+					}
+				},
+				error:function(err){
+					console.log(err);
+				}
+		});
+	}
+});
+</script>
 </body>
 </html>

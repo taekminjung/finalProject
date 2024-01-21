@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.example.haribo.service.BranchService;
 import com.example.haribo.service.EmployeeService;
 import com.example.haribo.vo.Branch;
 import com.example.haribo.vo.Employee;
@@ -26,8 +25,6 @@ import lombok.extern.slf4j.Slf4j;
 @Controller
 public class EmployeeController {
 	@Autowired private EmployeeService employeeService;
-	@Autowired private BranchService branchService;
-	
 	// 직원, 트레이너 로그인
 	@PostMapping("/empLogin")
 	public String loginEmployee(HttpSession session, Employee employee) {

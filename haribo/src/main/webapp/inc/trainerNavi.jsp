@@ -32,7 +32,7 @@
             <a href="" class="dropdown-toggle" data-toggle="dropdown">
               <!-- The user image in the navbar-->
                <img id="img1" src="${pageContext.request.contextPath }/upload/emp/"
-			 class="rounded-circle" width="20" height="20" onerror="this.src='${pageContext.request.contextPath }/upload/emp/default.jpg'" alt="user Image">
+			 class="rounded-circle" width="20" height="20" onerror="this.src='${pageContext.request.contextPath }/upload/emp/default.jpg'">
               <!-- hidden-xs hides the username on small devices so only the image appears. -->
               <span class="hidden-xs">${loginEmployee.employeeName}</span>
             </a>
@@ -40,7 +40,7 @@
               <!-- The user image in the menu -->
               <li class="user-header">
                 <img id="img2" src="${pageContext.request.contextPath }/upload/emp/"
-			 class="rounded-circle" width="20" height="20" onerror="this.src='${pageContext.request.contextPath }/upload/emp/default.jpg'" alt="user Image">
+			 class="rounded-circle" width="20" height="20" onerror="this.src='${pageContext.request.contextPath }/upload/emp/default.jpg'">
                 <p>
           		  ${loginEmployee.employeeName}
                   <small>${loginEmployee.branchName}지점 트레이너</small>
@@ -73,7 +73,7 @@
       <div class="user-panel">
         <div class="pull-left image">
           <img id="img3" src="${pageContext.request.contextPath }/upload/emp/"
-			 class="img-circle" width="20" height="20" onerror="this.src='${pageContext.request.contextPath }/upload/emp/default.jpg'" alt="user Image">
+			 class="img-circle" width="20" height="20" onerror="this.src='${pageContext.request.contextPath }/upload/emp/default.jpg'">
         </div>
         <div class="pull-left info">
           <p><a href="${mypageUrl}">${loginEmployee.employeeName}</a></p>
@@ -81,22 +81,10 @@
           <a id="statusLink"><i class="fa fa-circle text-success"></i> 출근중💼</a>
         </div>
       </div>
-
-      <!-- 검색 하기 -->
-      <form action="#" method="get" class="sidebar-form">
-        <div class="input-group">
-          <input type="text" name="q" class="form-control" placeholder="검색하기...">
-          <span class="input-group-btn">
-              <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
-              </button>
-            </span>
-        </div>
-      </form>
-      <!-- /.search form -->
-
+            
       <!-- Sidebar Menu -->
       <ul class="sidebar-menu" data-widget="tree">
-        <li class="header">메뉴</li>
+        <li class="header"><span class="badge" style="background-color: #00A5FF">메뉴</span></li>
         <!-- Optionally, you can add icons to the links -->
         <li><a href="${pageContext.request.contextPath}/trainerNotice"><i class="fa fa-bullhorn"></i><span>공지사항</span></a></li>
         <li><a href="${pageContext.request.contextPath}/trainerQuestion"><i class="fa fa-question"></i><span>문의사항</span></a></li>

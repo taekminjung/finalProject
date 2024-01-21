@@ -103,6 +103,19 @@ public class NoticeController {
 				
 		return "emp/trainerNotice";
 	}
+	
+	// 공지사항 검색 기능
+	@PostMapping("/trainerNotice")
+	public String trainerNotice(Model model, Notice notice,@RequestParam(defaultValue = "1") int currentPage) {
+		List<Notice> list = noticeService.searchByNotice(notice, currentPage);
+		System.out.println(list+"<--list");
+		int lastPage = noticeService.searchLastPage(notice);
+		model.addAttribute("list", list);
+		model.addAttribute("lastPage", lastPage);
+		model.addAttribute("currentPage", currentPage);
+		return "emp/trainerNotice";
+	}
+		
 	@GetMapping("/trainerNoticeOne")
 	public String trainerNoticeOne(Model model, Notice notice) {
 

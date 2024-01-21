@@ -34,7 +34,7 @@
   <div class="content-wrapper">
     <!-- 페이지 메인 헤더 -->
     <section class="content-header">
-      <h1>${loginEmployee.employeeName}님의 마이페이지📅💙🤍💜❤️</h1>
+      <h1>📅${loginEmployee.employeeName}님의 마이페이지📅</h1>
       <br>
       <div class="callout callout-info">
         <h4>팀 하리보 공지사항</h4>
@@ -45,82 +45,54 @@
     
     <!-- 페이지 메인 내용 시작 -->
     <section class="content-body">
-    <div class="col-md-5">
+    <div class="col-md-4">
     <!-- 트레이너 마이페이지 -->
-          <div class="box box-primary">
-            <div class="box-body box-profile">
-              <img class="profile-user-img img-responsive img-circle" src="../../dist/img/user4-128x128.jpg" alt="User profile picture">
+       <div class="box box-info">
+        <form id="form" name="form" method="post" action="${pageContext.request.contextPath}/updateTrainerImg" enctype="multipart/form-data">
+         <div class="box-body box-profile">
+           <img class="profile-user-img img-responsive img-circle" src="${pageContext.request.contextPath}/upload/emp/man.png">
 
-              <h3 class="profile-username text-center">Nina Mcintire</h3>
+           <h3 class="profile-username text-center">${empInfo.employeeName}</h3>
+           
+           <input type="hidden" name="employeeName" value="${empInfo.employeeName}">
+           <input type="hidden" name="employeeId" value="${empInfo.employeeId}">
+           <input type="hidden" name="employeeEmail" value="${empInfo.employeeEmail}">
+           <input type="hidden" name="employeePhone" value="${empInfo.employeePhone}">
+           <input type="hidden" name="employeeNo" value="${loginEmployee.employeeNo}">
 
-              <p class="text-muted text-center">Software Engineer</p>
 
-              <ul class="list-group list-group-unbordered">
-                <li class="list-group-item">
-                  <b>Followers</b> <a class="pull-right">1,322</a>
-                </li>
-                <li class="list-group-item">
-                  <b>Following</b> <a class="pull-right">543</a>
-                </li>
-                <li class="list-group-item">
-                  <b>Friends</b> <a class="pull-right">13,287</a>
-                </li>
-              </ul>
+           <p class="text-muted text-center">${loginEmployee.branchName}지점 트레이너</p>
+           
+           <ul class="list-group list-group-unbordered">
+             <li class="list-group-item">
+               <b><i class="fa fa-user margin-r-5"></i>아이디</b> <span class="text-muted pull-right">${empInfo.employeeId}</span>
+             </li>
+             <li class="list-group-item">
+               <b><i class="fa fa-envelope margin-r-5"></i>이메일</b> <span class="text-muted pull-right">${empInfo.employeeEmail}</span>
+             </li>
+             <li class="list-group-item">
+               <b><i class="fa fa-phone margin-r-5"></i>전화번호</b><span class="text-muted pull-right">${empInfo.employeePhone}</span>
+             </li>
+           	<li class="list-group-item">
+               <b><i class="fa fa-heart margin-r-5"></i>입사일</b><span class="text-muted pull-right">${empInfo.createdate}</span>
+             </li>
+           	<li class="list-group-item">
+           	 <b><i class="fa fa-lock margin-r-5"></i>비밀번호 변경</b>
+	  	<a href="${pageContext.request.contextPath}/updateTrainerPw?employeeNo=${loginEmployee.employeeNo}" class="btn btn-info pull-right btn-xs">비밀번호 변경</a>
+           	</li>
+           </ul>
+	          <b><i class="fa fa-photo margin-r-5"></i>프로필 사진</b>
+	          <button type="submit" id="form" class="btn btn-success pull-right">사진변경</button>
+	          <input type="file" id="eImg" name="eImg" accept=".png">
+         </div>
+         <!-- /.box-body -->
+         </form>
 
-              <a href="#" class="btn btn-primary btn-block"><b>Follow</b></a>
-            </div>
-            <!-- /.box-body -->
-          </div>
-          <!-- /.box -->
-          </div>
-	<!-- 발주 신청 폼 -->
-	<div class="col-md-8">
-    <div class="box box-info">
-      <div class="box-header with-border">
-        <h3 class="box-title">🙂내 정보 수정하기🙂</h3>
-      </div>
-      <!-- /.box-header -->
-      
-      <!-- 비밀번호 변경 버튼 -->
-      <div class="col-xs-4" style="float:right">
-      	<a href="${pageContext.request.contextPath}/updateTrainerPw?employeeNo=${loginEmployee.employeeNo}" class="btn btn-primary mb-2">비밀번호 변경</a>
-      </div>
-      
-      <!-- 이미지 변경 폼 -->
-      <form id="form" name="form" method="post" action="${pageContext.request.contextPath}/updateTrainerImg" enctype="multipart/form-data">
-	      <strong><i class="fa fa-user margin-r-5"></i>트레이너 이름</strong>
-	      <p class="text-muted">
-		<input type="text" name="employeeName" value="${empInfo.employeeName}" readonly style="border:none">
-	      </p>
-	      <hr>
-	      <strong><i class="fa fa-circle margin-r-5"></i> 트레이너 ID</strong>
-	     		<input type="text" name="employeeId" value="${empInfo.employeeId}" readonly style="border:none">
-	      <hr>
-	      <strong><i class="fa fa-envelope margin-r-5"></i>이메일</strong>
-	      <p>
-		<input type="text" name="employeeEmail" value="${empInfo.employeeEmail}" readonly style="border:none">
-	      </p>
-	      <hr>
-	      <strong><i class="fa fa-mobile-phone margin-r-5"></i>전화번호</strong>
-	      <p>
-	      		<input type="text" name="employeePhone" value="${empInfo.employeePhone}" readonly style="border:none">
-	      </p>
-	      <hr>
-	     
-	        <div class="form-group">
-	        	<label for="eImg">프로필 사진</label>
-	        	<input type="file" id="eImg" name="eImg" accept=".png">
-	        	<input type="hidden" name="employeeNo" value="${loginEmployee.employeeNo}">
-		    </div>                    
-	      
-	      	<div class="col-xs-4">
-	  			<button type="submit" id="form" class="btn btn-success">사진 변경</button>
-          	</div>		
-      </form>
+       </div>
+      <!-- /.box -->
     </div>
-    <!-- /.box -->
-    </div>
-    </section>
+  </section>
+  
   <!-- 페이지 메인 내용 끝 -->
   </div>
   <!-- 헤더 + 내용 wrapper 부분 끝 -->

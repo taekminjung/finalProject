@@ -64,10 +64,11 @@ public class TrainerHomeController {
 	// 트레이너 마이페이지 + 정보수정 (사진, 비밀번호)
 	// 트레이너 상세정보
 	@GetMapping("/trainerOne")
-	public String trainerOne(Model model, Employee employee) {
+	public String trainerOne(Model model, Employee employee, EmployeeImg employeeImg) {
 		// 서비스 호출
 		Map<String,Object> empInfo = employeeService.employeeInfo(employee);
 		model.addAttribute("empInfo", empInfo);
+		
 		return "emp/trainerOne";
 	}
 	

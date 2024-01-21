@@ -97,6 +97,7 @@
 		SELECT 
 			ed.employee_name employeeName,
 			e.employee_id employeeId,
+			e.createdate createdate,
 			ed.employee_email employeeEmail,
 	        ed.employee_phone employeePhone
 		FROM employee e INNER JOIN employee_detail ed
@@ -158,14 +159,19 @@
 	</select>
 	
 	<!-- 여기서부터 트레이너 관련 mapper xml -->
-	<select id="selectTrainerOne">
-		SELECT 
-			ed.employee_name employeeName,
+	<!--
+	<select id="trainerList"  parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		SELECT
 			e.employee_id employeeId,
-			ed.employee_email employeeEmail,
-	        ed.employee_phone employeePhone
-		FROM employee e INNER JOIN employee_detail ed
-		ON e.employee_no = ed.employee_no
+			e.createdate createdate,
+			ei.employee_img_file_name employeeImgFileName,
+			ed.employee_name employeeName
+		FROM employee e
+		INNER JOIN employee_img ei
+		ON e.employee_no = ei.employee_no
+		INNER JOIN employee_detail ed
+		ON ei.employee_no = ed.employee_no
 		WHERE e.employee_no = #{employeeNo}
 	</select>
+	-->
 </mapper>
