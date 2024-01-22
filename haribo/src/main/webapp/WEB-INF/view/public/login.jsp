@@ -108,35 +108,35 @@
 <script src="emp/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 
 <script>
-<!-- 테스트 아이디 기본 입력으로 인한 아이디 저장 기능 제거
+<!-- 테스트 아이디 기본 입력으로 인한 아이디 저장 기능 제거(각 id값에 "-" 제거하면 기능 다시 사용 가능)
 $(document).ready(function(){
 	
     // 저장된 쿠키값을 가져와서 ID 칸에 넣어준다. 쿠키값 없으면 공백.
     var userLoginId = getCookie("userLoginId");
-    $('#customerId').val(userLoginId); 
+    $('#customerId-').val(userLoginId); 
     
     // ID가 있는경우 아이디 저장 체크박스 체크
-    if($('#customerId').val() != ""){
-    	$('#idSave').attr("checked", true);
+    if($('#customerId-').val() != ""){
+    	$('#idSave-').attr("checked", true);
     }
     
     // 아이디 저장하기 체크박스 onchange
-    $('#idSave').change(function(){
-    	if($('#idSave').is(":checked")){  //checked true
+    $('#idSave-').change(function(){
+    	if($('#idSave-').is(":checked")){  //checked true
     		console.log('체크!');
-        	var userLoginId = $('#customerId').val();
+        	var userLoginId = $('#customerId-').val();
             setCookie("userLoginId", userLoginId, 30); // 30일 동안 쿠키 보관
          }else{ //checked false
         	console.log('체크해제!');
-         	deleteCookie("userLoginId");
+         	deleteCookie("userLoginId-");
         }
     });
      
      
      // 아이디 저장하기가  눌린상태에서, ID를 입력한 경우
-     $('#customerId').keyup(function(){
-     	if($('#idSave').is(":checked")){  //checked true
-            var userLoginId = $('#customerId').val();
+     $('#customerId-').keyup(function(){
+     	if($('#idSave-').is(":checked")){  //checked true
+            var userLoginId = $('#customerId-').val();
             setCookie("userLoginId", userLoginId, 30); // 30일 동안 쿠키 보관
         }
     });
