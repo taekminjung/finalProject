@@ -112,7 +112,7 @@ public class ReviewController {
 	@GetMapping("/insertReviewForm")
 	public String insertReviewForm(HttpSession session, Model model, Review review) {
 		// 세션 검사
-		if(session.getAttribute("loginEmployee") == null) {
+		if(session.getAttribute("loginCustomer") == null) {
 			return "redirect:/login";
 		}
 		HashMap<String, Object> map = reviewService.selectReservationInfo(review);
