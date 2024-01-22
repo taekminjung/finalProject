@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <c:set var="now" value="<%=new java.util.Date()%>"/>
-<fmt:formatDate value="${now}" pattern="yyyy-MM-dd"/>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="zxx" class="no-js">
 
@@ -118,10 +118,9 @@
 								<c:forEach var="p" items="${proList }">
 									<c:if test="${p.programDateDay == d }">
 										<c:if test="${p.exitTime != null }">
-											<a href="${pageContext.request.contextPath }/insertReviewForm?programReservationNo=${p.programReservationNo}" data-bs-toggle="tooltip" title="리뷰 쓰기">
-												<h6>${p.branchName }<br>
-												: ${p.programName}</h6>
-											</a>
+											<a class="btn btn-outline-primary" href="${pageContext.request.contextPath }/insertReviewForm?programReservationNo=${p.programReservationNo}" data-bs-toggle="tooltip" title="${p.branchName }: ${p.programName}">
+												<h6>리뷰 쓰기</h6>
+											</a><br>
 										</c:if>
 										<c:if test="${p.exitTime == null }">
 										<h6>${p.branchName }<br>
