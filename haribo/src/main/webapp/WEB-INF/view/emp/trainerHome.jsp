@@ -55,11 +55,11 @@
 				<h2>${calMap.targetYear}년 ${calMap.targetMonth +1}월</h2>
 				
 				<a style="float:left" class="btn btn-outline-secondary" 
-				href="${pageContext.request.contextPath }/trainerHome?employeeNo=${loginEmployee.employeeNo}&targetYear=${calMap.targetYear}&targetMonth=${calMap.targetMonth -1}">
+				href="${pageContext.request.contextPath}/trainerHome?employeeNo=${loginEmployee.employeeNo}&targetYear=${calMap.targetYear}&targetMonth=${calMap.targetMonth -1}">
 					이전 달
 				</a>
 				<a style="float:right" class="btn btn-outline-secondary" 
-				href="${pageContext.request.contextPath }/trainerHome?employeeNo=${loginEmployee.employeeNo}&targetYear=${calMap.targetYear}&targetMonth=${calMap.targetMonth +1}">
+				href="${pageContext.request.contextPath}/trainerHome?employeeNo=${loginEmployee.employeeNo}&targetYear=${calMap.targetYear}&targetMonth=${calMap.targetMonth +1}">
 					다음 달
 				</a>
 			</div>
@@ -132,7 +132,7 @@
           <div class="box-body no-padding">
             <ul class="users-list clearfix">
               <li>
-                <img src="upload/emp/man.png">
+                <img src="${pageContext.request.contextPath}/upload/emp/${empInfo.employeeImgFileName}">
                 <strong>김망곰</strong>
                 <span class="users-list-date">여기에 지점</span>
               </li>
@@ -151,13 +151,13 @@
 		<section class="content container-fluid">
 		  <div class="box box-info">
 			 <div class="box-header with-border">
-		       <h3 class="box-title"><span class="badge">NEW</span>문의사항</h3>
+		       <h3 class="box-title"><span class="badge">NEW</span> &nbsp;문의사항</h3>
 		         <div class="box-tools pull-right">
 		           <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
 		         </div>
 		     </div>
 		     <!-- 트레이너 정보 -->
-             <div class="box-body no-padding">
+             <div class="box-body">
                <table class="tbl tbl-hobber">
                  <tr>
                  <th>여기에</th>
