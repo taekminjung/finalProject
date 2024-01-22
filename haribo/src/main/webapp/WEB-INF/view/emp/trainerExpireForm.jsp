@@ -44,16 +44,16 @@
       <form class="form-horizontal" action="${pageContext.request.contextPath}/trainerExpireForm" method="post">
         <div class="box-body">
           <div class="form-group">
-            <label for="branchNo" class="col-sm-1 control-label">지점</label>
+            <label for="branchNo" class="col-sm-2 control-label">지점</label>
 
-            <div class="col-sm-10">
+            <div class="col-sm-8">
               <input type="text" class="form-control" name="branchNo" value="${loginEmployee.branchNo}" readonly>
             </div>
           </div>
           
           <div class="form-group">
             <label for="sportsEquipmentNo" class="col-sm-2 control-label">폐기 물품명</label>
-            <div class="col-sm-10">
+            <div class="col-sm-8">
             <select class="form-control" id="sportsEquipmentNo" name="sportsEquipmentNo">
                 <option>폐기할 물품을 선택해주세요</option>
                 <c:forEach var="e" items="${expireList}">
@@ -65,7 +65,7 @@
           
           <div class="form-group">
             <label for="quantity" class="col-sm-2 control-label">수량</label>
-            <div class="col-sm-10">
+            <div class="col-sm-8">
             	<input type="hidden" id="currentQ">
               <input type="number" class="form-control" id="quant" name="quantity" placeholder="수량을 입력하세요">
             </div>
@@ -73,7 +73,7 @@
           
           <div class="form-group">
             <label for="quantity" class="col-sm-2 control-label">폐기 사유</label>
-            <div class="col-sm-10">
+            <div class="col-sm-8">
               <input type="text" class="form-control" id="expireMemo" name="expireMemo" placeholder="폐기 사유를 입력하세요">
             </div>
           </div>
@@ -81,7 +81,7 @@
         </div>
         <!-- /.box-body -->
         <div class="box-footer">
-          <a href="trainerHome" class="btn btn-default">신청 취소</a>
+          <a href="${pageContext.request.contextPath}/trainerStock?branchNo=${loginEmployee.branchNo}" class="btn btn-default">신청 취소</a>
           <button type="submit" class="btn btn-info pull-right">제출하기</button>
         </div>
         <!-- /.box-footer -->
@@ -125,7 +125,7 @@
 	
 	$('#quant').blur(function(){
 		if($('#quant').val() > $('#currentQ').val()){
-			alert('tlqkf');
+			alert('폐기할 수량이 재고 수량보다 많습니다. 다시 입력해주세요.');
 		}
 	})
 </script>

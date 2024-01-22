@@ -36,10 +36,8 @@
     <section class="content-header">
     <h3>${loginEmployee.branchName} 지점 재고 현황</h3>
 
-      <div class="row">
-        <div class="col-xs-12">
           <div class="box box-info">
-            <div class="box-body table-responsive no-padding text-center">
+            <div class="text-center">
               <table class="table table-hover text-center">
                 <tr>
                   <th>번호</th>
@@ -58,19 +56,17 @@
             </div>
             <!-- /.box-body -->
             <!-- 페이지네이션 -->
-            <div class="btn-group btn-info">
-				<c:if test="${currentPage > 1}">
-					<a href="${pageContext.request.contextPath}/trainerStock?currentPage=${currentPage-1}" >이전</a>
-				</c:if>
-					<a class="active">${currentPage}</a>
-				<c:if test="${currentPage < lastPage}">
-					<a href="${pageContext.request.contextPath}/trainerStock?currentPage=${currentPage+1}" >다음</a>
-				</c:if>
-			</div>
+		      <div class="btn-group" style="display: flex; justify-content: center;">
+	          	<c:if test="${currentPage > 1}">
+	          	<a href="${pageContext.request.contextPath}/trainerStock?currentPage=${currentPage-1}&branchNo=${loginEmployee.branchNo}" class="btn btn-info">이전</a>
+	            </c:if>
+	            <a class="btn btn-info active">${currentPage}</a>
+	            <c:if test="${currentPage < lastPage}">
+	            <a href="${pageContext.request.contextPath}/trainerStock?currentPage=${currentPage+1}&branchNo=${loginEmployee.branchNo}" class="btn btn-info">다음</a>
+	          	</c:if>
+	          </div>
           </div>
-          <!-- /.box -->
-        </div>
-      </div>
+         
     </section>
   </div>
   <!-- 헤더 + 내용 wrapper 부분 끝 -->

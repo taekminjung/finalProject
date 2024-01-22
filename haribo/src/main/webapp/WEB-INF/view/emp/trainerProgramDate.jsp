@@ -104,6 +104,7 @@
 					</c:if>
 				</c:forEach>
 			</table>
+			
 			<button type="submit" class="btn btn-info pull-right btn-lg">스케줄 추가하기</button>
 			</form>
 		</div>
@@ -122,7 +123,7 @@
             <p class="text-center">${resultProgram.employeeName}</p>
         
             <div style ="text-align:center;">
-            <img class="img-square" src="${pageContext.request.contextPath}/upload/emp/admin.png" width="50%">
+            <img class="img-square" src="${pageContext.request.contextPath}/upload/emp/${resultProgram.programImgFileName}" width="50%">
 		    </div>
           </div>
            
@@ -134,11 +135,11 @@
                </li>
                <li class="list-group-item">
                <strong><i class="fa fa-pencil margin-r-5"></i> 프로그램 진행 요일</strong>
-               <p class="text-muted"> ${resultProgram.programDay}</p>
+               <p class="text-muted"> ${resultProgram.programDay}요일</p>
                </li>
                <li class="list-group-item">
                <strong><i class="fa fa-book margin-r-5"></i> 프로그램 정원</strong>
-               <p class="text-muted"> ${resultProgram.programMaxCustomer}</p>
+               <p class="text-muted"> ${resultProgram.programMaxCustomer}명</p>
                </li>              
              </ul>
              <strong><i class="fa fa-thumbs-o-up margin-r-5"></i> 많은 이용 바랍니다 헤헤 항상 친절하게 모시겟습미다</strong>

@@ -72,6 +72,7 @@
 	            </div>
 	          </form>
 	        </div>
+	       <br><a href="${pageContext.request.contextPath}/trainerQuestion" class="btn btn-info">목록으로</a>
         </div>
         <!-- /.box-footer-->
       </div>

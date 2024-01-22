@@ -27,12 +27,12 @@
 	
 	<div class="content-wrapper">
 	<section class="content-header">
-	<h3>발주 현황</h3>
+	<h3>${loginEmployee.branchName} 지점 발주 현황</h3>
 	<p>📢 발주 승인 처리가 지연될 수 있습니다. 급한 건은 본사에 직접 연락 바랍니다.</p>
 	<div class="box box-info">
 	  <!-- /.box-header -->
 	  <div class="box-body">
-	      <table class="table table-bordered table-hover">
+	      <table class="table table-bordered table-hover text-center">
 	        <thead>
 	        <tr>
 	          <th>주문번호</th>
