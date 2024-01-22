@@ -40,11 +40,11 @@
 		  <div class="login-box-body">
 		    <form id="customerForm" action="${pageContext.request.contextPath}/login" method="post">
 		      <div class="form-group has-feedback">
-		        <input id="customerId" type="text" class="form-control" placeholder="아이디" name="customerId">
+		        <input id="customerId" type="text" class="form-control" placeholder="아이디" name="customerId" value="customer1">
 		        <span class="glyphicon glyphicon-star form-control-feedback"></span>
 		      </div>
 		      <div class="form-group has-feedback">
-		        <input id="customerPw" type="password" class="form-control" placeholder="비밀번호" name="customerPw">
+		        <input id="customerPw" type="password" class="form-control" placeholder="비밀번호" name="customerPw" value="1234">
 		        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
 		      </div>
 		     </form>
@@ -72,14 +72,15 @@
 		  <div class="login-box-body">
 		    <form action="${pageContext.request.contextPath}/empLogin" method="post">
 		      <div class="form-group has-feedback">
-		        <input type="text" id="employeeId" name="employeeId" class="form-control" placeholder="아이디">
+		        <input type="text" id="employeeId" name="employeeId" class="form-control" placeholder="아이디" value="admin">
 		        <span class="glyphicon glyphicon-user form-control-feedback"></span>
 		      </div>
 		      <div class="form-group has-feedback">
-		        <input type="password" id="employeePw" name="employeePw" class="form-control" placeholder="비밀번호">
+		        <input type="password" id="employeePw" name="employeePw" class="form-control" placeholder="비밀번호" value="1234">
 		        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
 		      </div>
 		      <div class="row">
+		      <div align="center">(관리자 ID :"admin" , 트레이너 ID : "trainer")</div><br>
 		        <div class="col-xs-8">
 		        </div>
 		        <!-- /.col -->
@@ -88,6 +89,7 @@
 		        </div>
 		        <!-- /.col -->
 		      </div>
+		      
 		    </form>
 		  </div>
 		  <!-- /.login-box-body -->
