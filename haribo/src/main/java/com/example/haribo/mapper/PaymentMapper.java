@@ -18,5 +18,6 @@ public interface PaymentMapper {
 	//회원 아이디로 가장 최근 결제 내역의 paymentNo 출력
 	Payment activePayment(Payment payment);
 	
+	// 월별 매출
 	Map<String,Object> monthlyRevenue();
 }

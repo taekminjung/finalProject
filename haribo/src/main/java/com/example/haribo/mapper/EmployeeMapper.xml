@@ -80,7 +80,7 @@
 	        ed.employee_phone employeePhone,
 	        ed.employee_gender employeeGender,
 	        ed.employee_email employeeEmail,
-	        e.createdate,
+	        ed.createdate,
 	        e.employee_active employeeActive
 	    FROM employee e
 	    LEFT OUTER JOIN employee_detail ed ON e.employee_no = ed.employee_no

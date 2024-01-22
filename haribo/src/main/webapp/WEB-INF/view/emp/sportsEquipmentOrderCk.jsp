@@ -126,6 +126,17 @@
 <script src="emp/plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
 <script src="emp/bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
 <script src="emp/dist/js/demo.js"></script>
+<script>
+	$('#updateBtn').click(function(){
+		var result = confirm($('#orderStatus').val()+'하시겠습니까');
+		if(result){
+			$('#form').submit()
+			} else{
+				event.preventDefault();
+		}
+	})
+</script>
+
 
 </body>
 </html>

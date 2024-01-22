@@ -13,17 +13,22 @@ import com.example.haribo.vo.ReviewReply;
 
 @Mapper
 public interface ReviewMapper {
-
+	
+	// 후기리스트 
 	List<HashMap<String, Object>> reviewList();
 	
+	// 후기 답변 리스트 
 	List<ReviewReply> reviewReplyList();
 
+	// 직원 리뷰 리스
 	List<Review> empReviewList(Map<String,Object> param);
 	// 트레이너 리뷰 리스트
 	List<HashMap<String, Object>> trainerReviewList(HashMap<String, Object> param, String employeeId);
 	
+	// 리뷰 상세내용 
 	Review reviewOne(Review review);
 
+	// 리뷰 목록 페이징 
 	int getTotalRow();
 	
 	//리뷰 작성

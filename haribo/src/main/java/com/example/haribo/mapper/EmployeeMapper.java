@@ -41,19 +41,29 @@ public interface EmployeeMapper {
 	// 직원 활성/비활성 수정
 	int updateEmployeeActive(Employee employee);
 	
+	// 직원 아이디 확인 
 	int idCkEmp(String idCk);
 	
+	// 직원 비밀번호 확인 
 	int pwCkEmp (Employee employee);
 	
 	int getTotalRow(int rowPerPage);
 	
+	// 직원 비밀번호 수정 
 	int updateEmployeePw(Map<String, Object> param);
 	
+	// 직원 이미지 확인여부 
 	int employeeImgCnt (EmployeeImg employeeImg);
 	
+	// 직원 로그인
 	Map<String,Object> loginEmployee(Employee employee);
 	
+	// 직원 마이페이지
 	Map<String,Object> selectEmployeeInfo(Employee employee);
 
+	// 직원 마이페이지 이미지명
 	String selectEmployeeImgName(EmployeeImg employeeImg);
+
+	// 트레이너 마이페이
+	Map<String, Object> selectTrainerOne(Employee employee);
 }

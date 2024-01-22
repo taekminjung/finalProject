@@ -64,12 +64,14 @@
                   <label for="noticeContent">내용</label>
 					<textarea class="form-control" id="noticeContent" name="noticeContent"  rows="20" cols="50" readonly>${resultNotice.noticeContent }</textarea>
                 </div>
-                <div class="box-footer">
-                	<a class="btn btn-primary" href="${pageContext.request.contextPath}/updateNotice?noticeNo=${resultNotice.noticeNo}">수정</a>
-                    <a class="btn btn-danger" id="deleteBtn" href="${pageContext.request.contextPath}/deleteNotice?noticeNo=${resultNotice.noticeNo}">삭제</a>
-                </div>
                </div>
             </form>
+            <div class="box-footer">
+                	<a class="btn btn-primary" href="${pageContext.request.contextPath}/updateNotice?noticeNo=${resultNotice.noticeNo}">수정</a>
+                <form id="deleteform" method="post" action="${pageContext.request.contextPath}/deleteNotice?noticeNo=${resultNotice.noticeNo}"></form>
+                    <button class="btn btn-danger" id="deleteBtn" name="deleteBtn">삭제</button>
+                </div>
+            
           </div>
           </div>
           </div>
@@ -114,24 +116,14 @@
 <script>
 
 	$('#deleteBtn').click(function(){
-		var result = confirm($('#'))
+		var result = confirm('공지사항을 수정하겠습니까?');
+		if(result){
+			$('#deleteform').submit()
+		} else{
+			
+		}
+		
 	})
-    $(document).ready(function() {
-        // 삭제 버튼 클릭 시 확인 대화상자 표시
-        $("#deleteBtn").click(function() {
-            if (confirm("정말로 삭제하시겠습니까?")) {
-                // 사용자가 확인을 누른 경우
-                $.ajax({
-                    type: "get",
-                    url: "${pageContext.request.contextPath}/deleteNotice?noticeNo=${resultNotice.noticeNo}",
-                    success: function(response) {
-                        alert("삭제되었습니다.");
-                    },
-                    error:function(err){
-                    	console.log(err);
-                    }
-                })
-	    });
 </script>
 
 
