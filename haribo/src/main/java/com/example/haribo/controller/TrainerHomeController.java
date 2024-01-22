@@ -40,7 +40,7 @@ public class TrainerHomeController {
 	// 잊지말고 로그인 세션 추가하기 
 	// 트레이너 홈페이지
 	@GetMapping("/trainerHome")
-	public String trainerHome(HttpSession session, Model model,
+	public String trainerHome(HttpSession session, Model model, Employee employee,
 								@RequestParam(required = false) Integer targetYear,
 								@RequestParam(required = false) Integer targetMonth
 								) {
@@ -51,20 +51,23 @@ public class TrainerHomeController {
 		String employeeId = ((Map)session.getAttribute("loginEmployee")).get("employeeId").toString();
 		//Calendar Service 호출
 		Map<String, Object> calMap = calendarService.calendar(targetYear, targetMonth);
-		
 		// programList service 호출
 		List<HashMap<String,Object>> pdList = programDateService.programDateList(employeeId,(int)calMap.get("targetYear"),(int)calMap.get("targetMonth"));
+		// empInfo service 호출
+		Map<String,Object> empInfo = employeeService.employeeInfo(employee);
 		
 		// model 
 		model.addAttribute("calMap", calMap);
 		model.addAttribute("pdList", pdList);
+		model.addAttribute("empInfo", empInfo);
+		
 		return "emp/trainerHome";
 	}
 	
 	// 트레이너 마이페이지 + 정보수정 (사진, 비밀번호)
 	// 트레이너 상세정보
 	@GetMapping("/trainerOne")
-	public String trainerOne(Model model, Employee employee, EmployeeImg employeeImg) {
+	public String trainerOne(Model model, Employee employee) {
 		// 서비스 호출
 		Map<String,Object> empInfo = employeeService.employeeInfo(employee);
 		model.addAttribute("empInfo", empInfo);

@@ -99,9 +99,13 @@
 			e.employee_id employeeId,
 			e.createdate createdate,
 			ed.employee_email employeeEmail,
-	        ed.employee_phone employeePhone
-		FROM employee e INNER JOIN employee_detail ed
+	        ed.employee_phone employeePhone,
+	        eimg.employee_img_file_name employeeImgFileName
+		FROM employee e
+		INNER JOIN employee_detail ed
 		ON e.employee_no = ed.employee_no
+		INNER JOIN employee_img eimg
+		ON ed.employee_no = eimg.employee_no
 		WHERE e.employee_no = #{employeeNo}
 	</select>
 	

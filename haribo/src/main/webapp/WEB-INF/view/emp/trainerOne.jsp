@@ -50,7 +50,7 @@
        <div class="box box-info">
         <form id="form" name="form" method="post" action="${pageContext.request.contextPath}/updateTrainerImg" enctype="multipart/form-data">
          <div class="box-body box-profile">
-           <img class="profile-user-img img-responsive img-circle" src="${pageContext.request.contextPath}/upload/emp/man.png">
+           <img class="profile-user-img img-responsive img-circle" src="${pageContext.request.contextPath}/upload/emp/${empInfo.employeeImgFileName}">
 
            <h3 class="profile-username text-center">${empInfo.employeeName}</h3>
            

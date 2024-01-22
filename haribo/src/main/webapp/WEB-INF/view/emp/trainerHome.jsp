@@ -122,43 +122,59 @@
 	    <section class="content container-fluid">
         <!-- 하리보 팀 트레이너 목록 -->
         <div class="box box-info">
-         <div class="box-header with-border">
-           <h3 class="box-title">팀 하리보 트레이너</h3>
-           <div class="box-tools pull-right">
-             <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
-           </div>
-         </div>
-         <!-- 트레이너 정보 -->
-         <div class="box-body no-padding">
-           <ul class="users-list clearfix">
-             <li>
-               <img src="upload/emp/man.png">
-               <strong>김망곰</strong>
-               <span class="users-list-date">여기에 지점</span>
-             </li>
-           </ul>
-         </div>
-         <!-- /.box-body -->
-         <div class="box-footer text-center">
-          <a href="javascript:void(0)" class="uppercase">View All Users</a>
-         </div>
-         <!-- /.box-footer -->
-         </div>
-         <!--/.box -->
+          <div class="box-header with-border">
+            <h3 class="box-title">팀 하리보 트레이너</h3>
+            <div class="box-tools pull-right">
+              <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+            </div>
+          </div>
+          <!-- 트레이너 정보 -->
+          <div class="box-body no-padding">
+            <ul class="users-list clearfix">
+              <li>
+                <img src="upload/emp/man.png">
+                <strong>김망곰</strong>
+                <span class="users-list-date">여기에 지점</span>
+              </li>
+            </ul>
+          </div>
+          <!-- /.box-body -->
+          <div class="box-footer text-center">
+           <a href="javascript:void(0)" class="uppercase">View All Users</a>
+          </div>
+        </div>
+
         </section>
-       </div>
-       
-       <div class="col-md-4">
-		   <section class="content container-fluid">
-			   <div class="box box-info">
-			   rsfdasdasfd
-			   </div>
-		   </section>
-	   </div>
+        </div>
+        
+       <!-- NEW ALERT 창 -->
+        <div class="col-md-4">
+		<section class="content container-fluid">
+		  <div class="box box-info">
+			 <div class="box-header with-border">
+		       <h3 class="box-title">팀 하리보 트레이너</h3>
+		         <div class="box-tools pull-right">
+		           <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+		         </div>
+		     </div>
+		     <!-- 트레이너 정보 -->
+             <div class="box-body no-padding">
+               <ul class="users-list clearfix">
+                 <li>
+                   <img src="upload/emp/man.png">
+                   <strong>김망곰</strong>
+                   <span class="users-list-date">여기에 지점</span>
+                 </li>
+               </ul>
+             </div>
+             <div class="box-footer text-center">
+              <a href="javascript:void(0)" class="uppercase">View All Users</a>
+             </div>
+	      </div>
+		</section>
+	    </div>
      </div>
      </div>
-  
-   
   </div>
   <!-- 헤더 + 내용 wrapper 부분 끝 -->
 
@@ -173,7 +189,6 @@
   </footer>
   <div class="control-sidebar-bg"></div>
 
-</div>
 <!-- REQUIRED JS SCRIPTS -->
 <!-- jQuery 3 -->
 <script src="emp/bower_components/jquery/dist/jquery.min.js"></script>
