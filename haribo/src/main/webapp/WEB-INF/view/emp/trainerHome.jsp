@@ -143,7 +143,6 @@
            <a href="javascript:void(0)" class="uppercase">View All Users</a>
           </div>
         </div>
-
         </section>
         </div>
         
@@ -152,27 +151,27 @@
 		<section class="content container-fluid">
 		  <div class="box box-info">
 			 <div class="box-header with-border">
-		       <h3 class="box-title">팀 하리보 트레이너</h3>
+		       <h3 class="box-title"><span class="badge">NEW</span>문의사항</h3>
 		         <div class="box-tools pull-right">
 		           <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
 		         </div>
 		     </div>
 		     <!-- 트레이너 정보 -->
              <div class="box-body no-padding">
-               <ul class="users-list clearfix">
-                 <li>
-                   <img src="upload/emp/man.png">
-                   <strong>김망곰</strong>
-                   <span class="users-list-date">여기에 지점</span>
-                 </li>
-               </ul>
-             </div>
-             <div class="box-footer text-center">
-              <a href="javascript:void(0)" class="uppercase">View All Users</a>
+               <table class="tbl tbl-hobber">
+                 <tr>
+                 <th>여기에</th>
+                 </tr>
+                 
+                 <tr>
+                 <td>새로운 문의사항 알람 넣을 예정</td>
+                 </tr>
+               </table>
              </div>
 	      </div>
 		</section>
 	    </div>
+	    
      </div>
      </div>
   </div>
