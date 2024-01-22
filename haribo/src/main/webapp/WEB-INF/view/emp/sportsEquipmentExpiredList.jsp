@@ -78,8 +78,6 @@
 </section>
 </div>
 </div>
-  <div class="control-sidebar-bg"></div>
-
 
 <!-- ./wrapper -->
 

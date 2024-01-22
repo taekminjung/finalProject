@@ -8,13 +8,19 @@ import org.springframework.web.bind.annotation.PostMapping;
 import com.example.haribo.service.QuestionReplyService;
 import com.example.haribo.vo.QuestionReply;
 
+import jakarta.servlet.http.HttpSession;
+
 @Controller
 public class QuestionReplyController {
 	@Autowired private QuestionReplyService questionReplyService;
 	
 	// 문의답글 등록하기
 	@GetMapping("/insertQuestionReply")
-	public String insertQuestionReply() {
+	public String insertQuestionReply(HttpSession session) {
+		// 세션 검사
+		if(session.getAttribute("loginEmployee") == null) {
+			return "redirect:/login";
+		}
 		
 		return "emp/trainerQuestionOne";
 	}
@@ -37,7 +43,11 @@ public class QuestionReplyController {
 	
 	// 문의답글 등록하기(직원)
 	@GetMapping("/insertQuestionReplyEmp")
-	public String insertQuestionReplyEmp() {
+	public String insertQuestionReplyEmp(HttpSession session) {
+		// 세션 검사
+		if(session.getAttribute("loginEmployee") == null) {
+			return "redirect:/login";
+		}
 		return "emp/employeeQuestionOne";
 	}
 	
@@ -52,6 +62,7 @@ public class QuestionReplyController {
 	// 문의 답글 삭제하기 (직원)
 	@PostMapping("/deleteQuestionReplyEmp")
 	public String deleteQuestionReplyEmp(QuestionReply questionReply) {
+
 		questionReplyService.deleteQuestionReply(questionReply);
 		
 		return "redirect:/employeeQuestionOne?questionNo="+questionReply.getQuestionNo();

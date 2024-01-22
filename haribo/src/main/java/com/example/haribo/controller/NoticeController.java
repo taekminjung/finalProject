@@ -1,6 +1,7 @@
 package com.example.haribo.controller;
 
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,18 +12,18 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.example.haribo.service.NoticeService;
 import com.example.haribo.vo.Notice;
 
+import jakarta.servlet.http.HttpSession;
+
 @Controller
 public class NoticeController {
 	@Autowired private NoticeService noticeService;
 	
-//	@GetMapping("/adminHome")
-//	public String adminHome() {
-//	
-//		return "emp/adminHome";
-//	}
-	
 	@GetMapping("/insertNotice")
-	public String insertNotice() {
+	public String insertNotice(HttpSession session) {
+		// 세션 검사
+		if(session.getAttribute("loginEmployee") == null) {
+			return "redirect:/login";
+		}
 		
 		return "emp/insertNotice";
 	}
@@ -36,14 +37,22 @@ public class NoticeController {
 	}
 	
 	@GetMapping("/deleteNotice")
-	public String deleteNotice(Notice notice) {
+	public String deleteNotice(HttpSession session, Notice notice) {
+		// 세션 검사
+		if(session.getAttribute("loginEmployee") == null) {
+			return "redirect:/login";
+		}
 		noticeService.deleteNotice(notice);
 		
 		return "redirect:/noticeList";
 	}
 	
 	@GetMapping("/updateNotice")
-	public String updateNotice(Notice notice, Model model) {
+	public String updateNotice(HttpSession session, Notice notice, Model model) {
+		// 세션 검사
+		if(session.getAttribute("loginEmployee") == null) {
+			return "redirect:/login";
+		}
 		Notice resultNotice = noticeService.noticeOne(notice);
 		model.addAttribute("resultNotice" , resultNotice);
 		return "emp/updateNotice";
@@ -62,7 +71,11 @@ public class NoticeController {
 	}
 	
 	@GetMapping("/noticeOne")
-	public String noticeOne(Model model, Notice notice) {
+	public String noticeOne(HttpSession session, Model model, Notice notice) {
+		// 세션 검사
+		if(session.getAttribute("loginEmployee") == null) {
+			return "redirect:/login";
+		}
 		Notice resultNotice = noticeService.noticeOne(notice);
 		model.addAttribute("resultNotice", resultNotice);
 		System.out.println(resultNotice.getNoticeNo()+"<----getNoticeNo");
@@ -94,7 +107,11 @@ public class NoticeController {
 	}
 	
 	@GetMapping("/trainerNotice")
-	public String trainerNotice(Model model, @RequestParam(defaultValue ="1")int currentPage) {
+	public String trainerNotice(HttpSession session, Model model, @RequestParam(defaultValue ="1")int currentPage) {
+		// 세션 검사
+		if(session.getAttribute("loginEmployee") == null) {
+			return "redirect:/login";
+		}
 				List<Notice> list = noticeService.noticeList(currentPage);
 				int lastPage = noticeService.lastPage();
 				model.addAttribute("currentPage", currentPage);
@@ -117,7 +134,11 @@ public class NoticeController {
 	}
 		
 	@GetMapping("/trainerNoticeOne")
-	public String trainerNoticeOne(Model model, Notice notice) {
+	public String trainerNoticeOne(HttpSession session, Model model, Notice notice) {
+		// 세션 검사
+		if(session.getAttribute("loginEmployee") == null) {
+			return "redirect:/login";
+		}
 
 		Notice resultNotice = noticeService.noticeOne(notice);
 		model.addAttribute("resultNotice", resultNotice);
@@ -129,7 +150,11 @@ public class NoticeController {
 	}
 	
 	@GetMapping("/noticeList")
-	public String noticeList(Model model, @RequestParam(defaultValue ="1")int currentPage) {
+	public String noticeList(HttpSession session, Model model, @RequestParam(defaultValue ="1")int currentPage) {
+		// 세션 검사
+		if(session.getAttribute("loginEmployee") == null) {
+			return "redirect:/login";
+		}
 		List<Notice> list = noticeService.noticeList(currentPage);
 		int lastPage = noticeService.lastPage();
 		model.addAttribute("currentPage", currentPage);

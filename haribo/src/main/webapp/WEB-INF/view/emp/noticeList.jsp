@@ -54,9 +54,7 @@
          
         <div class="row">
         <div class="col-xs-12">
-          <div class="box">
-            <div class="box-header">  
-         	 <br>
+          <div class="box box-warning">
 			<div class="box-body table-responsive no-padding">
 			    <table class="table table-hover">
 			        <tr>

@@ -57,7 +57,11 @@ public class EmployeeController {
 	
 	// 직원, 트레이너 추가
 	@GetMapping("/insertEmployee")
-	public String addEmployee(Model model) {
+	public String addEmployee(Model model, HttpSession session) {
+		// 세션 검사
+		if(session.getAttribute("loginEmployee") == null) {
+			return "redirect:/login";
+		}
 		List<Branch> branchList = employeeService.insertEmployeebranch();
 		model.addAttribute("branchList", branchList);
 		
@@ -76,7 +80,11 @@ public class EmployeeController {
 	
 	// 직원 리스트 출력
 	@GetMapping("/employeeList")
-	public String employeeList(Model model, @RequestParam(defaultValue="1")int currentPage) {
+	public String employeeList(HttpSession session, Model model, @RequestParam(defaultValue="1")int currentPage) {
+		// 세션 검사
+		if(session.getAttribute("loginEmployee") == null) {
+			return "redirect:/login";
+		}
 		List<HashMap<String, Object>> list = employeeService.employeeList(currentPage);
 		System.out.println(list+"<--employeeList");
 		int lastPage = employeeService.lastPage();

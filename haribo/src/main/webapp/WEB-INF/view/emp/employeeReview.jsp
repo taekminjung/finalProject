@@ -38,12 +38,10 @@
     <!-- 페이지 메인 헤더 -->
     <section class="content-header">
     <h3>리뷰 게시판</h3>
-    <div class="box-tools">
 
-     </div>
       <div class="row">
         <div class="col-xs-12">
-          <div class="box">
+          <div class="box box-warning">
             <div class="box-body table-responsive no-padding text-center">
               <table class="table table-hover text-center">
                 <tr>

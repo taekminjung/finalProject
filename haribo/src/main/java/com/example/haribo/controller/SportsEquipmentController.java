@@ -27,7 +27,12 @@ public class SportsEquipmentController {
 	
 	// 관리자 홈페이지 부분
 	@GetMapping("/insertSportsEquipment")
-	public String insertSportsEquipment() {
+	public String insertSportsEquipment(HttpSession session) {
+		// 세션 검사
+		if(session.getAttribute("loginEmployee") == null) {
+			return "redirect:/login";
+		}
+		
 		return "emp/insertSportsEquipment";
 	}
 	
@@ -43,7 +48,12 @@ public class SportsEquipmentController {
 	}
 			
 	@GetMapping("/sportsEquipmentList")
-	public String sportsEquipmentList(Model model, @RequestParam(defaultValue="1")int currentPage) {
+	public String sportsEquipmentList(HttpSession session, Model model, @RequestParam(defaultValue="1")int currentPage) {
+		// 세션 검사
+		if(session.getAttribute("loginEmployee") == null) {
+			return "redirect:/login";
+		}
+		
 		List<SportsEquipment> list = sportsEquipmentService.sportsEquipmentList(currentPage);
 		int lastPage = sportsEquipmentService.lastPage();
 		System.out.println(lastPage+"<--lastPage");
@@ -55,7 +65,12 @@ public class SportsEquipmentController {
 	}
 	
 	@GetMapping("/sportsEquipmentOrderCk")
-	public String sportsEquipmentOrderCk(Model model, @RequestParam(defaultValue="1")int currentPage) {
+	public String sportsEquipmentOrderCk(HttpSession session, Model model, @RequestParam(defaultValue="1")int currentPage) {
+		// 세션 검사
+		if(session.getAttribute("loginEmployee") == null) {
+			return "redirect:/login";
+		}
+		
 		List<SportsEquipmentOrder> list = sportsEquipmentService.sportsEquipmentOrderCk(currentPage);
 		int lastPageOrder = sportsEquipmentService.lastPageOrder();
 		
@@ -66,7 +81,12 @@ public class SportsEquipmentController {
 	}
 
 	@GetMapping("/sportsEquipmentExpiredList")
-	public String sportsEquipmentExpiredList(Model model, @RequestParam(defaultValue="1")int currentPage) {
+	public String sportsEquipmentExpiredList(HttpSession session, Model model, @RequestParam(defaultValue="1")int currentPage) {
+		// 세션 검사
+		if(session.getAttribute("loginEmployee") == null) {
+			return "redirect:/login";
+		}
+		
 		List<SportsEquipmentExpire> list = sportsEquipmentService.sportsEquipmentExpiredList(currentPage);
 		System.out.println(list + "<-- list");
 		
@@ -80,7 +100,12 @@ public class SportsEquipmentController {
 	}
 	
 	@GetMapping("/sportsEquipmentOne")
-	public String sportsEquipmentOne(Model model, SportsEquipment sportsEquipment) {
+	public String sportsEquipmentOne(HttpSession session, Model model, SportsEquipment sportsEquipment) {
+		// 세션 검사
+		if(session.getAttribute("loginEmployee") == null) {
+			return "redirect:/login";
+		}
+		
 		SportsEquipment list = sportsEquipmentService.sportsEquipmentOne(sportsEquipment);
 		model.addAttribute("list", list);
 		
@@ -88,7 +113,12 @@ public class SportsEquipmentController {
 	}
 	
 	@GetMapping("/updateSportsEquipment")
-	public String updateSportsEquipment(Model model, SportsEquipment sportsEquipment) {
+	public String updateSportsEquipment(HttpSession session, Model model, SportsEquipment sportsEquipment) {
+		// 세션 검사
+		if(session.getAttribute("loginEmployee") == null) {
+			return "redirect:/login";
+		}
+		
 		SportsEquipment list = sportsEquipmentService.sportsEquipmentOne(sportsEquipment);
 		model.addAttribute("list", list);
 		return "emp/updateSportsEquipment";
@@ -114,7 +144,11 @@ public class SportsEquipmentController {
 	}
 	
 	@GetMapping("/branchStockList")
-	public String stockList(Model model, @RequestParam(defaultValue="1")int currentPage, Branch branch) {
+	public String stockList(HttpSession session, Model model, @RequestParam(defaultValue="1")int currentPage, Branch branch) {
+		// 세션 검사
+		if(session.getAttribute("loginEmployee") == null) {
+			return "redirect:/login";
+		}
 		
 		List<HashMap<String, Object>> list = sportsEquipmentService.stockList(currentPage, branch);
 		

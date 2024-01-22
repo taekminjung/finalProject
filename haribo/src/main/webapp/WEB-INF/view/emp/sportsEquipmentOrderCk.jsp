@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
@@ -19,7 +18,6 @@
   <link rel="stylesheet" href="emp/bower_components/jvectormap/jquery-jvectormap.css">
   <link rel="stylesheet" href="emp/dist/css/AdminLTE.min.css">
   <link rel="stylesheet" href="emp/dist/css/skins/skin-yellow.min.css">
-  
 
   <!-- Google Font -->
   <link rel="stylesheet"
@@ -34,15 +32,11 @@
   
   <div class="content-wrapper">
     <section class="content-header">
-      <h1>
-        운동	기구 목록
-      </h1>
-    </section>
+      <h1>운동 기구 목록</h1>
 
      <div class="row">
         <div class="col-xs-12">
-          <div class="box">
-            <br>
+          <div class="box box-warning">
 			<div class="box-body table-responsive no-padding">
 			    <table class="table table-hover">
 			        <tr>
@@ -98,6 +92,7 @@
 						</tr>
 					</c:forEach>
 			    </table>
+			    </div>
 			    <br>
 			<div class="text-center"> 
 			  <c:if test="${currentPage > 1}">
@@ -109,13 +104,10 @@
 			  </c:if>
 			</div>
 		</div>
-	  </div>
 	</div>
-  </div>
+  </section>
 </div>
-	<div class="control-sidebar-bg"></div>
-
-  	</div>
+</div>
 
 <script src="emp/bower_components/jquery/dist/jquery.min.js"></script>
 <script src="emp/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>

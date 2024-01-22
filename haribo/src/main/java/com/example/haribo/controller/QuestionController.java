@@ -53,7 +53,11 @@ public class QuestionController {
 	
 	// 문의 글 삭제하기
 	@GetMapping("/deleteQuestion")
-	public String deleteQuestion(Question question, QuestionReply questionReply) {
+	public String deleteQuestion(HttpSession session, Question question, QuestionReply questionReply) {
+		// 세션 검사
+		if(session.getAttribute("loginEmployee") == null) {
+			return "redirect:/login";
+		}
 		System.out.println(question+"<====qcon.question");
 		questionService.deleteQuestion(question, questionReply);
 		
@@ -62,6 +66,7 @@ public class QuestionController {
 	
 	@GetMapping("/deleteQuestionCustomer")
 	public String deleteQuestionCustomer(Question question, QuestionReply questionReply) {
+		
 		System.out.println(question+"<====qcon.question");
 		questionService.deleteQuestion(question, questionReply);
 		
@@ -103,7 +108,11 @@ public class QuestionController {
 
 	// 문의사항 리스트(직원)
 	@GetMapping("/employeeQuestion")
-	public String question(Model model, @RequestParam(defaultValue ="1")int currentPage) {
+	public String question(HttpSession session, Model model, @RequestParam(defaultValue ="1")int currentPage) {
+		// 세션 검사
+		if(session.getAttribute("loginEmployee") == null) {
+			return "redirect:/login";
+		}
 		List<Question> list = questionService.questionList(currentPage);
 		int lastPage = questionService.lastPage();
 		model.addAttribute("currentPage", currentPage);
@@ -118,6 +127,7 @@ public class QuestionController {
 	// 문의사항 검색 기능 (직원)
 	@PostMapping("/employeeQuestion")
 	public String searchByQuestion(Model model, Question question, @RequestParam(defaultValue="1")int currentPage) {
+		
 		List<Question> list = questionService.searchByQuestion(question, currentPage);
 		int lastPage = questionService.searchLastPage(question);
 		model.addAttribute("list", list);
@@ -131,7 +141,11 @@ public class QuestionController {
 	
 	// 문의사항 상세보기(직원)
 	@GetMapping("/employeeQuestionOne")
-	public String questionOneEmp(Model model, Question question) {
+	public String questionOneEmp(HttpSession session, Model model, Question question) {
+		// 세션 검사
+		if(session.getAttribute("loginEmployee") == null) {
+			return "redirect:/login";
+		}
 		Question Question = questionService.questionOne(question);
 		List<QuestionReply> list = questionReplyService.selectquestionReply(question);
 		
@@ -143,7 +157,11 @@ public class QuestionController {
 	
 	// 문의사항 리스트(트레이너)
 	@GetMapping("/trainerQuestion")
-	public String trainerQuestion(Model model, Question question, @RequestParam(defaultValue ="1")int currentPage) {
+	public String trainerQuestion(HttpSession session, Model model, Question question, @RequestParam(defaultValue ="1")int currentPage) {
+		// 세션 검사
+		if(session.getAttribute("loginEmployee") == null) {
+			return "redirect:/login";
+		}
 		List<Question> list = questionService.questionList(currentPage);
 		int lastPage = questionService.searchLastPage(question);
 		model.addAttribute("currentPage", currentPage);
@@ -171,7 +189,11 @@ public class QuestionController {
 	
 	// 문의사항 상세보기(트레이너)
 	@GetMapping("/trainerQuestionOne")
-	public String trainerQuestionOne(Model model, Question question) {
+	public String trainerQuestionOne(HttpSession session, Model model, Question question) {
+		// 세션 검사
+		if(session.getAttribute("loginEmployee") == null) {
+			return "redirect:/login";
+		}
 		Question resultQuestion = questionService.questionOne(question);
 		model.addAttribute("resultQuestion", resultQuestion);
 		

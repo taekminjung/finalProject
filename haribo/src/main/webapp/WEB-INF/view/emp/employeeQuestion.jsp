@@ -48,9 +48,8 @@
     </div>
       <div class="row">
         <div class="col-xs-12">
-          <div class="box">
+          <div class="box box-warning">
             <div class="box-body table-responsive no-padding text-center">
-              <br>
               <table class="table table-hover text-center">
                 <tr>
                   <th>번호</th>

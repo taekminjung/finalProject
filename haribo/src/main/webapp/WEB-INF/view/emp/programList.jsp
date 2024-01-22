@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
@@ -7,7 +6,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>프로그램 목</title>
+  <title>프로그램 목록</title>
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- 파비콘 코드 -->
   <link rel="icon" type="image/x-icon" href="emp/img/starfavi.png">
@@ -35,14 +34,11 @@
   
   <div class="content-wrapper">
     <section class="content-header">
-      <h1>
-        프로그램 목록
-      </h1>
-    </section>
+      <h1>프로그램 목록</h1>
 
      <div class="row">
         <div class="col-xs-12">
-          <div class="box">
+          <div class="box box-warning">
             <br>
 			<div class="box-body table-responsive no-padding">
 			    <table class="table table-hover">
@@ -89,6 +85,7 @@
 			            </tr>
 			        </c:forEach>
 			    </table>
+			    </div>
 			    <br><br>
 				<div class="text-center"> 
 				  <c:if test="${currentPage > 1}">
@@ -102,7 +99,7 @@
 			</div>
 		</div>
 	</div>
-	</div>
+	</section>
 </div>
 </div>
 

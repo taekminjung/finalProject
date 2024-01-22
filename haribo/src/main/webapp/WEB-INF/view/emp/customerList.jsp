@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
@@ -35,14 +34,11 @@
   
   <div class="content-wrapper">
     <section class="content-header">
-      <h1>
-        회원 명단
-      </h1>
-    </section>
-        <div class="row">
+      <h1>회원 명단</h1>
+      
+      <div class="row">
         <div class="col-xs-12">
-          <div class="box">
-            <div class="box-header">  
+            <div class="box box-warning">  
          	 <br>
 			<div class="box-body table-responsive no-padding">
 			    <table class="table table-hover">
@@ -72,6 +68,7 @@
 						</tr>
 					</c:forEach>
 			    </table>
+			    </div>
 			    <br><br>
 				<div class="text-center"> 
 			  		<c:if test="${currentPage > 1}">
@@ -82,12 +79,10 @@
 				  	<a href="${pageContext.request.contextPath}/employee?currentPage=${currentPage+1}" class="btn btn-primary">다음</a>
 				  </c:if>
 				</div>
-	  			<div class="control-sidebar-bg"></div>
-			</div>
 			</div>
 		</div>
 		</div>
-		</div>
+	</section>
 	</div>
 	</div>
 

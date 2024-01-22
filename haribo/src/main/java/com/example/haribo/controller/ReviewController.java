@@ -60,7 +60,11 @@ public class ReviewController {
 	
 	// 리뷰 상세보기 (트레이너)
 	@GetMapping("/trainerReviewOne")
-	public String trainerReviewOne(Model model, Review review) {
+	public String trainerReviewOne(HttpSession session, Model model, Review review) {
+		// 세션 검사
+		if(session.getAttribute("loginEmployee") == null) {
+			return "redirect:/login";
+		}
 		Review resultReview = reviewService.reviewOne(review);
 		model.addAttribute("resultReview", resultReview);
 		
@@ -73,7 +77,11 @@ public class ReviewController {
 	
 	// 리뷰 리스트 (직원)
 	@GetMapping("/employeeReview")
-	public String employeeReview(Model model, @RequestParam(defaultValue="1")int currentPage) {
+	public String employeeReview(HttpSession session, Model model, @RequestParam(defaultValue="1")int currentPage) {
+		// 세션 검사
+		if(session.getAttribute("loginEmployee") == null) {
+			return "redirect:/login";
+		}
 		List<Review> list = reviewService.empReviewList(currentPage);
 		int lastPage = reviewService.lastPage();
 		model.addAttribute("list", list);
@@ -85,7 +93,11 @@ public class ReviewController {
 	
 	// 리뷰 상세보기 (직원)
 	@GetMapping("/employeeReviewOne")
-	public String employeeReviewOne(Model model, Review review) {
+	public String employeeReviewOne(HttpSession session, Model model, Review review) {
+		// 세션 검사
+		if(session.getAttribute("loginEmployee") == null) {
+			return "redirect:/login";
+		}
 		Review resultReview = reviewService.reviewOne(review);
 		List<ReviewReply> rpList = reviewReplyService.selectReviewReply(review);
 
@@ -98,7 +110,11 @@ public class ReviewController {
 	
 	// 리뷰 작성하기
 	@GetMapping("/insertReviewForm")
-	public String insertReviewForm(Model model, Review review) {
+	public String insertReviewForm(HttpSession session, Model model, Review review) {
+		// 세션 검사
+		if(session.getAttribute("loginEmployee") == null) {
+			return "redirect:/login";
+		}
 		HashMap<String, Object> map = reviewService.selectReservationInfo(review);
 		
 		model.addAttribute("map", map);
