@@ -115,10 +115,11 @@ public class ReviewService {
 	//리뷰 삭제
 	public void deleteReview(Review review, ReviewReply reviewReply) {
 		int selectReviewReplyCnt = reviewMapper.selectReviewReplyCnt(review);
+		log.debug(selectReviewReplyCnt+"");
 		if(selectReviewReplyCnt == 0) {
 			reviewMapper.deleteReview(review);
 		}else {
-			reviewReplyMapper.deleteReviewReply(reviewReply);
+			reviewMapper.deleteReviewReply(review);
 			reviewMapper.deleteReview(review);
 		}
 	}
