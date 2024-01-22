@@ -108,7 +108,7 @@
 <script src="emp/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 
 <script>
-
+<!-- 테스트 아이디 기본 입력으로 인한 아이디 저장 기능 제거
 $(document).ready(function(){
 	
     // 저장된 쿠키값을 가져와서 ID 칸에 넣어준다. 쿠키값 없으면 공백.
@@ -171,7 +171,7 @@ function getCookie(cookieName){
     }
     return unescape(cookieValue); //unescape로 디코딩 후 값 리턴
 }
-  
+ -->
   $('#customerBtn').click(function(){
 		if($('#customerId').val().length < 1){
 			alert('아이디를 입력하세요')
