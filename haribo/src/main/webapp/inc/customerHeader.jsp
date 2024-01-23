@@ -33,6 +33,7 @@
 				</div>
 				<nav id="nav-menu-container">
 					<ul class="nav-menu">
+						<li><a class="active" href="${pageContext.request.contextPath}/login">Login</a></li>
 						<li><a class="active" href="${pageContext.request.contextPath}/home">Home</a></li>
 						<li><a href="${pageContext.request.contextPath}/aboutUs">About</a></li>
 						<li><a href="${pageContext.request.contextPath}/branch">Branch/Trainers</a></li>
