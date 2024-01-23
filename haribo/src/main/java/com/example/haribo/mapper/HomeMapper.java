@@ -8,7 +8,7 @@ import com.example.haribo.vo.Employee;
 @Mapper
 public interface HomeMapper {
 	
-	int countEmployee (Employee employee);
+	int countEmployee ();
 	
-	int countCustomer (Customer customer);
+	int countCustomer ();
 }

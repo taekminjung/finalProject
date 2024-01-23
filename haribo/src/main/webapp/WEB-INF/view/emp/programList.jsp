@@ -91,7 +91,7 @@
 				  <c:if test="${currentPage > 1}">
 				  	<a href="${pageContext.request.contextPath}/programList?currentPage=${currentPage-1}" class="btn btn-primary btn-sm">이전</a>
 				  </c:if>
-				  	${currentPage}]
+				  	[${currentPage}]
 				  <c:if test="${currentPage < lastPage}">
 				  	<a href="${pageContext.request.contextPath}/programList?currentPage=${currentPage+1}" class="btn btn-primary btn-sm">다음</a>
 				  </c:if>

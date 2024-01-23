@@ -14,10 +14,10 @@
     <link rel="stylesheet" href="emp/bower_components/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="emp/bower_components/Ionicons/css/ionicons.min.css">
     <link rel="stylesheet" href="emp/dist/css/AdminLTE.min.css">
-    <link rel="stylesheet" href="emp/dist/css/skins/_all-skins.min.css">
+    <link rel="stylesheet" href="emp/dist/css/skins/skin-yellow.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
-<body class="hold-transition skin-blue sidebar-mini">
+<body class="hold-transition skin-yellow sidebar-mini">
     <div class="wrapper">
         <!-- header 시작 부분 -->
         <!-- inc 폴더의 TrainerNavi.jsp를 include -->

@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.haribo.service.BranchService;
 import com.example.haribo.service.ContactService;
@@ -66,19 +67,21 @@ public class HomeController {
 	
 	
 	@GetMapping("/adminHome")
-	public String monthlyRevenue(HttpSession session, Model model, Payment payment, SportsEquipmentOrder sportsEquipmentOrder, Customer customer, Employee employee) {
+	public String monthlyRevenue(HttpSession session, Model model, 
+								@RequestParam(required = false) Integer targetYear) {
 		// 세션 검사
 		if(session.getAttribute("loginEmployee") == null) {
 			return "redirect:/login";
 		}
 		
-		Map<String,Object> list = paymentService.monthlyRevenue();
-		int countEmployee = homeService.countCustomer(customer);
-		int countCustomer = homeService.countEmployee(employee);
-		int notAccept = sportsEquipmentService.countSportsEquipment(sportsEquipmentOrder);
+		Map<String,Object> list = paymentService.monthlyRevenue(targetYear);
+		int countEmployee = homeService.countCustomer();
+		int countCustomer = homeService.countEmployee();
+		int notAccept = sportsEquipmentService.countSportsEquipment();
 		
 		model.addAttribute("emp",countEmployee);
 		model.addAttribute("cus",countCustomer);
+		model.addAttribute("year", list.get("year"));
 		model.addAttribute("jan", list.get("1월"));
 		model.addAttribute("feb", list.get("2월"));
 		model.addAttribute("mar", list.get("3월"));

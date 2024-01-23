@@ -85,11 +85,12 @@
 	    FROM employee e
 	    LEFT OUTER JOIN employee_detail ed ON e.employee_no = ed.employee_no
 	    ORDER BY e.branch_no DESC
+		LIMIT #{beginRow}, #{rowPerPage}
 	</select>
 
 	<select id="getTotalRow" resultType="int">
 		SELECT COUNT(*)
-		FROM employee e INNER JOIN employee_detail ed
+		FROM employee e LEFT OUTER JOIN employee_detail ed
 		ON e.employee_no = ed.employee_no
 	</select>
 	

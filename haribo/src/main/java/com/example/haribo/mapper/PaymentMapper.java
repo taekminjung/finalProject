@@ -19,5 +19,5 @@ public interface PaymentMapper {
 	Payment activePayment(Payment payment);
 	
 	// 월별 매출
-	Map<String,Object> monthlyRevenue();
+	Map<String,Object> monthlyRevenue(Integer targetYear);
 }

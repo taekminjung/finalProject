@@ -1,9 +1,11 @@
 package com.example.haribo.service;
 
-import java.time.LocalDate;
-import java.util.List;
-import java.util.Map;
 import java.sql.Date;
+import java.time.LocalDate;
+import java.util.Calendar;
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -73,8 +75,14 @@ public class PaymentService {
 	}
 	
 	// 월별 매출 내역
-	public Map<String,Object> monthlyRevenue() {
-		log.debug("payment"+"<-----paymentS");
-		return paymentMapper.monthlyRevenue();
+	public Map<String,Object> monthlyRevenue(Integer targetYear) {
+		Calendar firstD = Calendar.getInstance();
+		if(targetYear != null) {
+			firstD.set(Calendar.YEAR,targetYear);
+		}
+		targetYear = firstD.get(Calendar.YEAR);
+		Map<String,Object> month = paymentMapper.monthlyRevenue(targetYear);
+		month.put("year", targetYear);
+		return month;
 	}
 }

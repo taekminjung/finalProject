@@ -37,20 +37,26 @@
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
-    	<h3>공지사항</h3>
-         <div class="box-tools">
-          <a href="${pageContext.request.contextPath}/insertNotice" class="btn btn-primary mb-3">공지 추가</a>
-           <div class="input-group input-group-sm hidden-xs" style="width: 300px;">
-             <form class="search-form" id="searchNotice" method="post" action="${pageContext.request.contextPath}/noticeList">
-               <div class="input-group input-group-sm hidden-xs">
-                 <input type="text" name="noticeTitle" class="form-control pull-right" placeholder="제목을 입력해주세요" onfocus="this.placeholder=''" onblur="this.placeholder='제목을 입력하세요'">
-                 <span class="input-group-btn">
-                     <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
-                 </span>	
-               </div>
-             </form>
-           </div>
-         </div>
+    	<div class="row">
+        	<div class="col-md-6">
+        		<h3>공지사항</h3>
+        	</div>
+        	<div class="col-md-6">
+        		<div class="box-tools pull-right">
+	        		<a href="${pageContext.request.contextPath}/insertNotice" class="btn btn-primary mb-3">공지 추가</a>
+	        	</div>
+	        	<div class="input-group input-group-sm hidden-xs" style="width: 300px;">
+		             <form class="search-form" id="searchNotice" method="post" action="${pageContext.request.contextPath}/noticeList">
+		               <div class="input-group input-group-sm hidden-xs">
+		                 <input type="text" name="noticeTitle" class="form-control pull-right" placeholder="제목을 입력해주세요" onfocus="this.placeholder=''" onblur="this.placeholder='제목을 입력하세요'">
+		                 <span class="input-group-btn">
+		                     <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+		                 </span>	
+		               </div>
+		             </form>
+	        	</div>
+        	</div>
+        </div>
          
         <div class="row">
         <div class="col-xs-12">
