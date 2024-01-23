@@ -35,6 +35,11 @@ public class HomeController {
 	@Autowired private SportsEquipmentService sportsEquipmentService;
 	@Autowired private HomeService homeService;
 	
+	@GetMapping("/")
+	public String main(Model model) {
+		return "public/index";
+	}
+	
 	@GetMapping("/home")
 	public String home(Model model) {
 		//리뷰 출력

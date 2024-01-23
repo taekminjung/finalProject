@@ -80,9 +80,11 @@
            	 <b><i class="fa fa-lock margin-r-5"></i>비밀번호 변경</b>
 	  	<a href="${pageContext.request.contextPath}/updateTrainerPw?employeeNo=${loginEmployee.employeeNo}" class="btn btn-info pull-right btn-xs">비밀번호 변경</a>
            	</li>
+           	<li class="list-group-item">
+           		<b><i class="fa fa-photo margin-r-5"></i>프로필 사진</b>
+	        	<input type="file" class="form-control" id="eImg" name="eImg" accept=".jpg, .jpeg, .png">
+           	</li>
            </ul>
-	          <b><i class="fa fa-photo margin-r-5"></i>프로필 사진</b>
-	          <input type="file" id="eImg" name="eImg" accept=".jpg, .jpeg, .png">
          </div>
          
          </form>

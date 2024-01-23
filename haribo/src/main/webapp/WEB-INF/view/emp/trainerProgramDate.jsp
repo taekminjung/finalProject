@@ -10,6 +10,8 @@
   <link rel="icon" type="image/x-icon" href="emp/img/starfavi.png">
   <!-- 공통 스타일 폰트 -->
   <link rel="stylesheet" href="common/css/main.css">
+  <!-- programdate css -->
+  <link rel="stylesheet" href="emp/css/programDate.css">
   
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <link rel="stylesheet" href="emp/bower_components/bootstrap/dist/css/bootstrap.min.css">
@@ -65,7 +67,7 @@
 			<input type="hidden" name="targetYear" value="${calMap.targetYear}">
 			<input type="hidden" name="targetMonth" value="${calMap.targetMonth+1}">
 			<input type="hidden" name="programNo" value="${programDate.programNo}">
-			<table class="table table-bordered" style="font-size:15px;">
+			<table class="table table-bordered" style="font-size:15px; table-layout: fixed;">
 				<tr>
 					<th class="col-lg-1" style="color:red; text-align:center;">일</th>
 					<th class="col-lg-1" style="text-align:center;">월</th>
@@ -77,16 +79,16 @@
 				</tr>
 				<tr style="height:130px;">
 				<c:forEach var="i" begin="1" end="${calMap.totalTd}" step="1">
-					<c:set var="d" value="${i - calMap.beginBlank }"></c:set>
+					<c:set var="d" value="${i - calMap.beginBlank }" />
 					
 					<!-- 첫번째 칸(일요일) -->
 					<c:if test="${i % 7 == 1 }">
-						<td style="color:red">
+						<td class="date" date="${d}" style="color:red">
 					</c:if>
 					
 					<!-- 그 외 칸(월화수목금토) -->
 					<c:if test="${!(i % 7 == 1)}">
-						<td>
+						<td class="date" date="${d}">
 					</c:if>
 					
 					<!-- 날짜 추가하기 -->
@@ -96,7 +98,37 @@
 					
 					<c:if test="${!(d < 1 || d > calMap.lastDate)}">
 						${d}
-						<br><input type="checkbox" name="d" value="${d}" style="width: 25px; height: 30px;"><br>					
+						<br />
+						<c:forEach var="pd" items="${pdList}" varStatus="status">
+							<c:if test="${d == pd.programDateDay && pd.programNo == resultProgram.programNo}">
+								<c:set var="isAlreadyBooked" value="1" />
+								<span 
+									class="badge program-badge" 
+									style="color: black;
+									<c:choose>
+										<c:when test="${pd.programNo % 3 == 0 }">
+										 background-color: #FAFA96; 
+										</c:when>
+										<c:when test="${pd.programNo % 3 == 1 }">
+										 background-color: blue; 
+										</c:when>
+										<c:otherwise>
+										 background-color: red; 
+										</c:otherwise>
+									</c:choose>
+								">
+	    						${pd.programName}
+								</span>
+							</c:if>
+						</c:forEach>
+						<c:choose>
+							<c:when test="${isAlreadyBooked == 1}">
+								<c:set var="isAlreadyBooked" value="0" />
+							</c:when>
+							<c:otherwise>
+								<input type="checkbox" class="date-checkbox" name="d" date="${d}" value="${d}" style="width: 25px; height: 30px;" />
+							</c:otherwise>
+						</c:choose>
 					</c:if>
 					</td>
 					<c:if test="${i < calMap.totalTd && i % 7 == 0}">
@@ -175,6 +207,34 @@
 <script src="emp/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <!-- AdminLTE App -->
 <script src="emp/dist/js/adminlte.min.js"></script>
+
+<script>
+$(() => {
+	$('.date').each((index, element) => {
+		const $elem = $(element);
+		const date = $elem.attr('date');
+		
+		const inputElement = $elem.find('input[date=' + date + ']')[0];
+		if (!inputElement) return;
+		
+		$elem.on('click', () => {
+			const $inputElem = $(inputElement);
+			const checked = $inputElem.is(':checked');
+			console.log(inputElement);
+			console.log($(inputElement));
+			console.log(checked);
+			
+			if (checked){
+				$elem.removeClass('checked');
+				$inputElem.prop('checked', false);
+			} else {
+				$elem.addClass('checked');
+				$inputElem.prop('checked', true);
+			}
+		});
+	});
+});
+</script>
 
 </body>
 </html>

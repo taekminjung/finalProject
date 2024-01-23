@@ -72,15 +72,15 @@
             </div>
             <!-- /.box-body -->
             <!-- 페이지네이션 -->
-            <div class="text-center">
-				<c:if test="${currentPage > 1}">
-					<a href="${pageContext.request.contextPath}/trainerNotice?currentPage=${currentPage-1}" class="btn btn-primary">이전</a>
-				</c:if>
-				
-				<c:if test="${currentPage < lastPage}">
-					<a href="${pageContext.request.contextPath}/trainerNotice?currentPage=${currentPage+1}" class="btn btn-primary">다음</a>
-				</c:if>
-			</div>
+		      <div class="btn-group" style="display: flex; justify-content: center;">
+	          	<c:if test="${currentPage > 1}">
+	          	<a href="${pageContext.request.contextPath}/trainerNotice?currentPage=${currentPage-1}" class="btn btn-info">이전</a>
+	            </c:if>
+	            <a class="btn btn-info active">${currentPage}</a>
+	            <c:if test="${currentPage < lastPage}">
+	            <a href="${pageContext.request.contextPath}/trainerNotice?currentPage=${currentPage+1}" class="btn btn-info">다음</a>
+	          	</c:if>
+	          </div>
           </div>
           <!-- /.box -->
         </div>

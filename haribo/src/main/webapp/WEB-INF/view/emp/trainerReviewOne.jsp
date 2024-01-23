@@ -10,6 +10,9 @@
   <link rel="icon" type="image/x-icon" href="emp/img/starfavi.png">
   <!-- 공통 스타일 폰트 -->
   <link rel="stylesheet" href="common/css/main.css">
+  <!-- 리뷰 댓글 css -->
+  <link rel="stylesheet" href="emp/css/reviewReply.css">
+  
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <link rel="stylesheet" href="emp/bower_components/bootstrap/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="emp/bower_components/font-awesome/css/font-awesome.min.css">
@@ -46,18 +49,24 @@
         <!-- /.box-body -->
         <div class="box-footer">
 	        <h4>답변</h4>
-	        <img class="direct-chat-img" src="emp/img/man.png">
-	        <c:forEach var="rr" items="${rpList}">
-			<div class="direct-chat-text" style="width: 500px;"> ${rr.reviewReplyContent} </div>
-			<!-- 각 댓글에 대한 삭제 버튼이 있는 폼 추가 -->
-			<div>
-            	<form action="${pageContext.request.contextPath}/deleteReviewReply" method="post">
-                <input type="hidden" name="reviewReplyNo" value="${rr.reviewReplyNo}">
-                <input type="hidden" name="reviewNo" value="${rr.reviewNo}">
-                <button type="submit" class="btn btn-danger btn-flat">삭제하기</button>
-            	</form>
+			<div class="comment-container">
+				<img class="direct-chat-img" src="emp/img/man.png">
+				<div class="comment-message-container">
+					<c:forEach var="rr" items="${rpList}">
+					<div class="comment">
+						<div class="direct-chat-text" style="width: 500px;"> ${rr.reviewReplyContent} </div>
+						<!-- 각 댓글에 대한 삭제 버튼이 있는 폼 추가 -->
+						<div>
+			            	<form action="${pageContext.request.contextPath}/deleteReviewReply" method="post">
+			                <input type="hidden" name="reviewReplyNo" value="${rr.reviewReplyNo}">
+			                <input type="hidden" name="reviewNo" value="${rr.reviewNo}">
+			                <button type="submit" class="btn btn-danger btn-flat btn-xs">삭제하기</button>
+			            	</form>
+						</div>
+					</div>
+					</c:forEach>
+				</div>
 			</div>
-			</c:forEach>
 			<br>
 			<!-- 문의 댓글 다는 곳 -->
 			<div>

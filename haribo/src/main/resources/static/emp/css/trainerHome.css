@@ -1,0 +1,29 @@
+@charset "UTF-8";
+
+.users-list.trainer-list {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	gap: 20px;
+	padding: 10px;
+}
+
+.users-list.trainer-list::before {
+	content: none;
+}
+
+.users-list.trainer-list > li.trainer-info {
+	padding: 0;
+	width: unset;
+	float: none;
+}
+
+.program-badge {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	max-width: 100%;
+}
+
+.program-badge:hover {
+	overflow: visible;
+	max-width: unset;
+}

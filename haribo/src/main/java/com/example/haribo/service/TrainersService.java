@@ -56,7 +56,7 @@ public class TrainersService {
 	public int lastPagetr() {
 		int rowPerPage = 8;
 		int totalRow = trainersMapper.getTotalRow(rowPerPage);
-		int lastPage = totalRow / rowPerPage;
+		int lastPage = totalRow / rowPerPage + 1;
 		return lastPage;
 	}
 	

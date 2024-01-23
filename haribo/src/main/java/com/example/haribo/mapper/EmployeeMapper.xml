@@ -104,7 +104,7 @@
 		FROM employee e
 		INNER JOIN employee_detail ed
 		ON e.employee_no = ed.employee_no
-		INNER JOIN employee_img eimg
+		LEFT OUTER JOIN employee_img eimg
 		ON ed.employee_no = eimg.employee_no
 		WHERE e.employee_no = #{employeeNo}
 	</select>

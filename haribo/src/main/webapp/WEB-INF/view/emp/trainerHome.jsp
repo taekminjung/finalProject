@@ -10,6 +10,8 @@
   <link rel="icon" type="image/x-icon" href="emp/img/starfavi.png">
   <!-- 공통 스타일 폰트 -->
   <link rel="stylesheet" href="common/css/main.css">
+  <!-- 프로필 스타일 -->
+  <link rel="stylesheet" href="emp/css/trainerHome.css">
   
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <link rel="stylesheet" href="emp/bower_components/bootstrap/dist/css/bootstrap.min.css">
@@ -65,7 +67,7 @@
 			</div>
 			<br><br>
 			<!-- 달력 부분 -->
-			<table class="table table-bordered" style="font-size:15px;" >
+			<table class="table table-bordered" style="font-size:15px; table-layout: fixed;" >
 					<tr>
 						<th class="col-lg-1" style="color:red; text-align:center;">일</th>
 						<th class="col-lg-1" style="text-align:center;">월</th>
@@ -75,13 +77,13 @@
 						<th class="col-lg-1" style="text-align:center;">금</th>
 						<th class="col-lg-1" style="text-align:center;">토</th>
 					</tr>
-					<tr style="height:130px; width:130px;">
+					<tr style="height:130px;">
 					<c:forEach var="i" begin="1" end="${calMap.totalTd}" step="1">
 						<c:set var="d" value="${i - calMap.beginBlank }"></c:set>
 						
 						<!-- 첫번째 칸(일요일) -->
 						<c:if test="${i % 7 == 1 }">
-							<td style="color:red">
+							<td style="color:red;">
 						</c:if>
 						
 						<!-- 그 외 칸(월화수목금토) -->
@@ -97,18 +99,32 @@
 						<!-- 스케줄 불러오기 -->
 						<c:if test="${!(d < 1 || d > calMap.lastDate)}">
 							${d}<br>
-							<c:forEach var="pd" items="${pdList}">
-							<c:if test="${d == pd.programDateDay}">
-							<span class="badge" style="background-color: #FAFA96; color: black;">
-    						${pd.programName}
-							</span>
-							</c:if>
+							<c:forEach var="pd" items="${pdList}" varStatus="status">
+								<c:if test="${d == pd.programDateDay}">
+									<span 
+										class="badge program-badge" 
+										style="color: black;
+										<c:choose>
+											<c:when test="${pd.programNo % 3 == 0 }">
+											 background-color: #FAFA96; 
+											</c:when>
+											<c:when test="${pd.programNo % 3 == 1 }">
+											 background-color: blue; 
+											</c:when>
+											<c:otherwise>
+											 background-color: red; 
+											</c:otherwise>
+										</c:choose>
+									">
+		    						${pd.programName}
+									</span>
+								</c:if>
 							</c:forEach>
 						</c:if>
 						</td>
 						
 						<c:if test="${i < calMap.totalTd && i % 7 == 0}">
-							</tr><tr style="height:130px; width:130px;">	
+							</tr><tr style="height:130px;">	
 						</c:if>
 					</c:forEach>
 			</table>
@@ -156,9 +172,9 @@
           </div>
           <!-- 트레이너 정보 -->
           <div class="box-body">
-            <ul class="users-list clearfix">
+            <ul class="users-list trainer-list clearfix">
               <c:forEach var="t" items="${list}">
-              <li>
+              <li class="trainer-info">
                 <img src="${pageContext.request.contextPath}/upload/emp/${t.employeeImgFileName}" onerror="this.src='${pageContext.request.contextPath}/upload/emp/man.png'">
                 <strong>${t.employeeName}</strong>
                 <span class="users-list-date">${t.branchName} 지점</span>
@@ -167,14 +183,16 @@
             </ul>
           </div>
           <!-- /.box-body -->
+          <div class="box-footer">
           <div class="btn-group" style="display: flex; justify-content: center;">
-	          	<c:if test="${currentPage > 1}">
-	          	<a href="${pageContext.request.contextPath}/trainerHome?currentPage=${currentPage-1}" class="btn btn-info">이전</a>
-	            </c:if>
-	            <a class="btn btn-info active">${currentPage}</a>
-	            
-	            <a href="${pageContext.request.contextPath}/trainerHome?currentPage=${currentPage+1}" class="btn btn-info">다음</a>
-	          	
+	        <c:if test="${currentPage > 1}">
+	        <a href="${pageContext.request.contextPath}/trainerHome?currentPage=${currentPage-1}" class="btn btn-info">이전</a>
+	        </c:if>
+	        <a class="btn btn-info active">${currentPage}</a>
+	        <c:if test="${currentPage < lastPage}">
+	        <a href="${pageContext.request.contextPath}/trainerHome?currentPage=${currentPage+1}" class="btn btn-info">다음</a>
+	      	</c:if>
+	      </div>
 	      </div>
         </div>
         </section>

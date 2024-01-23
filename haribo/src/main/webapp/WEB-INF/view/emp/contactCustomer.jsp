@@ -67,7 +67,7 @@
 				<c:if test="${currentPage > 1}">
 					<a href="${pageContext.request.contextPath}/contactCustomer?currentPage=${currentPage-1}" class="btn btn-primary">이전</a>
 				</c:if>
-				
+				<a class="btn btn-info active">${currentPage}</a>
 				<c:if test="${currentPage < lastPage}">
 					<a href="${pageContext.request.contextPath}/contactCustomer?currentPage=${currentPage+1}" class="btn btn-primary">다음</a>
 				</c:if>

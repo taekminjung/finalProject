@@ -131,10 +131,16 @@ public class TrainerHomeController {
 		//Calendar Service , Program Service 호출
 		Map<String, Object> calMap = calendarService.calendar(targetYear, targetMonth);
 		HashMap<String, Object> resultProgram = programService.programOne(program);
-		
+		// programList service 호출
+		String employeeId = ((Map)session.getAttribute("loginEmployee")).get("employeeId").toString();
+		List<HashMap<String,Object>> pdList = programDateService.programDateList(employeeId,(int)calMap.get("targetYear"),(int)calMap.get("targetMonth"));
+				
 		// model 
 		model.addAttribute("calMap", calMap);
 		model.addAttribute("resultProgram", resultProgram);
+		model.addAttribute("pdList", pdList);
+		
+		log.debug(pdList+"");
 		
 		return "emp/trainerProgramDate";
 	}
