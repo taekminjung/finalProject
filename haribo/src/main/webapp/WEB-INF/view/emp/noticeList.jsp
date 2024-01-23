@@ -76,7 +76,7 @@
 			            </tr>
 			        </c:forEach>
 			    </table>
-			    <br><br>
+			    <br>
 			<div class="text-center"> 
 			  <c:if test="${currentPage > 1}">
 			  	<a href="${pageContext.request.contextPath}/noticeList?currentPage=${currentPage-1}" class="btn btn-primary">이전</a>
@@ -88,15 +88,12 @@
 			</div>
 			</div>
 		</div>
+		</div>
 	</div>
-</div>
-</div>
+	</div>
 </section>
 </div>
 
-  <div class="control-sidebar-bg"></div>
-
-</div>
 <!-- ./wrapper -->
 
 <!-- jQuery 3 -->

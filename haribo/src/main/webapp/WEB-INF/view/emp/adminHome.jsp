@@ -34,21 +34,16 @@
   
   <div class="content-wrapper">
     <section class="content-header">
-      <h1>
-        홈페이지
-        <small>관리자 전용</small>
-      </h1>
-    </section>
+          <h1>안녕하세요, ${loginEmployee.employeeName}님😀<small>오늘도 힘찬 하루 되세요💪🏻</small></h1>
+   <br>     <!-- Main content -->
 
-    <!-- Main content -->
-  <section class="content">
 
   <div class="row">
     <div class="col-md-6">
       <!-- Bar Chart -->
       <div class="box box-success">
         <div class="box-header with-border">
-          <h3 class="box-title">월별 매</h3>
+          <h3 class="box-title">월별 매출</h3>
           <div class="box-tools pull-right">
             <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
           </div>
@@ -59,7 +54,7 @@
       </div>
     </div>
 
-    <div class="col-md-6">
+    <div class="col-md-2" style="width:30%">
       <!-- Pie Chart for Employees and Members -->
       <div class="box box-success">
         <div class="box-header with-border">
@@ -77,7 +72,7 @@
 </section>
    <section class="content">
       <div class="row">
-        <div class="col-md-5">
+        <div class="col-md-6">
           <!-- About Me Box -->
           <div class="box box-primary">
             <div class="box-header with-border">
