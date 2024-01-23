@@ -34,6 +34,5 @@ public class TrainersController {
 		model.addAttribute("lastPage", lastPage);
 		
 		return "public/trainers";
-		
 	}
 }

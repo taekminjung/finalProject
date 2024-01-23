@@ -47,7 +47,7 @@
             <label for="branchNo" class="col-sm-2 control-label">지점</label>
 
             <div class="col-sm-8">
-              <input type="text" class="form-control" name="branchNo" value="${loginEmployee.branchNo}" readonly>
+              <input type="hidden" class="form-control" name="branchNo" value="${loginEmployee.branchNo}" readonly>
             </div>
           </div>
           
