@@ -25,8 +25,10 @@ public class QuestionController {
 	
 	// 문의글 등록하기
 	@GetMapping("/insertQuestion")
-	public String insertQuestion() {
-		
+	public String insertQuestion(HttpSession session) {
+		if(session.getAttribute("loginCustomer") == null) {
+			return "redirect:/login";
+		}
 		return "public/insertQuestion";
 	}
 	
