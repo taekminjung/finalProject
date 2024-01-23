@@ -47,7 +47,7 @@
             <label for="branchNo" class="col-sm-2 control-label">지점</label>
 
             <div class="col-sm-8">
-              <input type="hidden" class="form-control" name="branchNo" value="${loginEmployee.branchNo}" readonly>
+              <input type="text" class="form-control" name="branchNo" value="${loginEmployee.branchNo}" readonly>
             </div>
           </div>
           
@@ -66,7 +66,7 @@
           <div class="form-group">
             <label for="quantity" class="col-sm-2 control-label">수량</label>
             <div class="col-sm-8">
-            	<input type="text" id="currentQ">
+            	<input type="hidden" id="currentQ">
               <input type="number" class="form-control" id="quant" name="quantity" placeholder="수량을 입력하세요">
             </div>
           </div>
