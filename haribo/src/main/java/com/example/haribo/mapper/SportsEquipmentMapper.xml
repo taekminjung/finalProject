@@ -230,7 +230,7 @@
 		WHERE sports_equipment_no = #{sportsEquipmentNo}
 	</select>
 	
-	<select id="countSportsEquipment" parameterType="com.example.haribo.vo.SportsEquipmentOrder" resultType="int">
+	<select id="countSportsEquipment" resultType="int">
 		SELECT
 			COUNT(*)
 		FROM sports_equipment_order

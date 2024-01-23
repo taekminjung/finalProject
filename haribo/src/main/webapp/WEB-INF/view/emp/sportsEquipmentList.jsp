@@ -53,8 +53,8 @@
 			        <c:forEach var="se" items="${list}">
 			        
 					<tr>
-						<td class="text-center">${se.sportsEquipmentNo} </td>
-						<td class="text-center">
+						<td class="text-center" style="text-align: center;">${se.sportsEquipmentNo} </td>
+						<td class="text-center" style="text-align: center;">
 							<a href="${pageContext.request.contextPath}/sportsEquipmentOne?sportsEquipmentNo=${se.sportsEquipmentNo}">${se.itemName}</a> 
 						</td>
 						<td class="text-center" style="text-align: center">

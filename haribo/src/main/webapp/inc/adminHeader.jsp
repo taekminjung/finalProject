@@ -133,14 +133,14 @@
         </li>
 
         <li class="treeview">
-          <a href="${pageContext.request.contextPath}/trainerManagement"><i class="fa fa-user"></i> <span>운동기구 관리</span>
+          <a href="${pageContext.request.contextPath}/trainerManagement"><i class="fa fa-gavel"></i> <span>운동기구 관리</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="${pageContext.request.contextPath}/sportsEquipmentList"><i class="fa fa-users"></i>운동기구 리스트</a></li>
-            <li><a href="${pageContext.request.contextPath}/insertSportsEquipment"><i class="fa fa-user-plus"></i>운동기구 추가</a></li>
+            <li><a href="${pageContext.request.contextPath}/sportsEquipmentList"><i class="fa fa-database"></i>운동기구 리스트</a></li>
+            <li><a href="${pageContext.request.contextPath}/insertSportsEquipment"><i class="fa fa-hand-peace-o"></i>운동기구 추가</a></li>
           </ul>
         </li>
         
@@ -152,7 +152,7 @@
         
        <li>
           <a href="${pageContext.request.contextPath}/customerList">
-            <i class="fa fa-pencil"></i> <span>회원 조회</span>
+            <i class="fa fa-search"></i> <span>회원 조회</span>
           </a>
        </li>  
         

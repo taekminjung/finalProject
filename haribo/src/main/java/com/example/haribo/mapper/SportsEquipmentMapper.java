@@ -27,7 +27,7 @@ public interface SportsEquipmentMapper {
 	
 	int getTotalRowStock(int rowPerPage);
 	
-	int countSportsEquipment(SportsEquipmentOrder sportsEquipmentOrder);
+	int countSportsEquipment();
 	
 	// 운동 기구 추가 
 	int insertSportsEquipment(SportsEquipment sportsEquipment);

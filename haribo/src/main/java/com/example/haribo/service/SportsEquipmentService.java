@@ -38,7 +38,7 @@ public class SportsEquipmentService {
 	}
 	
 	public int lastPage() {
-		int rowPerPage = 10;
+		int rowPerPage = 5;
 		int totalRow = sportsEquipmentMapper.getTotalRow(rowPerPage);
 		int lastPage = totalRow/rowPerPage;
 		if(totalRow % rowPerPage !=0) {
@@ -106,7 +106,7 @@ public class SportsEquipmentService {
 	public List<SportsEquipment> sportsEquipmentList(
 				@RequestParam(defaultValue="1") int currentPage){
 
-		int rowPerPage = 10;
+		int rowPerPage = 5;
 		int beginRow = (currentPage-1)*rowPerPage;
 		
 		HashMap<String, Object> param = new HashMap<>();
@@ -246,7 +246,7 @@ public class SportsEquipmentService {
 		return sportsEquipmentMapper.selectSportsEquipmentImgName(sportsEquipmentImg);
 	}
 	
-	public int countSportsEquipment(SportsEquipmentOrder sportsEquipmentOrder) {
-		return sportsEquipmentMapper.countSportsEquipment(sportsEquipmentOrder);
+	public int countSportsEquipment() {
+		return sportsEquipmentMapper.countSportsEquipment();
 	}
 }

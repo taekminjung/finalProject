@@ -37,69 +37,68 @@
           <h1>안녕하세요, ${loginEmployee.employeeName}님😀<small>오늘도 힘찬 하루 되세요💪🏻</small></h1>
    <br>     <!-- Main content -->
 
-
-  <div class="row">
-    <div class="col-md-6">
-      <!-- Bar Chart -->
-      <div class="box box-success">
-        <div class="box-header with-border">
-          <h3 class="box-title">월별 매출</h3>
-          <div class="box-tools pull-right">
-            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
-          </div>
-        </div>
-        <div class="box-body">
-          <canvas id="barChart"></canvas>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-md-2" style="width:30%">
-      <!-- Pie Chart for Employees and Members -->
-      <div class="box box-success">
-        <div class="box-header with-border">
-          <h3 class="box-title">직원 및 회원 수</h3>
-          <div class="box-tools pull-right">
-            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
-          </div>
-        </div>
-        <div class="box-body">
-          <canvas id="barChartMember"></canvas>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-   <section class="content">
       <div class="row">
         <div class="col-md-6">
-          <!-- About Me Box -->
-          <div class="box box-primary">
-            <div class="box-header with-border">
-              <h3 class="box-title">발주 알림</h3>
+          <!-- Bar Chart -->
+          <div class="box box-success">
+            <div class="box-header with-border text-center">
+              <h3 class="box-title"><strong>${year} 월별 매출</strong></h3>
+              <div class="box-tools pull-left">
+                 <a href="${pageContext.request.contextPath}/adminHome?targetYear=${year -1}" id="prevBtn" class="btn btn-box-tool" style="font-size: 15px;">이전</a>
+                 <a href="${pageContext.request.contextPath}/adminHome?targetYear=${year +1}" id="nextBtn" class="btn btn-box-tool" style="font-size: 15px;">다음</a>
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+              </div>
             </div>
             <div class="box-body">
-              <strong><i class="fa fa-cube margin-r-5"></i>재고관리</strong>
-              <p class="text-muted">
-					<input type="hidden" name="notAccept" value="${notAccept}" readonly style="border:none">
-					<tr>
-						<td>현재 확인되지 않은 발주는 총 <a href="${pageContext.request.contextPath}/sportsEquipmentOrderCk"><span class="badge" style="background-color: #FF1493;"> ${notAccept}</span></a> 건 입니다.</td>
-					</tr>
-              </p>
-              <hr>
-
+              <canvas id="barChart"></canvas>
             </div>
           </div>
         </div>
-        </div>
-    </section>
 
-  </div>
-  <footer class="main-footer">
+	    <div class="col-md-2" style="width:30%">
+	      <!-- Pie Chart for Employees and Members -->
+	      <div class="box box-success">
+	        <div class="box-header with-border">
+	          <h3 class="box-title">직원 및 회원 수</h3>
+	          <div class="box-tools pull-right">
+	            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+	          </div>
+	        </div>
+	        <div class="box-body">
+	          <canvas id="barChartMember"></canvas>
+	        </div>
+	      </div>
+	    </div>
+	  </div>
+	</section>
+	   <section class="content">
+	      <div class="row">
+	        <div class="col-md-6">
+	          <!-- About Me Box -->
+	          <div class="box box-primary">
+	            <div class="box-header with-border">
+	              <h3 class="box-title">발주 알림</h3>
+	            </div>
+	            <div class="box-body">
+	              <strong><i class="fa fa-cube margin-r-5"></i>재고관리</strong>
+	              <p class="text-muted">
+						<input type="hidden" name="notAccept" value="${notAccept}" readonly style="border:none">
+						<tr>
+							<td>현재 확인되지 않은 발주는 총 <a href="${pageContext.request.contextPath}/sportsEquipmentOrderCk"><span class="badge" style="background-color: #FF1493;"> ${notAccept}</span></a> 건 입니다.</td>
+						</tr>
+	              </p>
+	              <hr>
+	            </div>
+	          </div>
+	        </div>
+	        </div>
+	    </section>
+	  </div>
+    <footer class="main-footer">
     <div class="pull-right hidden-xs">
       <b>Version</b> 2.4.13
     </div>
-  </footer>
+  	</footer>
 </div>
 
 <!-- jQuery 3 -->
@@ -136,31 +135,31 @@ $(document).ready(function() {
                     , ${sep}, ${oct}, ${nov}, ${dec}],
                     backgroundColor: [
                         'rgba(255,99,132,0.2)',
+                        'rgba(255, 159, 64, 0.2)',
+                        'rgba(255, 205, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
                         'rgba(54,165,235,0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 159, 64, 0.2)',
+                        'rgba(255, 205, 86, 0.2)',
                         'rgba(75,192,192,0.2)',
-                        'rgba(255,99,132,0.2)',
+                        'rgba(75, 192, 192, 0.2)',
                         'rgba(54,165,235,0.2)',
-                        'rgba(75,192,192,0.2)',
-                        'rgba(255,99,132,0.2)',
-                        'rgba(54,165,235,0.2)',
-                        'rgba(75,192,192,0.2)',
-                        'rgba(255,99,132,0.2)',
-                        'rgba(54,165,235,0.2)',
-                        'rgba(75,192,192,0.2)'
+                        'rgba(153, 102, 255, 0.2)'
                     ],
                     borderColor: [
                         'rgba(255,99,132,1)',
+                        'rgba(255, 159, 64, 1)',
+                        'rgba(255, 205, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
                         'rgba(54,165,235,1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)',
+                        'rgba(255, 205, 86, 1)',
                         'rgba(75,192,192,1)',
-                        'rgba(255,99,132,1)',
+                        'rgba(75, 192, 192, 1)',
                         'rgba(54,165,235,1)',
-                        'rgba(75,192,192,1)',
-                        'rgba(255,99,132,1)',
-                        'rgba(54,165,235,1)',
-                        'rgba(75,192,192,1)',
-                        'rgba(255,99,132,1)',
-                        'rgba(54,165,235,1)',
-                        'rgba(75,192,192,1)'
+                        'rgba(153, 102, 255,1)'
                     ]
                 }]
             }
@@ -178,12 +177,12 @@ $(document).ready(function() {
                 label: '총 인원',
                 data: [${emp}, ${cus}],
                 backgroundColor: [
-                    'rgba(255, 99, 132, 0.2)', // 직원의 배경색
-                    'rgba(54, 162, 235, 0.2)'  // 회원의 배경색
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)' 
                 ],
                 borderColor: [
-                    'rgba(255,99,132,1)', // 직원의 테두리색
-                    'rgba(54, 162, 235, 1)' // 회원의 테두리색
+                    'rgba(255,99,132,1)',
+                    'rgba(54, 162, 235, 1)' 
                 ],
                 borderWidth: 1
             }]
