@@ -66,7 +66,7 @@
           <div class="form-group">
             <label for="quantity" class="col-sm-2 control-label">수량</label>
             <div class="col-sm-8">
-            	<input type="hidden" id="currentQ">
+            	<input type="text" id="currentQ">
               <input type="number" class="form-control" id="quant" name="quantity" placeholder="수량을 입력하세요">
             </div>
           </div>
@@ -118,13 +118,13 @@
 	$('#sportsEquipmentNo').on("change",function(){
 		var str = $('#sportsEquipmentNo option:selected').text();
 		var strNum1 = str.indexOf('(');
-		var strNum2 = str.indexOf(')');
+		var strNum2 = str.indexOf('개)');
 		var str2 = str.substring(strNum1+1,strNum2);
 		$('#currentQ').val(str2);
 	});
 	
 	$('#quant').blur(function(){
-		if($('#quant').val() > $('#currentQ').val()){
+		if(parseInt($('#quant').val()) > parseInt($('#currentQ').val())){
 			alert('폐기할 수량이 재고 수량보다 많습니다. 다시 입력해주세요.');
 		}
 	})
