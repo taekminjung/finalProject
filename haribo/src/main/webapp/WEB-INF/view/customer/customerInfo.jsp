@@ -100,7 +100,7 @@
 					<div class="row">
 						<div class="col-lg-6">
 							<p>이름</p>
-							<input id="name" type="text" name="customerName" value="${custInfoMap.customerName }" class="single-input">
+							<input id="name" type="text" name="customerName" value="${custInfoMap.customerName }" class="single-input" readonly>
 						</div>
 						<div class="col-lg-6">
 							<p>성별</p>
@@ -110,11 +110,11 @@
 					<div class="row">
 						<div class="col-lg-6">
 							<p>키</p>
-							<input type="text" name="customerHeight" value=${custInfoMap.customerHeight } class="single-input">
+							<input type="number" name="customerHeight" value=${custInfoMap.customerHeight } class="single-input">
 						</div>
 						<div class="col-lg-6">
 							<p>몸무게</p>
-							<input type="text" name="customerWeight" value=${custInfoMap.customerWeight } class="single-input">
+							<input type="number" name="customerWeight" value=${custInfoMap.customerWeight } class="single-input">
 						</div>
 					</div><br><br>
 					<div>
