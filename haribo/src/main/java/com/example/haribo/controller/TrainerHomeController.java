@@ -17,6 +17,7 @@ import com.example.haribo.service.EmployeeService;
 import com.example.haribo.service.ProgramDateService;
 import com.example.haribo.service.ProgramService;
 import com.example.haribo.service.SportsEquipmentService;
+import com.example.haribo.service.TrainersService;
 import com.example.haribo.vo.Branch;
 import com.example.haribo.vo.Employee;
 import com.example.haribo.vo.EmployeeImg;
@@ -36,13 +37,15 @@ public class TrainerHomeController {
 	@Autowired private ProgramService programService;
 	@Autowired private SportsEquipmentService sportsEquipmentService;
 	@Autowired private ProgramDateService programDateService;
+	@Autowired private TrainersService trainersService;
 	
 	// 잊지말고 로그인 세션 추가하기 
 	// 트레이너 홈페이지
 	@GetMapping("/trainerHome")
 	public String trainerHome(HttpSession session, Model model, Employee employee,
 								@RequestParam(required = false) Integer targetYear,
-								@RequestParam(required = false) Integer targetMonth
+								@RequestParam(required = false) Integer targetMonth,
+								@RequestParam(defaultValue ="1") int currentPage
 								) {
 		// 세션 검사
 		if(session.getAttribute("loginEmployee") == null) {
@@ -53,13 +56,16 @@ public class TrainerHomeController {
 		Map<String, Object> calMap = calendarService.calendar(targetYear, targetMonth);
 		// programList service 호출
 		List<HashMap<String,Object>> pdList = programDateService.programDateList(employeeId,(int)calMap.get("targetYear"),(int)calMap.get("targetMonth"));
-		// empInfo service 호출
-		Map<String,Object> empInfo = employeeService.employeeInfo(employee);
+		// trainerinfo service 호출
+		List<HashMap<String, Object>> list = trainersService.trainerinfo(currentPage);
+		int lastPage = trainersService.lastPagetr();
 		
 		// model 
 		model.addAttribute("calMap", calMap);
 		model.addAttribute("pdList", pdList);
-		model.addAttribute("empInfo", empInfo);
+		model.addAttribute("list", list);
+		model.addAttribute("lastPage", lastPage);
+		model.addAttribute("currentPage", currentPage);
 		
 		return "emp/trainerHome";
 	}
@@ -106,7 +112,7 @@ public class TrainerHomeController {
 		String path = session.getServletContext().getRealPath("/upload");
 		employeeService.updateEmployeeImg(eImg, employeeImg, employeeId, path);
 		
-		String u = "redirect:/employeeInfo?employeeNo="+employeeImg.getEmployeeNo();
+		String u = "redirect:/trainerOne?employeeNo="+employeeImg.getEmployeeNo();
 		return u;
 	}
 	

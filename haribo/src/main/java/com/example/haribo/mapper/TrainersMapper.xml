@@ -20,6 +20,25 @@
 		LIMIT #{beginRow}, #{rowPerPage}
 	</select>
 	
+	<select id="trainerinfo" parameterType="java.util.Map" resultType="java.util.Map">
+		SELECT 
+		    e.employee_no employeeNo,
+		    e.employee_id employeeId,
+		    d.employee_email employeeEmail,
+		    e.branch_no branchNo,
+		    b.branch_name branchName,
+		    d.employee_name employeeName,
+		    ei.employee_img_file_name employeeImgFileName
+		FROM employee e 
+		INNER JOIN branch b ON e.branch_no = b.branch_no
+		INNER JOIN employee_detail d ON e.employee_no = d.employee_no
+		LEFT OUTER JOIN employee_img ei
+		ON d.employee_no = ei.employee_no
+		WHERE e.employee_id LIKE 'T%'
+		ORDER BY e.employee_no
+		LIMIT #{beginRow}, #{rowPerPage}
+	</select>
+	
 	<select id="selectBranchAddr" parameterType="com.example.haribo.vo.Branch" resultType="String">
 		SELECT 
 		branch_address AS branchAddress

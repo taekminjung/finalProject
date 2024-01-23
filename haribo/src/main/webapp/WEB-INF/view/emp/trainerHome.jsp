@@ -75,7 +75,7 @@
 						<th class="col-lg-1" style="text-align:center;">금</th>
 						<th class="col-lg-1" style="text-align:center;">토</th>
 					</tr>
-					<tr style="height:130px;">
+					<tr style="height:130px; width:130px;">
 					<c:forEach var="i" begin="1" end="${calMap.totalTd}" step="1">
 						<c:set var="d" value="${i - calMap.beginBlank }"></c:set>
 						
@@ -108,7 +108,7 @@
 						</td>
 						
 						<c:if test="${i < calMap.totalTd && i % 7 == 0}">
-							</tr><tr style="height:130px;">	
+							</tr><tr style="height:130px; width:130px;">	
 						</c:if>
 					</c:forEach>
 			</table>
@@ -117,41 +117,12 @@
 	    <!-- 페이지 메인 내용 끝 -->
 	    </div>
 	    
-	    <!-- 뭔가 알림창? 정보 시작 -->
-	    <div class="col-md-4">
-	    <section class="content container-fluid">
-        <!-- 하리보 팀 트레이너 목록 -->
-        <div class="box box-info">
-          <div class="box-header with-border">
-            <h3 class="box-title">팀 하리보 트레이너</h3>
-            <div class="box-tools pull-right">
-              <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
-            </div>
-          </div>
-          <!-- 트레이너 정보 -->
-          <div class="box-body no-padding">
-            <ul class="users-list clearfix">
-              <li>
-                <img src="${pageContext.request.contextPath}/upload/emp/${empInfo.employeeImgFileName}">
-                <strong>김망곰</strong>
-                <span class="users-list-date">여기에 지점</span>
-              </li>
-            </ul>
-          </div>
-          <!-- /.box-body -->
-          <div class="box-footer text-center">
-           <a href="javascript:void(0)" class="uppercase">View All Users</a>
-          </div>
-        </div>
-        </section>
-        </div>
-        
-       <!-- NEW ALERT 창 -->
+	    <!-- NEW ALERT 창 -->
         <div class="col-md-4">
 		<section class="content container-fluid">
 		  <div class="box box-info">
 			 <div class="box-header with-border">
-		       <h3 class="box-title"><span class="badge">NEW</span> &nbsp;문의사항</h3>
+		       <h3 class="box-title">상담 신청 <a href="${pageContext.request.contextPath}/contactCustomer?branchNo=${loginEmployee.branchNo}"><span class="badge">NEW 몇 개인지</span></a></h3>
 		         <div class="box-tools pull-right">
 		           <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
 		         </div>
@@ -171,6 +142,43 @@
 	      </div>
 		</section>
 	    </div>
+	    
+	    <!-- 뭔가 알림창? 정보 시작 -->
+	    <div class="col-md-4">
+	    <section class="content container-fluid">
+        <!-- 하리보 팀 트레이너 목록 -->
+        <div class="box box-info">
+          <div class="box-header with-border">
+            <h3 class="box-title">팀 하리보 트레이너</h3>
+            <div class="box-tools pull-right">
+              <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+            </div>
+          </div>
+          <!-- 트레이너 정보 -->
+          <div class="box-body">
+            <ul class="users-list clearfix">
+              <c:forEach var="t" items="${list}">
+              <li>
+                <img src="${pageContext.request.contextPath}/upload/emp/${t.employeeImgFileName}" onerror="this.src='${pageContext.request.contextPath}/upload/emp/man.png'">
+                <strong>${t.employeeName}</strong>
+                <span class="users-list-date">${t.branchName} 지점</span>
+              </li>
+              </c:forEach>
+            </ul>
+          </div>
+          <!-- /.box-body -->
+          <div class="btn-group" style="display: flex; justify-content: center;">
+	          	<c:if test="${currentPage > 1}">
+	          	<a href="${pageContext.request.contextPath}/trainerHome?currentPage=${currentPage-1}" class="btn btn-info">이전</a>
+	            </c:if>
+	            <a class="btn btn-info active">${currentPage}</a>
+	            
+	            <a href="${pageContext.request.contextPath}/trainerHome?currentPage=${currentPage+1}" class="btn btn-info">다음</a>
+	          	
+	      </div>
+        </div>
+        </section>
+        </div>
 	    
      </div>
      </div>

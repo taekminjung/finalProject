@@ -29,6 +29,7 @@
 			customer_name customerName,
 			contact_content contactContent,
 			customer_phone customerPhone,
+			contact_complete contactComplete,
 			createdate
 		FROM contact
 		WHERE branch_no = #{branchNo}

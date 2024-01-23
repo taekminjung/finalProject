@@ -50,7 +50,7 @@
        <div class="box box-info">
         <form id="form" name="form" method="post" action="${pageContext.request.contextPath}/updateTrainerImg" enctype="multipart/form-data">
          <div class="box-body box-profile">
-           <img class="profile-user-img img-responsive img-circle" src="${pageContext.request.contextPath}/upload/emp/${empInfo.employeeImgFileName}">
+           <img class="profile-user-img img-responsive img-circle" src="${pageContext.request.contextPath}/upload/emp/${empInfo.employeeImgFileName}" onerror="this.src='${pageContext.request.contextPath}/upload/emp/man.png'">
 
            <h3 class="profile-username text-center">${empInfo.employeeName}</h3>
            
@@ -82,12 +82,13 @@
            	</li>
            </ul>
 	          <b><i class="fa fa-photo margin-r-5"></i>프로필 사진</b>
-	          <button type="submit" id="form" class="btn btn-success pull-right">사진변경</button>
-	          <input type="file" id="eImg" name="eImg" accept=".png">
+	          <input type="file" id="eImg" name="eImg" accept=".jpg, .jpeg, .png">
          </div>
-         <!-- /.box-body -->
+         
          </form>
-
+         <div class="box-footer">
+			<button type="submit" id="formImg" class="btn btn-success pull-right">사진변경</button>
+		 </div>
        </div>
       <!-- /.box -->
     </div>
@@ -118,5 +119,15 @@
 <!-- AdminLTE App -->
 <script src="emp/dist/js/adminlte.min.js"></script>
 
+<script>
+	$('#formImg').click(function(){
+		if($('#eImg').val().length<1){
+			alert('변경할 사진을 추가해주세요')
+			$('#eimg').focus()
+		} else{
+			$('#form').submit()
+		}
+	})
+</script>
 </body>
 </html>

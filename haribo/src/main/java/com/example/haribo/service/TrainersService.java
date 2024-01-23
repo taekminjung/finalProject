@@ -34,6 +34,32 @@ public class TrainersService {
 		return list;
 	}
 	
+	// 지점별 트레이너 소개
+	public List<HashMap<String, Object>> trainerinfo(@RequestParam(defaultValue ="1") int currentPage){
+		int rowPerPage = 8;
+		int beginRow = (currentPage-1)*rowPerPage;
+		int totalRow = trainersMapper.getTotalRow(rowPerPage);
+		int lastPage = totalRow / rowPerPage;
+		if(totalRow % rowPerPage !=0) {                                 
+			lastPage +=1;
+		}
+		HashMap<String, Object> map = new HashMap<>();
+		map.put("beginRow", beginRow);
+		map.put("rowPerPage", rowPerPage);
+		
+		List<HashMap<String, Object>> list = trainersMapper.trainerinfo(map);
+		System.out.println(list +"<--trainerinfo");
+		return list;
+	}
+	
+	//페이징할때 마지막 페이지 계산 (trainerinfo)
+	public int lastPagetr() {
+		int rowPerPage = 8;
+		int totalRow = trainersMapper.getTotalRow(rowPerPage);
+		int lastPage = totalRow / rowPerPage;
+		return lastPage;
+	}
+	
 	//페이징할때 마지막 페이지 계산
 	public int lastPage() {
 		int rowPerPage = 3;
@@ -46,6 +72,5 @@ public class TrainersService {
 		String branchAddr = trainersMapper.selectBranchAddr(branch);
 		
 		return branchAddr;
-		
 	}
 }

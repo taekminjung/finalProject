@@ -32,7 +32,7 @@
             <a href="" class="dropdown-toggle" data-toggle="dropdown">
               <!-- The user image in the navbar-->
                <img id="img1" src="${pageContext.request.contextPath }/upload/emp/"
-			 class="rounded-circle" width="20" height="20" onerror="this.src='${pageContext.request.contextPath }/upload/emp/default.jpg'">
+			 class="rounded-circle" width="20" height="20" onerror="this.src='${pageContext.request.contextPath }/upload/emp/man.png'">
               <!-- hidden-xs hides the username on small devices so only the image appears. -->
               <span class="hidden-xs">${loginEmployee.employeeName}</span>
             </a>
@@ -40,7 +40,7 @@
               <!-- The user image in the menu -->
               <li class="user-header">
                 <img id="img2" src="${pageContext.request.contextPath }/upload/emp/"
-			 class="rounded-circle" width="20" height="20" onerror="this.src='${pageContext.request.contextPath }/upload/emp/default.jpg'">
+			 class="rounded-circle" width="20px" height="20px" onerror="this.src='${pageContext.request.contextPath }/upload/emp/man.png'">
                 <p>
           		  ${loginEmployee.employeeName}
                   <small>${loginEmployee.branchName}지점 트레이너</small>
@@ -73,7 +73,7 @@
       <div class="user-panel">
         <div class="pull-left image">
           <img id="img3" src="${pageContext.request.contextPath }/upload/emp/"
-			 class="img-circle" width="20" height="20" onerror="this.src='${pageContext.request.contextPath }/upload/emp/default.jpg'">
+			 class="img-circle" width="20" height="20" onerror="this.src='${pageContext.request.contextPath }/upload/emp/man.png'">
         </div>
         <div class="pull-left info">
           <p><a href="${mypageUrl}">${loginEmployee.employeeName}</a></p>

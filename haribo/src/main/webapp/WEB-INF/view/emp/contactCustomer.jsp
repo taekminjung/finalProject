@@ -35,7 +35,6 @@
     <!-- 페이지 메인 헤더 -->
     <section class="content-header">
     <h3>${loginEmployee.branchName} 지점 상담 신청 내역</h3>
-    <br>
       <div class="row">
         <div class="col-xs-12">
           <div class="box box-info">
@@ -44,18 +43,20 @@
                 <tr>
                   <th>신청자명</th>
                   <th>생년월일</th>
-                  <th>상담 예약 날짜</th>
-                  <th>상담 내용</th>
                   <th>전화번호</th>
+                  <th>상담 내용</th>
+                  <th>상담 예약 날짜</th>
+                  <th>상담 현황</th>
                 </tr>
                 
                 <c:forEach var="c" items="${list}">
                 <tr>
                   <td>${c.customerName}</td>
                   <td>${c.customerBirth}</td>
-                  <td>${c.customerContactDate}</td>
-                  <td>${c.contactContent}</td>
                   <td>${c.customerPhone}</td>
+                  <td>${c.contactContent}</td>
+                  <td>${c.customerContactDate}</td>
+                  <td>${c.contactComplete}</td>
                 </tr>
                 </c:forEach>
               </table>
