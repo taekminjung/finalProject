@@ -23,13 +23,17 @@
  
  	<select id="programList" parameterType="java.util.Map" resultType="java.util.Map">
  		SELECT
- 			program_no	programNo,
- 			program_name programName,
- 			program_day programDay,
- 			employee_id employeeId,
- 			program_active programActive,
- 			createdate
- 		FROM program
+ 			p.program_no	programNo,
+ 			p.program_name programName,
+ 			p.program_day programDay,
+ 			p.employee_id employeeId,
+ 			p.program_active programActive,
+ 			p.createdate,
+ 			b.branch_name branchName
+ 		FROM program p INNER JOIN employee e
+ 		on p.employee_id = e.employee_id
+ 		INNER JOIN branch b
+ 		ON e.branch_no = b.branch_no
  		WHERE program_active = 'Y'
  		LIMIT ${beginRow}, ${rowPerPage}
  	</select> 

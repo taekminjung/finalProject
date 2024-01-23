@@ -104,7 +104,10 @@
 		}  else if($('#itemPrice').val().length<1){
 			alert('가격을 입력해주세요')
 			$('#itemPrice').focus()  
-		}  else{
+		}  else if($('#seImg').val().length<1){
+			alert('이미지를 추가해주세요')
+		} 
+		else{
 			$('#form').submit()
 		}
 	})

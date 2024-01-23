@@ -43,7 +43,7 @@
 			<div class="box-body table-responsive no-padding">
 			    <table class="table table-hover">
 			        <tr>
-			        <th class="text-center">번호</th>
+			        <th class="text-center">지점명</th>
 			            <th class="text-center">프로그램명</th>
 			            <th class="text-center">프로그램 요일</th>
 			            <th class="text-center">생성일자</th>
@@ -54,10 +54,10 @@
 			        <c:forEach var="p" items="${list}">
 			            <tr>
 			            <form id="form" name="form" action="${pageContext.request.contextPath}/updateProgramActive" method="post">
-			      			<input type="hidden" name="programNo" id="programNo" value="${p.programNo}">
+			      			<input type="hidden" name="branchName"" id="branchName" value="${p.branchName}">
 			      			<input type="hidden" name="programName" id="programName" value="${p.programName}">
 			      			<input type="hidden" name="programDay" id="programDay" value="${p.programDay}">
-			                <td class="text-center">${p.programNo}</td>
+			                <td class="text-center">${p.branchName}</td>
 			                <td class="text-center">
 			                	<a href="${pageContext.request.contextPath}/programOne?programNo=${p.programNo}">${p.programName}</a>
 			                </td>
@@ -91,7 +91,7 @@
 				  <c:if test="${currentPage > 1}">
 				  	<a href="${pageContext.request.contextPath}/programList?currentPage=${currentPage-1}" class="btn btn-primary btn-sm">이전</a>
 				  </c:if>
-				  <strong>[${currentPage}]</strong>
+				  	${currentPage}]
 				  <c:if test="${currentPage < lastPage}">
 				  	<a href="${pageContext.request.contextPath}/programList?currentPage=${currentPage+1}" class="btn btn-primary btn-sm">다음</a>
 				  </c:if>

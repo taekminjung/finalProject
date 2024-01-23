@@ -14,13 +14,13 @@
   <link rel="stylesheet" href="emp/bower_components/font-awesome/css/font-awesome.min.css">
   <link rel="stylesheet" href="emp/bower_components/Ionicons/css/ionicons.min.css">
   <link rel="stylesheet" href="emp/dist/css/AdminLTE.min.css">
-  <link rel="stylesheet" href="emp/dist/css/skins/_all-skins.min.css">
+  <link rel="stylesheet" href="emp/dist/css/skins/skin-yellow.min.css">
   <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
 
 
-<body class="hold-transition skin-blue sidebar-mini">
+<body class="hold-transition skin-yellow sidebar-mini">
 <div class="wrapper">
 
   <!-- header 시작 부분 -->
@@ -35,7 +35,7 @@
     <section class="content">
 	<h3>프로그램 후기</h3>
       <!-- Default box -->
-      <div class="box box-info">
+      <div class="box box-warning">
         <div class="box-header with-border">
           <h3 class="box-title">${resultReview.reviewTitle}</h3>
         </div>
@@ -47,7 +47,7 @@
 	        <h4>답변</h4>
 	        <img class="direct-chat-img" src="emp/img/man.png">
 	        <c:forEach var="rr" items="${rpList}">
-			<div class="direct-chat-text"> ${rr.reviewReplyContent} </div>
+			<div class="direct-chat-text"> <strong>${rr.reviewReplyContent}</strong> <br> 작성자:${rr.employeeId}</div>
 			<!-- 각 댓글에 대한 삭제 버튼이 있는 폼 추가 -->
 			<div>
             	<form action="${pageContext.request.contextPath}/deleteReviewReplyEmp" method="post">

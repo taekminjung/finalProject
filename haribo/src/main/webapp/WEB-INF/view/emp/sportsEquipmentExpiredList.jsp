@@ -67,7 +67,7 @@
 			  <c:if test="${currentPage > 1}">
 			  	<a href="${pageContext.request.contextPath}/sportsEquipmentExpiredList?currentPage=${currentPage-1}" class="btn btn-primary">이전</a>
 			  </c:if>
-			  <h4>[${currentPage}]</h4>
+			  	[${currentPage}]
 			  <c:if test="${currentPage < lastPageExpire}">
 			  	<a href="${pageContext.request.contextPath}/sportsEquipmentExpiredList?currentPage=${currentPage+1}" class="btn btn-primary">다음</a>
 			  </c:if>
