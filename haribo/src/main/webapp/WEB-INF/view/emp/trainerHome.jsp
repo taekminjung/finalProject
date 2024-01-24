@@ -54,7 +54,7 @@
 	    <section class="content container-fluid">
 		<div class="box box-info">
 			<div style="text-align: center;">
-				<h2>${calMap.targetYear}년 ${calMap.targetMonth +1}월</h2>
+				<h2>📅${loginEmployee.employeeName}님의 ${calMap.targetYear}년 ${calMap.targetMonth +1}월 스케줄📅</h2>
 				
 				<a style="float:left" class="btn btn-outline-secondary" 
 				href="${pageContext.request.contextPath}/trainerHome?employeeNo=${loginEmployee.employeeNo}&targetYear=${calMap.targetYear}&targetMonth=${calMap.targetMonth -1}">
@@ -105,14 +105,23 @@
 										class="badge program-badge" 
 										style="color: black;
 										<c:choose>
-											<c:when test="${pd.programNo % 3 == 0 }">
-											 background-color: #FAFA96; 
+											<c:when test="${pd.programNo % 5 == 0 }">
+											 background-color: #5CEEE6;
 											</c:when>
-											<c:when test="${pd.programNo % 3 == 1 }">
-											 background-color: blue; 
+											<c:when test="${pd.programNo % 5 == 1 }">
+											 background-color: #AAB9FF;
+											</c:when>
+											<c:when test="${pd.programNo % 5 == 2 }">
+											 background-color: #FFC0CB;
+											</c:when>
+											<c:when test="${pd.programNo % 5 == 3 }">
+											 background-color: #FAF58C;
+											</c:when>
+											<c:when test="${pd.programNo % 5 == 4 }">
+											 background-color: #DD78F6;
 											</c:when>
 											<c:otherwise>
-											 background-color: red; 
+											 background-color: #3CC8C8; 
 											</c:otherwise>
 										</c:choose>
 									">

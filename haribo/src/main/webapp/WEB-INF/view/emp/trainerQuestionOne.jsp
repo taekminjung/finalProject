@@ -10,6 +10,9 @@
   <link rel="icon" type="image/x-icon" href="emp/img/starfavi.png">
   <!-- 공통 스타일 폰트 -->
   <link rel="stylesheet" href="common/css/main.css">
+  <!-- 리뷰 댓글 css -->
+  <link rel="stylesheet" href="emp/css/reviewReply.css">
+
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <link rel="stylesheet" href="emp/bower_components/bootstrap/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="emp/bower_components/font-awesome/css/font-awesome.min.css">
@@ -46,33 +49,39 @@
         <!-- /.box-body -->
         <div class="box-footer">
 	        <h4>답변</h4>
-	        <img class="direct-chat-img" src="emp/img/man.png">
-	        <c:forEach var="qr" items="${list}">
-			<div class="direct-chat-text"> ${qr.questionReplyContent} </div>
-			<!-- 각 댓글에 대한 삭제 버튼이 있는 폼 추가 -->
-			<div>
-            	<form action="${pageContext.request.contextPath}/deleteQuestionReply" method="post">
-                <input type="hidden" name="questionReplyNo" value="${qr.questionReplyNo}">
-                <input type="hidden" name="questionNo" value="${qr.questionNo}">
-                <button type="submit" class="btn btn-danger btn-flat">삭제하기</button>
-            	</form>
+	        <div class="comment-container">
+		        <img class="direct-chat-img" src="emp/img/man.png">
+		        <div class="comment-message-container">
+			        <c:forEach var="qr" items="${list}">
+					<div class="comment">	
+						<div class="direct-chat-text" style="width: 500px;"> ${qr.questionReplyContent} </div>
+						<!-- 각 댓글에 대한 삭제 버튼이 있는 폼 추가 -->
+						<div>
+			            	<form action="${pageContext.request.contextPath}/deleteQuestionReply" method="post">
+			                <input type="hidden" name="questionReplyNo" value="${qr.questionReplyNo}">
+			                <input type="hidden" name="questionNo" value="${qr.questionNo}">
+			                <button type="submit" class="btn btn-danger btn-flat btn-xs">X</button>
+			            	</form>
+						</div>
+					</div>
+					</c:forEach>
+				</div>
 			</div>
-			</c:forEach>
 			<br>
 			<!-- 문의 댓글 다는 곳 -->
 			<div>
 	          <form action="${pageContext.request.contextPath}/trainerQuestionOne" method="post">
-	            <div class="input-group">
+	            <div class="input-group" style="width: 700px;">
 	              <input type="text" name="questionReplyContent" id="questionReplyContent" placeholder="댓글을 입력하세요 ..." class="form-control">
 	              <input type="hidden" name="employeeId" id="employeeId" value="${loginEmployee.employeeId}"class="form-control">
 	              <input type="hidden" name="questionNo" id="questionNo" value="${question.questionNo}"class="form-control">
-	                  <span class="input-group-btn">
-	                    <button type="submit" class="btn btn-info btn-flat">입력하기</button>
+	                  <span class="input-group-btn" >
+	                    <button type="submit" id="btn" class="btn btn-info btn-flat">입력하기</button>
 	                  </span>
 	            </div>
 	          </form>
 	        </div>
-	       <br><a href="${pageContext.request.contextPath}/trainerQuestion" class="btn btn-info">목록으로</a>
+	       <br><a href="${pageContext.request.contextPath}/trainerQuestion" class="btn btn-default">목록으로</a>
         </div>
         <!-- /.box-footer-->
       </div>
@@ -103,6 +112,20 @@
 <script src="emp/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <!-- AdminLTE App -->
 <script src="emp/dist/js/adminlte.min.js"></script>
+<script>
+	$(document).ready(function () {
+	  var questionReplyContent = $('#questionReplyContent');
 
+	  $('#btn').click(function (event) {
+	    // 댓글 내용이 비어 있으면 폼 전송을 막고 알림창을 띄움
+	    if (questionReplyContent.val().trim().length < 1) {
+	      event.preventDefault(); // 폼 전송 막음
+	      alert("댓글 내용을 입력하세요");
+	      questionReplyContent.focus();
+	    } 
+	    // 댓글 내용이 비어 있지 않으면 폼이 자동으로 전송됨
+	  });
+	});
+</script>
 </body>
 </html>

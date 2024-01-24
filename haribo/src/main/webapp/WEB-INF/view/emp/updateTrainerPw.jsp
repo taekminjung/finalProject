@@ -66,6 +66,7 @@
               	<input type="hidden" id="employeeNo" name="employeeNo" value="${loginEmployee.employeeNo}">
               </div>
             </form>
+            <a href="${pageContext.request.contextPath}/trainerOne?employeeNo=${loginEmployee.employeeNo}" class="btn btn-default">돌아가기</a>
         	<button type="submit" id="formBtn" class="btn btn-info pull-right">비밀번호 변경하기</button>
             </div>
           </div>

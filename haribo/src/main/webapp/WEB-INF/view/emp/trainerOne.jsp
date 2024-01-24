@@ -48,8 +48,9 @@
     <div class="col-md-4">
     <!-- 트레이너 마이페이지 -->
        <div class="box box-info">
-        <form id="form" name="form" method="post" action="${pageContext.request.contextPath}/updateTrainerImg" enctype="multipart/form-data">
+        
          <div class="box-body box-profile">
+         <form id="form" name="form" method="post" action="${pageContext.request.contextPath}/updateTrainerImg" enctype="multipart/form-data">
            <img class="profile-user-img img-responsive img-circle" src="${pageContext.request.contextPath}/upload/emp/${empInfo.employeeImgFileName}" onerror="this.src='${pageContext.request.contextPath}/upload/emp/man.png'">
 
            <h3 class="profile-username text-center">${empInfo.employeeName}</h3>
@@ -59,7 +60,6 @@
            <input type="hidden" name="employeeEmail" value="${empInfo.employeeEmail}">
            <input type="hidden" name="employeePhone" value="${empInfo.employeePhone}">
            <input type="hidden" name="employeeNo" value="${loginEmployee.employeeNo}">
-
 
            <p class="text-muted text-center">${loginEmployee.branchName}지점 트레이너</p>
            
@@ -77,21 +77,19 @@
                <b><i class="fa fa-heart margin-r-5"></i>입사일</b><span class="text-muted pull-right">${empInfo.createdate}</span>
              </li>
            	<li class="list-group-item">
-           	 <b><i class="fa fa-lock margin-r-5"></i>비밀번호 변경</b>
-	  	<a href="${pageContext.request.contextPath}/updateTrainerPw?employeeNo=${loginEmployee.employeeNo}" class="btn btn-info pull-right btn-xs">비밀번호 변경</a>
+	           <b><i class="fa fa-lock margin-r-5"></i>비밀번호 변경</b>
+		  	   <a href="${pageContext.request.contextPath}/updateTrainerPw?employeeNo=${loginEmployee.employeeNo}" class="btn btn-info pull-right btn-xs">비밀번호 변경</a>
            	</li>
            	<li class="list-group-item">
-           		<b><i class="fa fa-photo margin-r-5"></i>프로필 사진</b>
-	        	<input type="file" class="form-control" id="eImg" name="eImg" accept=".jpg, .jpeg, .png">
+           	   <b><i class="fa fa-photo margin-r-5"></i>프로필 사진</b>
+	           <input type="file" class="form-control" id="eImg" name="eImg" accept=".jpg, .jpeg, .png">
            	</li>
            </ul>
+           </form>
+           <a href="${pageContext.request.contextPath}/trainerHome" class="btn btn-default">돌아가기</a>
+           <button type="submit" id="formImg" class="btn btn-success pull-right">사진변경</button>
          </div>
-         
-         </form>
-         <div class="box-footer">
-			<button type="submit" id="formImg" class="btn btn-success pull-right">사진변경</button>
-		 </div>
-       </div>
+         </div>
       <!-- /.box -->
     </div>
   </section>

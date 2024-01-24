@@ -60,7 +60,7 @@
 			            	<form action="${pageContext.request.contextPath}/deleteReviewReply" method="post">
 			                <input type="hidden" name="reviewReplyNo" value="${rr.reviewReplyNo}">
 			                <input type="hidden" name="reviewNo" value="${rr.reviewNo}">
-			                <button type="submit" class="btn btn-danger btn-flat btn-xs">삭제하기</button>
+			                <button type="submit" class="btn btn-danger btn-flat btn-xs">X</button>
 			            	</form>
 						</div>
 					</div>
@@ -71,18 +71,18 @@
 			<!-- 문의 댓글 다는 곳 -->
 			<div>
 	          <form action="${pageContext.request.contextPath}/trainerReviewOne" method="post">
-	            <div class="input-group">
+	            <div class="input-group" style="width: 700px;">
 	              <input type="text" name="reviewReplyContent" id="reviewReplyContent" placeholder="댓글을 입력하세요 ..." class="form-control">
 	              <input type="hidden" name="employeeId" id="employeeId" value="${loginEmployee.employeeId}"class="form-control">
 	              <input type="hidden" name="reviewNo" id="reviewNo" value="${review.reviewNo}"class="form-control">
 	                  <span class="input-group-btn">
-	                    <button type="submit" class="btn btn-info btn-flat">입력하기</button>
+	                    <button type="submit" id="btn" class="btn btn-info btn-flat">입력하기</button>
 	                  </span>
 	            </div>
 	          </form>
 	        </div>
 	      	<br>
-        	<a href="${pageContext.request.contextPath}/trainerReview" class="btn btn-info">목록으로</a>
+        	<a href="${pageContext.request.contextPath}/trainerReview" class="btn btn-default">목록으로</a>
         </div>
         <!-- /.box-footer-->
       </div>
@@ -116,6 +116,20 @@
 <script src="emp/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <!-- AdminLTE App -->
 <script src="emp/dist/js/adminlte.min.js"></script>
+<script>
+	$(document).ready(function () {
+	  var reviewReplyContent = $('#reviewReplyContent');
 
+	  $('#btn').click(function (event) {
+	    // 댓글 내용이 비어 있으면 폼 전송을 막고 알림창을 띄움
+	    if (reviewReplyContent.val().trim().length < 1) {
+	      event.preventDefault(); // 폼 전송 막음
+	      alert("댓글 내용을 입력하세요");
+	      reviewReplyContent.focus();
+	    } 
+	    // 댓글 내용이 비어 있지 않으면 폼이 자동으로 전송됨
+	  });
+	});
+</script>
 </body>
 </html>

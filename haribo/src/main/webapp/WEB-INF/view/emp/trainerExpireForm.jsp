@@ -82,7 +82,7 @@
         <!-- /.box-body -->
         <div class="box-footer">
           <a href="${pageContext.request.contextPath}/trainerStock?branchNo=${loginEmployee.branchNo}" class="btn btn-default">신청 취소</a>
-          <button type="submit" class="btn btn-info pull-right">제출하기</button>
+          <button type="submit" id="btn" class="btn btn-info pull-right">제출하기</button>
         </div>
         <!-- /.box-footer -->
       </form>
@@ -114,7 +114,6 @@
 <!-- AdminLTE App -->
 <script src="emp/dist/js/adminlte.min.js"></script>
 <script>
-	
 	$('#sportsEquipmentNo').on("change",function(){
 		var str = $('#sportsEquipmentNo option:selected').text();
 		var strNum1 = str.indexOf('(');
@@ -128,6 +127,31 @@
 			alert('폐기할 수량이 재고 수량보다 많습니다. 다시 입력해주세요.');
 		}
 	})
+</script>
+<script>
+	$(document).ready(function () {
+	  var sportsEquipmentNo = $('#sportsEquipmentNo');
+	  var quant = $('#quant');
+	  var expireMemo = $('#expireMemo');
+
+	  $('#btn').click(function (event) {
+	    // 폐기할 물품을 선택하지 않았으면 폼 전송을 막고 알림창을 띄움
+	    if (sportsEquipmentNo.val() === "폐기할 물품을 선택해주세요") {
+	      event.preventDefault(); // 폼 전송 막음
+	      alert("폐기할 물품을 선택하세요");
+	      sportsEquipmentNo.focus();
+	    } else if (quant.val().trim().length < 1) {
+	      event.preventDefault(); // 폼 전송 막음
+	      alert("수량을 입력하세요");
+	      quant.focus();
+	    } else if (expireMemo.val().trim().length < 1){
+	      event.preventDefault(); // 폼 전송 막음
+		  alert("폐기 사유를 입력하세요");
+		  expireMemo.focus();
+	    }
+	 	// 물품 선택, 수량, 폐기 사유가 모두 입력되었을 때 폼이 자동으로 전송됨
+	  	});
+	});
 </script>
 </body>
 </html>

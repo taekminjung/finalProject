@@ -156,6 +156,18 @@ public class TrainerHomeController {
 		return "redirect:/trainerHome";
 	}
 	
+//	// 프로그램 날짜 생성한 것 취소하기
+//	@PostMapping("/cancelProgramDate")
+//	public String cancelProgramDate(ProgramDate programDate ,
+//						@RequestParam(required = false) Integer targetYear,
+//						@RequestParam(required = false) Integer targetMonth,
+//						Integer[] d) {
+//
+//		programDateService.cancelProgramDate(programDate, targetYear, targetMonth, d);
+//		
+//		return "redirect:/trainerHome";
+//	}
+	
 	// 재고관리(트레이너)
 	// 트레이너 지점 별 재고 현황 확인하기
 	@GetMapping("/trainerStock")
@@ -182,10 +194,10 @@ public class TrainerHomeController {
 	}
 
 	@PostMapping("/sportsEquipmentOrderForm")
-	public String sportsEquipmentOrderFormSubmit(SportsEquipmentOrder sportsEquipmentOrder) {
+	public String sportsEquipmentOrderFormSubmit(SportsEquipmentOrder sportsEquipmentOrder, Branch branch) {
 		sportsEquipmentService.sportsEquipmentOrderForm(sportsEquipmentOrder);
 		
-		return "redirect:/sportsEquipmentOrderState";
+		return "redirect:/trainerStock?branchNo="+branch.getBranchNo();
 	}
 	
 	// 트레이너 물품 발주 상태 확인하기
@@ -215,6 +227,6 @@ public class TrainerHomeController {
 	@PostMapping("/trainerExpireForm")
 	public String insertExpire(SportsEquipmentExpire sportsEquipmentExpire, Branch branch) {
 		sportsEquipmentService.insertExpire(sportsEquipmentExpire, branch);
-		return "redirect:/trainerStock";
+		return "redirect:/trainerStock?branchNo="+branch.getBranchNo();
 	}
 }

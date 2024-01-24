@@ -30,6 +30,8 @@ public class ProgramDateService {
 		}
 	}
 
+	// 프로그램 예약된 날짜 취소하기 (트레이너)
+	
 	// 프로그램 날짜에 따른 프로그램 이름 출력
 	public List<HashMap<String,Object>> programDateList(String employeeId,int targetYear,int targetMonth) {
 		HashMap<String,Object> map = new HashMap<>();

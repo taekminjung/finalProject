@@ -75,7 +75,7 @@
         <!-- /.box-body -->
         <div class="box-footer">
           <a href="${pageContext.request.contextPath}/trainerStock?branchNo=${loginEmployee.branchNo}" class="btn btn-default">신청 취소</a>
-          <button type="submit" class="btn btn-info pull-right">제출하기</button>
+          <button type="submit" id="btn" class="btn btn-info pull-right">제출하기</button>
         </div>
         <!-- /.box-footer -->
       </form>
@@ -106,6 +106,24 @@
 <script src="emp/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <!-- AdminLTE App -->
 <script src="emp/dist/js/adminlte.min.js"></script>
+<script>
+	$(document).ready(function () {
+	  var sportsEquipmentNo = $('#sportsEquipmentNo');
+	  var quantity = $('#quantity');
 
+	  $('#btn').click(function (event) {
+	    // 발주할 물품을 선택하지 않았으면 폼 전송을 막고 알림창을 띄움
+	    if (sportsEquipmentNo.val() === "발주할 물품을 선택해주세요") {
+	      event.preventDefault(); // 폼 전송 막음
+	      alert("발주할 물품을 선택하세요");
+	      sportsEquipmentNo.focus();
+	    } else if (quantity.val().trim().length < 1) {
+	      event.preventDefault(); // 폼 전송 막음
+	      alert("수량을 입력하세요");
+	      quantity.focus();
+	    }
+	  	});
+	});
+</script>
 </body>
 </html>
