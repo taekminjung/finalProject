@@ -50,6 +50,9 @@
 		FROM sports_equipment_order seo
 		INNER JOIN sports_equipment se
 		ON seo.sports_equipment_no = se.sports_equipment_no
+		ORDER BY CASE WHEN order_status = '대기' then 1
+					ELSE 2
+			END,order_no desc
 		LIMIT #{beginRow}, #{rowPerPage}
 	</select>
 	
