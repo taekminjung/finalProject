@@ -48,7 +48,6 @@
        		            <th class="text-center">총 가격</th>
         		        <th class="text-center">주문일자</th>
         		        <th class="text-center">주문 상태</th>
-        		        <th class="text-center">결재</th>
 			        </tr>
 			        
 			        <c:forEach var="seo" items="${list}">
@@ -94,13 +93,14 @@
 			    </table>
 			    </div>
 			    <br>
-			<div class="text-center"> 
-			  <c:if test="${currentPage > 1}">
-			  	<a href="${pageContext.request.contextPath}/sportsEquipmentOrderCk?currentPage=${currentPage-1}" class="btn btn-primary">이전</a>
+			<!-- 페이지네이션 -->
+		      <div class="btn-group" style="display: flex; justify-content: center;">
+	          	<c:if test="${currentPage > 1}">
+			  	<a href="${pageContext.request.contextPath}/sportsEquipmentOrderCk?currentPage=${currentPage-1}" class="btn btn-info">이전</a>
 			  </c:if>
-			  <h4>[${currentPage}]</h4>
-			  <c:if test="${currentPage < lastPage}">
-			  	<a href="${pageContext.request.contextPath}/sportsEquipmentOrderCk?currentPage=${currentPage+1}" class="btn btn-primary">다음</a>
+			  	<a class="btn btn-info active">${currentPage}</a>
+			  <c:if test="${currentPage < lastPageOrder}">
+			  	<a href="${pageContext.request.contextPath}/sportsEquipmentOrderCk?currentPage=${currentPage+1}" class="btn btn-info">다음</a>
 			  </c:if>
 			</div>
 		</div>
@@ -120,7 +120,7 @@
 <script src="emp/dist/js/demo.js"></script>
 <script>
 	$('#updateBtn').click(function(){
-		var result = confirm($('#orderStatus').val()+'하시겠습니까');
+		var result = confirm($('#orderStatus').val()+'하시겠습니까?');
 		if(result){
 			$('#form').submit()
 			} else{

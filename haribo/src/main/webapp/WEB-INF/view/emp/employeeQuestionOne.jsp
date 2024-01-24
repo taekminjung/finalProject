@@ -8,7 +8,7 @@
     <title>직원 문의사항 상세보기</title>
     <!-- 파비콘 코드 -->
     <link rel="icon" type="image/x-icon" href="emp/img/starfavi.png">
-
+  	<link rel="stylesheet" href="emp/css/reviewReply.css">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <link rel="stylesheet" href="emp/bower_components/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="emp/bower_components/font-awesome/css/font-awesome.min.css">
@@ -41,10 +41,11 @@
                     <!-- /.box-body -->
                     <div class="box-footer">
                         <h4>답변</h4>
-                        <!-- 답변 이미지 -->
+                        <div class="comment-container">
                         <img class="direct-chat-img" src="emp/img/man.png">
-                        <!-- 댓글 목록 -->
+                        <div class="comment-message-container">
                         <c:forEach var="qr" items="${list}">
+                        <div class="comment">
                             <div class="direct-chat-text">${qr.questionReplyContent}</div>
                             <!-- 각 댓글에 대한 삭제 버튼이 있는 폼 추가 -->
                             <div>
@@ -53,8 +54,12 @@
                                     <input type="hidden" name="questionNo" value="${qr.questionNo}">
                                     <button type="submit" class="btn btn-danger btn-flat">삭제하기</button>
                                 </form>
+                                </div>
                             </div>
                         </c:forEach>
+                        </div>
+                        </div>
+                        
                         <br>
                         <!-- 새로운 댓글 입력 폼 -->
                         <div>
@@ -69,16 +74,17 @@
                                     </span>
                                 </div>
                             </form>
+                            <br>
+                <a class="btn bg-maroon-active color-palette" id="deleteBtn" name="deleteBtn" href="${pageContext.request.contextPath}/deleteQuestion?questionNo=${question.questionNo}">글 삭제</a>
                         </div>
                     </div>
                     <!-- /.box-footer-->
                 </div>
                 <!-- /.box -->
+
             </section>
             <!-- 문의글 삭제 버튼 -->
-            <div>
-                <a class="btn bg-maroon-active color-palette" id="deleteBtn" name="deleteBtn" href="${pageContext.request.contextPath}/deleteQuestion?questionNo=${question.questionNo}">글 삭제</a>
-            </div>
+
         </div>
         <!-- 헤더 + 내용 wrapper 부분 끝 -->
 

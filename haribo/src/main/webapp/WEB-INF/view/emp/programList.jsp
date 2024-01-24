@@ -54,6 +54,7 @@
 			        <c:forEach var="p" items="${list}">
 			            <tr>
 			            <form id="form" name="form" action="${pageContext.request.contextPath}/updateProgramActive" method="post">
+			            	<input type="hidden" name="programNo" id="programNo" value="${p.programNo}">
 			      			<input type="hidden" name="branchName"" id="branchName" value="${p.branchName}">
 			      			<input type="hidden" name="programName" id="programName" value="${p.programName}">
 			      			<input type="hidden" name="programDay" id="programDay" value="${p.programDay}">
@@ -78,7 +79,7 @@
 			                </td>
 			                <td class="text-center">
 			                	<c:if test="${p.programActive == 'Y'}">
-				                	<button class="btn bg-navy" id="updateBtn">수정</button>
+				                	<button class="btn bg-navy updateBtn">수정</button>
 								</c:if>
 			                </td>
 			            </form>
@@ -86,14 +87,15 @@
 			        </c:forEach>
 			    </table>
 			    </div>
-			    <br><br>
-				<div class="text-center"> 
-				  <c:if test="${currentPage > 1}">
-				  	<a href="${pageContext.request.contextPath}/programList?currentPage=${currentPage-1}" class="btn btn-primary btn-sm">이전</a>
+			    <br>
+				<!-- 페이지네이션 -->
+	      <div class="btn-group" style="display: flex; justify-content: center;">
+          	<c:if test="${currentPage > 1}">
+				  	<a href="${pageContext.request.contextPath}/programList?currentPage=${currentPage-1}" class="btn btn-info">이전</a>
 				  </c:if>
-				  	[${currentPage}]
+				  	<a class="btn btn-info active">${currentPage}</a>
 				  <c:if test="${currentPage < lastPage}">
-				  	<a href="${pageContext.request.contextPath}/programList?currentPage=${currentPage+1}" class="btn btn-primary btn-sm">다음</a>
+				  	<a href="${pageContext.request.contextPath}/programList?currentPage=${currentPage+1}" class="btn btn-info">다음</a>
 				  </c:if>
 				</div>
 			</div>
@@ -114,6 +116,16 @@
 <script src="emp/plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
 <script src="emp/bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
 <script src="emp/dist/js/demo.js"></script>
-
+<script>
+	$('.updateBtn').click(function(){
+		var result = confirm('수정하시겠습니까?');
+		if(result){
+			$('#form').submit()
+		} else {
+			
+		}
+		
+	})
+</script>
 </body>
 </html>

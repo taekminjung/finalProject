@@ -23,7 +23,7 @@ public interface ProgramMapper {
 	List<Program> programList(HashMap<String, Object> param);
 	
 	// 프로그램 목록 페이징
-	int getTotalRow(int rowPerPage);
+	int getTotalRow(Program program);
 	
 	// 프로그램 상세페이지
 	HashMap<String,Object> programOne(Program program);

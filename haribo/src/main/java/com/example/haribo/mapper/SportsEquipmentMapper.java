@@ -18,14 +18,14 @@ public interface SportsEquipmentMapper {
 	List<SportsEquipmentExpire> sportsEquipmentExpiredList (Map<String, Object>param);
 	
 	// 운동 기구 리스트 페이징 
-	int getTotalRow(int rowPerPage);
+	int getTotalRow();
 	
 	// 운동 기구 폐기 리스트 페이징 
-	int getTotalRowExpire(int rowPerPage);
+	int getTotalRowExpire();
 	
-	int getTotalRowOrder(int rowPerPage);
+	int getTotalRowOrder();
 	
-	int getTotalRowStock(int rowPerPage);
+	int getTotalRowStock();
 	
 	int countSportsEquipment();
 	

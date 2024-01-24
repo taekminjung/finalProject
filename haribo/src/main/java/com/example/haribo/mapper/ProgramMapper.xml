@@ -38,9 +38,10 @@
  		LIMIT ${beginRow}, ${rowPerPage}
  	</select> 
  	
- 	<select id="getTotalRow" parameterType="int" resultType="int">
+ 	<select id="getTotalRow" parameterType="com.example.haribo.vo.Program" resultType="int">
  		SELECT COUNT(*)
  			FROM program
+ 			WHERE program_active = 'Y'
  	</select>
  	 
 	<select id="selectProgram">

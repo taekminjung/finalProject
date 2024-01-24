@@ -37,11 +37,10 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>${branch.branchName}지점 기구 현황</h1>
-    </section>
 
      <div class="row">
         <div class="col-xs-12">
-          <div class="box">
+          <div class="box box-warning">
             <br>
 			<div class="box-body table-responsive no-padding">
 			    <table class="table table-hover">
@@ -59,26 +58,23 @@
 					</c:forEach>
 			    </table>
 			    <br><br>
-			<div class="text-center"> 
-			  <c:if test="${currentPage > 1}">
-			  	<a href="${pageContext.request.contextPath}/branchStockList?currentPage=${currentPage-1}" class="btn btn-primary">이전</a>
+	      <!-- 페이지네이션 -->
+	      <div class="btn-group" style="display: flex; justify-content: center;">
+          	<c:if test="${currentPage > 1}">
+			  	<a href="${pageContext.request.contextPath}/branchStockList?currentPage=${currentPage-1}" class="btn btn-info">이전</a>
 			  </c:if>
-			  <h4>[${currentPage}]</h4>
-			  <c:if test="${currentPage < lastPage}">
-			  	<a href="${pageContext.request.contextPath}/branchStockList?currentPage=${currentPage+1}" class="btn btn-primary">다음</a>
+					<a class="btn btn-info active">${currentPage}</a>
+				<c:if test="${currentPage < lastPage}">
+			  	<a href="${pageContext.request.contextPath}/branchStockList?currentPage=${currentPage+1}" class="btn btn-info">다음</a>
 			  </c:if>
 			</div>
 		</div>
 	</div>
 </div>
 </div>
+</section>
 </div>
 		
-
-  <div class="control-sidebar-bg"></div>
-
-</div>
-<!-- ./wrapper -->
 
 <!-- jQuery 3 -->
 <script src="emp/bower_components/jquery/dist/jquery.min.js"></script>

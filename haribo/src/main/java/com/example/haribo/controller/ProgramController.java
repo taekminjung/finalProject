@@ -100,9 +100,9 @@ public class ProgramController {
 	
 	// 프로그램 리스트
 	@GetMapping("/programList")
-	public String programList(Model model, @RequestParam(defaultValue = "1")int currentPage) {
-		List<Program> list = programService.programList(currentPage);
-		int lastPage = programService.lastPage();
+	public String programList(Model model, @RequestParam(defaultValue = "1")int currentPage, Program program) {
+		List<Program> list = programService.programList(currentPage, program);
+		int lastPage = programService.lastPage(program);
 		model.addAttribute("currentPage", currentPage);
 		model.addAttribute("list", list);
 		model.addAttribute("lastPage", lastPage);

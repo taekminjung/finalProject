@@ -39,7 +39,7 @@ public class SportsEquipmentService {
 	
 	public int lastPage() {
 		int rowPerPage = 5;
-		int totalRow = sportsEquipmentMapper.getTotalRow(rowPerPage);
+		int totalRow = sportsEquipmentMapper.getTotalRow();
 		int lastPage = totalRow/rowPerPage;
 		if(totalRow % rowPerPage !=0) {
 			lastPage +=1;
@@ -49,7 +49,7 @@ public class SportsEquipmentService {
 	
 	public int lastPageExpire() {
 		int rowPerPage=10;
-		int totalRow = sportsEquipmentMapper.getTotalRowExpire(rowPerPage);
+		int totalRow = sportsEquipmentMapper.getTotalRowExpire();
 		int lastPageExpire = totalRow/rowPerPage;
 		if(totalRow % rowPerPage !=0) {
 			lastPageExpire +=1;
@@ -59,7 +59,7 @@ public class SportsEquipmentService {
 	
 	public int lastPageOrder() {
 		int rowPerPage = 10;
-		int totalRow = sportsEquipmentMapper.getTotalRowOrder(rowPerPage);
+		int totalRow = sportsEquipmentMapper.getTotalRowOrder();
 		int lastPageOrder = totalRow/rowPerPage;
 		if(totalRow % rowPerPage !=0) {
 			lastPageOrder +=1;
@@ -158,7 +158,7 @@ public class SportsEquipmentService {
 	
 	public int lastPageStock() {
 		int rowPerPage = 10;
-		int totalRow = sportsEquipmentMapper.getTotalRowOrder(rowPerPage);
+		int totalRow = sportsEquipmentMapper.getTotalRowOrder();
 		int lastPageStock = totalRow / rowPerPage;
 		if (totalRow % rowPerPage !=0) {
 			lastPageStock +=1;
@@ -233,7 +233,7 @@ public class SportsEquipmentService {
 	
 	public int lastPageSp() {
 		int rowPerPage = 10;
-		int totalRow = sportsEquipmentMapper.getTotalRowStock(rowPerPage);
+		int totalRow = sportsEquipmentMapper.getTotalRowStock();
 		int lastPageSp = totalRow / rowPerPage;
 		if (totalRow % rowPerPage !=0) {
 			lastPageSp +=1;

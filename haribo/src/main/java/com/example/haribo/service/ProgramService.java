@@ -39,15 +39,12 @@ public class ProgramService {
 			return programNo;
 	}
 	
-	public List<Program> programList(@RequestParam(defaultValue = "1") int currentPage){
+	public List<Program> programList(@RequestParam(defaultValue = "1") int currentPage, Program program){
 		
 		int rowPerPage = 5;
 		int beginRow = (currentPage - 1) * rowPerPage;
-		int totalRow = programMapper.getTotalRow(rowPerPage);
-		int lastPage = totalRow / rowPerPage;
-		if(totalRow % rowPerPage != 0) {
-			lastPage +=1;
-		}
+		int totalRow = programMapper.getTotalRow(program);
+
 		HashMap<String, Object> param = new HashMap<>();
 		param.put("beginRow", beginRow);
 		param.put("rowPerPage", rowPerPage);
@@ -56,9 +53,9 @@ public class ProgramService {
 		return list;
 	}
 
-	public int lastPage() {
+	public int lastPage(Program program) {
 		int rowPerPage = 5;
-		int totalRow = programMapper.getTotalRow(rowPerPage);
+		int totalRow = programMapper.getTotalRow(program);
 		int lastPage = totalRow / rowPerPage;
 		if(totalRow % rowPerPage != 0) {
 			lastPage +=1;

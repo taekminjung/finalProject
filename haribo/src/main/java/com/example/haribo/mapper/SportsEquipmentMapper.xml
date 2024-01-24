@@ -50,6 +50,7 @@
 		FROM sports_equipment_order seo
 		INNER JOIN sports_equipment se
 		ON seo.sports_equipment_no = se.sports_equipment_no
+		LIMIT #{beginRow}, #{rowPerPage}
 	</select>
 	
 	<select id="getTotalRow" parameterType="int" resultType="int">
