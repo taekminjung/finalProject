@@ -102,32 +102,19 @@
 						<c:forEach var="pd" items="${pdList}" varStatus="status">
 							<c:if test="${d == pd.programDateDay && pd.programNo == resultProgram.programNo}">
 								<c:set var="isAlreadyBooked" value="1" />
-								<span 
-										class="badge program-badge" 
-										style="color: black;
-										<c:choose>
-											<c:when test="${pd.programNo % 5 == 0 }">
-											 background-color: #5CEEE6;
-											</c:when>
-											<c:when test="${pd.programNo % 5 == 1 }">
-											 background-color: #AAB9FF;
-											</c:when>
-											<c:when test="${pd.programNo % 5 == 2 }">
-											 background-color: #FFC0CB;
-											</c:when>
-											<c:when test="${pd.programNo % 5 == 3 }">
-											 background-color: #FAF58C;
-											</c:when>
-											<c:when test="${pd.programNo % 5 == 4 }">
-											 background-color: #DD78F6;
-											</c:when>
-											<c:otherwise>
-											 background-color: #3CC8C8; 
-											</c:otherwise>
-										</c:choose>
-									">
-		    						${pd.programName}
-									</span>
+							    <span class="badge program-badge" style="color: black; 
+							        background-color: 
+							        <c:choose>
+							            <c:when test="${pd.programNo % 5 == 0 }">#5CEEE6;</c:when>
+							            <c:when test="${pd.programNo % 5 == 1 }">#AAB9FF;</c:when>
+							            <c:when test="${pd.programNo % 5 == 2 }">#FFC0CB;</c:when>
+							            <c:when test="${pd.programNo % 5 == 3 }">#FAF58C;</c:when>
+							            <c:when test="${pd.programNo % 5 == 4 }">#DD78F6;</c:when>
+							            <c:otherwise>#3CC8C8;</c:otherwise>
+							        </c:choose>
+							    ">
+							        ${pd.programName}
+							    </span>
 							</c:if>
 						</c:forEach>
 						<c:choose>
