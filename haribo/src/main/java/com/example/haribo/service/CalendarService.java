@@ -31,7 +31,7 @@ public class CalendarService {
 		log.debug("\u001B[43m"+targetMonth);
 		
 		//타겟 월의 마지막 일
-		int lastDate = firstD.getMaximum(Calendar.DATE);
+		int lastDate = firstD.getActualMaximum(Calendar.DATE);
 		log.debug("\u001B[43m"+lastDate);
 		
 		//타켓 월의 시작 공백

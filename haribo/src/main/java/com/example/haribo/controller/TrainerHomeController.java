@@ -67,6 +67,10 @@ public class TrainerHomeController {
 		model.addAttribute("lastPage", lastPage);
 		model.addAttribute("currentPage", currentPage);
 		
+		log.debug("CalMap: {}", calMap);
+		log.debug("ProgramDateList: {}", pdList);
+		log.debug("TrainerInfoList: {}", list);
+		
 		return "emp/trainerHome";
 	}
 	
