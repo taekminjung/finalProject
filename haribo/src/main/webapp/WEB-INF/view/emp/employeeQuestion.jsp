@@ -34,6 +34,7 @@
   <div class="content-wrapper">
     <section class="content-header">
     <h3>문의사항</h3>
+    
     <div class="box-tools">
     	<div class="input-group input-group-sm hidden-xs" style="width: 300px;">
 			<form class="search-form" id="searchQuestion" method="post" action="${pageContext.request.contextPath}/employeeQuestion">

@@ -37,11 +37,11 @@
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
-    	<div class="row">
-        	<div class="col-md-6">
+    	
+        	<div>
         		<h3>공지사항</h3>
-        	</div>
-        	<div class="col-md-6">
+        
+        	<div class="box-tools">
         		<div class="box-tools pull-right">
 	        		<a href="${pageContext.request.contextPath}/insertNotice" class="btn btn-primary mb-3">공지 추가</a>
 	        	</div>
@@ -59,7 +59,7 @@
         </div>
          
         <div class="row">
-        <div class="col-xs-12">
+        <div class="col-md-12">
           <div class="box box-warning">
 			<div class="box-body table-responsive no-padding">
 			    <table class="table table-hover">
@@ -93,7 +93,8 @@
 			  	<a href="${pageContext.request.contextPath}/noticeList?currentPage=${currentPage+1}" class="btn btn-info">다음</a>
 			  </c:if>
 			</div>
-			</div>
+		
+
 		</div>
 		</div>
 	</div>
@@ -101,6 +102,14 @@
 </section>
 </div>
 
+  <footer class="main-footer">
+    <!-- 맨 오른쪽 표시되는 것 -->
+    <div class="pull-right hidden-xs">
+      팀 하리보
+    </div>
+    <!-- 저작권 명시 -->
+    <strong>Copyright &copy; 2023-2024 <a href="trainerHome">TEAM HARIBO</a>.</strong> All rights reserved.
+  </footer>
 <!-- ./wrapper -->
 
 <!-- jQuery 3 -->
@@ -122,4 +131,5 @@
 <!-- AdminLTE for demo purposes -->
 <script src="emp/dist/js/demo.js"></script>
 </body>
+
 </html>
