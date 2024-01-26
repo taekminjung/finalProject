@@ -8,7 +8,8 @@
 			e.employee_id employeeId,
 			ed.employee_name employeeName,
 			b.branch_no branchNo,
-			b.branch_name branchName
+			b.branch_name branchName,
+			e.employee_level employeeLevel
 		FROM branch b
 		INNER JOIN employee e ON b.branch_no = e.branch_no
 		INNER JOIN employee_detail ed ON e.employee_no = ed.employee_no
@@ -24,11 +25,13 @@
 		INSERT INTO employee( 
 			branch_no,
 			employee_id,
-			employee_pw
+			employee_pw,
+			employee_level
 		) VALUES (
 			#{branchNo}, 
 			#{employeeId},
-			PASSWORD(#{employeePw})
+			PASSWORD(#{employeePw}),
+			#{employeeLevel}
 		)
 	</insert>
 	

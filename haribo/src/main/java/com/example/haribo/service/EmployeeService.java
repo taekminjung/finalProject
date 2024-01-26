@@ -45,6 +45,9 @@ public class EmployeeService {
 	
 	// 직원 추가
 	public void addEmployee(Employee employee, EmployeeDetail employeeDetail) {
+		if(employee.getEmployeeLevel()==null) {
+			employee.setEmployeeLevel("0");
+		}
 		int row = employeeMapper.insertEmployee(employee);
 		if(row != 1) {
 			//실패 시 강제로 예외를 발생시켜 @transactional 작동

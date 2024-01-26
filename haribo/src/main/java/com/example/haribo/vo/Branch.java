@@ -10,7 +10,6 @@ public class Branch {
 		private String branchAddress;
 		private String createdate;
 		private String updatedate;
-		private String branchLevel;
 		private String branchActive;
 		
 }

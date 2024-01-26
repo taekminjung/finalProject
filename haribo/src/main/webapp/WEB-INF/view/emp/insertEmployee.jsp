@@ -99,6 +99,14 @@
                   <label for="Phone">전화번호</label>
                   <input type="text" class="form-control" id="employeePhone" name="employeePhone" placeholder="전화번호를 입력하세요">
             </div>
+            
+            <div class="form-group">
+		    <div class="form-check">
+		        <input type="checkbox" class="form-check-input" id="employeeLevel" name="employeeLevel" value="1">
+		        <label class="form-check-label" for="subscribeCheckbox">관리자 계정</label>
+		    </div>
+			</div>
+            
             </div>
 
               <div class="box-footer">

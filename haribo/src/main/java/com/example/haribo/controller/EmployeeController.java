@@ -31,22 +31,17 @@ public class EmployeeController {
 	    log.debug(employee+"");
 	    Map<String, Object> loginEmployee = employeeService.loginEmployee(employee);
 
-	    // 세션에 로그인 정보 넣기 / 앞글자 : a-관리자, t-트레이너
+	    // 세션에 로그인 정보 넣기
 	    if (loginEmployee != null) {
 	    	
 	        session.setAttribute("loginEmployee", loginEmployee);
-	   
-	        // 로그인된 직원 또는 트레이너의 아이디 가져오기
-	        String employeeId = (String) loginEmployee.get("employeeId");
 
-	        // 첫 글자를 대문자로 통일하여 확인
-	        char firstCharacter = Character.toUpperCase(employeeId.charAt(0));
-
-	        // 첫 글자에 따라 리다이렉트
-	        if (firstCharacter == 'A') {
-	            return "redirect:/adminHome"; // A로 시작하는 경우 adminHome으로 리다이렉트
-	        } else if (firstCharacter == 'T') {
-	            return "redirect:/trainerHome"; // T로 시작하는 경우 trainerHome으로 리다이렉트
+	        String employeeLevel = loginEmployee.get("employeeLevel").toString();
+	        
+	        if ("1".equals(employeeLevel)) {
+	            return "redirect:/adminHome";
+	        } else if ("0".equals(employeeLevel)) {
+	            return "redirect:/trainerHome";
 	        }
 	    }
 
