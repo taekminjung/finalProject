@@ -1,5 +1,6 @@
 package com.example.haribo.service;
 
+
 import java.io.File;
 import java.io.IOException;
 import java.sql.Date;
@@ -123,7 +124,9 @@ public class CustomerService {
 	public void deleteCustomer(Customer customer, String path) {
 		String pathCust = path+"/customer";
 		Map<String, Object> customerInfo = customerMapper.selectCustomerInfo(customer);
-		String customerId = customerInfo.get("customerId").toString();
+		CustomerImg customerImg = new CustomerImg();
+		customerImg.setCustomerNo(customer.getCustomerNo());
+		String fName = customerMapper.selectCustomerImgName(customerImg);
 		int row = customerMapper.updateCustomerActive(customer);
 		if(row != 1) {
 			throw new RuntimeException();
@@ -132,13 +135,11 @@ public class CustomerService {
 			if(row2 != 1) {
 				throw new RuntimeException();
 			}else {
-				CustomerImg customerImg = new CustomerImg();
-				customerImg.setCustomerNo(customer.getCustomerNo());
 				int row3 = customerMapper.deleteCustomerImg(customerImg);
 				if(row3 != 1) {
 					throw new RuntimeException();
 				}else {
-					File file = new File(pathCust+"/"+customerId+".png");
+					File file = new File(pathCust+"/"+fName);
 					try {
 						file.delete();
 					}catch(IllegalStateException e){
@@ -159,11 +160,12 @@ public class CustomerService {
 		//db에 기존 사진이 있는지 확인
 		int cnt = customerMapper.customerImgCnt(customerImg);
 		if(cnt != 0) { // 있으면 데이터 삭제
+			String fNameOrigin = customerMapper.selectCustomerImgName(customerImg);
 			int row = customerMapper.deleteCustomerImg(customerImg);
 			if(row != 1) {
 				throw new RuntimeException();
 			}else { // 저장된 파일도 삭제
-				File file = new File(pathCust+"/"+fName);
+				File file = new File(pathCust+"/"+fNameOrigin);
 				try {
 					file.delete();
 				}catch(IllegalStateException e){
