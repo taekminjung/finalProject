@@ -74,7 +74,7 @@
 		<div class="row">
 			<jsp:include page="/inc/customerMyPageSidebar.jsp"></jsp:include>
 			<div class="col-lg-9 comments-area" align="center">
-			<h3>비밀번호 변경</h3><br><br>
+			<h3>회원 탈퇴 비밀번호 입력</h3><br><br>
 				<form name="form" id="form" method="post" action="${pageContext.request.contextPath }/deleteCustomer">
 					<div>
 						<h4>비밀번호를 입력하시면 회원 탈퇴가 진행됩니다.</h4>
