@@ -66,25 +66,25 @@
                 </div>
                </div>
             </form>
-            <div class="box-footer">
-                	<a class="btn btn-primary" href="${pageContext.request.contextPath}/updateNotice?noticeNo=${resultNotice.noticeNo}">수정</a>
+            <div class="box-footer form-group">
+                <a class="btn btn-primary" href="${pageContext.request.contextPath}/updateNotice?noticeNo=${resultNotice.noticeNo}">수정</a>
                 <form id="deleteform" method="post" action="${pageContext.request.contextPath}/deleteNotice?noticeNo=${resultNotice.noticeNo}"></form>
-                    <button class="btn btn-danger" id="deleteBtn" name="deleteBtn">삭제</button>
-                </div>
+                <button class="btn btn-danger" id="deleteBtn" name="deleteBtn">삭제</button>
+            </div>
             
           </div>
           </div>
           </div>
           </section>
-
-
-  <!-- /.content-wrapper -->
-
-  <!-- /.control-sidebar -->
-  <!-- Add the sidebar's background. This div must be placed
-       immediately after the control sidebar -->
-  <div class="control-sidebar-bg"></div>
-
+		  </div>
+		    <footer class="main-footer">
+		   	 <!-- 맨 오른쪽 표시되는 것 -->
+		    	<div class="pull-right hidden-xs">
+		      	팀 하리보
+		    	</div>
+		    	<!-- 저작권 명시 -->
+		    <strong>Copyright &copy; 2023-2024 <a href="trainerHome">TEAM HARIBO</a>.</strong> All rights reserved.
+		  	</footer>
 </div>
 <!-- ./wrapper -->
 
@@ -116,7 +116,7 @@
 <script>
 
 	$('#deleteBtn').click(function(){
-		var result = confirm('공지사항을 수정하겠습니까?');
+		var result = confirm('공지사항을 삭제하겠습니까?');
 		if(result){
 			$('#deleteform').submit()
 		} else{

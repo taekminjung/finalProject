@@ -41,6 +41,7 @@
                 <p>
                   ${loginEmployee.employeeId}
                 </p>
+                관리자 계정
               </li>
               
               <!-- Menu Footer-->

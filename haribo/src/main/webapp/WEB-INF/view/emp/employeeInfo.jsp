@@ -94,11 +94,12 @@
   </div>
   <!-- /.content-wrapper -->
   <footer class="main-footer">
+    <!-- 맨 오른쪽 표시되는 것 -->
     <div class="pull-right hidden-xs">
-      <b>Version</b> 2.4.13
+      팀 하리보
     </div>
-    <strong>Copyright &copy; 2014-2019 <a href="https://adminlte.io">AdminLTE</a>.</strong> All rights
-    reserved.
+    <!-- 저작권 명시 -->
+    <strong>Copyright &copy; 2023-2024 <a href="trainerHome">TEAM HARIBO</a>.</strong> All rights reserved.
   </footer>
 
   <!-- Control Sidebar -->

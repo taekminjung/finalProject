@@ -38,7 +38,6 @@
     <section class="content-header">
       <h1>
         프로그램 수정 페이지
-        <small>Preview</small>
       </h1>
     </section>
 
@@ -49,9 +48,6 @@
         <div class="col-md-6">
           <!-- general form elements -->
           <div class="box box-primary">
-            <div class="box-header with-border">
-              <h3 class="box-title">Quick Example</h3>
-            </div>
               <div class="box-body">
 			<form id="form" name="form" method="post" action="${pageContext.request.contextPath}/updateProgram" enctype="multipart/form-data">
 			  <div class="form-group">
@@ -78,15 +74,20 @@
 			  </div>
 		       <button type="submit" id="formBtn" class="btn btn-primary">수정 완료</button>
 			</form>
-	
-
-              <div class="box-footer">
-  
-              </div>
-            </form>
           </div>
       </div>
-  <div class="control-sidebar-bg"></div>
+</div>
+</div>
+</section>
+</div>
+  <footer class="main-footer">
+    <!-- 맨 오른쪽 표시되는 것 -->
+    <div class="pull-right hidden-xs">
+      팀 하리보
+    </div>
+    <!-- 저작권 명시 -->
+    <strong>Copyright &copy; 2023-2024 <a href="trainerHome">TEAM HARIBO</a>.</strong> All rights reserved.
+  </footer>
 </div>
 <!-- ./wrapper -->
 

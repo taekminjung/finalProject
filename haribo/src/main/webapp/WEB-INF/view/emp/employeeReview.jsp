@@ -66,11 +66,11 @@
             <!-- 페이지네이션 -->
 	      <div class="btn-group" style="display: flex; justify-content: center;">
           	<c:if test="${currentPage > 1}">
-					<a href="${pageContext.request.contextPath}/trainerReview?currentPage=${currentPage-1}" class="btn btn-info">이전</a>
+					<a href="${pageContext.request.contextPath}/employeeReview?currentPage=${currentPage-1}" class="btn btn-info">이전</a>
 				</c:if>
 					 <a class="btn btn-info active">${currentPage}</a>
 				<c:if test="${currentPage < lastPage}">
-					<a href="${pageContext.request.contextPath}/trainerReview?currentPage=${currentPage+1}" class="btn btn-info">다음</a>
+					<a href="${pageContext.request.contextPath}/employeeReview?currentPage=${currentPage+1}" class="btn btn-info">다음</a>
 				</c:if>
 			</div>
             <!-- /.box-body -->
@@ -92,11 +92,6 @@
     <strong>Copyright &copy; 2023-2024 <a href="trainerHome">TEAM HARIBO</a>.</strong> All rights reserved.
   </footer>
   
-  
-  <div class="control-sidebar-bg"></div>
-</div>
-<!-- REQUIRED JS SCRIPTS -->
-
 <!-- jQuery 3 -->
 <script src="emp/bower_components/jquery/dist/jquery.min.js"></script>
 <!-- Bootstrap 3.3.7 -->

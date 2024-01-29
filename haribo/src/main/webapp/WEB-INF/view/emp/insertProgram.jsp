@@ -88,13 +88,20 @@
 	         <div class="col-xs-4" style="float:right">
 			       <button type="submit" id="formBtn" class="btn btn-primary">추가</button>
 			 </div>
-
-              <div class="box-footer">
-  
-              </div>
-          </div>
+          	</div>
       </div>
-  <div class="control-sidebar-bg"></div>
+	</div>
+</div>
+</section>
+</div>
+  	<footer class="main-footer">
+    <!-- 맨 오른쪽 표시되는 것 -->
+    	<div class="pull-right hidden-xs">
+      	팀 하리보
+    	</div>
+    <!-- 저작권 명시 -->
+    	<strong>Copyright &copy; 2023-2024 <a href="trainerHome">TEAM HARIBO</a>.</strong> All rights reserved.
+  	</footer>
 </div>
 <!-- ./wrapper -->
 

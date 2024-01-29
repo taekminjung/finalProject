@@ -8,7 +8,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>AdminLTE</title>
   <!-- Tell the browser to be responsive to screen width -->
-  <  <!-- 파비콘 코드 -->
+  <!-- 파비콘 코드 -->
   <link rel="icon" type="image/x-icon" href="emp/img/starfavi.png">
   <!-- 공통 스타일 폰트 -->
   <link rel="stylesheet" href="common/css/main.css">
@@ -70,9 +70,18 @@
               </div>
             </form>
           </div>
-
-  <div class="control-sidebar-bg"></div>
-
+</div>
+</div>
+</section>
+</div>
+  <footer class="main-footer">
+    <!-- 맨 오른쪽 표시되는 것 -->
+    <div class="pull-right hidden-xs">
+      팀 하리보
+    </div>
+    <!-- 저작권 명시 -->
+    <strong>Copyright &copy; 2023-2024 <a href="trainerHome">TEAM HARIBO</a>.</strong> All rights reserved.
+  </footer>
 </div>
 <!-- jQuery 3 -->
 <script src="emp/bower_components/jquery/dist/jquery.min.js"></script>
