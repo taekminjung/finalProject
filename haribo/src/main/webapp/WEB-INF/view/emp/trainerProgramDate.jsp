@@ -12,7 +12,7 @@
   <link rel="stylesheet" href="common/css/main.css">
   <!-- programdate css -->
   <link rel="stylesheet" href="emp/css/programDate.css">
-  
+  <link rel="stylesheet" href="emp/css/programHome.css">
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <link rel="stylesheet" href="emp/bower_components/bootstrap/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="emp/bower_components/font-awesome/css/font-awesome.min.css">
@@ -119,7 +119,7 @@
 						</c:forEach>
 						<c:choose>
 							<c:when test="${isAlreadyBooked == 1}">
-								<c:set var="isAlreadyBooked" value="0" />
+								<c:set var="isAlreadyBooked" value="0"/>
 							</c:when>
 							<c:otherwise>
 								<input type="checkbox" class="date-checkbox" name="d" date="${d}" value="${d}" style="width: 25px; height: 30px;" />
@@ -133,7 +133,7 @@
 				</c:forEach>
 			</table>
 			
-			<button type="submit" class="btn btn-info pull-right btn-lg">스케줄 추가하기</button>
+			<button type="submit" id="addbtn" class="btn btn-info pull-right btn-lg">스케줄 추가하기</button>
 			</form>
 		</div>
 	    </section>
@@ -230,7 +230,27 @@ $(() => {
 		});
 	});
 });
-</script>
 
+
+	$(document).ready(function () {
+	    $('#addbtn').click(function (event) {
+	        var isChecked = false;
+	
+	        // 각 체크박스를 확인하여 하나라도 선택되었는지 확인
+	        $('.date-checkbox').each(function () {
+	            if ($(this).is(':checked')) {
+	                isChecked = true;
+	                return false;  // 하나라도 선택되었으면 반복문 종료
+	            }
+	        });
+	
+	        // 아무것도 선택되지 않았을 때 경고창 띄우고 폼 제출 막기
+	        if (!isChecked) {
+	            event.preventDefault(); // 폼 전송 막음
+	            alert("날짜를 추가해주세요");
+	        }
+	    });
+	});
+</script>
 </body>
 </html>

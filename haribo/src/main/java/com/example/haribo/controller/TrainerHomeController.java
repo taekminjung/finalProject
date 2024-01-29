@@ -157,7 +157,7 @@ public class TrainerHomeController {
 
 		programDateService.insertProgramDate(programDate, targetYear, targetMonth, d);
 		
-		return "redirect:/trainerHome";
+		return "redirect:/trainerProgramDate?programNo="+programDate.getProgramNo();
 	}
 	
 //	// 프로그램 날짜 생성한 것 취소하기

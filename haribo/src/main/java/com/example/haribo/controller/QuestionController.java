@@ -165,12 +165,12 @@ public class QuestionController {
 			return "redirect:/login";
 		}
 		List<Question> list = questionService.questionList(currentPage);
-		int lastPage = questionService.searchLastPage(question);
+		int lastPage = questionService.lastPage();
 		model.addAttribute("currentPage", currentPage);
 		model.addAttribute("list", list);
 		model.addAttribute("lastPage", lastPage);
 		
-		System.out.println(lastPage+"<--lastPage");
+		System.out.println(lastPage+"<--lastPage1111");
 				
 		return "emp/trainerQuestion";
 	}

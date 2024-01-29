@@ -141,8 +141,8 @@
 	    </section>
 	    <!-- 페이지 메인 내용 끝 -->
 	    </div>
-	    
-	    <!-- NEW ALERT 창 -->
+	    <!-- 
+	     NEW ALERT 창
         <div class="col-md-4">
 		<section class="content container-fluid">
 		  <div class="box box-info">
@@ -152,7 +152,7 @@
 		           <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
 		         </div>
 		     </div>
-		     <!-- 트레이너 정보 -->
+		     
              <div class="box-body">
                <table class="tbl tbl-hobber">
                  <tr>
@@ -167,7 +167,7 @@
 	      </div>
 		</section>
 	    </div>
-	    
+	     -->
 	    <!-- 뭔가 알림창? 정보 시작 -->
 	    <div class="col-md-4">
 	    <section class="content container-fluid">
