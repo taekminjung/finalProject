@@ -12,7 +12,8 @@
   <link rel="stylesheet" href="common/css/main.css">
   <!-- programdate css -->
   <link rel="stylesheet" href="emp/css/programDate.css">
-  <link rel="stylesheet" href="emp/css/programHome.css">
+  <link rel="stylesheet" href="emp/css/trainerHome.css">
+  
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <link rel="stylesheet" href="emp/bower_components/bootstrap/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="emp/bower_components/font-awesome/css/font-awesome.min.css">
