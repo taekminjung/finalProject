@@ -80,7 +80,7 @@ var homeBtn = document.getElementById('home');
 var backBtn = document.getElementById('back');
 
 homeBtn.onclick = function(){
-	location.href="${pageContext.request.contextPath }";
+	location.href="${pageContext.request.contextPath }/home";
 }
 backBtn.onclick = function(){
 	history.back();
