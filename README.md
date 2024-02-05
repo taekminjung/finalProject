@@ -1,3 +1,8 @@
+# 🧸하리보 홈페이지 메인 화면🧸
+
+[![하리보 홈페이지 링크](images/haribohome.png)](http://43.202.97.125/haribo/home)   
+_이미지를 클릭하면 하리보 홈페이지로 이동합니다._
+
 # 🧑🏻‍💻하리보팀 파이널 프로젝트🧑🏻‍💻
 > * 참여자 : 정택민, 강유정, 이유섭, 정회윤   
 > * 프로젝트 기간 : 2023/12/04 ~ 2024/01/19
@@ -14,17 +19,20 @@
 > * 고객/ 사원 접근 가능한 부분 나누어서 개발
 > * 매니저 관리 페이지 따로 생성해 필요 기능들 활성화
 
-# 🔗 요구사항 정의서
+# 📝파이널 프로젝트 PPT
+[![PPT LINK](images/finalppt.PNG)](https://drive.google.com/file/d/1iDxK6rmUoNXXrg9TBseERYTLpUcjLAlu/view?usp=sharing)   
+_이미지를 클릭하면 PPT 문서로 이동합니다._
+
+# 🔗요구사항 정의서
 
 [![요구사항 정의서 링크](images/finalyg.png)](https://drive.google.com/file/d/1eyw7G-9bwDMQsVLG5sTV53ZFLz4uG2Og/view?usp=sharing)
 _구글 스프레드 시트로 팀원들과 함께 작성한 요구사항 정의서 입니다._  
 _이미지를 클릭하면 요구사항 정의서 문서로 이동합니다._
 
-# 🔗 ERD 다이어그램
+# 📂ERD 다이어그램
 > ### ERD Cloud 다이어그램
 [![erdcloud 링크](images/finalerd.png)](https://www.erdcloud.com/d/e8Exd7Bkeo7t2YP9W)
 _이미지를 클릭하면 ERD Cloud로 이동합니다._
-  
 > ### Workbench 다이어그램
 <img src="images/finalwberd.png">
 
@@ -43,7 +51,7 @@ _이미지를 클릭하면 ERD Cloud로 이동합니다._
 
 # 🖥️개발환경🖥️
 
-<img src="images/usewhat.png">
+> <img src="images/usewhat.png" width="30%">   
 
 > **OS**   
 > ```WINDOWS11```    
@@ -57,7 +65,3 @@ _이미지를 클릭하면 ERD Cloud로 이동합니다._
 > ```MariaDB``` ```HeidiSQL```   
 > **Server**   
 > ```Apache Tomcat10```   
-
-
-# 홈페이지 메인 화면
-
