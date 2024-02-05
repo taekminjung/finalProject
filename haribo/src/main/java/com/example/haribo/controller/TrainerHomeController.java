@@ -58,13 +58,13 @@ public class TrainerHomeController {
 		List<HashMap<String,Object>> pdList = programDateService.programDateList(employeeId,(int)calMap.get("targetYear"),(int)calMap.get("targetMonth"));
 		// trainerinfo service 호출
 		List<HashMap<String, Object>> list = trainersService.trainerinfo(currentPage);
-		int lastPage = trainersService.lastPagetr();
+		int lastPagetr = trainersService.lastPagetr();
 		
 		// model 
 		model.addAttribute("calMap", calMap);
 		model.addAttribute("pdList", pdList);
 		model.addAttribute("list", list);
-		model.addAttribute("lastPage", lastPage);
+		model.addAttribute("lastPagetr", lastPagetr);
 		model.addAttribute("currentPage", currentPage);
 		
 		log.debug("CalMap: {}", calMap);

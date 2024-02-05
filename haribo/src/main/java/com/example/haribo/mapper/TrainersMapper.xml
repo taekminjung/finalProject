@@ -34,7 +34,7 @@
 		INNER JOIN employee_detail d ON e.employee_no = d.employee_no
 		LEFT OUTER JOIN employee_img ei
 		ON d.employee_no = ei.employee_no
-		WHERE e.employee_id LIKE 'T%'
+		WHERE e.employee_level = 0
 		ORDER BY e.employee_no
 		LIMIT #{beginRow}, #{rowPerPage}
 	</select>

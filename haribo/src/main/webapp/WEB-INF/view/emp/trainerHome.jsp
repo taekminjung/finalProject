@@ -198,7 +198,7 @@
 	        <a href="${pageContext.request.contextPath}/trainerHome?currentPage=${currentPage-1}" class="btn btn-info">이전</a>
 	        </c:if>
 	        <a class="btn btn-info active">${currentPage}</a>
-	        <c:if test="${currentPage < lastPage}">
+	        <c:if test="${currentPage < lastPagetr}">
 	        <a href="${pageContext.request.contextPath}/trainerHome?currentPage=${currentPage+1}" class="btn btn-info">다음</a>
 	      	</c:if>
 	      </div>

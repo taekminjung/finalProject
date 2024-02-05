@@ -74,7 +74,7 @@
               </table>
             </div>
             <!-- 페이지네이션 -->
-            <div class="text-center"> 
+            <div class="btn-group" style="display: flex; justify-content: center;"> 
 				<c:if test="${currentPage > 1}">
 					<a href="${pageContext.request.contextPath}/trainerQuestion?currentPage=${currentPage-1}" class="btn btn-info">이전</a>
 				</c:if>
