@@ -20,7 +20,7 @@ _이미지를 클릭하면 하리보 홈페이지로 이동합니다._
 > * 매니저 관리 페이지 따로 생성해 필요 기능들 활성화
 
 # 📝파이널 프로젝트 PPT
-[![PPT LINK](images/finalppt.PNG)](https://drive.google.com/file/d/1iDxK6rmUoNXXrg9TBseERYTLpUcjLAlu/view?usp=sharing)   
+[![PPT LINK](images/finalppt.PNG)](https://drive.google.com/file/d/1bubxv28ptbSOoeDrpwqgBSPp49fOtU0w/view?usp=sharing)   
 _이미지를 클릭하면 PPT 문서로 이동합니다._
 
 # 🔗요구사항 정의서
